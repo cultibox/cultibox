@@ -1905,3 +1905,146 @@ msgstr "The configuration used is not updated, you can update the configuration 
 msgid "DISABLE_POPUP"
 msgstr "Do not warn me and let me manage the configuration in the dialog"
 
+
+#For the cultinet part:
+msgid "CONFIGURE_TITLE_CULTIBOX"
+msgstr "Network configuration of your Cultipi"
+
+msgid "CONFIGURE_SUBTITLE"
+msgstr "The configuration shown corresponds to the currently applied configuration"
+
+msgid "ADDR_TYPE"
+msgstr "address type"
+
+msgid "NO_IFACE_FOUND"
+msgstr "Not Detected interface"
+
+msgid "TOOLTIP_MANUAL_IP"
+msgstr "If this option is selected, you will need to manually enter the desired address for your Cultipi Module"
+
+msgid "TOOLTIP_DYNAMIC_IP"
+msgstr "If this option is selected, an address will be given to your Cultipi Module"
+
+msgid "WIRE_CONF"
+msgstr "Wired connection"
+
+msgid "WIRELESS_CONF"
+msgstr "Wireless Connection"
+
+msgid "PHY_ADDR"
+msgstr "Physical address of the interface"
+
+msgid "ACTIVATED"
+msgstr "Enabled"
+
+msgid "DEACTIVATED"
+msgstr "Disable"
+
+msgid "MANUAL_IP_ADDR"
+msgstr "Manual Address"
+
+msgid "DYNAMIC_IP_ADDR"
+msgstr "Automatically Address"
+
+msgid "IP_ADDR"
+msgstr "Network Address"
+
+msgid "IP_MASK"
+msgstr "Network Mask"
+
+msgid "ENABLE_JAVASCRIPT"
+msgstr "Javascript is disabled! You can not use this software if you do not enable Javascript"
+
+msgid "CONFIGURE_WIFI"
+msgstr "Wifi"
+
+msgid "CONFIGURE_WIFI_IP"
+msgstr "address of your wireless module"
+
+msgid "CONFIGURE_WIFI_KEY_TYPE"
+msgstr "Type the key"
+
+msgid "CONFIGURE_WIFI_PASSWORD"
+msgstr "Network Password"
+
+msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
+msgstr "Password Confirmation"
+
+msgid "CONFIGURE_WIFI_SSID"
+msgstr "Network Name"
+
+msgid "CONFIGURE_WIFI_IP_MASK"
+msgstr "Network Mask"
+
+msgid "WIFI_IP_MANUAL"
+msgstr "Set the IP address manually"
+
+msgid "SHOW_CURRENT_PWD"
+msgstr "Leave the mouse clicked on the picture to display the password"
+
+msgid "ERROR_SSID_VALUE"
+msgstr "The network name can not be empty"
+
+msgid "ERROR_PASSWORD_VALUE"
+msgstr "The passwords must match"
+
+msgid "ERROR_WIFI_IP_MASK"
+msgstr "Error in the netmask format: XXX.XXX.XXX.XXX"
+
+msgid "TOOLTIP_IP_ADDR"
+msgstr "The module address must be in the form XXX.XXX.XXX.XXX <br /><br /><i>Example: 192.168.0.15</i>"
+
+msgid "TOOLTIP_MASK_ADDR"
+msgstr "The network mask must be of the form XXX.XXX.XXX.XXX <br /><br /><i>Example: 255.255.255.0</i>"
+
+msgid "ERROR_WIFI_IP"
+msgstr "Error in the format of IP: XXX.XXX.XXX.XXX"
+
+msgid "ERROR_EMPTY_PASSWORD"
+msgstr "The password can not be empty"
+
+msgid "ERROR_WEP_KEY_TYPE"
+msgstr "Error in the WEP password format: it must contain only numbers (0-9) and have 5, 13 or 29 characters long"
+
+msgid "ERROR_WPA_KEY_TYPE"
+msgstr "Error in the WPA password format: it must be between 8 and 63 characters"
+
+msgid "TOOLTIP_WIFI_SSID"
+msgstr "The name of your wireless network currently in progress. This is the identifier (SSID) of your local WiFi network."
+
+msgid "TOOLTIP_WIFI_KEY_TYPE"
+msgstr "The type of encryption the key to your WiFi network"
+
+msgid "TOOLTIP_WIFI_IP"
+msgstr "The address of your wireless module can be customized by returning an IP address to the format XXX.XXX.XXX.XXX"
+
+msgid "SAVE_CONF"
+msgstr "Save Settings"
+
+msgid "SAVING_DATA"
+msgstr "Saving your configuration, please wait ..."
+
+msgid "EMPTY_NETWORK_CONFIG"
+msgstr "No network configuration (wired or wireless) has been enabled. You must enable a network connection to make your module available."
+
+msgid "WIFI_SCAN_ESSID"
+msgstr "Available networks"
+
+msgid "WIFI_ESSID_SCAN_TITLE"
+msgstr "Choose a wireless network"
+
+msgid "WIFI_SCAN_SUBTITLE"
+msgstr "The following WiFi networks have been detected and are available to connect your module"
+
+msgid "ERROR_NET_FILE_CREATION"
+msgstr "An error occurred while creating the network configuration files"
+
+msgid "AVAILABLE_MODULE_SET"
+msgstr "Your module is now connected to the network (s) (x) set (s) You can reconnect to your network and access the Cultipi module to the following address in your favorite browser. <p class='p_center'><a class='note_link' href='https://cultipi.local/cultibox/' target='_blank'>https://cultipi.local/cultibox/</a></p> "
+
+msgid "RESTORED_CONF"
+msgstr "An error occurred while setting up your network configuration. The previous configuration has been restored"
+
+msgid "LOADING_DATA"
+msgstr "Loading, please wait...
+

@@ -26,6 +26,45 @@ if((!isset($sd_card))||(empty($sd_card))) {
     setcookie("CHECK_SD", "False", time()+1800,"/",false,false);
 }
 
+
+$net_config=parse_network_config();
+
+$wire_enable=find_config($net_config,"eth0","iface eth0","bool");
+$wire_dhcp=find_config($net_config,"eth0","iface eth0 inet dhcp","bool");
+$wire_static=find_config($net_config,"eth0","iface eth0 inet static","bool");
+$wire_address=find_config($net_config,"eth0","address","val");
+$wire_mask=find_config($net_config,"eth0","netmask","val");
+
+$wifi_enable=find_config($net_config,"wlan0","iface wlan0","bool");
+$wifi_dhcp=find_config($net_config,"wlan0","iface wlan0 inet dhcp","bool");
+$wifi_static=find_config($net_config,"wlan0","iface wlan0 inet static","bool");
+
+$wifi_address=find_config($net_config,"wlan0","address","val");
+$wifi_mask=find_config($net_config,"wlan0","netmask","val");
+
+$eth_phy=get_phy_addr("eth0");
+$wlan_phy=get_phy_addr("wlan0");
+
+exec("sudo /sbin/iwlist wlan0 scan |/bin/grep ESSID|/usr/bin/awk -F \"\\\"\" '{print $2}'",$wifi_net_list,$error);
+
+
+if(find_config($net_config,"wlan0","wpa-psk","bool")) {
+    $wifi_key_type="WPA (TKIP + AES)";
+    $wifi_password=find_config($net_config,"wlan0","wpa-psk ","val");
+    $wifi_ssid=find_config($net_config,"wlan0","wpa-ssid","val");
+} else if(find_config($net_config,"wlan0","wireless-key","val")) {
+    $wifi_key_type="WEP";
+    $wifi_password=find_config($net_config,"wlan0","wireless-key","val");
+    $wifi_ssid=find_config($net_config,"wlan0","wireless-essid","val");
+} else {
+    $wifi_key_type="NONE";
+    $wifi_ssid=find_config($net_config,"wlan0","wireless-essid","val");
+}
+
+
+if(strpos("$wifi_ssid","cultipi_")===0) $wifi_ssid="";
+
+
 //Compute time loading for debug option
 $end_load = getmicrotime();
 

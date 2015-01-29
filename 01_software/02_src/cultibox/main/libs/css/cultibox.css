@@ -414,6 +414,19 @@ P.p_center{
    text-align: center;
 }
 
+td.conf-marge-field-wifi {
+   width: 15%;
+}
+
+td.conf-field-title-wifi {
+    width: 25%;
+}
+
+td.conf-field-field-wifi {
+    width: 21%;
+}
+
+
 label.input-file
 {
     width: 71%;

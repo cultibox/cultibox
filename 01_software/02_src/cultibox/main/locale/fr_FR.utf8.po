@@ -1910,3 +1910,147 @@ msgstr "La configuration utilisée n'est pas à jour, vous pouvez mettre à jour
 
 msgid "DISABLE_POPUP"
 msgstr "Ne plus me prévenir et me laisser gérer la configuration dans la boîte de dialogue"
+
+
+# For the cultinet part:
+msgid "CONFIGURE_TITLE_CULTIBOX"
+msgstr "Configuration du réseau de votre Cultipi"
+
+msgid "CONFIGURE_SUBTITLE"
+msgstr "La configuration affichée correspond à la configuration actuellement appliquée"
+
+msgid "ADDR_TYPE"
+msgstr "Type d'adressage"
+
+msgid "NO_IFACE_FOUND"
+msgstr "Pas d'interface détectée"
+
+msgid "TOOLTIP_MANUAL_IP"
+msgstr "Si cette option est sélectionnée, il vous faudra rentrer manuellement l'adresse voulue pour votre module Cultipi"
+
+msgid "TOOLTIP_DYNAMIC_IP"
+msgstr "Si cette option est sélectionnée, une adresse sera automatiquement donnée à votre module Cultipi"
+
+msgid "WIRE_CONF"
+msgstr "Connexion filaire"
+
+msgid "WIRELESS_CONF"
+msgstr "Connexion sans fil"
+
+msgid "PHY_ADDR"
+msgstr "Adresse physique de l'interface"
+
+msgid "ACTIVATED"
+msgstr "Activée"
+
+msgid "DEACTIVATED"
+msgstr "Désactivée"
+
+msgid "MANUAL_IP_ADDR"
+msgstr "Adresse manuelle"
+
+msgid "DYNAMIC_IP_ADDR"
+msgstr "Adresse automatique"
+
+msgid "IP_ADDR"
+msgstr "Adresse du réseau"
+
+msgid "IP_MASK"
+msgstr "Masque du réseau"
+
+msgid "ENABLE_JAVASCRIPT"
+msgstr "Javascript est désactivé! Vous ne pourrez pas utiliser ce logiciel si vous n'activez pas Javascript"
+
+msgid "CONFIGURE_WIFI"
+msgstr "Wifi"
+
+msgid "CONFIGURE_WIFI_IP"
+msgstr "Adresse de votre module Wifi"
+
+msgid "CONFIGURE_WIFI_KEY_TYPE"
+msgstr "Type de la clef"
+
+msgid "CONFIGURE_WIFI_PASSWORD"
+msgstr "Mot de passe du réseau"
+
+msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
+msgstr "Confirmation du mot de passe"
+
+msgid "CONFIGURE_WIFI_SSID"
+msgstr "Nom du réseau"
+
+msgid "CONFIGURE_WIFI_IP_MASK"
+msgstr "Masque du réseau"
+
+msgid "WIFI_IP_MANUAL"
+msgstr "Configurer l'adresse IP manuellement"
+
+msgid "SHOW_CURRENT_PWD"
+msgstr "Laisser la souris cliquée sur l'image pour afficher le mot de passe"
+
+msgid "ERROR_SSID_VALUE"
+msgstr "Le nom du réseau ne peut pas être vide"
+
+msgid "ERROR_PASSWORD_VALUE"
+msgstr "Les mots de passe doivent correspondre"
+
+msgid "ERROR_WIFI_IP_MASK"
+msgstr "Erreur dans le format du masque réseau: XXX.XXX.XXX.XXX"
+
+msgid "TOOLTIP_IP_ADDR"
+msgstr "L'adresse du module doit être de la forme XXX.XXX.XXX.XXX<br /><br /><i>Example: 192.168.0.15</i>"
+
+msgid "TOOLTIP_MASK_ADDR"
+msgstr "Le masque du réseau doit être de la forme XXX.XXX.XXX.XXX<br /><br /><i>Example: 255.255.255.0</i>"
+
+msgid "ERROR_WIFI_IP"
+msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
+
+msgid "ERROR_EMPTY_PASSWORD"
+msgstr "Le mot de passe ne peut pas être vide"
+
+msgid "ERROR_WEP_KEY_TYPE"
+msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombres (0-9) et faire 5, 13 ou 29 caractères de long"
+
+msgid "ERROR_WPA_KEY_TYPE"
+msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8 et 63 caractères"
+
+msgid "TOOLTIP_WIFI_SSID"
+msgstr "Le nom de votre réseau Wifi actuellement en marche. Il s'agit de l'identifiant (SSID) de votre réseau Wifi local."
+
+msgid "TOOLTIP_WIFI_KEY_TYPE"
+msgstr "Le type d'encryptage de la clef de votre réseau Wifi"
+
+msgid "TOOLTIP_WIFI_IP"
+msgstr "L'adresse de votre module Wifi peut être personnalisée en rentrant une adresse ip au format XXX.XXX.XXX.XXX"
+
+msgid "SAVE_CONF"
+msgstr "Enregistrer la configuration"
+
+msgid "SAVING_DATA"
+msgstr "Enregistrement de votre configuration, patientez s'il vous plaît..."
+
+msgid "EMPTY_NETWORK_CONFIG"
+msgstr "Aucune configuration réseau (filaire ou sans fil) n'a été activé. Vous devez activer une connexion réseau pour rendre votre module disponible."
+
+msgid "WIFI_SCAN_ESSID"
+msgstr "Réseaux disponibles"
+
+msgid "WIFI_ESSID_SCAN_TITLE"
+msgstr "Sélection d'un réseau Wifi"
+
+msgid "WIFI_SCAN_SUBTITLE"
+msgstr "Les réseaux Wifi suivant ont été détécté et sont disponibles pour connecter votre module:"
+
+msgid "ERROR_NET_FILE_CREATION"
+msgstr "Une erreur est survenue lors de la création des fichiers de configuration du réseau"
+
+msgid "AVAILABLE_MODULE_SET"
+msgstr "Votre module est maintenant connecté sur le(s) réseau(x) configuré(s). Vous pouvez vous reconnecter à votre réseau et accèder au module Cultipi à l'adresse suivante dans votre navigateur favori: <p class='p_center'><a class='note_link' href='https://cultipi.local/cultibox/' target='_blank'>https://cultipi.local/cultibox/</a></p>"
+
+msgid "RESTORED_CONF"
+msgstr "Une erreur est survenue lors de la mise en place de votre configuration réseau. La configuration précédente a été restauré"
+
+msgid "LOADING_DATA"
+msgstr "Chargement des données en cours, patientez s'il vous plait..."
+
