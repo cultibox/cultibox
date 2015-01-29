@@ -22,6 +22,8 @@ set variable [lindex $argv 1]
 
 #puts "Reading variable [lrange $argv 1 [expr $argc - 1]] of module $module"
 
+set killID ""
+
 proc messageGestion {message} {
 
     # Trame standard : [FROM] [INDEX] [commande] [argument]
@@ -31,6 +33,9 @@ proc messageGestion {message} {
 
     puts [join [lrange $message 3 end] "\t"]
 
+    # On supprime le killID
+    after cancel $::killID
+    
     set ::forever 1
 }
 ::piServer::start messageGestion $port(serverGet)
@@ -41,6 +46,11 @@ proc messageGestion {message} {
 # Trame standard : [FROM] [INDEX] [commande] [argument]
 ::piServer::sendToServer $port($module) "$port(serverGet) 0 getRepere [lrange $argv 1 [expr $argc - 1]]"
 
+# Après 2 secondes, s'il n'a pas répondu on le tue
+set killID [after 2000 {
+    set ::forever 1
+    puts "TIMEOUT"
+}
 
 vwait forever
 

@@ -27,6 +27,8 @@ package require piTools
 source [file join $rootDir cultiPi src stop.tcl]
 source [file join $rootDir cultiPi src serveurMessage.tcl]
 source [file join $rootDir cultiPi src searchSocket.tcl]
+source [file join $rootDir cultiPi src checkAlive.tcl]
+source [file join $rootDir cultiPi src checkI2C.tcl]
 
 # Port number
 set port(server) [findAvailableSocket 6000]
