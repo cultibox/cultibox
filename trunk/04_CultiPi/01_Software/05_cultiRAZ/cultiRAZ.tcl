@@ -69,13 +69,11 @@ proc firstLoop {} {
 
 
                 exec dpkg --purge cultibox 
-                exec dpkg --purge cultinet 
                 exec dpkg --purge cultiraz 
                 exec dpkg --purge cultipi 
                 exec dpkg --purge cultitime
 
                 exec dpkg -i /home/cultipi/cultipi*.deb
-                exec dpkg -i /home/cultipi/cultinet*.deb
                 exec dpkg -i /home/cultipi/cultibox*.deb
                 exec dpkg -i /home/cultipi/cultitime*.deb
                 exec dpkg -i /home/cultipi/cultiraz*.deb

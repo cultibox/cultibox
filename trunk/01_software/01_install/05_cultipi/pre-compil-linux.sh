@@ -7,7 +7,6 @@ cd $dir
 function usage {
             echo "usage: $0"
             echo "                      cultipi <version>|version ?jenkins?"
-            echo "                      cultinet <version>|version ?jenkins?"
             echo "                      cultipi <version>|version ?jenkins?"
             echo "                      cultiraz <version>|version ?jenkins?"
             echo "                      cultitime <version>|bersion ?jenkins?"
@@ -25,8 +24,6 @@ fi
 if [ "$2" == "version" ]; then
     if [ "$1" == "cultipi" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/01_cultiPi/VERSION`
-    elif [ "$1" == "cultinet" ]; then
-        VERSION=`cat ../../../04_CultiPi/01_Software/02_cultinet/VERSION`
     elif [ "$1" == "cultibox" ]; then
         VERSION=`head -1 ../../CHANGELOG |sed -r 's#^.*\((.*)\).*$#\1#'`
     elif [ "$1" == "cultiraz" ]; then
@@ -74,22 +71,6 @@ case "$1" in
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultipi
            
            mv cultipi.deb ../../05_cultipi/Output/cultipi-armhf_`echo $VERSION`-r`echo $revision`.deb
-      ;;
-      "cultinet")
-           rm -Rf ../01_src/01_xampp/*
-           mkdir ../01_src/01_xampp/cultinet
-           cp -R ./conf-package/DEBIAN-cultinet ../01_src/01_xampp/cultinet/DEBIAN
-
-           mkdir -p ../01_src/01_xampp/cultinet/var/www
-
-           cp -R ../../../04_CultiPi/01_Software/02_cultinet ../01_src/01_xampp/cultinet/var/www/cultinet
-
-           sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultinet/DEBIAN/control
-
-           find ./../01_src/01_xampp/cultinet/ -name ".svn"|xargs rm -Rf
-           cd ./../01_src/01_xampp/ && dpkg-deb --build cultinet
-
-           mv cultinet.deb ../../05_cultipi/Output/cultinet-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultibox")
            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
@@ -173,9 +154,6 @@ EOF
           
            cultibox="`ls -t Output/cultibox*|head -1`"
            cp $cultibox repository/binary/
-
-           cultinet="`ls -t Output/cultinet*|head -1`"
-           cp $cultinet repository/binary/
 
            cultiraz="`ls -t Output/cultiraz*|head -1`"
            cp $cultiraz repository/binary/
