@@ -791,6 +791,74 @@ var updateIsAked = 0;
         }});
     });
 
+    //Update RPI:
+    $("#update_rpi").click(function(e) {
+        e.preventDefault();
+
+        $.blockUI({
+            message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+            centerY: 0,
+            css: {
+              top: '20%',
+              border: 'none',
+              padding: '5px',
+              backgroundColor: 'grey',
+              '-webkit-border-radius': '10px',
+              '-moz-border-radius': '10px',
+              opacity: .9,
+              color: '#fffff'
+           },
+           onBlock: function() {
+               $.ajax({
+                    cache: false,
+                    url: "main/modules/external/check_rpi_update.php",
+                    async: false
+               }).done(function (data) {
+                     $.unblockUI();
+                     var objJSON = jQuery.parseJSON(data)
+                     if(objJSON=="") {
+                        $("#cultipi_no_update").dialog({
+                            resizable: false,
+                            height:150,
+                            width: 500,
+                            modal: true,
+                            closeOnEscape: false,
+                            dialogClass: "popup_message",
+                            buttons: [{
+                                text: CLOSE_button,
+                                click: function () {
+                                    $( this ).dialog("close");
+                                }
+                            }]
+                        });
+                     } else {
+                        $("#cultipi_confirm_update").dialog({
+                            resizable: false,
+                            height:150,
+                            width: 500,
+                            modal: true,
+                            closeOnEscape: false,
+                            dialogClass: "dialog_cultibox",
+                            buttons: [{
+                                text: OK_button,
+                                click: function () {
+                                    $( this ).dialog("close");
+                                }}, {
+                                text: CLOSE_button,
+                                click: function () {
+                                    $( this ).dialog("close");
+                                }
+                            }]
+                        });
+                     }
+               });
+            }
+        });
+        
+
+
+    });
+
 
     // Restart RPI:
     $("#restart_rpi").click(function(e) {
