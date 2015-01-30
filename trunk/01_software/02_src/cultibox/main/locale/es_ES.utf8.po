@@ -127,9 +127,6 @@ msgstr "Números de enchufes en vuestro sistema"
 msgid "CONFIGURE_PLUGS_FREQUENCY"
 msgstr "Frecuencia de actualización del estado de los enchufes(en segundos)"
 
-msgid "CONFIGURE_POWER"
-msgstr "Color de las curvas de potencia"
-
 msgid "VALIDATION_CONF"
 msgstr "Grabar la configuración"
 
@@ -1950,9 +1947,6 @@ msgstr "Dirección de red"
 msgid "IP_MASK"
 msgstr "Máscara de red"
 
-msgid "CONFIGURE_WIFI" 
-msgstr "Wifi" 
-
 msgid "CONFIGURE_WIFI_IP" 
 msgstr "dirección de su módulo inalámbrico" 
 
@@ -1970,9 +1964,6 @@ msgstr "Nombre de red"
 
 msgid "CONFIGURE_WIFI_IP_MASK" 
 msgstr "Máscara de red"
-
-msgid "WIFI_IP_MANUAL"
-msgstr "Configurar la dirección IP de forma manual"
 
 msgid "SHOW_CURRENT_PWD" 
 msgstr "Deja el ratón hace clic sobre la imagen para mostrar la contraseña"

@@ -127,9 +127,6 @@ msgstr "Numero di prese nel sistema"
 msgid "CONFIGURE_PLUGS_FREQUENCY"
 msgstr "Frequenza di aggiornamento dello stato di presa (in secondi)"
 
-msgid "CONFIGURE_POWER"
-msgstr "Curve di potenza di colore"
-
 msgid "VALIDATION_CONF"
 msgstr "Salva configurazione"
 
@@ -1951,9 +1948,6 @@ msgstr "Indirizzo di rete"
 msgid "IP_MASK"
 msgstr "Maschera di rete"
 
-msgid "CONFIGURE_WIFI"
-msgstr "Wifi"
-
 msgid "CONFIGURE_WIFI_IP"
 msgstr "indirizzo del modulo wireless" 
 
@@ -1971,9 +1965,6 @@ msgstr "Nome di rete"
 
 msgid "CONFIGURE_WIFI_IP_MASK"
 msgstr "Maschera di rete"
-
-msgid "WIFI_IP_MANUAL"
-msgstr "Impostare l'indirizzo IP manualmente"
 
 msgid "SHOW_CURRENT_PWD"
 msgstr "Lasciare il mouse cliccato sull'immagine per visualizzare la password"

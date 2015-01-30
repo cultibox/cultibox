@@ -127,9 +127,6 @@ msgstr "Anzahl der Steckdosen in Ihrem System"
 msgid "CONFIGURE_PLUGS_FREQUENCY"
 msgstr "Häufigkeit der Aktualisierung des Status entnommen (in Sekunden)"
 
-msgid "CONFIGURE_POWER"
-msgstr "Farbe Leistungskurven"
-
 msgid "VALIDATION_CONF"
 msgstr "Konfiguration speichern"
 
@@ -1950,9 +1947,6 @@ msgstr "Netzwerkadresse"
 msgid "IP_MASK"
 msgstr "Netzwerkmaske"
 
-msgid "CONFIGURE_WIFI"
-msgstr "Wifi"
-
 msgid "CONFIGURE_WIFI_IP"
 msgstr "Adresse des WLAN-Moduls"
 
@@ -1970,9 +1964,6 @@ msgstr "Netzwerkname"
 
 msgid "CONFIGURE_WIFI_IP_MASK"
 msgstr "Netzwerkmaske"
-
-msgid "WIFI_IP_MANUAL"
-msgstr "Stellen Sie die IP-Adresse manuell"
 
 msgid "SHOW_CURRENT_PWD"
 msgstr "Lassen Sie die Maus angeklickt Sie auf das Bild, um das Passwort angezeigt werden"

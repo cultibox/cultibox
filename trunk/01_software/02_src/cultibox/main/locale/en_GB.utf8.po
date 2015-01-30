@@ -127,9 +127,6 @@ msgstr "Number of sockets in your system"
 msgid "CONFIGURE_PLUGS_FREQUENCY"
 msgstr "Frequency of updating the status of taken (in seconds)"
 
-msgid "CONFIGURE_POWER"
-msgstr "Color power curves"
-
 msgid "VALIDATION_CONF"
 msgstr "Save Configuration"
 
@@ -1949,9 +1946,6 @@ msgstr "Network Address"
 msgid "IP_MASK"
 msgstr "Network Mask"
 
-msgid "CONFIGURE_WIFI"
-msgstr "Wifi"
-
 msgid "CONFIGURE_WIFI_IP"
 msgstr "address of your wireless module"
 
@@ -1969,9 +1963,6 @@ msgstr "Network Name"
 
 msgid "CONFIGURE_WIFI_IP_MASK"
 msgstr "Network Mask"
-
-msgid "WIFI_IP_MANUAL"
-msgstr "Set the IP address manually"
 
 msgid "SHOW_CURRENT_PWD"
 msgstr "Leave the mouse clicked on the picture to display the password"
