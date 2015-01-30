@@ -117,6 +117,9 @@ http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_4.png
 
 * Il est impératif de ne jamais brancher de câble sur la Cultibox tant qu'elle n'est pas solidement fixée. Vous risquez de l'endommager définitivement *
 
+Vous pouvez aussi fixer la Cultibox sur un rail DIN avec l'un dex accessoires suivant :
+[http://fr.farnell.com/jsp/search/productdetail.jsp?SKU=2080711&MER=BN-2080711 Lien 1]
+[http://fr.farnell.com/jsp/search/productdetail.jsp?SKU=4189991&MER=BN-4189991 Lien 2]
 
 == Mise en place du capteur ==
 Installez le capteur dans l'espace de culture. Il ne doit pas être soumis à des projections d'eau. 
