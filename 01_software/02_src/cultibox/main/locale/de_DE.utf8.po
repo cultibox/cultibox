@@ -1480,6 +1480,9 @@ msgstr "Das Passwort darf nicht leer sein"
 
 
 # For the informations part:
+msgid "SYNC_CONF"
+msgstr "Configration Update erfolgreich, werden die Änderungen innerhalb von wenigen Sekunden angewendet werden."
+
 msgid "CONFIRMATION"
 msgstr "Bestätigung"
 
@@ -1815,9 +1818,6 @@ msgstr "Fehler von roten und Inbetriebnahme-Service"
 msgid "SUCCESS_RESTART_SERVICE"
 msgstr "Restart-Service erfolgreich durchgeführt"
 
-msgid "CULTINET_LINK"
-msgstr "Die Netzwerkkonfiguration ist: <a class='note_link' href='/cultinet'>hier</a>"
-
 msgid "DIR_CONF_UPDATE"
 msgstr "Ihre Konfiguration ist auf dem neuesten Stand"
 
@@ -1832,9 +1832,6 @@ msgstr "Software Version"
 
 msgid "CULTIPI_SOFT"
 msgstr "Software Cultipi"
-
-msgid "CULTINET_SOFT"
-msgstr "Cultinet Software"
 
 msgid "CULTIBOX_SOFT"
 msgstr "Software Cultibox"
@@ -1908,8 +1905,8 @@ msgstr "Mich nicht und lassen Sie mich zu verwalten Sie die Konfiguration im Dia
 
 
 # For the Cultinet part:
-msgid "CONFIGURE_TITLE_CULTIBOX"
-msgstr "Netzwerkkonfiguration Ihres Cultipi"
+msgid "CONFIGURE_TITLE_CULTIBOX_NET"
+msgstr "Netzwerkkonfiguration"
 
 msgid "CONFIGURE_SUBTITLE"
 msgstr "Die Konfiguration gezeigt, entspricht der derzeit angewandten Konfiguration"
@@ -1950,11 +1947,8 @@ msgstr "Automatisch Adresse"
 msgid "IP_ADDR"
 msgstr "Netzwerkadresse"
 
-msgid "ip_mask"
+msgid "IP_MASK"
 msgstr "Netzwerkmaske"
-
-msgid "ENABLE_JAVASCRIPT"
-msgstr "Javascript ist deaktiviert! Sie können mit dieser Software, wenn Sie Javascript nicht aktivieren"
 
 msgid "CONFIGURE_WIFI"
 msgstr "Wifi"
@@ -2001,9 +1995,6 @@ msgstr "Die Netzmaske müssen der Form XXX.XXX.XXX.XXX <br /><br />sein <i>Beisp
 msgid "ERROR_WIFI_IP"
 msgstr "Fehler im Format IP: XXX.XXX.XXX.XXX"
 
-msgid "ERROR_EMPTY_PASSWORD"
-msgstr "Das Passwort darf nicht leer sein"
-
 msgid "ERROR_WEP_KEY_TYPE"
 msgstr "Fehler in der WEP-Kennwort-Format: Es muss nur Zahlen (0-9) und haben 5, 13 oder 29 Zeichen lang"
 
@@ -2021,9 +2012,6 @@ msgstr "Die Adresse des WLAN-Modul kann mit einer IP-Adresse in das Format XXX.X
 
 msgid "SAVE_CONF"
 msgstr "Einstellungen speichern"
-
-msgid "SAVING_DATA"
-msgstr "Speichern der Konfiguration, bitte warten ..."
 
 msgid "EMPTY_NETWORK_CONFIG"
 msgstr "Keine Netzwerkkonfiguration (verdrahtet oder drahtlos) wurde aktiviert. Sie müssen eine Netzwerkverbindung ändern Ihr Modul zur Verfügung zu stellen."
@@ -2046,6 +2034,4 @@ msgstr "Ihr Modul ist nun mit dem Netzwerk (e) (x) (e) Sie können mit Ihrem Net
 msgid "RESTORED_CONF"
 msgstr "bei der Einrichtung Ihrer Netzwerkkonfiguration ist ein Fehler aufgetreten. Der vorherige Konfiguration wiederhergestellt wurde"
 
-msgid "LOADING_DATA"
-msgstr "Laden Laden, bitte warten..."
 
