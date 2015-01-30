@@ -892,6 +892,9 @@ $(document).ready(function(){
 
 
 Highcharts.setOptions({
+    global: {
+        useUTC: true
+    },
     lang: {
         <?php echo "resetZoom : '".__('RESET_ZOOM_TITLE','highchart')."',"; ?>
         <?php echo "resetZoomTitle : '".__('RESET_ZOOM_TITLE','highchart')."'"; ?>
@@ -1138,6 +1141,7 @@ $(document).ready(function() {
    }
     });
     $.unblockUI();
+
 
     $('#selected_plug').change(function() {
         $("#error_value_program").css("display","none");
