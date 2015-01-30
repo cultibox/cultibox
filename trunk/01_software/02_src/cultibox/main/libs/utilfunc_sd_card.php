@@ -840,7 +840,7 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     $conf[]="ALARM_SENSS:000+";
     $conf[]="RTC_OFFSET_:$rtc";
     $conf[]="RESET_MINAX:$reset_value";
-    $conf[]="PRESSION___:0000";
+    $conf[]="ACTIVE_LEDs:0001";
 
     $buffer=@file("$file");
 
@@ -983,7 +983,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       if(!@fputs($f,"ALARM_SENSS:$alarm_senss\r\n")) $check=false;
       if(!@fputs($f,"RTC_OFFSET_:$rtc\r\n")) $check=false;
       if(!@fputs($f,"RESET_MINAX:$reset_value\r\n")) $check=false;
-      if(!@fputs($f,"PRESSION___:0000\r\n")) $check=false;
+      if(!@fputs($f,"ACTIVE_LEDs:0001\r\n")) $check=false;
       fclose($f);
 
       if(!$check) {
