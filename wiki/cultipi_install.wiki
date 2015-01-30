@@ -84,7 +84,7 @@ Password: raspberry
  * Configuration apt avec le dépôt Cultibox:
 
 {{{
-cat << EOF > /etc/apt/sources.list.d/cultibox
+cat << EOF > /etc/apt/sources.list.d/cultibox.list
 deb http://www.cultibox.fr/repository/armhf binary/
 EOF
 }}}
