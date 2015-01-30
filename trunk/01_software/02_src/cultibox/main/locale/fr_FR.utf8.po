@@ -1742,6 +1742,18 @@ msgstr "Programme courant"
 
 
 # For the Cultipi part 
+msgid "CULTIPI_CONFIRM_UPDATE"
+msgstr "Des mises à jour sont disponibles, voulez-vous les installer?"
+
+msgid "CULTIPI_UPDATED"
+msgstr "Votre système a été mis à jour!"
+
+msgid "CULTIPI_NO_UPDATE"
+msgstr "Votre système est à jour!"
+
+msgid "TOOLTIP_UPDATE_RPI"
+msgstr "Cliquez sur l'image pour vérifier la présence de mise à jour pour votre système"
+
 msgid "CONFIRM_RESTART_CULTIPI_TITLE"
 msgstr "Redémarrage du service Cultipi"
 

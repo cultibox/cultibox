@@ -423,6 +423,7 @@
         <td>
             <img src='/cultibox/main/libs/img/versions.png' id="version_soft" alt='' title="">
             <a href="" name="restart_rpi" id="restart_rpi"><img src='/cultibox/main/libs/img/rpi_restart.png' alt='' title="<?php echo __('RPI_RESTART'); ?>" />
+            <a href="" name="update_rpi" id="update_rpi"><img src='/cultibox/main/libs/img/update_rpi.png' alt='' title="<?php echo __('TOOLTIP_UPDATE_RPI'); ?>" />
         <td></td>
     </tr>
 </table>
@@ -550,6 +551,21 @@
 <div id="error_restore_conf" style="display:none">
     <p><?php echo __('RESTORED_CONF'); ?></p>
 </div>
+
+<div id="cultipi_no_update" style="display:none">
+    <p><?php echo __('CULTIPI_NO_UPDATE'); ?></p>
+</div>
+
+
+<div id="cultipi_confirm_update" style="display:none">
+    <p><?php echo __('CULTIPI_CONFIRM_UPDATE'); ?></p>
+</div>
+
+
+<div id="cultipi_updated" style="display:none">
+    <p><?php echo __('CULTIPI_UPDATED'); ?></p>
+</div>
+
 
 <div id="wifi_essid_list" style="display:none" title="<?php echo __('WIFI_ESSID_SCAN_TITLE'); ?>">
     <?php if(count($wifi_net_list)>0) { 
