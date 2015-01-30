@@ -120,7 +120,7 @@ $webcam=get_configuration("SHOW_WEBCAM");
             <!-- Small eye for displaying message pop up-->
             <script>title_msgbox="<?php echo __('TOOLTIP_MSGBOX_EYES'); ?>";</script>
 
-            <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt="" title="" id="eyes_msgbox"></div>
+            <div id="tooltip_msg_box" style="display:none" class="eyes_msgbox"><img src='/cultibox/main/libs/img/eye.png' alt="" title="" id="eyes_msgbox"></div>
 
             <div class="wrapper grid-block">
                 <header id="header">

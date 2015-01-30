@@ -53,6 +53,11 @@ input.button_log {
     font-weight: bold;
 }
 
+
+.eyes_msgbox {
+    z-index: 20000;
+}
+
 .div_code
 {
     width: 95%;
@@ -412,6 +417,26 @@ td.calendar_right {
 
 P.p_center{
    text-align: center;
+}
+
+td.conf-marge {
+   width: 5%;
+}
+
+td.conf-title {
+    width:22%;
+}
+
+td.conf-marge-field {
+   width: 18%;
+}
+
+td.conf-field-title {
+    width: 17%;
+}
+
+td.conf-field-field {
+    width: 20%;
 }
 
 td.conf-marge-field-wifi {
