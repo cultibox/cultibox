@@ -1,7 +1,7 @@
 #!/bin/bash
 
 upgraded="False"
-apt-get update
+apt-get update -o Dir::Etc::sourcelist="sources.list.d/cultibox.list"  -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
 
 
 if [ "`apt-get -u upgrade --assume-no|grep cultipi`" != "" ]; then
@@ -34,9 +34,6 @@ if [ "$upgraded" == "True" ]; then
     rm -Rf /var/cache/lighttpd/compress/*
     /etc/init.d/lighttpd force-reload
 fi
-
-apt-get clean
-rm -Rf /var/lib/apt/lists/*
 
 
 if [ -d /var/www/cultibox/tmp/import ]; then
