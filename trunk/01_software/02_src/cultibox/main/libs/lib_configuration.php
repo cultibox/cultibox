@@ -38,8 +38,9 @@ function check_db() {
     $conf_index_col["RTC_OFFSET"]           = array ( 'Field' => "RTC_OFFSET", 'Type' => "int(11)", 'default_value' => 0,'carac' => "NOT NULL");
     $conf_index_col["REMOVE_1000_CHANGE_LIMIT"] = array ( 'Field' => "REMOVE_1000_CHANGE_LIMIT", 'Type' => "varchar(5)", 'default_value' => "False",'carac' => "NOT NULL");
     $conf_index_col["REMOVE_5_MINUTE_LIMIT"] = array ( 'Field' => "REMOVE_5_MINUTE_LIMIT", 'Type' => "varchar(5)", 'default_value' => "False",'carac' => "NOT NULL");
-    $conf_index_col["DEFAULT_LANG"] = array ( 'Field' => "DEFAULT_LANG", 'Type' => "varchar(5)", 'default_value' => "fr_FR",'carac' => "NOT NULL");
-    $conf_index_col["SHOW_WEBCAM"] = array ( 'Field' => "SHOW_WEBCAM", 'Type' => "tinyint(1)", 'default_value' => 0,'carac' => "NOT NULL");
+    $conf_index_col["DEFAULT_LANG"]         = array ( 'Field' => "DEFAULT_LANG", 'Type' => "varchar(5)", 'default_value' => "fr_FR",'carac' => "NOT NULL");
+    $conf_index_col["SHOW_WEBCAM"]          = array ( 'Field' => "SHOW_WEBCAM", 'Type' => "tinyint(1)", 'default_value' => 0,'carac' => "NOT NULL");
+    $conf_index_col["ENABLE_LED"]           = array ( 'Field' => "ENABLE_LED", 'Type' => "varchar(4)", 'default_value' => "0001",'carac' => "NOT NULL");
 
 
     // Check if table configuration exists
@@ -89,7 +90,8 @@ function check_db() {
             ."RTC_OFFSET int(11) NOT NULL DEFAULT '0',"
             ."REMOVE_1000_CHANGE_LIMIT VARCHAR(5) NOT NULL DEFAULT 'False',"
             ."REMOVE_5_MINUTE_LIMIT VARCHAR(5) NOT NULL DEFAULT 'False',"
-            ."DEFAULT_LANG VARCHAR(5) NOT NULL DEFAULT 'fr_FR');";
+            ."DEFAULT_LANG VARCHAR(5) NOT NULL DEFAULT 'fr_FR',"
+            ."ENABLE_LED varchar(4) NOT NULL DEFAULT '0001');";
         
         // Create table
         try {
@@ -100,7 +102,7 @@ function check_db() {
             print_r($ret);
         }
 
-         $sql = "INSERT INTO configuration (id, VERSION, COLOR_HUMIDITY_GRAPH, COLOR_TEMPERATURE_GRAPH, COLOR_WATER_GRAPH, COLOR_LEVEL_GRAPH, COLOR_PH_GRAPH, COLOR_EC_GRAPH, COLOR_OD_GRAPH, COLOR_ORP_GRAPH, RECORD_FREQUENCY, POWER_FREQUENCY, NB_PLUGS, UPDATE_PLUGS_FREQUENCY, ALARM_ACTIV, ALARM_VALUE, COST_PRICE, COST_PRICE_HP, COST_PRICE_HC, START_TIME_HC, STOP_TIME_HC, COST_TYPE, STATISTICS,ADVANCED_REGUL_OPTIONS,SHOW_COST,RESET_MINMAX, RTC_OFFSET) VALUES (1, '2.0.12-amd64', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 5, 1, 3, 1, '0000', '60', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 0, '00:00',0);";
+         $sql = "INSERT INTO configuration (id, VERSION, COLOR_HUMIDITY_GRAPH, COLOR_TEMPERATURE_GRAPH, COLOR_WATER_GRAPH, COLOR_LEVEL_GRAPH, COLOR_PH_GRAPH, COLOR_EC_GRAPH, COLOR_OD_GRAPH, COLOR_ORP_GRAPH, RECORD_FREQUENCY, POWER_FREQUENCY, NB_PLUGS, UPDATE_PLUGS_FREQUENCY, ALARM_ACTIV, ALARM_VALUE, COST_PRICE, COST_PRICE_HP, COST_PRICE_HC, START_TIME_HC, STOP_TIME_HC, COST_TYPE, STATISTICS,ADVANCED_REGUL_OPTIONS,SHOW_COST,RESET_MINMAX, RTC_OFFSET, ENABLE_LED) VALUES (1, '2.0.12-amd64', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 5, 1, 3, 1, '0000', '60', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 0, '00:00',0, '0001');";
         // Insert row:
         try {
             $sth = $db->prepare($sql);

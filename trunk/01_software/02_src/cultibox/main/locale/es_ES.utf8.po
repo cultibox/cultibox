@@ -172,6 +172,9 @@ msgstr "Activar el sistema de alarma"
 msgid "CONFIGURE_ALARM_VALUE"
 msgstr "Valor umbral de activación de alarma"
 
+msgid "CONFIGURE_ENABLE_LED"
+msgstr "Activar la iluminación de la pantalla"
+
 msgid "CHECK_STATISTICS"
 msgstr "Enviar informaciones para ayudar el desarrollo"
 

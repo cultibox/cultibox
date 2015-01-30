@@ -172,6 +172,9 @@ msgstr "Activate the alarm system"
 msgid "CONFIGURE_ALARM_VALUE"
 msgstr "Threshold value for triggering the alarm"
 
+msgid "CONFIGURE_ENABLE_LED"
+msgstr "Enable the screen backlight"
+
 msgid "CHECK_STATISTICS"
 msgstr "Sending information to help develop"
 

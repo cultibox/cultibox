@@ -482,6 +482,25 @@ $(document).ready(function(){
             }
         });
     });
+    
+    // {{{ getAlarm()
+    // ROLE display or not the alarm part from the configuration menu
+    // IN  input value: display or not 
+    // HOW IT WORKS: get id from div to be displayed the alarm configuration or not and display it (or not) depending the input value
+    // USED BY: templates/configuration.html
+    function getAlarm(i) {
+          var divAval = document.getElementById('div_alarm_value');
+          var labelAvalue = document.getElementById('label_alarm_value');
+
+          switch(i) {
+             case 0 : divAval.style.display = ''; labelAvalue.style.display = ''; break;
+             case 1 : divAval.style.display = 'none'; labelAvalue.style.display = 'none'; break;
+             default: divAval.style.display = ''; labelAvalue.style.display = ''; break;
+          }
+    }
+    //}}}
+    
+    
 });
 
 </script>

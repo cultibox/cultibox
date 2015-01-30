@@ -64,17 +64,20 @@
             </td>
             <td></td>
         </tr>
-        <tr>
-            <td class="conf-marge"></td>
-            <td><?php echo __('SHOW_WEBCAM'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SHOW_WEBCAM'); ?>" /></td>
-            <td>
-                <select name="show_webcam" id="show_webcam">
-                    <option value="1"><?php echo __('YES'); ?></option>
-                    <option value="0" <?php if(!$show_webcam) echo "selected"; ?>><?php echo __('NO'); ?></option>
-                </select>
-            </td>
-            <td></td>
-        </tr>
+        <!-- Display WEBCAM row only if in CUltipi-->
+        <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {?>
+            <tr>
+                <td class="conf-marge"></td>
+                <td><?php echo __('SHOW_WEBCAM'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SHOW_WEBCAM'); ?>" /></td>
+                <td>
+                    <select name="show_webcam" id="show_webcam">
+                        <option value="1"><?php echo __('YES'); ?></option>
+                        <option value="0" <?php if(!$show_webcam) echo "selected"; ?>><?php echo __('NO'); ?></option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+        <?php }?>
     </table>
 </div>
 <!-- End of Interface tab -->
@@ -82,124 +85,150 @@
 <!-- Start of cultibox tab -->
 <div id="div_system_interface" style="display:none">
     <table class="conf-table">
-    <tr>
-    <td class="conf-marge"></td>
-    <td><?php echo __('CONFIGURE_NB_PLUGS'); ?>:</td>
-    <td>
-       <select name="nb_plugs" id="nb_plugs">
-          <?php
-          for($i=$GLOBALS['NB_MIN_PLUG'];$i<=$GLOBALS['NB_SELECTABLE_PLUG'];$i++) {
-             if(!strcmp ("$i","$nb_plugs")) {
-                echo "<option value=\"${i}\" selected>${i}</option>";
-             } else {
-                echo "<option value=\"${i}\">${i}</option>";
-             }
-          }
-          ?>
-    </select>
-    </td>
-    <td></td>
-    </tr>
-
-    <tr>
-    <td class="conf-marge"></td>
-    <td class="conf-marge-td">
-       <?php echo __('CONFIGURE_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RECORD_FREQ'); ?>" />
-    </td>
-    <td>
-       <select name="record_frequency" id="record_frequency">
-          <?php
-          foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
-             if(!strcmp ("$value","$record_frequency")) {
-                echo "<option value=\"${value}\" selected>${value}</option>";
-             } else {
-                echo "<option value=\"${value}\">${value}</option>";
-             }
-          }
-          ?>
-       </select>
-    </td>
-    <td></td>
-    </tr>
-    <!--
-    <tr>
-    <td class="conf-marge"></td>
-    <td>
-       <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
-    </td>
-    <td>
-       <select name="power_frequency" id="power_frequency">
-          <?php
-          foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
-             if(!strcmp ("$value","$power_frequency")) {
-                echo "<option value=\"${value}\" selected>${value}</option>";
-             } else {
-                echo "<option value=\"${value}\">${value}</option>";
-             }
-          }
-          ?>
-       </select>
-    </td>
-    <td></td>
-    </tr>
-    -->
-    <tr>
-    <td class="conf-marge"></td>
-    <td>
-       <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_PLUG_FREQ'); ?>" />
-    </td>
-    <td>
-       <select name="update_plugs_frequency" id="update_plugs_frequency">
-          <?php
-          foreach($GLOBALS['LIST_UPDATE_FREQUENCY'] as $value) {
-             $val=$value;
-             if(!strcmp ("$value","$update_frequency")) {
-                echo "<option value=\"${value}\" selected>${val}</option>";
-             } else {
-                echo "<option value=\"${value}\">${val}</option>";
-             }
-          }
-          ?>
-          </select>
-    </td>
-    <td></td>
-    </tr>
-    <tr>
+        <tr>
             <td class="conf-marge"></td>
+            <td><?php echo __('CONFIGURE_NB_PLUGS'); ?>:</td>
             <td>
-               <?php echo __('RESET_MINMAX'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_MINMAX'); ?>" />
+               <select name="nb_plugs" id="nb_plugs">
+                  <?php
+                  for($i=$GLOBALS['NB_MIN_PLUG'];$i<=$GLOBALS['NB_SELECTABLE_PLUG'];$i++) {
+                     if(!strcmp ("$i","$nb_plugs")) {
+                        echo "<option value=\"${i}\" selected>${i}</option>";
+                     } else {
+                        echo "<option value=\"${i}\">${i}</option>";
+                     }
+                  }
+                  ?>
+            </select>
+            </td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="conf-marge"></td>
+            <td class="conf-marge-td">
+               <?php echo __('CONFIGURE_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RECORD_FREQ'); ?>" />
             </td>
             <td>
-               <input type="text" size="5" name="reset_minmax" id="reset_minmax" <?php if(!empty($reset_minmax)) { ?> value="<?php echo $reset_minmax;?>" <?php } else { ?> value="00:00" <?php } ?> />
+               <select name="record_frequency" id="record_frequency">
+                  <?php
+                  foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
+                     if(!strcmp ("$value","$record_frequency")) {
+                        echo "<option value=\"${value}\" selected>${value}</option>";
+                     } else {
+                        echo "<option value=\"${value}\">${value}</option>";
+                     }
+                  }
+                  ?>
+               </select>
             </td>
-            <td><div id="error_min_max" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
-    </tr>
- <!-- Display RTC row -->
-    <tr>
+            <td></td>
+        </tr>
+        <!--
+        <tr>
         <td class="conf-marge"></td>
         <td>
-            <div id="rtc_offset_div" >
-               <?php echo __('CONFIGURE_RTC_OFFSET'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RTC_OFFSET'); ?>" />
-            </div>
+           <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
         </td>
         <td>
-            <div id="rtc_offset_value" >
-            <table class="table_width">
-                <tr>
-                    <td style="width: 50%; padding-right: 10px;">
-                        <!-- RTC Slider -->
-                        <div id="rtc_offset_slider"></div>
-                    </td>
-                    <td>
-                        <!-- RTC Value -->
-                        <input type="text" name="rtc_offset" id="rtc_offset" value="<?php echo $rtc_offset; ?>" size="4" readonly /><?php echo __('RTC_OFFSET_UNITY'); ?>
-                    </td>
-                </tr>
-            </table>
-            </div>
+           <select name="power_frequency" id="power_frequency">
+              <?php
+              foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
+                 if(!strcmp ("$value","$power_frequency")) {
+                    echo "<option value=\"${value}\" selected>${value}</option>";
+                 } else {
+                    echo "<option value=\"${value}\">${value}</option>";
+                 }
+              }
+              ?>
+           </select>
         </td>
         <td></td>
-    </tr>
+        </tr>
+        -->
+        <tr>
+            <td class="conf-marge"></td>
+            <td>
+               <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_PLUG_FREQ'); ?>" />
+            </td>
+            <td>
+               <select name="update_plugs_frequency" id="update_plugs_frequency">
+                  <?php
+                  foreach($GLOBALS['LIST_UPDATE_FREQUENCY'] as $value) {
+                     $val=$value;
+                     if(!strcmp ("$value","$update_frequency")) {
+                        echo "<option value=\"${value}\" selected>${val}</option>";
+                     } else {
+                        echo "<option value=\"${value}\">${val}</option>";
+                     }
+                  }
+                  ?>
+                  </select>
+            </td>
+            <td></td>
+        </tr>
+        <!-- Display Reset Min Max values row only if not in CUltipi-->
+        <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] != "cultipi") {?>
+            <tr>
+                <td class="conf-marge"></td>
+                <td>
+                   <?php echo __('RESET_MINMAX'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_MINMAX'); ?>" />
+                </td>
+                <td>
+                   <input type="text" size="5" name="reset_minmax" id="reset_minmax" <?php if(!empty($reset_minmax)) { ?> value="<?php echo $reset_minmax;?>" <?php } else { ?> value="00:00" <?php } ?> />
+                </td>
+                <td><div id="error_min_max" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
+            </tr>
+        <?php } ?>
+        <!-- Display RTC row only if not in CUltipi-->
+        <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] != "cultipi") {?>
+            <tr>
+                <td class="conf-marge"></td>
+                <td>
+                    <div id="rtc_offset_div" >
+                       <?php echo __('CONFIGURE_RTC_OFFSET'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RTC_OFFSET'); ?>" />
+                    </div>
+                </td>
+                <td>
+                    <div id="rtc_offset_value" >
+                    <table class="table_width">
+                        <tr>
+                            <td style="width: 50%; padding-right: 10px;">
+                                <!-- RTC Slider -->
+                                <div id="rtc_offset_slider"></div>
+                            </td>
+                            <td>
+                                <!-- RTC Value -->
+                                <input type="text" name="rtc_offset" id="rtc_offset" value="<?php echo $rtc_offset; ?>" size="4" readonly /><?php echo __('RTC_OFFSET_UNITY'); ?>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+        <?php } ?>
+        <!-- Display LED enable only if not in cultipi-->
+        <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] != "cultipi") {?>
+            <tr>  
+                <td class="conf-marge"></td>
+                <td><?php echo __('CONFIGURE_ENABLE_LED'); ?>:</td>
+                <td>
+                    <select name="enable_led" id="enable_led">
+                    <?php 
+                        if("$enable_led"=="0001") {
+                            echo "<option value='0001' selected>".__('YES')."</option>";
+                            echo "<option value='0000'>".__('NO')."</option>";
+                        } else {
+                            echo "<option value='0001'>".__('YES')."</option>";
+                            echo "<option value='0000' selected>".__('NO')."</option>";
+                        }
+                    ?>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+        <?php } ?>
     </table>
 </div>
 
