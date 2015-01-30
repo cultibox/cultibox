@@ -413,14 +413,16 @@ include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
 $HTTP["scheme"] == "http" {
     $HTTP["remoteip"] == "10.0.0.0/8" {
         $HTTP["host"] =~ ".*" {
-            url.redirect = ("^/$" => "/cultinet")
+            url.redirect = ("^/$" => "/cultibox/index.php?menu=cultipi&submenu=network_conf_ui")
         }
     } else  $HTTP["remoteip"] != "10.0.0.0/8" {
         $HTTP["host"] =~ ".*" {
-            url.redirect = (".*" => "https://%0$0")
+            #url.redirect = (".*" => "https://%0$0")
+            url.redirect = ("^/$" => "/cultibox")
         }
     }
 }
+
 
 $HTTP["scheme"] == "https" {
     $HTTP["remoteip"] == "10.0.0.0/8" {
@@ -441,11 +443,6 @@ $SERVER["socket"] == ":443" {
 
 
 auth.require = ( "/cultibox/" =>
-   (
-      "method" => "digest",
-      "realm" => "Identification",
-      "require" => "valid-user"
-   ), "/cultinet/" =>
    (
       "method" => "digest",
       "realm" => "Identification",
