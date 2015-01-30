@@ -288,13 +288,13 @@
             <td class="conf-marge-field"></td>
             <td class="conf-field-title"><?php echo __('IP_ADDR'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IP_ADDR'); ?>" /></td>
             <td class="conf-field-field"><input type="text" size="15" id="wire_address" name="wire_address" maxlength=15 value="<?php echo $wire_address; ?>"></td>
-            <td><div id="error_wire_ip" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP'); ?></div></td>
+            <td><div id="error_wire_ip" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP'); ?></div></td>
          </tr>
          <tr>
             <td></td>
             <td><?php echo __('IP_MASK'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MASK_ADDR'); ?>" /></td>
             <td><input type="text" size=15 maxlength=15 id="wire_mask" name="wire_mask" value="<?php echo $wire_mask; ?>"></td>
-            <td><div id="error_wire_mask" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP_MASK'); ?></div></td>
+            <td><div id="error_wire_mask" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP_MASK'); ?></div></td>
          </tr>
          </table>
         </div>
@@ -329,7 +329,7 @@
              <td class="conf-field-field-wifi">
                 <input  type="text" size="15" name="wifi_ssid" id="wifi_ssid" value="<?php echo $wifi_ssid; ?>" />
             </td>
-                <td><div id="error_wifi_ssid" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SSID_VALUE'); ?></div></td>
+                <td><div id="error_wifi_ssid" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SSID_VALUE'); ?></div></td>
             </tr>
            <tr>
               <td></td>
@@ -349,12 +349,12 @@
                 <td>
                     <input  type="password" size="15" 
                             name="wifi_password" id="wifi_password" value="" <?php if(strcmp("$wifi_key_type","NONE")==0) { echo 'disabled'; } ?> />
-                <img src='/cultinet/main/libs/img/eye.png' alt='' title="<?php echo __('SHOW_CURRENT_PWD'); ?>" id="eyes" <?php if(strcmp("$wifi_key_type","NONE")==0) echo 'style="display:none"';  ?>></td>
+                <img src='/cultibox/main/libs/img/eye.png' alt='' title="<?php echo __('SHOW_CURRENT_PWD'); ?>" id="eyes" <?php if(strcmp("$wifi_key_type","NONE")==0) echo 'style="display:none"';  ?>></td>
                 <td>
-                    <div id="error_wifi_password" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div>
-                    <div id="error_empty_password" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_EMPTY_PASSWORD'); ?></div>
-                    <div id="error_password_wep" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WEP_KEY_TYPE'); ?></div>
-                    <div id="error_password_wpa" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WPA_KEY_TYPE'); ?></div>
+                    <div id="error_wifi_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div>
+                    <div id="error_empty_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_EMPTY_PASSWORD'); ?></div>
+                    <div id="error_password_wep" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WEP_KEY_TYPE'); ?></div>
+                    <div id="error_password_wpa" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WPA_KEY_TYPE'); ?></div>
                 </td>
            </tr>
            <tr>
@@ -364,7 +364,7 @@
                     <input type="password" size="15" 
                            name="wifi_password_confirm" id="wifi_password_confirm" value="" <?php if(strcmp("$wifi_key_type","NONE")==0) { echo 'disabled'; } ?>/>
                 </td>
-                <td><div id="error_wifi_password_confirm" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div></td>
+                <td><div id="error_wifi_password_confirm" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div></td>
            </tr>
            <tr>
                 <td></td>
@@ -379,13 +379,13 @@
             <td class="conf-marge-field-wifi"></td>
             <td class="conf-field-title-wifi"><?php echo __('CONFIGURE_WIFI_IP'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_IP'); ?>" /></td>
             <td class="conf-field-field-wifi"><input type="text" size="15" name="wifi_ip" id="wifi_ip" value="<?php echo $wifi_address; ?>" />
-            <td><div id="error_wifi_ip" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP'); ?></div></td>
+            <td><div id="error_wifi_ip" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP'); ?></div></td>
         </tr>
          <tr>
               <td></td>
               <td><?php echo __('CONFIGURE_WIFI_IP_MASK'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MASK_ADDR'); ?>" /></td>
               <td><input type="text" size="15" name="wifi_mask" id="wifi_mask" value="<?php echo $wifi_mask; ?>" /></td>
-              <td><div id="error_wifi_mask" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP_MASK'); ?></div></td>
+              <td><div id="error_wifi_mask" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP_MASK'); ?></div></td>
         </tr>
 </table>
 </div>
