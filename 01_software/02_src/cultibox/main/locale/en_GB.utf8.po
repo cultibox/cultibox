@@ -1907,8 +1907,8 @@ msgstr "Do not warn me and let me manage the configuration in the dialog"
 
 
 #For the cultinet part:
-msgid "CONFIGURE_TITLE_CULTIBOX"
-msgstr "Network configuration of your Cultipi"
+msgid "CONFIGURE_TITLE_CULTIBOX_NET"
+msgstr "Network configuration"
 
 msgid "CONFIGURE_SUBTITLE"
 msgstr "The configuration shown corresponds to the currently applied configuration"
@@ -1951,9 +1951,6 @@ msgstr "Network Address"
 
 msgid "IP_MASK"
 msgstr "Network Mask"
-
-msgid "ENABLE_JAVASCRIPT"
-msgstr "Javascript is disabled! You can not use this software if you do not enable Javascript"
 
 msgid "CONFIGURE_WIFI"
 msgstr "Wifi"
@@ -2000,9 +1997,6 @@ msgstr "The network mask must be of the form XXX.XXX.XXX.XXX <br /><br /><i>Exam
 msgid "ERROR_WIFI_IP"
 msgstr "Error in the format of IP: XXX.XXX.XXX.XXX"
 
-msgid "ERROR_EMPTY_PASSWORD"
-msgstr "The password can not be empty"
-
 msgid "ERROR_WEP_KEY_TYPE"
 msgstr "Error in the WEP password format: it must contain only numbers (0-9) and have 5, 13 or 29 characters long"
 
@@ -2020,9 +2014,6 @@ msgstr "The address of your wireless module can be customized by returning an IP
 
 msgid "SAVE_CONF"
 msgstr "Save Settings"
-
-msgid "SAVING_DATA"
-msgstr "Saving your configuration, please wait ..."
 
 msgid "EMPTY_NETWORK_CONFIG"
 msgstr "No network configuration (wired or wireless) has been enabled. You must enable a network connection to make your module available."
@@ -2044,7 +2035,4 @@ msgstr "Your module is now connected to the network (s) (x) set (s) You can reco
 
 msgid "RESTORED_CONF"
 msgstr "An error occurred while setting up your network configuration. The previous configuration has been restored"
-
-msgid "LOADING_DATA"
-msgstr "Loading, please wait...
 

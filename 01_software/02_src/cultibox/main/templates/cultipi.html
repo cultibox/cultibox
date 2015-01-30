@@ -259,23 +259,9 @@
 
 <!-- Conf reseau -->
 <div id="div_network_conf_ui" style="display:none">
-<table class="table_width">
-    <tr>
-        <td><label class="title_conf"><?php echo __('CONFIGURE_TITLE_CULTIBOX'); ?></label></td>
-    </tr>
-    <tr>
-        <td class="p_center_subtitle">
-            <?php echo __('CONFIGURE_SUBTITLE'); ?>
-        </td>
-    </tr>
-</table>
+    <label class="title_conf"><?php echo __('CONFIGURE_TITLE_CULTIBOX_NET'); ?></label>
+    <p class="p_center"><?php echo __('CONFIGURE_SUBTITLE'); ?></p>
 <br /><br />
-<noscript>
-    <div id="compat-js" class="text_info">
-       <p><?php echo __('ENABLE_JAVASCRIPT'); ?></p>
-    </div>
-    <br />
-</noscript>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="configform" id="configform">
 
 <!-- Start of wire conf tab -->
@@ -332,12 +318,18 @@
 <div id="wifi_interface" <?php if((!$wifi_enable)||(strcmp("$wlan_phy","")==0)) { echo 'style="display:none"'; } ?>>
     <table class="table_width">
         <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button id="wifi_scan" alt=""><?php echo __('WIFI_SCAN_ESSID'); ?></button></td>
+        </tr>
+        <tr>
             <td class="conf-marge-field-wifi"></td>
             <td class="conf-field-title-wifi"><?php echo __('CONFIGURE_WIFI_SSID'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_SSID'); ?>" /></td>
              <td class="conf-field-field-wifi">
                 <input  type="text" size="15" name="wifi_ssid" id="wifi_ssid" value="<?php echo $wifi_ssid; ?>" />
             </td>
-                <td><button id="wifi_scan" alt="" /><?php echo __('WIFI_SCAN_ESSID'); ?></button><div id="error_wifi_ssid" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SSID_VALUE'); ?></div></td>
+                <td><div id="error_wifi_ssid" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SSID_VALUE'); ?></div></td>
             </tr>
            <tr>
               <td></td>
@@ -396,7 +388,6 @@
               <td><div id="error_wifi_mask" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP_MASK'); ?></div></td>
         </tr>
 </table>
-</div>
 </div>
 </div>
 <br />

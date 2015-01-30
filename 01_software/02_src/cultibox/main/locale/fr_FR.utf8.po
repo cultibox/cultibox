@@ -1913,8 +1913,8 @@ msgstr "Ne plus me prévenir et me laisser gérer la configuration dans la boît
 
 
 # For the cultinet part:
-msgid "CONFIGURE_TITLE_CULTIBOX"
-msgstr "Configuration du réseau de votre Cultipi"
+msgid "CONFIGURE_TITLE_CULTIBOX_NET"
+msgstr "Configuration du réseau"
 
 msgid "CONFIGURE_SUBTITLE"
 msgstr "La configuration affichée correspond à la configuration actuellement appliquée"
@@ -1957,9 +1957,6 @@ msgstr "Adresse du réseau"
 
 msgid "IP_MASK"
 msgstr "Masque du réseau"
-
-msgid "ENABLE_JAVASCRIPT"
-msgstr "Javascript est désactivé! Vous ne pourrez pas utiliser ce logiciel si vous n'activez pas Javascript"
 
 msgid "CONFIGURE_WIFI"
 msgstr "Wifi"
@@ -2006,9 +2003,6 @@ msgstr "Le masque du réseau doit être de la forme XXX.XXX.XXX.XXX<br /><br /><
 msgid "ERROR_WIFI_IP"
 msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
 
-msgid "ERROR_EMPTY_PASSWORD"
-msgstr "Le mot de passe ne peut pas être vide"
-
 msgid "ERROR_WEP_KEY_TYPE"
 msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombres (0-9) et faire 5, 13 ou 29 caractères de long"
 
@@ -2026,9 +2020,6 @@ msgstr "L'adresse de votre module Wifi peut être personnalisée en rentrant une
 
 msgid "SAVE_CONF"
 msgstr "Enregistrer la configuration"
-
-msgid "SAVING_DATA"
-msgstr "Enregistrement de votre configuration, patientez s'il vous plaît..."
 
 msgid "EMPTY_NETWORK_CONFIG"
 msgstr "Aucune configuration réseau (filaire ou sans fil) n'a été activé. Vous devez activer une connexion réseau pour rendre votre module disponible."
@@ -2050,7 +2041,4 @@ msgstr "Votre module est maintenant connecté sur le(s) réseau(x) configuré(s)
 
 msgid "RESTORED_CONF"
 msgstr "Une erreur est survenue lors de la mise en place de votre configuration réseau. La configuration précédente a été restauré"
-
-msgid "LOADING_DATA"
-msgstr "Chargement des données en cours, patientez s'il vous plait..."
 

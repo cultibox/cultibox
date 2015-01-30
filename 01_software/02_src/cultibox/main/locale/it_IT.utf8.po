@@ -1909,7 +1909,7 @@ msgstr "Non avvisarmi e fammi gestire la configurazione nella finestra di dialog
 
 
 #For the cultinet part:
-msgid "CONFIGURE_TITLE_CULTIBOX"
+msgid "CONFIGURE_TITLE_CULTIBOX_NET"
 msgstr "Configurazione di rete del vostro Cultipi"
 
 msgid "CONFIGURE_SUBTITLE"
@@ -1953,9 +1953,6 @@ msgstr "Indirizzo di rete"
 
 msgid "IP_MASK"
 msgstr "Maschera di rete"
-
-msgid "ENABLE_JAVASCRIPT"
-msgstr "Javascript è stato disattivato! Non è possibile utilizzare questo software se non si attiva Javascript"
 
 msgid "CONFIGURE_WIFI"
 msgstr "Wifi"
@@ -2002,9 +1999,6 @@ msgstr "La maschera di rete deve essere di forma XXX.XXX.XXX.XXX <br /><br /><i>
 msgid "ERROR_WIFI_IP"
 msgstr "Errore nel formato IP: XXX.XXX.XXX.XXX"
 
-msgid "ERROR_EMPTY_PASSWORD"
-msgstr "La password non può essere vuoto"
-
 msgid "ERROR_WEP_KEY_TYPE"
 msgstr "Errore nel formato della password WEP: esso deve contenere solo numeri (0-9) e hanno lunga 5, 13 o 29 caratteri"
 
@@ -2022,9 +2016,6 @@ msgstr "L'indirizzo del modulo wireless può essere personalizzato con il ritorn
 
 msgid "SAVE_CONF"
 msgstr "Salva impostazioni"
-
-msgid "SAVING_DATA"
-msgstr "Salvare la configurazione in corso ..."
 
 msgid "EMPTY_NETWORK_CONFIG"
 msgstr "Nessuna configurazione di rete (cablata o wireless) è stata abilitata. È necessario attivare una connessione di rete per rendere il modulo disponibile."
@@ -2046,7 +2037,4 @@ msgstr "Il modulo è ora collegato alla rete (s) (x) set (s) È possibile riconn
 
 msgid "RESTORED_CONF"
 msgstr "Si è verificato un errore durante l'impostazione della configurazione di rete. La configurazione precedente è stato restaurato"
-
-msgid "LOADING_DATA"
-msgstr "Caricamento in corso, attendere prego..."
 

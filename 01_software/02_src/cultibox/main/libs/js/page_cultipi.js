@@ -678,12 +678,6 @@ var updateIsAked = 0;
     }
     setInterval(updatePlugs, 7000);
     
-    $("#div_network_label").click(function(e) {
-        e.preventDefault();
-        window.open("/cultinet");
-
-    });
-
 
     // Display services logs:
     $("a[name='cultipi_logs']").click(function(e) {
