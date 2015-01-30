@@ -99,13 +99,17 @@ Si la base de données est très grosse et que vous voulez libérer de l'espace 
 En cliquant sur l'un de ces boutons vous supprimerez de façon définitive les logs enregistrés dans vos bases, libérant ainsi de l'espace sur vos disques et gagnant possiblement en rapidité d'exécution du logiciel.
 
 === Exporter les logs ===
-Il est possible d'exporter les logs enregistrés dans votre base (puissance, humidité et température), au format csv (format lisible par un tableau: Excell, Openoffice...), afin d'en avoir une copie de sauvegarde ou de pouvoir les réutiliser d'une autre manière. En cliquant sur le bouton *Export de vos logs*, vous pourrez télécharger le fichier contenant vos logs de température et d'humidité et l'enregistrer sur votre ordinateur. En cliquant sur le bouton *Export de vos logs de puissance*, vous réaliserez la même opération pour les logs de puissance.
+Il est possible d'exporter les logs enregistrés dans votre base (puissance, humidité et température), au format csv (format lisible par un tableau: Excel, OpenOffice...), afin d'en avoir une copie de sauvegarde ou de pouvoir les réutiliser d'une autre manière. En cliquant sur le bouton *Export de vos logs*, vous pourrez télécharger le fichier contenant vos logs de température et d'humidité et l'enregistrer sur votre ordinateur. En cliquant sur le bouton *Export de vos logs de puissance*, vous réaliserez la même opération pour les logs de puissance.
 
 == Sélection des courbes à afficher ==
 
 En cliquant sur le bouton, une fenêtre s'ouvre vous permettant de sélectionner les courbes à afficher : 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_ui_courbes_a_afficher.png
+
+Vous pouvez afficher les programmes de chaque prise ainsi que la la puissance consommée de chaque prise.
+
+Concernant la puissance consommée : il existe une limitation de la Cultibox. Si il y a vraiment beaucoup de changement d'état, la Cultibox n'enregistre pas les derniers changement. ISSUE 937
 
 == Paramètres d'affichage ==
 
