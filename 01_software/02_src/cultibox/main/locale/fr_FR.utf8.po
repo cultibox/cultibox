@@ -127,9 +127,6 @@ msgstr "Nombre de prises de votre système"
 msgid "CONFIGURE_PLUGS_FREQUENCY"
 msgstr "Fréquence de mise à jour de l'état des prises (en seconde)"
 
-msgid "CONFIGURE_POWER"
-msgstr "Couleur des courbes de puissance"
-
 msgid "VALIDATION_CONF"
 msgstr "Enregistrer la configuration"
 
@@ -1952,9 +1949,6 @@ msgstr "Adresse du réseau"
 msgid "IP_MASK"
 msgstr "Masque du réseau"
 
-msgid "CONFIGURE_WIFI"
-msgstr "Wifi"
-
 msgid "CONFIGURE_WIFI_IP"
 msgstr "Adresse de votre module Wifi"
 
@@ -1972,9 +1966,6 @@ msgstr "Nom du réseau"
 
 msgid "CONFIGURE_WIFI_IP_MASK"
 msgstr "Masque du réseau"
-
-msgid "WIFI_IP_MANUAL"
-msgstr "Configurer l'adresse IP manuellement"
 
 msgid "SHOW_CURRENT_PWD"
 msgstr "Laisser la souris cliquée sur l'image pour afficher le mot de passe"
