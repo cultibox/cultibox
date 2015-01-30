@@ -1481,6 +1481,9 @@ msgstr "Il nome del programma deve essere compresa tra 3 e 16 caratteri"
 
 
 # For the informations part:
+msgid "SYNC_CONF"
+msgstr "aggiornamento Configration con successo, le modifiche verranno applicate nel giro di pochi secondi."
+
 msgid "CONFIRMATION"
 msgstr "Conferma"
 
@@ -1819,9 +1822,6 @@ msgstr "Errore del servizio red & startup"
 msgid "SUCCESS_RESTART_SERVICE"
 msgstr "service restart eseguito con successo"
 
-msgid "CULTINET_LINK"
-msgstr "La configurazione di rete è disponibile: <a class='note_link' href='/cultinet'>qui</a>"
-
 msgid "DIR_CONF_UPDATE"
 msgstr "La configurazione è aggiornato"
 
@@ -1836,9 +1836,6 @@ msgstr "Software Version"
 
 msgid "CULTIPI_SOFT"
 msgstr "Software Cultipi"
-
-msgid "CULTINET_SOFT"
-msgstr "Cultinet Software"
 
 msgid "CULTIBOX_SOFT"
 msgstr "Software Cultibox"

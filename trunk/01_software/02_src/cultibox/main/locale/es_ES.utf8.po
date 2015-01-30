@@ -1480,6 +1480,9 @@ msgstr "El nombre del programa debe tener entre 3 y 16 caracteres"
 
 
 # For the informations part:
+msgid "SYNC_CONF"
+msgstr "actualización configration exitosamente, los cambios se aplicarán a los pocos segundos."
+
 msgid "CONFIRMATION"
 msgstr "Validar"
 
@@ -1818,9 +1821,6 @@ msgstr "Error de rojo servicio y puesta en marcha"
 msgid "SUCCESS_RESTART_SERVICE" 
 msgstr "reiniciar servicio realizado con éxito"
 
-msgid "CULTINET_LINK" 
-msgstr "La configuración de la red está disponible: <a class='note_link' href='/cultinet'>aquí</a>"
-
 msgid "DIR_CONF_UPDATE" 
 msgstr "Su configuración está al día"
 
@@ -1835,9 +1835,6 @@ msgstr "Software Version"
 
 msgid "CULTIPI_SOFT" 
 msgstr "Software Cultipi"
-
-msgid "CULTINET_SOFT"
-msgstr "Cultinet Software"
 
 msgid "CULTIBOX_SOFT" 
 msgstr "Software Cultibox"
@@ -1908,8 +1905,8 @@ msgstr "No avisarme y me dejó administrar la configuración en el diálogo"
 
 
 #For the Cultinet part:
-msgid "CONFIGURE_TITLE_CULTIBOX" 
-msgstr "Configuración de la red de su Cultipi"
+msgid "CONFIGURE_TITLE_CULTIBOX_NET" 
+msgstr "Configuración de la red"
 
 msgid "CONFIGURE_SUBTITLE" 
 msgstr "La configuración que se muestra corresponde a la configuración que se aplican actualmente"
@@ -1952,9 +1949,6 @@ msgstr "Dirección de red"
 
 msgid "IP_MASK"
 msgstr "Máscara de red"
-
-msgid "ENABLE_JAVASCRIPT"
-msgstr "Javascript no está habilitado! Usted no puede utilizar este software si no habilita Javascript"
 
 msgid "CONFIGURE_WIFI" 
 msgstr "Wifi" 
@@ -2001,9 +1995,6 @@ msgstr "La máscara de red debe ser de la forma XXX.XXX.XXX.XXX <br /><br /><i>E
 msgid "ERROR_WIFI_IP" 
 msgstr "Error en el formato de IP: XXX.XXX.XXX.XXX"
 
-msgid "ERROR_EMPTY_PASSWORD"
-msgstr "La contraseña no puede estar vacío"
-
 msgid "ERROR_WEP_KEY_TYPE" 
 msgstr "Error en el formato de contraseña WEP: debe contener sólo números (0-9) y tienen 5, 13 o 29 caracteres de longitud"
 
@@ -2021,9 +2012,6 @@ msgstr "La dirección de su módulo inalámbrico se puede personalizar mediante 
 
 msgid "SAVE_CONF" 
 msgstr "Guardar configuración"
-
-msgid "SAVING_DATA"
-msgstr "Guardar la configuración, por favor espere ..."
 
 msgid "EMPTY_NETWORK_CONFIG"
 msgstr "No hay configuración de la red (cableada o inalámbrica) se ha habilitado. Debes activar una conexión de red para que su módulo disponible."
@@ -2045,8 +2033,4 @@ msgstr "El módulo está conectado a la red (s) (x) (s) Usted puede volver a con
 
 msgid "RESTORED_CONF" 
 msgstr "Se ha producido un error al establecer la configuración de red. La configuración anterior se ha restaurado"
-
-msgid "LOADING_DATA"
-msgstr "Cargando, espere por favor..."
-
 
