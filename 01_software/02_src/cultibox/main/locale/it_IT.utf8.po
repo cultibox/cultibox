@@ -172,6 +172,9 @@ msgstr "Attivare il sistema di allarme"
 msgid "CONFIGURE_ALARM_VALUE"
 msgstr "Valore soglia per l'attivazione dell'allarme"
 
+msgid "CONFIGURE_ENABLE_LED"
+msgstr "Attivare l'illuminazione dello schermo"
+
 msgid "CHECK_STATISTICS"
 msgstr "L'invio di informazioni per aiutare a sviluppare"
 

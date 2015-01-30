@@ -172,6 +172,9 @@ msgstr "Aktivieren Sie das Alarmsystem"
 msgid "CONFIGURE_ALARM_VALUE"
 msgstr "Schwellwert für die Alarmauslösung"
 
+msgid "CONFIGURE_ENABLE_LED"
+msgstr "Aktivieren Sie die Hintergrundbeleuchtung"
+
 msgid "CHECK_STATISTICS"
 msgstr "Senden von Informationen, um die Entwicklung"
 

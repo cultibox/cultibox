@@ -138,14 +138,34 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
     $alarmvalue     = get_configuration("ALARM_VALUE",$main_error);
     $resetvalue     = get_configuration("RESET_MINMAX",$main_error);
     $rtc            = get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
+    $enableled      = get_configuration("ENABLE_LED",$main_error);
     if("$updatefrequency"=="-1") {
         $updatefrequency="0";
     }
     
     
-    if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,$resetvalue,$rtc)) {
+    if(!compare_sd_conf_file($sd_card,
+                             $recordfrequency,
+                             $updatefrequency,
+                             $powerfrequency,
+                             $alarmenable,
+                             $alarmvalue,
+                             $resetvalue,
+                             $rtc,
+                             $enableled))
+    {
         $conf_uptodate=false;
-        if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,$resetvalue,$rtc,$main_error)) {
+        if(!write_sd_conf_file($sd_card,
+                               $recordfrequency,
+                               $updatefrequency,
+                               $powerfrequency,
+                               $alarmenable,
+                               $alarmvalue,
+                               $resetvalue,
+                               $rtc,
+                               $enableled,
+                               $main_error))
+        {
             $main_error_tab[]=__('ERROR_WRITE_SD_CONF');
             return ERROR_WRITE_SD_CONF;
         }
@@ -794,9 +814,20 @@ function compare_plugconf($data, $sd_card="") {
 //      $alarm_value        value to trigger the alarm
 //      $reset_value        value for the sensor's reset min/max
 //      $rtc                RTC_OFFSET value
+//      $enable_led         Allow backlight
 // RET false if there is a difference, true else
-function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$power_frequency,$alarm_enable,$alarm_value,$reset_value,$rtc) {
-    if(!is_file($sd_card."/cnf/conf")) return false;
+function compare_sd_conf_file($sd_card="",
+                              $record_frequency,
+                              $update_frequency,
+                              $power_frequency,
+                              $alarm_enable,
+                              $alarm_value,
+                              $reset_value,
+                              $rtc,
+                              $enable_led) {
+
+    if(!is_file($sd_card."/cnf/conf")) 
+        return false;
 
     $file="${sd_card}/cnf/conf";
 
@@ -831,6 +862,10 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
         $reset_value="0000";
     } 
    
+    while(strlen($enable_led)<4) {
+        $enable_led="0$enable_led";
+    }
+   
     $conf[]="PLUG_UPDATE:$update";
     $conf[]="LOGS_UPDATE:$record";
     $conf[]="POWR_UPDATE:$power";
@@ -840,7 +875,7 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     $conf[]="ALARM_SENSS:000+";
     $conf[]="RTC_OFFSET_:$rtc";
     $conf[]="RESET_MINAX:$reset_value";
-    $conf[]="ACTIVE_LEDs:0001";
+    $conf[]="ENABLE_LEDs:$enable_led";
 
     $buffer=@file("$file");
 
@@ -934,19 +969,29 @@ function read_sd_conf_file($sd_card,$variable,$out="") {
 //   $alarm_value        value to trigger the alarm
 //   $reset_value        min/max reset value
 //   $rtc                value for the RTC_OFFSET
+//   $enable_led         Allow backlight of LCD screen
 //   $out                error or warning messages
 // RET false if an error occured, true else  
-function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$reset_value,$rtc="0000",$out="") {
+function write_sd_conf_file($sd_card,
+                            $record_frequency=1,
+                            $update_frequency=1,
+                            $power_frequency=1,
+                            $alarm_enable="0000",
+                            $alarm_value="50.00",
+                            $reset_value,
+                            $rtc="0000",
+                            $enable_led="0001",
+                            $out="") {
    $alarm_senso="000T";
    $alarm_senss="000+";
    $record=$record_frequency*60;
    $power=$power_frequency*60;
 
    
-   while(strlen($alarm_enable)<4) {
-      $alarm_enable="0$alarm_enable";
-   }
-
+    while(strlen($alarm_enable)<4) {
+        $alarm_enable="0$alarm_enable";
+    }
+  
    $alarm_value=$alarm_value*100;
    while(strlen($alarm_value)<4) {
       $alarm_value="0$alarm_value";
@@ -957,18 +1002,22 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       $record="0$record";
    }
 
-   while(strlen($power)<4) {
-      $power="0$power";
-   }
+    while(strlen($power)<4) {
+        $power="0$power";
+    }
 
-   while(strlen($rtc)<4) {
-      $rtc="0$rtc";
-   }
+    while(strlen($rtc)<4) {
+        $rtc="0$rtc";
+    }
 
-   $reset_value=str_replace(":","",$reset_value);
-   if((strlen($reset_value)!=4)||($reset_value<0)) {
+    $reset_value=str_replace(":","",$reset_value);
+    if((strlen($reset_value)!=4)||($reset_value<0)) {
         $reset_value="0000";
-   } 
+    }
+   
+    while(strlen($enable_led)<4) {
+        $enable_led="0$enable_led";
+    }
 
    $update="000$update_frequency";
    $file="$sd_card/cnf/conf";
@@ -983,7 +1032,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       if(!@fputs($f,"ALARM_SENSS:$alarm_senss\r\n")) $check=false;
       if(!@fputs($f,"RTC_OFFSET_:$rtc\r\n")) $check=false;
       if(!@fputs($f,"RESET_MINAX:$reset_value\r\n")) $check=false;
-      if(!@fputs($f,"ACTIVE_LEDs:0001\r\n")) $check=false;
+      if(!@fputs($f,"ENABLE_LEDs:$enable_led\r\n")) $check=false;
       fclose($f);
 
       if(!$check) {
