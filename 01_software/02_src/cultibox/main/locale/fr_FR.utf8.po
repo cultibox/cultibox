@@ -1823,6 +1823,9 @@ msgstr "Logs d'erreur"
 msgid "CULTIPI_SOFT_VERSION"
 msgstr "Version des logiciels"
 
+msgid "CULTICONF_SOFT"
+msgstr "Logiciel Culticonf"
+
 msgid "CULTIPI_SOFT"
 msgstr "Logiciel Cultipi"
 

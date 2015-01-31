@@ -15,7 +15,6 @@ if [ "`apt-get -u upgrade --assume-no|grep cultibox`" != "" ]; then
     if [ "$1" == "" ]; hen
         /etc/init.d/lighttpd force-reload
     fi
-    upgraded="True"
 elif [ "`dpkg -s cultibox 2>/dev/null|grep Version`" == "" ]; then
     apt-get install -y  --force-yes cultibox
 fi
@@ -31,6 +30,12 @@ if [ "`apt-get -u upgrade --assume-no|grep cultitime`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultitime
 elif [ "`dpkg -s cultitime 2>/dev/null|grep Version`" == "" ]; then
     apt-get install -y  --force-yes cultitime
+fi
+
+if [ "`apt-get -u upgrade --assume-no|grep culticonf`" != "" ]; then
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" culticonf
+elif [ "`dpkg -s culticonf 2>/dev/null|grep Version`" == "" ]; then
+    apt-get install -y  --force-yes culticonf
 fi
 
 if [ -d /var/www/cultibox/tmp/import ]; then

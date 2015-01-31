@@ -72,11 +72,13 @@ proc firstLoop {} {
                 exec dpkg --purge cultiraz 
                 exec dpkg --purge cultipi 
                 exec dpkg --purge cultitime
+                exec dpkg --purge culticonf
 
                 exec dpkg -i /home/cultipi/cultipi*.deb
                 exec dpkg -i /home/cultipi/cultibox*.deb
                 exec dpkg -i /home/cultipi/cultitime*.deb
                 exec dpkg -i /home/cultipi/cultiraz*.deb
+                exec dpkg -i /home/cultipi/culticonf*.deb
 
 
                 # On rappel la procédure au bout de 10 secondes pour éviter un double effacage:
