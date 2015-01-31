@@ -32,7 +32,7 @@ if [ "$2" == "version" ]; then
     elif [ "$1" == "cultitime" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/07_cultiTime/VERSION`
     elif [ "$1" == "culticonf" ]; then
-        VERSION=`cat ../../../02_CultiPi/01_Software/02_cultiConf/VERSION`
+        VERSION=`cat ../../../04_CultiPi/01_Software/02_cultiConf/VERSION`
     fi
 else
     VERSION=$2
