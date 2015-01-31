@@ -47,6 +47,24 @@ $(function() {
                 $("#calendar").fullCalendar( 'gotoDate', year , month );
         }
     }).val();
+
+    $("#datepicker_edit_start").datepicker({
+        dateFormat: "yy-mm-dd",
+        showButtonPanel: true,
+        showOn: "both",
+        buttonImage: "main/libs/img/datepicker.png",
+        buttonImageOnly: 'true',
+        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
+    }).val();
+
+    $("#datepicker_edit_stop").datepicker({
+        dateFormat: "yy-mm-dd",
+        showButtonPanel: true,
+        showOn: "both",
+        buttonImage: "main/libs/img/datepicker.png",
+        buttonImageOnly: 'true',
+        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
+    }).val();
 });
 
 $(document).ready(function() {
@@ -519,12 +537,12 @@ $(document).ready(function() {
         dayNamesShort: ["<?php echo __('D07'); ?>","<?php echo __('D01'); ?>","<?php echo __('D02'); ?>","<?php echo __('D03'); ?>","<?php echo __('D04'); ?>","<?php echo __('D05'); ?>","<?php echo __('D06'); ?>"],
         buttonText: { today: "<?php echo __('TODAY'); ?>"}, 
         select: function(start, end, allDay) {
-            $("#edit_start_date").text($.fullCalendar.formatDate(start, "yyyy-MM-dd"));
+            $("#datepicker_edit_start").val($.fullCalendar.formatDate(start, "yyyy-MM-dd"));
             
             if(end) {
-                $("#edit_stop_date").text($.fullCalendar.formatDate(end, "yyyy-MM-dd"));
+                $("#datepicker_edit_stop").val($.fullCalendar.formatDate(end, "yyyy-MM-dd"));
             } else {
-                $("#edit_stop_date").text($.fullCalendar.formatDate(start, "yyyy-MM-dd"));
+                $("#datepicker_edit_stop").val($.fullCalendar.formatDate(start, "yyyy-MM-dd"));
             }
 
             $("#select_remark").val("");
@@ -538,6 +556,18 @@ $(document).ready(function() {
                 modal: false,
                 buttons: {
                     "<?php echo __('CREATE_DIALOG_CALENDAR','highchart'); ?>": function() { 
+                        dateParts = $("#datepicker_edit_start").val().split('-');
+                        date_start = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]);
+                        new_start=$.fullCalendar.formatDate(date_start, "yyyy-MM-dd 02:00:00");
+
+                        dateParts = $("#datepicker_edit_stop").val().split('-');
+                        date_end = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]);
+                        new_end=$.fullCalendar.formatDate(date_end, "yyyy-MM-dd 23:59:59");
+
+                        if(date_end.getTime()<date_start.getTime()) {
+                                        $("#error_start_interval").show();
+                        } else {
+
                     
                         $( this ).dialog( "close" ); 
                         <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
@@ -583,10 +613,6 @@ $(document).ready(function() {
                         // Classic event case :
                         if (userAddDailyProgram == false)
                         {
-                        
-                            new_start=$.fullCalendar.formatDate( start, "yyyy-MM-dd 02:00:00");
-                            new_end=$.fullCalendar.formatDate( end, "yyyy-MM-dd 23:59:59");
-
                             var length = $('#select_title').children('option').length;
                             if(($("#select_title").prop('selectedIndex')+1)==length) {
                                 if($("#other_field_title").val()!= "") {
@@ -716,6 +742,7 @@ $(document).ready(function() {
                         $("#other_field_title").val("");
                         $("#select_title").prop('selectedIndex', 0);  
                         $("#event_important").attr('checked', false);
+                        $("#error_start_interval").css("display","none");
 
                         <?php
                             if(count($program_index) > 1) { 
@@ -732,6 +759,7 @@ $(document).ready(function() {
                         $("#select_daily_program_to_create").prop('disabled', true);
                         $("#select_title, #select_remark, #event_important").prop('disabled', false);
                         return false;
+                        }
                     },
                     "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() {
                         $( this ).dialog( "close" ); 
@@ -741,6 +769,7 @@ $(document).ready(function() {
                         $("#other_field_title").val("");
                         $("#select_title").prop('selectedIndex', 0);  
                         $("#event_important").attr('checked', false);
+                        $("#error_start_interval").css("display","none");
                         <?php
                             if(count($program_index) > 1) { 
                         ?>
@@ -938,6 +967,7 @@ $(document).ready(function() {
             var date_ref_formated = date_ref.getFullYear() +'-'+ addZ(date_ref.getMonth()+1) +'-'+ addZ(date_ref.getDate());
             var date_ref_parts=date_ref_formated.split('-');
             date_ref=new Date(date_ref_parts[0], parseInt(date_ref_parts[1], 10) - 1, date_ref_parts[2]).getTime();
+            alert("poe");
 
             $("#edit_duration_started_title").css("display","none");
             $("#edit_duration_start_title").css("display","none");
@@ -1032,11 +1062,12 @@ $(document).ready(function() {
 
 
                             $('#select_title option[value="'+event.title+'"]').prop('selected', true);
-                            $("#edit_start_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+                            $("#datepicker_edit_start").val($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+
                             if(event.end) {
-                                $("#edit_stop_date").text($.fullCalendar.formatDate(event.end, "yyyy-MM-dd"));
+                                $("#datepicker_edit_stop").val($.fullCalendar.formatDate(event.end, "yyyy-MM-dd"));
                             }else {
-                                 $("#edit_stop_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+                                 $("#datepicker_edit_stop").val($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
                             }
                             if(event.description) {
                                  $("#select_remark").val(event.description);
@@ -1064,16 +1095,25 @@ $(document).ready(function() {
                             width: 800,
                             buttons: {
                                 "<?php echo __('SAVE_DIALOG_CALENDAR','highchart'); ?>": function() { 
-                                    $( this ).dialog( "close" ); 
-                                    
+                                    dateParts = $("#datepicker_edit_start").val().split('-');
+                                    date_start = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]);
 
-                                    new_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
-                                    if(!event.end) {
-                                        new_end=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd 23:59:59");        
+                                    new_start=$.fullCalendar.formatDate(date_start, "yyyy-MM-dd HH:mm:ss");
+                                
+                                    if(!$("#datepicker_edit_stop").val()) {
+                                        dateParts = $("#datepicker_edit_start").val().split('-');
+                                        date_end = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]);
                                     } else {
-                                        new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd 23:59:59");        
+                                        dateParts = $("#datepicker_edit_stop").val().split('-');
+                                        date_end = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]);
                                     }
+                                    new_end=$.fullCalendar.formatDate(date_end, "yyyy-MM-dd 23:59:59");
 
+                                   
+                                    if(date_end.getTime()<date_start.getTime()) {
+                                        $("#error_start_interval").show();
+                                    } else { 
+                                    $( this ).dialog( "close" );
                                     var length = $('#select_title').children('option').length;
                                     if(($("#select_title").prop('selectedIndex')+1)==length) {
                                         if($("#other_field_title").val()!= "") {
@@ -1150,6 +1190,8 @@ $(document).ready(function() {
                                     event.title=title;
                                     event.description=description;
                                     event.color=color;
+                                    event.start=new_start;
+                                    event.end=new_end;
                                     $('#calendar').fullCalendar('removeEvents', event.id);
                                     $('#calendar').fullCalendar('updateEvent', event);
                                     $('#calendar').fullCalendar( 'refetchEvents' );
@@ -1159,6 +1201,7 @@ $(document).ready(function() {
                                     $("#other_field_title").val("");
                                     $("#select_title").prop('selectedIndex', 0);  
                                     $("#event_important").attr('checked', false);
+                                    $("#error_start_interval").css("display","none");
                                     <?php
                                         if(count($program_index) > 1) { 
                                     ?>
@@ -1188,6 +1231,8 @@ $(document).ready(function() {
 
                                     return false;
 
+                                    }
+
                                 },
                                 "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() {     
                                     $( this ).dialog( "close" ); 
@@ -1200,6 +1245,7 @@ $(document).ready(function() {
                                     $("#other_field_title").val("");
                                     $("#select_title").prop('selectedIndex', 0);
                                     $("#event_important").attr('checked', false);
+                                    $("#error_start_interval").css("display","none");
                                     <?php
                                         if(count($program_index) > 1) { 
                                     ?>
