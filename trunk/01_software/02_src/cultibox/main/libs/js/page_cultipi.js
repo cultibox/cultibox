@@ -1370,7 +1370,7 @@ $(document).ready(function() {
 
                     if($("#wifi_key_type").val()!="NONE") {
                         if($("#wifi_password").val()=="") {
-                            $("#error_empty_password").css("display","");
+                            $("#error_wifi_empty_password").css("display","");
                             checked=false;
                         } else if($("#wifi_password").val()!="") {
                             $.ajax({
@@ -1379,7 +1379,7 @@ $(document).ready(function() {
                                 url: "main/modules/external/check_value.php",
                                 data: {value:$("#wifi_password").val(),value2:$("#wifi_password_confirm").val(),type:'password'}
                             }).done(function (data) {
-                                $("#error_empty_password").css("display","none");
+                                $("#error_wifi_empty_password").css("display","none");
                                 if(data!=1) {
                                     $("#error_wifi_password").show(700);
                                     $("#error_wifi_password_confirm").show(700);

@@ -1612,7 +1612,7 @@ $(document).ready(function() {
             $(this).val(powers);
         });
 
-        get_content("logs",getFormInputs('next'));
+        get_content("logs",getFormInputs('next-form'));
     });
 
 
@@ -1658,7 +1658,7 @@ $(document).ready(function() {
             $(this).val(powers);
         });
 
-        get_content("logs",getFormInputs('previous'));
+        get_content("logs",getFormInputs('previous-form'));
 
     });
  });

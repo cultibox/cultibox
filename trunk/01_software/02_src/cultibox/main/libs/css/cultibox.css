@@ -931,7 +931,6 @@ P.imp_center{
   right: 0;
   margin: 0;
   opacity: 0;
-  filter: alpha(opacity=0);
   transform: translate(-300px, 0) scale(4);
   font-size: 23px;
   direction: ltr;
@@ -943,7 +942,6 @@ P.imp_center{
 }
 .progress-animated .bar {
   background: url(../img/progressbar.gif) !important;
-  filter: none;
 }
 .fileupload-loading {
   float: right;
