@@ -9,7 +9,8 @@ function usage {
             echo "                      cultipi <version>|version ?jenkins?"
             echo "                      cultipi <version>|version ?jenkins?"
             echo "                      cultiraz <version>|version ?jenkins?"
-            echo "                      cultitime <version>|bersion ?jenkins?"
+            echo "                      cultitime <version>|version ?jenkins?"
+            echo "                      culticonf <version>|version ?jenkins?"
             echo "                      apt-gen"
             echo "                      clean"
             exit 1
@@ -30,6 +31,8 @@ if [ "$2" == "version" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/05_cultiRAZ/VERSION`
     elif [ "$1" == "cultitime" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/07_cultiTime/VERSION`
+    elif [ "$1" == "culticonf" ]; then
+        VERSION=`cat ../../../02_CultiPi/01_Software/02_cultiConf/VERSION`
     fi
 else
     VERSION=$2
@@ -148,6 +151,23 @@ EOF
 
            mv cultitime.deb ../../05_cultipi/Output/cultitime-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
+      "culticonf")
+           rm -Rf ../01_src/01_xampp/*
+           mkdir ../01_src/01_xampp/culticonf
+           cp -R ./conf-package/DEBIAN-culticonf ../01_src/01_xampp/culticonf/DEBIAN
+
+           mkdir -p ../01_src/01_xampp/culticonf/opt/culticonf
+           mkdir -p ../01_src/01_xampp/culticonf/etc/init.d
+
+           cp -R ../../../04_CultiPi/01_Software/02_cultiConf/* ../01_src/01_xampp/culticonf/opt/culticonf/
+           rm -f ../01_src/01_xampp/culticonf/opt/culticonf/VERSION
+
+           sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/culticonf/DEBIAN/control
+           find ./../01_src/01_xampp/culticonf/ -name ".svn"|xargs rm -Rf
+           cd ./../01_src/01_xampp/ && dpkg-deb --build culticonf
+
+           mv culticonf.deb ../../05_cultipi/Output/culticonf-armhf_`echo $VERSION`-r`echo $revision`.deb
+      ;;
       "apt-gen")
            cultipi="`ls -t Output/cultipi*|head -1`"
            cp $cultipi repository/binary/
@@ -160,6 +180,9 @@ EOF
 
            cultitime="`ls -t Output/cultitime*|head -1`"
            cp $cultitime repository/binary/
+
+           culticonf="`ls -t Output/culticonf*|head -1`"
+           cp $culticonf repository/binary/
 
            cd repository
            dpkg-scanpackages binary /dev/null | gzip -9c > binary/Packages.gz

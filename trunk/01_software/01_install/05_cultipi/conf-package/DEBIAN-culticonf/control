@@ -1,0 +1,9 @@
+Package: culticonf
+Version: 1.0.0-debian
+Section: Utilities
+Maintainer: Yann Genevois <yann.genevois@cultibox.fr>
+Homepage: http://www.cultibox.fr
+Priority: extra
+Architecture: armhf
+Description: Check and configure the Cultipi's environment
+
