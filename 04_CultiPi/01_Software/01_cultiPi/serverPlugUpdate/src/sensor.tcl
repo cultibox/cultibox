@@ -12,6 +12,8 @@ proc ::sensor::init {} {
     ::piLog::log [clock milliseconds] "info" "ask getPort serverAcqSensor"
     ::piServer::sendToServer $::port(serverCultiPi) "$::port(serverPlugUpdate) [incr ::TrameIndex] getPort serverAcqSensor"
 
+    # On initialise l'ensemble des valeurs
+    set ::sensor(firsReadDone) 0
     for {set i 1} {$i < 7} {incr i} {
         set ::sensor(${i},value,1) ""
         set ::sensor(${i},value,2) ""
@@ -36,6 +38,9 @@ proc ::sensor::loop {} {
             #::piServer::sendToServer $::port(serverAcqSensor) "$::port(serverPlugUpdate) [incr ::TrameIndex] getRepere ${i},value,1"
             #::piServer::sendToServer $::port(serverAcqSensor) "$::port(serverPlugUpdate) [incr ::TrameIndex] getRepere ${i},value,2"
         }
+        
+        # On prend un abonnement sur l'état de la lecture des capteurs
+        ::piServer::sendToServer $::port(serverAcqSensor) "$::port(serverPlugUpdate) [incr ::TrameIndex] subscription firsReadDone 2000"
 
         set ::subscriptionRunned 1
     
