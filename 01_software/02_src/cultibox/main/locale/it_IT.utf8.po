@@ -1792,6 +1792,12 @@ msgstr "Clicca sull'immagine per visualizzare i log del servizio MySQL"
 msgid "CULTIPI_LOGS_CULTIPI"
 msgstr "Clicca sull'immagine per visualizzare i registri di servizio Cultipi"
 
+msgid "CULTIPI_LOGS_SERVICE"
+msgstr "Clicca sull'immagine per visualizzare i registri dei servizi di sistema"
+
+msgid "CULTIPI_DL_LOGS_SERVICE"
+msgstr "Clicca sull'immagine per scaricare i registri dei servizi di sistema"
+
 msgid "CULTIPI_DL_LOGS_HTTPD"
 msgstr "Clicca sull'immagine per scaricare i registri di servizio Http"
 

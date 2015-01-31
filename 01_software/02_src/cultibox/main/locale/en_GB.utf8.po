@@ -1790,6 +1790,12 @@ msgstr "Click on the image to view the logs of the MySQL service"
 msgid "CULTIPI_LOGS_CULTIPI"
 msgstr "Click on the image to view the logs of Cultipi service"
 
+msgid "CULTIPI_LOGS_SERVICE"
+msgstr "Click on the image to view the logs of system services"
+
+msgid "CULTIPI_DL_LOGS_SERVICE"
+msgstr "Click on the image to download the logs of system services"
+
 msgid "CULTIPI_DL_LOGS_HTTPD"
 msgstr "Click on the image to download the logs of Http service"
 

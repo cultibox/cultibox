@@ -1791,6 +1791,12 @@ msgstr "Haga clic en la imagen para ver los registros del servicio de MySQL"
 msgid "CULTIPI_LOGS_CULTIPI" 
 msgstr "Haga clic en la imagen para ver los registros de servicio Cultipi"
 
+msgid "CULTIPI_LOGS_SERVICE" 
+msgstr "Haga clic en la imagen para ver los registros de los servicios del sistema"
+
+msgid "CULTIPI_DL_LOGS_SERVICE" 
+msgstr "Haga clic en la imagen para descargar los registros de los servicios del sistema"
+
 msgid "CULTIPI_DL_LOGS_HTTPD" 
 msgstr "Haga clic en la imagen para descargar los registros de servicio Http"
 
