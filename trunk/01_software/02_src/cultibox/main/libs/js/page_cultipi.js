@@ -534,10 +534,13 @@ $(document).ready(function(){
         idOfElem = $(this).attr('id').split("_")[2];
         
         $.ajax({
-           cache: false,
-           type: "POST",
-           data: {id:idOfElem, action:"getParam"},
-           url: "main/modules/external/synoptic.php"
+            cache: false,
+            type: "POST",
+            data: {
+                id:idOfElem,
+                action:"getParam"
+            },
+            url: "main/modules/external/synoptic.php"
         }).done(function (data) {
             
             if(data != "") {
@@ -645,6 +648,24 @@ $(document).ready(function(){
                 
             }
         });
+    });
+    
+    // Function used to pilot a plug
+    $("#syno_configure_element_force_plug_pilot").click(function(){
+    
+        $.ajax({
+            cache: false,
+            type: "POST",
+            data: {
+                action:"forcePlug",
+                id:idOfElem,
+                value:$( "#syno_configure_element_force_plug_value option:selected" ).val(),
+                time:$( "#syno_configure_element_force_plug_time option:selected" ).val()
+            },
+            url: "main/modules/external/synoptic.php"
+        }).done(function (data) {
+
+        })
     });
 
 var updateIsAked = 0;

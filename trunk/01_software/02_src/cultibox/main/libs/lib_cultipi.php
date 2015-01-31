@@ -541,6 +541,32 @@ function updateZScaleImageRotation($elem,$z,$scale,$image,$rotation) {
 }
 // }}}
 
+// {{{ forcePlug()
+// ROLE Force a plug
+// IN $number : Index of plug
+// IN $value : Value to force
+// IN $time : Time to force
+// RET NA
+function forcePlug($number,$value,$time) {
+
+    $ret = "";
+
+    $return_array = array();
+    $return_array["val1"] = "DEFCOM"; 
+    $return_array["val2"] = "DEFCOM";
+    $return_array["error"] = "";
+    
+    try {
+        $ret = exec('tclsh "/opt/cultipi/cultiPi/set.tcl" serverPlugUpdate ' . $number . ' ' . $value . ' ' . $time);
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        $return_array["error"] = $e->getMessage();
+    }
+
+    return "";
+}
+// }}}
+
 }
 
 ?>

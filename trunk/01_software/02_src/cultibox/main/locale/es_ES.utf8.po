@@ -1800,6 +1800,9 @@ msgstr "Zoom"
 msgid "CULTIPI_SYNO_PILOTAGE"
 msgstr "Gobierno"
 
+msgid "CULTIPI_SYNO_PILOTER"
+msgstr "Piloto"
+
 msgid "CULTIPI_LOGS_HTTPD" 
 msgstr "Haga clic en la imagen para ver los registros del servicio Http"
 

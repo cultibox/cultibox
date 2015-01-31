@@ -252,10 +252,27 @@
                 <td><input type="text" name="syno_configure_element_scale_val" id="syno_configure_element_scale_val" value="" size="4" readonly /></td>
                 <td colspan="3" ><div id="syno_configure_element_scale"></div></td>
             </tr>
+
             <tr id="syno_configure_element_force_plug">
                 <td><?php echo __('CULTIPI_SYNO_PILOTAGE'); ?></td>
-                <td></td>
-                <td colspan="3" ></td>
+                <td colspan="2" >
+                    <select id="syno_configure_element_force_plug_time" >
+                        <option value="5">5s</option>
+                        <option value="30">30s</option>
+                        <option value="60">1min</option>
+                        <option value="600">10min</option>
+                        <option value="3600">1h</option>
+                    </select>
+                </td>
+                <td>
+                    <select id="syno_configure_element_force_plug_value" >
+                        <option value="on">On</option>
+                        <option value="off">Off</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="button" id="syno_configure_element_force_plug_pilot" name="syno_configure_element_force_plug_pilot" value="<?php echo __('CULTIPI_SYNO_PILOTER'); ?>" />
+                </td>
             </tr>            
         </table>
     </div>
@@ -585,7 +602,8 @@
 
 
 <div id="wifi_essid_list" style="display:none" title="<?php echo __('WIFI_ESSID_SCAN_TITLE'); ?>">
-    <?php if(count($wifi_net_list)>0) { 
+    <?php 
+        if(count($wifi_net_list)>0) { 
             echo '<p>'.__('WIFI_SCAN_SUBTITLE').'</p>';
             $checked="";
             foreach($wifi_net_list as $essid) {

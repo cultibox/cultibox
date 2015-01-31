@@ -1801,6 +1801,9 @@ msgstr "Zoom"
 msgid "CULTIPI_SYNO_PILOTAGE"
 msgstr "Sterzo"
 
+msgid "CULTIPI_SYNO_PILOTER"
+msgstr "Pilota"
+
 msgid "CULTIPI_LOGS_HTTPD"
 msgstr "Clicca sull'immagine per visualizzare i log del servizio Http"
 

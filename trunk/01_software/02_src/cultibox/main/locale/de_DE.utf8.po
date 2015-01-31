@@ -1800,6 +1800,9 @@ msgstr "Zoom"
 msgid "CULTIPI_SYNO_PILOTAGE"
 msgstr "Lenkung"
 
+msgid "CULTIPI_SYNO_PILOTER"
+msgstr "Pilot"
+
 msgid "CULTIPI_LOGS_HTTPD"
 msgstr "Klicken Sie auf das Bild, um die Protokolle der HTTP-Dienst zu sehen"
 
