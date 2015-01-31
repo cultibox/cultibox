@@ -1,6 +1,5 @@
 #!/bin/bash
 
-upgraded="False"
 apt-get update -o Dir::Etc::sourcelist="sources.list.d/cultibox.list"  -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
 
 
@@ -12,6 +11,10 @@ fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultibox`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultibox
+    rm -Rf /var/cache/lighttpd/compress/*
+    if [ "$1" == "" ]; hen
+        /etc/init.d/lighttpd force-reload
+    fi
     upgraded="True"
 elif [ "`dpkg -s cultibox 2>/dev/null|grep Version`" == "" ]; then
     apt-get install -y  --force-yes cultibox
@@ -29,12 +32,6 @@ if [ "`apt-get -u upgrade --assume-no|grep cultitime`" != "" ]; then
 elif [ "`dpkg -s cultitime 2>/dev/null|grep Version`" == "" ]; then
     apt-get install -y  --force-yes cultitime
 fi
-
-if [ "$upgraded" == "True" ]; then
-    rm -Rf /var/cache/lighttpd/compress/*
-    /etc/init.d/lighttpd force-reload
-fi
-
 
 if [ -d /var/www/cultibox/tmp/import ]; then
     rm -Rf /var/www/cultibox/tmp/import/*
