@@ -236,22 +236,27 @@
                 </td>
             </tr>
             <tr>
-                <td>Rotation</td>
+                <td><?php echo __('CULTIPI_SYNO_ROTATION'); ?></td>
                 <td><input id="syno_configure_element_rotate_0" type="radio" name="syno_configure_element_rotate" value="0" /> 0° </td>
                 <td><input id="syno_configure_element_rotate_90" type="radio" name="syno_configure_element_rotate" value="90" /> 90° </td>
                 <td><input id="syno_configure_element_rotate_180" type="radio" name="syno_configure_element_rotate" value="180" /> 180° </td>
                 <td><input id="syno_configure_element_rotate_270" type="radio" name="syno_configure_element_rotate" value="270" /> 270° </td>
             </tr>
             <tr>
-                <td>Profondeur</td>
+                <td><?php echo __('CULTIPI_SYNO_PROFONDEUR'); ?></td>
                 <td><input type="text" name="syno_configure_element_zindex_val" id="syno_configure_element_zindex_val" value="" size="4" readonly /></td>
                 <td colspan="3" ><div id="syno_configure_element_zindex"></div></td>
             </tr>
             <tr>
-                <td>Zoom</td>
+                <td><?php echo __('CULTIPI_SYNO_ZOOM'); ?></td>
                 <td><input type="text" name="syno_configure_element_scale_val" id="syno_configure_element_scale_val" value="" size="4" readonly /></td>
                 <td colspan="3" ><div id="syno_configure_element_scale"></div></td>
             </tr>
+            <tr id="syno_configure_element_force_plug">
+                <td><?php echo __('CULTIPI_SYNO_PILOTAGE'); ?></td>
+                <td></td>
+                <td colspan="3" ></td>
+            </tr>            
         </table>
     </div>
     
