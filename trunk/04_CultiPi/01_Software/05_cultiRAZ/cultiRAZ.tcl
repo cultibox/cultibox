@@ -6,7 +6,7 @@
 # Ensuite l'appui sur le bouton permet de vider la conf réseau
 
 # Initialisation : 
-puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] Initialisation des pins du GPIO"
+puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Initialisation des pins du GPIO"
 # Le bouton est branché sur la pin 13 sur GPIO. Wirring Pi l'appel 2, le BCM 27
 # La pin est en entrée (la commande suivante marche aussi : gpio mode 2 in)
 exec gpio -g mode 27 in
@@ -43,7 +43,7 @@ proc firstLoop {} {
             # 3000 / 50 --> 60
             if {$::compteur > 60} {
             
-                puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] RAZ du RPi demandé"
+                puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : RAZ du RPi demandé"
                
                 # On fait clignoter la LED 10 fois
                 for {set i 0} {$i < 10} {incr i} {
@@ -106,14 +106,14 @@ proc firstLoop {} {
 
 }
 
-puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] Vérification de l'effacement du du Cultipi"
+puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Vérification de l'effacement du du Cultipi"
 firstLoop
 
 vwait firstLoopFinish
 
 set compteur 0
 
-puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] Boucle de vérification de l'effacement de la conf réseau"
+puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Boucle de vérification de l'effacement de la conf réseau"
 # Procédure utilisée pour vérifier l'état de la pin et faire les MAJ si nécéssaire:
 proc checkAndUpdate {} {
 
@@ -136,7 +136,7 @@ proc checkAndUpdate {} {
        
         if {$::compteur > 40} {
            
-            puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] RAZ de la conf réseau demandé"
+            puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : RAZ de la conf réseau demandé"
            
             # On fait clignoter la LED 10 fois
             for {set i 0} {$i < 10} {incr i} {

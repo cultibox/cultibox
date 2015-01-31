@@ -5,13 +5,13 @@ set rootDir [file dirname [file dirname [info script]]]
 set logDir $rootDir
 set serveurLogFileName [file join $rootDir serverLog serveurLog.tcl]
 
-puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : Starting cultiPi - PID : [pid]"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiPi : Starting cultiPi - PID : [pid]"
 set TimeStartcultiPi [clock milliseconds]
 
 set fileName(cultiPi,confRootDir) [lindex $argv 0]
-puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : server : XML Conf directory : $fileName(cultiPi,confRootDir)"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiPi : server : XML Conf directory : $fileName(cultiPi,confRootDir)"
 if {$fileName(cultiPi,confRootDir) == ""} {
-    puts "CultiPi : Error : conf directory must be defined"
+    puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : Error : conf directory must be defined"
     return
 }
 set fileName(cultiPi,conf) [file join $fileName(cultiPi,confRootDir) conf.xml]
