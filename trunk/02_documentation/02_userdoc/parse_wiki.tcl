@@ -57,15 +57,15 @@ proc removeDiatric {st} {
 
 proc parseTitle {line level} {
 
-   if {[string match "*=*Sommaire*=*" $line]} {
+   if {[string match "=*Sommaire*=*" $line]} {
       return ""
-   } elseif {[string match "*====*====*" $line]} {
+   } elseif {[string match "====*====*" $line]} {
       incr level 4
-   } elseif {[string match "*===*===*" $line]} {
+   } elseif {[string match "===*===*" $line]} {
       incr level 3
-   } elseif {[string match "*==*==*" $line]} {
+   } elseif {[string match "==*==*" $line]} {
       incr level 2
-   } elseif {[string match "*=*=*" $line]} {
+   } elseif {[string match "=*=*" $line]} {
       incr level 1
    } else {
       return $line
@@ -345,7 +345,7 @@ proc parse {inFileName outFileName level annexeFile} {
       }
       
 	  if {$::inCode == 0} {set ::startInCode 0}
-      if {$::startInCode > 1} {set line "\newline$line"}
+      if {$::startInCode > 1} {set line "\\newline $line"}
 	  if {$::inCode == 1} {incr ::startInCode}
 
       if {[string first {#summary} $line] != -1} {
