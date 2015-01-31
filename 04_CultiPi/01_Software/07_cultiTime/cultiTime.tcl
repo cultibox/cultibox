@@ -2,8 +2,8 @@
 # Il faut que Wiring Pi soit installé : http://wiringpi.com/download-and-install/
 
 # Source files
-set rootDir [file dirname [file dirname [info script]]]
-source [file join $rootDir 07_cultiTime src MCP7940N.tcl]
+set rootDir [file dirname [info script]]
+source [file join $rootDir src MCP7940N.tcl]
 
 # Le principe est simple :
 # Au démarrage , Si l'heure du RPi n'est pas à jour , on met à jour par rapport à l'horloge temps réel
