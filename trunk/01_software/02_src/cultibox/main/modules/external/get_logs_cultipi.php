@@ -24,6 +24,10 @@
             exec("sudo cat /var/log/cultipi/cultipi.log 2>/dev/null | tail -100",$ret[0],$err);
             $ret[1]="";
             break;
+        case "logs_service":
+            exec("sudo cat /var/log/cultipi/cultipi-service.log 2>/dev/null | tail -100",$ret[0],$err);
+            $ret[1]="";
+            break;
         default:
             break;
     }

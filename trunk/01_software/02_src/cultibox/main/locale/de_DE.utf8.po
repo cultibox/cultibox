@@ -1791,6 +1791,12 @@ msgstr "Klicken Sie auf das Bild, um die Protokolle der MySQL-Dienst zu sehen"
 msgid "CULTIPI_LOGS_CULTIPI"
 msgstr "Klicken Sie auf das Bild, um die Protokolle Cultipi Service anzuzeigen"
 
+msgid "CULTIPI_LOGS_SERVICE"
+msgstr "Klicken Sie auf das Bild, um die Protokolle von Systemdiensten anzuzeigen"
+
+msgid "CULTIPI_DL_LOGS_SERVICE"
+msgstr "Klicken Sie auf das Bild, um die Protokolle der Systemdienste herunterladen"
+
 msgid "CULTIPI_DL_LOGS_HTTPD"
 msgstr "Klicken Sie auf das Bild, um die Protokolle HTTP-Dienst herunterladen"
 
