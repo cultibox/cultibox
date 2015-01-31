@@ -1833,6 +1833,9 @@ msgstr "Comprobación de la configuración"
 msgid "CULTIPI_SOFT_VERSION" 
 msgstr "Software Version"
 
+msgid "CULTICONF_SOFT"
+msgstr "Software Culticonf"
+
 msgid "CULTIPI_SOFT" 
 msgstr "Software Cultipi"
 
