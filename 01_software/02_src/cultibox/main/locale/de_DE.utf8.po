@@ -1743,6 +1743,9 @@ msgstr "Aktuelles Programm"
 
 
 #For the Cultipi part:
+msgid "EXPORT_CONF"
+msgstr "Konfiguration exportieren"
+
 msgid "CONFIRM_RESTART_CULTIPI_TITLE"
 msgstr "Dienst neu starten Cultipi"
 

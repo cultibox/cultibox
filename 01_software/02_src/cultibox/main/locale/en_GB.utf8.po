@@ -1742,6 +1742,9 @@ msgid "CURRENT_PROG_COMMENT"
 msgstr "Current program"
 
 #For the Cultipi part:
+msgid "EXPORT_CONF"
+msgstr "Export Configuration"
+
 msgid "CONFIRM_RESTART_CULTIPI_TITLE"
 msgstr "Service Restart Cultipi"
 

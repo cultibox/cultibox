@@ -20,6 +20,7 @@ fi
 echo "  * Exporting your current database..."
 /usr/bin/mysqldump --defaults-extra-file=/var/www/cultibox/sql_install/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox > $home/cultibox/backup_cultibox.sql
 if [ $? -eq 0 ]; then
+    cp $home/cultibox/backup_cultibox.sql /var/www/cultibox/tmp/export/
     echo "... cultibox: OK"
 else 
     echo "==== Error during the backup of the cultibox database ===="
