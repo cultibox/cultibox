@@ -1745,6 +1745,9 @@ msgstr "Programme courant"
 
 
 # For the Cultipi part 
+msgid "EXPORT_CONF"
+msgstr "Exporter la configuration"
+
 msgid "CULTIPI_CONFIRM_UPDATE"
 msgstr "Des mises à jour sont disponibles, voulez-vous les installer?"
 

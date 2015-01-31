@@ -70,6 +70,40 @@ $(document).ready(function(){
     });
 
 
+    //Export configuration:
+     $('#export_conf').click(function(e) {
+        e.preventDefault();
+
+         $.blockUI({
+                message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/export_conf.php"
+                    }).done(function (data) {
+                        var json = jQuery.parseJSON(data);
+                        $.unblockUI();
+                        if(json==1) {
+                            $.fileDownload('tmp/export/backup_cultibox.sql');
+                        }
+                    });
+                }
+            });
+    });
+
+
      // Call the fileupload widget and set some parameters
      $('#confupload').fileupload({
         dataType: 'json',
