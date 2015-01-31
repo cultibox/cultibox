@@ -26,5 +26,4 @@ sed -i "/www-data ALL = (root) NOPASSWD: \/bin\/chmod/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/bin\/cp/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/init.d\/networking/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/apt-get/d" /etc/sudoers
-sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/cron.daily\/cultipi/d" /etc/sudoers
 
