@@ -11,8 +11,21 @@ proc emeteur_regulation {nbPlug plgPrgm} {
     }
     
     if {$plgPrgm == ""} {
+    
+        # Si le programme n'est pas définit
         ::piLog::log [clock milliseconds] "error" "Plug $nbPlug programme is empty"
-    } elseif {$plgPrgm != "off" && $plgPrgm != "on"} {
+        
+    } elseif {$::sensor(firsReadDone) == 0} {
+    
+        # Si la première lecture des capteurs n'est pas faite, on inhibe la régulation
+        ::piLog::log [clock milliseconds] "info" "First read of sensor is not done, regulation inhibited"
+        
+    } elseif {$plgPrgm == "off" || $plgPrgm == "on"} {
+
+        # Si l'état à piloter et on ou off, ce n'est vraiment pas normal !
+        ::piLog::log [clock milliseconds] "error" "couldnt make regulation with programm $plgPrgm"
+
+    } else {
 
         # En fonction de la conf la prise doit être allumée ou éteinte en régulation secondaire
         set etatSecondaire "off"
@@ -217,8 +230,6 @@ proc emeteur_regulation {nbPlug plgPrgm} {
         }
  
  
-    } else {
-        ::piLog::log [clock milliseconds] "error" "couldnt make regulation with programm $plgPrgm"
     }
 
 }

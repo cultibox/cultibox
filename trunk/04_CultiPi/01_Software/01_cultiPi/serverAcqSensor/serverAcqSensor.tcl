@@ -24,6 +24,10 @@ source [file join $rootDir serverAcqSensor src serveurMessage.tcl]
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
 set SubscriptionIndex 0
+
+# On initialise les variables globales appelable depuis l'extérieur
+set ::sensor(firsReadDone) 0
+
 # On initialise la conf XML
 array set configXML {
     verbose     debug
@@ -234,7 +238,10 @@ proc readSensors {} {
         searchSensorsConnected
     }
     
-    # On rechercher après 1 seconde
+    # Une fois l'ensemble lu, on l'indique
+    set ::sensor(firsReadDone) 1
+    
+    # On recherche après 1 seconde
     after 1000 readSensors
 }
 
