@@ -181,7 +181,7 @@
             {
                 if (pathinfo($file, PATHINFO_EXTENSION) == "png")
                 {
-                    echo '<div class="syno_add_element_elem" id="' . $file . '" " >';
+                    echo '<div class="syno_add_element_elem" id="' . $file . '">';
                     echo '    <img src="main/libs/img/images-synoptic-other/' . $file . '" alt="' . basename($file) . '" style="width:40px; cursor: move" >';
                     echo '</div>';
                 }
@@ -343,7 +343,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><button id="wifi_scan" alt=""><?php echo __('WIFI_SCAN_ESSID'); ?></button></td>
+            <td><button id="wifi_scan"><?php echo __('WIFI_SCAN_ESSID'); ?></button></td>
         </tr>
         <tr>
             <td class="conf-marge-field-wifi"></td>
@@ -374,7 +374,7 @@
                 <img src='/cultibox/main/libs/img/eye.png' alt='' title="<?php echo __('SHOW_CURRENT_PWD'); ?>" id="eyes" <?php if(strcmp("$wifi_key_type","NONE")==0) echo 'style="display:none"';  ?>></td>
                 <td>
                     <div id="error_wifi_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div>
-                    <div id="error_empty_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_EMPTY_PASSWORD'); ?></div>
+                    <div id="error_wifi_empty_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_EMPTY_PASSWORD'); ?></div>
                     <div id="error_password_wep" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WEP_KEY_TYPE'); ?></div>
                     <div id="error_password_wpa" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WPA_KEY_TYPE'); ?></div>
                 </td>
@@ -444,12 +444,12 @@
             <a href="" id="dl_logs_cultipi" name="dl_cultipi_logs"><img src='/cultibox/main/libs/img/download-logs-culti.png' alt='' title="<?php echo __('CULTIPI_DL_LOGS_CULTIPI'); ?>"></a>
             <img src='/cultibox/main/libs/img/service_on.png' alt='' title="<p class='p_center'><b><i><?php echo __('CULTIPI_SERVICE'); ?>:</i></b></p><?php echo __('SERVICE_ON'); ?>" id="cultipi_on" style="display:none">
             <img src='/cultibox/main/libs/img/service_off.png' alt='' title="<p class='p_center'><b><i><?php echo __('CULTIPI_SERVICE'); ?>:</i></b></p><?php echo __('SERVICE_OFF'); ?>" id="cultipi_off">
-            <a href="" name="restart_service" id="restart_cultipi"><img src='/cultibox/main/libs/img/service_restart.png' alt='' title="<?php echo __('RESTART_SERVICE'); ?>" />
+            <a href="" name="restart_service" id="restart_cultipi"><img src='/cultibox/main/libs/img/service_restart.png' alt='' title="<?php echo __('RESTART_SERVICE'); ?>" /></a>
         </td>
         <td>
             <img src='/cultibox/main/libs/img/versions.png' id="version_soft" alt='' title="">
-            <a href="" name="restart_rpi" id="restart_rpi"><img src='/cultibox/main/libs/img/rpi_restart.png' alt='' title="<?php echo __('RPI_RESTART'); ?>" />
-            <a href="" name="update_rpi" id="update_rpi"><img src='/cultibox/main/libs/img/update_rpi.png' alt='' title="<?php echo __('TOOLTIP_UPDATE_RPI'); ?>" />
+            <a href="" name="restart_rpi" id="restart_rpi"><img src='/cultibox/main/libs/img/rpi_restart.png' alt='' title="<?php echo __('RPI_RESTART'); ?>" /></a>
+            <a href="" name="update_rpi" id="update_rpi"><img src='/cultibox/main/libs/img/update_rpi.png' alt='' title="<?php echo __('TOOLTIP_UPDATE_RPI'); ?>" /></a>
         <td></td>
     </tr>
 </table>
@@ -579,7 +579,7 @@
 </div>
 
 <div id="network_new_addr_set" style="display:none">
-    <p><?php echo __('AVAILABLE_MODULE_SET'); ?></p>
+    <?php echo __('AVAILABLE_MODULE_SET'); ?>
 </div>
 
 <div id="error_restore_conf" style="display:none">
