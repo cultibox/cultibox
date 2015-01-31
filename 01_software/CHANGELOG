@@ -5,6 +5,7 @@ Cultibox (2.0.29) precise; urgency=low
     + Correction de la boite de dialgue
     + Correction de la synchronisation
     + Correction du décallage d'une here sur les programmes
+    + Fonction d'upgrade des packages
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Thu Jan 29 12:12:34 CEST 2015
 
