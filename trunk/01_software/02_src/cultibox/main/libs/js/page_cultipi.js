@@ -539,6 +539,17 @@ $(document).ready(function(){
                 $("#syno_configure_element_image_plug").hide();
                 $("#syno_configure_element_image_sensor").hide();
                 $("#syno_configure_element_image_" + typeOfElem).show();
+                
+                // Active plug force only for plugs
+                if (typeOfElem == "plug")
+                {
+                    $("#syno_configure_element_force_plug").show();
+                }
+                else
+                {
+                    $("#syno_configure_element_force_plug").hide();
+                }
+                
                 console.debug('Type : ' + typeOfElem);
                 console.debug('Image : ' + objJSON.image);
                 $("#syno_configure_element").dialog({

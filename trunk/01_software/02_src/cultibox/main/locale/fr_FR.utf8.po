@@ -1796,6 +1796,21 @@ msgstr "Ajouter un élément"
 msgid "CULTIPI_SYNO_CONF"
 msgstr "Configurer"
 
+msgid "CULTIPI_SYNO_IMAGE"
+msgstr "Image"
+
+msgid "CULTIPI_SYNO_ROTATION"
+msgstr "Rotation"
+
+msgid "CULTIPI_SYNO_PROFONDEUR"
+msgstr "Profondeur"
+
+msgid "CULTIPI_SYNO_ZOOM"
+msgstr "Zoom"
+
+msgid "CULTIPI_SYNO_PILOTAGE"
+msgstr "Pilotage"
+
 msgid "CULTIPI_LOGS_HTTPD"
 msgstr "Cliquez sur l'image pour afficher les logs du service Http"
 
