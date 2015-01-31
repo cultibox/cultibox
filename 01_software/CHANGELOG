@@ -1,3 +1,9 @@
+Cultibox (2.0.30) precise; urgency=low
+    + Possibilité de voir et télécharger les logs des services
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat Jan 31 10:42:23 CEST 2015
+
+
 Cultibox (2.0.29) precise; urgency=low
     + Correction de la prise d'image pour les webcams
     + Suppréssion de la configuration de la couleur des puissances
