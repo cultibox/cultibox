@@ -129,6 +129,27 @@
             $ret_array = cultipi\getPlugLiveValue($index);
 
             break;
+        case "forcePlug" :
+            $id = "";
+            if((isset($_POST['id'])) && (!empty($_POST['id']))) {
+                $id = $_POST['id'];
+            }
+            $value = "";
+            if((isset($_POST['value'])) && (!empty($_POST['value']))) {
+                $value = $_POST['value'];
+            }
+            $time = "";
+            if((isset($_POST['time'])) && (!empty($_POST['time']))) {
+                $time = $_POST['time'];
+            }
+            
+            # retrieve plug number from id
+            $plugParam = cultipi\getSynopticDBElemByID($id);
+            
+            # Pilot plug
+            $ret_array = cultipi\forcePlug($plugParam["indexElem"],$value,$time);
+
+            break;            
         default:
             break;
     }

@@ -1799,6 +1799,9 @@ msgstr "Zoom"
 msgid "CULTIPI_SYNO_PILOTAGE"
 msgstr "Steering"
 
+msgid "CULTIPI_SYNO_PILOTER"
+msgstr "Pilot"
+
 msgid "CULTIPI_LOGS_HTTPD"
 msgstr "Click on the image to view the logs of the Http service"
 
