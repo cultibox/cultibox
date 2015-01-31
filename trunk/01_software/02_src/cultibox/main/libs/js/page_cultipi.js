@@ -843,6 +843,44 @@ var updateIsAked = 0;
                                 text: OK_button,
                                 click: function () {
                                     $( this ).dialog("close");
+                                    $.blockUI({
+                                        message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                                        centerY: 0,
+                                        css: {
+                                            top: '20%',
+                                            border: 'none',
+                                            padding: '5px',
+                                            backgroundColor: 'grey',
+                                            '-webkit-border-radius': '10px',
+                                            '-moz-border-radius': '10px',
+                                            opacity: .9,
+                                            color: '#fffff'
+                                        },
+                                        onBlock: function() {
+                                            $.ajax({
+                                                cache: false,
+                                                url: "main/modules/external/upgrade_rpi.php",
+                                                async: false
+                                        }).done(function (data) {
+                                            $.unblockUI();
+                                                $("#cultipi_updated").dialog({
+                                                    resizable: false,
+                                                    height:150,
+                                                    width: 500,
+                                                    modal: true,
+                                                    closeOnEscape: false,
+                                                    dialogClass: "popup_message",
+                                                    buttons: [{
+                                                        text: CLOSE_button,
+                                                        click: function () {
+                                                            $( this ).dialog("close");
+                                                            window.location = "/cultibox"
+                                                        }
+                                                    }]
+                                                });
+                                        });
+                                        }
+                                    });
                                 }}, {
                                 text: CLOSE_button,
                                 click: function () {
