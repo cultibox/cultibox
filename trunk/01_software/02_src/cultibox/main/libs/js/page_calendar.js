@@ -967,7 +967,6 @@ $(document).ready(function() {
             var date_ref_formated = date_ref.getFullYear() +'-'+ addZ(date_ref.getMonth()+1) +'-'+ addZ(date_ref.getDate());
             var date_ref_parts=date_ref_formated.split('-');
             date_ref=new Date(date_ref_parts[0], parseInt(date_ref_parts[1], 10) - 1, date_ref_parts[2]).getTime();
-            alert("poe");
 
             $("#edit_duration_started_title").css("display","none");
             $("#edit_duration_start_title").css("display","none");
