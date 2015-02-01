@@ -259,12 +259,6 @@ sed -i '/[2-6]:23:respawn:\/sbin\/getty 38400 tty[2-6]/s%^%#%g' /etc/inittab
  * Désactivation de l'ipv6:
 
 {{{
-cat << EOF > /etc/sysctl.d/disable_ipv6.conf 
-net.ipv6.conf.all.disable_ipv6=1
-EOF
-}}}
-
-{{{
 echo "blacklist ipv6" >> /etc/modprobe.d/fbdev-blacklist.conf
 }}}
 
