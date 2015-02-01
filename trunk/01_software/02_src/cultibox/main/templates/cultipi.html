@@ -324,20 +324,22 @@
 <br />
 <hr />
 <br /><br />
+
+<!-- Start of wirless conf tab -->
 <table class="table_width">
     <tr>
         <td class="conf-marge"></td>
         <td class="conf-title"><label class="subsub_title"><?php echo __('WIRELESS_CONF'); ?>:</label><img src="main/libs/img/infos.png" alt="" title="<?php if(strcmp("$wlan_phy","")==0) { echo __('NO_IFACE_FOUND'); } else { echo __('PHY_ADDR').": ".strtoupper($wlan_phy); } ?>" /></td>
         <td>
             <select name="activ_wifi" id="activ_wifi">
-                <option value="True" <?php if(strcmp("$wifi_enable","True")==0) echo "selected"; ?>><?php echo __('ACTIVATED'); ?></option>
-                <option value="False" <?php if(strcmp("$wifi_enable","False")==0) echo "selected"; ?>><?php echo __('DEACTIVATED'); ?></option>
+                <option value="True" <?php if($wifi_enable == "True") echo "selected"; ?>><?php echo __('ACTIVATED'); ?></option>
+                <option value="False" <?php if($wifi_enable == "False") echo "selected"; ?>><?php echo __('DEACTIVATED'); ?></option>
             </select>
         </td>
     </tr>
 </table>
 <br />
-<div id="wifi_interface" <?php if((!$wifi_enable)||(strcmp("$wlan_phy","")==0)) { echo 'style="display:none"'; } ?>>
+<div id="wifi_interface" <?php if($wifi_enable == "False" || $wlan_phy == "") { echo 'style="display:none"'; } ?>>
     <table class="table_width">
         <tr>
             <td></td>
