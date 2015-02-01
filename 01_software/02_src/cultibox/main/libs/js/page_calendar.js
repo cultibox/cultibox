@@ -806,8 +806,8 @@ $(document).ready(function() {
                 copiedEventObject.title = "<?php echo __('CALENDAR_DAILY_PROGRAM') ; ?>" + " " + originalEventObject.title;
                 copiedEventObject.description = copiedEventObject.title;
                 copiedEventObject.id = 1000;
-                //copiedEventObject.start = start;
-                //copiedEventObject.end = end;
+                copiedEventObject.start = date;
+                copiedEventObject.end = date;
 
                 // Check if there is an other programm on the same day
                 if (daily_program_check_overlaping(copiedEventObject)) {
