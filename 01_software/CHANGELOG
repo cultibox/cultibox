@@ -1,3 +1,9 @@
+Cultibox (2.0.31) precise; urgency=low
+    + Fenêtre d'attente de chargement des pages
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Feb 02 18:24:56 CEST 2015
+
+
 Cultibox (2.0.30) precise; urgency=low
     + Possibilité de voir et télécharger les logs des services
     + Ajout de l'export de la configuration
