@@ -177,6 +177,11 @@ proc readSensors {} {
                         set ::sensor($sensorType,$index,updateStatusComment) ${msg}
                         set ::sensor($index,value,1) ""
                         ::piLog::log [clock milliseconds] "error" "default when reading valueHP of sensor $sensorType index $index (adress module : $moduleAdress - register $register) message:-$msg-"
+                        
+                        # On demande un reboot du logiciel dans ce cas
+                        ::piLog::log [clock milliseconds] "error" "Ask software cultipi reboot"
+                        ::piServer::sendToServer $::port(serverCultiPi) "$::port(serverAcqSensor) [incr ::TrameIndex] stop"
+                        
                     } else {
                         set computedValue [expr ($valueHP * 256 + $valueLP) / 100.0]
                         set ::sensor($sensorType,$index,value,1) $computedValue
@@ -211,6 +216,11 @@ proc readSensors {} {
                             set ::sensor($sensorType,$index,updateStatusComment) ${msg}
                             set ::sensor($index,value,2) ""
                             ::piLog::log [clock milliseconds] "error" "default when reading valueHP of sensor $sensorType index $index (@ $moduleAdress - reg $register) message:-$msg-"
+
+                            # On demande un reboot du logiciel dans ce cas
+                            ::piLog::log [clock milliseconds] "error" "Ask software cultipi reboot"
+                            ::piServer::sendToServer $::port(serverCultiPi) "$::port(serverAcqSensor) [incr ::TrameIndex] stop"
+
                         } else {
                             set computedValue [expr ($valueHP * 256 + $valueLP) / 100.0]
                             set ::sensor($sensorType,$index,value,2) $computedValue
