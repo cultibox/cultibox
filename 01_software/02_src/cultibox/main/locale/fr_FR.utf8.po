@@ -1899,9 +1899,6 @@ msgstr "Dernière mise à jour des prises : "
 msgid "SYNO_UPDATE_SENSOR_HOUR"
 msgstr "Dernière mise à jour des capteurs : "
 
-msgid "CONF_MGT"
-msgstr "Gestion de la configuration"
-
 msgid "IMPORT_CONF_CULTIPI"
 msgstr "Importer une configuration"
 

@@ -1884,9 +1884,6 @@ msgstr "Zuletzt aktualisiert wurde:"
 msgid "SYNO_UPDATE_SENSOR_HOUR"
 msgstr "Letzte Aktualisierung der Sensoren :"
 
-msgid "CONF_MGT"
-msgstr "Configuration Management"
-
 msgid "IMPORT_CONF_CULTIPI"
 msgstr "Konfiguration importieren"
 
