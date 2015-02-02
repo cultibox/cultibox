@@ -211,13 +211,17 @@ proc updatePlug {plugNumber} {
 
 proc savePlugSendValue {plug value} {
     
-    # On enregistre l'état de la prise
-    set ::plug($plug,value)  $value
-    
-    # On ajoute à la liste des valeurs mise à jour
-    # Si seulement il n'y a pas déjà une valeur
-    if {[lsearch $::plug(updated) $plug] == -1} {
-        lappend ::plug(updated)  $plug
+    # On ne doit mettre à jour les abonnement que si l'état de la prise à changé
+    if {$::plug($plug,value) != $value} {
+        
+        # On enregistre l'état de la prise
+        set ::plug($plug,value)  $value
+        
+        # On ajoute à la liste des valeurs mise à jour
+        # Si seulement il n'y a pas déjà une valeur
+        if {[lsearch $::plug(updated) $plug] == -1} {
+            lappend ::plug(updated)  $plug
+        }
     }
     
 }
