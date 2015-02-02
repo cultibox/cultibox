@@ -513,6 +513,9 @@ Editer le fichier */etc/rc.local et remplacer le fichier par les lignes suivante
 #!/bin/bash -e
 
 if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
+    #Configuration du portail captif:
+     iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+
     mac="`ifconfig wlan0|grep HWa|awk -F 'HWaddr ' '{print $2}'|cut -d: -f5,6`"
     mac="`echo ${mac} | sed  -e 's/://g'`"
 
