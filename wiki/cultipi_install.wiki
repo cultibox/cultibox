@@ -412,24 +412,19 @@ include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
 include_shell "/usr/share/lighttpd/create-mime.assign.pl"
 include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
 
-$HTTP["scheme"] == "http" {
-    $HTTP["remoteip"] == "10.0.0.0/8" {
-        $HTTP["host"] =~ ".*" {
-            url.redirect = ("^/$" => "/cultibox/index.php?menu=cultipi&submenu=network_conf_ui")
-        }
-    }
+$HTTP["remoteip"] == "10.0.0.0/8" {
+        url.redirect = ("^/$" => "/cultibox/index.php?menu=cultipi&submenu=network_conf_ui")
 }
 
 
 
 auth.require = ( "/cultibox/" =>
-   (
-      "method" => "digest",
-      "realm" => "Identification",
-      "require" => "valid-user"
-   )
+    (
+    "method" => "digest",
+    "realm" => "Identification",
+    "require" => "valid-user"
+    )
 )
-
 
 }}}
 
