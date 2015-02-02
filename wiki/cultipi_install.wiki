@@ -567,56 +567,60 @@ esac
 Le système ifplugd permet de relancer la configuration de l'interface eth0 dès le moment ou un câble est branché.
 
 
- * Installation et configuration d'un serveur DHCP pour le mode adHoc
+ * Installation et configuration d'un serveur DHCP pour le mode adHoc e de dnsmasq:
 
 {{{
-apt-get install udhcpd
+apt-get install isc-dhcp-server dnsmasq
 }}}
 
 {{{
-vi /etc/udhcpd.conf
+vi /etc/dhcp/dhcpd.conf
 }}}
 
 Le fichier de configuration du dhcp doit contenir les directives suivantes:
 
 {{{
-start		10.0.0.102	
-end		10.0.0.254	
-interface	wlan0		
-remaining	yes		
-opt	dns	10.0.0.100
-option	subnet	255.0.0.0
-opt	router	10.0.0.100
-opt	wins	10.0.0.100
-option	domain	local
-option	lease	864000		# 10 days of seconds
+ddns-update-style none;
+option domain-name "local";
+option domain-name-servers 10.0.0.100;
+default-lease-time 600;
+max-lease-time 7200;
+authoritative;
+log-facility local7;
+
+subnet 10.0.0.0 netmask 255.0.0.0 {
+    range 10.0.0.102 10.0.0.254;
+    option routers 10.0.0.100;
+    option domain-name-servers 10.0.0.100;
+}
+
 }}}
 
- * Activation du serveur DHCP:
+
+Editer ensuie le fichier */etc/default/isc-dhcp-server* pour activer le serveur sur la bonne interface:
 
 {{{
-vi /etc/default/udhcpd
+INTERFACES="wlan0"
 }}}
 
-Remplacer:
+ * Configuration de dnsmasq:
+
+Editer le fichier */etc/dnsmasq.conf qui doit contenir les directives suivantes:
 
 {{{
-DHCPD_ENABLED="no"
+address=/#/10.0.0.100
+interface=wlan0
+listen-address=10.0.0.100
+no-dhcp-interface=wlan0
 }}}
 
-Par: 
+
+ * Redémarrage du serveur DHCP et de dnsmasq:
 
 {{{
-DHCPD_ENABLED="yes"
+/etc/init.d/isc-dhcp-server force-reload
+/etc/init.d/dnsmasq force-reload
 }}}
-
- * Redémarrage du serveur DHCP:
-
-{{{
-/etc/init.d/udhcpd force-reload
-}}}
-
-
 
 
 = Finalisation de l'image = 
