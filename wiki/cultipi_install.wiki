@@ -157,6 +157,12 @@ Modifier la ligne commençant par 127.0.0.1 pour qu'elle ressemble à ceci:
 127.0.0.1 localhost cultipi
 }}}
 
+ * Désactivation des modules inutiles :
+
+{{{
+echo "blacklist pcm512x" >> /etc/modprobe.d/fbdev-blacklist.conf
+}}}
+
  * Remplacement du système de logs par syslogd qui consomme moins de ressources:
 
 {{{
