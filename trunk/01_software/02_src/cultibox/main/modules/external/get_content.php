@@ -23,6 +23,14 @@ if((isset($_GET['page']))&&(!empty($_GET['page']))) {
         }
     }
 
+    if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) {
+        if(strpos($_SERVER['REMOTE_ADDR'],"10.0.0.")!==false) {
+            $page="cultipi";
+            $submenu="network_conf_ui";
+        }
+    }
+
+
     ob_start();
     include $GLOBALS['BASE_PATH'].'main/scripts/'.$page.'.php';
     include $GLOBALS['BASE_PATH'].'main/scripts/post_script.php';
