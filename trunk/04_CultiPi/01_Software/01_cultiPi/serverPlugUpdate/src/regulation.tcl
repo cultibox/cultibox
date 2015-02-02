@@ -5,8 +5,8 @@ proc emeteur_regulation {nbPlug plgPrgm} {
     set programmeToSend $::actualProgramm
     
     # On vérifie si l'état de la dernière commande envoyée existe
-    if {[array name ::plug -exact $nbPlug,lastValue] == ""} {
-        set ::plug($nbPlug,lastValue) ""
+    if {[array name ::plug -exact $nbPlug,value] == ""} {
+        set ::plug($nbPlug,value) ""
         set ::plug($nbPlug,inRegulation) "NONE"
     }
     
@@ -224,14 +224,10 @@ proc emeteur_regulation {nbPlug plgPrgm} {
         }
         
         # On envoi la commande au module
-        if {$valeurToPilot != "" && $valeurToPilot != $::plug($nbPlug,lastValue)} {
+        if {$valeurToPilot != "" && $valeurToPilot != $::plug($nbPlug,value)} {
             ::wireless::setValue $nbPlug $valeurToPilot
-            set ::plug($nbPlug,lastValue) $valeurToPilot
         }
- 
- 
     }
-
 }
 
 
