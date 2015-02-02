@@ -126,7 +126,7 @@ service ssh restart
 }}}
 
 
- * Ajout de l'utilisateur Cultipi, suppréssion de l'utilisateur pi:
+ * Ajout de l'utilisateur Cultipi, suppression de l'utilisateur pi:
 
 {{{
 adduser cultipi
@@ -417,31 +417,9 @@ $HTTP["scheme"] == "http" {
         $HTTP["host"] =~ ".*" {
             url.redirect = ("^/$" => "/cultibox/index.php?menu=cultipi&submenu=network_conf_ui")
         }
-    } else  $HTTP["remoteip"] != "10.0.0.0/8" {
-        $HTTP["host"] =~ ".*" {
-            #url.redirect = (".*" => "https://%0$0")
-            url.redirect = ("^/$" => "/cultibox")
-        }
     }
 }
 
-
-$HTTP["scheme"] == "https" {
-    $HTTP["remoteip"] == "10.0.0.0/8" {
-        $HTTP["host"] =~ ".*" {
-            url.redirect = (".*" => "http://%0$0")
-        }
-    }
-
-    $HTTP["url"] =~ "^/setup($|/)" {
-        dir-listing.activate = "enable"
-    }
-}
-
-$SERVER["socket"] == ":443" {
-        ssl.engine = "enable"
-        ssl.pemfile = "/etc/lighttpd/ssl/cultipi.pem"
-}
 
 
 auth.require = ( "/cultibox/" =>
