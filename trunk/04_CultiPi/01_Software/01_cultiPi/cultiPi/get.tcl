@@ -50,7 +50,7 @@ proc messageGestion {message} {
 set killID [after 2000 {
     set ::forever 1
     puts "TIMEOUT"
-}
+}]
 
 vwait forever
 
