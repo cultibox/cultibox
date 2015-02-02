@@ -1884,9 +1884,6 @@ msgstr "Última actualización de tomar : "
 msgid "SYNO_UPDATE_SENSOR_HOUR"
 msgstr "Ultima actualización de los sensores : "
 
-msgid "CONF_MGT" 
-msgstr "Gestión de la Configuración" 
-
 msgid "IMPORT_CONF_CULTIPI" 
 msgstr "Importar configuración"
 
