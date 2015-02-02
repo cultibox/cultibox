@@ -9,7 +9,7 @@ package require piLog
 package require piServer
 package require piTools
 
-set port(serverGet) 6022
+set port(serverSet) 6024
 set port(serverCultipi) 6000
 set port(serverAcqSensor) 6006
 set port(serverPlugUpdate) 6004
@@ -25,7 +25,7 @@ set variable [lindex $argv 1]
 
 # Demande d'écriture du repere
 # Trame standard : [FROM] [INDEX] [commande] [argument]
-::piServer::sendToServer $port($module) "$port(serverGet) 0 setRepere [lrange $argv 1 [expr $argc - 1]]"
+::piServer::sendToServer $port($module) "$port(serverSet) 0 setRepere [lrange $argv 1 [expr $argc - 1]]"
 
 
 # tclsh /opt/cultipi/cultiPi/set.tcl serverPlugUpdate 1 on 10
