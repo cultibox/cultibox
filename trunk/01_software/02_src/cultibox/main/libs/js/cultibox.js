@@ -11,6 +11,7 @@ var DIR_CONF_UPDATE="";
 var DIR_CONF_NOT_UPTODATE="";
 var RELOAD_button="";
 var SELECT_button="";
+var LOADING="";
 
 
 var lang="";
@@ -51,6 +52,7 @@ if(lang=="it_IT") {
     SAVING="Backup dei dati in corso, attendere prego...";
     DIR_CONF_UPDATE="La configurazione è aggiornato";
     DIR_CONF_NOT_UPTODATE="La configurazione utilizzata non è aggiornata, clicca qui per aggiornare la configurazione: <button id='update_conf'>Aggiorna configurazione</button>";
+    LOADING="Caricamento in corso, attendere prego...";
 } else if(lang=="de_DE") {
     RELOAD_button="Rescan Netzwerke";
     SELECT_button="Prüfen";
@@ -66,6 +68,7 @@ if(lang=="it_IT") {
     SAVING="Datensicherung läuft, bitte warten...";
     DIR_CONF_UPDATE="Ihre Konfiguration ist auf dem neuesten Stand";
     DIR_CONF_NOT_UPTODATE="verwendet wird, nicht aktualisierte Konfiguration, klicken Sie hier, um die Konfiguration zu aktualisieren: <button id='update_conf'>Aktualisieren Sie Konfiguration</button>";
+    LOADING="Laden Laden, bitte warten...";
 } else if(lang=="en_GB") {
     RELOAD_button="Rescan networks";
     SELECT_button="Validate";
@@ -81,6 +84,7 @@ if(lang=="it_IT") {
     SAVING="Data saving in progress, please wait...";
     DIR_CONF_UPDATE="Your configuration is up to date";
     DIR_CONF_NOT_UPTODATE="The configuration used is not updated, click here to update the configuration: <button id='update_conf'> Update configuration </button>";
+    LOADING="Loading, please wait...";
 } else if(lang=="es_ES") {
     RELOAD_button="Volver a examinar las redes";
     SELECT_button="Validar";
@@ -96,6 +100,7 @@ if(lang=="it_IT") {
     SAVING="Copia de datos en curso, espere por favor...";
     DIR_CONF_UPDATE="Su configuración está al día";
     DIR_CONF_NOT_UPTODATE="La configuración utilizada no está actualizado, haga clic aquí para actualizar la configuración: <button id='update_conf'>Actualizar configuración botón</button>";
+    LOADING="Cargando, espere por favor...";
 } else {
     RELOAD_button="Re-scanner les réseaux";
     SELECT_button="Valider";
@@ -111,6 +116,7 @@ if(lang=="it_IT") {
     SAVING="Sauvegarde des données en cours, patientez s'il vous plait..."
     DIR_CONF_UPDATE="Votre configuration est à jour";
     DIR_CONF_NOT_UPTODATE="La configuration utilisée n'est pas à jour, cliquez ici pour mettre la configuration à jour: <button id='update_conf'>Mise à jour de la configuration</button>";
+    LOADING="Chargement des données en cours, patientez s'il vous plait...";
 }
 
 
@@ -251,16 +257,33 @@ function get_content(page,get_array) {
    //Clean dialog box except the software dialog box:
    $(".ui-dialog-content").not('.message').dialog('destroy').remove();
 
-   $.ajax({
-        cache: false,
-        async: false,
-        url: "main/modules/external/get_content.php",
-        data: {page:page, get_array:JSON.stringify(get_array)}
-    }).done(function (data) {
-        //Some odd chars appear when including php files due to echo include that returns true value, removing them:
-        $("#content").html(data);
-        $("#content").load();
-        active_menu(page);
+   $.blockUI({
+            message: LOADING+" <img src=\"main/libs/img/waiting_small.gif\" />",
+            centerY: 0,
+            css: {
+                top: '20%',
+                border: 'none',
+                padding: '5px',
+                backgroundColor: 'grey',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .9,
+                color: '#fffff'
+            },
+            onBlock: function() {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "main/modules/external/get_content.php",
+                    data: {page:page, get_array:JSON.stringify(get_array)}
+                }).done(function (data) {
+                    //Some odd chars appear when including php files due to echo include that returns true value, removing them:
+                    $("#content").html(data);
+                    $("#content").load();
+                    active_menu(page);
+                    $.unblockUI();
+                });
+            }
     });
 }
 
