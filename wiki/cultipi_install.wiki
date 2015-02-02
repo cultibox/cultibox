@@ -540,6 +540,7 @@ if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
     fi
 fi
 
+loadkeys fr
 exit 0
 }}}
 
