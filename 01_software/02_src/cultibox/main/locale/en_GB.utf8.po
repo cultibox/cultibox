@@ -1893,7 +1893,7 @@ msgid "SUCCESS_IMPORT_CONF"
 msgstr "imported configuration with succees"
 
 msgid "ERROR_IMPORT_CONF"
-msgstr "Error while importing your configuration, your previous configuration was restored"
+msgstr "Error while importing your configuration"
 
 msgid "MGT_ACCESS"
 msgstr "Access Management"

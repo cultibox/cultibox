@@ -1,3 +1,9 @@
+Cultibox (2.0.32) precise; urgency=low
+    + Import/export d'une configuration
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Feb 03 15:43:12 CEST 2015
+
+
 Cultibox (2.0.31) precise; urgency=low
     + Fenêtre d'attente de chargement des pages
 

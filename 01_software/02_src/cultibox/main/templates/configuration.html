@@ -86,6 +86,7 @@
             </td>
             <td></td>
         </tr>
+        <?php } ?>
         <tr>
             <td></td>
             <td><?php echo __('EXPORT_CONF'); ?>:</td>
@@ -93,7 +94,6 @@
             </td>
             <td></td>
         </tr>
-        <?php }?>
     </table>
 </div>
 <!-- End of Interface tab -->
@@ -363,6 +363,16 @@
 <div class="popup_error" id="error_update_conf" title="" style="display:none">
     <p><?php echo __('ERROR_UPDATE_CONF'); ?></p>
 </div>
+
+<div id="success_import_conf" title="<?php echo __('IMPORT_CONF'); ?>" style="display:none">
+    <p><?php echo __('SUCCESS_IMPORT_CONF'); ?></p>
+</div>
+
+
+<div id="error_import_conf" title="<?php echo __('IMPORT_CONF'); ?>" style="display:none">
+    <p><?php echo __('ERROR_IMPORT_CONF'); ?></p>
+</div>
+
 
 
 <script>expand("<?php echo $submenu; ?>");</script>

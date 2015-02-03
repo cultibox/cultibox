@@ -90,7 +90,8 @@ $(document).ready(function(){
             $('#import_conf').attr('disabled', false);
 
 
-            data.context = $('#import_conf').click(function () {
+            data.context = $('#import_conf').click(function (e) {
+                e.preventDefault();
                 $.blockUI({
                 message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
                 centerY: 0,

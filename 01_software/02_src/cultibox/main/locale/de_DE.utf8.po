@@ -1894,7 +1894,7 @@ msgid "SUCCESS_IMPORT_CONF"
 msgstr "importierte Konfiguration mit succees"
 
 msgid "ERROR_IMPORT_CONF"
-msgstr "Fehler beim Importieren der Konfiguration, Ihre vorherige Konfiguration wiederhergestellt"
+msgstr "Fehler beim Importieren der Konfiguration"
 
 msgid "MGT_ACCESS"
 msgstr "Zugriffsverwaltung"
