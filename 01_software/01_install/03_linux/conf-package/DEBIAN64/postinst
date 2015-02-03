@@ -29,12 +29,12 @@ chown -R mysql /opt/cultibox/var/mysql
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
     /opt/cultibox/lampp restart
-    sleep 2
+    sleep 6
 
     # Check if mysql is alive
     /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
     if [ $? -ne 0 ]; then
-        sleep 4
+        sleep 6
         /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 -u root -h 127.0.0.1 ping >/dev/null 2>&1
         if [ $? -ne 0 ]; then
             echo "==== Error, the mysql service doesn't seem to be started... exiting ===="
