@@ -12,7 +12,7 @@ fi
 if [ "`apt-get -u upgrade --assume-no|grep cultibox`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultibox
     rm -Rf /var/cache/lighttpd/compress/*
-    if [ "$1" == "" ]; hen
+    if [ "$1" == "" ]; then
         /etc/init.d/lighttpd force-reload
     fi
 elif [ "`dpkg -s cultibox 2>/dev/null|grep Version`" == "" ]; then
