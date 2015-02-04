@@ -12,14 +12,15 @@ if((isset($_GET['filename']))&&(!empty($_GET['filename']))) {
             $os=php_uname('s');
             switch($os) {
                 case 'Linux':
-                    exec("opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < \"$file\"",$output,$err);
+                    exec("/opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < \"$file\"",$output,$err);
                     break;
                 case 'Mac':
                 case 'Darwin':
                     exec("/Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < \"$file\"",$output,$err);
                     break;
                 case 'Windows NT':
-                    exec("c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file=\"C:\cultibox\xampp\mysql\bin\my-extra.cnf\" -h 127.0.0.1 --port=3891  cultibox < \"$file\"",$output,$err);
+                    $file="c:\\cultibox\\xampp\\htdocs\\cultibox\\tmp\\import\\".$_GET['filename'];
+                    exec("c:\\cultibox\\xampp\\mysql\\bin\\mysql.exe --defaults-extra-file=C:\\cultibox\\xampp\\mysql\\bin\\my-extra.cnf -h 127.0.0.1 --port=3891  cultibox < \"$file\"",$output,$err);
                     break;
             }
         }

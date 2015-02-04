@@ -162,8 +162,7 @@ $(document).ready(function(){
                                     click: function () {
                                         $( this ).dialog( "close" );
                                         var get_array = {};
-                                        get_array['submenu'] = "admin_ui";
-                                        get_content("cultipi",get_array);
+                                        get_content("welcome",get_array);
                                         return false;
                                     }
                                 }]
