@@ -26,4 +26,7 @@ sed -i "/www-data ALL = (root) NOPASSWD: \/bin\/chmod/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/bin\/cp/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/init.d\/networking/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/apt-get/d" /etc/sudoers
+sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/init.d\/dnsmasq/d" /etc/sudoers
+sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/init.d\/isc-dhcp-server/d" /etc/sudoers
+sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/sbin\/update-rc.d/d" /etc/sudoers
 
