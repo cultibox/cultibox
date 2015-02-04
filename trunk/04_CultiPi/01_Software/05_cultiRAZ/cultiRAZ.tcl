@@ -65,6 +65,10 @@ proc firstLoop {} {
                 exec /etc/init.d/dnsmasq force-reload
                 exec /etc/init.d/isc-dhcp-server force-reload
 
+                exec iptables -t nat --delete PREROUTING  1
+                exec iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+
+
                 # Remise en place du mot de passe d'origine:
                 if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
                     exec cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
@@ -160,6 +164,9 @@ proc checkAndUpdate {} {
             exec /etc/init.d/networking restart
             exec /etc/init.d/dnsmasq force-reload
             exec /etc/init.d/isc-dhcp-server force-reload
+
+            exec iptables -t nat --delete PREROUTING  1
+            exec iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
 
             # Remise en place du mot de passe d'origine:
             if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
