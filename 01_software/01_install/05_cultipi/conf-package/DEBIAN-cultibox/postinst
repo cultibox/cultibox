@@ -118,7 +118,6 @@ else
     if [ -f /tmp/cultibox_version ]; then
         rm /tmp/cultibox_version
     fi
-    rm -f /var/www/cultibox/main/templates_c/*.ser 2>/dev/null
     echo "... OK"
 fi
 

@@ -9,6 +9,11 @@ if(is_file("/tmp/interfaces")) {
     exec("sudo /bin/chmod 644 /etc/network/interfaces*");
     exec("sudo /sbin/ifup -a --no-act >/dev/null 2>&1 ; echo \"$?\"",$output,$err);
     if((count($output)==1)&&(strcmp($output[0],"0")==0)) {
+        exec("sudo /etc/init.d/isc-dhcp-server stop",$output,$err);
+        exec("sudo /etc/init.d/dnsmasq stop",$output,$err);
+        exec("sudo /usr/sbin/update-rc.d -f isc-dhcp-server remove",$output,$err);
+        exec("sudo /usr/sbin/update-rc.d -f dnsmasq remove",$output,$err); 
+        exec("sudo /sbin/iptables -t nat --delete PREROUTING  1",$output,$err);
         sleep(2);
         exec("sudo /etc/init.d/networking restart");
         sleep(3);
