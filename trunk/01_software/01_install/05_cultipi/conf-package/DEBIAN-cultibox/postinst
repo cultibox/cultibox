@@ -48,6 +48,10 @@ if [  "`cat /etc/sudoers|grep www-data|grep update-rc.d`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /usr/sbin/update-rc.d" >> /etc/sudoers
 fi
 
+if [  "`cat /etc/sudoers|grep www-data|grep iptables`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /sbin/iptables" >> /etc/sudoers
+fi
+
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "  * Installing the Cultibox software..."
