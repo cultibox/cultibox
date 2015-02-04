@@ -59,7 +59,11 @@ proc firstLoop {} {
            
                 # RAZ de la configuration réseau:
                 exec cp /etc/network/interfaces.BASE /etc/network/interfaces
+                exec update-rc.d isc-dhcp-server defaults
+                exec update-rc.d dnsmasq defaults
                 exec /etc/init.d/networking restart
+                exec /etc/init.d/dnsmasq force-reload
+                exec /etc/init.d/isc-dhcp-server force-reload
 
                 # Remise en place du mot de passe d'origine:
                 if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
@@ -151,8 +155,12 @@ proc checkAndUpdate {} {
        
             # RAZ de la configuration réseau:
             exec cp /etc/network/interfaces.BASE /etc/network/interfaces
+            exec update-rc.d isc-dhcp-server defaults
+            exec update-rc.d dnsmasq defaults
             exec /etc/init.d/networking restart
-           
+            exec /etc/init.d/dnsmasq force-reload
+            exec /etc/init.d/isc-dhcp-server force-reload
+
             # Remise en place du mot de passe d'origine:
             if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
                 exec cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
