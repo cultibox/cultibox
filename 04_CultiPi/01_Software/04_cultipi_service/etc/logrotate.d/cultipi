@@ -1,6 +1,7 @@
 /var/log/cultipi/cultipi.log /var/log/cultipi/cultipi-service.log {
     daily
     rotate 7
+    size 20M
     missingok
     create 644 cultipi cultipi
     compress
