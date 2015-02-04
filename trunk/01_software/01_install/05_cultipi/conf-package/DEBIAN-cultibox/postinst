@@ -36,6 +36,18 @@ if [  "`cat /etc/sudoers|grep www-data|grep apt-get`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /usr/bin/apt-get" >> /etc/sudoers
 fi
 
+if [  "`cat /etc/sudoers|grep www-data|grep isc-dhcp-server`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /etc/init.d/isc-dhcp-server" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep dnsmasq`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /etc/init.d/dnsmasq" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep update-rc.d`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /usr/sbin/update-rc.d" >> /etc/sudoers
+fi
+
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "  * Installing the Cultibox software..."
