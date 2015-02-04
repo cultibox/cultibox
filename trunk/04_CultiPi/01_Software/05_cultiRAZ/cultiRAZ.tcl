@@ -58,35 +58,51 @@ proc firstLoop {} {
                 set ::compteur 0
            
                 # RAZ de la configuration réseau:
-                exec cp /etc/network/interfaces.BASE /etc/network/interfaces
-                exec update-rc.d isc-dhcp-server defaults
-                exec update-rc.d dnsmasq defaults
-                exec /etc/init.d/networking restart
-                exec /etc/init.d/dnsmasq force-reload
-                exec /etc/init.d/isc-dhcp-server force-reload
+                set RC [catch {exec cp /etc/network/interfaces.BASE /etc/network/interfaces} msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error cp : $msg"}
+                set RC [catch {exec update-rc.d isc-dhcp-server defaults} msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : isc-dhcp-server defaults : $msg"}
+                set RC [catch {exec update-rc.d dnsmasq defaults} msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : dnsmasq defaults : $msg"}
+                set RC [catch {exec /etc/init.d/networking restart} msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : networking restart : $msg"}
+                set RC [catch {exec /etc/init.d/dnsmasq force-reload} msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : dnsmasq force-reload : $msg"}
+                set RC [catch {exec /etc/init.d/isc-dhcp-server force-reload} msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : isc-dhcp-server force-reload : $msg"}
 
-                exec iptables -t nat --delete PREROUTING  1
-                exec iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+                set RC [catch {exec iptables -t nat --delete PREROUTING  1} msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : iptables delete PREROUTING : $msg"}
+                set RC [catch {exec iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80} msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : iptables add PREROUTING : $msg"}
 
 
                 # Remise en place du mot de passe d'origine:
-                if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
-                    exec cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
-                    exec /etc/init.d/lighttpd force-reload
-                }
+                set RC [catch {
+                    if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
+                        exec cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
+                        exec /etc/init.d/lighttpd force-reload
+                    }
+                } msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error networking restart : $msg"}
+                
+                set RC [catch {
+                    exec dpkg --purge cultibox 
+                    exec dpkg --purge cultiraz 
+                    exec dpkg --purge cultipi 
+                    exec dpkg --purge cultitime
+                    exec dpkg --purge culticonf
+                } msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error dpkg purge : $msg"}
 
-
-                exec dpkg --purge cultibox 
-                exec dpkg --purge cultiraz 
-                exec dpkg --purge cultipi 
-                exec dpkg --purge cultitime
-                exec dpkg --purge culticonf
-
-                exec dpkg -i /home/cultipi/cultipi*.deb
-                exec dpkg -i /home/cultipi/cultibox*.deb
-                exec dpkg -i /home/cultipi/cultitime*.deb
-                exec dpkg -i /home/cultipi/cultiraz*.deb
-                exec dpkg -i /home/cultipi/culticonf*.deb
+                set RC [catch {
+                    exec dpkg -i /home/cultipi/cultipi*.deb
+                    exec dpkg -i /home/cultipi/cultibox*.deb
+                    exec dpkg -i /home/cultipi/cultitime*.deb
+                    exec dpkg -i /home/cultipi/cultiraz*.deb
+                    exec dpkg -i /home/cultipi/culticonf*.deb
+                } msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error dpkg i : $msg"}
 
 
                 # On rappel la procédure au bout de 10 secondes pour éviter un double effacage:
@@ -158,22 +174,32 @@ proc checkAndUpdate {} {
             set ::compteur 0
        
             # RAZ de la configuration réseau:
-            exec cp /etc/network/interfaces.BASE /etc/network/interfaces
-            exec update-rc.d isc-dhcp-server defaults
-            exec update-rc.d dnsmasq defaults
-            exec /etc/init.d/networking restart
-            exec /etc/init.d/dnsmasq force-reload
-            exec /etc/init.d/isc-dhcp-server force-reload
+            set RC [catch {exec cp /etc/network/interfaces.BASE /etc/network/interfaces} msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error cp : $msg"}
+            set RC [catch {exec update-rc.d isc-dhcp-server defaults} msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : isc-dhcp-server defaults : $msg"}
+            set RC [catch {exec update-rc.d dnsmasq defaults} msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : dnsmasq defaults : $msg"}
+            set RC [catch {exec /etc/init.d/networking restart} msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : networking restart : $msg"}
+            set RC [catch {exec /etc/init.d/dnsmasq force-reload} msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : dnsmasq force-reload : $msg"}
+            set RC [catch {exec /etc/init.d/isc-dhcp-server force-reload} msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : isc-dhcp-server force-reload : $msg"}
 
-            exec iptables -t nat --delete PREROUTING  1
-            exec iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+            set RC [catch {exec iptables -t nat --delete PREROUTING  1} msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : iptables delete PREROUTING : $msg"}
+            set RC [catch {exec iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80} msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : iptables add PREROUTING : $msg"}
 
             # Remise en place du mot de passe d'origine:
-            if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
-                exec cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
-                exec /etc/init.d/lighttpd force-reload
-            }
-        
+            set RC [catch {
+                if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
+                    exec cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
+                    exec /etc/init.d/lighttpd force-reload
+                }
+            } msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error networking restart : $msg"}
 
             # On la rappel la procédure au bout de 10 secondes pour éviter un double effacage:
             after 10000 checkAndUpdate
