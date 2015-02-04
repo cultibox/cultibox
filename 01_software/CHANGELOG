@@ -1,3 +1,9 @@
+Cultibox (2.0.33) precise; urgency=low
+    + Corrections import/export pour Windows
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Feb 04 11:46:28 CEST 2015
+
+
 Cultibox (2.0.32) precise; urgency=low
     + Import/export d'une configuration
 
