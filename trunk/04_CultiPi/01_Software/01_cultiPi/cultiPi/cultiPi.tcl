@@ -82,12 +82,17 @@ puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start 
 ::piLog::log [clock millisecond] "info" "serveur is started"
 
 # On alimente les esclaves
+set RC [catch {
 exec gpio -g mode 18 out
 exec gpio -g write 18 1
 
 # On pilote le fil vers les esclaves
 exec gpio -g mode 17 out
 exec gpio -g write 17 1
+} msg]
+if {$RC != 0} {
+    puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : GPIO : error $msg"
+}
 
 # On attend 20 seconds
 after 20000
