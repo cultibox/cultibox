@@ -99,12 +99,12 @@ while {1} {
         ::piLog::log [clock milliseconds] "info" "reading $i plugXX $plugXXFilename"
         
         # On initialise les constantes de chaque prise
-        set plug($i,lastValue) ""
+        set plug($i,value) ""
         set plug($i,updateStatus) ""
         set plug($i,updateStatusComment) ""
         set plug($i,source) "plugv"
         set plug($i,force,value) ""
-        set plug($i,force,idAfterProc) ""
+        set plug($i,force,idAfterProc) ""       
         
         set fid [open $plugXXFilename r]
         while {[eof $fid] != 1} {
