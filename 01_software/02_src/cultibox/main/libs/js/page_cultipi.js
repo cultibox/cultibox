@@ -528,6 +528,15 @@ var updateIsAked = 0;
         }
         updateIsAked = 1;
         $.ajax({
+            beforeSend: function(jqXHR) {
+                $.xhrPool.push(jqXHR);
+            },
+            complete: function(jqXHR) {
+                var index = $.xhrPool.indexOf(jqXHR);
+                if (index > -1) {
+                    $.xhrPool.splice(index, 1);
+                }
+            },
             cache: false,
             type: "POST",
             data: {
@@ -568,6 +577,15 @@ var updateIsAked = 0;
         updateIsAked = 1;
         
         $.ajax({
+            beforeSend: function(jqXHR) {
+                $.xhrPool.push(jqXHR);
+            },
+            complete: function(jqXHR) {
+                var index = $.xhrPool.indexOf(jqXHR);
+                if (index > -1) {
+                    $.xhrPool.splice(index, 1);
+                }
+            },
             cache: false,
             type: "POST",
             data: {
