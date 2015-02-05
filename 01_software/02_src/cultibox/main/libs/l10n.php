@@ -102,13 +102,15 @@ function __translations_cache_lang($lang, $translations) {
 
 	$ret = file_put_contents($tmp_cache_file, serialize($translations));
 	if ($ret === false) {
-		die("Cannot write to '$cache_file'");
+        // Modification by Alliaume : Remove die because it's blocking interface
+		//die("Cannot write to '$cache_file'");
 	}
 
 	// Renames are atomic
 	$ret = rename($tmp_cache_file, $cache_file);
 	if ($ret === false) {
-		die("rename from '$tmp_cache_file' to '$cache_file' failed");
+        // Modification by Alliaume : Remove die because it's blocking interface
+		//die("rename from '$tmp_cache_file' to '$cache_file' failed");
 	}
 }
 
