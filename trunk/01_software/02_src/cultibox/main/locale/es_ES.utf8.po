@@ -2050,7 +2050,7 @@ msgid "ERROR_NET_FILE_CREATION"
 msgstr "Se ha producido un error al crear los archivos de configuración de red"
 
 msgid "AVAILABLE_MODULE_SET" 
-msgstr "El módulo está conectado a la red (s) (x) (s) Usted puede volver a conectar a la red y acceder al módulo Cultipi a la siguiente dirección en su navegador favorito. <p class='p_center'><a class='note_link' href='https://cultipi.local/cultibox/' target='_blank'>https://cultipi.local/cultibox/</a></p> "
+msgstr "El módulo está conectado a la red (s) (x) (s) Usted puede volver a conectar a la red y acceder al módulo Cultipi a la siguiente dirección en su navegador favorito. <p class='p_center'><a class='note_link' href='http://cultipi.local/cultibox/' target='_blank'>http://cultipi.local/cultibox/</a></p> "
 
 msgid "RESTORED_CONF" 
 msgstr "Se ha producido un error al establecer la configuración de red. La configuración anterior se ha restaurado"

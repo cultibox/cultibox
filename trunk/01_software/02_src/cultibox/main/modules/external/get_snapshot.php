@@ -19,7 +19,12 @@
     if(count($output)==0) {
        echo json_encode("1");
     } else {
-        exec("sudo fswebcam -p YUYV -r ".$width."x".$height." --no-banner ".$GLOBALS['BASE_PATH']."/tmp/webcam.jpg",$output,$err);
+        exec("sudo fswebcam -p YUYV -r ".$width."x".$height." --no-banner ".$GLOBALS['BASE_PATH']."/tmp/webcam.jpg 2>&1",$test,$err);
+        foreach($test as $line) {
+            if(strpos($line, "Unable to find a compatible palette format")!==false) {
+                exec("sudo fswebcam -r ".$width."x".$height." --no-banner ".$GLOBALS['BASE_PATH']."/tmp/webcam.jpg",$test,$err);
+            }
+        }
         echo json_encode("0");
     }
 ?>

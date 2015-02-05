@@ -34,6 +34,25 @@ formatCard = function(hdd,pourcent) {
     });
 }
 
+
+// {{{ getAlarm()
+// ROLE display or not the alarm part from the configuration menu
+// IN  input value: display or not 
+// HOW IT WORKS: get id from div to be displayed the alarm configuration or not and display it (or not) depending the input value
+// USED BY: templates/configuration.html
+function getAlarm(i) {
+      var divAval = document.getElementById('div_alarm_value');
+      var labelAvalue = document.getElementById('label_alarm_value');
+
+      switch(i) {
+         case 0 : divAval.style.display = ''; labelAvalue.style.display = ''; break;
+         case 1 : divAval.style.display = 'none'; labelAvalue.style.display = 'none'; break;
+         default: divAval.style.display = ''; labelAvalue.style.display = ''; break;
+      }
+}
+//}}}
+
+
 $(document).ready(function(){
      pop_up_remove("main_error");
      pop_up_remove("main_info");
@@ -247,21 +266,24 @@ $(document).ready(function(){
       onBlock: function() {
 
         var checked=true;
-        
-        $.ajax({
-            cache: false,
-            async: false,
-            url: "main/modules/external/check_value.php",
-            data: {value:$("#reset_minmax").val(),type:'short_time'}
-        }).done(function (data) {
-            if(data!=1) {
-                $("#error_min_max").show(700);
-                checked=false;
-                expand('system_interface');
-            } else {
-                $("#error_min_max").css("display","none");
-            }
-        });
+
+       
+        if(typeof($("#reset_minmax").val())!="undefined") { 
+            $.ajax({
+                cache: false,
+                async: false,
+                url: "main/modules/external/check_value.php",
+                data: {value:$("#reset_minmax").val(),type:'short_time'}
+            }).done(function (data) {
+                if(data!=1) {
+                    $("#error_min_max").show(700);
+                    checked=false;
+                    expand('system_interface');
+                } else {
+                    $("#error_min_max").css("display","none");
+                }
+            });
+        }
 
         if($("#alarm_activ option:selected").val()=="0001") {
             $("#alarm_value").val($("#alarm_value").val().replace(",","."));
@@ -280,6 +302,7 @@ $(document).ready(function(){
                 }
             });
         }
+
 
         if(checked) {
             var check_update=true;
@@ -635,24 +658,6 @@ $(document).ready(function(){
             }
         });
     });
-    
-    // {{{ getAlarm()
-    // ROLE display or not the alarm part from the configuration menu
-    // IN  input value: display or not 
-    // HOW IT WORKS: get id from div to be displayed the alarm configuration or not and display it (or not) depending the input value
-    // USED BY: templates/configuration.html
-    function getAlarm(i) {
-          var divAval = document.getElementById('div_alarm_value');
-          var labelAvalue = document.getElementById('label_alarm_value');
-
-          switch(i) {
-             case 0 : divAval.style.display = ''; labelAvalue.style.display = ''; break;
-             case 1 : divAval.style.display = 'none'; labelAvalue.style.display = 'none'; break;
-             default: divAval.style.display = ''; labelAvalue.style.display = ''; break;
-          }
-    }
-    //}}}
-    
     
 });
 
