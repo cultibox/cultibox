@@ -196,6 +196,9 @@ proc updatePlug {plugNumber} {
     if {$::plug($plugNumber,source) == "force"} {
         # On envoi la commande au module
         ::wireless::setValue $plugNumber $::plug($plugNumber,force,value)
+        
+        # On sauvegarde le fait qu'on n'est plus en régulation
+        set ::plug($plugNumber,inRegulation) "NONE"
     } elseif {$plgPrgm == ""} {
         ::piLog::log [clock milliseconds] "error" "Plug $plugNumber programme is empty"
     } elseif {$plgPrgm != "off" && $plgPrgm != "on"} {
@@ -206,6 +209,9 @@ proc updatePlug {plugNumber} {
         
         # On envoi la commande au module
         ::wireless::setValue $plugNumber $plgPrgm
+        
+        # On sauvegarde le fait qu'on n'est plus en régulation
+        set ::plug($plugNumber,inRegulation) "NONE"
     }
 }
 

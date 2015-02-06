@@ -104,7 +104,16 @@ proc firstLoop {} {
                 } msg]
                 if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error dpkg i : $msg"}
 
-
+                # On fait clignoter la LED 5 fois
+                for {set i 0} {$i < 5} {incr i} {
+                    exec gpio -g write 22 0
+                    after 100
+                    exec gpio -g write 22 1
+                    after 100
+                    update
+                }
+                
+                
                 # On rappel la procédure au bout de 10 secondes pour éviter un double effacage:
                 after 10000 firstLoop
             } else {
@@ -201,6 +210,15 @@ proc checkAndUpdate {} {
             } msg]
             if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error networking restart : $msg"}
 
+            # On fait clignoter la LED 5 fois
+            for {set i 0} {$i < 5} {incr i} {
+                exec gpio -g write 22 0
+                after 100
+                exec gpio -g write 22 1
+                after 100
+                update
+            }
+            
             # On la rappel la procédure au bout de 10 secondes pour éviter un double effacage:
             after 10000 checkAndUpdate
         } else {
