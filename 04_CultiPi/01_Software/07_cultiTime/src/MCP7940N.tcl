@@ -1,3 +1,4 @@
+# Add /usr/sbin/
 
 namespace eval ::MCP7940N {
 }
@@ -9,12 +10,14 @@ proc ::MCP7940N::start {} {
     # On démarre le comptage de l'heure
     exec i2cset -y1 1 0x6f 0x00 0x80
     
+    # On active la sauvegarde de l'heure sur vbat
+    exec i2cset -y1 1 0x6f 0x03 [expr [exec i2cget -y 1 0x6f 0x03 b] | 0x28]
+    
     # On vérifie que l'heure tourne bien en 24h en non pas en 12
     set timeFormat [expr [exec i2cget -y 1 0x6f 0x02 b] & 0x40]
     if {$timeFormat != 0} {
         exec i2cset -y1 1 0x6f 0x02 [expr [exec i2cget -y 1 0x6f 0x02 b] & 0xbF]
     }
-    
 
 }
 
@@ -54,6 +57,9 @@ proc ::MCP7940N::readSeconds {} {
 # Écriture du nombre de secondes
 proc ::MCP7940N::setSeconds {secondes} {
 
+    # On enleve les espace vide d'avant
+    set secondes [string trim $secondes]
+
     # On arrête l'horloge de tourner
     exec i2cset -y1 1 0x6f 0x00 0x00
     
@@ -66,7 +72,7 @@ proc ::MCP7940N::setSeconds {secondes} {
     set result [exec i2cset -y 1 0x6f 0x05 $ToWrite]
     
     # Écriture du nombre de jour
-    set ToWrite [expr 0x[clock format $secondes -format "%e"]]
+    set ToWrite [expr 0x[clock format $secondes -format "%d"]]
     set result [exec i2cset -y 1 0x6f 0x04 $ToWrite]
     
     # Écriture du nombre d'heures
