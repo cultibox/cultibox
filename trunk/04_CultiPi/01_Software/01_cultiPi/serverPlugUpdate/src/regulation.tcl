@@ -10,7 +10,15 @@ proc emeteur_regulation {nbPlug plgPrgm} {
         set ::plug($nbPlug,inRegulation) "NONE"
     }
     
-    if {$plgPrgm == ""} {
+    # On cherche le nom du module
+    set module $::plug($nbPlug,module)
+    
+    if {$module == "NA"} {
+    
+        # Si le nom du module n'est pas définit
+        ::piLog::log [clock milliseconds] "error" "Plug $nbPlug module is not defined"
+        
+    } elseif {$plgPrgm == ""} {
     
         # Si le programme n'est pas définit
         ::piLog::log [clock milliseconds] "error" "Plug $nbPlug programme is empty"
@@ -126,7 +134,7 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                     # On sauvegarde le fait qu'on a pas de régulation
                     set ::plug($nbPlug,inRegulation) "NONE"
                     
-                } elseif {$::plug($nbPlug,moduleType) == "dimmer"} {
+                } elseif {$::plug($nbPlug,module) == "dimmer"} {
                     # Dimmer case
                     # $valeurToPilot < 0
                     # ie : 0100 < 2800 -  2600
@@ -146,14 +154,14 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                     # On sauvegarde le fait qu'on a une régulation primaire
                     set ::plug($nbPlug,inRegulation) "PRI"
                     
-                } elseif {$::plug($nbPlug,moduleType) == "wirelessplug"} {
+                } else {
                     # Cas de la prise sans fils
                     if {$valuePrimaire > $consigneSupPri} {
                     
                         # Standard plug case
                         set valeurToPilot "on"
 
-                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri+ Wireless Sup progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri+ $module Sup progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
                         # On sauvegarde le fait qu'on a une régulation primaire
                         set ::plug($nbPlug,inRegulation) "PRI"
@@ -162,7 +170,7 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                     
                         set valeurToPilot "off"
 
-                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri+ Wireless Inf progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri+ $module Inf progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
                         # On sauvegarde le fait qu'on a une régulation primaire
                         set ::plug($nbPlug,inRegulation) "PRI"
@@ -181,7 +189,7 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                         # On sauvegarde le fait qu'on a une régulation primaire
                         set ::plug($nbPlug,inRegulation) "NONE"
                     
-                } elseif {$::plug($nbPlug,moduleType) == "dimmer"} {
+                } elseif {$::plug($nbPlug,module) == "dimmer"} {
                     # Dimmer case
                     # If  $valeurToPilot < 0
                     # if {(int)emeteur_regulation_previous_value[uc8_plug] < (($valuePrimaire) - (int)emeteur_regulation_value[uc8_plug])} {
@@ -196,7 +204,7 @@ proc emeteur_regulation {nbPlug plgPrgm} {
 
                     ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri- Dimmer progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
-                } elseif {$::plug($nbPlug,moduleType) == "wirelessplug"} {
+                } else {
                 
                     # Cas de la prise sans fils
                     if {$valuePrimaire < $consigneInfPri} {
@@ -204,7 +212,7 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                         # Standard plug case
                         set valeurToPilot "on"
 
-                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri- Wireless Inf progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri- $module Inf progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
                         # On sauvegarde le fait qu'on a une régulation primaire
                         set ::plug($nbPlug,inRegulation) "PRI"
@@ -213,7 +221,7 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                     
                         set valeurToPilot "off"
 
-                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri- Wireless Sup progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri- $module Sup progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
                         # On sauvegarde le fait qu'on a une régulation primaire
                         set ::plug($nbPlug,inRegulation) "PRI"
@@ -225,7 +233,7 @@ proc emeteur_regulation {nbPlug plgPrgm} {
         
         # On envoi la commande au module
         if {$valeurToPilot != "" && $valeurToPilot != $::plug($nbPlug,value)} {
-            ::wireless::setValue $nbPlug $valeurToPilot
+            ::${module}::setValue $nbPlug $valeurToPilot $::plug($plugNumber,adress)
         }
     }
 }

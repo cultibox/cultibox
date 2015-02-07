@@ -141,8 +141,8 @@ proc ::wireless::setAdress {plugNumber adress} {
     }
 }
 
-# Cette proc est utlisée pour piloter une prise dans le module sans fils
-proc ::wireless::setValue {plugNumber value} {
+# Cette proc est utilisée pour piloter une prise dans le module sans fils
+proc ::wireless::setValue {plugNumber value address} {
     variable moduleAdress 
 
     # On demande l'écriture dans le registre des adresses
@@ -153,7 +153,7 @@ proc ::wireless::setValue {plugNumber value} {
     set register [expr ($plugNumber - 1) * 2 + 33]
 
     # On sauvegarde l'état de la prise
-    savePlugSendValue $plugNumber $value
+    ::savePlugSendValue $plugNumber $value
     
     if {$value == "on"} {
         set value 1 
