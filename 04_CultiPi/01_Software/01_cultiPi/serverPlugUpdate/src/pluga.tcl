@@ -15,27 +15,18 @@ proc readPluga {plugaFileName} {
         gets $fid OneLine
         if {$OneLine != "" && $nbPlug != 0} {
         
-            # Par défaut l'adresse est celle de l'émetteur
-            set ::plug($nbPlug,moduleType) "wirelessplug"
-            set ::plug($nbPlug,adress) $OneLine
-            set ::plug($nbPlug,moduleAdress) $::SLAVE_EMETOR_ADRESS
-
-            # Les adresses de 4 à 30 (seulement les nombres pair) sont pour des prises 3500W
-            # Les adresses 247	222	219	215	207	252	250	246	238	187	183	189	125	123	119 sont pour les prises 1000W
-            # Les adresses >= 256 sont pour les autres modules de pilotages . Les 4 derniers bits (LSB) donnent la prises . 
-            # Les 4 d'avant le numéro du module (auquel on ajoute 0x30)
-            # Module 1 : Adresse 256 --> 271
-            # Module 2 : Adresse 272 --> 287
-            if {$OneLine > 255} {
-                set ::plug($nbPlug,adress) [expr ($OneLine - 256) % 8]
-                set ::plug($nbPlug,moduleAdress) [expr 0x30 + ($OneLine - 256) / 8]
-                set ::plug($nbPlug,moduleType) "other"
-            }
+            # On lit la valeur de l'adresse
+            set ::plug($nbPlug,adress) [string trimleft $OneLine "0"]
             
+            # On en déduit le module
+            set ::plug($nbPlug,module) [::address::get_module $::plug($nbPlug,adress)]
+
             # On transmet au module de pilotage sans fils les adresses
-            if {$::plug($nbPlug,moduleType) == "wirelessplug"} {
+            if {$::plug($nbPlug,module) == "wireless"} {
                 ::wireless::setAdress $nbPlug $::plug($nbPlug,adress)
             }
+            
+            ::piLog::log [clock milliseconds] "debug" "pluga plug $nbPlug - Address : $::plug($nbPlug,adress) - Module : $::plug($nbPlug,module)"
             
         }
         if {$OneLine != "" } {

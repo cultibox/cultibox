@@ -191,24 +191,34 @@ proc updatePlug {plugNumber} {
     
     # On cherche le programme de la prise (attention les prises démarre à 1 !)
     set plgPrgm [lindex $programmeToSend [expr $plugNumber - 1]]
+    
+    set module $::plug($plugNumber,module)
 
-    # On regarde si la prise est forcée dans un état par l'utilisateur
-    if {$::plug($plugNumber,source) == "force"} {
+    # On vérifie que le module utilisé pour le pilotage existe
+    if {$::plug($plugNumber,module) == "NA"} {
+        ::piLog::log [clock milliseconds] "error" "Plug $plugNumber module $::plug($plugNumber,module) is not defined"
+
+    } elseif {$::plug($plugNumber,source) == "force"} {
+        # On regarde si la prise est forcée dans un état par l'utilisateur
+    
         # On envoi la commande au module
-        ::wireless::setValue $plugNumber $::plug($plugNumber,force,value)
+        ::${module}::setValue $plugNumber $::plug($plugNumber,force,value) $::plug($plugNumber,adress)
         
         # On sauvegarde le fait qu'on n'est plus en régulation
         set ::plug($plugNumber,inRegulation) "NONE"
+        
     } elseif {$plgPrgm == ""} {
         ::piLog::log [clock milliseconds] "error" "Plug $plugNumber programme is empty"
+        
     } elseif {$plgPrgm != "off" && $plgPrgm != "on"} {
         # Si c'est de la régulation
         emeteur_regulation $plugNumber $plgPrgm 
+        
     } else {
         ::piLog::log [clock milliseconds] "info" "update plug $plugNumber with programm $plgPrgm"
         
         # On envoi la commande au module
-        ::wireless::setValue $plugNumber $plgPrgm
+        ::${module}::setValue $plugNumber $plgPrgm $::plug($plugNumber,adress)
         
         # On sauvegarde le fait qu'on n'est plus en régulation
         set ::plug($plugNumber,inRegulation) "NONE"

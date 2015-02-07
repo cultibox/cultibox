@@ -28,6 +28,9 @@ source [file join $rootDir serverPlugUpdate src sensor.tcl]
 source [file join $rootDir serverPlugUpdate src serveurMessage.tcl]
 source [file join $rootDir serverPlugUpdate src regulation.tcl]
 source [file join $rootDir serverPlugUpdate src forcePlug.tcl]
+source [file join $rootDir serverPlugUpdate src module_direct.tcl]
+source [file join $rootDir serverPlugUpdate src address_module.tcl]
+
 
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
@@ -81,6 +84,10 @@ while {$status == "retry_needed"} {
     set status [::wireless::outFromBootloader]
     after 100
 }
+
+#On initialise les pins en sortie pour la commande directe
+::piLog::log [clock milliseconds] "info" "init out pin for direct control"
+::direct::init
 
 # Parse pluga filename and send adress to module if needed
 set nbPlug [readPluga $plugaFileName]
