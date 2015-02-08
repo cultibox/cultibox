@@ -518,14 +518,29 @@ function compare_pluga($sd_card) {
 
          $pluga[]=$nb_plug;
          for($i=0;$i<$nb_plug;$i++) {
-            $tmp_power_max=get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
-            if(strcmp("$tmp_power_max","1000")==0) {
-                $tmp_pluga=$GLOBALS['PLUGA_DEFAULT'][$i];
-            } elseif(strcmp("$tmp_power_max","3500")==0) {
-                $tmp_pluga=$GLOBALS['PLUGA_DEFAULT_3500W'][$i];
-            } else if(intval(rtrim($tmp_power_max))<10) {
-                $tmp_pluga=99+intval(rtrim($tmp_power_max));
+         
+            // Get Power of the plug
+            $tmp_power_max = get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
+            
+            // Get Module of the plug
+            $tmp_MODULE = get_plug_conf("PLUG_MODULE",$i+1,$out);
+
+            $tmp_pluga = "000";
+            if ($tmp_MODULE == "wireless") {
+                // Wireless plug case
+                if ($tmp_power_max == "3500") {
+                    $tmp_pluga = $GLOBALS['PLUGA_DEFAULT_3500W'][$i];
+                } else {
+                    $tmp_pluga = $GLOBALS['PLUGA_DEFAULT'][$i];
+                }
+            } elseif ($tmp_MODULE == "dimmer") {
+                // Dimmer plug case
+            
+            } elseif ($tmp_MODULE == "direct") {
+                // Direct plug case (Adresse 50 --> 58)
+                $tmp_pluga = "0" . ($tmp_power_max + 49);
             }
+            
             $pluga[]="$tmp_pluga";
         }
 
@@ -683,16 +698,31 @@ function write_pluga($sd_card,&$out) {
             $nb_plug="0$nb_plug";
       }
       $pluga="$nb_plug\r\n";
-      for($i=0;$i<$nb_plug;$i++) {
-        $tmp_power_max=get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
-        if(strcmp("$tmp_power_max","1000")==0) {
-            $tmp_pluga=$GLOBALS['PLUGA_DEFAULT'][$i];
-        } elseif(strcmp("$tmp_power_max","3500")==0) {
-            $tmp_pluga=$GLOBALS['PLUGA_DEFAULT_3500W'][$i];
-        //Dimmer plug:
-        } else if(intval(rtrim($tmp_power_max))<10) {
-            $tmp_pluga=99+intval(rtrim($tmp_power_max));
-        }
+      
+        for($i=0;$i<$nb_plug;$i++) {
+        
+            // Get Power of the plug
+            $tmp_power_max = get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
+            
+            // Get Module of the plug
+            $tmp_MODULE = get_plug_conf("PLUG_MODULE",$i+1,$out);
+
+            $tmp_pluga = "000";
+            if ($tmp_MODULE == "wireless") {
+                // Wireless plug case
+                if ($tmp_power_max == "3500") {
+                    $tmp_pluga = $GLOBALS['PLUGA_DEFAULT_3500W'][$i];
+                } else {
+                    $tmp_pluga = $GLOBALS['PLUGA_DEFAULT'][$i];
+                }
+            } elseif ($tmp_MODULE == "dimmer") {
+                // Dimmer plug case
+            
+            } elseif ($tmp_MODULE == "direct") {
+                // Direct plug case (Adresse 50 --> 58)
+                $tmp_pluga = "0" . ($tmp_power_max + 49);
+            }
+
         $pluga=$pluga."$tmp_pluga"."\r\n";
       }
 
