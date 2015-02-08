@@ -75,6 +75,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_second_tolerance{$nb}=get_plug_conf("PLUG_SECOND_TOLERANCE",$nb,$main_error); 
    $plug_compute_method{$nb}=get_plug_conf("PLUG_COMPUTE_METHOD",$nb,$main_error);
    $plug_regul_sensor{$nb}=get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
+   $plug_module{$nb}=get_plug_conf("PLUG_MODULE",$nb,$main_error);
 
    $plug_sensor[$nb]=get_plug_regul_sensor($nb,$main_error);
    $plug_count_sensor[$nb]=count(explode("-",$plug_regul_sensor{$nb}));

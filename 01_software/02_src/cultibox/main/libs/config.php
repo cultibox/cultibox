@@ -40,6 +40,9 @@ $GLOBALS['NB_MAX_SENSOR_PLUG'] = '6';
 // Number of maximal canal used by dimmer
 $GLOBALS['NB_MAX_CANAL_DIMMER'] = '8';
 
+// Number of maximal direct ouput with Cultipi
+$GLOBALS['NB_MAX_DIRECT_OUTPUT'] = '8';
+
 // List of the updating plugs frequency: 
 $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('1','5');
 

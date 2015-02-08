@@ -72,17 +72,47 @@ $(document).ready(function(){
 
 
     //Display dimmer canal:
-    $("input[name*='plug_power_max']").change(function () {
+    $("select[name*='plug_module']").change(function () {
         var id=$(this).attr('name').substr($(this).attr('name').length-1);
 
         if(!isFinite(String(id))) {
             id="";
         }
-
-        if($(this).val()=="VARIO") {
-            $("#select_canal_dimmer"+id).show();
-        } else {
+        
+        if($(this).val() == "wireless") {
+            $("#select_canal_wireless"+id).show();
             $("#select_canal_dimmer"+id).css("display","none");
+            <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {?>
+                $("#select_canal_direct"+id).css("display","none");
+            <?php } ?>;
+            // Reset value for power
+            if ($("#plug_power_max"+id).val() != "1000" && $("#plug_power_max"+id).val() != "3500") {
+                $("input[name=plug_power_max" +id + "][value='1000']").prop('checked', true);
+            }
+        }
+        
+        if($(this).val() == "dimmer") {
+            $("#select_canal_wireless"+id).css("display","none");
+            $("#select_canal_dimmer"+id).show();
+            <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {?>
+                $("#select_canal_direct"+id).css("display","none");
+            <?php } ?>
+            // Reset value for power
+            if ($("#plug_power_max"+id).val() > "10") {
+                $("#plug_power_max"+id).val() = "1";
+            }
+        } 
+
+        if($(this).val() == "direct") {
+            $("#select_canal_wireless"+id).css("display","none");
+            $("#select_canal_dimmer"+id).css("display","none");
+            <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {?>
+                $("#select_canal_direct"+id).show();
+            <?php } ?>
+            // Reset value for power
+            if ($("#plug_power_max"+id).val() > "10") {
+                $("#plug_power_max"+id).val() = "1";
+            }
         }
     });
 
@@ -111,43 +141,43 @@ $(document).ready(function(){
 
 
     $('[id*="plug_type"]').change(function() {
-           var plug = $(this).attr('id').substring(9,10);
+        var plug = $(this).attr('id').substring(9,10);
 
-           if(plug!="") {
-               if(!(plug in plug_alert_change)) { 
-                   $.ajax({
-                        cache: false,
-                        async: true,
-                        url: "main/modules/external/get_variable.php",
-                        data: {name:'CHECK_PROGRAM',value:plug}
-                    }).done(function (data) {
-                        if(jQuery.parseJSON(data)=="1") {
-                            $("#warning_change_type_plug").dialog({
-                                resizable: false,
-                                height:200,
-                                width: 500,
-                                closeOnEscape: false,
-                                modal: true,
-                                dialogClass: "dialog_cultibox",
-                                buttons: [{
-                                text: OK_button,
+        if(plug!="") {
+            if(!(plug in plug_alert_change)) { 
+                $.ajax({
+                    cache: false,
+                    async: true,
+                    url: "main/modules/external/get_variable.php",
+                    data: {name:'CHECK_PROGRAM',value:plug}
+                }).done(function (data) {
+                    if(jQuery.parseJSON(data)=="1") {
+                        $("#warning_change_type_plug").dialog({
+                            resizable: false,
+                            height:200,
+                            width: 500,
+                            closeOnEscape: false,
+                            modal: true,
+                            dialogClass: "dialog_cultibox",
+                            buttons: [{
+                            text: OK_button,
+                            click: function () {
+                                plug_alert_change[plug]=true; 
+                                $( this ).dialog( "close" ); 
+                            }
+                        }, {
+                            text: CANCEL_button,
                                 click: function () {
-                                    plug_alert_change[plug]=true; 
-                                    $( this ).dialog( "close" ); 
+                                    $("#plug_type"+plug).val(plugs_infoJS[plug-1]['PLUG_TYPE]']);
+                                    $( this ).dialog( "close" ); return false;
                                 }
-                            }, {
-                                text: CANCEL_button,
-                                    click: function () {
-                                        $("#plug_type"+plug).val(plugs_infoJS[plug-1]['PLUG_TYPE]']);
-                                        $( this ).dialog( "close" ); return false;
-                                    }
-                                }]
-                            });
-                        }
-                    }); 
-                }
-                
+                            }]
+                        });
+                    }
+                }); 
             }
+            
+        }
    });
 
 
@@ -169,144 +199,157 @@ $(document).ready(function(){
             $("#error_second_tolerance_value_temp"+i).css("display","none");
             $("#error_regul_value"+i).css("display","none");
 
-                if($("#power_value"+i).val()) {
-                    //Check power value:
+            if($("#power_value"+i).val()) {
+                //Check power value:
+                $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/check_value.php",
+                        data: {
+                            value:$("#power_value"+i).val(),
+                            type:'numeric'
+                        }
+                    }).done(function(data) {
+                        if(data!=1) {
+                            $("#error_power_value"+i).show(700);
+                            checked=false;
+                            jump_plug=i;
+                        }
+                });
+            }
+
+
+            //Check tolerance value
+            if($("#plug_type"+i).val()=="heating" ||
+               $("#plug_type"+i).val()=="humidifier" ||
+               $("#plug_type"+i).val()=="dehumidifier" ||
+               $("#plug_type"+i).val()=="ventilator" || 
+               $("#plug_type"+i).val()=="pump")
+            {
+                if($("#plug_tolerance"+i).val()=="0" || $("#plug_tolerance"+i).val()=="" )
+                {
+                   $("#plug_tolerance"+i).val('0'); 
+                } else { 
+                    $("#plug_tolerance"+i).val($("#plug_tolerance"+i).val().replace(",","."));
                     $.ajax({
                         cache: false,
                         async: false,
                         url: "main/modules/external/check_value.php",
-                            data: {value:$("#power_value"+i).val(),type:'numeric'}
-                        }).done(function(data) {
-                            if(data!=1) {
-                                $("#error_power_value"+i).show(700);
-                                checked=false;
-                                jump_plug=i;
+                        data: {
+                            value:$("#plug_tolerance"+i).val(),
+                            type:'tolerance',
+                            plug: $("#plug_type"+i).val()
+                        }
+                    }).done(function(data) {
+                        if(data!=1) {
+                            if(($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")) {
+                                $("#error_tolerance_value_humi"+i).show(700);
                             }
+
+                            if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
+                                $("#error_tolerance_value_temp"+i).show(700);
+                            }
+
+                            if($("#plug_type"+i).val()=="pump") {
+                                $("#error_tolerance_value_water"+i).show(700);
+                            }
+                            checked=false;
+                            jump_plug=i;
+                        }
                     });
                 }
 
 
-                //Check tolerance value
-                if(($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")||($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="pump")) {
-                    if(($("#plug_tolerance"+i).val()=="0")||($("#plug_tolerance"+i).val()=="")) {
-                       $("#plug_tolerance"+i).val('0'); 
-                    } else { 
-                        $("#plug_tolerance"+i).val($("#plug_tolerance"+i).val().replace(",","."));
+                //Check the second regul values:
+                if($("#plug_regul"+i).val()=="True") {
+                    if(($("#plug_second_tolerance"+i).val()=="0")||($("#plug_second_tolerance"+i).val()=="")) {
+                        $("#plug_second_tolerance"+i).val('0');
+                    } else {
+                        $("#plug_second_tolerance"+i).val($("#plug_second_tolerance"+i).val().replace(",","."));
                         $.ajax({
                         cache: false,
                         async: false,
                         url: "main/modules/external/check_value.php",
-                            data: {value:$("#plug_tolerance"+i).val(),type:'tolerance',plug: $("#plug_type"+i).val()}
+                        data: {value:$("#plug_second_tolerance"+i).val(),type:'tolerance',plug: $("#plug_type"+i).val()}
                         }).done(function(data) {
                             if(data!=1) {
                                 if(($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")) {
-                                    $("#error_tolerance_value_humi"+i).show(700);
+                                    $("#error_second_tolerance_value_temp"+i).show(700);
                                 }
 
-                                if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
-                                    $("#error_tolerance_value_temp"+i).show(700);
+                                if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="pump")) {
+                                    $("#error_second_tolerance_value_humi"+i).show(700);
                                 }
+                                checked=false;
+                                jump_plug=i;
+                            }
+                        });
+                    } 
 
-                                if($("#plug_type"+i).val()=="pump") {
-                                    $("#error_tolerance_value_water"+i).show(700);
-                                }
+
+                    if(($("#plug_regul_value"+i).val()=="0")||($("#plug_regul_value"+i).val()=="")) {
+                        $("#error_regul_value"+i).show(700);
+                        checked=false;
+                        jump_plug=i;
+                    } else {
+                        $("#plug_regul_value"+i).val($("#plug_regul_value"+i).val().replace(",","."));
+                        $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/check_value.php",
+                        data: {value:$("#plug_regul_value"+i).val(),type:'regulation'}
+                        }).done(function(data) {
+                            if(data!=1) {
+                                $("#error_regul_value"+i).show(700);
                                 checked=false;
                                 jump_plug=i;
                             }
                         });
                     }
 
+                    
+                    var nb_sensor=0;
 
-                    //Check the second regul values:
-                    if($("#plug_regul"+i).val()=="True") {
-                        if(($("#plug_second_tolerance"+i).val()=="0")||($("#plug_second_tolerance"+i).val()=="")) {
-                            $("#plug_second_tolerance"+i).val('0');
+                    //sensors: variable globale du nombre de capteurs définit par le fichier config.php
+                    if(sensors) {
+                        for (var j = 1  ; j<=sensors; j++) {
+                            if($("#plug_sensor"+i+j+" option:selected").val()=="True") {
+                                //Compte du nombre de capteur selectionné:
+                                nb_sensor=nb_sensor+1;
+                            }
+                        }
+
+                        if(nb_sensor<=1) {
+                            // Si un seul capteur pour la régulation, on désactive les options de min/max/moy:
+                            $("#plug_compute_method"+i).attr('disabled','disabled');
                         } else {
-                            $("#plug_second_tolerance"+i).val($("#plug_second_tolerance"+i).val().replace(",","."));
-                            $.ajax({
-                            cache: false,
-                            async: false,
-                            url: "main/modules/external/check_value.php",
-                            data: {value:$("#plug_second_tolerance"+i).val(),type:'tolerance',plug: $("#plug_type"+i).val()}
-                            }).done(function(data) {
-                                if(data!=1) {
-                                    if(($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")) {
-                                        $("#error_second_tolerance_value_temp"+i).show(700);
-                                    }
+                            // Sinon les options sont activées:
+                            $("#plug_compute_method"+i).removeAttr('disabled');
+                        }
 
-                                    if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="pump")) {
-                                        $("#error_second_tolerance_value_humi"+i).show(700);
-                                    }
-                                    checked=false;
-                                    jump_plug=i;
-                                }
-                            });
-                        } 
-
-
-                        if(($("#plug_regul_value"+i).val()=="0")||($("#plug_regul_value"+i).val()=="")) {
-                            $("#error_regul_value"+i).show(700);
+                        if(nb_sensor==0) {
+                            // Si aucun capteur n'est selectionné: affichage du message précisant que le capteur 1 sera selectionné + selection automatique du capteur 1
+                            $("#error_select_sensor"+i).show();
+                            $("#plug_sensor"+i+"1 option[value='True']").prop('selected', 'selected');
                             checked=false;
                             jump_plug=i;
                         } else {
-                            $("#plug_regul_value"+i).val($("#plug_regul_value"+i).val().replace(",","."));
-                            $.ajax({
-                            cache: false,
-                            async: false,
-                            url: "main/modules/external/check_value.php",
-                            data: {value:$("#plug_regul_value"+i).val(),type:'regulation'}
-                            }).done(function(data) {
-                                if(data!=1) {
-                                    $("#error_regul_value"+i).show(700);
-                                    checked=false;
-                                    jump_plug=i;
-                                }
-                            });
+                            // On efface le message d'erreur sinon
+                            $("#error_select_sensor"+i).css("display","none");
                         }
 
-                        
-                        var nb_sensor=0;
-    
-                        //sensors: variable globale du nombre de capteurs définit par le fichier config.php
-                        if(sensors) {
-                            for (var j = 1  ; j<=sensors; j++) {
-                                if($("#plug_sensor"+i+j+" option:selected").val()=="True") {
-                                    //Compte du nombre de capteur selectionné:
-                                    nb_sensor=nb_sensor+1;
-                                }
-                            }
-
-                            if(nb_sensor<=1) {
-                                // Si un seul capteur pour la régulation, on désactive les options de min/max/moy:
-                                $("#plug_compute_method"+i).attr('disabled','disabled');
-                            } else {
-                                // Sinon les options sont activées:
-                                $("#plug_compute_method"+i).removeAttr('disabled');
-                            }
-
-                            if(nb_sensor==0) {
-                                // Si aucun capteur n'est selectionné: affichage du message précisant que le capteur 1 sera selectionné + selection automatique du capteur 1
-                                $("#error_select_sensor"+i).show();
-                                $("#plug_sensor"+i+"1 option[value='True']").prop('selected', 'selected');
-                                checked=false;
-                                jump_plug=i;
-                            } else {
-                                // On efface le message d'erreur sinon
-                                $("#error_select_sensor"+i).css("display","none");
-                            }
-
-                            if(nb_sensor<=1) {
-                                // Si un seul capteur pour la régulation, on désactive les options de min/max/moy:
-                                $("#plug_compute_method"+i).attr('disabled','disabled');
-                            } else {
-                                // Sinon les options sont activées:
-                                $("#plug_compute_method"+i).removeAttr('disabled');
-                            }
+                        if(nb_sensor<=1) {
+                            // Si un seul capteur pour la régulation, on désactive les options de min/max/moy:
+                            $("#plug_compute_method"+i).attr('disabled','disabled');
+                        } else {
+                            // Sinon les options sont activées:
+                            $("#plug_compute_method"+i).removeAttr('disabled');
                         }
                     }
-
                 }
+
             }
+        }
 
         if(checked) {
                 var check_update=true;
@@ -327,13 +370,20 @@ $(document).ready(function(){
                   onBlock: function() {
                     for(i=1;i<=nb_plugs;i++) {    
                         var data_array = {};
+                        
+                        // For each input, add this to the array
                         $("#state_plug"+i+" :input").each(function() {
                             data_array[$(this).attr('name')]=$(this).val();
                         }); 
 
-                        //Customization:
+                        // Add Number of plug to the array
                         data_array['number']=i;
+                        
+                        // Add Plug power max to the array
                         data_array['plug_power_max'+i]=$('input[name=plug_power_max'+i+']:checked').val();
+                        
+                        // Add module used
+                        data_array['plug_module'+i] = $("select[name=plug_module"+i+"]").val();
 
                         $.ajax({
                             cache: false,

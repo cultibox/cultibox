@@ -23,7 +23,7 @@ function check_db() {
     $plugs_index_col["PLUG_REGUL_VALUE"]    = array ( 'Field' => "PLUG_REGUL_VALUE", 'Type' => "decimal(3,1)", 'default_value' => 35.0, 'carac' => "NOT NULL");
     $plugs_index_col["PLUG_SECOND_TOLERANCE"] = array ( 'Field' => "PLUG_SECOND_TOLERANCE", 'Type' => "decimal(3,1)", 'default_value' => 0.0, 'carac' => "NOT NULL");
     $plugs_index_col["PLUG_COMPUTE_METHOD"] = array ( 'Field' => "PLUG_COMPUTE_METHOD", 'Type' => "varchar(1)", 'default_value' => 'M', 'carac' => "NOT NULL");
-
+    $plugs_index_col["PLUG_MODULE"]         = array ( 'Field' => "PLUG_MODULE", 'Type' => "varchar(10)", 'default_value' => 'wireless', 'carac' => "NOT NULL");
 
     // Check if table configuration exists
     $sql = "SHOW TABLES FROM cultibox LIKE 'plugs';";
@@ -48,7 +48,7 @@ function check_db() {
                     ."PLUG_NAME varchar(30) DEFAULT NULL,"
                     ."PLUG_TYPE varchar(20) NOT NULL DEFAULT 'other',"
                     ."PLUG_TOLERANCE decimal(3,1) DEFAULT NULL,"
-                    ."PLUG_POWER int(11) NULL DEFAULT NULL,"
+                    ."PLUG_POWER int(11) NULL DEFAULT 100,"
                     ."PLUG_POWER_MAX varchar(10) NOT NULL DEFAULT '1000',"
                     ."PLUG_REGUL varchar(5) NOT NULL DEFAULT 'False',"
                     ."PLUG_REGUL_SENSOR VARCHAR( 7 ) NOT NULL DEFAULT '1',"
@@ -56,7 +56,8 @@ function check_db() {
                     ."PLUG_SENSS varchar(1) NOT NULL DEFAULT '+',"
                     ."PLUG_REGUL_VALUE decimal(3,1) NOT NULL DEFAULT '35.0',"
                     ."PLUG_SECOND_TOLERANCE DECIMAL( 3, 1 ) NOT NULL DEFAULT '0.0',"
-                    ."PLUG_COMPUTE_METHOD VARCHAR( 1 ) NOT NULL DEFAULT 'M');";
+                    ."PLUG_COMPUTE_METHOD VARCHAR( 1 ) NOT NULL DEFAULT 'M'),"
+                    ."PLUG_MODULE varchar(10) NOT NULL DEFAULT 'wirless');";
 
         // Create table
         try {
@@ -67,23 +68,23 @@ function check_db() {
             print_r($ret);
         }
 
-        $sql = "INSERT INTO plugs (id, PLUG_ID, PLUG_NAME, PLUG_TYPE, PLUG_TOLERANCE, PLUG_POWER, PLUG_POWER_MAX, PLUG_REGUL, PLUG_REGUL_SENSOR, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE, PLUG_SECOND_TOLERANCE,PLUG_COMPUTE_METHOD) VALUES
-(1,'', 'Prise1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(2,'', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(3,'', 'Prise3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(4,'', 'Prise4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(5,'', 'Prise5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(6,'', 'Prise6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(7,'', 'Prise7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(8,'', 'Prise8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(9,'', 'Prise9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(10,'', 'Prise10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(11,'', 'Prise11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(12,'', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(13,'', 'Prise13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(14,'', 'Prise14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(15,'', 'Prise15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-(16,'', 'Prise16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M');";
+        $sql = "INSERT INTO plugs (id, PLUG_ID, PLUG_NAME, PLUG_TYPE, PLUG_TOLERANCE, PLUG_POWER, PLUG_POWER_MAX, PLUG_REGUL, PLUG_REGUL_SENSOR, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE, PLUG_SECOND_TOLERANCE,PLUG_COMPUTE_METHOD,PLUG_MODULE) VALUES
+(1,'', 'Prise1', 'other', 1.0, 100, '3500', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(2,'', 'Prise2', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(3,'', 'Prise3', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(4,'', 'Prise4', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(5,'', 'Prise5', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(6,'', 'Prise6', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(7,'', 'Prise7', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(8,'', 'Prise8', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(9,'', 'Prise9', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(10,'', 'Prise10', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(11,'', 'Prise11', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(12,'', 'Prise12', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(13,'', 'Prise13', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(14,'', 'Prise14', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(15,'', 'Prise15', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
+(16,'', 'Prise16', 'other', 1.0, 100, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless');";
 
         // Insert row:
         try {

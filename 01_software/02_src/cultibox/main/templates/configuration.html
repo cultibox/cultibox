@@ -64,7 +64,7 @@
             </td>
             <td></td>
         </tr>
-        <!-- Display WEBCAM row only if in CUltipi-->
+        <!-- Display WEBCAM row only if in Cultipi-->
         <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {?>
             <tr>
                 <td class="conf-marge"></td>
@@ -76,21 +76,28 @@
                     </select>
                 </td>
                 <td></td>
-            </tr>
-            <?php } ?>
-            <tr>
+        </tr>
+        <?php } ?>
+        <tr>
             <td></td>
             <td><?php echo __('IMPORT_CONF_CULTIPI'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_CONF'); ?>" />
-</td>
-            <td><input id="confupload" type="file" name="files[]"><label id="import_conf_name" class="imported_file"></label>
-        <button name="import" value="<?php echo __('SELECT_FILE_NAME'); ?>" id="import_conf" class="inputDisable" disabled><?php  echo __('SELECT_FILE_NAME'); ?></button>
+            </td>
+            <td>
+                <input id="confupload" type="file" name="files[]">
+                <label id="import_conf_name" class="imported_file"></label>
+                <button name="import" value="<?php echo __('SELECT_FILE_NAME'); ?>" id="import_conf" class="inputDisable" disabled>
+                    <?php  echo __('SELECT_FILE_NAME'); ?>
+                </button>
             </td>
             <td></td>
         </tr>
         <tr>
             <td></td>
             <td><?php echo __('EXPORT_CONF'); ?>:</td>
-            <td><button name="export" value="<?php echo __('EXPORT_PROGRAM'); ?>" id="export_conf"><?php  echo __('EXPORT_PROGRAM'); ?></button>
+            <td>
+                <button name="export" value="<?php echo __('EXPORT_PROGRAM'); ?>" id="export_conf">
+                    <?php  echo __('EXPORT_PROGRAM'); ?>
+                </button>
             </td>
             <td></td>
         </tr>
