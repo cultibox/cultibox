@@ -41,6 +41,46 @@ Dans le module WiFi sont installé plusieurs logiciel :
  * Le logiciel CultiRAZ
  * Le logiciel CultiTime
  
+== CultiRAZ ==
+
+=== Introduction ===
+
+Ce logiciel permet de remettre à zéro certaines parties du module Wifi :
+ * Pendant les trente premières secondes, il remet le module WiFi en configuration usine
+ * Après il permet d'effacer la configuration réseau
+
+=== LED et bouton ===
+
+Pour définir la pin associée à la LED en sortie, il faut entrer dans le shell :
+
+{{{
+gpio -g mode 22 out
+}}}
+
+Pour définir la pin associée au bouton en entrée, il faut entrer dans le shell :
+
+{{{
+gpio -g mode 27 in
+}}}
+
+Pour allumer la LED :
+
+{{{
+gpio -g write 22 0
+}}}
+
+et pour l'éteindre :
+
+{{{
+gpio -g write 22 1
+}}}
+
+Pour lire l'état du bouton (1 : enfoncé , 0 : relaché) :
+
+{{{
+gpio -g read 27
+}}}
+
 == CultiTime ==
 
 === Introduction ===
@@ -134,7 +174,7 @@ Chaque configuration est un dossier dans lequel on retrouve la configuration des
 
 === Serveur  module WiFi ===
 
-Au démarrage du serveur  module WiFi,il charge la liste des repères de sa configuration. Chaque repère représente une entrée ou une sortie.
+Au démarrage du serveur  module WiFi, il charge la liste des repères de sa configuration. Chaque repère représente une entrée ou une sortie.
 Ensuite le serveur démarre tous les composants définit dans le fichier de configuration.
 
 Pour démarrer le serveur CultiPi :
@@ -154,7 +194,7 @@ Exemple de fichier conf.xml :
 </confs>
 }}}
 
-Ensuite, le logiciel CultiPi  charge le fichier XML présent dans le dossier cultiPi de sa configuration. Ce fichier définit l'ensemble des modules qu'il doit démarrer. Il s’appelle start.xml .
+Ensuite, le logiciel CultiPi charge le fichier XML présent dans le dossier cultiPi de sa configuration. Ce fichier définit l'ensemble des modules qu'il doit démarrer. Il s’appelle start.xml .
 
 Le fichier de configuration (généré par le logiciel Cultibox, au format XML) prend la forme suivante :
 
@@ -181,7 +221,9 @@ Pour arrêter le logiciel, il suffit d’exécuter avec tclsh le script cultiPis
 
 Tous les modules doivent pourvoir être appelé de la façon suivante :
 
+{{{
 <module> <numéro port> <fichier de conf XML> <numéro de port du server log>
+}}}
 
 === Communication ===
 
@@ -195,7 +237,9 @@ Tous les modules implémentent un serveur basé sur des sockets. Les numéros de
 
 Pour communiquer avec un module, on ouvre une connexion vers son socket et on lui envoi des trames. Chaque trame respecte le format suivant : 
 
+{{{
 [FROM] [INDEX] [COMMANDE] [Reste de la trame]
+}}}
 
 Avec : 
 
@@ -208,7 +252,7 @@ Chaque module implémente à minima les commandes suivantes :
 
  * stop : pour arrêter le module.
  * pid : le module retourne le pid du module
- * getRepere [VARIABLE] [PARAMETRE] : Retourne l'élément PARAMETRE du vecteur VARIABLE
+ * getRepere VARIABLE PARAMETRE : Retourne l'élément PARAMETRE du vecteur VARIABLE
 
 
 === Module de Logs (serverLog) ===
@@ -237,7 +281,7 @@ Pour réaliser l'acquisition, il utilise le module "Module I2C".
 
 Il pilote ensuite le repère en inscrivant les données suivantes :
  * Qualité : Valide s'il récupère une donnée , défaut communication sinon
- * Valeur : avec la valeur lue * "Coef A" + "Coef B"
+ * Valeur : avec la valeur lue X "Coef A" + "Coef B"
  * Source : Mesure
  * Heure source : l'heure de réponse du module I2C
 
@@ -251,8 +295,8 @@ Pour réaliser le pilotage, il utilise le module "Module I2C".
 == Installation ==
 
 Matériel nécessaire :
- - Un Raspberry Pi
- - Une carte d'extension  module WiFi
+ * Un Raspberry Pi
+ * Une carte d'extension  module WiFi
 
 
 == Commandes/Informations utiles ==

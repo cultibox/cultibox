@@ -1,4 +1,4 @@
-#summary  module WiFi
+#summary  Module WiFi
 
 = Introduction =
 
@@ -8,6 +8,80 @@ Ce module permet de connecter à la Cultibox et ses accessoires en WiFi ou RJ45.
 
 = Installation =
 
+== Introduction ==
+
+L'installation se déroule en plusieurs étapes :
+ * Installer le module WiFi
+ * Se connecter et paramétrer le réseau du module WiFi
+ * Transférer sa configuration
+ 
+== Installation ==
+
+Copier sur la carte SD le firmware spécial WiFi
+
+Rebrancher la carte SD à la Cultibox
+
+Attendre la fin du chargement de la Cultibox
+
+Débrancher l'alimentation électrique de la Cultibox
+
+Brancher le câble entre la Cultibox et le module Wifi
+
+Alimenter le module WiFi. Il faut attendre que la LED orange située sur le dessus se mette à clignoter avant de passer à la suite.
+
+== Connexion et paramétrage du module WiFi ==
+
+=== Connexion avec Windows XP ===
+
+Cliquer sur "Démarrer" puis "Paramètres" puis "Connexions réseau" :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_windowsXP_connexion_1.PNG
+
+Une fenêtre s'affiche. Cliquer la connexion sans fils puis dans la partie gauche de la fenêtre sur "Afficher les réseau sans fils disponible" :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_windowsXP_connexion_2.PNG
+
+Sélectionner le réseau qui s'appel "Cultipi_XXXX", les quatre dernière lettre changent en fonction du module. Puis cliquer sur connecter :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_windowsXP_connexion_3.PNG
+
+Cliquer sur "Je confirme la demande de connexion" :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_windowsXP_connexion_4.PNG
+
+Vous devez maintenant être connecté :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_windowsXP_connexion_5.PNG
+
+Passer directement à l'étape "Configurer le réseau WiFi"
+
+=== Windows 7 ===
+
+=== Linux ===
+
+=== Mac ===
+
+=== Configurer le réseau WiFi ===
+
+Ouvrir un navigateur web. Une fenêtre d'authentification s'ouvre. Si ce n'est pas le cas, entrer dans le navigateur l'adresse web suivante : http://10.0.0.100/cultibox . Entrer les informations suivantes :
+ * Utilisateur : cultipi
+ * Mot de passe : cultipi
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_common_1.PNG
+
+Une fenêtre de configuration du réseau s'affiche. Cliquer sur le bouton "Réseaux disponible" :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_common_2.PNG
+
+Une fenêtre s'affiche, sélectionnez votre réseau WiFi. S'il n'apparaît pas cliquer sur "Re-scanner les réseaux" :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_common_3.PNG
+
+Entrer le mot de passe du réseau puis cliquer sur "Enregistrer la configuration"
+
+Attendre que la page Web vous indique que la configuration est enregistrée :
+
+Vous devez maintenant vous reconnecter sur votre propre réseau.
 
 = Utilisation =
 
