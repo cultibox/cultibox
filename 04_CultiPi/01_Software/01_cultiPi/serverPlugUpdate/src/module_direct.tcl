@@ -41,13 +41,13 @@ proc ::direct::init {} {
         set RC [catch {
             exec gpio -g mode $pin($i,GPIO) out
         } msg]
-        ::piLog::log [clock milliseconds] "error" "Not able to defined pin $pin($i,GPIO) as out -$msg-"
+        if {$RC != 0} {::piLog::log [clock milliseconds] "error" "Not able to defined pin $pin($i,GPIO) as out -$msg-"}
         
         # On la met à zéro
         set RC [catch {
             exec gpio -g write $pin($i,GPIO) 0
         } msg]
-        ::piLog::log [clock milliseconds] "error" "Not able to set pin $pin($i,GPIO) to 0 -$msg-"
+        if {$RC != 0} {::piLog::log [clock milliseconds] "error" "Not able to set pin $pin($i,GPIO) to 0 -$msg-"}
         
     }
 
