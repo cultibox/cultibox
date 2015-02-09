@@ -192,6 +192,9 @@ proc updatePlug {plugNumber} {
     # On cherche le programme de la prise (attention les prises démarre à 1 !)
     set plgPrgm [lindex $programmeToSend [expr $plugNumber - 1]]
     
+    if {[array get ::plug "$plugNumber,module"] == ""} {
+        set ::plug($plugNumber,module) "NA"
+    }
     set module $::plug($plugNumber,module)
 
     # On vérifie que le module utilisé pour le pilotage existe
