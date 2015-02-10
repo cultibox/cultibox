@@ -163,6 +163,14 @@ Modifier la ligne commençant par 127.0.0.1 pour qu'elle ressemble à ceci:
 echo "blacklist pcm512x" >> /etc/modprobe.d/fbdev-blacklist.conf
 }}}
 
+
+ * Configuration des options du module uvcvideo:
+
+{{{
+echo "options uvcvideo nodrop=1 timeout=5000 quirks=0x80
+}}}
+
+
  * Remplacement du système de logs par syslogd qui consomme moins de ressources:
 
 {{{
