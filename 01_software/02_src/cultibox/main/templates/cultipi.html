@@ -78,39 +78,53 @@
                 echo '    <tr>';
                 $sensorValuesList = explode(" ", $sensorValues[$sensor["indexElem"]]);
                 if (!array_key_exists(1, $sensorValuesList)) {$sensorValuesList[1] = "";}
-                echo '      <td colspan="2" ><p id="syno_elemValueSensor_val1_' . $sensor["indexElem"] . '" class="pInline" >' . $sensorValuesList[0] . '</p>';
+                // If defcom, set opacity to 0.4
+                $newStyle = "";
+                $tootlTipText = "";
+                $newText = "";
                 switch ($sensor["image"])
                 {
                     case 'T_RH_sensor.png' :
-                        echo '      <p class="pInline">°C</p>';
-                        echo '      <p id="syno_elemValueSensor_val2_' . $sensor["indexElem"] . '" class="pInline" >' . $sensorValuesList[1] . '</p><p class="pInline">RH</p>';
+                        $newText = $tootlTipText = $sensorValuesList[0] . "°C " . $sensorValuesList[1] . "RH" ;
                         break;
                     case 'water_T_sensor.png': 
-                        echo '      <p class="pInline" >°C</p>';
+                        $newText = $tootlTipText = $sensorValuesList[0] . "°C";
                         break;
                     case 'level_sensor.png': 
-                        echo '      <p class="pInline" >cm</p>';
+                        $newText = $tootlTipText = $sensorValuesList[0] . "cm";
                         break;
                     case 'pH-sensor.png': 
-                        echo '      <p class="pInline" >ph</p>';
+                        $newText = $tootlTipText = $sensorValuesList[0] . "ph";
                         break;
                     case 'conductivity-sensor.png': 
-                        echo '      <p class="pInline" >EC</p>';
+                        $newText = $tootlTipText = $sensorValuesList[0] . "ec";
                         break;
                     case 'dissolved-oxygen-sensor.png': 
-                        echo '      <p class="pInline" >OD</p>';
+                        $newText = $tootlTipText = $sensorValuesList[0] . "OD";
                         break;
                     case 'ORP-sensor.png': 
-                        echo '      <p class="pInline" >ORP</p>';
+                        $newText = $tootlTipText = $sensorValuesList[0] . "ORP";
                         break;
                     default :
-                        echo '      <p class="pInline" >???</p>';
+                        $newText = $tootlTipText = $sensorValuesList[0] . "???";
                         break;
                 }
+                if ($sensorValuesList[0] == "DEFCOM") {
+                    $newStyle = 'opacity: 0.4;';
+                    $tootlTipText = __("DEFCOM");
+                    $newText = "";
+                }
+                
+                echo '      <td colspan="2" ><p id="syno_elemValueSensor_val1_' . $sensor["indexElem"] . '" class="pInline" >' . $newText . '</p>';
                 echo '      </td>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/images-synoptic-sensor/' . $sensor["image"] . '" alt="capteur" style="width:' . $sensor["scale"] . 'px;cursor: move" class="rotate' . $sensor["rotation"] . '">';
+                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" name="syno_elemSensorImage_' . $sensor["indexElem"] . '" ';
+                echo '       src="main/libs/img/images-synoptic-sensor/' . $sensor["image"] . '" ';
+                echo '       style="width:' . $sensor["scale"] . 'px;cursor: move; ' . $newStyle . '" ';
+                echo '       title="' . $tootlTipText .'" ';
+                echo '       alt="capteur" ';
+                echo '       class="rotate' . $sensor["rotation"] . '">';
                 echo '</div>';
             }
             
@@ -124,24 +138,31 @@
             
             foreach ($plugList as $index => $plug) 
             {
-                echo '<div id="syno_elem_' . $plug["id"] . '" class="" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;z-index:' . $plug["z"] . '" >';
+                echo '<div id="syno_elem_' . $plug["id"] . '" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;z-index:' . $plug["z"] . '" >';
                 echo '  <table>';
                 echo '    <tr>';
                 echo '      <td>Prise ' . $plug["indexElem"] . '</td>';
                 echo '      <td>';
                 echo '          <input type="image" id="syno_elemConfigur_' . $plug["id"] . '" name="syno_elemConfigur_' . $plug["id"] . '"';
-                echo '                 title=""';
                 echo '                 src="main/libs/img/advancedsettings.png"  width="18"';
                 echo '                 alt="configure"';
                 echo '                 class="syno_conf_elem_button"';
                 echo '          />';
                 echo '      </td>';
                 echo '    </tr>';
-                echo '    <tr>';
-                echo '      <td colspan="2" id="syno_elemValuePlug_' . $plug["indexElem"] . '" name="syno_elemValuePlug_' . $plug["id"] . '" >' . $plugValues[$plug["indexElem"]] . '</td>';
-                echo '    </tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $plug["id"] . '" name="syno_elemImage_' . $plug["indexElem"] . '" src="main/libs/img/images-synoptic-plug/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move" class="rotate' . $plug["rotation"] . '">';
+                // If defcom, set opacity to 0.4
+                $newStyle = "";
+                $tootlTipText = $plugValues[$plug["indexElem"]];
+                if ($plugValues[$plug["indexElem"]] == "DEFCOM") {
+                    $newStyle = 'opacity: 0.4;';
+                    $tootlTipText = __("DEFCOM");
+                }
+                echo '  <img id="syno_elemImage_' . $plug["id"] . '" name="syno_elemPlugImage_' . $plug["indexElem"] . '" ';
+                echo '        src="main/libs/img/images-synoptic-plug/' . $plug["image"] . '" alt="Prise" ';
+                echo '        style="' . $newStyle . 'width:' . $plug["scale"] . 'px;cursor: move" ';
+                echo '        title="' . $tootlTipText .'" ';
+                echo '        class="rotate' . $plug["rotation"] . '">';
                 echo '</div>';
             }
             
@@ -164,7 +185,8 @@
                 echo '    <tr>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $other["id"] . '" src="main/libs/img/images-synoptic-other/' . $other["image"] . '" alt="Prise" style="width:' . $other["scale"] . 'px;cursor: move" class="rotate' . $other["rotation"] . '">';
+                echo '  <img id="syno_elemImage_' . $other["id"] . '" src="main/libs/img/images-synoptic-other/' . $other["image"] . '" ';
+                echo '                 alt="Prise" style="width:' . $other["scale"] . 'px;cursor: move" class="rotate' . $other["rotation"] . '">';
                 echo '</div>';
             }
             

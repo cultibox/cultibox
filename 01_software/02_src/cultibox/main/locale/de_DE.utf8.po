@@ -1827,6 +1827,9 @@ msgstr "Klicken Sie auf das Bild, um die Protokolle der MySQL-Dienst herunterlad
 msgid "CULTIPI_DL_LOGS_CULTIPI"
 msgstr "Klicken Sie auf das Bild, um die Protokolle Cultipi Service herunterladen"
 
+msgid "DEFCOM"
+msgstr "Ausfall der Kommunikation zwischen der Software und der Element"
+
 msgid "OUTPUT_LOGS"
 msgstr "Logs Ausgang"
 

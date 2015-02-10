@@ -416,7 +416,14 @@ $(document).ready(function(){
                 $("#syno_configure_element_zindex_val").val(objJSON.z);
                 $("#syno_configure_element_zindex").slider("value",objJSON.z);
                 
-                syno_configure_element_scale_imageID = "syno_elemImage_" + idOfElem ;
+                
+                if (typeOfElem == "plug") {
+                    syno_configure_element_scale_imageID = "syno_elemPlugImage_" + idOfElem ;         
+                } else if (typeOfElem == "sensor") {
+                    syno_configure_element_scale_imageID = "syno_elemSensorImage_" + idOfElem ;        
+                } else {
+                    syno_configure_element_scale_imageID = "syno_elemImage_" + idOfElem ;
+                }
                 syno_configure_element_zindex_imageID = "syno_elem_" + idOfElem ;
                 
                 syno_configure_element_rotation = objJSON.rotation;
@@ -517,17 +524,27 @@ $(document).ready(function(){
         }).done(function (data) {
         
             // Change text
-            $('td[name="syno_elemValuePlug_' + idOfElem + '"]').html($( "#syno_configure_element_force_plug_value option:selected" ).val());
-        
+            $('#syno_elemImage_' + idOfElem).attr('title',$( "#syno_configure_element_force_plug_value option:selected" ).val());
+
             // Change image
             if ($( "#syno_configure_element_force_plug_value option:selected" ).val() == "on") {
                 $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_OFF", "_ON"));
             } else  {
                 $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_ON", "_OFF"));
             }
+            
+            // Change opacity
+            $('#syno_elemImage_' + idOfElem ).css("opacity", "1");
+            
         })
     });
 
+    function baseName(str)
+    {
+       var base = new String(str).substring(str.lastIndexOf('/') + 1); 
+       return base;
+    }
+    
     var updateIsAked = 0;
     // Loop for updating sensors
     function updateSensors() {
@@ -559,11 +576,52 @@ $(document).ready(function(){
             
                 $.each( objJSON, function( key, value ) {
                     if (key != "error") {
-                        var valueSplitted = value.split(" "); 
-                        $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]);
-                        if(typeof valueSplitted[1] != 'undefined') {
-                            $('#syno_elemValueSensor_val2_' + key).html(valueSplitted[1]);
+                    
+                        // Change text and opacity
+                        if (value != "DEFCOM") {
+                            newBaseName = baseName($('img[name="syno_elemSensorImage_' + key + '"]').attr('src'));
+                            var valueSplitted = value.split(" "); 
+                            switch(newBaseName) {
+                               case 'T_RH_sensor.png' :
+                                    $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "°C " + $valueSplitted[1] + "RH");
+                                    $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "°C " + $valueSplitted[1] + "RH");
+                                    break;
+                                case 'water_T_sensor.png': 
+                                    $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "°C");
+                                    $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "°C");
+                                    break;
+                                case 'level_sensor.png': 
+                                    $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "cm");
+                                    $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "cm");
+                                    break;
+                                case 'pH-sensor.png': 
+                                    $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "ph");
+                                    $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "ph");
+                                    break;
+                                case 'conductivity-sensor.png': 
+                                    $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "ec");
+                                    $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "ec");
+                                    break;
+                                case 'dissolved-oxygen-sensor.png': 
+                                    $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "OD");
+                                    $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "OD");
+                                    break;
+                                case 'ORP-sensor.png': 
+                                    $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "ORP");
+                                    $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "ORP");
+                                    break;
+                                default :
+                                    $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "???");
+                                    $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "???");
+                                    break;
+                            }
+                            $('img[name="syno_elemSensorImage_' + key + '"]').css("opacity", "1");
+                        } else {
+                            $('#syno_elemValueSensor_val1_' + key).html("");
+                            $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',"<?php echo __('DEFCOM'); ?>");
+                            $('img[name="syno_elemSensorImage_' + key + '"]').css("opacity", "0.4");
                         }
+
                     }
                 });
                 
@@ -608,17 +666,24 @@ $(document).ready(function(){
             
                 $.each( objJSON, function( key, value ) {
                     // Check if element exists
-                    if ($('img[name="syno_elemImage_' + key + '"]').length != 0 ) {
+                    if ($('img[name="syno_elemPlugImage_' + key + '"]').length != 0 ) {
                     
-                        // Change text
-                        $('#syno_elemValuePlug_' + key).html(value);
+                        // Change text and opacity
+                        if (value != "DEFCOM") {
+                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',value);
+                            $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "1");
+                        } else {
+                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('DEFCOM'); ?>");
+                            $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "0.4");
+                        }
                         
                         // Update image
                         if (value == "ON") {
-                            $('img[name="syno_elemImage_' + key + '"]').attr('src',$('img[name="syno_elemImage_' + key + '"]').attr('src').replace("_OFF", "_ON"));
+                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('src',$('img[name="syno_elemPlugImage_' + key + '"]').attr('src').replace("_OFF", "_ON"));
                         } else  {
-                            $('img[name="syno_elemImage_' + key + '"]').attr('src',$('img[name="syno_elemImage_' + key + '"]').attr('src').replace("_ON", "_OFF"));
+                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('src',$('img[name="syno_elemPlugImage_' + key + '"]').attr('src').replace("_ON", "_OFF"));
                         }
+
                     }
                 });
                 
