@@ -657,4 +657,4 @@ Vous obtiendrez une image au format RAW gzipée.
 *Remarque:* /deb/mmcblk0 correspond au device contenant la carte SD dans son intégralité et non pas à une partition.
 
 
-*Remarque:* La commande *rpi-update* peut être utilisée pour mettre à jour le Raspberry, cependant le dernier noyau semble poser des problèmes avec les modules I2C, à suivre!
+*Remarque:* La commande *rpi-update* peut être utilisée pour mettre à jour le Raspberry
