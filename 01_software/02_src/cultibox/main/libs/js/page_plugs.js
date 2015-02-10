@@ -262,9 +262,10 @@ $(document).ready(function(){
 
                 //Check the second regul values:
                 if($("#plug_regul"+i).val()=="True") {
-                    if(($("#plug_second_tolerance"+i).val()=="0")||($("#plug_second_tolerance"+i).val()=="")) {
-                        $("#plug_second_tolerance"+i).val('0');
+                    if($("#plug_second_tolerance"+i).val()=="") {
+                        $("#plug_second_tolerance"+i).val('0.0');
                     } else {
+                        if($("#plug_second_tolerance"+i).val()=="0") $("#plug_second_tolerance"+i).val('0.0');
                         $("#plug_second_tolerance"+i).val($("#plug_second_tolerance"+i).val().replace(",","."));
                         $.ajax({
                         cache: false,

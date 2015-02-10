@@ -1080,7 +1080,6 @@ function create_network_file($myConf) {
     if(strcmp($myConf['activ_wire'],"True")==0) {
         $myArray[]="#IFACE ETH0";
         $myArray[]="allow-hotplug eth0";
-        $myArray[]="auto eth0";
 
         if(strcmp($myConf['wire_type'],"static")==0) {
             $myArray[]="iface eth0 inet static";
@@ -1097,8 +1096,8 @@ function create_network_file($myConf) {
 
     if(strcmp($myConf['activ_wifi'],"True")==0) {
         $myArray[]="#IFACE WLAN0";
-        $myArray[]="allow-hotplug wlan0";
         $myArray[]="auto wlan0";
+        $myArray[]="allow-hotplug wlan0";
 
         if(strcmp($myConf['wifi_type'],"static")==0) {
             $myArray[]="iface wlan0 inet static";
@@ -1117,7 +1116,7 @@ function create_network_file($myConf) {
                     $myArray[]="wireless-key ".$myConf['wifi_password'];
                     break;
 
-            case "WPA (TKIP + AES)":
+            case "WPA AUTO":
                     $myArray[]="wpa-scan-ssid 1";
                     $myArray[]="wpa-ssid ".$myConf['wifi_ssid'];
                     $myArray[]="wpa-ap-scan 1";
@@ -1128,8 +1127,6 @@ function create_network_file($myConf) {
                     break;  
         }
     }
-
-    //"WPA (TKIP + AES)","WPA (TKIP)","WPA (AES/CCMP)"
 
 
     if($f=fopen("/tmp/interfaces","w")) {

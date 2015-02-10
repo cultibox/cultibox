@@ -27,6 +27,16 @@ $.xhrPool.abortAll = function() {
     $.xhrPool.length = 0
 };
 
+//To delete setTimeout et setInterval:
+$.timeout = [];
+$.timeout.abortAll = function() {
+    $(this).each(function(idx, jqXHR) {
+        clearTimeout(jqXHR);
+    });
+    $.timeout.length = 0
+};
+
+
 
 $.ajax({
     cache: false,
@@ -250,6 +260,9 @@ function active_menu(menu) {
 function get_content(page,get_array) {
    //Clean AJAX calls:
    $.xhrPool.abortAll();
+
+   //Clean setTimeout, setInterval:
+   $.timeout.abortAll();
 
    //Clean popup message:
    clean_pop_up_messages();
