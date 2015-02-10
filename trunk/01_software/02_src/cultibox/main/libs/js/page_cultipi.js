@@ -515,7 +515,16 @@ $(document).ready(function(){
             },
             url: "main/modules/external/synoptic.php"
         }).done(function (data) {
-
+        
+            // Change text
+            $('td[name="syno_elemValuePlug_' + idOfElem + '"]').html($( "#syno_configure_element_force_plug_value option:selected" ).val());
+        
+            // Change image
+            if ($( "#syno_configure_element_force_plug_value option:selected" ).val() == "on") {
+                $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_OFF", "_ON"));
+            } else  {
+                $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_ON", "_OFF"));
+            }
         })
     });
 

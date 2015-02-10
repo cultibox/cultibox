@@ -138,7 +138,7 @@
                 echo '      </td>';
                 echo '    </tr>';
                 echo '    <tr>';
-                echo '      <td colspan="2" id="syno_elemValuePlug_' . $plug["indexElem"] . '" >' . $plugValues[$plug["indexElem"]] . '</td>';
+                echo '      <td colspan="2" id="syno_elemValuePlug_' . $plug["indexElem"] . '" name="syno_elemValuePlug_' . $plug["id"] . '" >' . $plugValues[$plug["indexElem"]] . '</td>';
                 echo '    </tr>';
                 echo '  </table>';
                 echo '  <img id="syno_elemImage_' . $plug["id"] . '" name="syno_elemImage_' . $plug["indexElem"] . '" src="main/libs/img/images-synoptic-plug/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move" class="rotate' . $plug["rotation"] . '">';
