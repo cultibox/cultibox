@@ -129,3 +129,26 @@ proc ::piServer::sendToServer {portNumber message} {
         ::piLog::log [clock milliseconds] "error" "erreur closing channel -$channel-"
     }
 }
+
+# Cette procédure est utilisée pour trouver un port de dispo
+proc ::piServer::findAvailableSocket {start} {
+
+    for {set index 0} {$index < 1000} {incr index} {
+    
+        set RC [catch {
+            set sock [socket -server [list ::piServer::testForfindAvailableSocket [clock seconds]] [expr $start + $index]]
+        } msg]
+        
+        if {$RC != 1} {
+            close $sock
+            return [expr $start + $index]
+        }
+        
+    }
+
+    
+    return "No socket found"
+}
+proc ::piServer::testForfindAvailableSocket {test} {
+
+}

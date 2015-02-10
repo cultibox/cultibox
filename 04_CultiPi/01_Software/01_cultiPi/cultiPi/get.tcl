@@ -9,7 +9,7 @@ package require piLog
 package require piServer
 package require piTools
 
-set port(serverGet) 6022
+set port(serverGet) [::piServer::findAvailableSocket 6022]
 set port(serverCultipi) 6000
 set port(serverAcqSensor) 6006
 set port(serverPlugUpdate) 6004
