@@ -69,9 +69,9 @@ getSnapshot = function(first) {
                 $("#webcam").css("display","none");
             }
 
-            setTimeout(function() {
+            $.timeout.push(setTimeout(function() {
                 getSnapshot(0);
-            },5000);
+            },5000));
      });
 }
 // }}}

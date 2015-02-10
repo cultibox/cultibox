@@ -1,3 +1,14 @@
+Cultibox (2.0.35) precise; urgency=low
+    + Correction du décallage de l'heure de prise de l'image webcam
+    + Correction de la valeur de la seconde tolérance 
+    + Masque par défaut à 255.255.255.0 si non définit
+    + Correction de l'affichage de la partie wifi
+    + Suppréssion des options inutiles pour le wifi
+    + Suppréssion des scripts qui tournent en boucle avec le setTimeout ou setInterval
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Feb 10 16:16:35 CEST 2015
+
+
 Cultibox (2.0.34) precise; urgency=low
     + Corrections création image webcam
     + Correction bouton enregistrer la configuration

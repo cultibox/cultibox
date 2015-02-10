@@ -634,7 +634,7 @@ $(document).ready(function(){
 
         })
     }
-    setInterval(updateSensors, 13000);
+    $.timeout.push(setInterval(updateSensors, 13000));
 
     // Loop for updating plugs
     function updatePlugs() {
@@ -695,7 +695,7 @@ $(document).ready(function(){
             updateIsAked = 0;
         })
     }
-    setInterval(updatePlugs, 7000);
+    $.timeout.push(setInterval(updatePlugs, 7000));
     
 
     // Display services logs:
