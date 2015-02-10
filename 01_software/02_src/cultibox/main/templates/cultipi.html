@@ -141,7 +141,7 @@
                 echo '      <td colspan="2" id="syno_elemValuePlug_' . $plug["indexElem"] . '" >' . $plugValues[$plug["indexElem"]] . '</td>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $plug["id"] . '" src="main/libs/img/images-synoptic-plug/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move" class="rotate' . $plug["rotation"] . '">';
+                echo '  <img id="syno_elemImage_' . $plug["id"] . '" name="syno_elemImage_' . $plug["indexElem"] . '" src="main/libs/img/images-synoptic-plug/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move" class="rotate' . $plug["rotation"] . '">';
                 echo '</div>';
             }
             
@@ -196,7 +196,7 @@
                 <td>Image</td>
                 <td colspan="3" >
                     <?php 
-                        echo '<select id="syno_configure_element_image_other" onchange="showValue(this.value)" style="display:none" >';
+                        echo '<select id="syno_configure_element_image_other" style="display:none" >';
                         $dir    = '../../libs/img/images-synoptic-other';
                         $files  = array_diff(scandir($dir), array('..', '.'));
                         foreach ($files as $file)
@@ -208,19 +208,22 @@
                         }
                         echo '</select>';
 
-                        echo '<select id="syno_configure_element_image_plug" onchange="showValue(this.value)" style="display:none" >';
+                        echo '<select id="syno_configure_element_image_plug" style="display:none" >';
                         $dir    = '../../libs/img/images-synoptic-plug';
                         $files  = array_diff(scandir($dir), array('..', '.'));
                         foreach ($files as $file)
                         {
-                            if (pathinfo($file, PATHINFO_EXTENSION) == "png")
+                            if ((pathinfo($file, PATHINFO_EXTENSION) == "png" || pathinfo($file, PATHINFO_EXTENSION) == "gif") 
+                                && strpos(basename($file), "_OFF"))
                             {
-                                echo '<option value="' . $file . '" >' . basename($file) . '</option>';
+                                // Create file name (remove extension and _ON)
+                                $newFileName = str_replace("_OFF.gif", "", str_replace("_OFF.png", "", basename($file)));
+                                echo '<option value="' . $file . '" >' . $newFileName . '</option>';
                             }
                         }
                         echo '</select>';
 
-                        echo '<select id="syno_configure_element_image_sensor" onchange="showValue(this.value)" style="display:none" >';
+                        echo '<select id="syno_configure_element_image_sensor" style="display:none" >';
                         $dir    = '../../libs/img/images-synoptic-sensor';
                         $files  = array_diff(scandir($dir), array('..', '.'));
                         foreach ($files as $file)

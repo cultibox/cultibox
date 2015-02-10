@@ -519,8 +519,8 @@ $(document).ready(function(){
         })
     });
 
-var updateIsAked = 0;
-    // Loop for updating sensors and plugs
+    var updateIsAked = 0;
+    // Loop for updating sensors
     function updateSensors() {
     
         if (updateIsAked == 1) {
@@ -569,7 +569,7 @@ var updateIsAked = 0;
     }
     setInterval(updateSensors, 13000);
 
-    // Loop for updating sensors and plugs
+    // Loop for updating plugs
     function updatePlugs() {
         if (updateIsAked == 1) {
             return 0;
@@ -598,8 +598,18 @@ var updateIsAked = 0;
             if (objJSON.error == "") {
             
                 $.each( objJSON, function( key, value ) {
-                    if (key != "error") {
+                    // Check if element exists
+                    if ($('img[name="syno_elemImage_' + key + '"]').length != 0 ) {
+                    
+                        // Change text
                         $('#syno_elemValuePlug_' + key).html(value);
+                        
+                        // Update image
+                        if (value == "ON") {
+                            $('img[name="syno_elemImage_' + key + '"]').attr('src',$('img[name="syno_elemImage_' + key + '"]').attr('src').replace("_OFF", "_ON"));
+                        } else  {
+                            $('img[name="syno_elemImage_' + key + '"]').attr('src',$('img[name="syno_elemImage_' + key + '"]').attr('src').replace("_ON", "_OFF"));
+                        }
                     }
                 });
                 
