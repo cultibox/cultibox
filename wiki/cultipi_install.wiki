@@ -501,6 +501,7 @@ iface eth0 inet dhcp
 #IFACE WLAN0
 auto wlan0
 allow-hotplug wlan0
+wireless-power off
 iface wlan0 inet static
 address 10.0.0.100
 netmask 255.0.0.0
