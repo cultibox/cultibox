@@ -25,7 +25,7 @@ proc ::wireless::outFromBootloader {} {
     
     # On essaye d'écrire le registre bootloadStateAdress
     set RC [catch {
-        exec i2cset -y 1 $moduleAdress $bootloadStateAdress
+        exec /usr/local/sbin/i2cset -y 1 $moduleAdress $bootloadStateAdress
     } msg]
     if {$RC != 0} {
         set ::plug(etat,bootload) "DEFCOM"
@@ -39,7 +39,7 @@ proc ::wireless::outFromBootloader {} {
     # On lit la version
     set started ""
     set RC [catch {
-        set bootloadState [exec i2cget -y 1 $moduleAdress]
+        set bootloadState [exec /usr/local/sbin/i2cget -y 1 $moduleAdress]
     } msg]
     
     if {$RC != 0} {
@@ -55,7 +55,7 @@ proc ::wireless::outFromBootloader {} {
         set ::plug(etat,bootload) "0"
     } else {
         set RC [catch {
-            exec i2cset -y 1 $moduleAdress $bootloadJumpToAppAdress
+            exec /usr/local/sbin/i2cset -y 1 $moduleAdress $bootloadJumpToAppAdress
         } msg]
         
         if {$RC != 0} {
@@ -70,8 +70,8 @@ proc ::wireless::outFromBootloader {} {
     # On enregistre les infos de versions
     # Numéro majeur
     set RC [catch {
-        exec i2cset -y 1 $moduleAdress $majorVersionAdress
-        set major [exec i2cget -y 1 $moduleAdress]
+        exec /usr/local/sbin/i2cset -y 1 $moduleAdress $majorVersionAdress
+        set major [exec /usr/local/sbin/i2cget -y 1 $moduleAdress]
     } msg]
     
     if {$RC != 0} {
@@ -83,8 +83,8 @@ proc ::wireless::outFromBootloader {} {
     
     # Numéro mineur
     set RC [catch {
-        exec i2cset -y 1 $moduleAdress $minorVersionAdress
-        set minor [exec i2cget -y 1 $moduleAdress]
+        exec /usr/local/sbin/i2cset -y 1 $moduleAdress $minorVersionAdress
+        set minor [exec /usr/local/sbin/i2cget -y 1 $moduleAdress]
     } msg]
     
     if {$RC != 0} {
@@ -103,7 +103,7 @@ proc ::wireless::start {} {
     
     # On indique à l'émetteur qu'il peut démarrer
     set RC [catch {
-        exec i2cset -y 1 $moduleAdress $enableOutputAdress 0
+        exec /usr/local/sbin/i2cset -y 1 $moduleAdress $enableOutputAdress 0
     } msg]
     if {$RC != 0} {
         set ::plug(etat,bootload) "DEFCOM"
@@ -127,7 +127,7 @@ proc ::wireless::setAdress {plugNumber adress} {
     set register [expr ($plugNumber - 1) * 2 + 32]
     
     set RC [catch {
-        exec i2cset -y 1 $moduleAdress $register $::plug($plugNumber,adress)
+        exec /usr/local/sbin/i2cset -y 1 $moduleAdress $register $::plug($plugNumber,adress)
     } msg]
 
     if {$RC != 0} {
@@ -162,7 +162,7 @@ proc ::wireless::setValue {plugNumber value address} {
     }    
     
     set RC [catch {
-        exec i2cset -y 1 $moduleAdress $register $value
+        exec /usr/local/sbin/i2cset -y 1 $moduleAdress $register $value
     } msg]
 
     if {$RC != 0} {

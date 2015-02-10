@@ -6,7 +6,7 @@ proc exec {args} {
     set commande [lindex $args 0]
 
     switch $commande {
-        "i2cset" {
+        "/usr/local/sbin/i2cset" {
 
             set module  [lindex $args 3]
             set reg     [lindex $args 4]
@@ -101,7 +101,7 @@ proc exec {args} {
                 }
             }
         }
-        "i2cget" {
+        "/usr/local/sbin/i2cget" {
             set module  [lindex $args 4]
             return $::simulator(valueToSend)
         }

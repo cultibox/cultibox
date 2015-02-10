@@ -117,10 +117,10 @@ proc searchSensorsConnected {} {
                 set moduleAdress $::sensor(${sensorType},$index,adress)
             
                 set RC [catch {
-                    exec i2cset -y 1 $moduleAdress $::SLAVE_REG_MINOR_VERSION
-                    set minorVersion [exec i2cget -y 1 $moduleAdress]
-                    exec i2cset -y 1 $moduleAdress $::SLAVE_REG_MAJOR_VERSION
-                    set majorVersion [exec i2cget -y 1 $moduleAdress]
+                    exec /usr/local/sbin/i2cset -y 1 $moduleAdress $::SLAVE_REG_MINOR_VERSION
+                    set minorVersion [exec /usr/local/sbin/i2cget -y 1 $moduleAdress]
+                    exec /usr/local/sbin/i2cset -y 1 $moduleAdress $::SLAVE_REG_MAJOR_VERSION
+                    set majorVersion [exec /usr/local/sbin/i2cget -y 1 $moduleAdress]
                 } msg]
                 
                 if {$RC != 0} {
@@ -165,11 +165,11 @@ proc readSensors {} {
                     set valueHP ""
                     set valueLP ""
                     set RC [catch {
-                        exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_HP_ADR
-                        set valueHP [exec i2cget -y 1 $moduleAdress]
+                        exec /usr/local/sbin/i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_HP_ADR
+                        set valueHP [exec /usr/local/sbin/i2cget -y 1 $moduleAdress]
                         
-                        exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_LP_ADR
-                        set valueLP [exec i2cget -y 1 $moduleAdress]
+                        exec /usr/local/sbin/i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_LP_ADR
+                        set valueLP [exec /usr/local/sbin/i2cget -y 1 $moduleAdress]
                     } msg]
 
                     if {$RC != 0} {
@@ -204,11 +204,11 @@ proc readSensors {} {
                         set valueHP ""
                         set valueLP ""
                         set RC [catch {
-                            exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_HP2_ADR
-                            set valueHP [exec i2cget -y 1 $moduleAdress]
+                            exec /usr/local/sbin/i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_HP2_ADR
+                            set valueHP [exec /usr/local/sbin/i2cget -y 1 $moduleAdress]
                             
-                            exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_LP2_ADR
-                            set valueLP [exec i2cget -y 1 $moduleAdress]
+                            exec /usr/local/sbin/i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_LP2_ADR
+                            set valueLP [exec /usr/local/sbin/i2cget -y 1 $moduleAdress]
                         } msg]
 
                         if {$RC != 0} {
