@@ -368,7 +368,7 @@ openssl req -new -x509 -keyout cultipi.pem -out server.pem -days 365 -nodes
 chmod -R 600 /etc/lighttpd/ssl
 }}}
 
- * Installation et configuration de la mécanique *.htaccess:
+ * Installation et configuration de la mécanique *.htaccess*:
 
 {{{
 apt-get install apache2-utils
