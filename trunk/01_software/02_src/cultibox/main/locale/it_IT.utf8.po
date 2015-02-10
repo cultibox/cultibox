@@ -1828,6 +1828,9 @@ msgstr "Clicca sull'immagine per scaricare i log del servizio MySQL"
 msgid "CULTIPI_DL_LOGS_CULTIPI"
 msgstr "Clicca sull'immagine per scaricare i registri di servizio Cultipi"
 
+msgid "DEFCOM"
+msgstr "In mancanza di comunicazione tra il software e l'elemento"
+
 msgid "OUTPUT_LOGS" 
 msgstr "Logs uscita"
 
