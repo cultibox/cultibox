@@ -413,9 +413,8 @@ include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
 include_shell "/usr/share/lighttpd/create-mime.assign.pl"
 include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
 
-$HTTP["remoteip"] == "10.0.0.0/8" {
-        url.redirect = ("^/$" => "/cultibox/index.php?menu=cultipi&submenu=network_conf_ui")
-}
+
+url.redirect = ("^/$" => "/cultibox/")
 
 
 
