@@ -37,6 +37,9 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_cancelx.png
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_print.png
 
 
+*Note:* l'export de vos graphes en image passe directement par les serveurs du logiciel Highchart pour réaliser le traitement de transformation. Si vous n'avez pas d'accès à internet, cet export ne fonctionnera donc pas.
+
+
 = Créer ou modifier un programme pour une prise =
 
 == Programmation standard ==

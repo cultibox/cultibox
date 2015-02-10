@@ -66,7 +66,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_cancelx.png
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_print.png
 
-*Note:* L'export de vos graphes en image passe directement par les serveurs du logiciel Highchart pour réaliser le traitement de transformation. Si vous n'avez pas d'accès à internet, cet export ne fonctionnera donc pas. 
+*Note:* l'export de vos graphes en image passe directement par les serveurs du logiciel Highchart pour réaliser le traitement de transformation. Si vous n'avez pas d'accès à internet, cet export ne fonctionnera donc pas. 
 
  * *Passage au jour/mois suivant/précédent*: il est possible, une fois un graphique affiché, de passer au jour ou mois suivant ou précédent (en fonction du type d'affichage choisi) rapidement en utilisant les flèches se trouvant à gauche et à droite du graphique
 
