@@ -480,6 +480,31 @@ general_log             = 1
 apt-get install atmel-firmware firmware-atheros firmware-brcm80211 firmware-libertas firmware-ralink firmware-realtek libertas-firmware zd1211-firmware
 }}}
 
+ * Ajout de CRDA
+
+{{{
+apt-get install crda
+}}}
+
+Puis configuration de CRDA, editer le fichier de configuration CRDA:
+
+{{{
+vi /etc/default/crda
+}}}
+
+et remplacer la ligne:
+
+{{{
+REGDOMAIN=
+}}}
+
+Par:
+
+{{{
+REGDOMAIN=FR
+}}}
+
+
  * Configuration des interfaces:
 
 {{{
