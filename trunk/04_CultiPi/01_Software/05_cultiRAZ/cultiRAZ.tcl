@@ -60,10 +60,6 @@ proc firstLoop {} {
                 # RAZ de la configuration réseau:
                 set RC [catch {exec cp /etc/network/interfaces.BASE /etc/network/interfaces} msg]
                 if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error cp : $msg"}
-                set RC [catch {exec update-rc.d isc-dhcp-server defaults} msg]
-                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : isc-dhcp-server defaults : $msg"}
-                set RC [catch {exec update-rc.d dnsmasq defaults} msg]
-                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : dnsmasq defaults : $msg"}
 
                 # Remise en place du mot de passe d'origine:
                 set RC [catch {
@@ -171,10 +167,6 @@ proc checkAndUpdate {} {
             # RAZ de la configuration réseau:
             set RC [catch {exec cp /etc/network/interfaces.BASE /etc/network/interfaces} msg]
             if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error cp : $msg"}
-            set RC [catch {exec update-rc.d isc-dhcp-server defaults} msg]
-            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : isc-dhcp-server defaults : $msg"}
-            set RC [catch {exec update-rc.d dnsmasq defaults} msg]
-            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : dnsmasq defaults : $msg"}
 
             # Remise en place du mot de passe d'origine:
             set RC [catch {
