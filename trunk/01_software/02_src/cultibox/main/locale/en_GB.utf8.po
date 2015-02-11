@@ -1742,6 +1742,18 @@ msgid "CURRENT_PROG_COMMENT"
 msgstr "Current program"
 
 #For the Cultipi part:
+msgid "CULTIPI_CONFIRM_UPDATE"
+msgstr "Updates are available, would you put them?"
+
+msgid "CULTIPI_UPDATED"
+msgstr "Your system has been updated!"
+
+msgid "CULTIPI_NO_UPDATE"
+msgstr "Your system is up to date!"
+
+msgid "TOOLTIP_UPDATE_RPI"
+msgstr "Click on the image to check for updates for your system"
+
 msgid "EXPORT_CONF"
 msgstr "Export Configuration"
 
@@ -1783,9 +1795,6 @@ msgstr "Add an item"
 
 msgid "CULTIPI_SYNO_CONF"
 msgstr "Configure"
-
-msgid "CULTIPI_SYNO_IMAGE"
-msgstr "Image"
 
 msgid "CULTIPI_SYNO_ROTATION"
 msgstr "Rotation"
