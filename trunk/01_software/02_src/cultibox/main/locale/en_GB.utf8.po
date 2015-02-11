@@ -1934,6 +1934,18 @@ msgstr "Do not warn me and let me manage the configuration in the dialog"
 
 
 #For the cultinet part:
+msgid "NETWORK_AVAILABLE"
+msgstr "Your unit is now redémarer. It will be available again in a few seconds."
+
+msgid "RESET_NETWORK_CONF"
+msgstr "Click on the image to restore the system to its original configration"
+
+msgid "CULTIPI_DL_BONJOUR"
+msgstr "Click on the image to download the installer service 'Hello'"
+
+msgid "CONFIRM_RESET_NETWORK"
+msgstr "This action will effectively reset the factory manual network configuration all you have done for the network will be lost and the unit will return to its original configration. Are you sure you want to continue?"
+
 msgid "CONFIGURE_TITLE_CULTIBOX_NET"
 msgstr "Network configuration"
 

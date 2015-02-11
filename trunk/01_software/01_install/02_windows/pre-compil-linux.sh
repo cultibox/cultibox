@@ -71,7 +71,6 @@ case "$1" in
         cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/VERSION_FIRM.txt
         cp conf-package/lgpl3.txt ../01_src/01_xampp/LICENSE.txt
 
-
         cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/apache/conf/
         cp conf-lampp/my.ini ../01_src/01_xampp/cultibox/mysql/bin/
         cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/php/

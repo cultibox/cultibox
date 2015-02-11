@@ -206,6 +206,81 @@ $(document).ready(function(){
         });
     });
 
+    //Reset network config:
+    $("#reset_network_img").click(function(e) {
+        e.preventDefault();
+        $("#confirm_reset_network").dialog({
+            resizable: false,
+            width: 800,
+            modal: true,
+            closeOnEscape: false,
+            dialogClass: "dialog_cultibox",
+            buttons: [{
+                text: OK_button,
+                click: function () {
+                    $( this ).dialog( "close" );
+                    $.blockUI({
+                        message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                        centerY: 0,
+                        css: {
+                            top: '20%',
+                            border: 'none',
+                            padding: '5px',
+                            backgroundColor: 'grey',
+                            '-webkit-border-radius': '10px',
+                            '-moz-border-radius': '10px',
+                            opacity: .9,
+                            color: '#fffff'
+                        },
+                        onBlock: function() {
+                            $.ajax({
+                                cache: false,
+                                async: true,
+                                url: "main/modules/external/reset_network.php"
+                            }).done(function (data) {
+                                $.unblockUI();
+                                $("#network_available").dialog({
+                                    resizable: false,
+                                    width: 500,
+                                    modal: true,
+
+                                    dialogClass: "popup_message",
+                                    buttons: [{
+                                            text: CLOSE_button,
+                                            click: function () {
+                                            $( this ).dialog( "close" ); return false;
+                                    }
+                                    }]
+                                });
+                            }).fail(function (data) {
+                                $.unblockUI();
+                                $("#network_available").dialog({
+                                    resizable: false,
+                                    width: 500,
+                                    modal: true,
+                                    closeOnEscape: true,
+                                    dialogClass: "popup_message",
+                                    buttons: [{
+                                            text: CLOSE_button,
+                                            click: function () {
+                                            $( this ).dialog( "close" ); return false;
+                                    }
+                                    }]
+                                });
+                            });
+                        }});
+                }
+            },{
+                text: CLOSE_button,
+                click: function () {
+                    $( this ).dialog( "close" ); return false;
+                }
+            }]
+        });
+   });
+
+
+
     //Change password:
     $("#change_password").click(function(e) {
         e.preventDefault();
@@ -810,6 +885,13 @@ $(document).ready(function(){
         }});
     });
 
+
+    //Dl Bonjour setup
+    $("#dl-bonjour").click(function(e) {
+        e.preventDefault();
+        $.fileDownload('../BonjourPSSetup.exe');
+    });
+
     //Update RPI:
     $("#update_rpi").click(function(e) {
         e.preventDefault();
@@ -1312,11 +1394,7 @@ $(document).ready(function() {
                             break;
                         case 'WEP': type_password="password_wep"
                             break;
-                        case 'WPA (TKIP + AES)': type_password="password_wpa";
-                            break;
-                        case 'WPA (TKIP)': type_password="password_wpa";
-                            break;
-                        case 'WPA (AES/CCMP)': type_password="password_wpa";
+                        case 'WPA AUTO': type_password="password_wpa";
                             break;
                         default: type_password="";
                     }

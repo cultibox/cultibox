@@ -1935,6 +1935,18 @@ msgstr "Mich nicht und lassen Sie mich zu verwalten Sie die Konfiguration im Dia
 
 
 # For the Cultinet part:
+msgid "NETWORK_AVAILABLE"
+msgstr "Das Gerät ist jetzt redémarer. Voraussichtlich wieder lieferbar in wenigen Sekunden sein."
+
+msgid "RESET_NETWORK_CONF"
+msgstr "Klicken Sie auf das Bild, um das System in seinen ursprünglichen configration wiederherzustellen"
+
+msgid "CULTIPI_DL_BONJOUR"
+msgstr "Klicken Sie auf das Bild, um die Installer-Dienst 'Hallo' downloaden"
+
+msgid "CONFIRM_RESET_NETWORK"
+msgstr "Diese Aktion wird die Fabrik manuelle Netzwerkkonfiguration effektiv zurückgesetzt alles, was Sie für das Netzwerk gemacht haben, gehen verloren und das Gerät in seinen ursprünglichen configration zurück. Sind Sie sicher, dass Sie den Vorgang fortsetzen?"
+
 msgid "CONFIGURE_TITLE_CULTIBOX_NET"
 msgstr "Netzwerkkonfiguration"
 

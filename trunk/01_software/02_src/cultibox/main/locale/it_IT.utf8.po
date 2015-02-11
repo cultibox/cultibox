@@ -1936,6 +1936,18 @@ msgstr "Non avvisarmi e fammi gestire la configurazione nella finestra di dialog
 
 
 #For the cultinet part:
+msgid "NETWORK_AVAILABLE"
+msgstr "L'unità è ora redémarer. Sarà di nuovo disponibile in pochi secondi."
+
+msgid "RESET_NETWORK_CONF"
+msgstr "Clicca sull'immagine per ripristinare il sistema allo configration originale"
+
+msgid "CULTIPI_DL_BONJOUR"
+msgstr "Clicca sull'immagine per scaricare il servizio di installazione di 'Ciao'"
+
+msgid "CONFIRM_RESET_NETWORK"
+msgstr "Questa azione sarà efficace ripristinare la configurazione di rete manuale fabbrica tutto quello che hai fatto per la rete andranno persi e l'unità tornerà alla sua configration originale. Sei sicuro di voler continuare?"
+
 msgid "CONFIGURE_TITLE_CULTIBOX_NET"
 msgstr "Configurazione di rete del vostro Cultipi"
 

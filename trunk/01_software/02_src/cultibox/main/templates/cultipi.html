@@ -306,6 +306,21 @@
 
 <!-- Conf reseau -->
 <div id="div_network_conf_ui" style="display:none">
+ <table class="table_width">
+    <tr>
+        <td class="conf-marge-cultipi"></td>
+        <td>
+            <a href="" id="reset_network_img"><img src='/cultibox/main/libs/img/service_restart.png' alt='' title="<?php echo __('RESET_NETWORK_CONF'); ?>"></a>
+            <a href="" id="dl-bonjour"><img src='/cultibox/main/libs/img/download-bonjour.png' alt='' title="<?php echo __('CULTIPI_DL_BONJOUR'); ?>"></a>
+        </td>
+        <td></td>
+    </tr>
+</table>
+<br />
+<hr class="hr_cultipi" />
+<br />
+<br />
+
     <label class="title_conf"><?php echo __('CONFIGURE_TITLE_CULTIBOX_NET'); ?></label>
     <p class="p_center"><?php echo __('CONFIGURE_SUBTITLE'); ?></p>
 <br /><br />
@@ -531,6 +546,14 @@
 
 <div id="confirm_restart_rpi" title="<?php echo __('CONFIRM_RESTART_RPI_TITLE'); ?>" style="display:none">
     <?php echo __('CONFIRM_RESTART_RPI'); ?>
+</div>
+
+<div id="network_available" title="" style="display:none">
+    <?php echo __('NETWORK_AVAILABLE'); ?>
+</div>
+
+<div id="confirm_reset_network" title="" style="display:none">
+    <?php echo __('CONFIRM_RESET_NETWORK'); ?>
 </div>
 
 <div id="success_restart_rpi" title="" style="display:none">

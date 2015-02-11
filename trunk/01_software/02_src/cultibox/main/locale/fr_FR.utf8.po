@@ -1949,6 +1949,18 @@ msgstr "Ne plus me prévenir et me laisser gérer la configuration dans la boît
 
 
 # For the cultinet part:
+msgid "NETWORK_AVAILABLE"
+msgstr "Votre module est en train de redémarer. Il sera de nouveau disponible dans quelques secondes."
+
+msgid "RESET_NETWORK_CONF"
+msgstr "Cliquez sur l'image pour remettre le réseau dans sa configration d'origine"
+
+msgid "CULTIPI_DL_BONJOUR"
+msgstr "Cliquez sur l'image pour télécharger l'installateur du service 'Bonjour'"
+
+msgid "CONFIRM_RESET_NETWORK"
+msgstr "Cette action aura pour effet de remettre le réseau en mode usine, toute la configuration que vous avez réalisé concernant le réseau sera perdu et le module retrouvera sa configration d'origine. Êtes-vous certain de vouloir continuer?"
+
 msgid "CONFIGURE_TITLE_CULTIBOX_NET"
 msgstr "Configuration du réseau"
 
