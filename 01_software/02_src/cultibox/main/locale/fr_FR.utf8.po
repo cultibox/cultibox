@@ -1799,9 +1799,6 @@ msgstr "Ajouter un élément"
 msgid "CULTIPI_SYNO_CONF"
 msgstr "Configurer"
 
-msgid "CULTIPI_SYNO_IMAGE"
-msgstr "Image"
-
 msgid "CULTIPI_SYNO_ROTATION"
 msgstr "Rotation"
 
