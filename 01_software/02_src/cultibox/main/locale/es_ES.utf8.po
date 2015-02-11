@@ -1935,6 +1935,18 @@ msgstr "No avisarme y me dejó administrar la configuración en el diálogo"
 
 
 #For the Cultinet part:
+msgid "NETWORK_AVAILABLE"
+msgstr "Su unidad está ahora redémarer. Estará disponible de nuevo en unos segundos."
+
+msgid "RESET_NETWORK_CONF" 
+msgstr "Haga clic en la imagen para restaurar el sistema a su configration originales"
+
+msgid "CULTIPI_DL_BONJOUR" 
+msgstr "Haga clic en la imagen para descargar el servicio de instalación de 'Hola'"
+
+msgid "CONFIRM_RESET_NETWORK" 
+msgstr "Esta acción se restablecerá efectivamente la configuración de red manual de la fábrica todo lo que han hecho por la red se perderán y la unidad volverá a su configration originales. ¿Seguro que desea continuar?"
+
 msgid "CONFIGURE_TITLE_CULTIBOX_NET" 
 msgstr "Configuración de la red"
 

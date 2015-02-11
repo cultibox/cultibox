@@ -1096,6 +1096,7 @@ function create_network_file($myConf) {
 
     if(strcmp($myConf['activ_wifi'],"True")==0) {
         $myArray[]="#IFACE WLAN0";
+        $myArray[]="wireless-power off";
         $myArray[]="auto wlan0";
         $myArray[]="allow-hotplug wlan0";
 
@@ -1110,6 +1111,7 @@ function create_network_file($myConf) {
         switch($myConf['wifi_key_type']) {
             case "NONE":
                     $myArray[]="wireless-essid ".$myConf['wifi_ssid'];
+                    $myArray[]="wireless-mode managed";
                     break;
             case "WEP":
                     $myArray[]="wireless-essid ".$myConf['wifi_ssid'];

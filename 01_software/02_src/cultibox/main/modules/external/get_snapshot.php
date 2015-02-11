@@ -23,6 +23,7 @@
         foreach($test as $line) {
             if(strpos($line, "Unable to find a compatible palette format")!==false) {
                 exec("sudo fswebcam -r ".$width."x".$height." --no-banner ".$GLOBALS['BASE_PATH']."/tmp/webcam.jpg",$test,$err);
+                break;
             }
         }
         echo json_encode("0");
