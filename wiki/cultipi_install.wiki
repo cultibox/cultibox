@@ -528,6 +528,11 @@ if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
             /sbin/ifup --force wlan0
         fi
     fi
+
+    sleep 7
+    /etc/init.d/isc-dhcp-server force-reload
+    sleep 1
+    /etc/init.d/dnsmasq start
 fi
 
 loadkeys fr
@@ -574,11 +579,14 @@ Le système ifplugd permet de relancer la configuration de l'interface eth0 dès
 
 {{{
 apt-get install isc-dhcp-server dnsmasq
+update-rc.d -f dnsmasq remove
+update-rc.d -f isc-dhcp-server remove
 }}}
 
 {{{
 vi /etc/dhcp/dhcpd.conf
 }}}
+
 
 Le fichier de configuration du dhcp doit contenir les directives suivantes:
 
