@@ -233,7 +233,7 @@ proc emeteur_regulation {nbPlug plgPrgm} {
         
         # On envoi la commande au module
         if {$valeurToPilot != "" && $valeurToPilot != $::plug($nbPlug,value)} {
-            ::${module}::setValue $nbPlug $valeurToPilot $::plug($plugNumber,adress)
+            ::${module}::setValue $nbPlug $valeurToPilot $::plug($nbPlug,adress)
         }
     }
 }
