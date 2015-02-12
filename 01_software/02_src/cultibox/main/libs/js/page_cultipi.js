@@ -1286,6 +1286,13 @@ $(document).ready(function() {
              $("#wifi_password_confirm").removeAttr("disabled");
              $("#eyes").show();
         }
+
+
+        if($('#wifi_key_type').val()=="WEP") {
+            $("#hex_password").removeAttr("disabled");
+        } else {
+            $("#hex_password").attr("disabled", "disabled");
+        }
     });
 
 
@@ -1314,6 +1321,7 @@ $(document).ready(function() {
         $("#error_wifi_password").css("display","none");
         $("#error_wifi_password_confirm").css("display","none");
         $("#error_password_wep").css("display","none");
+        $("#error_password_hexa").css("display","none");
         $("#error_password_wpa").css("display","none");
         $("#error_wifi_ip").css("display","none");
         $("#error_wifi_mask").css("display","none");
@@ -1415,36 +1423,53 @@ $(document).ready(function() {
                                     $("#error_wifi_password").show(700);
                                     $("#error_wifi_password_confirm").show(700);
                                     $("#error_password_wep").css("display","none");
+                                    $("#error_password_wep_hexa").css("display","none");
                                     $("#error_password_wpa").css("display","none");
                                     checked=false;
                                 } else {
                                     $("#error_wifi_password").css("display","none");
                                     $("#error_wifi_password_confirm").css("display","none");
 
+                                    if($("#hex_password").attr('checked')) {
+                                        var hex="1";
+                                    } else {
+                                        var hex="0";
+                                    }
+
                                     $.ajax({
                                         cache: false,
                                         async: false,
                                         url: "main/modules/external/check_value.php",
-                                        data: {value:$("#wifi_password").val(),type:type_password}
+                                        data: {value:$("#wifi_password").val(),type:type_password,hex:hex}
                                     }).done(function (data) {
                                         if(data!=1)  {
                                             checked=false;
                                             switch (type_password) {
                                                 case 'password_wep': 
-                                                    $("#error_password_wep").show(700);
-                                                    $("#error_password_wpa").css("display","none");
+                                                    if($("#hex_password").attr('checked')) {
+                                                        $("#error_password_wep_hexa").show(700);
+                                                        $("#error_password_wpa").css("display","none");
+                                                        $("#error_password_wep").css("display","none");
+                                                    } else {
+                                                        $("#error_password_wep").show(700);
+                                                        $("#error_password_wpa").css("display","none");
+                                                        $("#error_password_wep_hexa").css("display","none");   
+                                                    }
                                                     break;
                                                 case 'password_wpa': 
                                                     $("#error_password_wep").css("display","none");
                                                     $("#error_password_wpa").show(700);
+                                                    $("#error_password_wep_hexa").css("display","none");
                                                     break;
                                                 default: 
                                                     $("#error_password_wep").css("display","none")
                                                     $("#error_password_wpa").css("display","none");
+                                                    $("#error_password_wep_hexa").css("display","none");
                                             }
                                         } else {
                                             $("#error_password_wep").css("display","none");
                                             $("#error_password_wpa").css("display","none");
+                                            $("#error_password_wep_hexa").css("display","none");
                                         }
                                     });
                                 }
@@ -1492,7 +1517,13 @@ $(document).ready(function() {
                 var check_update=false;
                 if(checked) {
                     var dataForm=$("#configform").serialize();
-                    dataForm=dataForm+"&wifi_type="+$('input[name=wifi_type]:radio:checked').val()+"&wire_type="+$('input[name=wire_type]:radio:checked').val();
+                    if($("#hex_password").attr('checked')) {
+                        var hex="1";
+                    } else {
+                        var hex="0";
+                    }
+
+                    dataForm=dataForm+"&wifi_type="+$('input[name=wifi_type]:radio:checked').val()+"&wire_type="+$('input[name=wire_type]:radio:checked').val()+"&hex_password="+hex;
 
                     $.ajax({
                         type: "GET",

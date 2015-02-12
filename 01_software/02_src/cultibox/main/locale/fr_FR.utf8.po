@@ -1946,6 +1946,9 @@ msgstr "Ne plus me prévenir et me laisser gérer la configuration dans la boît
 
 
 # For the cultinet part:
+msgid "HEX_PASSWORD"
+msgstr "Hexadécimal"
+
 msgid "NETWORK_AVAILABLE"
 msgstr "Votre module est en train de redémarer. Il sera de nouveau disponible dans quelques secondes."
 
@@ -2043,7 +2046,10 @@ msgid "ERROR_WIFI_IP"
 msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
 
 msgid "ERROR_WEP_KEY_TYPE"
-msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombres (0-9) et faire 5, 13 ou 29 caractères de long"
+msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombres (0-9) et faire 5, 10, 13 ou 29 caractères de long"
+
+msgid "ERROR_WEP_KEY_TYPE_HEXA"
+msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombres (0-9) et les lettres de A à F et faire 10, 20, 26 ou 58 caractères de long"
 
 msgid "ERROR_WPA_KEY_TYPE"
 msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8 et 63 caractères"

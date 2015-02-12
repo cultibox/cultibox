@@ -1,5 +1,8 @@
 Cultibox (2.0.36) precise; urgency=low
     + Correction du focus pour la console
+    + Ajout des clefs hexadécimal pour WEP
+    + Ajout des clefs 64bits WEP
+    + Correction du fichier de configuration WEP
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Feb 12 10:15:28 CEST 2015
 
