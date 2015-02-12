@@ -1,3 +1,9 @@
+Cultibox (2.0.36) precise; urgency=low
+    + Correction du focus pour la console
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Feb 12 10:15:28 CEST 2015
+
+
 Cultibox (2.0.35) precise; urgency=low
     + Correction du décallage de l'heure de prise de l'image webcam
     + Correction de la valeur de la seconde tolérance 
