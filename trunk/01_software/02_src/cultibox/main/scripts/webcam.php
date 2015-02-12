@@ -10,6 +10,11 @@ $main_info=array();
 // ================= VARIABLES ================= //
 $sd_card=""; //Path of the SD card
 
+
+$brightness=get_webcam("brightness",$main_error);
+$contrast=get_webcam("contrast",$main_error);
+
+
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { 
     if((!isset($sd_card))||(empty($sd_card))) {

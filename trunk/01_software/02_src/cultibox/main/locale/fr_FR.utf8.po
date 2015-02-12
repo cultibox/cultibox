@@ -1927,6 +1927,12 @@ msgstr "Enregistrer le mot de passe"
 
 
 #For the webcam part:
+msgid "BRIGHTNESS"
+msgstr "Luminosité"
+
+msgid "CONTRAST"
+msgstr "Contraste"
+
 msgid "TITLE_WEBCAM"
 msgstr "Image actuellement capturée par la Webcam"
 

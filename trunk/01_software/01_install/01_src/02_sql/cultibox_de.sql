@@ -310,7 +310,21 @@ CREATE TABLE IF NOT EXISTS `synoptic` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+- --------------------------------------------------------
+--
+-- Table structure for table `webcam`
+--
+CREATE TABLE IF NOT EXISTS `program_index` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `brightness` INT,
+    `contrast` INT,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `webcam`
+--
+
+INSERT INTO `webcam` (`brightness`,`contrast`) VALUES(-1,-1);
 
 
 

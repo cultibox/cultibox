@@ -1924,6 +1924,12 @@ msgstr "Save password"
 
 
 #For the webcam part:
+msgid "BRIGHTNESS"
+msgstr "Brightness"
+
+msgid "CONTRAST"
+msgstr "Contrast"
+
 msgid "TITLE_WEBCAM"
 msgstr "Currently captured by the Webcam Image"
 

@@ -3,6 +3,7 @@ Cultibox (2.0.36) precise; urgency=low
     + Ajout des clefs hexadécimal pour WEP
     + Ajout des clefs 64bits WEP
     + Correction du fichier de configuration WEP
+    + Ajout de la gestion de brightness et contrast
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Feb 12 10:15:28 CEST 2015
 

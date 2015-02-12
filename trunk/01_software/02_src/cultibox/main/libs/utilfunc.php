@@ -12,6 +12,7 @@ if(is_file("main/libs/l10n.php")) {
    require_once 'main/libs/lib_plugs.php';
    require_once 'main/libs/lib_power.php';
    require_once 'main/libs/lib_cultipi.php';
+   require_once 'main/libs/lib_webcam.php';
 } else if(is_file("../libs/l10n.php")) {
    require_once '../libs/l10n.php';
    require_once '../libs/lib_programs.php';
@@ -23,6 +24,7 @@ if(is_file("main/libs/l10n.php")) {
    require_once '../libs/lib_plugs.php';
    require_once '../libs/lib_power.php';
    require_once '../libs/lib_cultipi.php';
+   require_once '../libs/lib_webcam.php';
 } else {
    require_once '../../libs/l10n.php';
    require_once '../../libs/lib_programs.php';
@@ -34,6 +36,7 @@ if(is_file("main/libs/l10n.php")) {
    require_once '../../libs/lib_plugs.php';
    require_once '../../libs/lib_power.php';
    require_once '../../libs/lib_cultipi.php';
+   require_once '../../libs/lib_webcam.php';
 }
 
 
