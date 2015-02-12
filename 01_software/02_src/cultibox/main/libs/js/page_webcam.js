@@ -12,6 +12,11 @@
 var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
 
+var brightness=<?php echo json_encode($brightness) ?>;
+var contrast=<?php echo json_encode($contrast) ?>;
+
+
+
 // {{{ getSnapshot()
 // ROLE function to get a snapShot of the Webcam
 getSnapshot = function(first) {
@@ -32,7 +37,7 @@ getSnapshot = function(first) {
         cache: false,
         async: true,
         url: "main/modules/external/get_snapshot.php",
-        data: {width: width, height: height}
+        data: {width: width, height: height,brightness:brightness,contrast:contrast}
       }).done(function (data) {
             var objJSON = jQuery.parseJSON(data);
 
@@ -121,6 +126,237 @@ $(document).ready(function(){
     });
     
     getSnapshot(1);
+
+
+
+    $("#brightness_slider").slider({
+        max: 100,
+        min: 0,
+        slide: function( event, ui ) {
+            $("#brightness").val(ui.value);
+        },
+        stop: function(event, ui) {
+               $.blockUI({
+                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/update_webcam.php",
+                        data: {
+                            value:$("#brightness").val(),
+                            variable:"brightness",
+                        }
+                    }).done(function (data) {
+                        brightness=$("#brightness").val();
+                        $.unblockUI();
+                    });
+                }});
+        },
+        step: 1,
+        value: brightness 
+    });
+
+
+    $("#contrast_slider").slider({
+        max: 100,
+        min: 0,
+        slide: function( event, ui ) {
+            $("#contrast").val(ui.value);
+        },
+        stop: function(event, ui) {
+            $.blockUI({
+                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/update_webcam.php",
+                        data: {
+                            value:$("#contrast").val(),
+                            variable:"contrast",
+                        }
+                    }).done(function (data) {
+                        contrast=$("#contrast").val();
+                        $.unblockUI();
+                    });
+                }
+            });
+        },
+        step: 1,
+        value: contrast
+    });
+
+
+    $("#contrast_box").change(function() {
+        if($("#contrast_box").attr('checked')) {
+            $("#contrast_slider").show();
+            $("#contrast_value").show();
+
+
+              $.blockUI({
+                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/update_webcam.php",
+                        data: {
+                            value:"0",
+                            variable:"contrast",
+                        }
+                    }).done(function (data) {
+                        $.unblockUI();
+                    });
+                }
+            });
+
+        } else {
+            $("#contrast_slider").css('display', 'none');
+            $("#contrast_value").css('display', 'none');
+
+              $.blockUI({
+                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/update_webcam.php",
+                        data: {
+                            value:"-1",
+                            variable:"contrast",
+                        }
+                    }).done(function (data) {
+                        contrast="-1";
+                        $.unblockUI();
+                    });
+                }
+            });
+
+        }
+    });
+
+
+
+    $("#brightness_box").change(function() {
+        if($("#brightness_box").attr('checked')) {
+            $("#brightness_slider").show();
+            $("#brightness_value").show();
+
+              $.blockUI({
+                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/update_webcam.php",
+                        data: {
+                            value:"0",
+                            variable:"brightness",
+                        }
+                    }).done(function (data) {
+                        brightness="0";
+                        $.unblockUI();
+                    });
+                }
+            });
+        } else {
+            $("#brightness_slider").css('display', 'none');
+            $("#brightness_value").css('display', 'none');
+
+              $.blockUI({
+                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/update_webcam.php",
+                        data: {
+                            value:"-1",
+                            variable:"brightness",
+                        }
+                    }).done(function (data) {
+                        brightness="-1";
+                        $.unblockUI();
+                    });
+                }
+            });
+
+        }
+    });
+
 });
 </script>
 

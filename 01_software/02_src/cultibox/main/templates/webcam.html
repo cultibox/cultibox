@@ -19,3 +19,25 @@
     <?php echo __('ERROR_WEBCAM'); ?>
 </div>
 
+<br />
+<br />
+<hr />
+<br />
+<br />
+<p class="title_conf"><?php echo __('MENU_CONF'); ?></p>
+<table class="table_width">
+    <tr>
+        <td  class="conf-marge-cultipi"></td>
+        <td class="conf-field-cultipi">Brightness manuel: <input type="checkbox" id="brightness_box" <?php if(strcmp("$brightness","-1")!=0) echo 'checked';  ?> /></td>
+        <td class="conf-status-cultipi"><div id="brightness_slider" <?php if(strcmp("$brightness","-1")==0) echo 'style="display:none"';  ?>></div></td>
+        <td><div id="brightness_value" <?php if(strcmp("$brightness","-1")==0) echo 'style="display:none"';  ?>><input type="text" name="brightness" id="brightness" value="<?php if(strcmp("$brightness","-1")==0) { echo '0'; } else { echo $brightness; } ?>" size="4" readonly />%</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>COntrast manuel: <input type="checkbox" id="contrast_box"  <?php if(strcmp("$contrast","-1")!=0) echo 'checked';  ?> /></td>
+        <td><div id="contrast_slider" <?php if(strcmp("$contrast","-1")==0) echo 'style="display:none"';  ?>></div></td>
+        <td><div id="contrast_value" <?php if(strcmp("$contrast","-1")==0) echo 'style="display:none"';  ?>><input type="text" name="contrast" id="contrast" value="<?php if(strcmp("$contrast","-1")==0) { echo '0'; } else { echo $contrast; } ?>" size="4" readonly />%</div></td>
+    </tr>
+</table>
+
+

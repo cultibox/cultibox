@@ -1925,6 +1925,12 @@ msgstr "Guardar contraseña"
 
 
 #For the webcam part:
+msgid "BRIGHTNESS" 
+msgstr "Brillo"
+
+msgid "CONTRAST" 
+msgstr "Contraste" 
+
 msgid "TITLE_WEBCAM"
 msgstr "Capturado actualmente por la cámara de imagen"
 
