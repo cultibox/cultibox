@@ -294,7 +294,11 @@ function get_content(page,get_array) {
                     $("#content").html(data);
                     $("#content").load();
                     active_menu(page);
-                    $.unblockUI();
+
+                    //Logs hav a special behaviour: interface is unlocked after graph is loaded.
+                    if(page!="logs") {
+                        $.unblockUI();
+                    }
                 });
             }
     });

@@ -343,7 +343,7 @@ $(function () {
                             if (cheBu.attr("checked") == "checked") {
                            
                                 // Block interface
-                                $.blockUI({ 
+                                /* $.blockUI({ 
                                     message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
                                     centerY: 0, 
                                     css: { 
@@ -356,8 +356,9 @@ $(function () {
                                         opacity: .9, 
                                         color: '#fffff' 
                                     } 
-                                });
-                               
+                                }); */
+
+
                                 // Call logs_get_serie to get programm value
                                 $.ajax({
                                     data:{
@@ -462,7 +463,7 @@ $(function () {
                                         updateTooltipMinMax();
 
                                          // All curve have been rendered : Unblock UI
-                                        $.unblockUI();
+                                         $.unblockUI();
 
                                     },
                                     error: function() {
@@ -1124,6 +1125,21 @@ $(document).ready(function() {
         if (cheBu.attr("checked") == "checked") {
 
             // Call logs_get_serie to get programm value
+            $.blockUI({
+                message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                   top: '20%',
+                   border: 'none',
+                   padding: '5px',
+                   backgroundColor: 'grey',
+                   '-webkit-border-radius': '10px',
+                   '-moz-border-radius': '10px',
+                   opacity: .9,
+                    color: '#fffff'
+                }
+           });
+
             $.ajax({
                 data:{
                     plug:$(this).attr("plug"),
