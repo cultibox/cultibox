@@ -306,8 +306,8 @@ function get_content(page,get_array) {
     if (e.which == 18) {
       isAlt = true;
     }
-    else if (e.which == 68 && isAlt) {
-        var $dialog = $('<div></div>').html('<iframe style="border: 0px; " src="main/scripts/webconsole.php" width="100%" height="100%"></iframe>').dialog({
+    else if (e.which == 67 && isAlt) {
+        var $dialog = $('<div></div>').html('<iframe id="console_iframe" style="border: 0px; " src="main/scripts/webconsole.php" width="100%" height="100%"></iframe>').dialog({
            autoOpen: false,
            modal: true,
            height: 600,
@@ -316,6 +316,7 @@ function get_content(page,get_array) {
            buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } }]
        });
        $dialog.dialog('open');
+       $("#console_iframe").focus();
     }
   }).keyup(function(e) {
     if (e.which == 18) {
