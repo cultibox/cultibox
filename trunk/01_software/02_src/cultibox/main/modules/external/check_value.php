@@ -153,19 +153,6 @@ switch($type) {
         break;
     case 'ssid': 
                 break;
-    case 'password':
-        if((isset($_GET['value2']))&&(!empty($_GET['value2']))) {
-            $value2=$_GET['value2'];
-        } else {
-            echo "error";
-            break;
-        }
-
-        if(strcmp(trim($value),trim($value2))!=0) {
-            echo "error";
-            break;
-        }
-        break;
     case 'ip':
         // Folowing code doesnot allow folowing adress : 192.001.001.001 ....
         // if(!filter_var($value, FILTER_VALIDATE_IP)) 
@@ -188,15 +175,26 @@ switch($type) {
         }
         break;
     case 'password_wep':
-        if((strlen($value)==5)||(strlen($value)==13)||(strlen($value)==29)) {
-            for($i=0;$i<strlen($value);$i++) {
-                if((ord($value[$i])<32)||(ord($value[$i])>126)) {
+        if($_GET['hex']) {
+            if((strlen($value)==10)||(strlen($value)==20)||(strlen($value)==26)||(strlen($value)==58)) {
+                if(!ereg("^[0-9a-fA-F]{1,}$",$value)) {
                     echo "error";
                     break;
                 }
+            } else {
+                echo "error";
             }
         } else {
-            echo "error";
+            if((strlen($value)==5)||(strlen($value)==10)||(strlen($value)==13)||(strlen($value)==29)) {
+                for($i=0;$i<strlen($value);$i++) {
+                    if((ord($value[$i])<32)||(ord($value[$i])>126)) {
+                        echo "error";
+                        break;
+                    }
+                }
+            } else {
+                echo "error";
+            }
         }
         break;
 }

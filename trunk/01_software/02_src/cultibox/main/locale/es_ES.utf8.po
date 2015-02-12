@@ -2041,7 +2041,10 @@ msgid "ERROR_WIFI_IP"
 msgstr "Error en el formato de IP: XXX.XXX.XXX.XXX"
 
 msgid "ERROR_WEP_KEY_TYPE" 
-msgstr "Error en el formato de contraseña WEP: debe contener sólo números (0-9) y tienen 5, 13 o 29 caracteres de longitud"
+msgstr "Error en el formato de contraseña WEP: debe contener sólo números (0-9) y tienen 5, 10, 13 o 29 caracteres de longitud"
+
+msgid "ERROR_WEP_KEY_TYPE_HEXA" 
+msgstr "Error en el formato de contraseña WEP: debe contener sólo números (0-9) y las letras A a F a 10, 20, 26 o 58 caracteres de longitud"
 
 msgid "ERROR_WPA_KEY_TYPE" 
 msgstr "Error en el formato de contraseña WPA: tiene que tener entre 8 y 63 caracteres"

@@ -1115,7 +1115,16 @@ function create_network_file($myConf) {
                     break;
             case "WEP":
                     $myArray[]="wireless-essid ".$myConf['wifi_ssid'];
-                    $myArray[]="wireless-key ".$myConf['wifi_password'];
+                    if($myConf['hex_password']) {
+                        $myArray[]="wireless-key ".$myConf['wifi_password'];
+                    } else {
+                        for ($i=0; $i<strlen($myConf['wifi_password']); $i++){
+                            $ord = ord($myConf['wifi_password'][$i]);
+                            $hexCode = dechex($ord);
+                            $hex .= substr('0'.$hexCode, -2);
+                        }    
+                        $myArray[]="wireless-key ".$hex;
+                    }
                     break;
 
             case "WPA AUTO":

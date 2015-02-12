@@ -415,9 +415,10 @@
                             name="wifi_password" id="wifi_password" value="" <?php if(strcmp("$wifi_key_type","NONE")==0) { echo 'disabled'; } ?> />
                 <img src='/cultibox/main/libs/img/eye.png' alt='' title="<?php echo __('SHOW_CURRENT_PWD'); ?>" id="eyes" <?php if(strcmp("$wifi_key_type","NONE")==0) echo 'style="display:none"';  ?>></td>
                 <td>
-                    <div id="error_wifi_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div>
+                    <div id="error_wifi_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div><?php echo __('HEX_PASSWORD'); ?>:<input id="hex_password" type="checkbox" <?php if(strcmp("$wifi_key_type","WEP")!=0) { echo 'disabled'; } ?> />
                     <div id="error_wifi_empty_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_EMPTY_PASSWORD'); ?></div>
                     <div id="error_password_wep" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WEP_KEY_TYPE'); ?></div>
+                    <div id="error_password_wep_hexa" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WEP_KEY_TYPE_HEXA'); ?></div>
                     <div id="error_password_wpa" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WPA_KEY_TYPE'); ?></div>
                 </td>
            </tr>
