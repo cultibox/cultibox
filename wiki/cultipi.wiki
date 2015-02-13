@@ -1,10 +1,15 @@
-#summary  Module WiFi
+#summary Module WiFi
 
 = Introduction =
 
 Cette section de l'aide décrit le fonctionnement du  module WiFi.
 
 Ce module permet de connecter à la Cultibox et ses accessoires en WiFi ou RJ45.
+
+= Spécifications =
+
+ * Temps de démarrage : < 1 minute (actuel 40s)
+ * Alimentation électrique 5V 1A
 
 = Installation =
 
