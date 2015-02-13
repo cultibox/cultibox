@@ -1,4 +1,4 @@
-#summary  CultiPi développeur
+#summary CultiPi développeur
 
 = Sommaire =
 <wiki:toc max_depth="3" />
@@ -143,7 +143,7 @@ Trois espaces sur la carte sont présents pour le bon fonctionnement du logiciel
  * L'espace ou est installé  module WiFi : /opt/cultipi
  * L'espace de configuration de  module WiFi : /etc/cultipi
  * L'espace ou sont les logs : /var/log/cultipi
- * L'espace ou sont présents les logiciel Cultibox et Cultinet : /var/www
+ * L'espace ou est présent le logiciel Cultibox : /var/www
 
 
 Fonctionnement général :
@@ -334,7 +334,7 @@ cp /etc/network/interfaces.BASE /etc/network/interfaces
 }}}
 
 
- * Un cron s'occupe aussi de la mise à jour des packages. Celui-ci est lancé une fois par jour. Pour mettre à jour manuellement les paquets Cultipi, Cultibox et Cultinet, il faut utiliser la commande suivante:
+ * Un cron s'occupe aussi de la mise à jour des packages. Celui-ci est lancé une fois par jour. Pour mettre à jour manuellement les paquets Cultipi, Cultibox, CultiTime, CultiRAZ et CultiSoft , il faut utiliser la commande suivante:
 
 {{{
 /etc/cron.daily/cultipi
