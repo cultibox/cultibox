@@ -1545,6 +1545,9 @@ msgstr "Copia de datos en curso, espere por favor..."
 msgid "TOOLTIP_IMPORT_CONF" 
 msgstr "Esta característica le permite importar una copia de seguridad de un software Cultibox como un archivo sql"
 
+msgid "TOOLTIP_EXPORT_CONF" 
+msgstr "Esta característica le permite exportar la configuración del software en forma de un sql archivo comprimido"
+
 msgid "TOOLTIP_CHANGE_PWD"
 msgstr "Esta característica le permite cambiar la contraseña necesaria al conectar con el software"
 
@@ -1930,6 +1933,9 @@ msgstr "Brillo"
 
 msgid "CONTRAST" 
 msgstr "Contraste" 
+
+msgid "RESOLUTION" 
+msgstr "Resolución" 
 
 msgid "TITLE_WEBCAM"
 msgstr "Capturado actualmente por la cámara de imagen"
