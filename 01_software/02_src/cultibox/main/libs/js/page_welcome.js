@@ -59,19 +59,6 @@ $.ajax({
 
 $(document).ready(function(){
 
-    if (!Date.now) {
-        Date.now = function() { return new Date().getTime(); }
-    }
-
-
-    $.ajax({
-        cache: false,
-        async: false,
-        url: "main/modules/external/update_date.php",
-        data: {date:Math.floor(Date.now() / 1000)}
-     });
-
-
      pop_up_remove("main_error");
      pop_up_remove("main_info");
 

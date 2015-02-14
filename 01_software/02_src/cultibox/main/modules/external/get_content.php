@@ -23,7 +23,9 @@ if((isset($_GET['page']))&&(!empty($_GET['page']))) {
         }
     }
 
-    if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) {
+
+
+   if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) {
         if(strpos($_SERVER['REMOTE_ADDR'],"10.0.0.")!==false) {
             if((!isset($_COOKIE['ADHOC']))||(strcmp($_COOKIE['ADHOC'],"True")!=0)) {
                 $page="cultipi";
