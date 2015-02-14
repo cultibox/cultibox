@@ -53,6 +53,11 @@ if [  "`cat /etc/sudoers|grep www-data|grep iptables`" == "" ]; then
 fi
 
 
+if [  "`cat /etc/sudoers|grep www-data|grep date`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /bin/date" >> /etc/sudoers
+fi
+
+
 if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "  * Installing the Cultibox software..."
     lang=`echo $LANG`

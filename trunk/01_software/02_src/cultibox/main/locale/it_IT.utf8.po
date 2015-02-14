@@ -1546,6 +1546,9 @@ msgstr "Backup dei dati in corso, attendere prego..."
 msgid "TOOLTIP_IMPORT_CONF"
 msgstr "Questa funzione consente di importare una copia di backup di un software Cultibox come file sql"
 
+msgid "TOOLTIP_EXPORT_CONF"
+msgstr "Questa funzione permette di esportare la configurazione del software, sotto forma di un file compresso sql"
+
 msgid "TOOLTIP_CHANGE_PWD"
 msgstr "Questa funzione consente di cambiare la password necessaria per il collegamento al software"
 
@@ -1931,6 +1934,9 @@ msgstr "Luminosità"
 
 msgid "CONTRAST"
 msgstr "Contrasto"
+
+msgid "RESOLUTION"
+msgstr "Risoluzione"
 
 msgid "TITLE_WEBCAM"
 msgstr "Attualmente catturata dall'immagine Webcam"

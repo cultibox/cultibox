@@ -11,7 +11,8 @@ function check_db() {
     $conf_index_col = array();
     $conf_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT");
     $conf_index_col["brightness"]           = array ( 'Field' => "brightness", 'Type' => "int(11)", 'default_value' => -1,'carac' => "NOT NULL");
-    $conf_index_col["contrast"]           = array ( 'Field' => "contrast", 'Type' => "int(11)", 'default_value' => -1,'carac' => "NOT NULL");
+    $conf_index_col["contrast"]             = array ( 'Field' => "contrast", 'Type' => "int(11)", 'default_value' => -1,'carac' => "NOT NULL");
+    $conf_index_col["resolution"]           = array ( 'Field' => "resolution", 'Type' => "varchar(11)", 'default_value' => "-1",'carac' => "NOT NULL");
 
 
     // Check if table webcam exists
@@ -34,7 +35,8 @@ function check_db() {
         $sql = "CREATE TABLE `webcam` ("
             ."id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,"
             ."brightness int(11) NOT NULL DEFAULT -1,"
-            ."contrast int(11) NULL DEFAULT -1);";
+            ."contrast int(11) NULL DEFAULT -1,"
+            ."resolution VARCHAR(11) NULL DEFAULT '-1');";
         
         // Create table
         try {
@@ -45,7 +47,7 @@ function check_db() {
             print_r($ret);
         }
 
-         $sql = "INSERT INTO webcam (brightness, contrast) VALUES (-1,-1);";
+         $sql = "INSERT INTO webcam (brightness, contrast,resolution) VALUES (-1,-1,'-1');";
         // Insert row:
         try {
             $sth = $db->prepare($sql);

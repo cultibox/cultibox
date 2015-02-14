@@ -10,7 +10,7 @@ date_default_timezone_set('UTC');
 define('LANG_FALLBACK', 'en_GB');
 
 //Default path:
-$GLOBALS['BASE_PATH']=$_SERVER["DOCUMENT_ROOT"].'/cultibox/';
+$GLOBALS['BASE_PATH']=$_SERVER["DOCUMENT_ROOT"].'cultibox/';
 
 // Default port use by the application:
 $GLOBALS['SOFT_PORT'] = '6891';
@@ -143,7 +143,11 @@ $GLOBALS['LIMIT_PLUG_PROGRAM']=array(
 //Wifi key type:
 $GLOBALS['WIFI_KEY_TYPE_LIST']=array("NONE", "WEP", "WPA AUTO");
 
-$GLOBALS['MODE'] = "cultibox";
+//Webcam resolution:
+$GLOBALS['WEBCAM_RESOLUTION']=array("320x240", "320x480", "400x300","480x360", "640x480", "800x600","960x720", "1024x768");
+
+
+$GLOBALS['MODE']="cultibox";
 
 ?>
 

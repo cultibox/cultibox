@@ -28,15 +28,28 @@
 <table class="table_width">
     <tr>
         <td  class="conf-marge-cultipi"></td>
-        <td class="conf-field-cultipi">Brightness manuel: <input type="checkbox" id="brightness_box" <?php if(strcmp("$brightness","-1")!=0) echo 'checked';  ?> /></td>
+        <td class="conf-field-cultipi"><?php echo __('BRIGHTNESS'); ?>: <input type="checkbox" id="brightness_box" <?php if(strcmp("$brightness","-1")!=0) echo 'checked';  ?> /></td>
         <td class="conf-status-cultipi"><div id="brightness_slider" <?php if(strcmp("$brightness","-1")==0) echo 'style="display:none"';  ?>></div></td>
         <td><div id="brightness_value" <?php if(strcmp("$brightness","-1")==0) echo 'style="display:none"';  ?>><input type="text" name="brightness" id="brightness" value="<?php if(strcmp("$brightness","-1")==0) { echo '0'; } else { echo $brightness; } ?>" size="4" readonly />%</td>
     </tr>
     <tr>
         <td></td>
-        <td>COntrast manuel: <input type="checkbox" id="contrast_box"  <?php if(strcmp("$contrast","-1")!=0) echo 'checked';  ?> /></td>
+        <td><?php echo __('CONTRAST'); ?>: <input type="checkbox" id="contrast_box"  <?php if(strcmp("$contrast","-1")!=0) echo 'checked';  ?> /></td>
         <td><div id="contrast_slider" <?php if(strcmp("$contrast","-1")==0) echo 'style="display:none"';  ?>></div></td>
         <td><div id="contrast_value" <?php if(strcmp("$contrast","-1")==0) echo 'style="display:none"';  ?>><input type="text" name="contrast" id="contrast" value="<?php if(strcmp("$contrast","-1")==0) { echo '0'; } else { echo $contrast; } ?>" size="4" readonly />%</div></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><?php echo __('RESOLUTION'); ?>: <input type="checkbox" id="resolution_box"  <?php if(strcmp("$resolution","-1")!=0) echo 'checked';  ?> /></td>
+        <td><div id="resolution_option" <?php if(strcmp("$resolution","-1")==0) echo 'style="display:none"';  ?>>
+            <select name="resolution_value" id="resolution_value" >
+                <?php foreach( $GLOBALS['WEBCAM_RESOLUTION'] as $key) { ?>
+                    <option value="<?php echo $key; ?>" <?php if(strcmp("$resolution","$key")==0) echo 'selected'; ?>><?php echo $key; ?></option>
+                <?php } ?>
+            </select>
+            </div>
+        </td> 
+        <td></td>
     </tr>
 </table>
 

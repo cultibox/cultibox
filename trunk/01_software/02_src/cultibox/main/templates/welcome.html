@@ -37,21 +37,21 @@
             </td>
         </tr>
         <tr>
-            <td class="welcome-link">
+            <td  <?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { echo 'class="welcome-link"'; } else { echo 'class="welcome-linkpi"'; } ?>>
                 <a href="/cultibox/index.php?menu=logs" id="welcome-log-txt">
                 <?php echo __('WELCOME_LOGS'); ?>
                 </a>
             </td>
-            <td class="welcome-link"><a href="/cultibox/index.php?menu=programs" id="welcome-prog-txt">
+            <td  <?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { echo 'class="welcome-link"'; } else { echo 'class="welcome-linkpi"'; } ?>><a href="/cultibox/index.php?menu=programs" id="welcome-prog-txt">
                 <?php echo __('WELCOME_PROGRAM'); ?>
                 </a>
             </td>
-            <td class="welcome-link">
+            <td  <?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { echo 'class="welcome-link"'; } else { echo 'class="welcome-linkpi"'; } ?>>
                 <a href="/cultibox/index.php?menu=calendar" id="welcome-cal-txt">
                 <?php echo __('WELCOME_CALENDAR'); ?>
                 </a>
             </td>
-            <td class="welcome-link" <?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { echo 'style="display:none"'; } ?>>
+            <td <?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { echo 'style="display:none"'; } else { echo 'class="welcome-linkpi"'; } ?>>
                 <a href="/cultibox/index.php?menu=synoptic" id="welcome-synop-txt">
                 <?php echo __('WELCOME_SYNOP'); ?>
                 </a>

@@ -237,6 +237,8 @@ $(document).ready(function(){
                         $.unblockUI();
                         if(json==1) {
                             $.fileDownload('tmp/export/backup_cultibox.sql');
+                        } else if(json==2) {
+                            $.fileDownload('tmp/export/backup_cultibox.sql.zip');
                         }
                     });
                 }

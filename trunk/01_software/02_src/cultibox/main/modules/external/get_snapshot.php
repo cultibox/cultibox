@@ -10,7 +10,7 @@
 
 
     if((isset($_GET['height'])) && (!empty($_GET['height']))) {
-        $action=$_GET['height'];
+        $height=$_GET['height'];
     } else {
         $height=480;
     }
@@ -30,12 +30,10 @@
     if(count($output)==0) {
        echo json_encode("1");
     } else {
-        exec("sudo fswebcam -p YUYV -r ".$width."x".$height." --no-banner $options ".$GLOBALS['BASE_PATH']."/tmp/webcam.jpg 2>&1",$test,$err);
-        print_r($test);
+        exec("sudo fswebcam -p YUYV -r ".$width."x".$height." --no-banner $options ".$GLOBALS['BASE_PATH']."tmp/webcam.jpg 2>&1",$test,$err);
         foreach($test as $line) {
             if(strpos($line, "Unable to find a compatible palette format")!==false) {
-                exec("sudo fswebcam -r ".$width."x".$height." --no-banner $options ".$GLOBALS['BASE_PATH']."/tmp/webcam.jpg",$test,$err);
-                print_r($test);
+                exec("sudo fswebcam -r ".$width."x".$height." --no-banner $options ".$GLOBALS['BASE_PATH']."tmp/webcam.jpg",$test,$err);
                 break;
             }
         }

@@ -1,3 +1,12 @@
+Cultibox (2.0.37) precise; urgency=low
+    + Ajout de la configuration de la résolution de la webcam
+    + Correction de l'affichage de synoptique et de l'import de configuration
+    + Utilisation du format zip pour l'export/import de configuration Cultipi
+    + Configuration de la date en mode adHoc
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat Feb 14 11:35:12 CEST 2015
+
+
 Cultibox (2.0.36) precise; urgency=low
     + Correction du focus pour la console
     + Ajout des clefs hexadécimal pour WEP

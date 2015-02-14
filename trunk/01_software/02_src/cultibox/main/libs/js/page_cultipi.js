@@ -1230,6 +1230,7 @@ $(document).ready(function() {
                             color: '#fffff'
                         },
                         onBlock: function() {
+                            $("#wifi_essid_list").dialog('close');
                             $.ajax({
                                 cache: false,
                                 async: false,
@@ -1244,6 +1245,7 @@ $(document).ready(function() {
                                     }
                                     $("#wifi_essid_list").append('<b>'+value+' : </b><input type="radio" name="wifi_essid" value="'+value+'" '+checked+' /><br />');
                                 });
+                                $("#wifi_essid_list").dialog('open');
                             });
                        }
                     }); 
