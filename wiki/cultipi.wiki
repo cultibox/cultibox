@@ -9,7 +9,7 @@ Ce module permet de connecter à la Cultibox et ses accessoires en WiFi ou RJ45.
 = Spécifications =
 
  * Temps de démarrage : < 1 minute (actuel 40s)
- * Alimentation électrique 5V 1A
+ * Alimentation électrique 5V 2A (consommation actuelle, Wifi + Webcam + Cultibox + 1 capteur : 460mA , ISSUE 1044)
 
 = Installation =
 
