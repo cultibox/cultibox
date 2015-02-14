@@ -329,6 +329,17 @@ function get_content(page,get_array) {
   });
 })();
 
+
+$(window).unload( function () { 
+    $.ajax({
+        cache: false,
+        async: false,
+        url: "main/modules/external/set_variable.php",
+        data: {name:"ADHOC", value: "False", duration: 86400*30}
+    });
+});
+
+
 $(document).ready(function() {
     var position_set=$("#content").position();
 
@@ -353,6 +364,18 @@ $(document).ready(function() {
         data: {name:"CONTENT_RIGHT", value: position_set.left+$("#content").width(), duration: 36000}
      });
 
+
+    if (!Date.now) {
+        Date.now = function() { return new Date().getTime(); }
+    }
+
+
+    $.ajax({
+        cache: false,
+        async: false,
+        url: "main/modules/external/update_date.php",
+        data: {date:Math.floor(Date.now() / 1000)}
+    });
 
 
     var search = location.search.substring(1);
