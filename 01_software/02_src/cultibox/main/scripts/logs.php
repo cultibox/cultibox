@@ -104,11 +104,13 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 
 // Read and update DB with index file
-$sensor_type = array(); 
-if (get_sensor_type($sd_card,$sensor_type))
-{
-    // Update database with sensors
-    update_sensor_type($sensor_type);
+if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) {
+    $sensor_type = array(); 
+    if (get_sensor_type($sd_card,$sensor_type))
+    {
+        // Update database with sensors
+        update_sensor_type($sensor_type);
+    }
 }
 
 

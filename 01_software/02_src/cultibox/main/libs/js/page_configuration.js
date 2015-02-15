@@ -14,6 +14,7 @@ var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
 var ajax_format;
 
+
 formatCard = function(hdd,pourcent) {
     ajax_format = $.ajax({ 
         cache: false,
@@ -524,21 +525,23 @@ $(document).ready(function(){
                 }
             });
 
-            $.ajax({
-                cache: false,
-                url: "main/modules/external/get_variable.php",
-                data: {name:"webcam"}
-            }).done(function (data) {
-                try {
-                    if(jQuery.parseJSON(data)=="1") {
-                        $("#menu-webcam").show();
-                    } else {
-                        $("#menu-webcam").css('display','none');
-                    }
-                } catch(err) {
 
-                }
-            });
+            <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) { ?>
+                $.ajax({
+                    cache: false,
+                    url: "main/modules/external/get_variable.php",
+                    data: {name:"webcam"}
+                }).done(function (data) {
+                    try {
+                        if(jQuery.parseJSON(data)=="1") {
+                            $("#menu-webcam").show();
+                        } else {
+                            $("#menu-webcam").css('display','none');
+                        }
+                    } catch(err) {
+                    }
+                });
+            <?php } ?>
 
 
             if(check_update) {
@@ -590,17 +593,20 @@ $(document).ready(function(){
       } });
       $.unblockUI();
     }); 
-    
-    $("#rtc_offset_slider").slider({
-        max: 100,
-        min: -100,
-        slide: function( event, ui ) {
-            // While sliding, update the value in the div element
-            $("#rtc_offset").val(ui.value);
-        },
-        step: 1,
-        value: rtc_offset_value
-    });
+   
+
+    <?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { ?>
+        $("#rtc_offset_slider").slider({
+            max: 100,
+            min: -100,
+            slide: function( event, ui ) {
+                // While sliding, update the value in the div element
+                $("#rtc_offset").val(ui.value);
+            },
+            step: 1,
+            value: rtc_offset_value
+        });
+    <?php } ?> 
     
 
     $("#reset_sd_card_submit").click(function(e) {
