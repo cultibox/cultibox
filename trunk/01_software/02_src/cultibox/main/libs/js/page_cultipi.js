@@ -658,8 +658,8 @@ $(document).ready(function(){
                             var valueSplitted = value.split(" "); 
                             switch(newBaseName) {
                                case 'T_RH_sensor.png' :
-                                    $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "°C " + $valueSplitted[1] + "RH");
-                                    $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "°C " + $valueSplitted[1] + "RH");
+                                    $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "°C " + valueSplitted[1] + "RH");
+                                    $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "°C " + valueSplitted[1] + "RH");
                                     break;
                                 case 'water_T_sensor.png': 
                                     $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "°C");
