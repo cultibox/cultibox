@@ -491,14 +491,8 @@ $(document).ready(function(){
                 $("#syno_configure_element_zindex_val").val(objJSON.z);
                 $("#syno_configure_element_zindex").slider("value",objJSON.z);
                 
-                
-                if (typeOfElem == "plug") {
-                    syno_configure_element_scale_imageID = "syno_elemPlugImage_" + idOfElem ;         
-                } else if (typeOfElem == "sensor") {
-                    syno_configure_element_scale_imageID = "syno_elemSensorImage_" + idOfElem ;        
-                } else {
-                    syno_configure_element_scale_imageID = "syno_elemImage_" + idOfElem ;
-                }
+
+                syno_configure_element_scale_imageID = "syno_elemImage_" + idOfElem ;
                 syno_configure_element_zindex_imageID = "syno_elem_" + idOfElem ;
                 
                 syno_configure_element_rotation = objJSON.rotation;
