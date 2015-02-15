@@ -557,7 +557,7 @@ if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
     sleep 7
     /etc/init.d/isc-dhcp-server force-reload
     sleep 1
-    /etc/init.d/dnsmasq start
+    /etc/init.d/dnsmasq force-reload
 fi
 
 loadkeys fr
