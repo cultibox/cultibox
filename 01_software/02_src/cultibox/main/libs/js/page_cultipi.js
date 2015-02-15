@@ -141,6 +141,7 @@ $(document).ready(function(){
                         
                         var inTable = '<table>';
                         inTable = inTable +  '    <tr>';
+                        inTable = inTable +  '    <td id="syno_elem_title" ></td>';
                         inTable = inTable +  '      <td>';
                         inTable = inTable +  '          <input type="image" id="syno_elemConfigur_' + objJSON.id + '" name="syno_elemConfigur_' + objJSON.id + '"';
                         inTable = inTable +  '                 title=""';
@@ -471,6 +472,9 @@ $(document).ready(function(){
         
         idOfElem = $(this).attr('id').split("_")[2];
         
+        // retriev name of this element
+        elementTitle = $("#syno_elem_title_" + idOfElem).html();
+        
         $.ajax({
             cache: false,
             type: "POST",
@@ -522,6 +526,7 @@ $(document).ready(function(){
                     width: 400,
                     closeOnEscape: true,
                     dialogClass: "popup_message",
+                    title:"Configurer " + elementTitle,
                     buttons: [{
                         text: DELETE_button,
                         click: function () {
@@ -602,12 +607,16 @@ $(document).ready(function(){
         e.preventDefault();
 
         idOfElem = $(this).attr('id').split("_")[2];
+
+        // retriev name of this element
+        elementTitle = $("#syno_elem_title_" + idOfElem).html();
         
         $("#syno_pilotPlug_element").dialog({
             resizable: false,
             width: 400,
             closeOnEscape: true,
             dialogClass: "popup_message",
+            title:"Piloter " + elementTitle,
             buttons: [{
                 text: CLOSE_button,
                 click: function () {
