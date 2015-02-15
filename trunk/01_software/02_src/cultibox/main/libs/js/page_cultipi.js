@@ -643,7 +643,11 @@ $(document).ready(function(){
         }).done(function (data) {
         
             // Change text
-            $('#syno_elemImage_' + idOfElem).attr('title',$( "#syno_configure_element_force_plug_value option:selected" ).val());
+            if ($( "#syno_configure_element_force_plug_value option:selected" ).val() == "on") {
+                $('#syno_elemImage_' + idOfElem).attr('title',"<?php echo __('VALUE_ON'); ?>");
+            } else {
+                $('#syno_elemImage_' + idOfElem).attr('title',"<?php echo __('VALUE_OFF'); ?>");
+            }
 
             // Change image
             if ($( "#syno_configure_element_force_plug_value option:selected" ).val() == "on") {
@@ -792,8 +796,11 @@ $(document).ready(function(){
                     if ($('img[name="syno_elemPlugImage_' + key + '"]').length != 0 ) {
                     
                         // Change text and opacity
-                        if (value != "DEFCOM" && value != "TIEMOUT") {
-                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',value);
+                        if (value == "on") {
+                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('VALUE_ON'); ?>");
+                            $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "1");
+                        } else if (value == "off") {
+                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('VALUE_OFF'); ?>");
                             $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "1");
                         } else if (value == "TIMEOUT") {
                             $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('TIMEOUT'); ?>");
