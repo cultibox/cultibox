@@ -183,6 +183,7 @@ proc checkAndUpdate {} {
                 exec /sbin/iwconfig wlan0 mode Ad-Hoc      
                 exec /sbin/ifconfig wlan0 up
                 exec /usr/sbin/invoke-rc.d networking force-reload
+                exec /etc/rc.local
             } msg]
             if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error during network configuration : $msg"}
 

@@ -82,7 +82,7 @@ case "$1" in
            cp -R ./conf-package/DEBIAN-cultibox ../01_src/01_xampp/cultibox/DEBIAN
 
            cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/var/www/cultibox
-           cp ../../../02_documentation/02_userdoc/documentation.pdf ../../05_cultipi/Output/
+           cp ../../../02_documentation/02_userdoc/documentation.pdf Output/
            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/var/www/cultibox/VERSION.txt
 
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/var/www/cultibox/LICENSE.txt
