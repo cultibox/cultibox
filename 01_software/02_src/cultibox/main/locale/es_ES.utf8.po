@@ -1755,6 +1755,9 @@ msgstr "Su sistema ha sido actualizado!"
 msgid "CULTIPI_NO_UPDATE" 
 msgstr "Su sistema está al día!"
 
+msgid "CULTIPI_ACCES_UPDATE" 
+msgstr "Su módulo no parecen tener acceso a la Internet para buscar actualizaciones."
+
 msgid "TOOLTIP_UPDATE_RPI"
 msgstr "Haga clic en la imagen para comprobar si hay actualizaciones para su sistema"
 
