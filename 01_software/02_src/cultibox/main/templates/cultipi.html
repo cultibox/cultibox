@@ -166,6 +166,10 @@
                 if ($plugValues[$plug["indexElem"]] == "DEFCOM" || $plugValues[$plug["indexElem"]] == "TIMEOUT") {
                     $newStyle = 'opacity: 0.4;';
                     $tootlTipText = __($plugValues[$plug["indexElem"]]);
+                } elseif ($tootlTipText == "on") {
+                    $tootlTipText = __("VALUE_ON");
+                }elseif ($tootlTipText == "off") {
+                    $tootlTipText = __("VALUE_OFF");
                 }
                 echo '  <img id="syno_elemImage_' . $plug["id"] . '" name="syno_elemPlugImage_' . $plug["indexElem"] . '" ';
                 echo '        src="main/libs/img/images-synoptic-plug/' . $plug["image"] . '" alt="Prise" ';
