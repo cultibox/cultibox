@@ -65,7 +65,7 @@
                 echo '<div id="syno_elem_' . $sensor["id"] . '" class="" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;z-index:' . $sensor["z"] . '" >';
                 echo '  <table>';
                 echo '    <tr>';
-                echo '      <td>Capteur ' . $sensor["indexElem"] . '</td>';
+                echo '      <td id="syno_elem_title_' . $sensor["id"] . '" >Capteur ' . $sensor["indexElem"] . '</td>';
                 echo '      <td>';
                 echo '          <input type="image" id="syno_elemConfigur_' . $sensor["id"] . '" name="syno_elemConfigur_' . $sensor["id"] . '"';
                 echo '                 title=""';
@@ -143,7 +143,7 @@
                 echo '<div id="syno_elem_' . $plug["id"] . '" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;z-index:' . $plug["z"] . '" >';
                 echo '  <table>';
                 echo '    <tr>';
-                echo '      <td>Prise ' . $plug["indexElem"] . '</td>';
+                echo '      <td id="syno_elem_title_' . $plug["id"] . '" >Prise ' . $plug["indexElem"] . '</td>';
                 echo '      <td>';
                 echo '          <input type="image" id="syno_elemConfigur_' . $plug["id"] . '" name="syno_elemConfigur_' . $plug["id"] . '"';
                 echo '                 src="main/libs/img/advancedsettings.png"  width="18"';
@@ -182,6 +182,7 @@
                 echo '<div id="syno_elem_' . $other["id"] . '" class="" style="position:absolute; top:' . $other["y"] . 'px ; left:' . $other["x"] . 'px ;z-index:' . $other["z"] . '" >';
                 echo '  <table>';
                 echo '    <tr>';
+                echo '      <td id="syno_elem_title_' . $other["id"] . '" ></td>';
                 echo '      <td>';
                 echo '          <input type="image" id="syno_elemConfigur_' . $other["id"] . '" name="syno_elemConfigur_' . $other["id"] . '"';
                 echo '                 title=""';
@@ -290,7 +291,7 @@
     </div>
     
     <!-- Message box for pilot a plug -->
-    <div id="syno_pilotPlug_element" style="display:none" title="<?php echo __('CULTIPI_SYNO_CONF'); ?>">
+    <div id="syno_pilotPlug_element" style="display:none" title="<?php echo __('CULTIPI_SYNO_PILOTAGE'); ?>">
         <table>
             <tr id="syno_configure_element_force_plug">
                 <td><?php echo __('CULTIPI_SYNO_PILOTAGE'); ?></td>
