@@ -11,14 +11,12 @@ if(is_file("/tmp/interfaces")) {
     if((count($output)==1)&&(strcmp($output[0],"0")==0)) {
         exec("sudo /etc/init.d/isc-dhcp-server stop",$output,$err);
         exec("sudo /etc/init.d/dnsmasq stop",$output,$err);
-        exec("sudo /usr/sbin/update-rc.d -f isc-dhcp-server remove",$output,$err);
-        exec("sudo /usr/sbin/update-rc.d -f dnsmasq remove",$output,$err); 
         exec("sudo /sbin/iptables -t nat --delete PREROUTING  1",$output,$err);
         sleep(2);
-        exec("sudo /etc/init.d/networking restart");
-        sleep(3);
-        exec("ip addr show eth0 | awk '/inet/ {print $2}' | cut -d/ -f1",$iface['ETH'],$err);
-        exec("ip addr show wlan0 | awk '/inet/ {print $2}' | cut -d/ -f1",$iface['WLAN'],$err);
+        exec("sudo /sbin/ifconfig wlan0 down",$output,$err);
+        exec("sudo /sbin/iwconfig wlan0 mode Managed",$output,$err);
+        exec("sudo /sbin/ifconfig wlan0 up",$output,$err);
+        exec("sudo /usr/sbin/invoke-rc.d networking force-reload",$output,$err);
         echo json_encode("1");
     } else {
         exec("sudo /bin/mv /etc/network/interfaces.SAVE /etc/network/interfaces");
