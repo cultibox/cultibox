@@ -13,13 +13,25 @@ var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
 
 // GLobal var for slidder
-var syno_configure_element_zindex_value = 1;
-var syno_configure_element_zindex_imageID = "";
-var syno_configure_element_scale_value = 1;
-var syno_configure_element_scale_imageID = "";
-var syno_configure_element_rotation = "";
+var syno_configure_element_object = {
+    scaleImageId:"",
+    scale:1,
+    zindexImageId:"",
+    z:1,
+    element:"",
+    rotation:"0",
+    image:""
+};
+var syno_configure_element_object_old = {
+    scaleImageId:"",
+    scale:1,
+    zindexImageId:"",
+    z:1,
+    element:"",
+    rotation:"0",
+    image:""
+};
 var idOfElem = "";
-var typeOfElem = "";
 
 var absolut_X_position = "";
 var absolut_Y_position = "";
@@ -414,10 +426,10 @@ $(document).ready(function(){
         slide: function( event, ui ) {
             // While sliding, update the value in the div element
             $("#syno_configure_element_scale_val").val(ui.value);
-            $('#' + syno_configure_element_scale_imageID).width(ui.value);
+            $('#' + syno_configure_element_object.scaleImageId).width(ui.value);
         },
         step: 1,
-        value: syno_configure_element_scale_value
+        value: syno_configure_element_object.scale
     });
     
     // Slider for zindex
@@ -427,27 +439,27 @@ $(document).ready(function(){
         slide: function( event, ui ) {
             // While sliding, update the value in the div element
             $("#syno_configure_element_zindex_val").val(ui.value);
-            $('#' + syno_configure_element_zindex_imageID).zIndex(ui.value);
+            $('#' + syno_configure_element_object.zindexImageId).zIndex(ui.value);
         },
         step: 1,
-        value: syno_configure_element_zindex_value
+        value: syno_configure_element_object.z
     });
     
     // Rotation
     $( 'input[name="syno_configure_element_rotate"]:radio' ).change(
         function(){
             // retrieve the class
-            var className = $('#' + syno_configure_element_scale_imageID).attr('class');
-            $('#' + syno_configure_element_scale_imageID).removeClass(className);
+            var className = $('#' + syno_configure_element_object.scaleImageId).attr('class');
+            $('#' + syno_configure_element_object.scaleImageId).removeClass(className);
             var newClass = $('input[name=syno_configure_element_rotate]:checked').val();
-            $('#' + syno_configure_element_scale_imageID).addClass("rotate" + newClass);
+            $('#' + syno_configure_element_object.scaleImageId).addClass("rotate" + newClass);
         }
     );
     
     // Image
     $('#syno_configure_element_image_other, #syno_configure_element_image_plug, #syno_configure_element_image_sensor').on('change', function() {
         try {
-            $('#syno_elemImage_' + idOfElem).attr('src', 'main/libs/img/images-synoptic-' + typeOfElem + '/' + this.value);
+            $('#syno_elemImage_' + idOfElem).attr('src', 'main/libs/img/images-synoptic-' + syno_configure_element_object.element + '/' + this.value);
         } catch (e) {
             alert(e.message);
         }
@@ -471,41 +483,42 @@ $(document).ready(function(){
             
             if(data != "") {
 
-                var objJSON = jQuery.parseJSON(data);
+                syno_configure_element_object = jQuery.parseJSON(data);
+
+                // Parse if needed
+                syno_configure_element_object.scale = parseInt(syno_configure_element_object.scale)
+                syno_configure_element_object.z     = parseInt(syno_configure_element_object.z)
                 
-                // Save type of the element
-                typeOfElem = objJSON.element;
+                // Add some elements to the object
+                syno_configure_element_object.scaleImageId  = "syno_elemImage_" + idOfElem ;
+                syno_configure_element_object.zindexImageId = "syno_elem_" + idOfElem ;
+                
+                // Save it
+                syno_configure_element_object_old = syno_configure_element_object;
                 
                 // Update style of each configure element
                 $("#syno_configure_element_rotate_0" ).prop("checked", false);
                 $("#syno_configure_element_rotate_90" ).prop("checked", false);
                 $("#syno_configure_element_rotate_180" ).prop("checked", false);
                 $("#syno_configure_element_rotate_270" ).prop("checked", false);
-                $("#syno_configure_element_rotate_" + objJSON.rotation ).prop("checked", true);
+                $("#syno_configure_element_rotate_" + syno_configure_element_object.rotation ).prop("checked", true);
                 
-                syno_configure_element_scale_value = parseInt(objJSON.scale);
-                $("#syno_configure_element_scale_val").val(syno_configure_element_scale_value);
-                $("#syno_configure_element_scale").slider("value",syno_configure_element_scale_value);
+                $("#syno_configure_element_scale_val").val(syno_configure_element_object.scale);
+                $("#syno_configure_element_scale").slider("value",syno_configure_element_object.scale);
                 
-                syno_configure_element_zindex_value = parseInt(objJSON.z);
-                $("#syno_configure_element_zindex_val").val(objJSON.z);
-                $("#syno_configure_element_zindex").slider("value",objJSON.z);
-                
+                $("#syno_configure_element_zindex_val").val(syno_configure_element_object.z);
+                $("#syno_configure_element_zindex").slider("value",syno_configure_element_object.z);
 
-                syno_configure_element_scale_imageID = "syno_elemImage_" + idOfElem ;
-                syno_configure_element_zindex_imageID = "syno_elem_" + idOfElem ;
-                
-                syno_configure_element_rotation = objJSON.rotation;
-                $('#syno_configure_element_image_' + typeOfElem + ' option[value="' + objJSON.image + '"]').prop('selected', true);
+                $('#syno_configure_element_image_' + syno_configure_element_object.element + ' option[value="' + syno_configure_element_object.image + '"]').prop('selected', true);
 
                 // Select correct image option
                 $("#syno_configure_element_image_other").hide();
                 $("#syno_configure_element_image_plug").hide();
                 $("#syno_configure_element_image_sensor").hide();
-                $("#syno_configure_element_image_" + typeOfElem).show();
+                $("#syno_configure_element_image_" + syno_configure_element_object.element).show();
                 
                 // Active plug force only for plugs
-                if (typeOfElem == "plug")
+                if (syno_configure_element_object.element == "plug")
                 {
                     $("#syno_configure_element_force_plug").show();
                 }
@@ -514,42 +527,14 @@ $(document).ready(function(){
                     $("#syno_configure_element_force_plug").hide();
                 }
                 
-                console.debug('Type : ' + typeOfElem);
-                console.debug('Image : ' + objJSON.image);
+                //console.debug('Type : ' + syno_configure_element_object.element);
+                //console.debug('Image : ' + syno_configure_element_object.image);
                 $("#syno_configure_element").dialog({
                     resizable: false,
                     width: 400,
                     closeOnEscape: true,
                     dialogClass: "popup_message",
                     buttons: [{
-                        text: CLOSE_button,
-                        click: function () {
-                            $( this ).dialog( "close" );
-                            return false;
-                        }
-                    }, {
-                        text: SAVE_button,
-                        click: function () {
-                        
-                            $.ajax({
-                                cache: false,
-                                type: "POST",
-                                data: {
-                                    id:idOfElem,
-                                    z:$("#syno_configure_element_zindex_val").val(),
-                                    scale:$("#syno_configure_element_scale_val").val(),
-                                    image:$( "#syno_configure_element_image_" + typeOfElem + " option:selected" ).val(),
-                                    rotation:$('input[name=syno_configure_element_rotate]:checked').val(),
-                                    action:"updateZScaleImageRotation"
-                                },
-                                url: "main/modules/external/synoptic.php"
-                            }).done(function (data) {
-                            
-                            });
-                            $( this ).dialog( "close" );
-                            return false;
-                        }
-                    }, {
                         text: DELETE_button,
                         click: function () {
                         
@@ -567,6 +552,53 @@ $(document).ready(function(){
                             // Delete it
                             $( "#syno_elem_" + idOfElem ).remove();
                             
+                            $( this ).dialog( "close" );
+                            return false;
+                        }
+                    } , {
+                        text: CANCEL_button,
+                        click: function () {
+                        
+                            // Roll back object value
+                            
+                            // Image
+                            $('#syno_elemImage_' + idOfElem).attr('src', 'main/libs/img/images-synoptic-' + syno_configure_element_object_old.element + '/' + syno_configure_element_object_old.image);
+                        
+                            //scale
+                            $('#' + syno_configure_element_object.scaleImageId).width(syno_configure_element_object_old.scale);
+                            
+                            //z
+                            $('#' + syno_configure_element_object_old.zindexImageId).zIndex(syno_configure_element_object_old.z);
+                            
+                            //rotation
+                            // retrieve the class
+                            var className = $('#' + syno_configure_element_object_old.scaleImageId).attr('class');
+                            $('#' + syno_configure_element_object_old.scaleImageId).removeClass(className);
+                            var newClass = syno_configure_element_object_old.rotation;
+                            $('#' + syno_configure_element_object_old.scaleImageId).addClass("rotate" + newClass);
+                        
+                            $( this ).dialog( "close" );
+                            return false;
+                        }
+                    }, {
+                        text: SAVE_button,
+                        click: function () {
+                        
+                            $.ajax({
+                                cache: false,
+                                type: "POST",
+                                data: {
+                                    id:idOfElem,
+                                    z:$("#syno_configure_element_zindex_val").val(),
+                                    scale:$("#syno_configure_element_scale_val").val(),
+                                    image:$( "#syno_configure_element_image_" + syno_configure_element_object.element + " option:selected" ).val(),
+                                    rotation:$('input[name=syno_configure_element_rotate]:checked').val(),
+                                    action:"updateZScaleImageRotation"
+                                },
+                                url: "main/modules/external/synoptic.php"
+                            }).done(function (data) {
+                            
+                            });
                             $( this ).dialog( "close" );
                             return false;
                         }
