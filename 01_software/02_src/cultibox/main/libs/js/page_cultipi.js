@@ -679,7 +679,7 @@ $(document).ready(function(){
                     if (key != "error") {
                     
                         // Change text and opacity
-                        if (value != "DEFCOM") {
+                        if (value != "DEFCOM" && value != "TIMEOUT" ) {
                             newBaseName = baseName($('img[name="syno_elemSensorImage_' + key + '"]').attr('src'));
                             var valueSplitted = value.split(" "); 
                             switch(newBaseName) {
@@ -717,6 +717,10 @@ $(document).ready(function(){
                                     break;
                             }
                             $('img[name="syno_elemSensorImage_' + key + '"]').css("opacity", "1");
+                        } else if (value == "TIMEOUT") {
+                            $('#syno_elemValueSensor_val1_' + key).html("");
+                            $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',"<?php echo __('TIMEOUT'); ?>");
+                            $('img[name="syno_elemSensorImage_' + key + '"]').css("opacity", "0.4");
                         } else {
                             $('#syno_elemValueSensor_val1_' + key).html("");
                             $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',"<?php echo __('DEFCOM'); ?>");
@@ -770,9 +774,12 @@ $(document).ready(function(){
                     if ($('img[name="syno_elemPlugImage_' + key + '"]').length != 0 ) {
                     
                         // Change text and opacity
-                        if (value != "DEFCOM") {
+                        if (value != "DEFCOM" && value != "TIEMOUT") {
                             $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',value);
                             $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "1");
+                        } else if (value == "TIMEOUT") {
+                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('TIMEOUT'); ?>");
+                            $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "0.4");
                         } else {
                             $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('DEFCOM'); ?>");
                             $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "0.4");
