@@ -1930,6 +1930,9 @@ msgstr "Save password"
 
 
 #For the webcam part:
+msgid "PALETTE"
+msgstr "Palette"
+
 msgid "BRIGHTNESS"
 msgstr "Brightness"
 

@@ -1933,6 +1933,9 @@ msgstr "Enregistrer le mot de passe"
 
 
 #For the webcam part:
+msgid "PALETTE"
+msgstr "Palette" 
+
 msgid "BRIGHTNESS"
 msgstr "Luminosité"
 

@@ -15,6 +15,7 @@ var main_info = <?php echo json_encode($main_info); ?>;
 var brightness=<?php echo json_encode($brightness) ?>;
 var contrast=<?php echo json_encode($contrast) ?>;
 var resolution=<?php echo json_encode($resolution) ?>;
+var palette=<?php echo json_encode($palette) ?>;
 
 
 
@@ -45,7 +46,7 @@ getSnapshot = function(first) {
         cache: false,
         async: true,
         url: "main/modules/external/get_snapshot.php",
-        data: {width: width, height: height,brightness:brightness,contrast:contrast}
+        data: {width: width, height: height,brightness:brightness,contrast:contrast,palette:palette}
       }).done(function (data) {
             var objJSON = jQuery.parseJSON(data);
 
@@ -211,6 +212,40 @@ $(document).ready(function(){
     });
 
 
+    $("#palette_value").change(function () {
+        $.blockUI({
+                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/update_webcam.php",
+                        data: {
+                            value:$("#palette_value option:selected").val(),
+                            variable:"palette",
+                        }
+                    }).done(function (data) {
+                        palette=$("#palette_value option:selected").val()
+                        $.unblockUI();
+                    });
+                }
+        });
+    });
+
+
+
     $("#contrast_slider").slider({
         max: 100,
         min: 0,
@@ -321,6 +356,78 @@ $(document).ready(function(){
 
         }
     });
+
+
+    $("#palette_box").change(function() {
+        if($("#palette_box").attr('checked')) {
+            $("#palette_option").show();
+
+            $.blockUI({
+                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/update_webcam.php",
+                        data: {
+                            value:"YUYV",
+                            variable:"palette",
+                        }
+                    }).done(function (data) {
+                        palette="YUYV";
+                        $.unblockUI();
+                    });
+                }
+            });
+        } else {
+            $("#palette_option").css('display', 'none');
+
+              $.blockUI({
+                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/update_webcam.php",
+                        data: {
+                            value:"-1",
+                            variable:"palette",
+                        }
+                    }).done(function (data) {
+                        palette="-1";
+                        $.unblockUI();
+                    });
+                }
+            });
+
+        }
+    });
+
+
 
 
 
