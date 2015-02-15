@@ -57,7 +57,7 @@ function check_db() {
                     ."PLUG_REGUL_VALUE decimal(3,1) NOT NULL DEFAULT '35.0',"
                     ."PLUG_SECOND_TOLERANCE DECIMAL( 3, 1 ) NOT NULL DEFAULT '0.0',"
                     ."PLUG_COMPUTE_METHOD VARCHAR( 1 ) NOT NULL DEFAULT 'M'),"
-                    ."PLUG_MODULE varchar(10) NOT NULL DEFAULT 'wirless');";
+                    ."PLUG_MODULE varchar(10) NOT NULL DEFAULT 'wireless');";
 
         // Create table
         try {
