@@ -1843,6 +1843,9 @@ msgstr "Clicca sull'immagine per scaricare i registri di servizio Cultipi"
 msgid "DEFCOM"
 msgstr "In mancanza di comunicazione tra il software e l'elemento"
 
+msgid "TIMEOUT"
+msgstr "Abbandono della seguente comunicazione per rallentare la risposta"
+
 msgid "OUTPUT_LOGS" 
 msgstr "Logs uscita"
 

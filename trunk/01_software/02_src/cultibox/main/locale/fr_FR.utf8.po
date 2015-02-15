@@ -1844,6 +1844,9 @@ msgstr "Cliquez sur l'image pour télécharger les logs du service Cultipi"
 msgid "DEFCOM"
 msgstr "Défaut de communication entre le logiciel et l'élément"
 
+msgid "TIMEOUT"
+msgstr "Abandon de la communication suite à un timeout"
+
 msgid "OUTPUT_LOGS"
 msgstr "Logs de sortie"
 

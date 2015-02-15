@@ -78,7 +78,7 @@
                 echo '    <tr>';
                 $sensorValuesList = explode(" ", $sensorValues[$sensor["indexElem"]]);
                 if (!array_key_exists(1, $sensorValuesList)) {$sensorValuesList[1] = "";}
-                // If defcom, set opacity to 0.4
+
                 $newStyle = "";
                 $tootlTipText = "";
                 $newText = "";
@@ -109,9 +109,11 @@
                         $newText = $tootlTipText = $sensorValuesList[0] . "???";
                         break;
                 }
-                if ($sensorValuesList[0] == "DEFCOM") {
+                
+                // If defcom, set opacity to 0.4
+                if ($sensorValuesList[0] == "DEFCOM" || $sensorValuesList[0] == "TIMEOUT") {
                     $newStyle = 'opacity: 0.4;';
-                    $tootlTipText = __("DEFCOM");
+                    $tootlTipText = __($sensorValuesList[0]);
                     $newText = "";
                 }
                 
@@ -154,9 +156,9 @@
                 // If defcom, set opacity to 0.4
                 $newStyle = "";
                 $tootlTipText = $plugValues[$plug["indexElem"]];
-                if ($plugValues[$plug["indexElem"]] == "DEFCOM") {
+                if ($plugValues[$plug["indexElem"]] == "DEFCOM" || $plugValues[$plug["indexElem"]] == "TIMEOUT") {
                     $newStyle = 'opacity: 0.4;';
-                    $tootlTipText = __("DEFCOM");
+                    $tootlTipText = __($plugValues[$plug["indexElem"]]);
                 }
                 echo '  <img id="syno_elemImage_' . $plug["id"] . '" name="syno_elemPlugImage_' . $plug["indexElem"] . '" ';
                 echo '        src="main/libs/img/images-synoptic-plug/' . $plug["image"] . '" alt="Prise" ';

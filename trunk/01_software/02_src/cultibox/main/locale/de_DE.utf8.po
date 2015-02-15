@@ -1842,6 +1842,9 @@ msgstr "Klicken Sie auf das Bild, um die Protokolle Cultipi Service herunterlade
 msgid "DEFCOM"
 msgstr "Ausfall der Kommunikation zwischen der Software und der Element"
 
+msgid "TIMEOUT"
+msgstr "Verzicht auf die folgende Mitteilung an Reaktion verlangsamen"
+
 msgid "OUTPUT_LOGS"
 msgstr "Logs Ausgang"
 
