@@ -516,19 +516,7 @@ $(document).ready(function(){
                 $("#syno_configure_element_image_plug").hide();
                 $("#syno_configure_element_image_sensor").hide();
                 $("#syno_configure_element_image_" + syno_configure_element_object.element).show();
-                
-                // Active plug force only for plugs
-                if (syno_configure_element_object.element == "plug")
-                {
-                    $("#syno_configure_element_force_plug").show();
-                }
-                else
-                {
-                    $("#syno_configure_element_force_plug").hide();
-                }
-                
-                //console.debug('Type : ' + syno_configure_element_object.element);
-                //console.debug('Image : ' + syno_configure_element_object.image);
+
                 $("#syno_configure_element").dialog({
                     resizable: false,
                     width: 400,
@@ -606,6 +594,27 @@ $(document).ready(function(){
                 });
                 
             }
+        });
+    });
+    
+    // Display and control user form for pilot plug
+    $('body').on('click', '.syno_pilot_plug_elem_button', function(e) {
+        e.preventDefault();
+
+        idOfElem = $(this).attr('id').split("_")[2];
+        
+        $("#syno_pilotPlug_element").dialog({
+            resizable: false,
+            width: 400,
+            closeOnEscape: true,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CLOSE_button,
+                click: function () {
+                    $( this ).dialog( "close" );
+                    return false;
+                }
+            }]
         });
     });
     
