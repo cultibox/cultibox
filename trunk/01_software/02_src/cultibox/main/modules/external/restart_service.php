@@ -18,6 +18,7 @@ if(is_file("/tmp/interfaces")) {
         exec("sudo /sbin/ifconfig wlan0 up",$output,$err);
         sleep(2); 
         exec("sudo /usr/sbin/invoke-rc.d networking force-reload",$output,$err);
+        exec("sudo /bin/mv /var/cache/lighttpd/compress/cultibox /tmp/",$output,$err);
         echo json_encode("1");
     } else {
         exec("sudo /bin/mv /etc/network/interfaces.SAVE /etc/network/interfaces");
