@@ -1,3 +1,9 @@
+Cultibox (2.0.38) precise; urgency=low
+    + Correction de la gestion du réseau
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Feb 15 14:40:35 CEST 2015
+
+
 Cultibox (2.0.37) precise; urgency=low
     + Ajout de la configuration de la résolution de la webcam
     + Correction de l'affichage de synoptique et de l'import de configuration
