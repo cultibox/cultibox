@@ -140,7 +140,7 @@ $.ajax({
                 // First check if cookie UPDATED_CONF exists
                 if (!array_key_exists('UPDATED_CONF', $_COOKIE)) {
                     $_COOKIE['UPDATED_CONF'] = 'False';
-                }
+                } 
                 if(((!isset($_COOKIE['DISABLE_POPUP']))||($_COOKIE['DISABLE_POPUP']!='True')) && $_COOKIE['UPDATED_CONF']=='True') {
             ?>
                 $.ajax({

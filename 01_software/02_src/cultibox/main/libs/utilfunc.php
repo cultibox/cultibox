@@ -1121,6 +1121,7 @@ function create_network_file($myConf) {
                     if($myConf['hex_password']) {
                         $myArray[]="wireless-key ".$myConf['wifi_password'];
                     } else {
+                        $hex="";
                         for ($i=0; $i<strlen($myConf['wifi_password']); $i++){
                             $ord = ord($myConf['wifi_password'][$i]);
                             $hexCode = dechex($ord);
