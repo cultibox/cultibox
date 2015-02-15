@@ -7,7 +7,7 @@ cd $dir
 function usage {
             echo "usage: $0"
             echo "                      cultipi <version>|version ?jenkins?"
-            echo "                      cultipi <version>|version ?jenkins?"
+            echo "                      cultibox <version>|version ?jenkins?"
             echo "                      cultiraz <version>|version ?jenkins?"
             echo "                      cultitime <version>|version ?jenkins?"
             echo "                      culticonf <version>|version ?jenkins?"
