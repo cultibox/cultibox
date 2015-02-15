@@ -968,7 +968,22 @@ $(document).ready(function(){
                }).done(function (data) {
                      $.unblockUI();
                      var objJSON = jQuery.parseJSON(data)
-                     if(objJSON=="") {
+                     if(objJSON=="1") {
+                        $("#cultipi_acces_update").dialog({
+                            resizable: false,
+                            height:150,
+                            width: 500,
+                            modal: true,
+                            closeOnEscape: false,
+                            dialogClass: "popup_error",
+                            buttons: [{
+                                text: CLOSE_button,
+                                click: function () {
+                                    $( this ).dialog("close");
+                                }
+                            }]
+                        });
+                     } else if(objJSON=="") {
                         $("#cultipi_no_update").dialog({
                             resizable: false,
                             height:150,
