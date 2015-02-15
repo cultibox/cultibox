@@ -635,6 +635,7 @@
 <!-- Div used for database management -->
 <div id="ui_db_management" name="ui_db_management" title="<?php echo __('MANAGE_LOG_INFOS') ?>" style="display:none">
 
+    <?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { ?>
     <!-- Reload logs -->
     <form action="/cultibox/index.php?menu=logs" method="get" id="load_log_form" name="load_log_form">
         <table class="table_width">
@@ -660,6 +661,7 @@
             </tr>
         </table>
     </form>
+    <?php } ?>
     
     <!-- Reset logs -->
     <form action="/cultibox/index.php?menu=logs" method="get" id="reset_log_form" name="reset_log_form">

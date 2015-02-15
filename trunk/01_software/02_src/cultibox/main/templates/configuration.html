@@ -207,7 +207,7 @@
             </tr>
         <?php } ?>
         <!-- Display RTC row only if not in CUltipi-->
-        <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] != "cultipi") {?>
+        <?php if(!isset($GLOBALS['MODE']) || $GLOBALS['MODE'] != "cultipi") { ?>
             <tr>
                 <td class="conf-marge"></td>
                 <td>
@@ -235,7 +235,7 @@
             </tr>
         <?php } ?>
         <!-- Display LED enable only if not in cultipi-->
-        <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] != "cultipi") {?>
+        <?php if(!isset($GLOBALS['MODE']) || $GLOBALS['MODE'] != "cultipi") {?>
             <tr>  
                 <td class="conf-marge"></td>
                 <td><?php echo __('CONFIGURE_ENABLE_LED'); ?>:</td>

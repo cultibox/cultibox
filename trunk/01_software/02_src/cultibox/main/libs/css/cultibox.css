@@ -684,6 +684,10 @@ td.conf-field-cultipi {
     width: 20%;
 }
 
+td.conf-title-webcam {
+    width: 10%;
+}
+
 td.conf-field-service {
     width: 32%;
 }
@@ -1001,6 +1005,10 @@ input[type='file'] {
     text-align: center;
     font-size: 12px;
     font-style: italic;
+}
+
+.slider_div {
+    width: 90%;
 }
 
 
