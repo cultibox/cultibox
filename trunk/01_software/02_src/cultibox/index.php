@@ -133,9 +133,12 @@ $webcam=get_configuration("SHOW_WEBCAM");
 
                                 <li class="translate"><a href="/cultibox/index.php?lang=it_IT" id="it_IT"><img src="/cultibox/main/libs/img/it.gif" alt="Tradurre tutti i testi del sito in Italiano (IT)" title="Tradurre tutti i testi del sito in Italiano (IT)" /></a> </li>
 
-                               <li class="translate"><a href="/cultibox/index.php?lang=es_ES" id="es_ES"><img src="/cultibox/main/libs/img/es.gif" alt="Traducir los textos del sitio en Español (ES)" title="Traducir los textos del sitio en Español (ES)" /></a></li>
+                                <li class="translate"><a href="/cultibox/index.php?lang=es_ES" id="es_ES"><img src="/cultibox/main/libs/img/es.gif" alt="Traducir los textos del sitio en Español (ES)" title="Traducir los textos del sitio en Español (ES)" /></a></li>
 
                                 <li class="translate"><a href="/cultibox/index.php?lang=de_DE" id="de_DE"><img src="/cultibox/main/libs/img/de.gif" alt="Übersetzen alle Texte auf der Website Deutsch (DE)" title="Übersetzen alle Texte auf der Website Deutsch (DE)" /></a></li>
+                                
+                                <li ><a <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) { ?>href="/documentation_cultibox.pdf"<?php } else { ?>href="/cultibox/main/docs/documentation_cultibox.pdf" <?php } ?> target="_blank"><img src="/cultibox/main/libs/img/help.png" alt="Help" title="Help" width="22" height="22" /></a></li>
+                            
                             </ul>
                         </div>
 
@@ -151,7 +154,6 @@ $webcam=get_configuration("SHOW_WEBCAM");
                         <div id="menubar" class="grid-block">
                             <nav id="menu">
                                 <ul class="menu menu-dropdown" id="menubar-ul">
-                                    <li id="menu-welcome" class="level1 item155 active current"><a href="/cultibox/index.php" class="level1 href-welcome active current" ><span class="active"><?php echo __('MENU_WELCOME'); ?></span></a></li>
 
                                     <li id="menu-configuration" class="level1 item157"><a href="/cultibox/index.php?menu=configuration" class="level1 href-configuration"><span><?php echo __('MENU_CONF'); ?></span></a></li>
 
@@ -177,7 +179,6 @@ $webcam=get_configuration("SHOW_WEBCAM");
 
                                     <li id="menu-webcam" class="level1 item164" <?php if(!$webcam) { echo 'style="display:none"'; } ?>><a href="/cultibox/index.php?menu=webcam" class="level1 href-webcam" ><span><?php echo __('MENU_WEBCAM'); ?></span></a></li>
 
-                                    <li id="menu-help" class="level1 item164"><a <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) { ?>href="/documentation_cultibox.pdf"<?php } else { ?>href="/cultibox/main/docs/documentation_cultibox.pdf" <?php } ?> target="_blank" class="level1 href-help"><span><?php echo __('MENU_HELP'); ?></span></a></li>
                                 </ul>
                             </nav>
                         </div>               
