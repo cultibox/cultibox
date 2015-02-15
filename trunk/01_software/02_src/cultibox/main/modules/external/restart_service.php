@@ -16,6 +16,7 @@ if(is_file("/tmp/interfaces")) {
         exec("sudo /sbin/ifconfig wlan0 down",$output,$err);
         exec("sudo /sbin/iwconfig wlan0 mode Managed",$output,$err);
         exec("sudo /sbin/ifconfig wlan0 up",$output,$err);
+        sleep(2); 
         exec("sudo /usr/sbin/invoke-rc.d networking force-reload",$output,$err);
         echo json_encode("1");
     } else {
