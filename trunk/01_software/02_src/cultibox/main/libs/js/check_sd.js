@@ -133,9 +133,16 @@ $.ajax({
         if(json==0) {
              pop_up_add_information("<?php echo __('DIR_CONF_UPDATE'); ?>","check_conf_status","information");
         } else {
-             pop_up_add_information("<?php echo __('DIR_CONF_NOT_UPTODATE'); ?>","check_conf_status","error");
+            pop_up_add_information("<?php echo __('DIR_CONF_NOT_UPTODATE'); ?>","check_conf_status","error");
 
-             <?php if(((!isset($_COOKIE['DISABLE_POPUP']))||($_COOKIE['DISABLE_POPUP']!='True'))&&($_COOKIE['UPDATED_CONF']=='True')) { ?>
+            <?php
+             
+                // First check if cookie UPDATED_CONF exists
+                if (!array_key_exists('UPDATED_CONF', $_COOKIE)) {
+                    $_COOKIE['UPDATED_CONF'] = 'False';
+                }
+                if(((!isset($_COOKIE['DISABLE_POPUP']))||($_COOKIE['DISABLE_POPUP']!='True')) && $_COOKIE['UPDATED_CONF']=='True') {
+            ?>
                 $.ajax({
                     cache: false,
                     url: "main/modules/external/set_variable.php",
