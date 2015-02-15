@@ -151,7 +151,7 @@ proc checkAndUpdate {} {
        
         if {$::compteur > 40} {
            
-            puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : RAZ de la conf réseau demandé"
+            puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Network configuration reset asked..."
            
             # On fait clignoter la LED 10 fois
             for {set i 0} {$i < 10} {incr i} {
@@ -165,16 +165,32 @@ proc checkAndUpdate {} {
             set ::compteur 0
        
             # RAZ de la configuration réseau:
-            set RC [catch {exec cp /etc/network/interfaces.BASE /etc/network/interfaces} msg]
+            set RC [catch {exec /bin/cp /etc/network/interfaces.BASE /etc/network/interfaces} msg]
             if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error cp : $msg"}
 
             # Remise en place du mot de passe d'origine:
             set RC [catch {
                 if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
-                    exec cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
+                    exec /bin/cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
                 }
             } msg]
             if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error Lighttpd password reset : $msg"}
+
+
+            #On redémare les services:
+            set RC [catch {
+                exec /sbin/ifconfig wlan0 down
+                exec /sbin/iwconfig wlan0 mode Ad-Hoc      
+                exec /sbin/ifconfig wlan0 up
+                exec /usr/sbin/invoke-rc.d networking force-reload
+            } msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error during network configuration : $msg"}
+
+            set RC [catch {exec /etc/init.d/isc-dhcp-server force-reload} msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error setting isc-dhcp-server : $msg"}
+    
+            set RC [catch {exec /etc/init.d/dnsmasq force-reload} msg]
+            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error setting dnsmasq : $msg"}
 
             # On fait clignoter la LED 5 fois
             for {set i 0} {$i < 5} {incr i} {
@@ -185,8 +201,6 @@ proc checkAndUpdate {} {
                 update
             }
 
-            exec shutdown -r now
-            
             # On la rappel la procédure au bout de 10 secondes pour éviter un double effacage:
             after 10000 checkAndUpdate
         } else {
