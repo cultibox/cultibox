@@ -151,6 +151,13 @@
                 echo '                 class="syno_conf_elem_button"';
                 echo '          />';
                 echo '      </td>';
+                echo '      <td>';
+                echo '          <input type="image" id="syno_pilotPlug_' . $plug["id"] . '" name="syno_pilotPlug_' . $plug["id"] . '"';
+                echo '                 src="main/libs/img/rpi_restart.png"  width="18"';
+                echo '                 alt="pilot"';
+                echo '                 class="syno_pilot_plug_elem_button"';
+                echo '          />';
+                echo '      </td>';
                 echo '    </tr>';
                 echo '  </table>';
                 // If defcom, set opacity to 0.4
@@ -278,8 +285,13 @@
                 <td><?php echo __('CULTIPI_SYNO_ZOOM'); ?></td>
                 <td><input type="text" name="syno_configure_element_scale_val" id="syno_configure_element_scale_val" value="" size="4" readonly /></td>
                 <td colspan="3" ><div id="syno_configure_element_scale"></div></td>
-            </tr>
-
+            </tr>          
+        </table>
+    </div>
+    
+    <!-- Message box for pilot a plug -->
+    <div id="syno_pilotPlug_element" style="display:none" title="<?php echo __('CULTIPI_SYNO_CONF'); ?>">
+        <table>
             <tr id="syno_configure_element_force_plug">
                 <td><?php echo __('CULTIPI_SYNO_PILOTAGE'); ?></td>
                 <td colspan="2" >
