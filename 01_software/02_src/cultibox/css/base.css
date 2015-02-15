@@ -135,12 +135,12 @@ input[type='button'],
 input[type='submit'] { padding: 2px 3px; }
 
 
-.wrapper { width: 980px; }
-#maininner { width: 980px; }
-#menu .dropdown { width: 250px; }
-#menu .columns2 { width: 500px; }
-#menu .columns3 { width: 750px; }
-#menu .columns4 { width: 1000px; }
+.wrapper { max-width: 980px; }
+#maininner { }
+#menu .dropdown { max-width: 250px; }
+#menu .columns2 { max-width: 500px; }
+#menu .columns3 { max-width: 750px; }
+#menu .columns4 { max-width: 1000px; }
 
 /* Headlines */
 h1, h2, h3, h4, h5, h5, h6 { 
