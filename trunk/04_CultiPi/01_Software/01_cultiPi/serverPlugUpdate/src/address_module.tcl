@@ -42,6 +42,63 @@ namespace eval ::address {
     set val(56) direct
     set val(57) direct
     
+    # Adresse pour la commande en utilisant MCP23008 (optionnel-ment MCP23017)
+    # @0x40
+    set val(60) MCP230XX
+    set val(61) MCP230XX
+    set val(62) MCP230XX
+    set val(63) MCP230XX
+    set val(64) MCP230XX
+    set val(65) MCP230XX
+    set val(66) MCP230XX
+    set val(67) MCP230XX
+    
+    # @0x42
+    set val(70) MCP230XX
+    set val(71) MCP230XX
+    set val(72) MCP230XX
+    set val(73) MCP230XX
+    set val(74) MCP230XX
+    set val(75) MCP230XX
+    set val(76) MCP230XX
+    set val(77) MCP230XX
+    
+    # @0x44
+    set val(80) MCP230XX
+    set val(81) MCP230XX
+    set val(82) MCP230XX
+    set val(83) MCP230XX
+    set val(84) MCP230XX
+    set val(85) MCP230XX
+    set val(86) MCP230XX
+    set val(87) MCP230XX
+    
+    # Adresse pour la commande en utilisant le vario
+    # @0x20
+    set val(90) DIMMER
+    set val(91) DIMMER
+    set val(92) DIMMER
+    set val(93) DIMMER
+    
+    # @0x22
+    set val(95) DIMMER
+    set val(96) DIMMER
+    set val(97) DIMMER
+    set val(98) DIMMER
+
+    # @0x24
+    set val(100) DIMMER
+    set val(101) DIMMER
+    set val(102) DIMMER
+    set val(103) DIMMER
+    
+    # Adresse pour XMAX
+    # @0x46
+    set val(105) XMAX
+    set val(106) XMAX
+    set val(107) XMAX
+    set val(108) XMAX
+    
 }
 
 proc ::address::get_module {address} {
