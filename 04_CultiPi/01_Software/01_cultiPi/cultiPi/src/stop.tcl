@@ -34,7 +34,7 @@ proc stopCultiPi {} {
     ::piLog::log [clock milliseconds] "info" "Fin arret Culti Pi"
     
     # Arrêt du serveur de log (forcement en dernier)
-    ::piServer::sendToServer $::confStart(serverLog,port) "[clock milliseconds] 000 stop"
+    ::piServer::sendToServer $::confStart(serverLog,port) "<[clock milliseconds]><cultipi><debug><stop>"
     ::piLog::closeLog
     
     after 500 {set ::forever 0}
