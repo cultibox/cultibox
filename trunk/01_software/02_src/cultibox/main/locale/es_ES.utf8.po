@@ -1931,6 +1931,9 @@ msgstr "Guardar contraseña"
 
 
 #For the webcam part:
+msgid "PALETTE"
+msgstr "Paleta"
+
 msgid "BRIGHTNESS" 
 msgstr "Brillo"
 

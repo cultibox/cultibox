@@ -1931,6 +1931,9 @@ msgstr "Passwort speichern"
 
 
 #For the webcam part:
+msgid "PALETTE"
+msgstr "Palette"
+
 msgid "BRIGHTNESS"
 msgstr "Helligkeit"
 

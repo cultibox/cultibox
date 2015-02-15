@@ -8,7 +8,6 @@
         $width=640;
     }
 
-
     if((isset($_GET['height'])) && (!empty($_GET['height']))) {
         $height=$_GET['height'];
     } else {
@@ -24,19 +23,17 @@
         $options="$options -s contrast=".$_GET['contrast']."%";
     }
 
+    if((isset($_GET['palette'])) && (!empty($_GET['palette'])) && (strcmp($_GET['palette'],"-1")!=0)) {
+       $options=" -p ".$_GET['palette']." $options";
+    }
+
 
 
     exec("ls /dev/video* 2>/dev/null",$output,$err);
     if(count($output)==0) {
        echo json_encode("1");
     } else {
-        exec("sudo fswebcam -p YUYV -r ".$width."x".$height." --no-banner $options ".$GLOBALS['BASE_PATH']."tmp/webcam.jpg 2>&1",$test,$err);
-        foreach($test as $line) {
-            if(strpos($line, "Unable to find a compatible palette format")!==false) {
-                exec("sudo fswebcam -r ".$width."x".$height." --no-banner $options ".$GLOBALS['BASE_PATH']."tmp/webcam.jpg",$test,$err);
-                break;
-            }
-        }
+        exec("sudo fswebcam -r ".$width."x".$height." --no-banner $options ".$GLOBALS['BASE_PATH']."tmp/webcam.jpg 2>&1",$output,$err);
         echo json_encode("0");
     }
 ?>

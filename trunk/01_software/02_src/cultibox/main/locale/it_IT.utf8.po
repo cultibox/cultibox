@@ -1932,6 +1932,9 @@ msgstr "Salva password"
 
 
 #For the webcam part:
+msgid "PALETTE"
+msgstr "Tavolozza"
+
 msgid "BRIGHTNESS"
 msgstr "Luminosità"
 
