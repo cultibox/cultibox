@@ -122,9 +122,9 @@ proc firstLoop {} {
 }
 
 puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Vérification de l'effacement du du Cultipi"
-firstLoop
+# firstLoop
 
-vwait firstLoopFinish
+# vwait firstLoopFinish
 
 set compteur 0
 
