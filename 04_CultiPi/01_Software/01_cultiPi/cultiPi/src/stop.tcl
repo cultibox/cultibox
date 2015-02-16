@@ -37,5 +37,8 @@ proc stopCultiPi {} {
     ::piServer::sendToServer $::confStart(serverLog,port) "<[clock milliseconds]><cultipi><debug><stop>"
     ::piLog::closeLog
     
-    after 500 {set ::forever 0}
+    after 500 {
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiPi : Bye Bye ! "
+        set ::forever 0
+    }
 }
