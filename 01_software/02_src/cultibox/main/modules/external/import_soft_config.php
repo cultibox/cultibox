@@ -7,10 +7,18 @@ if((isset($_GET['filename']))&&(!empty($_GET['filename']))) {
     $file="../../../tmp/import/".$_GET['filename'];
     if(is_file("$file")) {
         if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {
-                  if(strcmp(substr($file,-3,3),"zip")==0) {
-                        exec("unzip -o \"$file\" -d ../../../tmp/import/",$output,$err);
-                        $file=str_replace(".zip","",$file);
-                        $file="../../../tmp/import/backup_cultibox.sql";
+                  $finfo = finfo_open(FILEINFO_MIME_TYPE); 
+                  $extension=finfo_file($finfo, "$file");
+                  finfo_close($finfo);
+       
+                  if(strpos("$extension","zip")!==false) {
+                        exec("/usr/bin/unzip -o \"$file\" -d ../../../tmp/import/|/bin/grep inflating|/usr/bin/awk -F\": \" '{print $2}'",$output,$err);
+                        if(trim($output[0])!="") {
+                            $file=trim($output[0]);
+                        } else {
+                            echo json_encode("1");
+                            return 0;
+                        }
                   }
                   exec("/usr/bin/mysql --defaults-extra-file=/var/www/cultibox/sql_install/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < \"$file\"",$output,$err);
         } else {

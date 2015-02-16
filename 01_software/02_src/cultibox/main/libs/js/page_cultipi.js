@@ -1454,7 +1454,7 @@ $(document).ready(function() {
                     }
                 }
 
-
+                var type_password="";
                 if($("#activ_wifi option:selected").val()=="True") {
                     $.ajax({
                         cache: false,
@@ -1471,7 +1471,6 @@ $(document).ready(function() {
                     });
 
 
-                    var type_password="";
                     switch ($("#wifi_key_type").val()) {
                         case 'NONE': type_password="password_none";
                             break;
@@ -1649,7 +1648,9 @@ $(document).ready(function() {
                    $.ajax({
                        cache: false,
                        async: true,
-                       url: "main/modules/external/restart_service.php"
+                       timeout: 30000,
+                       url: "main/modules/external/restart_service.php",
+                       data: {type:type_password}
                    }).done(function (data) {
                         try{
                             if($.parseJSON(data)=="1") {
