@@ -301,7 +301,7 @@ INSERT INTO `program_index` (`name`,`version`,`program_idx`,`creation`, `modific
 CREATE TABLE IF NOT EXISTS `synoptic` (
     `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `element` varchar(10) NOT NULL DEFAULT 'other',
-    `scale` int(11) NOT NULL DEFAULT '50',
+    `scale` int(11) NOT NULL DEFAULT '100',
     `x` int(11) NOT NULL DEFAULT '0',
     `y` int(11) NOT NULL DEFAULT '0',
     `z` int(11) NOT NULL DEFAULT '100',
