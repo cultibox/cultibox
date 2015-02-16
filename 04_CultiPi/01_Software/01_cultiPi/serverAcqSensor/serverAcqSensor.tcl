@@ -187,7 +187,7 @@ proc readSensors {} {
                         set ::sensor($sensorType,$index,value,1) $computedValue
                         set ::sensor($sensorType,$index,updateStatus) "OK"
                         set ::sensor($sensorType,$index,updateStatusComment) [clock milliseconds]
-                        ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 1 : $computedValue"
+                        ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 1 : $computedValue (raw $valueHP $valueLP)"
                         
                         # On sauvegarde dans le repère global
                         set ::sensor($index,value,1) $computedValue
@@ -199,7 +199,7 @@ proc readSensors {} {
                     if {$sensorType == "SHT"} {
                     
                         set moduleAdress $::sensor($sensorType,$index,adress)
-                        set register     $::SENSOR_GENERIC_HP_ADR
+                        set register     $::SENSOR_GENERIC_HP2_ADR
 
                         set valueHP ""
                         set valueLP ""
@@ -226,7 +226,7 @@ proc readSensors {} {
                             set ::sensor($sensorType,$index,value,2) $computedValue
                             set ::sensor($sensorType,$index,updateStatus) "OK"
                             set ::sensor($sensorType,$index,updateStatusComment) [clock milliseconds]
-                            ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 2 : $computedValue"
+                            ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 2 : $computedValue (raw $valueHP $valueLP)"
                             
                             # On sauvegarde dans le repère global
                             set ::sensor($index,value,2) $computedValue
