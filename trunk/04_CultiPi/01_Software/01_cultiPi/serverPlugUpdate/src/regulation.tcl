@@ -175,6 +175,11 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                         # On sauvegarde le fait qu'on a une régulation primaire
                         set ::plug($nbPlug,inRegulation) "PRI"
                         
+                    } else {
+                    
+                        # Pas de régulation particulière, on est entre les deux seuils
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri+ $module between progr:-$plgPrgm- value:-$valuePrimaire- pilot:-No Pilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                    
                     }
 
                 }
@@ -226,6 +231,11 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                         # On sauvegarde le fait qu'on a une régulation primaire
                         set ::plug($nbPlug,inRegulation) "PRI"
                         
+                    } else {
+                    
+                        # Pas de régulation particulière, on est entre les deux seuils
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri- $module between progr:-$plgPrgm- value:-$valuePrimaire- pilot:-No Pilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                    
                     }
                 }
             }
