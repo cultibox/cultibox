@@ -145,7 +145,7 @@ $(document).ready(function(){
                         inTable = inTable +  '      <td>';
                         inTable = inTable +  '          <input type="image" id="syno_elemConfigur_' + objJSON.id + '" name="syno_elemConfigur_' + objJSON.id + '"';
                         inTable = inTable +  '                 title=""';
-                        inTable = inTable +  '                 src="main/libs/img/advancedsettings.png"  width="18"';
+                        inTable = inTable +  '                 src="main/libs/img/advancedsettings.png"  width="22"';
                         inTable = inTable +  '                 alt="configure"';
                         inTable = inTable +  '                 class="syno_conf_elem_button"';
                         inTable = inTable +  '          />';
@@ -259,10 +259,10 @@ $(document).ready(function(){
 
                                     dialogClass: "popup_message",
                                     buttons: [{
-                                            text: CLOSE_button,
-                                            click: function () {
+                                        text: CLOSE_button,
+                                        click: function () {
                                             $( this ).dialog( "close" ); return false;
-                                    }
+                                        }
                                     }]
                                 });
                             }).fail(function (data) {
@@ -520,6 +520,8 @@ $(document).ready(function(){
                 $("#syno_configure_element_image_plug").hide();
                 $("#syno_configure_element_image_sensor").hide();
                 $("#syno_configure_element_image_" + syno_configure_element_object.element).show();
+                
+
 
                 $("#syno_configure_element").dialog({
                     resizable: false,
@@ -527,7 +529,16 @@ $(document).ready(function(){
                     closeOnEscape: true,
                     dialogClass: "popup_message",
                     title:"Configurer " + elementTitle,
+                    open: function( event, ui ) {
+                        // remove delete button for plugs and sensor
+                        if (syno_configure_element_object.element == "other") {
+                            $("#DELETE_button").show();
+                        } else {
+                            $("#DELETE_button").hide();
+                        }
+                    },
                     buttons: [{
+                        id: "DELETE_button",
                         text: DELETE_button,
                         click: function () {
                         
