@@ -181,6 +181,7 @@ proc checkAndUpdate {} {
             set RC [catch {
                 exec /sbin/ifconfig wlan0 down
                 exec /sbin/iwconfig wlan0 mode Ad-Hoc      
+                exec /sbin/iwconfig wlan0 key off
                 exec /sbin/ifconfig wlan0 up
                 after 2000 exec /usr/sbin/invoke-rc.d networking force-reload
                 after 2000 exec /etc/rc.local
