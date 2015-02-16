@@ -316,7 +316,7 @@ proc parse {inFileName outFileName level annexeFile} {
       
       # Remplacement des caractère spéciaux
       if {[string first {http://cultibox.googlecode.com/svn/wiki/img/} $line] != -1} {
-         set line [string map {{http://cultibox.googlecode.com/svn/wiki/img/} "\\scalegraphics\{./wiki/img/" {.jpg} ".jpg\}" {.png} ".png\}" {.PNG} ".PNG\}"} $line]     
+         set line [string map {{http://cultibox.googlecode.com/svn/wiki/img/} "\\scalegraphics\{./wiki/img/" {.JPG} ".JPG\}" {.jpg} ".jpg\}" {.png} ".png\}" {.PNG} ".PNG\}"} $line]     
       } elseif {$inComment == 0} {
          set line [string map $::CaracSpeciaux $line]
       }
