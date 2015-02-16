@@ -313,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `synoptic` (
 INSERT INTO `synoptic` (`element`,`indexElem`,`image`,`x`, `y`, `z`,`scale`) VALUES('other','1','cultipi.png' , '850', '450', '2' , '74');
 INSERT INTO `synoptic` (`element`,`indexElem`,`image`,`x`, `y`, `z`,`scale`) VALUES('other','2','tente_1_espace.png' , '600', '350', '1' , '250');
 
-- --------------------------------------------------------
+-- --------------------------------------------------------
 --
 -- Table structure for table `webcam`
 --
@@ -322,6 +322,7 @@ CREATE TABLE IF NOT EXISTS `webcam` (
     `brightness` int(11) NOT NULL DEFAULT -1,
     `contrast` int(11) NOT NULL DEFAULT -1,
     `resolution` varchar(11) NOT NULL DEFAULT '-1',
+    `palette` varchar(11) NOT NULL DEFAULT '-1',
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
@@ -329,7 +330,7 @@ PRIMARY KEY (`id`)
 -- Dumping data for table `webcam`
 --
 
-INSERT INTO `webcam` (`brightness`,`contrast`,`resolution`) VALUES(-1,-1,'-1');
+INSERT INTO `webcam` (`brightness`,`contrast`,`resolution`,`palette`) VALUES(-1,-1,'-1','-1');
 
 
 
