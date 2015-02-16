@@ -339,3 +339,9 @@ cp /etc/network/interfaces.BASE /etc/network/interfaces
 {{{
 /etc/cron.daily/cultipi
 }}}
+
+ * Pour arrêter le logiciel Cultipi:
+
+{{{
+tclsh /opt/cultipi/cultiPi/cultiPistop.tcl
+}}}
