@@ -1,0 +1,49 @@
+#summary Vider le cache du navigateur
+
+= Sommaire =
+<wiki:toc max_depth="4" />
+
+= Introduction =
+
+Cette section de l'aide décrit les méthodes permettant de vider le cache de votre nafigateur.
+
+= Mozilla Firefox =
+
+Cliquer sur le bouton en haut à droite de votre navigateur :
+
+http://cultibox.googlecode.com/svn/wiki/img/clean_cache_firefox_1.JPG
+
+Dans la fenêtre qui s'ouvre, cliquer sur "Option" :
+
+http://cultibox.googlecode.com/svn/wiki/img/clean_cache_firefox_2.JPG
+
+Dans la fenêtre cliquer sur "Avancé" puis sur l'onglet "Réseau" puis sur le bouton "Vider maintenant" :
+
+http://cultibox.googlecode.com/svn/wiki/img/clean_cache_firefox_3.JPG
+
+= Chrome =
+
+Cliquer sur le bouton en haut à droite de votre navigateur :
+
+http://cultibox.googlecode.com/svn/wiki/img/clean_cache_chrome_1.JPG
+
+Cliquer sur "Paramètres" :
+
+http://cultibox.googlecode.com/svn/wiki/img/clean_cache_chrome_2.JPG
+
+En bas de ce qui s'affiche, cliquer sur "Afficher les paramètres avancés" :
+
+http://cultibox.googlecode.com/svn/wiki/img/clean_cache_chrome_3.JPG
+
+Cliquer sur "Effacer les données de navigation" :
+
+http://cultibox.googlecode.com/svn/wiki/img/clean_cache_chrome_4.JPG
+
+
+Sélectionner au minimum les éléments suivants :
+ * Effacer les élément : tous
+ * Image et fichier en cache
+ 
+Cliquer sur "Effacer les données de navigation" :
+
+http://cultibox.googlecode.com/svn/wiki/img/clean_cache_chrome_5.JPG

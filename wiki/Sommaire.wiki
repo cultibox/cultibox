@@ -52,6 +52,7 @@
     * [faq FAQ]
       * [faq_hardware FAQ Matérielle]
       * [faq_software FAQ Logicielle]
+        * [clean_cache_browzer Vider le cache du navigateur]
     * [advance Utilisation avancée]
     * [base_de_donnee Base de donnée]
     * [sd_card Carte SD]
