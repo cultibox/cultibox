@@ -11,7 +11,7 @@ function check_db() {
     $synoptic_col = array();
     $synoptic_col["id"]            = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT");
     $synoptic_col["element"]       = array ( 'Field' => "element", 'Type' => "VARCHAR(10)", "default_value" => "other", 'carac' => "NOT NULL");
-    $synoptic_col["scale"]         = array ( 'Field' => "scale", 'Type' => "int(11)", "default_value" => 50, 'carac' => "NOT NULL");
+    $synoptic_col["scale"]         = array ( 'Field' => "scale", 'Type' => "int(11)", "default_value" => 100, 'carac' => "NOT NULL");
     $synoptic_col["x"]             = array ( 'Field' => "x", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
     $synoptic_col["y"]             = array ( 'Field' => "y", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
     $synoptic_col["z"]             = array ( 'Field' => "z", 'Type' => "int(11)", "default_value" => 100, 'carac' => "NOT NULL");
@@ -38,7 +38,7 @@ function check_db() {
         $sql = "CREATE TABLE synoptic ("
             ."id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,"
             ."element varchar(10) NOT NULL DEFAULT 'other',"
-            ."scale int(11) NOT NULL DEFAULT '50',"
+            ."scale int(11) NOT NULL DEFAULT '100',"
             ."x int(11) NOT NULL DEFAULT '0',"
             ."y int(11) NOT NULL DEFAULT '0',"
             ."z int(11) NOT NULL DEFAULT '100',"
@@ -128,7 +128,7 @@ function getSynopticDBElemByID ($id) {
 // IN $sensorIndex : Sensor index
 // IN $image : Image name
 // RET 0
-function addElementInSynoptic($element, $indexElem, $image, $x=0, $y="", $z=100, $scale = 50) {
+function addElementInSynoptic($element, $indexElem, $image, $x=0, $y="", $z=100, $scale = 100) {
     
     if ($x == 0 || $x == "") 
     {
