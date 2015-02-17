@@ -11,6 +11,7 @@ function usage {
             echo "                      cultiraz <version>|version ?jenkins?"
             echo "                      cultitime <version>|version ?jenkins?"
             echo "                      culticonf <version>|version ?jenkins?"
+            echo "                      cultidoc <version>|version ?jenkins?"
             echo "                      apt-gen"
             echo "                      clean"
             exit 1
@@ -25,7 +26,7 @@ fi
 if [ "$2" == "version" ]; then
     if [ "$1" == "cultipi" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/01_cultiPi/VERSION`
-    elif [ "$1" == "cultibox" ]; then
+    elif [ "$1" == "cultibox" ] || [ "$1" == "cultidoc" ]; then
         VERSION=`head -1 ../../CHANGELOG |sed -r 's#^.*\((.*)\).*$#\1#'`
     elif [ "$1" == "cultiraz" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/05_cultiRAZ/VERSION`
@@ -54,7 +55,6 @@ case "$1" in
 
            mkdir -p ../01_src/01_xampp/cultipi/opt/cultipi
            mkdir -p ../01_src/01_xampp/cultipi/etc/init.d
-           mkdir -p ../01_src/01_xampp/cultipi/etc/default
            mkdir -p ../01_src/01_xampp/cultipi/etc/cultipi
 
            cp -R ../../../04_CultiPi/01_Software/01_cultiPi/* ../01_src/01_xampp/cultipi/opt/cultipi/
@@ -63,7 +63,6 @@ case "$1" in
            cp -R ../../../04_CultiPi/02_conf/conf.xml  ../01_src/01_xampp/cultipi/etc/cultipi/
 
            cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/init.d/cultipi ../01_src/01_xampp/cultipi/etc/init.d/cultipi
-           cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/default/culticron ../01_src/01_xampp/cultipi/etc/default/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultipi/DEBIAN/control
            find ./../01_src/01_xampp/cultipi/ -name ".svn"|xargs rm -Rf 
@@ -72,13 +71,11 @@ case "$1" in
            mv cultipi.deb ../../05_cultipi/Output/cultipi-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultibox")
-           (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
            rm -Rf ../01_src/01_xampp/*
            mkdir -p ../01_src/01_xampp/cultibox/var/www
            cp -R ./conf-package/DEBIAN-cultibox ../01_src/01_xampp/cultibox/DEBIAN
 
            cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/var/www/cultibox
-           cp ../../../02_documentation/02_userdoc/documentation.pdf Output/documentation_cultibox.pdf
            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/var/www/cultibox/VERSION.txt
 
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/var/www/cultibox/LICENSE.txt
@@ -153,18 +150,36 @@ EOF
            mkdir -p ../01_src/01_xampp/culticonf/etc/cron.daily
            mkdir -p ../01_src/01_xampp/culticonf/etc/cron.hourly
            mkdir -p ../01_src/01_xampp/culticonf/etc/logrotate.d
+           mkdir -p ../01_src/01_xampp/cultipi/etc/default
 
            cp -R ./conf-package/DEBIAN-culticonf ../01_src/01_xampp/culticonf/DEBIAN
 
            cp ../../../04_CultiPi/01_Software/02_culticonf/etc/logrotate.d/cultipi ../01_src/01_xampp/cultipi/etc/logrotate.d/
            cp ../../../04_CultiPi/01_Software/02_culticonf/etc/cron.daily/cultipi ../01_src/01_xampp/cultipi/etc/cron.daily/ 
            cp ../../../04_CultiPi/01_Software/02_culticonf/etc/cron.hourly/cultipi ../01_src/01_xampp/cultipi/etc/cron.hourly/
+           cp ../../../04_CultiPi/01_Software/02_culticonf/etc/default/culticron ../01_src/01_xampp/cultipi/etc/default/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/culticonf/DEBIAN/control
            find ./../01_src/01_xampp/culticonf/ -name ".svn"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build culticonf
 
            mv culticonf.deb ../../05_cultipi/Output/culticonf-armhf_`echo $VERSION`-r`echo $revision`.deb
+      ;;
+      "cultidoc")
+           (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
+
+           rm -Rf ../01_src/01_xampp/*
+           mkdir ../01_src/01_xampp/cultidoc
+           mkdir -p ../01_src/01_xampp/culticonf/var/www/
+
+           cp -R ./conf-package/DEBIAN-cultidoc ../01_src/01_xampp/culticonf/DEBIAN
+           cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/culticonf/var/www/documentation_cultibox.pdf
+
+           sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultidoc/DEBIAN/control
+           find ./../01_src/01_xampp/cultidoc/ -name ".svn"|xargs rm -Rf
+           cd ./../01_src/01_xampp/ && dpkg-deb --build cultidoc
+
+           mv cultidoc.deb ../../05_cultipi/Output/cultidoc-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "apt-gen")
            cultipi="`ls -t Output/cultipi*|head -1`"
@@ -181,6 +196,9 @@ EOF
 
            culticonf="`ls -t Output/culticonf*|head -1`"
            cp $culticonf repository/binary/
+
+           cultidoc="`ls -t Output/cultidoc*|head -1`"
+           cp $cultidoc repository/binary/
 
            cd repository
            dpkg-scanpackages binary /dev/null | gzip -9c > binary/Packages.gz

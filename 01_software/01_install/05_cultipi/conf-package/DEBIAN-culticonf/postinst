@@ -15,3 +15,7 @@ if [ ! -O /etc/logrotate.d/cultipi ] || [ ! -G /etc/logrotate.d/cultipi ]; then
     chmod 644 /etc/logrotate.d/cultipi
 fi
 
+if [ "`cat /etc/crontab|grep culticron`" == "" ]; then
+    echo "*/1 *   * * *   root    /bin/bash /etc/default/culticron" >> /etc/crontab
+fi
+

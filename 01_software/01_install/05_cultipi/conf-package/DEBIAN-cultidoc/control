@@ -1,0 +1,9 @@
+Package: cultidoc
+Version: 1.0.0-debian
+Section: Documentation
+Maintainer: Yann Genevois <yann.genevois@cultibox.fr>
+Homepage: http://www.cultibox.fr
+Priority: extra
+Architecture: armhf
+Description: Cultipi documentation package
+
