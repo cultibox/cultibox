@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Random sleep:
+sleep $[ ( $RANDOM % 300 )  + 1 ]s
+
+apt-get update -o Dir::Etc::sourcelist="sources.list.d/cultibox.list"  -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
 if [ "`apt-get -u upgrade --assume-no|grep cultipi`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultipi
 elif [ "`dpkg -s cultipi 2>/dev/null|grep Version`" == "" ]; then
@@ -35,6 +39,12 @@ elif [ "`dpkg -s culticonf 2>/dev/null|grep Version`" == "" ]; then
     apt-get install -y  --force-yes culticonf
 fi
 
+if [ "`apt-get -u upgrade --assume-no|grep cultidoc`" != "" ]; then
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultidoc
+elif [ "`dpkg -s cultidoc 2>/dev/null|grep Version`" == "" ]; then
+    apt-get install -y  --force-yes cultidoc
+fi
+
 
 if [ -d /var/www/cultibox/tmp/import ]; then
     rm -Rf /var/www/cultibox/tmp/import/*
@@ -44,3 +54,4 @@ if [ -d /var/www/cultibox/tmp/export ]; then
     rm -Rf /var/www/cultibox/tmp/export/*
 fi
 
+rm -Rf /tmp/*

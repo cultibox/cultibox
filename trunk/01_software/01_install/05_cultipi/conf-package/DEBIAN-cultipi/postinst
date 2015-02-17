@@ -4,10 +4,6 @@ if [ -f /etc/init.d/cultipi ]; then
     update-rc.d cultipi defaults
 fi
 
-if [ "`cat /etc/crontab|grep culticron`" == "" ]; then
-    echo "*/1 *   * * *   root    /bin/bash /etc/default/culticron" >> /etc/crontab
-fi
-
 if [ ! -d /etc/cultipi/conf_tmp ]; then
     mkdir /etc/cultipi/conf_tmp
 fi

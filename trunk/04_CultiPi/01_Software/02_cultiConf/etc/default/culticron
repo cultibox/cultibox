@@ -1,0 +1,28 @@
+CULTIPI_ACTIV="yes"
+CULTITIME_ACTIV="yes"
+CULTIRAZ_ACTIV="yes"
+
+
+if [ "$CULTIPI_ACTIV" == "yes" ]; then
+    /etc/init.d/cultipi status >/dev/null
+    if [ $? -ne 0 ]; then
+        /etc/init.d/cultipi force-reload >/dev/null 2>&1
+    fi
+fi
+
+
+if [ "$CULTITIME_ACTIV" == "yes" ]; then
+    /etc/init.d/cultitime status >/dev/null
+    if [ $? -ne 0 ]; then
+        /etc/init.d/cultitime force-reload >/dev/null 2>&1
+    fi
+fi
+
+
+if [ "$CULTIRAZ_ACTIV" == "yes" ]; then
+    /etc/init.d/cultiraz status >/dev/null
+    if [ $? -ne 0 ]; then
+        /etc/init.d/cultiraz force-reload >/dev/null 2>&1
+    fi
+fi
+
