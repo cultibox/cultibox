@@ -4,11 +4,6 @@ if [ -f /etc/init.d/cultipi ]; then
     update-rc.d cultipi defaults
 fi
 
-if [ -f /etc/cron.daily/cultipi ]; then
-    chmod +x /etc/cron.daily/cultipi
-fi
-
-
 if [ "`cat /etc/crontab|grep culticron`" == "" ]; then
     echo "*/1 *   * * *   root    /bin/bash /etc/default/culticron" >> /etc/crontab
 fi
@@ -27,11 +22,6 @@ fi
 
 if [ ! -d /etc/cultipi/conf_tmp/cnf/prg ]; then
     mkdir -p /etc/cultipi/conf_tmp/cnf/prg
-fi
-
-if [ ! -O /etc/logrotate.d/cultipi ] || [ ! -G /etc/logrotate.d/cultipi ]; then
-    chown root:root /etc/logrotate.d/cultipi
-    chmod 644 /etc/logrotate.d/cultipi
 fi
 
 chown -R www-data:www-data /etc/cultipi/conf_tmp

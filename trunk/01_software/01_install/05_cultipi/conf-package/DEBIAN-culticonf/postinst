@@ -1,6 +1,17 @@
 #!/bin/bash
 
 
-sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/init.d\/networking/d" /etc/sudoers
-sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/sbin\/update-rc.d/d" /etc/sudoers
+if [ -f /etc/cron.daily/cultipi ]; then
+    chmod +x /etc/cron.daily/cultipi
+fi
+
+if [ -f /etc/cron.hourly/cultipi ]; then
+    chmod +x /etc/cron.hourly/cultipi
+fi
+
+
+if [ ! -O /etc/logrotate.d/cultipi ] || [ ! -G /etc/logrotate.d/cultipi ]; then
+    chown root:root /etc/logrotate.d/cultipi
+    chmod 644 /etc/logrotate.d/cultipi
+fi
 

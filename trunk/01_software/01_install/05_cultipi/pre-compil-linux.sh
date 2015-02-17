@@ -54,8 +54,6 @@ case "$1" in
 
            mkdir -p ../01_src/01_xampp/cultipi/opt/cultipi
            mkdir -p ../01_src/01_xampp/cultipi/etc/init.d
-           mkdir -p ../01_src/01_xampp/cultipi/etc/cron.daily
-           mkdir -p ../01_src/01_xampp/cultipi/etc/logrotate.d
            mkdir -p ../01_src/01_xampp/cultipi/etc/default
            mkdir -p ../01_src/01_xampp/cultipi/etc/cultipi
 
@@ -65,9 +63,7 @@ case "$1" in
            cp -R ../../../04_CultiPi/02_conf/conf.xml  ../01_src/01_xampp/cultipi/etc/cultipi/
 
            cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/init.d/cultipi ../01_src/01_xampp/cultipi/etc/init.d/cultipi
-           cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/cron.daily/cultipi ../01_src/01_xampp/cultipi/etc/cron.daily/
            cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/default/culticron ../01_src/01_xampp/cultipi/etc/default/
-           cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/logrotate.d/cultipi ../01_src/01_xampp/cultipi/etc/logrotate.d/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultipi/DEBIAN/control
            find ./../01_src/01_xampp/cultipi/ -name ".svn"|xargs rm -Rf 
@@ -154,13 +150,15 @@ EOF
       "culticonf")
            rm -Rf ../01_src/01_xampp/*
            mkdir ../01_src/01_xampp/culticonf
+           mkdir -p ../01_src/01_xampp/culticonf/etc/cron.daily
+           mkdir -p ../01_src/01_xampp/culticonf/etc/cron.hourly
+           mkdir -p ../01_src/01_xampp/culticonf/etc/logrotate.d
+
            cp -R ./conf-package/DEBIAN-culticonf ../01_src/01_xampp/culticonf/DEBIAN
 
-           mkdir -p ../01_src/01_xampp/culticonf/opt/culticonf
-           mkdir -p ../01_src/01_xampp/culticonf/etc/init.d
-
-           cp -R ../../../04_CultiPi/01_Software/02_cultiConf/* ../01_src/01_xampp/culticonf/opt/culticonf/
-           rm -f ../01_src/01_xampp/culticonf/opt/culticonf/VERSION
+           cp ../../../04_CultiPi/01_Software/02_culticonf/etc/logrotate.d/cultipi ../01_src/01_xampp/cultipi/etc/logrotate.d/
+           cp ../../../04_CultiPi/01_Software/02_culticonf/etc/cron.daily/cultipi ../01_src/01_xampp/cultipi/etc/cron.daily/ 
+           cp ../../../04_CultiPi/01_Software/02_culticonf/etc/cron.hourly/cultipi ../01_src/01_xampp/cultipi/etc/cron.hourly/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/culticonf/DEBIAN/control
            find ./../01_src/01_xampp/culticonf/ -name ".svn"|xargs rm -Rf

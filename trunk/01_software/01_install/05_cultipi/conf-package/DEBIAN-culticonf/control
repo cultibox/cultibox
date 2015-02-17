@@ -5,6 +5,5 @@ Maintainer: Yann Genevois <yann.genevois@cultibox.fr>
 Homepage: http://www.cultibox.fr
 Priority: extra
 Architecture: armhf
-Depends: zip, unzip
 Description: Check and configure the Cultipi's environment
 
