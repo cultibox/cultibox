@@ -12,5 +12,23 @@ if [ -f /etc/init.d/cultipi ]; then
             fi
         done
     fi
+
+    for pid in "`ps ax|grep serveurLog.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
+        if [ "$pid" != "" ]; then
+            kill -9 $pid
+        fi
+    done
+
+    for pid in "`ps ax|grep serverPlugUpdate.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
+        if [ "$pid" != "" ]; then
+            kill -9 $pid
+        fi
+    done
+
+    for pid in "`ps ax|grep serverHisto.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
+        if [ "$pid" != "" ]; then
+            kill -9 $pid
+        fi
+    done
 fi
 exit 0
