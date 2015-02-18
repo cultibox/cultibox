@@ -5,8 +5,8 @@ if [ -f /etc/init.d/cultiraz ]; then
     sleep 2
 
     # Killing remaining process:
-    if [ "`ps ax|grep cultiraz|grep tclsh`" != "" ]; then
-        for process in `ps ax|grep cultiraz| grep tclsh| awk -F" " '{print $1}'`; do
+    if [ "`ps ax|grep cultiRAZ.tcl|grep tclsh`" != "" ]; then
+        for process in `ps ax|grep cultiRAZ.tcl| grep tclsh| awk -F" " '{print $1}'`; do
             if [ "$process" != "" ]; then
                 kill -9 $process
             fi

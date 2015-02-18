@@ -170,10 +170,10 @@ EOF
 
            rm -Rf ../01_src/01_xampp/*
            mkdir ../01_src/01_xampp/cultidoc
-           mkdir -p ../01_src/01_xampp/culticonf/var/www/
+           mkdir -p ../01_src/01_xampp/cultidoc/var/www/
 
-           cp -R ./conf-package/DEBIAN-cultidoc ../01_src/01_xampp/culticonf/DEBIAN
-           cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/culticonf/var/www/documentation_cultibox.pdf
+           cp -R ./conf-package/DEBIAN-cultidoc ../01_src/01_xampp/cultidoc/DEBIAN
+           cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultidoc/var/www/documentation_cultibox.pdf
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultidoc/DEBIAN/control
            find ./../01_src/01_xampp/cultidoc/ -name ".svn"|xargs rm -Rf

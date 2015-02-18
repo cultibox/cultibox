@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ "$1" == "purge" ] || [ "$1" == "remove" ]; then
-    if [ "`ps ax|grep cultiTime|grep tclsh`" != "" ]; then
-        for process in `ps ax|grep cultiTime|grep tclsh|awk -F" " '{print $1}'`; do
+    if [ "`ps ax|grep cultiTime.tcl|grep tclsh`" != "" ]; then
+        for process in `ps ax|grep cultiTime.tcl|grep tclsh|awk -F" " '{print $1}'`; do
             if [ "$process" != "" ]; then
                 kill -9 $process
             fi
