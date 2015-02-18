@@ -40,7 +40,7 @@ case "$1" in
 
         restart|reload|force-reload)
                         d_stop
-                        for pid in "`ps ax|grep cultipi |grep tclsh |awk -F " " '{print $1}'`"; do
+                        for pid in "`ps ax|grep cultiPi.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
                             if [ "$pid" != "" ]; then
                                 kill -9 $pid
                             fi
@@ -50,7 +50,7 @@ case "$1" in
                 ;;
         force-stop)
                 d_stop
-                for pid in "`ps ax|grep cultipi |grep tclsh |awk -F " " '{print $1}'`"; do
+                for pid in "`ps ax|grep cultiPi.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
                     if [ "$pid" != "" ]; then
                         kill -9 $pid
                     fi

@@ -70,20 +70,12 @@ proc firstLoop {} {
                 if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error Lighttpd password reset : $msg"}
                 
                 set RC [catch {
-                    exec dpkg --purge cultibox 
-                    exec dpkg --purge cultipi 
-                    exec dpkg --purge cultitime
-                    exec dpkg --purge culticonf
+                    exec dpkg-reconfigure cultibox 
+                    exec dpkg-reconfigure cultipi 
+                    exec dpkg-reconfigure cultitime
+                    exec dpkg-reconfigure culticonf
                 } msg]
-                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error dpkg purge : $msg"}
-
-                set RC [catch {
-                    exec dpkg -i /home/cultipi/cultipi*.deb
-                    exec dpkg -i /home/cultipi/cultibox*.deb
-                    exec dpkg -i /home/cultipi/cultitime*.deb
-                    exec dpkg -i /home/cultipi/culticonf*.deb
-                } msg]
-                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error dpkg i : $msg"}
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error dpkg-reconfigure : $msg"}
 
                 # On fait clignoter la LED 5 fois
                 for {set i 0} {$i < 5} {incr i} {
