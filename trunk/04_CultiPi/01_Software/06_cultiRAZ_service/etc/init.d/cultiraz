@@ -26,7 +26,7 @@ d_start () {
 
 d_stop () {
         log_daemon_msg "Stopping system $DEAMON_NAME Daemon"
-        for pid in "`ps ax|grep cultiraz |grep tclsh |awk -F " " '{print $1}'`"; do
+        for pid in "`ps ax|grep cultiRAZ.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
             if [ "$pid" != "" ]; then
                 kill -9 $pid
             fi
@@ -49,7 +49,7 @@ case "$1" in
                 d_stop
                 ;;
         status)
-                if [ "`ps ax|grep cultiraz|grep tclsh`" != "" ]; then
+                if [ "`ps ax|grep cultiRAZ.tcl|grep tclsh`" != "" ]; then
                     echo "[ ok ] $DEAMON_NAME service is running..."
                     exit 0
                 else 
