@@ -167,7 +167,7 @@ echo "blacklist pcm512x" >> /etc/modprobe.d/fbdev-blacklist.conf
  * Configuration des options du module uvcvideo:
 
 {{{
-echo "options uvcvideo nodrop=1 timeout=5000 quirks=0x80
+echo "options uvcvideo nodrop=1 timeout=5000 quirks=0x80" > /etc/modprobe.d/uvcvideo.conf
 }}}
 
 
