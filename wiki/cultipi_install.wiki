@@ -111,6 +111,21 @@ dpkg-reconfigure tzdata
 apt-get install sudo localepurge vim libnss-mdns avahi-daemon tcl ifplugd fswebcam bootlogd zip unzip unrar-free
 }}}
 
+ * Modification de cron.daily:
+
+Modifier l'heure de lancement du cron.daily qui servira pour les mises à jours:
+
+{{{
+vi /etc/crontab
+}}}
+
+et modifier la ligne du cron.daily comme suit:
+
+{{{
+25 4    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+}}}
+
+
  * Configuration de SSH:
 
 Editer le fichier */etc/ssh/sshd_config* et décommenter la ligne:
