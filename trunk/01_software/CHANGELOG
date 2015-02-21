@@ -3,6 +3,7 @@ Cultibox (2.0.39) precise; urgency=low
     + Ajout d'un dépôt dev
     + Correction de l'export des logs
     + Correction de la gestion des mises à jours
+    + Gestion des fichiers gzip pour l'import de configuration
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sat Feb 21 11:38:31 CEST 2015
 
