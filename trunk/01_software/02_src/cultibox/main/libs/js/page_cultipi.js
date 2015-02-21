@@ -987,7 +987,7 @@ $(document).ready(function(){
                      $.unblockUI();
                      var objJSON = jQuery.parseJSON(data)
                      if(objJSON=="1") {
-                        $("#cultipi_acces_update").dialog({
+                        $("#cultipi_access_update").dialog({
                             resizable: false,
                             height:150,
                             width: 500,

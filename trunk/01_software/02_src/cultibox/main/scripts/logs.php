@@ -51,9 +51,11 @@ if(!isset($type)) {
 }
 
 // Check if there are logs recorded, delete fake logs if it's the case:
-if(logs\check_export_table_csv("logs",$main_error) == true) {
+if((logs\check_export_table_csv("logs",$main_error) == true)&&(logs\are_fake_logs("1","","",$main_error))) {
      logs\reset_fake_log();
 }
+
+
 
 //============================== GET OR SET CONFIGURATION PART ====================
 //update_conf is used to define if there is an impact on SD card
@@ -87,6 +89,7 @@ $yaxis_array[9] = program\get_curve_information('program');
 // Used to alert user if export is could be done
 $check_log  = logs\check_export_table_csv("logs",$main_error);
 $check_power= logs\check_export_table_csv("power",$main_error);
+
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { 
