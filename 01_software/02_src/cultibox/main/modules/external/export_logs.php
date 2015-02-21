@@ -3,6 +3,8 @@
 require_once('../../libs/utilfunc.php');
 require_once('../../libs/utilfunc_sd_card.php');
 require_once('../../libs/db_get_common.php');
+require_once('../../libs/config.php');
+
 
 $main_error=array();
 

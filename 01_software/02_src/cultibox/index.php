@@ -137,7 +137,7 @@ $webcam=get_configuration("SHOW_WEBCAM");
 
                                 <li class="translate"><a href="/cultibox/index.php?lang=de_DE" id="de_DE"><img src="/cultibox/main/libs/img/de.gif" alt="Übersetzen alle Texte auf der Website Deutsch (DE)" title="Übersetzen alle Texte auf der Website Deutsch (DE)" /></a></li>
                                 
-                                <li ><a <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) { ?>href="/documentation_cultibox.pdf"<?php } else { ?>href="/cultibox/main/docs/documentation_cultibox.pdf" <?php } ?> target="_blank"><img src="/cultibox/main/libs/img/help.png" alt="Help" title="Help" width="22" height="22" /></a></li>
+                                <li ><a <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) { ?>href="/documentation_cultibox.pdf"<?php } else { ?>href="/cultibox/main/docs/documentation_cultibox.pdf" <?php } ?> target="_blank"><img src="/cultibox/main/libs/img/help.png" alt="<?php echo __('MENU_HELP'); ?>" title="<?php echo __('MENU_HELP'); ?>" width="22" height="22" /></a></li>
                             
                             </ul>
                         </div>

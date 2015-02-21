@@ -84,7 +84,12 @@ function export_table_csv($name="",$datefrom="",$dateto="",&$out) {
 					$where=$where.' AND date_catch BETWEEN "'.$datefrom.'" AND "'.$dateto.'"';
 				}
 			}
-            exec("../../../../../bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT ${field} FROM `${name}` ${where}' > $file");
+
+            if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {
+                exec("/usr/bin/mysql --defaults-extra-file=/var/www/cultibox/sql_install/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT ${field} FROM `${name}` ${where}' > $file");
+            } else {
+                exec("../../../../../bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT ${field} FROM `${name}` ${where}' > $file");
+            }
             break;
         case 'Mac':
         case 'Darwin':
@@ -366,12 +371,15 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day",$ratio=100) {
         $divider = 1200;
         
     // Get all point bewteen two dates
-    $dateStartForLogsTable  = date ("ymd00His", $dateStart);
-    $dateEndForLogsTable    = date ("ymd00His", $dateEnd);
+    if($day=="day") {
+        $dateStartForLogsTable  = date ("ymd", $dateStart);
+    } else {
+        $dateStartForLogsTable  = date ("ym", $dateStart);
+    }
+
     $sql = "SELECT timestamp , time_catch, date_catch, record1 , record2 FROM logs"
             . " WHERE sensor_nb = {$sensor}"
-            . " AND INSERT(timestamp,7,2,'00') >= {$dateStartForLogsTable}"
-            . " AND INSERT(timestamp,7,2,'00') <= {$dateEndForLogsTable}"
+            . " AND timestamp LIKE '{$dateStartForLogsTable}%'"
             . " ORDER BY date_catch,time_catch ASC;";
 
     try {
@@ -428,21 +436,28 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day",$ratio=100) {
 // IN dateEnd   Date to start (write in Unix (s) format) . Time is not used
 // IN day : Define if we want a day view or a month view
 // RET 1 if fake , 0 if not fake
-function are_fake_logs ($sensor, $dateStart, $dateEnd, $day="day")
+function are_fake_logs ($sensor, $dateStart="", $dateEnd="", $day="day")
 {
 
     // Open connection to dabase
     $db = \db_priv_pdo_start();
 
-        
-    // Get all point bewteen two dates
-    $dateStartForLogsTable  = date ("ymd00His", $dateStart);
-    $dateEndForLogsTable    = date ("ymd00His", $dateEnd);
-    $sql = "SELECT timestamp , record1 , record2 FROM logs"
+
+    if(strcmp("$dateStart","")==0) {
+        $sql = "SELECT timestamp FROM logs"
+            . " WHERE fake_log != 'False' limit 1;";    
+    } else {
+        // Get all point bewteen two dates
+        if($day=="day") {
+            $dateStartForLogsTable  = date ("ymd", $dateStart);
+        } else {
+            $dateStartForLogsTable  = date ("ym", $dateStart);
+        }
+        $sql = "SELECT timestamp , record1 , record2 FROM logs"
             . " WHERE sensor_nb = {$sensor}"
-            . " AND INSERT(timestamp,7,2,'00') >= {$dateStartForLogsTable}"
-            . " AND INSERT(timestamp,7,2,'00') < {$dateEndForLogsTable}"
+            . " AND timestamp LIKE  '{$dateStartForLogsTable}%'"
             . " AND fake_log != 'False' limit 1;";
+    }
 
 
 

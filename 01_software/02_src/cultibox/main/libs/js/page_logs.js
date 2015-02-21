@@ -342,23 +342,6 @@ $(function () {
                             }
                             if (cheBu.attr("checked") == "checked") {
                            
-                                // Block interface
-                                /* $.blockUI({ 
-                                    message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
-                                    centerY: 0, 
-                                    css: { 
-                                        top: '20%',
-                                        border: 'none', 
-                                        padding: '5px', 
-                                        backgroundColor: 'grey', 
-                                        '-webkit-border-radius': '10px', 
-                                        '-moz-border-radius': '10px', 
-                                        opacity: .9, 
-                                        color: '#fffff' 
-                                    } 
-                                }); */
-
-
                                 // Call logs_get_serie to get programm value
                                 $.ajax({
                                     data:{
@@ -417,6 +400,9 @@ $(function () {
                                                                 }
                                                             });
                                                         }
+                                                    },
+                                                    load: function() {
+                                                        $.unblockUI();
                                                     }
                                                 },
                                                 data: []
@@ -1196,6 +1182,9 @@ $(document).ready(function() {
                                             }
                                         });
                                     }
+                                },
+                                load: function() {
+                                     $.unblockUI();
                                 }
                             },
                             data: []
@@ -1222,6 +1211,7 @@ $(document).ready(function() {
                         $(cheBu).attr("serieID" , serieID.index);
                         $(cheBu).attr("yaxis" , item.yaxis);
 
+                        $.unblockUI();
 
                     });
                 },
@@ -1240,6 +1230,7 @@ $(document).ready(function() {
                 }
              });
 
+             
              // after every curve unloaded, update tooltip with min and max
              updateTooltipMinMax();
 
@@ -1250,10 +1241,8 @@ $(document).ready(function() {
                     text:""
                 }
             }); 
-
+            $.unblockUI();
         }
-        // All curve have been rendered : Unblock UI
-        $.unblockUI();
     });
 })
 
