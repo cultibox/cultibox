@@ -400,9 +400,9 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day",$ratio=100) {
         date_default_timezone_set('UTC'); 
 
         // Don't display all point. Only if they have suffisiant diff
-        $first=false;
-        if ($realTimeInS >= ($lastTimeInS + $divider))
-        {
+        //$first=false;
+        //if ($realTimeInS >= ($lastTimeInS + $divider))
+        //{
 
             /*
             if(!$first) {
@@ -422,8 +422,8 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day",$ratio=100) {
             if ($row['record2'] != "" && $row['record2'] != null)
                 $serie[1][(string)(1000 * ($realTimeInS))] = $row['record2'] / $ratio;
             
-            $lastTimeInS = $realTimeInS;
-        }
+        //    $lastTimeInS = $realTimeInS;
+        //}
     }
     return $serie ;
 }
