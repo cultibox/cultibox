@@ -11,7 +11,7 @@ if((isset($_GET['filename']))&&(!empty($_GET['filename']))) {
                   $extension=finfo_file($finfo, "$file");
                   finfo_close($finfo);
        
-                  if(strpos("$extension","zip")!==false) {
+                  if((strcmp("$extension","application/zip")==0)||(strcmp("$extension","multipart/x-zip")==0)) {
                         exec("/usr/bin/unzip -o \"$file\" -d ../../../tmp/import/|/bin/grep inflating|/usr/bin/awk -F\": \" '{print $2}'",$output,$err);
                         if(trim($output[0])!="") {
                             $file=trim($output[0]);
@@ -19,7 +19,19 @@ if((isset($_GET['filename']))&&(!empty($_GET['filename']))) {
                             echo json_encode("1");
                             return 0;
                         }
-                  }
+                  } elseif((strcmp("$extension","multipart/x-gzip")==0)||(strcmp("$extension","application/x-gzip")==0)) {
+                        exec("/bin/gunzip -l \"$file\" |/bin/grep -v \"compressed\"|/usr/bin/awk -F \" \" '{print $4}'",$output,$err);
+                        print_r($output);
+                        if(trim($output[0])!="") {
+                            $import=trim($output[0]);
+                        } else {
+                            echo json_encode("1");
+                            return 0;
+                        }
+                        
+                        exec("/bin/zcat -f \"$file\" > \"$import\"",$output,$err);
+                        $file=$import;
+                  } 
                   exec("/usr/bin/mysql --defaults-extra-file=/var/www/cultibox/sql_install/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < \"$file\"",$output,$err);
         } else {
             $os=php_uname('s');
