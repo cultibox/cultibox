@@ -21,7 +21,6 @@ if((isset($_GET['filename']))&&(!empty($_GET['filename']))) {
                         }
                   } elseif((strcmp("$extension","multipart/x-gzip")==0)||(strcmp("$extension","application/x-gzip")==0)) {
                         exec("/bin/gunzip -l \"$file\" |/bin/grep -v \"compressed\"|/usr/bin/awk -F \" \" '{print $4}'",$output,$err);
-                        print_r($output);
                         if(trim($output[0])!="") {
                             $import=trim($output[0]);
                         } else {
