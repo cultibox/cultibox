@@ -588,27 +588,49 @@ Ce morceau de code permettra de générer le nom du réseau adHoc de connexion a
 Éditer le fichier */etc/default/ifplugd* pour qu'il ressemble à cela:
 
 {{{
-INTERFACES="eth0"
+INTERFACES="eth0 wlan0"
 HOTPLUG_INTERFACES=""
 ARGS="-q -f -u0 -d10 -w -I"
 SUSPEND_ACTION="stop"
 }}}
 
 
-Puis éditer le fichier */etc/ifplugd/action.d/ifupdown* pour rajouter l'option --force. Le fichier doit ressembler à cela:
-
+Puis éditer le fichier */etc/ifplugd/action.d/ifupdown* pour qu'il ressemble à cela:
 {{{
 #!/bin/sh
 set -e
 
-case "$2" in
-up)
-    /sbin/ifup --force $1
-    ;;
-down)
-    /sbin/ifdown --force $1
-    ;;
-esac
+adHoc="0"
+
+if [ "$1" == "wlan0" ] && [ "$2" == "up" ]; then
+    if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
+        adHoc="1"
+        mac="`ifconfig wlan0|grep HWa|awk -F 'HWaddr ' '{print $2}'|cut -d: -f5,6`"
+        mac="`echo ${mac} | sed  -e 's/://g'`"
+
+        if [ "$mac" != "" ]; then
+            if [ "`grep cultipi_${mac} /etc/network/interfaces`" == "" ]; then
+                sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces
+            fi
+        fi
+    fi
+fi
+
+
+/usr/sbin/invoke-rc.d networking force-reload
+
+
+if [ "$1" == "wlan0" ] && [ "$adHoc" == "1" ]; then
+    if [ "`iptables -L -t nat|grep 10.0.0.100`" == "" ]; then
+        iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
+
+    sleep 2
+    /etc/init.d/isc-dhcp-server force-reload
+    sleep 1
+    /etc/init.d/dnsmasq force-reload
+fi
+
 }}}
 
 
