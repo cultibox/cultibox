@@ -1,3 +1,9 @@
+Cultibox (2.0.40) precise; urgency=low
+    + Correction de l'affichage des logs
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat Feb 21 14:44:23 CEST 2015
+
+
 Cultibox (2.0.39) precise; urgency=low
     + Correction de l'affichage des logs
     + Ajout d'un dépôt dev
