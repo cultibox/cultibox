@@ -46,27 +46,34 @@ case "$1" in
                             fi
                         done
 
-                        if [ "$1" == "force-reload" ]; then
-                             for pid in "`ps ax|grep serveurLog.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
-                                if [ "$pid" != "" ]; then
-                                    kill -9 $pid
-                                fi
-                             done
-
-                             for pid in "`ps ax|grep serverPlugUpdate.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
-                                if [ "$pid" != "" ]; then
-                                    kill -9 $pid
-                                fi
-                             done
-
-                             for pid in "`ps ax|grep serverHisto.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
-                                if [ "$pid" != "" ]; then
-                                    kill -9 $pid
-                                fi
-                            done
-                        fi
-
                         d_start
+                ;;
+        force-reload)
+                    d_stop
+                    for pid in "`ps ax|grep cultiPi.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
+                        if [ "$pid" != "" ]; then
+                            kill -9 $pid
+                        fi
+                    done
+
+                    for pid in "`ps ax|grep serveurLog.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
+                        if [ "$pid" != "" ]; then
+                            kill -9 $pid
+                        fi
+                    done
+
+                    for pid in "`ps ax|grep serverPlugUpdate.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
+                        if [ "$pid" != "" ]; then
+                            kill -9 $pid
+                        fi
+                    done
+
+                    for pid in "`ps ax|grep serverHisto.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
+                        if [ "$pid" != "" ]; then
+                            kill -9 $pid
+                        fi
+                    done
+                    d_start
                 ;;
         force-stop)
                 d_stop
