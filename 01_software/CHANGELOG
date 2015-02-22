@@ -1,3 +1,9 @@
+Cultibox (2.0.41) precise; urgency=low
+    + Ajout d'une passerelle pour es adressages statiques
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Feb 22 16:33:12 CEST 2015
+
+
 Cultibox (2.0.40) precise; urgency=low
     + Correction de l'affichage des logs
 

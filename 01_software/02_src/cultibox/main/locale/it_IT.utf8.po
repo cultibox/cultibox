@@ -1966,6 +1966,9 @@ msgstr "Non avvisarmi e fammi gestire la configurazione nella finestra di dialog
 
 
 #For the cultinet part:
+msgid "GATEWAY"
+msgstr "Ingresso"
+
 msgid "NETWORK_AVAILABLE"
 msgstr "L'unità è ora redémarer. Sarà di nuovo disponibile in pochi secondi."
 

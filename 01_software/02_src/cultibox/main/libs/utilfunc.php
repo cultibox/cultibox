@@ -1088,9 +1088,12 @@ function create_network_file($myConf) {
             $myArray[]="iface eth0 inet static";
             $myArray[]="address ".$myConf['wire_ip'];
             $myArray[]="netmask ".$myConf['wire_mask'];
+
+            if((strcmp($myConf['wire_gw'],"")!=0)&&(strcmp($myConf['wire_gw'],"0.0.0.0")!=0)) {
+                $myArray[]="gateway ".$myConf['wire_gw'];
+            }
         } else {
             $myArray[]="iface eth0 inet dhcp";
-
         }
         $myArray[]="";
 
@@ -1107,6 +1110,10 @@ function create_network_file($myConf) {
             $myArray[]="iface wlan0 inet static";
             $myArray[]="address ".$myConf['wifi_ip'];
             $myArray[]="netmask ".$myConf['wifi_mask'];
+
+            if((strcmp($myConf['wifi_gw'],"")!=0)&&(strcmp($myConf['wifi_gw'],"0.0.0.0")!=0)) {
+                $myArray[]="gateway ".$myConf['wifi_gw'];
+            }
         } else {
             $myArray[]="iface wlan0 inet dhcp";
         }

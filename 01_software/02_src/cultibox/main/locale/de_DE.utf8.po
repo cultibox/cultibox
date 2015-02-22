@@ -1965,6 +1965,9 @@ msgstr "Mich nicht und lassen Sie mich zu verwalten Sie die Konfiguration im Dia
 
 
 # For the Cultinet part:
+msgid "GATEWAY"
+msgstr "Tor"
+
 msgid "NETWORK_AVAILABLE"
 msgstr "Das Gerät ist jetzt redémarer. Voraussichtlich wieder lieferbar in wenigen Sekunden sein."
 

@@ -377,6 +377,12 @@
             <td><input type="text" size=15 maxlength=15 id="wire_mask" name="wire_mask" value="<?php echo $wire_mask; ?>"></td>
             <td><div id="error_wire_mask" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP_MASK'); ?></div></td>
          </tr>
+         <tr>
+            <td></td>
+            <td><?php echo __('GATEWAY'); ?>:</td>
+            <td><input type="text" size=15 maxlength=15 id="wire_gw" name="wire_gw" value="<?php echo $wire_gw; ?>"></td>
+            <td></td>
+         </tr>
          </table>
         </div>
 </div>
@@ -470,6 +476,12 @@
               <td><?php echo __('CONFIGURE_WIFI_IP_MASK'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MASK_ADDR'); ?>" /></td>
               <td><input type="text" size="15" name="wifi_mask" id="wifi_mask" value="<?php echo $wifi_mask; ?>" /></td>
               <td><div id="error_wifi_mask" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP_MASK'); ?></div></td>
+        </tr>
+        <tr>
+              <td></td>
+              <td><?php echo __('GATEWAY'); ?>:</td>
+              <td><input type="text" size="15" name="wifi_gw" id="wifi_gw" value="<?php echo $wifi_gw; ?>" /></td>
+              <td></td>
         </tr>
 </table>
 </div>
