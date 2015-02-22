@@ -1966,7 +1966,10 @@ msgid "DISABLE_POPUP"
 msgstr "Ne plus me prévenir et me laisser gérer la configuration dans la boîte de dialogue"
 
 
-# For the cultinet part:
+# For the Cultinet part:
+msgid "GATEWAY"
+msgstr "Passerelle"
+
 msgid "HEX_PASSWORD"
 msgstr "Hexadécimal"
 

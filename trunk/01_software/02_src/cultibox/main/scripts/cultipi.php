@@ -34,7 +34,10 @@ $wire_dhcp=find_config($net_config,"eth0","iface eth0 inet dhcp","bool");
 $wire_static=find_config($net_config,"eth0","iface eth0 inet static","bool");
 $wire_address=find_config($net_config,"eth0","address","val");
 $wire_mask=find_config($net_config,"eth0","netmask","val");
+$wire_gw=find_config($net_config,"eth0","gateway","val");
 if(strcmp("$wire_mask","")==0) $wire_mask="255.255.255.0";
+if(strcmp("$wire_gw","")==0) $wire_gw="0.0.0.0";
+
 
 $wifi_enable=find_config($net_config,"wlan0","iface wlan0","bool");
 $wifi_dhcp=find_config($net_config,"wlan0","iface wlan0 inet dhcp","bool");
@@ -42,7 +45,11 @@ $wifi_static=find_config($net_config,"wlan0","iface wlan0 inet static","bool");
 
 $wifi_address=find_config($net_config,"wlan0","address","val");
 $wifi_mask=find_config($net_config,"wlan0","netmask","val");
+$wifi_gw=find_config($net_config,"wlan0","gateway","val");
+
 if(strcmp("$wifi_mask","")==0) $wifi_mask="255.255.255.0";
+if(strcmp("$wifi_gw","")==0) $wifi_gw="0.0.0.0";
+
 
 $eth_phy=get_phy_addr("eth0");
 $wlan_phy=get_phy_addr("wlan0");

@@ -1965,6 +1965,9 @@ msgstr "No avisarme y me dejó administrar la configuración en el diálogo"
 
 
 #For the Cultinet part:
+msgid "GATEWAY"
+msgstr "Entrada"
+
 msgid "NETWORK_AVAILABLE"
 msgstr "Su unidad está ahora redémarer. Estará disponible de nuevo en unos segundos."
 

@@ -1963,7 +1963,10 @@ msgid "DISABLE_POPUP"
 msgstr "Do not warn me and let me manage the configuration in the dialog"
 
 
-#For the cultinet part:
+#For the Cultinet part:
+msgid "GATEWAY"
+msgstr "Gateway"
+
 msgid "NETWORK_AVAILABLE"
 msgstr "Your unit is now redémarer. It will be available again in a few seconds."
 
