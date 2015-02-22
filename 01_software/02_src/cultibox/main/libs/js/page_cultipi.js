@@ -1462,6 +1462,18 @@ $(document).ready(function() {
                                 $("#error_wire_mask").css("display","none");
                             }
                         });
+
+                        $.ajax({
+                            cache: false,
+                            async: false,
+                            url: "main/modules/external/check_value.php",
+
+                            data: {value:$("#wire_gw").val(),type:'ip'}
+                        }).done(function (data) {
+                            if(data!=1) {
+                                $("#wire_gw").val("0.0.0.0");
+                            } 
+                        });
                     }
                 }
 
@@ -1595,6 +1607,17 @@ $(document).ready(function() {
                             }
                         });
 
+                         $.ajax({
+                            cache: false,
+                            async: false,
+                            url: "main/modules/external/check_value.php",
+                
+                            data: {value:$("#wifi_gw").val(),type:'ip'}
+                        }).done(function (data) {
+                            if(data!=1) {
+                                $("#wifi_gw").val("0.0.0.0");
+                            } 
+                        });
                     }
         
                 }
