@@ -555,7 +555,7 @@ Editer le fichier */etc/rc.local* et remplacer le fichier par les lignes suivant
 {{{
 #!/bin/bash -e
 
-if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
+if [ "`/bin/grep cultipi_ /etc/network/interfaces`" != "" ]; then
     #Configuration du portail captif:
     if [ "`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100`" == "" ]; then
         /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
