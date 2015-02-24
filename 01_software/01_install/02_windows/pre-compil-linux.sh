@@ -108,7 +108,7 @@ case "$1" in
         fi
 
         if [ "$3" != "byWindows" ]; then
-            wine "C:\Program Files\Inno Setup 5\ISCC.exe"  "install_script_current.iss"
+            wine "C:\Program Files (x86)\Inno Setup 5\ISCC.exe"  "install_script_current.iss"
             rm ./install_script_current.iss
         fi
            
