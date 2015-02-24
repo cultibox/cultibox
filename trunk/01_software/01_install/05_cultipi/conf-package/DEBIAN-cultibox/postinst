@@ -60,6 +60,31 @@ if [  "`cat /etc/sudoers|grep www-data|grep iwconfig`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /sbin/iwconfig" >> /etc/sudoers
 fi
 
+if [  "`cat /etc/sudoers|grep www-data|grep modprobe`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /sbin/modprobe" >> /etc/sudoers
+fi
+
+if [ "`cat /etc/sudoers|grep cultipi|grep www-data`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /etc/init.d/cultipi" >> /etc/sudoers
+fi
+
+if [ "`cat /etc/sudoers|grep chown|grep www-data`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /bin/chown" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep cat`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /bin/cat" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep fswebcam`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /usr/bin/fswebcam" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep shutdown`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /sbin/shutdown" >> /etc/sudoers
+fi
+
+
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "  * Installing the Cultibox software..."
@@ -130,31 +155,6 @@ else
     rm -f /var/www/cultibox/main/templates_c/*.ser 2>/dev/null
     echo "... OK"
 fi
-
-if [ "`cat /etc/sudoers|grep cultipi|grep www-data`" == "" ]; then
-    echo "www-data ALL = (root) NOPASSWD: /etc/init.d/cultipi" >> /etc/sudoers
-fi
-
-if [ "`cat /etc/sudoers|grep cp|grep www-data`" == "" ]; then
-    echo "www-data ALL = (root) NOPASSWD: /bin/cp" >> /etc/sudoers
-fi
-
-if [ "`cat /etc/sudoers|grep chown|grep www-data`" == "" ]; then
-    echo "www-data ALL = (root) NOPASSWD: /bin/chown" >> /etc/sudoers
-fi
-
-if [  "`cat /etc/sudoers|grep www-data|grep cat`" == "" ]; then
-    echo "www-data ALL = (root) NOPASSWD: /bin/cat" >> /etc/sudoers
-fi
-
-if [  "`cat /etc/sudoers|grep www-data|grep fswebcam`" == "" ]; then
-    echo "www-data ALL = (root) NOPASSWD: /usr/bin/fswebcam" >> /etc/sudoers
-fi
-
-if [  "`cat /etc/sudoers|grep www-data|grep shutdown`" == "" ]; then
-    echo "www-data ALL = (root) NOPASSWD: /sbin/shutdown" >> /etc/sudoers
-fi
-
 
 if [ ! -d /home/cultipi/cultibox ]; then
     mkdir /home/cultipi/cultibox
