@@ -1,3 +1,9 @@
+Cultibox (2.0.42) precise; urgency=low
+    + Reset et création de la configuration réseau sans redémarrage
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Feb 24 19:50:16 CEST 2015
+
+
 Cultibox (2.0.41) precise; urgency=low
     + Ajout d'une passerelle pour es adressages statiques
 
