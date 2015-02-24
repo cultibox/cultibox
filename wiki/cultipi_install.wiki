@@ -557,14 +557,16 @@ Editer le fichier */etc/rc.local et remplacer le fichier par les lignes suivante
 
 if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
     #Configuration du portail captif:
-     iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    if [ "`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
 
-    mac="`ifconfig wlan0|grep HWa|awk -F 'HWaddr ' '{print $2}'|cut -d: -f5,6`"
-    mac="`echo ${mac} | sed  -e 's/://g'`"
+    mac="`/sbin/ifconfig wlan0|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print $2}'|/usr/bin/cut -d: -f5,6`"
+    mac="`/bin/echo ${mac} | /bin/sed  -e 's/://g'`"
 
     if [ "$mac" != "" ]; then
-        if [ "`grep cultipi_${mac} /etc/network/interfaces`" == "" ]; then
-            sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces
+        if [ "`/bin/grep cultipi_${mac} /etc/network/interfaces`" == "" ]; then
+            /bin/sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces
             /sbin/ifup --force wlan0
         fi
     fi
@@ -573,10 +575,14 @@ if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
     /etc/init.d/isc-dhcp-server force-reload
     sleep 1
     /etc/init.d/dnsmasq force-reload
+else
+    for i in $(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print $1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING $i; done
 fi
 
-loadkeys fr
+/usr/bin/loadkeys fr
+
 exit 0
+
 }}}
 
 Ce morceau de code permettra de générer le nom du réseau adHoc de connexion avec l'adresse Mac de votre module Wifi si votre Raspberry démarre avec un module wifi connecté.
