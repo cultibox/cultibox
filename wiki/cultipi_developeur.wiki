@@ -303,7 +303,7 @@ Matériel nécessaire :
 
 Voici quelques commandes utiles:
  
- * Le logiciel Cultipi est accompagné d'un cron exécuté toute les minutes vérifiant le lancement du logiciel. Si ce n'est pas le cas, ce cron se charge de relancer le logiciel, il est présent dans */etc/crontab*. Il est possible de désactiver le lancement automatique par cron en éditant le fichier */etc/default/culticron* et en remplaçant la ligne:
+ * Le logiciel Cultipi est accompagné d'un cron exécuté toute les minutes vérifiant le lancement du logiciel. Si ce n'est pas le cas, ce cron se charge de relancer le logiciel, il est présent dans */etc/default/crontab*. Il est possible de désactiver le lancement automatique par cron en éditant le fichier */etc/default/culticron* et en remplaçant la ligne:
 
 {{{
 CULTICRON_ACTIV="yes"
