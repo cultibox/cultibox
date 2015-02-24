@@ -38,7 +38,7 @@ Une fois la migration terminée, ne vous connectez plus sur la version installé
  * Pour Linux : lien
 
  * Brancher la carte SD de votre Cultibox sur votre ordinateur
- * Copier à la racine de la carte SD le fichier firm.exe. [Lien https://cultibox.googlecode.com/svn/trunk/01_software/01_install/01_src/firm.exe]
+ * Copier à la racine de la carte SD le fichier firm.exe. [https://cultibox.googlecode.com/svn/trunk/01_software/01_install/01_src/firm.exe Lien]
  * Rebrancher la carte SD sur votre Cultibox. Le nouveau firmware s'installe. Une fois le nouveau firmware installé, "mode wifi" apparait sur l'écran.
  * Débrancher l'alimentation électrique de la Cultibox. C'est le module WiFi qui va s'occuper de l'alimenter.
 
