@@ -550,7 +550,7 @@ wireless-essid cultipi_network
 wireless-mode ad-hoc
 }}}
 
-Editer le fichier */etc/rc.local et remplacer le fichier par les lignes suivantes:
+Editer le fichier */etc/rc.local* et remplacer le fichier par les lignes suivantes:
 
 {{{
 #!/bin/bash -e
