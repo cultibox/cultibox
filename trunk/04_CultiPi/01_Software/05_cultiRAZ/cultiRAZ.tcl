@@ -77,6 +77,16 @@ proc firstLoop {} {
                 } msg]
                 if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error dpkg-reconfigure : $msg"}
 
+
+                #On redémare les services:
+                set RC [catch {
+                    exec /sbin/modprobe -r rt2800usb
+                    after 2000 exec /sbin/modprobe rt2800usb
+                    after 7000 exec /usr/sbin/invoke-rc.d networking force-reload
+                    after 2000 exec /etc/rc.local
+                } msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error during network configuration : $msg"}
+
                 # On fait clignoter la LED 5 fois
                 for {set i 0} {$i < 5} {incr i} {
                     exec gpio -g write 22 0
@@ -86,7 +96,16 @@ proc firstLoop {} {
                     update
                 }
 
-                exec shutdown -r now
+
+                # On fait clignoter la LED 5 fois
+                for {set i 0} {$i < 5} {incr i} {
+                    exec gpio -g write 22 0
+                    after 100
+                    exec gpio -g write 22 1
+                    after 100
+                    update
+                }
+
                 
                 # On rappel la procédure au bout de 10 secondes pour éviter un double effacage:
                 after 10000 firstLoop
@@ -171,20 +190,12 @@ proc checkAndUpdate {} {
 
             #On redémare les services:
             set RC [catch {
-                exec /sbin/ifconfig wlan0 down
-                exec /sbin/iwconfig wlan0 mode Ad-Hoc      
-                exec /sbin/iwconfig wlan0 key off
-                exec /sbin/ifconfig wlan0 up
-                after 2000 exec /usr/sbin/invoke-rc.d networking force-reload
+                exec /sbin/modprobe -r rt2800usb
+                after 2000 exec /sbin/modprobe rt2800usb
+                after 7000 exec /usr/sbin/invoke-rc.d networking force-reload
                 after 2000 exec /etc/rc.local
             } msg]
             if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error during network configuration : $msg"}
-
-            set RC [catch {exec /etc/init.d/isc-dhcp-server force-reload} msg]
-            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error setting isc-dhcp-server : $msg"}
-    
-            set RC [catch {exec /etc/init.d/dnsmasq force-reload} msg]
-            if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error setting dnsmasq : $msg"}
 
             # On fait clignoter la LED 5 fois
             for {set i 0} {$i < 5} {incr i} {

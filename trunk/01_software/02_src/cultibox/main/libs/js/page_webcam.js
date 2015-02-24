@@ -25,8 +25,8 @@ getSnapshot = function(first) {
     if(first!=1) $.unblockUI();
 
     if(resolution=="-1") {
-        var width=parseInt($("#content").width()-($("#content").width()*20/100));
-        var height=parseInt($("#content").height()-($("#content").height()*20/100));    
+        var width="";
+        var height="";
     } else {
         var resol=resolution.split('x');
         var width=resol[0];

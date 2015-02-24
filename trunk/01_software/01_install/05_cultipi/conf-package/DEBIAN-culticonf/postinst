@@ -2,11 +2,13 @@
 
 
 if [ -f /etc/cron.daily/cultipi ]; then
-    chmod +x /etc/cron.daily/cultipi
+    chmod 755 /etc/cron.daily/cultipi
+    chown root:root /etc/cron.daily/cultipi
 fi
 
 if [ -f /etc/cron.hourly/cultipi ]; then
-    chmod +x /etc/cron.hourly/cultipi
+    chmod 755 /etc/cron.hourly/cultipi
+    chown root:root /etc/cron.hourly/cultipi
 fi
 
 

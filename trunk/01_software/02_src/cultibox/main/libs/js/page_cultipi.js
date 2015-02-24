@@ -249,6 +249,7 @@ $(document).ready(function(){
                             $.ajax({
                                 cache: false,
                                 async: true,
+                                timeout: 30000,
                                 url: "main/modules/external/reset_network.php"
                             }).done(function (data) {
                                 $.unblockUI();
@@ -989,7 +990,7 @@ $(document).ready(function(){
                      if(objJSON=="1") {
                         $("#cultipi_access_update").dialog({
                             resizable: false,
-                            height:150,
+                            height:170,
                             width: 500,
                             modal: true,
                             closeOnEscape: false,
