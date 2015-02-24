@@ -24,6 +24,10 @@ L'installation se déroule en plusieurs étapes :
  * Se connecter et paramétrer le réseau du module WiFi
  * Transférer sa configuration
 
+Très important : le module Wifi embarque sa propre version du logiciel. Durant la migration, vous allez vous retrouver avec deux logiciels : un sur votre ordinateur et un sur le module Wifi.
+Une fois la migration terminée, ne vous connectez plus sur la version installée sur votre ordinateur. Utilisez toujours l'adresse suivante : http://cultipi.local
+
+
 == Préparation à la migration ==
 
  - Télécharger et installer la dernière version du logiciel Cultibox :
@@ -34,7 +38,7 @@ L'installation se déroule en plusieurs étapes :
  * Pour Linux : lien
 
  * Brancher la carte SD de votre Cultibox sur votre ordinateur
- * Copier à la racine de la carte SD le fichier firm.exe qui est en pièce jointe du mail
+ * Copier à la racine de la carte SD le fichier firm.exe. [Lien https://cultibox.googlecode.com/svn/trunk/01_software/01_install/01_src/firm.exe]
  * Rebrancher la carte SD sur votre Cultibox. Le nouveau firmware s'installe. Une fois le nouveau firmware installé, "mode wifi" apparait sur l'écran.
  * Débrancher l'alimentation électrique de la Cultibox. C'est le module WiFi qui va s'occuper de l'alimenter.
 
@@ -129,14 +133,10 @@ http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_configuration_2.PNG
 
 = Utilisation =
 
-== Ré-initialisation complète ==
+== Connexion ==
+Pour utiliser votre nouveau logiciel, entrer dans la barre d'adresse http://cultipi.local/cultibox
 
-Pour réinitialiser complètement le module WiFi (retrouver le mode usine) :
-  * Éteindre le module WiFi en ôtant l'alimentation
-  * Rebrancher l'alimentation électrique
-  * Attendre que la LED rouge située sur le dessus soit clignotante
-  * Appuyer pendant 5 secondes sur le bouton du dessus
-  * La LED clignote alors rapidement 10 fois
+Le nom d'utilisateur est cultipi et le mot de passe par défaut est cultipi.
 
 == Réinitialiser la configuration réseau ==
 
