@@ -21,3 +21,81 @@ if [ "`cat /etc/crontab|grep culticron`" == "" ]; then
     echo "*/1 *   * * *   root    /bin/bash /etc/default/culticron" >> /etc/crontab
 fi
 
+
+if [ -f /VERSION ]; then
+    VERSION="`cat /VERSION`"
+else
+    VERSION=""
+    echo "150222" > /VERSION
+fi
+
+if [ "$VERSION" == "" ]; then
+    cat << EOF > /etc/rc.local
+#!/bin/bash -e
+
+if [ "\`/bin/grep cultipi_ /etc/network/interfaces\`" != "" ]; then
+    #Configuration du portail captif:
+    if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
+
+    mac="\`/sbin/ifconfig wlan0|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print \$2}'|/usr/bin/cut -d: -f5,6\`"
+    mac="\`/bin/echo \${mac} | /bin/sed  -e 's/://g'\`"
+
+    if [ "\$mac" != "" ]; then
+        if [ "\`/bin/grep cultipi_\${mac} /etc/network/interfaces\`" == "" ]; then
+            /bin/sed -i "s/cultipi_.*/cultipi_\$mac/g" /etc/network/interfaces
+            /sbin/ifup --force wlan0
+        fi
+    fi
+
+    sleep 7
+    /etc/init.d/isc-dhcp-server force-reload
+    sleep 1
+    /etc/init.d/dnsmasq force-reload
+else
+    for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
+fi
+
+/usr/bin/loadkeys fr
+
+exit 0
+EOF
+
+    cat << EOF > /etc/ifplugd/action.d/ifupdown
+#!/bin/bash
+set -e
+
+adHoc="0"
+
+if [ "\$1" == "wlan0" ] && [ "\$2" == "up" ]; then
+    if [ "\`/bin/grep cultipi_ /etc/network/interfaces\`" != "" ]; then
+        adHoc="1"
+        mac="\`/sbin/ifconfig wlan0|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print \$2}'|/usr/bin/cut -d: -f5,6\`"
+        mac="\`/bin/echo \${mac} | /bin/sed  -e 's/://g'\`"
+
+        if [ "\$mac" != "" ]; then
+            if [ "\`/bin/grep cultipi_\${mac} /etc/network/interfaces\`" == "" ]; then
+                /bin/sed -i "s/cultipi_.*/cultipi_\$mac/g" /etc/network/interfaces
+            fi
+        fi
+    fi
+fi
+
+
+/usr/sbin/invoke-rc.d networking force-reload
+
+
+if [ "\$1" == "wlan0" ] && [ "\$adHoc" == "1" ]; then
+    if [ "\`/sbin/iptables -L -t nat|/bin/grep 10.0.0.100\`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
+
+    sleep 2
+    /etc/init.d/isc-dhcp-server force-reload
+    sleep 1
+    /etc/init.d/dnsmasq force-reload
+fi
+EOF
+
+fi
