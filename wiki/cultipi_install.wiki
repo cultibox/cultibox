@@ -603,20 +603,20 @@ SUSPEND_ACTION="stop"
 
 Puis éditer le fichier */etc/ifplugd/action.d/ifupdown* pour qu'il ressemble à cela:
 {{{
-#!/bin/sh
+#!/bin/bash
 set -e
 
 adHoc="0"
 
 if [ "$1" == "wlan0" ] && [ "$2" == "up" ]; then
-    if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
+    if [ "`/bin/grep cultipi_ /etc/network/interfaces`" != "" ]; then
         adHoc="1"
-        mac="`ifconfig wlan0|grep HWa|awk -F 'HWaddr ' '{print $2}'|cut -d: -f5,6`"
-        mac="`echo ${mac} | sed  -e 's/://g'`"
+        mac="`/sbin/ifconfig wlan0|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print $2}'|/usr/bin/cut -d: -f5,6`"
+        mac="`/bin/echo ${mac} | /bin/sed  -e 's/://g'`"
 
         if [ "$mac" != "" ]; then
-            if [ "`grep cultipi_${mac} /etc/network/interfaces`" == "" ]; then
-                sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces
+            if [ "`/bin/grep cultipi_${mac} /etc/network/interfaces`" == "" ]; then
+                /bin/sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces
             fi
         fi
     fi
@@ -627,8 +627,8 @@ fi
 
 
 if [ "$1" == "wlan0" ] && [ "$adHoc" == "1" ]; then
-    if [ "`iptables -L -t nat|grep 10.0.0.100`" == "" ]; then
-        iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    if [ "`/sbin/iptables -L -t nat|/bin/grep 10.0.0.100`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
     fi
 
     sleep 2
