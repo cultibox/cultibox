@@ -1,5 +1,8 @@
 #summary Module WiFi
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 Cette section de l'aide décrit le fonctionnement du  module WiFi.
@@ -16,25 +19,46 @@ Ce module permet de connecter à la Cultibox et ses accessoires en WiFi ou RJ45.
 == Introduction ==
 
 L'installation se déroule en plusieurs étapes :
- * Installer le module WiFi
+ * Préparation à la migration
+ * Installation du module WiFi
  * Se connecter et paramétrer le réseau du module WiFi
  * Transférer sa configuration
- 
+
+== Préparation à la migration ==
+
+ - Télécharger et installer la dernière version du logiciel Cultibox :
+
+ * Pour Windows XP : [http://www.cultibox.fr/download/software/beta/cultibox-windows-xp_2.0.34.exe lien]
+ * Pour les autres Windows : [http://www.cultibox.fr/download/software/beta/cultibox-windows_2.0.34.exe lien]
+ * Pour Mac :
+ * Pour Linux : 
+
+ - Brancher la carte SD de votre Cultibox sur votre ordinateur
+ - Copier à la racine de la carte SD le fichier firm.exe qui est en pièce jointe du mail
+ - Rebrancher la carte SD sur votre Cultibox. Le nouveau firmware s'installe. Une fois le nouveau firmware installé, "mode wifi" apparait sur l'écran.
+ - Débrancher l'alimentation électrique de la Cultibox. C'est le module WiFi qui va s'occuper de l'alimenter.
+
 == Installation ==
 
-Copier sur la carte SD le firmware spécial WiFi
-
-Rebrancher la carte SD à la Cultibox
-
-Attendre la fin du chargement de la Cultibox
-
-Débrancher l'alimentation électrique de la Cultibox
-
-Brancher le câble entre la Cultibox et le module Wifi
-
-Alimenter le module WiFi. Il faut attendre que la LED orange située sur le dessus se mette à clignoter avant de passer à la suite.
+ * Brancher sur le module Wifi la clé wifi fournie (si vous désirez utiliser uniquement le RJ45, ne brancher pas la clé et contactez nous)
+ * Connecter le module Wifi à la Cultibox en utilisant le câble fourni
+ * Brancher l'alimentation du module Wifi (veuillez faire bien attention à ce que la Cultibox ne soit plus branchée à son alimentation).
+ * Au bout de 3 minutes (grand maximum, c'est plutôt de l'ordre de 50 secondes) la Cultibox doit démarrer et une LED orange doit clignoter sur le dessus du module WiFi
 
 == Connexion et paramétrage du module WiFi ==
+
+=== Fonctionnement général ===
+
+ - Avec votre ordinateur, scannez la liste des réseau Wifi disponible
+ - Un réseau "Ad'Hoc" doit apparaître avec comme nom "Cultipi_XX" avec XX qui varie en fonction de votre module.
+ - Connecter votre ordinateur sur ce réseau
+ - Ouvrez un navigateur web. Dans la barre d'adresse entrez l'adresse suivante : http://10.0.0.100/cultibox
+  - L'interface qui s'ouvre est celle présente dans le module WiFi. Si vous êtes sous Windows, télécharger puis installer le programme appelé "Bonjour". Il y a un bouton en haut pour le télécharger.
+ - Vous pouvez maintenant configurer la connexion de votre module Wifi. Pour ce faire : scannez la liste des réseau et sélectionnez le réseau sur lequel vous souhaitez vous connecter. Ensuite entrer le mot de passe du réseau (deux fois) puis cliquer sur connecter.
+ - L'interface se fige le temps de la mise en place de la connexion
+ - Lorsque tout est configuré, la clé WiFi doit devenir bleu
+ - Reconnecter votre ordinateur sur votre réseau
+ - Le module Wifi est maintenant sur votre réseau
 
 === Connexion avec Windows XP ===
 
@@ -87,6 +111,19 @@ Entrer le mot de passe du réseau puis cliquer sur "Enregistrer la configuration
 Attendre que la page Web vous indique que la configuration est enregistrée :
 
 Vous devez maintenant vous reconnecter sur votre propre réseau.
+
+=== Transférer sa configuration ===
+
+ * Connectez vous sur le logiciel installé sur votre ordinateur : http://localhost:6891/cultibox/index.php?menu=configuration
+
+ * Exportez la configuration de votre ordinateur : 
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_configuration_1.PNG
+
+  * Connectez vous sur le module wifi : http://cultipi.local , puis importez la configuration :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_configuration_2.PNG
+
 
 = Utilisation =
 
