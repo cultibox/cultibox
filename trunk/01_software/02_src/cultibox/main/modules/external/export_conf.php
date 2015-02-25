@@ -19,7 +19,9 @@ if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {
             break;
         case 'Mac':
         case 'Darwin':
+            if(is_file("$file.zip")) exec("mv $file.zip /tmp/",$output,$err);
             exec("/Applications/cultibox/xamppfiles/bin/mysqldump --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox > /Applications/cultibox/xamppfiles/htdocs/cultibox/tmp/export/backup_cultibox.sql",$output,$err);
+            exec("zip -j ../../../tmp/export/backup_cultibox.sql.zip $file",$output,$err);
             break;
         case 'Windows NT':
             exec("C:\\cultibox\\xampp\\mysql\\bin\\mysqldump.exe --defaults-extra-file=C:\\cultibox\\xampp\\mysql\\bin\\my-extra.cnf -h 127.0.0.1 --port=3891 cultibox > C:\\cultibox\\xampp\\htdocs\\cultibox\\tmp\\export\\backup_cultibox.sql",$output,$err);
