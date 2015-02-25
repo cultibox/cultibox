@@ -1,3 +1,9 @@
+Cultibox (2.0.43) precise; urgency=low
+    + Correction export pour Mac OS X
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Feb 24 19:50:16 CEST 2015
+
+
 Cultibox (2.0.42) precise; urgency=low
     + Reset et création de la configuration réseau sans redémarrage
 

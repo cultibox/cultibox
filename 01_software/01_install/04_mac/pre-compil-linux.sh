@@ -26,7 +26,7 @@ if [ "$3" == "" ]; then
 fi
 
 VERSION=$2
-WORK_DIR=/Users/yann/Desktop
+WORK_DIR=/Users/test/Desktop
 SERVER=macosx
 
 case "$1" in
