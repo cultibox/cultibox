@@ -45,9 +45,10 @@ Une fois la migration terminée, ne vous connectez plus sur la version installé
 == Installation ==
 
  * Brancher sur le module Wifi la clé wifi fournie (si vous désirez utiliser uniquement le RJ45, ne brancher pas la clé et contactez nous)
- * Connecter le module Wifi à la Cultibox en utilisant le câble fourni
  * Brancher l'alimentation du module Wifi (veuillez faire bien attention à ce que la Cultibox ne soit plus branchée à son alimentation).
  * Au bout de 3 minutes (grand maximum, c'est plutôt de l'ordre de 50 secondes) la Cultibox doit démarrer et une LED orange doit clignoter sur le dessus du module WiFi
+
+Attention : ne pas brancher la CUltibox au module Wifi tant que la configuration n'a pas été transférée (cf Transférer sa configuration)
 
 == Connexion et paramétrage du module WiFi ==
 
@@ -130,6 +131,11 @@ http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_configuration_1.PNG
 
 http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_configuration_2.PNG
 
+Votre module est maintenant prêt à être utilisé. 
+
+ * Débrancher l'alimentation du mofule wifi, puis brancher la Cultibox au module Wifi avec le câble fourni.
+
+ * Rebrancher l'alimentation du module WiFi (faire bien attention a ce que la Cultibox n'ai pas d'alimentation branché, sinon vous risquez de détruire votre module Wifi).
 
 = Utilisation =
 
