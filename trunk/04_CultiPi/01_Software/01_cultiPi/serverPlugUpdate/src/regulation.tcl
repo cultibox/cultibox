@@ -7,9 +7,10 @@ proc emeteur_regulation {nbPlug plgPrgm} {
     # On vérifie si l'état de la dernière commande envoyée existe
     if {[array name ::plug -exact $nbPlug,value] == ""} {
         set ::plug($nbPlug,value) ""
+    }
+    if {[array name ::plug -exact $nbPlug,inRegulation] == ""} {
         set ::plug($nbPlug,inRegulation) "NONE"
     }
-    
     # On cherche le nom du module
     set module $::plug($nbPlug,module)
     
