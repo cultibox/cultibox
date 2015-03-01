@@ -28,5 +28,5 @@ set variable [lindex $argv 1]
 ::piServer::sendToServer $port($module) "$port(serverSet) 0 setRepere [lrange $argv 1 [expr $argc - 1]]"
 
 
-# tclsh /opt/cultipi/cultiPi/set.tcl serverPlugUpdate 3 off 10
+# tclsh /opt/cultipi/cultiPi/set.tcl serverPlugUpdate 1 on 20
 # tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\set.tcl" serverPlugUpdate 1 on 10

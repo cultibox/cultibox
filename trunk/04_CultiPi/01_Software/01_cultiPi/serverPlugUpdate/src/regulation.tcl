@@ -27,7 +27,7 @@ proc emeteur_regulation {nbPlug plgPrgm} {
     } elseif {$::sensor(firsReadDone) == 0} {
     
         # Si la première lecture des capteurs n'est pas faite, on inhibe la régulation
-        ::piLog::log [clock milliseconds] "info" "First read of sensor is not done, regulation inhibited"
+        ::piLog::log [clock milliseconds] "info" "First read of sensor is not done, regulation of plug $nbPlug inhibited (programme $plgPrgm)"
         
     } elseif {$plgPrgm == "off" || $plgPrgm == "on"} {
 

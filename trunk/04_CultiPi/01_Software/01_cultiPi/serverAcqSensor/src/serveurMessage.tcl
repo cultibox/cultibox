@@ -1,5 +1,5 @@
 
-proc messageGestion {message} {
+proc messageGestion {message networkhost} {
 
     # Trame standard : [FROM] [INDEX] [commande] [argument]
     set serverForResponse   [::piTools::lindexRobust $message 0]
@@ -61,7 +61,7 @@ proc messageGestion {message} {
             set ::subscriptionVariable($::SubscriptionIndex) ""
             
             # On cré la proc associée
-            proc subscription${::SubscriptionIndex} {repere frequency SubscriptionIndex serverForResponse BandeMorteAcquisition} {
+            proc subscription${::SubscriptionIndex} {repere frequency SubscriptionIndex serverForResponse BandeMorteAcquisition networkhost} {
 
                 set reponse $::sensor($repere)
                 if {$reponse == ""} {
@@ -83,6 +83,9 @@ proc messageGestion {message} {
                             
                             ::piServer::sendToServer $serverForResponse "$serverForResponse [incr ::TrameIndex] _subscription ::sensor($repere) $reponse $time"
                             set ::subscriptionVariable($SubscriptionIndex) $reponse
+                        } else {
+                            ::piLog::log [clock milliseconds] "debug" "Doesnot send ::sensor($repere) besause it's between BMA"
+                        
                         }
                     } else {
                         ::piServer::sendToServer $serverForResponse "$serverForResponse [incr ::TrameIndex] _subscription ::sensor($repere) $reponse $time"
@@ -90,23 +93,70 @@ proc messageGestion {message} {
                     }
                 }
                 
-                after $frequency "subscription${SubscriptionIndex} $repere $frequency $SubscriptionIndex $serverForResponse $BandeMorteAcquisition"
+                after $frequency "subscription${SubscriptionIndex} $repere $frequency $SubscriptionIndex $serverForResponse $BandeMorteAcquisition $networkhost"
             }
             
             # on la lance
-            subscription${::SubscriptionIndex} $repere $frequency $::SubscriptionIndex $serverForResponse $BandeMorteAcquisition
+            subscription${::SubscriptionIndex} $repere $frequency $::SubscriptionIndex $serverForResponse $BandeMorteAcquisition $networkhost
             
             incr ::SubscriptionIndex
         }
         "_subscription" -
         "_subscriptionEvenement" {
             # On parse le retour de la commande
-            set variable  [::piTools::lindexRobust $message 3]
-            set valeur [::piTools::lindexRobust $message 4]
+            set variable    [::piTools::lindexRobust $message 3]
+            set valeur      [::piTools::lindexRobust $message 4]
+            set time        [::piTools::lindexRobust $message 5]
             
             # On enregistre le retour de l'abonnement
-            set ::${variable} $valeur
+            set ${variable} $valeur
+
+            # On traite immédiatement cette info
+            set splitted [split ${variable} "(,)"]
+            set variableName [lindex $splitted 0]
+            set networkSensor [lindex $splitted 1]
             
+            # On analyse pour savoir quelle capteur en local ça correspond
+            set localSensor [::network_read::getSensor $networkhost $networkSensor]
+            if {$localSensor == "NA"} {
+                return
+            }
+            
+            switch $variableName {
+                "::sensor" {
+                    switch [lindex $splitted 2] {
+                        "type" {
+                            # Si c'est le type de capteur
+                            ::piLog::log [clock milliseconds] "debug" "_subscription response : save sensor type (local sensor $localSensor ): $message"
+                            set ::sensor($localSensor,type) $valeur
+                        }
+                        "value" {
+                            set valeur1      [::piTools::lindexRobust $message 4]
+                            set valeur2      [::piTools::lindexRobust $message 5]
+                            set time         [::piTools::lindexRobust $message 6]
+                            # Si c'est la valeur
+                            # ::piLog::log [clock milliseconds] "debug" "_subscription response : save sensor value : $message - [lindex $splitted 1] $valeur1 $valeur2 $time"
+                            if {$valeur1 == "DEFCOM"} {
+                                ::piLog::log [clock milliseconds] "warning" "_subscription response : save sensor value : DEFCOM so not saved - msg : $message"
+                            } else {
+                                set ::sensor($localSensor,value,1) $valeur1
+                                set ::sensor($localSensor,value)   $valeur1
+                                set ::sensor($localSensor,value,time) $time
+                            }
+                            
+                        } 
+                        default {
+                            ::piLog::log [clock milliseconds] "error" "_subscription response : not rekognize type [lindex $splitted 2]  - msg : $message"
+                        }
+                    }
+                }
+                "::plug" {
+                }
+                default {
+                    ::piLog::log [clock milliseconds] "error" "_subscription response : unknow variable name $variableName - msg : $message"
+                }
+            }
+
             # ::piLog::log [clock milliseconds] "debug" "subscription response : variable $variable valeur -$valeur-"
         }
         default {

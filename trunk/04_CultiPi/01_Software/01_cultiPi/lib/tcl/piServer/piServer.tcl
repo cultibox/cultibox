@@ -70,7 +70,7 @@ proc ::piServer::input {channel} {
                 ::piLog::log [clock milliseconds] "debug" "message received -${data}- send by $channel"
             }
             # got data -> do some thing
-            ::${callBackMessage} ${data}
+            ::${callBackMessage} ${data} $::($channel:host)
         }
     }
 }
@@ -97,12 +97,12 @@ proc ::piServer::start {callBackMessageIn portIn} {
     }
 }
 
-proc ::piServer::sendToServer {portNumber message} {
+proc ::piServer::sendToServer {portNumber message {ip localhost}} {
     variable debug
 
     set channel ""
 
-    set rc [catch { set channel [socket localhost $portNumber] } msg]
+    set rc [catch { set channel [socket ${ip} $portNumber] } msg]
     if {$rc == 1} {
         ::piLog::log [clock milliseconds] "error" "try to open socket to -$portNumber- - erreur :  -$msg-"
     }

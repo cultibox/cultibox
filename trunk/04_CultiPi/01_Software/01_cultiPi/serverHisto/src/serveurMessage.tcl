@@ -1,5 +1,5 @@
 
-proc messageGestion {message} {
+proc messageGestion {message networkhost} {
 
     # Trame standard : [FROM] [INDEX] [commande] [argument]
     set serverForResponse   [::piTools::lindexRobust $message 0]
@@ -94,9 +94,7 @@ proc messageGestion {message} {
                     ::piLog::log [clock milliseconds] "error" "_subscription response : unknow variable name $variableName - msg : $message"
                 }
             }
-            
-            
-            
+
             # ::piLog::log [clock milliseconds] "debug" "subscription response : variable $variable valeur -$valeur-"
         }
         default {
