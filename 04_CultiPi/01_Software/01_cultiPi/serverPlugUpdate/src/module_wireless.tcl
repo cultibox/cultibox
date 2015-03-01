@@ -1,7 +1,7 @@
 
 namespace eval ::wireless {
     variable debug 0
-    variable moduleAdress 0x55
+    variable moduleAdress 0x55              ;# In cultibox 0xaa
     variable bootloadStateAdress 0x62          ;# b
     variable bootloadJumpToAppAdress 0x53 ;# S
     variable minorVersionAdress 0x76 ;# v
@@ -19,7 +19,7 @@ proc ::wireless::outFromBootloader {} {
     
     # Gestion des erreurs de démarrage
     # On essaye d'écrire le registre bootloadStateAdress
-    # -> Si ça ne marche pas, il faut eteindre et redémarrer
+    # -> Si ça ne marche pas, il faut éteindre et redémarrer
     # -> Si ça marche , on essaye de lire la version
     # -> Si ça marche pas, on ré-écrit le registre bootloadStateAdress
     
@@ -29,10 +29,10 @@ proc ::wireless::outFromBootloader {} {
     } msg]
     if {$RC != 0} {
         set ::plug(etat,bootload) "DEFCOM"
-        ::piLog::log [clock milliseconds] "error_critic" "We need to restart module:$msg "
+        ::piLog::log [clock milliseconds] "error_critic" "::wireless::outFromBootloader We need to restart module:$msg "
         return "restart_needed"
     } else {
-        ::piLog::log [clock milliseconds] "debug" "write bootloadStateAdress OK"
+        ::piLog::log [clock milliseconds] "debug" "::wireless::outFromBootloader write bootloadStateAdress OK"
     }
     after 20
     
@@ -44,11 +44,11 @@ proc ::wireless::outFromBootloader {} {
     
     if {$RC != 0} {
         set ::plug(etat,bootload) "DEFCOM"
-        ::piLog::log [clock milliseconds] "error" "error during reading bootload state error:$msg "
+        ::piLog::log [clock milliseconds] "error" "::wireless::outFromBootloader error during reading bootload state error:$msg "
         return "retry_needed"
     }
     
-    ::piLog::log [clock milliseconds] "debug" "emetteur bootload state : $bootloadState"
+    ::piLog::log [clock milliseconds] "debug" "::wireless::outFromBootloader emetteur bootload state : $bootloadState"
     
     # SI ce n'est pas le cas, on le démarre
     if {$bootloadState == 0} {
@@ -60,7 +60,7 @@ proc ::wireless::outFromBootloader {} {
         
         if {$RC != 0} {
             set ::plug(etat,bootload) "DEFCOM"
-            ::piLog::log [clock milliseconds] "error" "error during jump to main app error : $msg "
+            ::piLog::log [clock milliseconds] "error" "::wireless::outFromBootloader error during jump to main app error : $msg "
         }
         
         # On lui laisse un peu de temps pour démarrer
@@ -75,10 +75,10 @@ proc ::wireless::outFromBootloader {} {
     } msg]
     
     if {$RC != 0} {
-        ::piLog::log [clock milliseconds] "error" "Not able to get major version : $msg "
+        ::piLog::log [clock milliseconds] "error" "::wireless::outFromBootloader Not able to get major version : $msg "
     } else {
         set ::plug(etat,majorVersion) $major
-        ::piLog::log [clock milliseconds] "debug" "emetteur major version : $major"
+        ::piLog::log [clock milliseconds] "debug" "::wireless::outFromBootloader emetteur major version : $major"
     }
     
     # Numéro mineur
@@ -88,10 +88,10 @@ proc ::wireless::outFromBootloader {} {
     } msg]
     
     if {$RC != 0} {
-        ::piLog::log [clock milliseconds] "error" "Not able to get minor version : $msg "
+        ::piLog::log [clock milliseconds] "error" "::wireless::outFromBootloader Not able to get minor version : $msg "
     } else {
         set ::plug(etat,minorVersion) $minor
-        ::piLog::log [clock milliseconds] "debug" "emetteur major version : $minor"
+        ::piLog::log [clock milliseconds] "debug" "::wireless::outFromBootloader emetteur major version : $minor"
     }
     
 }
@@ -107,10 +107,10 @@ proc ::wireless::start {} {
     } msg]
     if {$RC != 0} {
         set ::plug(etat,bootload) "DEFCOM"
-        ::piLog::log [clock milliseconds] "error" "Can not enable output of emettor erreur : $msg "
+        ::piLog::log [clock milliseconds] "error" "::wireless::start Can not enable output of emettor erreur : $msg "
         return -1
     } else {
-        ::piLog::log [clock milliseconds] "debug" "Emettor output enable"
+        ::piLog::log [clock milliseconds] "debug" "::wireless::start Emettor output enable"
     }
     return 0
 }
@@ -133,11 +133,11 @@ proc ::wireless::setAdress {plugNumber adress} {
     if {$RC != 0} {
         set ::plug($plugNumber,updateStatus) "DEFCOM"
         set ::plug($plugNumber,updateStatusComment) ${msg}
-        ::piLog::log [clock milliseconds] "error" "default when updating adress of plug $plugNumber (adress module : $moduleAdress - register $register) message:-$msg-"
+        ::piLog::log [clock milliseconds] "error" "::wireless::setAdress default when updating adress of plug $plugNumber (adress module : $moduleAdress - register $register) message:-$msg-"
     } else {
         set ::plug($plugNumber,updateStatus) "OK"
         set ::plug($plugNumber,updateStatusComment) [clock milliseconds]
-        ::piLog::log [clock milliseconds] "debug" "plug $plugNumber (adress module : $moduleAdress - register $register)  is updated with value $::plug($plugNumber,adress)"
+        ::piLog::log [clock milliseconds] "debug" "::wireless::setAdress plug $plugNumber (adress module : $moduleAdress - register $register)  is updated with value $::plug($plugNumber,adress)"
     }
 }
 
@@ -168,10 +168,10 @@ proc ::wireless::setValue {plugNumber value address} {
     if {$RC != 0} {
         set ::plug($plugNumber,updateStatus) "DEFCOM"
         set ::plug($plugNumber,updateStatusComment) ${msg}
-        ::piLog::log [clock milliseconds] "error" "default when updating value of plug $plugNumber (adress module : $moduleAdress - register $register) message:-$msg-"
+        ::piLog::log [clock milliseconds] "error" "::wireless::setValue default when updating value of plug $plugNumber (adress module : $moduleAdress - register $register) message:-$msg-"
     } else {
         set ::plug($plugNumber,updateStatus) "OK"
         set ::plug($plugNumber,updateStatusComment) [clock milliseconds]
-        ::piLog::log [clock milliseconds] "debug" "plug $plugNumber (adress module : $moduleAdress - register $register)  is updated with value $value"
+        ::piLog::log [clock milliseconds] "debug" "::wireless::setValue plug $plugNumber (adress module : $moduleAdress - register $register)  is updated with value $value"
     }
 }

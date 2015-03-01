@@ -12,7 +12,7 @@ proc ::sensorAcq::init {logPeriode} {
     set ::port(serverAcqSensor)   ""
 
     # On demande le numéro de port du lecteur de capteur
-    ::piLog::log [clock milliseconds] "info" "ask getPort serverAcqSensor"
+    ::piLog::log [clock milliseconds] "info" "::sensorAcq::init ask getPort serverAcqSensor"
     ::piServer::sendToServer $::port(serverCultiPi) "$::port(serverHisto) [incr ::TrameIndex] getPort serverAcqSensor"
 
     for {set i 1} {$i < 7} {incr i} {

@@ -20,6 +20,8 @@ package require piXML
 # Source extern files
 source [file join $rootDir serverAcqSensor src adress_sensor.tcl]
 source [file join $rootDir serverAcqSensor src serveurMessage.tcl]
+source [file join $rootDir serverAcqSensor src direct_read.tcl]
+source [file join $rootDir serverAcqSensor src network_read.tcl]
 
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
@@ -30,13 +32,14 @@ set ::sensor(firsReadDone) 0
 
 # On initialise la conf XML
 array set configXML {
-    verbose     debug
-    simulator   off
+    verbose         debug
+    simulator       off
+    nb_maxSensor    10
 }
 
 # Chargement de la conf XML
 set RC [catch {
-array set configXML [::piXML::convertXMLToArray $confXML]
+    array set configXML [::piXML::convertXMLToArray $confXML]
 } msg]
 
 # On initialise la connexion avec le server de log
@@ -73,12 +76,17 @@ if {$configXML(simulator) != "off"} {
     source [file join $rootDir serverAcqSensor src simulator.tcl]
 }
 
+# Initialisation du direct read 
+::direct_read::init $configXML(nb_maxSensor)
+# Initialisation du network read 
+::network_read::init $configXML(nb_maxSensor)
+
 # Initialisation pour tous les capteurs des valeurs
 set sensorTypeList [list SHT DS18B20 WATER_LEVEL PH EC OD ORP]
 
 foreach sensorType $sensorTypeList {
 
-    for {set index 1} {$index < 10} {incr index} {
+    for {set index 1} {$index <= $configXML(nb_maxSensor)} {incr index} {
         # Si ce capteur peut exister
         if {[array names ::sensor -exact "${sensorType},$index,adress"] != ""} {
         
@@ -101,13 +109,13 @@ foreach sensorType $sensorTypeList {
     }
 }
 
-# Boucle pour connaitre les capteurs de connectés
+# Boucle pour connaître les capteurs de connectés
 proc searchSensorsConnected {} {
     set sensorTypeList [list SHT DS18B20 WATER_LEVEL PH EC OD ORP]
     
     foreach sensorType $sensorTypeList {
     
-        for {set index 1} {$index < 10} {incr index} {
+        for {set index 1} {$index  <= $::configXML(nb_maxSensor)} {incr index} {
         
             # Si ce capteur peut exister
             if {[array names ::sensor -exact "${sensorType},$index,adress"] != ""} {
@@ -148,7 +156,7 @@ proc readSensors {} {
     
     foreach sensorType $sensorTypeList {
     
-        for {set index 1} {$index < 10} {incr index} {
+        for {set index 1} {$index  <= $::configXML(nb_maxSensor)} {incr index} {
         
             # Si ce capteur peut exister
             if {[array names ::sensor -exact "${sensorType},$index,adress"] != ""} {
@@ -242,6 +250,62 @@ proc readSensors {} {
     
     }
     
+    # Lecture des capteurs en direct
+    for {set sensorDirect 1} {$sensorDirect <= $::configXML(nb_maxSensor)} {incr sensorDirect} {
+    
+        set pin $::configXML(direct_read,$sensorDirect,input)
+    
+        # Si la valeur est demandé dans le fichier de config
+        if {$pin != "NA"} {
+            
+            # On lit la valeur
+            set value [::direct_read::read_value $pin]
+            
+            # SI la valeur est valide, on la sauvegarde
+            if {$value != "NA"} {
+            
+                # Si l'utilisateur a prédéfinie des valeurs, on les appliques
+                if {$::configXML(direct_read,$sensorDirect,value) != "NA" && $value == 1} {
+                    set value $::configXML(direct_read,$sensorDirect,value)
+                }
+           
+                # On sauvegarde dans le repère global
+                set ::sensor($sensorDirect,value,1) $value
+                set ::sensor($sensorDirect,value)   $value
+                set ::sensor($sensorDirect,type)    $::configXML(direct_read,$sensorDirect,type)
+                set ::sensor($sensorDirect,value,time) [clock milliseconds]
+
+            }
+        }
+        
+        # L'utilisateur peut demander la lecture de deux capteurs
+        set pin $::configXML(direct_read,$sensorDirect,input2)
+    
+        # Si la valeur est demandé dans le fichier de config
+        if {$pin != "NA"} {
+            
+            # On lit la valeur
+            set value [::direct_read::read_value $pin]
+            
+            # SI la valeur est valide, on la sauvegarde
+            if {$value != "NA"} {
+            
+                # Si l'utilisateur a prédéfinie des valeurs, on les appliques
+                if {$::configXML(direct_read,$sensorDirect,value2) != "NA" && $value == 1} {
+                    set value $::configXML(direct_read,$sensorDirect,value2)
+                }
+           
+                # On sauvegarde dans le repère global
+                set ::sensor($sensorDirect,value,1) [expr $::sensor($sensorDirect,value,1) + $value]
+                set ::sensor($sensorDirect,value)   [expr $::sensor($sensorDirect,value) + $value]
+                set ::sensor($sensorDirect,type)    $::configXML(direct_read,$sensorDirect,type)
+                set ::sensor($sensorDirect,value,time) [clock milliseconds]
+
+            }
+        }
+        
+    }
+
     if {[incr ::indexForSearchingSensor] > 60} {
         # Une fois sur 60 , on recherche les capteurs
         set ::indexForSearchingSensor 0
@@ -263,4 +327,4 @@ readSensors
 
 vwait forever
 
-# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\serverAcqSensor\serverAcqSensor.tcl" 6005 "C:\cultibox\04_CultiPi\02_conf\01_defaultConf_RPi\serverAcqSensor\conf.xml" 6001 
+# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\serverAcqSensor\serverAcqSensor.tcl" 6005 "C:\cultibox\04_CultiPi\02_conf\00_defaultConf_Win\serverAcqSensor\conf.xml" 6001 

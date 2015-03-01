@@ -24,7 +24,7 @@ set variable [lindex $argv 1]
 
 set killID ""
 
-proc messageGestion {message} {
+proc messageGestion {message host} {
 
     # Trame standard : [FROM] [INDEX] [commande] [argument]
     set serverForResponse   [::piTools::lindexRobust $message 0]

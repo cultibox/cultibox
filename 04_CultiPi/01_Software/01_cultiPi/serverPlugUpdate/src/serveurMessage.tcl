@@ -1,5 +1,5 @@
 
-proc messageGestion {message} {
+proc messageGestion {message networkhost} {
 
     # Trame standard : [FROM] [INDEX] [commande] [argument]
     set serverForResponse   [::piTools::lindexRobust $message 0]
