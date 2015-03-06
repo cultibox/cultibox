@@ -24,6 +24,9 @@ function check_db() {
     $plugs_index_col["PLUG_SECOND_TOLERANCE"] = array ( 'Field' => "PLUG_SECOND_TOLERANCE", 'Type' => "decimal(3,1)", 'default_value' => 0.0, 'carac' => "NOT NULL");
     $plugs_index_col["PLUG_COMPUTE_METHOD"] = array ( 'Field' => "PLUG_COMPUTE_METHOD", 'Type' => "varchar(1)", 'default_value' => 'M', 'carac' => "NOT NULL");
     $plugs_index_col["PLUG_MODULE"]         = array ( 'Field' => "PLUG_MODULE", 'Type' => "varchar(10)", 'default_value' => 'wireless', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_NUM_MODULE"]     = array ( 'Field' => "PLUG_NUM_MODULE", 'Type' => "int(11)", 'default_value' => '0', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_MODULE_OPTIONS"] = array ( 'Field' => "PLUG_MODULE_OPTIONS", 'Type' => "varchar(20)", 'default_value' => '', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_MODULE_OUTPUT"]  = array ( 'Field' => "PLUG_MODULE_OUTPUT", 'Type' => "int(11)", 'default_value' => '1', 'carac' => "NOT NULL");
 
     // Check if table configuration exists
     $sql = "SHOW TABLES FROM cultibox LIKE 'plugs';";
@@ -57,7 +60,10 @@ function check_db() {
                     ."PLUG_REGUL_VALUE decimal(3,1) NOT NULL DEFAULT '35.0',"
                     ."PLUG_SECOND_TOLERANCE DECIMAL( 3, 1 ) NOT NULL DEFAULT '0.0',"
                     ."PLUG_COMPUTE_METHOD VARCHAR( 1 ) NOT NULL DEFAULT 'M'),"
-                    ."PLUG_MODULE varchar(10) NOT NULL DEFAULT 'wireless');";
+                    ."PLUG_MODULE varchar(10) NOT NULL DEFAULT 'wireless'),"
+                    ."PLUG_NUM_MODULE int(11) NOT NULL DEFAULT '0'),"
+                    ."PLUG_MODULE_OPTIONS varchar(20) NOT NULL DEFAULT ''),"
+                    ."PLUG_MODULE_OUTPUT int(11) NOT NULL DEFAULT '1');";
 
         // Create table
         try {

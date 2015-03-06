@@ -32,11 +32,38 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
     // Check if SD card can be writable
     if(!check_sd_card($sd_card)) return ERROR_WRITE_SD;
 
+    // Check and update path
+    $logs = "$sd_card/logs";
+    $cnf  = "$sd_card/cnf";
+    $plg  = "$cnf/plg";
+    $prg  = "$cnf/prg";
+    $bin  = "$sd_card/bin";
 
+    if(!is_dir($logs)) mkdir($logs);
+    if(!is_dir($cnf)) mkdir($cnf);
+    if(!is_dir($plg)) mkdir($plg);
+    if(!is_dir($prg)) mkdir($prg);
+    if(!is_dir($bin)) mkdir($bin);
+
+    // If we are in cultipi mode, create file systeme structure
+    if ($GLOBALS['MODE'] == "cultipi") {
+        if(!is_dir($sd_card . "/cultiPi"))          mkdir($sd_card . "/cultiPi");
+        if(!is_dir($sd_card . "/serverAcqSensor"))  mkdir($sd_card . "/serverAcqSensor");
+        if(!is_dir($sd_card . "/serverHisto"))      mkdir($sd_card . "/serverHisto");
+        if(!is_dir($sd_card . "/serverLog"))        mkdir($sd_card . "/serverLog");
+        if(!is_dir($sd_card . "/serverPlugUpdate")) mkdir($sd_card . "/cultiPi");
+        
+        // Create conf file
+        $paramList["verbose"] = "debug";
+        $paramList["simulator"] = "off";
+        create_conf_XML($sd_card . "/serverAcqSensor/conf.xml" , $paramList);
+        
+    }
+    
     $program = "";
     $conf_uptodate = true;
 
-    $program_index=array();
+    $program_index = array();
     program\get_program_index_info($program_index);
    
 
@@ -69,7 +96,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         return ERROR_WRITE_PROGRAM;
     }
 
-    if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { 
+    if(!isset($GLOBALS['MODE']) || $GLOBALS['MODE'] != "cultipi") { 
         $ret_firm=check_and_copy_firm($sd_card);
         if(!$ret_firm) {
             $main_error_tab[]=__('ERROR_COPY_FIRM'); 
@@ -139,11 +166,10 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
     $resetvalue     = get_configuration("RESET_MINMAX",$main_error);
     $rtc            = get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
     $enableled      = get_configuration("ENABLE_LED",$main_error);
-    if("$updatefrequency"=="-1") {
+    if($updatefrequency == "-1") {
         $updatefrequency="0";
     }
-    
-    
+
     if(!compare_sd_conf_file($sd_card,
                              $recordfrequency,
                              $updatefrequency,
@@ -225,7 +251,7 @@ function sd_card_update_log_informations ($sd_card="") {
 
     // If informations are defined in log.txt copy them into database
     if($informations["cbx_id"] != "")  
-            insert_informations("cbx_id",$informations["cbx_id"]);
+        insert_informations("cbx_id",$informations["cbx_id"]);
         
     if($informations["firm_version"] != "") 
         insert_informations("firm_version",$informations["firm_version"]);
@@ -505,46 +531,89 @@ function compare_program($data,$sd_card,$file="plugv") {
 // IN   $sd_card      sd card path to save data
 // RET false is there is something to write, true else
 function compare_pluga($sd_card) {
-    $out=array();
-    if(is_file("${sd_card}/cnf/plg/pluga")) {
-         $nb=0;
-         $file="${sd_card}/cnf/plg/pluga";
+    $out  = array();
+    $file = "${sd_card}/cnf/plg/pluga";
+    
+    // Check if the file exists
+    if(is_file($file)) {
+        $nb=0;
 
-         $pluga=Array();
-         $nb_plug=get_configuration("NB_PLUGS",$out);
-         while(strlen("$nb_plug")<2) {
-            $nb_plug="0$nb_plug";
-         }
-
-         $pluga[]=$nb_plug;
-         for($i=0;$i<$nb_plug;$i++) {
-         
-            // Get Power of the plug
-            $tmp_power_max = get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
-            
-            // Get Module of the plug
-            $tmp_MODULE = get_plug_conf("PLUG_MODULE",$i+1,$out);
-
-            $tmp_pluga = "000";
-            if ($tmp_MODULE == "wireless") {
-                // Wireless plug case
-                if ($tmp_power_max == "3500") {
-                    $tmp_pluga = $GLOBALS['PLUGA_DEFAULT_3500W'][$i];
-                } else {
-                    $tmp_pluga = $GLOBALS['PLUGA_DEFAULT'][$i];
-                }
-            } elseif ($tmp_MODULE == "dimmer") {
-                // Dimmer plug case
-            
-            } elseif ($tmp_MODULE == "direct") {
-                // Direct plug case (Adresse 50 --> 58)
-                $tmp_pluga = "0" . ($tmp_power_max + 49);
-            }
-            
-            $pluga[]="$tmp_pluga";
+        $pluga = Array();
+        $nb_plug=get_configuration("NB_PLUGS",$out);
+        while(strlen($nb_plug)<2) {
+            $nb_plug = "0$nb_plug";
         }
 
-        $nbdata=count($pluga);
+         $pluga[] = $nb_plug;
+         for($i=0;$i<$nb_plug;$i++) {
+         
+            // Get power of the plug
+            $tmp_power_max = get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
+            
+            // Get module of the plug
+            $tmp_MODULE = get_plug_conf("PLUG_MODULE",$i+1,$out);
+            if ($tmp_MODULE == "") 
+                $tmp_MODULE = "wireless";
+            
+            // Get module number of the plug
+            $tmp_NUM_MODULE = get_plug_conf("PLUG_NUM_MODULE",$i+1,$out);
+            if ($tmp_NUM_MODULE == "")
+                $tmp_NUM_MODULE = 1;
+
+            // Get module options of the plug
+            $tmp_MODULE_OPTIONS = get_plug_conf("PLUG_MODULE_OPTIONS",$i+1,$out);
+
+            // Get module output used
+            $tmp_MODULE_OUPUT = get_plug_conf("PLUG_MODULE_OUPUT",$i+1,$out);
+            if ($tmp_MODULE_OUPUT == "") 
+                $tmp_MODULE_OUPUT = 1;
+
+            // Create adress for this plug
+            $tmp_pluga = 0;
+            switch ($tmp_MODULE) {
+                case "wireless":
+                    if ($tmp_power_max == "3500") {
+                        $tmp_pluga = $GLOBALS['PLUGA_DEFAULT_3500W'][$i];
+                    } else {
+                        $tmp_pluga = $GLOBALS['PLUGA_DEFAULT'][$i];
+                    }
+                    break;
+                case "direct":
+                    // Direct plug case (Adresse 50 --> 58)
+                    $tmp_pluga = $tmp_MODULE_OUPUT + 49;
+                    break;
+                case "mcp230xx":
+                    // MCP plug case 
+                    // Module 1 : (Adresse 60 --> 67)
+                    // Module 2 : (Adresse 70 --> 77)
+                    // Module 3 : (Adresse 80 --> 87)
+                    $tmp_pluga = 60 + 10 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    break;
+                case "dimmer":
+                    // Dimmer plug case 
+                    // Module 1 : (Adresse 90 --> 93)
+                    // Module 2 : (Adresse 95 --> 98)
+                    // Module 3 : (Adresse 100 --> 103)
+                    $tmp_pluga = 90 + 5 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    break;
+                case "network":
+                    $tmp_pluga = 1000 + 16 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    break;
+                case "xmax":
+                    // xmax plug case 
+                    // Module 1 : (Adresse 105 --> 108)
+                    $tmp_pluga = 105 + $tmp_MODULE_OUPUT - 1;
+                    break;                    
+            }
+
+            while(strlen($tmp_pluga)<3) {
+                $tmp_pluga = "0$tmp_pluga";
+            }
+
+            $pluga[] = $tmp_pluga;
+        }
+
+        $nbdata = count($pluga);
 
         if(count($pluga)>0) {
             $buffer_array=@file("$file");
@@ -689,41 +758,84 @@ function compare_plgidx($data,$sd_card) {
 //      $out            error or warning messages
 // RET false is an error occured, true else
 function write_pluga($sd_card,&$out) {
-   $file="$sd_card/cnf/plg/pluga";
+    $file="$sd_card/cnf/plg/pluga";
 
-   if($f=@fopen("$file","w+")) {
-      $pluga="";
-      $nb_plug=get_configuration("NB_PLUGS",$out);
-      while(strlen("$nb_plug")<2) {
+    if($f=@fopen($file,"w+")) {
+        $pluga="";
+        $nb_plug=get_configuration("NB_PLUGS",$out);
+        while(strlen("$nb_plug")<2) {
             $nb_plug="0$nb_plug";
-      }
-      $pluga="$nb_plug\r\n";
+        }
+        $pluga = $nb_plug . "\r\n";
       
         for($i=0;$i<$nb_plug;$i++) {
         
-            // Get Power of the plug
+         
+            // Get power of the plug
             $tmp_power_max = get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
             
-            // Get Module of the plug
+            // Get module of the plug
             $tmp_MODULE = get_plug_conf("PLUG_MODULE",$i+1,$out);
-
-            $tmp_pluga = "000";
-            if ($tmp_MODULE == "wireless") {
-                // Wireless plug case
-                if ($tmp_power_max == "3500") {
-                    $tmp_pluga = $GLOBALS['PLUGA_DEFAULT_3500W'][$i];
-                } else {
-                    $tmp_pluga = $GLOBALS['PLUGA_DEFAULT'][$i];
-                }
-            } elseif ($tmp_MODULE == "dimmer") {
-                // Dimmer plug case
+            if ($tmp_MODULE == "") 
+                $tmp_MODULE = "wireless";
             
-            } elseif ($tmp_MODULE == "direct") {
-                // Direct plug case (Adresse 50 --> 58)
-                $tmp_pluga = "0" . ($tmp_power_max + 49);
+            // Get module number of the plug
+            $tmp_NUM_MODULE = get_plug_conf("PLUG_NUM_MODULE",$i+1,$out);
+            if ($tmp_NUM_MODULE == "")
+                $tmp_NUM_MODULE = 1;
+
+            // Get module options of the plug
+            $tmp_MODULE_OPTIONS = get_plug_conf("PLUG_MODULE_OPTIONS",$i+1,$out);
+
+            // Get module output used
+            $tmp_MODULE_OUPUT = get_plug_conf("PLUG_MODULE_OUPUT",$i+1,$out);
+            if ($tmp_MODULE_OUPUT == "") 
+                $tmp_MODULE_OUPUT = 1;
+
+            // Create adress for this plug
+            $tmp_pluga = 0;
+            switch ($tmp_MODULE) {
+                case "wireless":
+                    if ($tmp_power_max == "3500") {
+                        $tmp_pluga = $GLOBALS['PLUGA_DEFAULT_3500W'][$i];
+                    } else {
+                        $tmp_pluga = $GLOBALS['PLUGA_DEFAULT'][$i];
+                    }
+                    break;
+                case "direct":
+                    // Direct plug case (Adresse 50 --> 58)
+                    $tmp_pluga = $tmp_MODULE_OUPUT + 49;
+                    break;
+                case "mcp230xx":
+                    // MCP plug case 
+                    // Module 1 : (Adresse 60 --> 67)
+                    // Module 2 : (Adresse 70 --> 77)
+                    // Module 3 : (Adresse 80 --> 87)
+                    $tmp_pluga = 60 + 10 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    break;
+                case "dimmer":
+                    // Dimmer plug case 
+                    // Module 1 : (Adresse 90 --> 93)
+                    // Module 2 : (Adresse 95 --> 98)
+                    // Module 3 : (Adresse 100 --> 103)
+                    $tmp_pluga = 90 + 5 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    break;
+                case "network":
+                    $tmp_pluga = 1000 + 16 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    break;
+                case "xmax":
+                    // xmax plug case 
+                    // Module 1 : (Adresse 105 --> 108)
+                    $tmp_pluga = 105 + $tmp_MODULE_OUPUT - 1;
+                    break;                    
             }
 
-        $pluga=$pluga."$tmp_pluga"."\r\n";
+            while(strlen($tmp_pluga)<3) {
+                $tmp_pluga = "0$tmp_pluga";
+            }
+
+
+            $pluga = $pluga . $tmp_pluga . "\r\n";
       }
 
       if(!@fwrite($f,"$pluga")) {
@@ -1319,8 +1431,8 @@ function check_and_copy_firm($sd_card) {
         $current_file="$sd_card/$firm";
 
         //Si on trouve le firmware de référence on récupère le contenue de la première ligne ou la version est présente:
-        if(is_file("$new_file")) {
-            $handle = @fopen("$new_file", 'r');
+        if(is_file($new_file)) {
+            $handle = @fopen($new_file, 'r');
             if($handle) {
                 $new_firm = fgets($handle);
             } else {
@@ -1605,6 +1717,35 @@ function check_sd_card($sd="") {
         // Not openable in write mode
         return false;
     }
+}
+// }}}
+
+// {{{ create_conf_XML()
+// ROLE Used to creat a conf file
+// IN      $file        Path for the conf file
+// IN      $paramList       List of params
+// RET true if we can, false else
+function create_conf_XML($file, $paramList) {
+
+    // Open in write mode
+    $fid = fopen($file,"w+");
+    
+    // Add header
+    fwrite($fid,'<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>' . "\r\n");
+    fwrite($fid,'<conf>'. "\r\n");
+    
+    // Foreach param to write, add it to the file
+    foreach ($paramList as $key => $value) {
+        fwrite($fid,'    <item name="' . $key . '" value="' . $value . '" />'. "\r\n");
+    }
+
+    // Add Footer
+    fwrite($fid,'</conf>'. "\r\n");
+    
+    // Close file
+    fclose($fid);
+    
+    return true;
 }
 // }}}
 

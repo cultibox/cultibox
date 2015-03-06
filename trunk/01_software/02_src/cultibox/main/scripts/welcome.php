@@ -22,7 +22,7 @@ if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) {
         $sd_card=get_sd_card();
     }
 } else {
-    $sd_card="/etc/cultipi/conf_tmp";
+    $sd_card = $GLOBALS['CULTIPI_CONF_TEMP_PATH'];
     if((!is_file($sd_card."/cnf/plg/pluga"))||(!is_file($sd_card."/cnf/prg/plugv"))) {
             check_and_update_sd_card($sd_card,$info,$error,false);
     }
