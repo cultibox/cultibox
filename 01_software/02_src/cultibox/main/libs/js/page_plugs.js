@@ -71,7 +71,7 @@ $(document).ready(function(){
     });
 
 
-    //Display dimmer canal:
+    //Display options for selected output :
     $("select[name*='plug_module']").change(function () {
         var id=$(this).attr('name').substr($(this).attr('name').length-1);
 
@@ -79,40 +79,49 @@ $(document).ready(function(){
             id="";
         }
         
-        if($(this).val() == "wireless") {
-            $("#select_canal_wireless"+id).show();
-            $("#select_canal_dimmer"+id).css("display","none");
-            <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {?>
-                $("#select_canal_direct"+id).css("display","none");
-            <?php } ?>;
-            // Reset value for power
-            if ($("#plug_power_max"+id).val() != "1000" && $("#plug_power_max"+id).val() != "3500") {
-                $("input[name=plug_power_max" +id + "][value='1000']").prop('checked', true);
-            }
-        }
+        // Display correct option for the plug in function of type selected
+        $("#select_canal_wireless"+id).css("display","none");
+        $("#select_canal_direct"+id).css("display","none");
+        $("#select_canal_mcp230xx"+id).css("display","none");
+        $("#select_canal_dimmer"+id).css("display","none");
+        $("#select_canal_network"+id).css("display","none");
+        $("#select_canal_xmax"+id).css("display","none");
+        $("#select_canal_" + $(this).val() + id).show();
         
-        if($(this).val() == "dimmer") {
-            $("#select_canal_wireless"+id).css("display","none");
-            $("#select_canal_dimmer"+id).show();
-            <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {?>
-                $("#select_canal_direct"+id).css("display","none");
-            <?php } ?>
-            // Reset value for power
-            if ($("#plug_power_max"+id).val() > "10") {
-                $("#plug_power_max"+id).val() = "1";
-            }
-        } 
-
-        if($(this).val() == "direct") {
-            $("#select_canal_wireless"+id).css("display","none");
-            $("#select_canal_dimmer"+id).css("display","none");
-            <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {?>
-                $("#select_canal_direct"+id).show();
-            <?php } ?>
-            // Reset value for power
-            if ($("#plug_power_max"+id).val() > "10") {
-                $("#plug_power_max"+id).val() = "1";
-            }
+        // Reset value for power
+        switch($(this).val()) {
+            case 'wireless' : 
+                if ($("#plug_power_max"+id).val() != "1000" && $("#plug_power_max"+id).val() != "3500") {
+                    $("input[name=plug_power_max" +id + "][value='1000']").prop('checked', true);
+                }
+                break;
+            case 'direct':
+                if ($("#plug_power_max"+id).val() > "<?php echo $GLOBALS['NB_MAX_CANAL_DIRECT']; ?>") {
+                    $("#plug_power_max"+id).val() = "1";
+                }
+                break;
+            case 'mcp230xx':
+                if ($("#plug_power_max"+id).val() > "<?php echo $GLOBALS['NB_MAX_CANAL_MCP230XX']; ?>") {
+                    $("#plug_power_max"+id).val() = "1";
+                }
+                break;  
+            case 'dimmer':
+                if ($("#plug_power_max"+id).val() > "<?php echo $GLOBALS['NB_MAX_CANAL_DIMMER']; ?>") {
+                    $("#plug_power_max"+id).val() = "1";
+                }
+                break;  
+            case 'network':
+                if ($("#plug_power_max"+id).val() > "<?php echo $GLOBALS['NB_MAX_CANAL_NETWORK']; ?>") {
+                    $("#plug_power_max"+id).val() = "1";
+                }
+                break;   
+            case 'xmax':
+                if ($("#plug_power_max"+id).val() > "<?php echo $GLOBALS['NB_MAX_CANAL_XMAX']; ?>") {
+                    $("#plug_power_max"+id).val() = "1";
+                }
+                break;   
+            default:
+                break;
         }
     });
 
@@ -169,18 +178,16 @@ $(document).ready(function(){
                             text: CANCEL_button,
                                 click: function () {
                                     $("#plug_type"+plug).val(plugs_infoJS[plug-1]['PLUG_TYPE]']);
-                                    $( this ).dialog( "close" ); return false;
+                                    $( this ).dialog( "close" );
+                                    return false;
                                 }
                             }]
                         });
                     }
                 }); 
             }
-            
         }
-   });
-
-
+    });
 
     // Check errors for the plugs part on submit:
     $("#reccord_plugs, [id^='jumpto']").click(function(e) { 
@@ -352,13 +359,14 @@ $(document).ready(function(){
             }
         }
 
+        // Errors have been checked, we can continue
         if(checked) {
-                var check_update=true;
-                // block user interface during saving;
-                $.blockUI({
-                  message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
-                  centerY: 0,
-                  css: {
+            var check_update=true;
+            // block user interface during saving;
+            $.blockUI({
+                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
                     top: '20%',
                     border: 'none',
                     padding: '5px',
@@ -367,9 +375,9 @@ $(document).ready(function(){
                     '-moz-border-radius': '10px',
                     opacity: .9,
                     color: '#fffff'
-                  },
-                  onBlock: function() {
-                    for(i=1;i<=nb_plugs;i++) {    
+                },
+                onBlock: function() {
+                    for(i=1;i<=nb_plugs;i++) {
                         var data_array = {};
                         
                         // For each input, add this to the array
@@ -385,6 +393,30 @@ $(document).ready(function(){
                         
                         // Add module used
                         data_array['plug_module'+i] = $("select[name=plug_module"+i+"]").val();
+                        
+                        // Add module number used : For mcp230xx, dimmer, xmax
+                        data_array['plug_num_module'+i] = 0;
+                        if (data_array['plug_module'+i] == "mcp230xx" || 
+                            data_array['plug_module'+i] == "dimmer" || 
+                            data_array['plug_module'+i] == "xmax") {
+                            data_array['plug_num_module'+i] = $("select[name=" + data_array['plug_module'+i] + "_module_num" + i + "]").val();
+                        }
+                        
+                        // Add options only for network
+                        data_array['plug_module_options'+i] = "";
+                        if (data_array['plug_module'+i] == "network") {
+                            data_array['plug_module_options'+i] = $("input[name=" + data_array['plug_module'+i] + "_module_options" + i + "]").val();
+                        }
+
+                        // Add output of module used : For direct, mcp230xx, dimmer, network, xmax
+                        data_array['plug_module_output'+i] = 0;
+                        if (data_array['plug_module'+i] == "direct" || 
+                            data_array['plug_module'+i] == "mcp230xx" || 
+                            data_array['plug_module'+i] == "dimmer" || 
+                            data_array['plug_module'+i] == "network" || 
+                            data_array['plug_module'+i] == "xmax") {
+                            data_array['plug_module_output'+i] = $("select[name=" + data_array['plug_module'+i] + "_module_ouput" + i + "]").val();
+                        }                        
 
                         $.ajax({
                             cache: false,
@@ -398,29 +430,30 @@ $(document).ready(function(){
                                 check_update=false;
                             }
                         });
-                     }         
+                    }         
 
-                     if(sd_card!="") {
-                     $.ajax({
-                        type: "GET",
-                        url: "main/modules/external/check_and_update_sd.php",
-                        data: {
-                            sd_card:"<?php echo $sd_card ;?>"
-                        },
-                        async: false,
-                        context: document.body,
-                        success: function(data, textStatus, jqXHR) {
-                        },
-                        error: function(jqXHR, textStatus, errorThrown) {
-                        // Error during request
-                        }
-                     });
-                     }
+                    // Update SD Card
+                    if(sd_card != "") {
+                        $.ajax({
+                            type: "GET",
+                            url: "main/modules/external/check_and_update_sd.php",
+                            data: {
+                                sd_card:"<?php echo $sd_card ;?>"
+                            },
+                            async: false,
+                            context: document.body,
+                            success: function(data, textStatus, jqXHR) {
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                            // Error during request
+                            }
+                        });
+                    }
 
-                     $.unblockUI();
+                    $.unblockUI();
 
 
-                      if(check_update) {
+                    if(check_update) {
                         $("#update_conf").dialog({
                             resizable: false,
                             height:150,
@@ -433,7 +466,7 @@ $(document).ready(function(){
                                 text: CLOSE_button,
                                 click: function () {
                                     $( this ).dialog( "close" );
-            
+
                                      $.ajax({
                                         cache: false,
                                         async: false,
@@ -448,9 +481,9 @@ $(document).ready(function(){
                                         get_content("plugs",getUrlVars("selected_plug="+$("#submenu").val()+"&submenu="+$("#submenu").val()));
                                     }
                                 }  
-                                }]
-                            });
-                     } else  {
+                            }]
+                        });
+                    } else  {
                         $("#error_update_conf").dialog({
                             resizable: false,
                             height:150,
@@ -468,7 +501,7 @@ $(document).ready(function(){
                             }]
                         });
                     }
-                 }
+                }
             });
         } else {
             expand_plug(jump_plug,<?php echo $nb_plugs; ?>);
@@ -476,8 +509,8 @@ $(document).ready(function(){
     });
 
     $('[id^="jump_wizard"]').click(function(e) {
-            e.preventDefault();
-            get_content("wizard",getUrlVars("selected_plug="+$(this).attr("id").replace("jump_wizard","")));
+        e.preventDefault();
+        get_content("wizard",getUrlVars("selected_plug="+$(this).attr("id").replace("jump_wizard","")));
     });
 });
 </script>

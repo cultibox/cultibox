@@ -24,18 +24,18 @@ if((!isset($path))||(empty($path))) {
             $progress=0;
         }
 
-        $logs="$path/logs";
-        $cnf="$path/cnf";
-        $plg="$cnf/plg";
-        $prg="$cnf/prg";
-        $bin="$path/bin";
+        $logs = "$path/logs";
+        $cnf  = "$path/cnf";
+        $plg  = "$cnf/plg";
+        $prg  = "$cnf/prg";
+        $bin  = "$path/bin";
 
         if(strcmp("$progress","0")==0) {
-            if(!is_dir($logs)) mkdir("$logs");
-            if(!is_dir($cnf)) mkdir("$cnf");
-            if(!is_dir($plg)) mkdir("$plg");
-            if(!is_dir($prg)) mkdir("$prg");
-            if(!is_dir($bin)) mkdir("$bin");
+            if(!is_dir($logs)) mkdir($logs);
+            if(!is_dir($cnf)) mkdir($cnf);
+            if(!is_dir($plg)) mkdir($plg);
+            if(!is_dir($prg)) mkdir($prg);
+            if(!is_dir($bin)) mkdir($bin);
 
             if(!is_file("$cnf/cnt")) {
                 if(!copy("../../../tmp/cnf/cnt","$cnf/cnt")) {
@@ -63,16 +63,16 @@ if((!isset($path))||(empty($path))) {
             
             //Creating pluga file:
             if(!write_pluga($path,$out)) {
-                    echo -1;
-                    return 0;
+                echo -1;
+                return 0;
             }
 
             //Creating conf file:
             $update_frequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$out);
-            if("$update_frequency"=="-1") $update_frequency="0";
+            if($update_frequency == "-1") $update_frequency="0";
             if(!write_sd_conf_file($path,
                                     get_configuration("RECORD_FREQUENCY",$out),
-                                    "$update_frequency",
+                                    $update_frequency,
                                     get_configuration("POWER_FREQUENCY",$out),
                                     get_configuration("ALARM_ACTIV",$out),
                                     get_configuration("ALARM_VALUE",$out),

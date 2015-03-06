@@ -14,28 +14,28 @@
 
 
     if(!empty($_GET['name'])) {
-           $name=$_GET['name']; 
+       $name=$_GET['name']; 
     } else {
-            echo json_encode("");
-            return 1;
+        echo json_encode("");
+        return 1;
     }
 
     if(!empty($_GET['value'])) {
            $value=$_GET['value'];
     } else {
-            echo json_encode("");
-            return 1;
+        echo json_encode("");
+        return 1;
     }
 
     if(!empty($_GET['id'])) {
-           $id=$_GET['id'];
+       $id=$_GET['id'];
     } else {
-            echo json_encode("");
-            return 1;
+        echo json_encode("");
+        return 1;
     }
 
 
-    if(strcmp("$id","all")==0) {
+    if($id == "all") {
         for($nb=1;$nb<=get_configuration("NB_PLUGS",$main_error);$nb++) {
             insert_plug_conf(strtoupper($name),$nb,$value,$main_error);
         }

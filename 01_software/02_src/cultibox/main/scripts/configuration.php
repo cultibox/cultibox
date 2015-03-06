@@ -31,7 +31,7 @@ if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) {
         sort($hdd_list);
     }
 } else {
-    $sd_card="/etc/cultipi/conf_tmp";
+    $sd_card = $GLOBALS['CULTIPI_CONF_TEMP_PATH'];
 }
 
 

@@ -53,7 +53,7 @@ if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) {
         $sd_card=get_sd_card();
     }
 } else {
-    $sd_card="/etc/cultipi/conf_tmp";
+    $sd_card = $GLOBALS['CULTIPI_CONF_TEMP_PATH'];
 }
 
 
@@ -63,22 +63,28 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 
 for($nb=1;$nb<=$nb_plugs;$nb++) {
-   $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$main_error);
-   $plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$main_error);
-   $plug_power{$nb}=get_plug_conf("PLUG_POWER",$nb,$main_error);
-   $plug_regul{$nb}=get_plug_conf("PLUG_REGUL",$nb,$main_error);
-   $plug_senso{$nb}=get_plug_conf("PLUG_SENSO",$nb,$main_error);
-   $plug_senss{$nb}=get_plug_conf("PLUG_SENSS",$nb,$main_error);
-   $plug_regul_value{$nb}=get_plug_conf("PLUG_REGUL_VALUE",$nb,$main_error);
-   $plug_power_max{$nb}=get_plug_conf("PLUG_POWER_MAX",$nb,$main_error);
-   $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
-   $plug_second_tolerance{$nb}=get_plug_conf("PLUG_SECOND_TOLERANCE",$nb,$main_error); 
-   $plug_compute_method{$nb}=get_plug_conf("PLUG_COMPUTE_METHOD",$nb,$main_error);
-   $plug_regul_sensor{$nb}=get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
-   $plug_module{$nb}=get_plug_conf("PLUG_MODULE",$nb,$main_error);
-
-   $plug_sensor[$nb]=get_plug_regul_sensor($nb,$main_error);
-   $plug_count_sensor[$nb]=count(explode("-",$plug_regul_sensor{$nb}));
+   $plug_name{$nb}  =get_plug_conf("PLUG_NAME",$nb,$main_error);
+   $plug_type{$nb}  =get_plug_conf("PLUG_TYPE",$nb,$main_error);
+   $plug_power{$nb} =get_plug_conf("PLUG_POWER",$nb,$main_error);
+   $plug_regul{$nb} =get_plug_conf("PLUG_REGUL",$nb,$main_error);
+   $plug_senso{$nb} =get_plug_conf("PLUG_SENSO",$nb,$main_error);
+   $plug_senss{$nb} =get_plug_conf("PLUG_SENSS",$nb,$main_error);
+   $plug_regul_value{$nb}   =get_plug_conf("PLUG_REGUL_VALUE",$nb,$main_error);
+   $plug_power_max{$nb}     =get_plug_conf("PLUG_POWER_MAX",$nb,$main_error);
+   $plug_tolerance{$nb}     =get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
+   $plug_second_tolerance{$nb}  =get_plug_conf("PLUG_SECOND_TOLERANCE",$nb,$main_error); 
+   $plug_compute_method{$nb}    =get_plug_conf("PLUG_COMPUTE_METHOD",$nb,$main_error);
+   $plug_regul_sensor{$nb}      =get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
+   $plug_module{$nb}            =get_plug_conf("PLUG_MODULE",$nb,$main_error);
+   if ($plug_module{$nb} == "") {$plug_num_module{$nb} = "wireless";}
+   $plug_num_module{$nb}        =get_plug_conf("PLUG_NUM_MODULE",$nb,$main_error);
+   if ($plug_num_module{$nb} == "") {$plug_num_module{$nb} = 1;}
+   $plug_module_options{$nb}    =get_plug_conf("PLUG_MODULE_OPTIONS",$nb,$main_error);
+   $plug_module_output{$nb}     =get_plug_conf("PLUG_MODULE_OUTPUT",$nb,$main_error);
+   if ($plug_module_output{$nb} == "") {$plug_module_output{$nb} = 1;}   
+   
+   $plug_sensor[$nb]    =get_plug_regul_sensor($nb,$main_error);
+   $plug_count_sensor[$nb]  =count(explode("-",$plug_regul_sensor{$nb}));
 }
 
 

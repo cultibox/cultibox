@@ -648,8 +648,34 @@ msgid "CANAL"
 msgstr "Channel"
 
 msgid "CONFIRMATION_CHANGEMENT_TYPE_PLUG"
-msgstr "A Programme semble vu pour cette prize définie. Changer le peut type of prize you impacter inattendu program de façon. That voulez-vous faire?"
+msgstr "A Programme semble vu pour cette prise définie. Changer le peut type of prize you impacter inattendu program de façon. That voulez-vous faire?"
 
+msgid "PLUGS_WIRELESS_PLUGS"
+msgstr "Prise sans fils"
+
+msgid "PLUGS_DIRECT_PILOT"
+msgstr "Pilotage direct"
+
+msgid "PLUGS_MODULE_MCP230XX"
+msgstr "Module MCP230XX"
+
+msgid "PLUGS_MODULE_DIMMER"
+msgstr "Dimmer"
+
+msgid "PLUGS_MODULE_NETWORK"
+msgstr "Pilotage réseau"
+
+msgid "PLUGS_MODULE_XMAX"
+msgstr "XMAX"
+
+msgid "PLUGS_MODULE_OUTPUT"
+msgstr "Sortie :"
+
+msgid "PLUGS_MODULE_INDEX"
+msgstr "Numéro module :"
+
+msgid "PLUGS_MODULE_IP_ADRESS"
+msgstr "Adresse IP :"
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"

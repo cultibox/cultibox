@@ -37,11 +37,30 @@ $GLOBALS['NB_MAX_SENSOR_LOG'] = '6';
 // Number of maximal sensor used to manage plugs
 $GLOBALS['NB_MAX_SENSOR_PLUG'] = '6';
 
+// Number of maximal direct ouput with Cultipi
+$GLOBALS['NB_MAX_CANAL_DIRECT'] = '8';
+
+// Number of maximal MCP230XX ouput with Cultipi
+$GLOBALS['NB_MAX_CANAL_MCP230XX'] = '8';
+
+// Number of maximal MCP230XX module with Cultipi
+$GLOBALS['NB_MAX_MODULE_MCP230XX'] = '3';
+
 // Number of maximal canal used by dimmer
 $GLOBALS['NB_MAX_CANAL_DIMMER'] = '8';
 
-// Number of maximal direct ouput with Cultipi
-$GLOBALS['NB_MAX_DIRECT_OUTPUT'] = '8';
+// Number of maximal module dimmer ouput with Cultipi
+$GLOBALS['NB_MAX_MODULE_DIMMER'] = '3';
+
+// Number of maximal network ouput with Cultipi
+$GLOBALS['NB_MAX_CANAL_NETWORK'] = '16';
+
+// Number of maximal network ouput with Cultipi
+$GLOBALS['NB_MAX_CANAL_XMAX'] = '3';
+
+// Number of maximal module dimmer ouput with Cultipi
+$GLOBALS['NB_MAX_MODULE_XMAX'] = '1';
+
 
 // List of the updating plugs frequency: 
 $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('1','5');
@@ -141,16 +160,21 @@ $GLOBALS['LIMIT_PLUG_PROGRAM']=array(
                             );
 
 //Wifi key type:
-$GLOBALS['WIFI_KEY_TYPE_LIST']=array("NONE", "WEP", "WPA AUTO");
+$GLOBALS['WIFI_KEY_TYPE_LIST'] = array("NONE", "WEP", "WPA AUTO");
 
 //Webcam resolution:
-$GLOBALS['WEBCAM_RESOLUTION']=array("320x240", "320x480", "400x300","480x360", "640x480", "800x600","960x720", "1024x768");
+$GLOBALS['WEBCAM_RESOLUTION'] = array("320x240", "320x480", "400x300","480x360", "640x480", "800x600","960x720", "1024x768");
 
 //Webcam palette:
-$GLOBALS['WEBCAM_PALETTE']=array("PNG","JPEG","MJPEG","S561","RGB32","RGB24","BGR32","BGR24","YUYV","UYVY","YUV420P","BAYER","SGBRG8","SGRBG8","RGB565","RGB555","Y16","GREY");
+$GLOBALS['WEBCAM_PALETTE'] = array("PNG","JPEG","MJPEG","S561","RGB32","RGB24","BGR32","BGR24","YUYV","UYVY","YUV420P","BAYER","SGBRG8","SGRBG8","RGB565","RGB555","Y16","GREY");
 
-$GLOBALS['MODE']="cultibox";
+// Software mode : cuptipi or cultibox:
+$GLOBALS['MODE'] = "cultibox";
 
+// For cultipi : path to the conf
+$GLOBALS['CULTIPI_CONF_PATH'] = "/etc/cultipi";
+
+$GLOBALS['CULTIPI_CONF_TEMP_PATH'] = $GLOBALS['CULTIPI_CONF_PATH'] . "/conf_tmp";
 ?>
 
 

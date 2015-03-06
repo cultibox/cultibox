@@ -650,6 +650,32 @@ msgstr "Canal"
 msgid "CONFIRMATION_CHANGEMENT_TYPE_PLUG"
 msgstr "Un programa définie Déjà semble vierten premio cette. Tipo de cambiador le de la premio peut impacter le programa de façon inattendu. Que Voulez-vous faire?"
 
+msgid "PLUGS_WIRELESS_PLUGS"
+msgstr "Prise sans fils"
+
+msgid "PLUGS_DIRECT_PILOT"
+msgstr "Pilotage direct"
+
+msgid "PLUGS_MODULE_MCP230XX"
+msgstr "Module MCP230XX"
+
+msgid "PLUGS_MODULE_DIMMER"
+msgstr "Dimmer"
+
+msgid "PLUGS_MODULE_NETWORK"
+msgstr "Pilotage réseau"
+
+msgid "PLUGS_MODULE_XMAX"
+msgstr "XMAX"
+
+msgid "PLUGS_MODULE_OUTPUT"
+msgstr "Sortie :"
+
+msgid "PLUGS_MODULE_INDEX"
+msgstr "Numéro module :"
+
+msgid "PLUGS_MODULE_IP_ADRESS"
+msgstr "Adresse IP :"
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"

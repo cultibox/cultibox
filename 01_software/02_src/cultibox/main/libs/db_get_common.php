@@ -123,11 +123,11 @@ function get_plug_conf($key,$id,&$out) {
     // Init var 
     $res = array();
 
-   $sql = "SELECT {$key} FROM plugs WHERE id = {$id};";
+    $sql = "SELECT {$key} FROM plugs WHERE id = {$id};";
    
     $db=db_priv_pdo_start();
     try {
-        $sth=$db->prepare("$sql");
+        $sth=$db->prepare($sql);
         $sth-> execute();
         $res=$sth->fetch();
     } catch(PDOException $e) {
@@ -141,7 +141,6 @@ function get_plug_conf($key,$id,&$out) {
         } else {
             $out[]=__('ERROR_SELECT_SQL');
         }
-
     }
    
     if (array_key_exists('0', $res)) {
