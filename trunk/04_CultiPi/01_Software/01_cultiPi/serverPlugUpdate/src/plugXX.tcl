@@ -14,12 +14,28 @@ proc plugXX_load {confPath} {
             
             # On initialise les constantes de chaque prise
             set ::plug($i,value) ""
+            set ::plug($i,inRegulation) "NONE"
             set ::plug($i,updateStatus) ""
             set ::plug($i,updateStatusComment) ""
             set ::plug($i,source) "plugv"
             set ::plug($i,force,value) ""
             set ::plug($i,force,idAfterProc) ""
-
+            set ::plug($i,REG,type) "N"
+            set ::plug($i,REG,sens) "+"
+            set ::plug($i,REG,precision) "0.1"
+            set ::plug($i,SEC,type) "N"
+            set ::plug($i,SEC,sens) "+"
+            set ::plug($i,SEC,precision) "0.1"
+            set ::plug($i,SEC,etat_prise) "1"
+            set ::plug($i,SEC,value) "1"
+            set ::plug($i,calcul,type) "M"
+            set ::plug($i,calcul,capteur_1) "1"
+            set ::plug($i,calcul,capteur_2) "0"
+            set ::plug($i,calcul,capteur_3) "0"
+            set ::plug($i,calcul,capteur_4) "0"
+            set ::plug($i,calcul,capteur_5) "0"
+            set ::plug($i,calcul,capteur_6) "0"
+            
             set fid [open $plugXXFilename r]
             while {[eof $fid] != 1} {
                 gets $fid OneLine
@@ -27,13 +43,21 @@ proc plugXX_load {confPath} {
                     "REG:" {
                         set ::plug($i,REG,type) [string index $OneLine 4] 
                         set ::plug($i,REG,sens) [string index $OneLine 5]
-                        set ::plug($i,REG,precision) [expr [string range $OneLine 6 8] / 10.0]
+                        # Pour le calcul, on enlève les zéro à gauche  et si c'est vide c'est que c'est 0
+                        set precision [string trimleft [string range $OneLine 6 8] "0"]
+                        if {$precision == ""} {set precision 0}
+                        set ::plug($i,REG,precision) [expr $precision / 10.0]
+                        puts "$::plug($i,REG,type) $::plug($i,REG,sens) $::plug($i,REG,precision)"
                     }
                     "SEC:" {
+                        
                         set ::plug($i,SEC,type) [string index $OneLine 4] 
                         set ::plug($i,SEC,sens) [string index $OneLine 5]
                         set ::plug($i,SEC,etat_prise) [string index $OneLine 6]
-                        set ::plug($i,SEC,value) [expr [string range $OneLine 7 9] / 10.0]
+                        # Pour le calcul, on enlève les zéro à gauche  et si c'est vide c'est que c'est 0
+                        set value [string trimleft [string range $OneLine 7 9] "0"]
+                        if {$value == ""} {set value 0}
+                        set ::plug($i,SEC,value) [expr $value / 10.0]
                     }
                     "SEN:" {
                         set type  [string index $OneLine 4] 
@@ -50,7 +74,10 @@ proc plugXX_load {confPath} {
                         set ::plug($i,calcul,capteur_6) [string index $OneLine 10]
                     }
                     "STOL" {
-                        set ::plug($i,SEC,precision) [expr [string range $OneLine 5 7] / 10.0]
+                        # Pour le calcul, on enlève les zéro à gauche  et si c'est vide c'est que c'est 0
+                        set precision [string trimleft [string range $OneLine 5 7] "0"]
+                        if {$precision == ""} {set precision 0}
+                        set ::plug($i,SEC,precision) [expr $precision / 10.0]
                     }
                     default {
                     }
