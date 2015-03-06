@@ -85,30 +85,30 @@ namespace eval ::MCP230XX {
     set register($adresse_I2C(1),GPIO_LAST) 0x00
     set register($adresse_I2C(2),GPIO_LAST) 0x00
 
+    # Initialisation réalisée
+    set register($adresse_I2C(0),init_done) 0
+    set register($adresse_I2C(1),init_done) 0
+    set register($adresse_I2C(2),init_done) 0
+    
 }
 
 # Cette proc est utilisée pour initialiser les modules
-proc ::MCP230XX::init {} {
+proc ::MCP230XX::init {moduleAdresse} {
     variable adresse_module
-    variable adresse_I2C
     variable register
-    
-    # Pour chaque module
-    for {set i 0} {$i < 3} {incr i} {
-    
-        # On définit chaque pin en sortie
-        # /usr/local/sbin/i2cset -y 1 0x20 0x00 0x00
-        set RC [catch {
-            exec /usr/local/sbin/i2cset -y 1 $adresse_I2C($i) $register(IODIR) 0x00
-        } msg]
-        if {$RC != 0} {
-            ::piLog::log [clock milliseconds] "error" "::MCP230XX::init Module $i does not respond :$msg "
-        } else {
-            ::piLog::log [clock milliseconds] "debug" "::MCP230XX::init init IODIR to 0x00 OK"
-        }
-        
-        # Les sorties sont à zéro par défaut
+
+    # On définit chaque pin en sortie
+    # /usr/local/sbin/i2cset -y 1 0x20 0x00 0x00
+    set RC [catch {
+        exec /usr/local/sbin/i2cset -y 1 $moduleAdresse $register(IODIR) 0x00
+    } msg]
+    if {$RC != 0} {
+        ::piLog::log [clock milliseconds] "error" "::MCP230XX::init Module $moduleAdresse does not respond :$msg "
+    } else {
+        ::piLog::log [clock milliseconds] "debug" "::MCP230XX::init init IODIR to 0x00 OK"
+        set register(${moduleAdresse},init_done) 1
     }
+
 
 }
 
@@ -129,6 +129,11 @@ proc ::MCP230XX::setValue {plugNumber value address} {
     if {$moduleAdresse == "NA"} {
         ::piLog::log [clock milliseconds] "error" "::MCP230XX::setValue Adress $address does not exists "
         return
+    }
+    
+    # On vérifie que l module est initialisé
+    if {$register(${moduleAdresse},init_done) == 0} {
+        ::MCP230XX::init ${moduleAdresse}
     }
 
     # On sauvegarde l'état de la prise
