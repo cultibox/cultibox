@@ -84,7 +84,7 @@ else
 fi
 EOF
 
-    cat << EOF > /etc/network/intarfecs.BASE
+    cat << EOF > /etc/network/interfaces.BASE
 # interfaces(5) file used by ifup(8) and ifdown(8)
 #IFACE LO
 auto lo
