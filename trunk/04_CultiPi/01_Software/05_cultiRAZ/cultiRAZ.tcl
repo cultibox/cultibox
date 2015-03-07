@@ -48,9 +48,9 @@ proc firstLoop {} {
                 # On fait clignoter la LED 10 fois
                 for {set i 0} {$i < 10} {incr i} {
                     exec gpio -g write 22 0
-                    after 100
+                    after 200
                     exec gpio -g write 22 1
-                    after 100
+                    after 200
                     update
                 }
                 
@@ -82,31 +82,19 @@ proc firstLoop {} {
                 set RC [catch {
                     exec /sbin/modprobe -r rt2800usb
                     after 2000 exec /sbin/modprobe rt2800usb
-                    after 7000 exec /usr/sbin/invoke-rc.d networking force-reload
-                    after 2000 exec /etc/rc.local
+                    after 5000 exec /usr/sbin/invoke-rc.d networking force-reload
                 } msg]
                 if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error during network configuration : $msg"}
 
-                # On fait clignoter la LED 5 fois
-                for {set i 0} {$i < 5} {incr i} {
+                # On fait clignoter la LED 10 fois
+                for {set i 0} {$i < 10} {incr i} {
                     exec gpio -g write 22 0
-                    after 100
+                    after 200
                     exec gpio -g write 22 1
-                    after 100
+                    after 200
                     update
                 }
 
-
-                # On fait clignoter la LED 5 fois
-                for {set i 0} {$i < 5} {incr i} {
-                    exec gpio -g write 22 0
-                    after 100
-                    exec gpio -g write 22 1
-                    after 100
-                    update
-                }
-
-                
                 # On rappel la procédure au bout de 10 secondes pour éviter un double effacage:
                 after 10000 firstLoop
             } else {
@@ -164,12 +152,12 @@ proc checkAndUpdate {} {
            
             puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Network configuration reset asked..."
            
-            # On fait clignoter la LED 10 fois
-            for {set i 0} {$i < 10} {incr i} {
+            # On fait clignoter la LED 5 fois
+            for {set i 0} {$i < 5} {incr i} {
                 exec gpio -g write 22 0
-                after 100
+                after 200
                 exec gpio -g write 22 1
-                after 100
+                after 200
                 update
             }
            
@@ -192,17 +180,16 @@ proc checkAndUpdate {} {
             set RC [catch {
                 exec /sbin/modprobe -r rt2800usb
                 after 2000 exec /sbin/modprobe rt2800usb
-                after 7000 exec /usr/sbin/invoke-rc.d networking force-reload
-                after 2000 exec /etc/rc.local
+                after 5000 exec /usr/sbin/invoke-rc.d networking force-reload
             } msg]
             if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error during network configuration : $msg"}
 
             # On fait clignoter la LED 5 fois
             for {set i 0} {$i < 5} {incr i} {
                 exec gpio -g write 22 0
-                after 100
+                after 200
                 exec gpio -g write 22 1
-                after 100
+                after 200
                 update
             }
 
