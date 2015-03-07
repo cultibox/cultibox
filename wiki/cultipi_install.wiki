@@ -613,40 +613,21 @@ SUSPEND_ACTION="stop"
 
 Puis éditer le fichier */etc/ifplugd/action.d/ifupdown* pour qu'il ressemble à cela:
 {{{
-#!/bin/bash
-set -e
+#!/bin/bash 
 
-adHoc="0"
+sudo logger -t IFPLUGD: $1 $2
 
-if [ "$1" == "wlan0" ] && [ "$2" == "up" ]; then
-    if [ "`/bin/grep cultipi_ /etc/network/interfaces`" != "" ]; then
-        adHoc="1"
-        mac="`/sbin/ifconfig wlan0|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print $2}'|/usr/bin/cut -d: -f5,6`"
-        mac="`/bin/echo ${mac} | /bin/sed  -e 's/://g'`"
-
-        if [ "$mac" != "" ]; then
-            if [ "`/bin/grep cultipi_${mac} /etc/network/interfaces`" == "" ]; then
-                /bin/sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces
-            fi
-        fi
+#For routes, we have to restart network:
+route del default
+if [ "$2" == "up" ]; then
+    if [ "`cat /sys/class/net/eth0/carrier 2>/dev/null`" == "1" ]; then
+        /sbin/ifup --force eth0
+    fi
+else
+    if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
+        /sbin/ifup --force wlan0
     fi
 fi
-
-
-/usr/sbin/invoke-rc.d networking force-reload
-
-
-if [ "$1" == "wlan0" ] && [ "$adHoc" == "1" ]; then
-    if [ "`/sbin/iptables -L -t nat|/bin/grep 10.0.0.100`" == "" ]; then
-        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
-    fi
-
-    sleep 2
-    /etc/init.d/isc-dhcp-server force-reload
-    sleep 1
-    /etc/init.d/dnsmasq force-reload
-fi
-
 }}}
 
 
