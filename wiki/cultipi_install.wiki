@@ -615,7 +615,7 @@ Puis éditer le fichier */etc/ifplugd/action.d/ifupdown* pour qu'il ressemble à
 {{{
 #!/bin/bash 
 
-sudo logger -t IFPLUGD: $1 $2
+logger -t IFPLUGD: $1 $2
 
 #For routes, we have to restart network:
 route del default
