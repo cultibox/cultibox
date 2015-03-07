@@ -38,16 +38,16 @@ elif [ "`dpkg -s cultitime 2>/dev/null|grep Version`" == "" ]; then
     apt-get install -y  --force-yes cultitime
 fi
 
-if [ "`apt-get -u upgrade --assume-no|grep culticonf`" != "" ]; then
-    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" culticonf
-elif [ "`dpkg -s culticonf 2>/dev/null|grep Version`" == "" ]; then
-    apt-get install -y  --force-yes culticonf
-fi
-
 if [ "`apt-get -u upgrade --assume-no|grep cultidoc`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultidoc
 elif [ "`dpkg -s cultidoc 2>/dev/null|grep Version`" == "" ]; then
     apt-get install -y  --force-yes cultidoc
+fi
+
+if [ "`apt-get -u upgrade --assume-no|grep culticonf`" != "" ]; then
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" culticonf
+elif [ "`dpkg -s culticonf 2>/dev/null|grep Version`" == "" ]; then
+    apt-get install -y  --force-yes culticonf
 fi
 
 
@@ -60,6 +60,6 @@ if [ -d /var/www/cultibox/tmp/export ]; then
 fi
 
 #To delete all file execepted the reboot action file:
-GLOBIGNORE=REBOOT_NEEDED
+GLOBIGNORE=REBOOT-NEEDED
 rm -Rf /tmp/*
 unset GLOBIGNORE
