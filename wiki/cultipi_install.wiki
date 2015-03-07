@@ -541,13 +541,18 @@ iface eth0 inet dhcp
 #IFACE WLAN0
 auto wlan0
 allow-hotplug wlan0
-wireless-power off
 iface wlan0 inet static
 address 10.0.0.100
 netmask 255.0.0.0
 wireless-channel 4
 wireless-essid cultipi_network
 wireless-mode ad-hoc
+post-up /etc/rc.local; /etc/init.d/isc-dhcp-server force-reload; /etc/init.d/dnsmasq force-reload
+}}}
+
+Puis sauvegarder le fichier avec la commande:
+{{{
+cp /etc/network/interfaces /etc/network/interfaces.BASE
 }}}
 
 Editer le fichier */etc/rc.local* et remplacer le fichier par les lignes suivantes:
