@@ -25,9 +25,3 @@ if [ "$CULTIRAZ_ACTIV" == "yes" ]; then
         /etc/init.d/cultiraz force-reload >/dev/null 2>&1
     fi
 fi
-
-if [ -f /tmp/REBOOT-NEEDED ]; then
-    rm -Rf /tmp/REBOOT-NEEDED
-    sleep 10
-    shutdown -r now
-fi
