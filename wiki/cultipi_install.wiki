@@ -553,32 +553,37 @@ wireless-mode ad-hoc
 Editer le fichier */etc/rc.local* et remplacer le fichier par les lignes suivantes:
 
 {{{
-#!/bin/bash -e
+#!/bin/bash 
 
+#Case of an adHoc network:
 if [ "`/bin/grep cultipi_ /etc/network/interfaces`" != "" ]; then
-    #Configuration du portail captif:
+    #Configuration of the captiv portal if it's not the case yet:
     if [ "`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100`" == "" ]; then
         /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
     fi
 
-    mac="`/sbin/ifconfig wlan0|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print $2}'|/usr/bin/cut -d: -f5,6`"
+    #Getting the mac address:
+    mac="`/sbin/ifconfig wlan0 2>/dev/null|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print $2}'|/usr/bin/cut -d: -f5,6`"
     mac="`/bin/echo ${mac} | /bin/sed  -e 's/://g'`"
 
+    #Setting right adHoc network name cultipi_XXXX with XXXX the 4 lastest values of the mac address:
     if [ "$mac" != "" ]; then
         if [ "`/bin/grep cultipi_${mac} /etc/network/interfaces`" == "" ]; then
             /bin/sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces
-            /sbin/ifup --force wlan0
         fi
     fi
-
-    sleep 7
-    /etc/init.d/isc-dhcp-server force-reload
-    sleep 1
-    /etc/init.d/dnsmasq force-reload
 else
+    #If it's not an adHoc network, deleteting captiv portal configuration:
     for i in $(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print $1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING $i; done
 fi
 
+#To accelerate boot time, eth0 is not configured at boot time (due to the time DHCP uses to respond when a wire is not plugged).
+#But we have to configure the interface if a wire is plugged:
+if [ "`cat /sys/class/net/eth0/carrier 2>/dev/null`" == "1" ]; then
+    /sbin/ifup --force eth0
+fi
+
+#Configuration of the keymap in FR:
 /usr/bin/loadkeys fr
 
 exit 0
