@@ -26,3 +26,8 @@ if [ "$CULTIRAZ_ACTIV" == "yes" ]; then
     fi
 fi
 
+if [ -f /tmp/REBOOT_NEEDED ]; then
+    rm -Rf /tmp/REBOOT_NEEDED
+    shutdown -r now
+fi
+
