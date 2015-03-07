@@ -679,7 +679,7 @@ INTERFACES="wlan0"
 
  * Configuration de dnsmasq:
 
-Editer le fichier */etc/dnsmasq.conf qui doit contenir les directives suivantes:
+Editer le fichier */etc/dnsmasq.conf* qui doit contenir les directives suivantes:
 
 {{{
 address=/#/10.0.0.100
