@@ -604,7 +604,7 @@ Ce morceau de code permettra de générer le nom du réseau adHoc de connexion a
 Éditer le fichier */etc/default/ifplugd* pour qu'il ressemble à cela:
 
 {{{
-INTERFACES="eth0 wlan0"
+INTERFACES="eth0"
 HOTPLUG_INTERFACES=""
 ARGS="-q -f -u0 -d10 -w -I"
 SUSPEND_ACTION="stop"
