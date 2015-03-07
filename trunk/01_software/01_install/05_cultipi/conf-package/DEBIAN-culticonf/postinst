@@ -69,7 +69,7 @@ EOF
     cat << EOF > /etc/ifplugd/action.d/ifupdown
 #!/bin/bash 
 
-sudo logger -t IFPLUGD: \$1 \$2
+logger -t IFPLUGD: \$1 \$2
 
 #For routes, we have to restart network:
 route del default
