@@ -6,3 +6,4 @@ Homepage: http://www.cultibox.fr
 Priority: extra
 Architecture: armhf
 Description: Check and configure the Cultipi's environment
+Depends: at
