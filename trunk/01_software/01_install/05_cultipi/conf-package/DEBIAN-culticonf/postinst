@@ -26,7 +26,6 @@ if [ -f /VERSION ]; then
     VERSION="`cat /VERSION`"
 else
     VERSION=""
-    echo "150307" > /VERSION
 fi
 
 if [ "$VERSION" != "150307" ]; then
@@ -116,6 +115,9 @@ EOF
     /bin/sed -i "s/wlan0//" /etc/default/ifplugd 
     /bin/sed -i "s/use-ipv6=yes/use-ipv6=no/" /etc/avahi/avahi-daemon.conf
 
+
+    #Upgrading image's version:
+    echo "150307" > /VERSION
 
     #We need to reboot:
     touch /tmp/REBOOT-NEEDED 
