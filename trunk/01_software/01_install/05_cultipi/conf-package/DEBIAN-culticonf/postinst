@@ -26,76 +26,98 @@ if [ -f /VERSION ]; then
     VERSION="`cat /VERSION`"
 else
     VERSION=""
-    echo "150222" > /VERSION
+    echo "150307" > /VERSION
 fi
 
-if [ "$VERSION" == "" ]; then
+if [ "$VERSION" != "150307" ]; then
     cat << EOF > /etc/rc.local
-#!/bin/bash -e
+#!/bin/bash 
 
+#Case of an adHoc network:
 if [ "\`/bin/grep cultipi_ /etc/network/interfaces\`" != "" ]; then
-    #Configuration du portail captif:
+    #Configuration of the captiv portal if it's not the case yet:
     if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
         /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
     fi
 
-    mac="\`/sbin/ifconfig wlan0|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print \$2}'|/usr/bin/cut -d: -f5,6\`"
+    #Getting the mac address:
+    mac="\`/sbin/ifconfig wlan0 2>/dev/null|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print \$2}'|/usr/bin/cut -d: -f5,6\`"
     mac="\`/bin/echo \${mac} | /bin/sed  -e 's/://g'\`"
 
+    #Setting right adHoc network name cultipi_XXXX with XXXX the 4 lastest values of the mac address:
     if [ "\$mac" != "" ]; then
         if [ "\`/bin/grep cultipi_\${mac} /etc/network/interfaces\`" == "" ]; then
             /bin/sed -i "s/cultipi_.*/cultipi_\$mac/g" /etc/network/interfaces
-            /sbin/ifup --force wlan0
         fi
     fi
-
-    sleep 7
-    /etc/init.d/isc-dhcp-server force-reload
-    sleep 1
-    /etc/init.d/dnsmasq force-reload
 else
+    #If it's not an adHoc network, deleteting captiv portal configuration:
     for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
 fi
 
+#To accelerate boot time, eth0 is not configured at boot time (due to the time DHCP uses to respond when a wire is not plugged).
+#But we have to configure the interface if a wire is plugged:
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    /sbin/ifup --force eth0
+fi
+
+#Configuration of the keymap in FR:
 /usr/bin/loadkeys fr
 
 exit 0
 EOF
 
     cat << EOF > /etc/ifplugd/action.d/ifupdown
-#!/bin/bash
-set -e
+#!/bin/bash 
 
-adHoc="0"
+sudo logger -t IFPLUGD: \$1 \$2
 
-if [ "\$1" == "wlan0" ] && [ "\$2" == "up" ]; then
-    if [ "\`/bin/grep cultipi_ /etc/network/interfaces\`" != "" ]; then
-        adHoc="1"
-        mac="\`/sbin/ifconfig wlan0|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print \$2}'|/usr/bin/cut -d: -f5,6\`"
-        mac="\`/bin/echo \${mac} | /bin/sed  -e 's/://g'\`"
-
-        if [ "\$mac" != "" ]; then
-            if [ "\`/bin/grep cultipi_\${mac} /etc/network/interfaces\`" == "" ]; then
-                /bin/sed -i "s/cultipi_.*/cultipi_\$mac/g" /etc/network/interfaces
-            fi
-        fi
+#For routes, we have to restart network:
+route del default
+if [ "\$2" == "up" ]; then
+    if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+        /sbin/ifup --force eth0
     fi
-fi
-
-
-/usr/sbin/invoke-rc.d networking force-reload
-
-
-if [ "\$1" == "wlan0" ] && [ "\$adHoc" == "1" ]; then
-    if [ "\`/sbin/iptables -L -t nat|/bin/grep 10.0.0.100\`" == "" ]; then
-        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+else
+    if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ]; then
+        /sbin/ifup --force wlan0
     fi
-
-    sleep 2
-    /etc/init.d/isc-dhcp-server force-reload
-    sleep 1
-    /etc/init.d/dnsmasq force-reload
 fi
 EOF
+
+    cat << EOF > /etc/network/intarfecs.BASE
+# interfaces(5) file used by ifup(8) and ifdown(8)
+#IFACE LO
+auto lo
+iface lo inet loopback
+
+#IFACE ETH0
+allow-hotplug eth0
+iface eth0 inet dhcp
+
+#IFACE WLAN0
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet static
+address 10.0.0.100
+netmask 255.0.0.0
+wireless-channel 4
+wireless-essid cultipi_network
+wireless-mode ad-hoc
+post-up /etc/rc.local; /etc/init.d/isc-dhcp-server force-reload; /etc/init.d/dnsmasq force-reload
+EOF
+
+    if [ "`/bin/grep cultipi_ /etc/network/interfaces`" != "" ]; then
+        echo "post-up /etc/rc.local; /etc/init.d/isc-dhcp-server force-reload; /etc/init.d/dnsmasq force-reload" >> /etc/network/interfaces
+    fi
+
+
+    /bin/sed -i "s/ wlan0//" /etc/default/ifplugd 
+    /bin/sed -i "s/wlan0//" /etc/default/ifplugd 
+    /bin/sed -i "s/use-ipv6=yes/use-ipv6=no/" /etc/avahi/avahi-daemon.conf
+
+
+    #We need to reboot:
+    touch /tmp/REBOOT-NEEDED 
 
 fi
