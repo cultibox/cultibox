@@ -106,7 +106,7 @@ wireless-mode ad-hoc
 post-up /etc/rc.local; /etc/init.d/isc-dhcp-server force-reload; /etc/init.d/dnsmasq force-reload
 EOF
 
-    if [ "`/bin/grep cultipi_ /etc/network/interfaces`" != "" ]; then
+    if [ "`/bin/grep cultipi_ /etc/network/interfaces`" != "" ] && [ "`/bin/grep post-up /etc/network/interfaces`" == "" ]; then
         echo "post-up /etc/rc.local; /etc/init.d/isc-dhcp-server force-reload; /etc/init.d/dnsmasq force-reload" >> /etc/network/interfaces
     fi
 
