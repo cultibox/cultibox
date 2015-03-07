@@ -631,7 +631,11 @@ fi
 }}}
 
 
-Le système ifplugd permet de relancer la configuration de l'interface eth0 dès le moment ou un câble est branché.
+Le système ifplugd permet de relancer la configuration de l'interface eth0 dès le moment ou un câble est branché/débranché.
+
+
+
+
 
 
  * Installation et configuration d'un serveur DHCP pour le mode adHoc e de dnsmasq:
@@ -692,6 +696,27 @@ no-dhcp-interface=wlan0
 /etc/init.d/dnsmasq force-reload
 }}}
 
+ * Configuration de avahi:
+
+Editer le fichier */etc/avahi/avahi-daemon.conf* et changer la directive:
+
+{{{
+use-ipv6=yes
+}}}
+
+en:
+
+{{{
+use-ipv6=no
+}}}
+
+Relancer ensuite *avahi* avec la commande:
+
+{{{
+/etc/init.d/avahi-daemon force-reload
+}}}
+
+ 
 = Ajout du système Cultipi =
 
 Pour finir il suffit d'installer les paquets gérant le système Cultipi:
