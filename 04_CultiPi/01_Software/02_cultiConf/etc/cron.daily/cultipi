@@ -68,3 +68,13 @@ if [ -f /tmp/REBOOT-NEEDED ]; then
 fi
 
 rm -Rf /tmp/*
+
+uptime=$(</proc/uptime)
+uptime=${uptime%%.*}
+
+if [ "$uptime" != "" ]; then
+    if [ $uptime -gt 604800 ]; then
+        shutdown -r now
+    fi
+fi
+
