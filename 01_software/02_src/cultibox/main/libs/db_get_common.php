@@ -129,7 +129,7 @@ function get_plug_conf($key,$id,&$out) {
     try {
         $sth=$db->prepare($sql);
         $sth-> execute();
-        $res=$sth->fetch();
+        $res=$sth->fetchAll();
     } catch(PDOException $e) {
         $ret=$e->getMessage();
     }
@@ -142,7 +142,7 @@ function get_plug_conf($key,$id,&$out) {
             $out[]=__('ERROR_SELECT_SQL');
         }
     }
-   
+  
     if (array_key_exists('0', $res)) {
         return $res[0];
     } else {
