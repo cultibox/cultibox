@@ -1,3 +1,10 @@
+Cultibox (2.0.44) precise; urgency=low
+    + Correction du minimum des axes Y sur les logs
+    + Correction d'ne requêtte sur les prises
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Mar 08 22:07:43 CEST 2015
+
+
 Cultibox (2.0.43) precise; urgency=low
     + Correction export pour Mac OS X
 

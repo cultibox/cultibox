@@ -535,6 +535,7 @@ $(function () {
                         echo '        }' . PHP_EOL;
                         echo '    },' . PHP_EOL;
                         echo '    unit: "' . $yaxis['unit'] . '",' . PHP_EOL;
+                        echo '    min: 0,' . PHP_EOL;
                         echo '    allowDecimals: true,' . PHP_EOL;
                         if($count % 2 == 0 ) {
                             echo '    opposite: true,' . PHP_EOL;
