@@ -476,11 +476,11 @@ $(document).ready(function(){
 
 
                                     if(button_click.toLowerCase().indexOf("jumpto") >= 0) {
-                                        get_content("programs",getUrlVars("selected_plug=1"));
+                                        get_content("programs",getUrlVars("selected_plug="+$("#submenu").val()));
                                     } else {
                                         get_content("plugs",getUrlVars("selected_plug="+$("#submenu").val()+"&submenu="+$("#submenu").val()));
                                     }
-                                }  
+                                }
                             }]
                         });
                     } else  {
