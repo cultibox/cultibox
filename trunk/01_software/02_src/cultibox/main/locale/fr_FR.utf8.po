@@ -766,7 +766,7 @@ msgid "SUMARY_ON"
 msgstr "Mise en marche de la prise"
 
 msgid "SUMARY_OFF"
-msgstr "Mise hors tension de la prise"
+msgstr "Mise à l'arrêt de la prise"
 
 msgid "SUMARY_HOUR"
 msgstr "à"
