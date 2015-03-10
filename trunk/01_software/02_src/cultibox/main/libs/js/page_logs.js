@@ -1686,8 +1686,7 @@ $(document).ready(function() {
         {
             if(chart.series[i].yAxis.series[0] && chart.series[i].yAxis.series[0].options.curveType != "program") {
                 // Sensor informations
-                textToDisplay += "<center><b><i>" ;
-                textToDisplay += "<font color='"+chart.series[i].yAxis.userOptions.labels.style.color+"'>"+ chart.series[i].name + " : </font></i></b><br />";
+                textToDisplay += "<p style='text-align:center'><b><i><font color='"+chart.series[i].yAxis.userOptions.labels.style.color+"'>"+ chart.series[i].name + " : </font></i></b></p>";
 
                 textToDisplay += " <?php echo __('SUMARY_MIN'); ?> : ";
                 if(chart.series[i].dataMin!=null) {
@@ -1697,7 +1696,7 @@ $(document).ready(function() {
                     textToDisplay +=    "<b>N/A</b>";
                 }
 
-                textToDisplay += " - <?php echo __('SUMARY_MAX'); ?> : ";
+                textToDisplay += " <br /><?php echo __('SUMARY_MAX'); ?> : ";
 
                 if(chart.series[i].dataMax!=null) {
                     MaxDate = getXValue(chart.series[i].yAxis,chart.series[i].dataMax,chart.series[i].name); 
@@ -1706,8 +1705,7 @@ $(document).ready(function() {
                     textToDisplay +=    "<b>N/A</b>";
                 }
             
-                textToDisplay += "</center>";
-                textToDisplay += "<br />";
+                textToDisplay += "<br /><br />";
             }
         }
     }
