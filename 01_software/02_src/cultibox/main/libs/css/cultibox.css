@@ -87,6 +87,10 @@ input.button_log {
   text-align: center;
 }
 
+span.active {
+    color: white;
+}
+
 .title_plug {
   color: #6E5419;
   font-size: 15px;
@@ -630,6 +634,44 @@ hr {
 	 padding:0 0 4px 25px;
 	 margin-right:2%;
      margin-left: 2%;
+     height: 35px;
+     padding: 0 10px;
+     line-height: 35px;
+}
+
+#menubar ul li { 
+    display: inline; 
+    height: 30px;
+    line-height: 30px;
+}
+
+#menubar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+}
+
+#menubar ul li a
+{
+    text-decoration: none;
+    padding: .2em 1em;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#menubar a {
+    display: inline-block;
+}
+
+#menubar ul li a:hover
+{
+    background-color: #525254;
+    background: #e3ddd1;
+    background-position: 0 -50px;
+    background-repeat: repeat-x;
+    color: #555554;
+    border-radius: 12px;
 }
 
 .mod-languages {

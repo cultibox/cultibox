@@ -1,6 +1,13 @@
+Cultibox (2.0.45) precise; urgency=low
+    + Remise en forme de l'icône de documentation et des textes de traduction
+    + Centrage du menu
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Mar 10 14:47:12 CEST 2015
+
+
 Cultibox (2.0.44) precise; urgency=low
     + Correction du minimum des axes Y sur les logs
-    + Correction d'ne requêtte sur les prises
+    + Correction d'une requêtte sur les prises
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun Mar 08 22:07:43 CEST 2015
 
