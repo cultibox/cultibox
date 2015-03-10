@@ -31,7 +31,7 @@ msgid "MENU_WIZARD"
 msgstr "Assistent"
 
 msgid "MENU_HELP"
-msgstr "Hilfe"
+msgstr "Öffnen Dokumentation"
 
 msgid "MENU_CULTIPI"
 msgstr "Cultipi"
