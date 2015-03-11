@@ -1,6 +1,7 @@
 Cultibox (2.0.45) precise; urgency=low
     + Remise en forme de l'icône de documentation et des textes de traduction
     + Centrage du menu
+    + Gestion erreur synoptique
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Mar 10 14:47:12 CEST 2015
 

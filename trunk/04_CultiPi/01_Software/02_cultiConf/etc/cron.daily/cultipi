@@ -78,3 +78,6 @@ if [ "$uptime" != "" ]; then
     fi
 fi
 
+
+/sbin/iw reg set FR
+

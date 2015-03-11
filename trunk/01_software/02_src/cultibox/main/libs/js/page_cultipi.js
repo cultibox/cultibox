@@ -99,8 +99,10 @@ $(document).ready(function(){
                     y:(parseInt($(this).position().top) / 10) * 10,
                     action:"updatePosition"
                 },
-                url: "main/modules/external/synoptic.php"
-            }).done(function (data) {
+                url: "main/modules/external/synoptic.php",
+                success: function (data) {
+                }, error: function(data) {
+                }
             });
             absolut_X_position = "";
             absolut_Y_position = "";
@@ -128,10 +130,10 @@ $(document).ready(function(){
                         y:(parseInt(absolut_Y_position) / 10) * 10,
                         action:"addElementOther"
                     },
-                    url: "main/modules/external/synoptic.php"
-                }).done(function (data) {
+                    url: "main/modules/external/synoptic.php",
+                    success: function (data) {
+
                     // Add element from database
-                    
                     if(data != "") {
 
                         var objJSON = jQuery.parseJSON(data);
@@ -174,9 +176,12 @@ $(document).ready(function(){
                                         y:(parseInt($(this).position().top) / 10) * 10,
                                         action:"updatePosition"
                                     },
-                                    url: "main/modules/external/synoptic.php"
-                                }).done(function (data) {
+                                    url: "main/modules/external/synoptic.php",
+                                    success: function (data) {
+                                    }, error: function(data) {
+                                    }
                                 });
+
                                 absolut_X_position = "";
                                 absolut_Y_position = "";
                             }
@@ -184,7 +189,8 @@ $(document).ready(function(){
                     
                     
                     }
-                    
+                    }, error: function(data) {
+                    }
                 });
                 absolut_X_position = "";
                 absolut_Y_position = "";
@@ -483,8 +489,8 @@ $(document).ready(function(){
                 id:idOfElem,
                 action:"getParam"
             },
-            url: "main/modules/external/synoptic.php"
-        }).done(function (data) {
+            url: "main/modules/external/synoptic.php",
+            success: function (data) {
             
             if(data != "") {
 
@@ -611,6 +617,8 @@ $(document).ready(function(){
                 });
                 
             }
+            }, error: function(data) {
+            }
         });
     });
     
@@ -651,8 +659,8 @@ $(document).ready(function(){
                 value:$( "#syno_configure_element_force_plug_value option:selected" ).val(),
                 time:$( "#syno_configure_element_force_plug_time option:selected" ).val()
             },
-            url: "main/modules/external/synoptic.php"
-        }).done(function (data) {
+            url: "main/modules/external/synoptic.php",
+            success: function (data) {
         
             // Change text
             if ($( "#syno_configure_element_force_plug_value option:selected" ).val() == "on") {
@@ -670,8 +678,11 @@ $(document).ready(function(){
             
             // Change opacity
             $('#syno_elemImage_' + idOfElem ).css("opacity", "1");
-            
-        })
+
+
+            }, error: function(data) {
+            }
+        });
     });
 
     function baseName(str)
@@ -703,8 +714,9 @@ $(document).ready(function(){
             data: {
                 action:"getAllSensorLiveValue"
             },
-            url: "main/modules/external/synoptic.php"
-        }).done(function (data) {
+            url: "main/modules/external/synoptic.php",
+            success: function (data) {
+
             var objJSON = jQuery.parseJSON(data);
 
             if (objJSON.error == "") {
@@ -768,10 +780,10 @@ $(document).ready(function(){
                 $('#synoptic_updateSensorHour').html(addZ(ladate.getHours())+":"+addZ(ladate.getMinutes())+":"+addZ(ladate.getSeconds()));
                 
             }
-            
             updateIsAked = 0;
-
-        })
+            }, error: function(data) {
+            }
+        });
     }
     $.timeout.push(setInterval(updateSensors, 13000));
 
@@ -797,8 +809,9 @@ $(document).ready(function(){
             data: {
                 action:"getAllPlugLiveValue"
             },
-            url: "main/modules/external/synoptic.php"
-        }).done(function (data) {
+            url: "main/modules/external/synoptic.php",
+            success: function (data) {
+
             var objJSON = jQuery.parseJSON(data);
 
             if (objJSON.error == "") {
@@ -838,7 +851,9 @@ $(document).ready(function(){
             }
             
             updateIsAked = 0;
-        })
+            }, error: function(data) {
+            }
+        });
     }
     $.timeout.push(setInterval(updatePlugs, 7000));
     
