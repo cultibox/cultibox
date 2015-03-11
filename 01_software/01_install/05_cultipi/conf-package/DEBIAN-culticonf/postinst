@@ -58,6 +58,8 @@ fi
 #But we have to configure the interface if a wire is plugged:
 if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
     /sbin/ifup --force eth0
+else
+    /sbin/ifdown --force eth0
 fi
 
 #Configuration of the keymap in FR:
@@ -79,8 +81,11 @@ if [ "\$2" == "up" ]; then
     fi
 else
     if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ]; then
+        /sbin/ifdown --force wlan0
+        sleep 1
         /sbin/ifup --force wlan0
     fi
+    /sbin/ifdown --force eth0
 fi
 EOF
 
@@ -119,12 +124,9 @@ EOF
     echo "options rt2800usb nohwcrypt=1" > /etc/modprobe.d/rt2800usb.conf
 
     #Upgrading image's version:
-    echo "150310" > /VERSION
+    echo "150311" > /VERSION
 
     #We need to reboot:
     touch /tmp/REBOOT-NEEDED 
-
-    #Create file needed to install missing packages:
-    echo "motion" > /tmp/PACKAGES-NEEDED
 
 fi

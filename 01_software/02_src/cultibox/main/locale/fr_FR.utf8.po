@@ -1882,6 +1882,9 @@ msgstr "Logs de sortie"
 msgid "ERROR_LOGS"
 msgstr "Logs d'erreur"
 
+msgid "CULTIPI_IMAGE_VERSION"
+msgstr "Version de l'image"
+
 msgid "CULTIPI_SOFT_VERSION"
 msgstr "Version des logiciels"
 
