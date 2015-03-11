@@ -519,6 +519,12 @@ Par:
 REGDOMAIN=FR
 }}}
 
+Enfin taper la commande suivante:
+
+{{{
+iw reg set FR
+}}}
+
 
  * Configuration des interfaces:
 
