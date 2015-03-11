@@ -1904,6 +1904,9 @@ msgstr "La configuración utilizada no está actualizado, haga clic aquí para a
 msgid "WAIT_UPDATED_CONF" 
 msgstr "Comprobación de la configuración"
 
+msgid "CULTIPI_IMAGE_VERSION"
+msgstr "Versión de la imagen"
+
 msgid "CULTIPI_SOFT_VERSION" 
 msgstr "Software Version"
 
