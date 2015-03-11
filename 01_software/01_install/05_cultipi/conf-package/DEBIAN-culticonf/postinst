@@ -28,7 +28,7 @@ else
     VERSION=""
 fi
 
-if [ "$VERSION" != "150307" ]; then
+if [ "$VERSION" != "150311" ]; then
     cat << EOF > /etc/rc.local
 #!/bin/bash 
 
@@ -103,6 +103,7 @@ netmask 255.0.0.0
 wireless-channel 4
 wireless-essid cultipi_network
 wireless-mode ad-hoc
+wireless-power off
 post-up /etc/rc.local; /etc/init.d/isc-dhcp-server force-reload; /etc/init.d/dnsmasq force-reload
 EOF
 
@@ -115,9 +116,10 @@ EOF
     /bin/sed -i "s/wlan0//" /etc/default/ifplugd 
     /bin/sed -i "s/use-ipv6=yes/use-ipv6=no/" /etc/avahi/avahi-daemon.conf
 
+    echo "options rt2800usb nohwcrypt=1" > /etc/modprobe.d/rt2800usb.conf
 
     #Upgrading image's version:
-    echo "150307" > /VERSION
+    echo "150310" > /VERSION
 
     #We need to reboot:
     touch /tmp/REBOOT-NEEDED 

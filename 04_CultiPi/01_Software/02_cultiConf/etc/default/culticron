@@ -25,3 +25,7 @@ if [ "$CULTIRAZ_ACTIV" == "yes" ]; then
         /etc/init.d/cultiraz force-reload >/dev/null 2>&1
     fi
 fi
+
+if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
+    /bin/ping -c 1 -I wlan0 8.8.8.8 >/dev/null
+fi
