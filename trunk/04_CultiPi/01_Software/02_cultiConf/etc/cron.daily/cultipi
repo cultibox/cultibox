@@ -62,6 +62,16 @@ if [ -d /var/www/cultibox/tmp/export ]; then
     rm -Rf /var/www/cultibox/tmp/export/*
 fi
 
+if [ -f /tmp/PACKAGES-NEEDED ]; then
+    packages="`cat /tmp/PACKAGES-NEDDED`"
+    if [ "$packages" != "" ]; then
+        apt-get update
+        apt-get install -y --force-yes $packages
+        apt-get clean
+        rm -Rf /tmp/PACKAGES-NEEDED
+    fi
+fi
+
 if [ -f /tmp/REBOOT-NEEDED ]; then
     rm -Rf /tmp/REBOOT-NEEDED
     shutdown -r now

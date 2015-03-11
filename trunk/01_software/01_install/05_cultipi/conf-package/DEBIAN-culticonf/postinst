@@ -124,4 +124,7 @@ EOF
     #We need to reboot:
     touch /tmp/REBOOT-NEEDED 
 
+    #Create file needed to install missing packages:
+    echo "motion" > /tmp/PACKAGES-NEEDED
+
 fi
