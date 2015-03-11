@@ -47,6 +47,11 @@ $wifi_address=find_config($net_config,"wlan0","address","val");
 $wifi_mask=find_config($net_config,"wlan0","netmask","val");
 $wifi_gw=find_config($net_config,"wlan0","gateway","val");
 
+if(strcmp("$wifi_address","10.0.0.100")==0) {
+    $wifi_address="";
+    $wifi_mask="255.255.255.0";
+}
+
 if(strcmp("$wifi_mask","")==0) $wifi_mask="255.255.255.0";
 if(strcmp("$wifi_gw","")==0) $wifi_gw="0.0.0.0";
 
