@@ -553,6 +553,7 @@ netmask 255.0.0.0
 wireless-channel 4
 wireless-essid cultipi_network
 wireless-mode ad-hoc
+wireless-power off
 post-up /etc/rc.local; /etc/init.d/isc-dhcp-server force-reload; /etc/init.d/dnsmasq force-reload
 }}}
 
@@ -640,8 +641,11 @@ fi
 Le système ifplugd permet de relancer la configuration de l'interface eth0 dès le moment ou un câble est branché/débranché.
 
 
+Pour finir configurer le module Wifi avec la commande:
 
-
+{{{
+echo "options rt2800usb nohwcrypt=1" > /etc/modprobe.d/rt2800usb.conf
+}}}
 
 
  * Installation et configuration d'un serveur DHCP pour le mode adHoc e de dnsmasq:
