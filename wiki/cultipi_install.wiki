@@ -593,6 +593,8 @@ fi
 #But we have to configure the interface if a wire is plugged:
 if [ "`cat /sys/class/net/eth0/carrier 2>/dev/null`" == "1" ]; then
     /sbin/ifup --force eth0
+else
+    /sbin/ifdown --force eth0
 fi
 
 #Configuration of the keymap in FR:
