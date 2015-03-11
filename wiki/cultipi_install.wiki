@@ -634,8 +634,11 @@ if [ "$2" == "up" ]; then
     fi
 else
     if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
+        /sbin/ifdown --force wlan0
+        sleep 1
         /sbin/ifup --force wlan0
     fi
+    /sbin/ifdown --force eth0
 fi
 }}}
 
