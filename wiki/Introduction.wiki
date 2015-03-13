@@ -35,6 +35,7 @@ Cette documentation est en constante amélioration. Si vous avez des questions p
     * [install_sensor_od Sonde d'Oxygène Dissous (OD)]
     * [install_sensor_orp Sonde de Potentiel d’oxydoréduction (ORP)]
     * [cultipi Module WiFi]
+      * [cultipi_adhoc_win_xp Connexion en Ad'Hoc avec Windows XP]
   * [interface_logiciel Logiciel Cultibox]
     * [gui_soft_welcome Accueil]
     * [gui_soft_conf Configuration]

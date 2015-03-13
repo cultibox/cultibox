@@ -1,0 +1,29 @@
+#summary Connexion Ad'Hoc avec Windows XP
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+
+= Connexion avec Windows XP =
+
+Cliquer sur "Démarrer" puis "Paramètres" puis "Connexions réseau" :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_windowsXP_connexion_1.PNG
+
+Une fenêtre s'affiche. Cliquer la connexion sans fils puis dans la partie gauche de la fenêtre sur "Afficher les réseau sans fils disponible" :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_windowsXP_connexion_2.PNG
+
+Sélectionner le réseau qui s'appel "Cultipi_XXXX", les quatre dernière lettre changent en fonction du module. Puis cliquer sur connecter :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_windowsXP_connexion_3.PNG
+
+Cliquer sur "Je confirme la demande de connexion" :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_windowsXP_connexion_4.PNG
+
+Vous devez maintenant être connecté :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_windowsXP_connexion_5.PNG
+
+Passer directement à l'étape "Configurer le réseau WiFi"

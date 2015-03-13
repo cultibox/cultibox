@@ -9,10 +9,21 @@ Cette section de l'aide décrit le fonctionnement du  module WiFi.
 
 Ce module permet de connecter à la Cultibox et ses accessoires en WiFi ou RJ45.
 
-= Spécifications =
+== Contenu du pack ==
+
+ * Un module WiFi
+ * Un câble RJ12
+ * Un adaptateur secteur
+ * Un dongle WiFi 
+ 
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_pack_contents.JPG
+
+== Spécifications ==
+
+(en cours de rédaction)
 
  * Temps de démarrage : < 1 minute (actuel 40s)
- * Alimentation électrique 5V 2A (consommation actuelle, Wifi + Webcam + Cultibox + 1 capteur : 460mA , ISSUE 1044)
+ * Alimentation électrique 5V 2A (consommation actuelle, WiFi + Webcam + Cultibox + 1 capteur : 460mA , ISSUE 1044)
 
 = Installation =
 
@@ -24,68 +35,68 @@ L'installation se déroule en plusieurs étapes :
  * Se connecter et paramétrer le réseau du module WiFi
  * Transférer sa configuration
 
-Très important : le module Wifi embarque sa propre version du logiciel. Durant la migration, vous allez vous retrouver avec deux logiciels : un sur votre ordinateur et un sur le module Wifi.
+Très important : le module WiFi embarque sa propre version du logiciel. Durant la migration, vous allez vous retrouver avec deux logiciels : un sur votre ordinateur et un sur le module WiFi.
 Une fois la migration terminée, ne vous connectez plus sur la version installée sur votre ordinateur. Utilisez toujours l'adresse suivante : http://cultipi.local
 
 
 == Préparation à la migration ==
 
- - Télécharger et installer la dernière version du logiciel Cultibox :
-
- * Pour Windows XP : [http://www.cultibox.fr/download/software/beta/cultibox-windows-xp_2.0.34.exe lien]
- * Pour les autres Windows : [http://www.cultibox.fr/download/software/beta/cultibox-windows_2.0.34.exe lien]
- * Pour Mac : lien
- * Pour Linux : lien
-
+ * Télécharger et installer la dernière version du logiciel Cultibox : [http://www.cultibox.fr/telechargement.html lien]
  * Brancher la carte SD de votre Cultibox sur votre ordinateur
- * Copier à la racine de la carte SD le fichier firm.exe. [https://cultibox.googlecode.com/svn/trunk/01_software/01_install/01_src/firm.exe Lien]
- * Rebrancher la carte SD sur votre Cultibox. Le nouveau firmware s'installe. Une fois le nouveau firmware installé, "mode wifi" apparait sur l'écran.
+ * Copier à la racine de la carte SD le fichier firm.exe présent en téléchargement avec le lien suivant : [http://www.cultibox.fr/download/software/firm.hex Lien]
+ * Rebrancher la carte SD sur votre Cultibox. Le nouveau firmware s'installe. Une fois le nouveau firmware installé, "mode WiFi" apparaît sur l'écran.
  * Débrancher l'alimentation électrique de la Cultibox. C'est le module WiFi qui va s'occuper de l'alimenter.
 
 == Installation ==
 
- * Brancher sur le module Wifi la clé wifi fournie (si vous désirez utiliser uniquement le RJ45, ne brancher pas la clé et contactez nous)
- * Brancher l'alimentation du module Wifi (veuillez faire bien attention à ce que la Cultibox ne soit plus branchée à son alimentation).
+ * Brancher sur le module WiFi la clé WiFi fournie
+ 
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_plug_WiFi.JPG
+
+ * Brancher l'alimentation du module WiFi (veuillez faire bien attention à ce que la Cultibox ne soit plus branchée à son alimentation).
+ 
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_plug_power.JPG
+ 
  * Au bout de 3 minutes (grand maximum, c'est plutôt de l'ordre de 50 secondes) la Cultibox doit démarrer et une LED orange doit clignoter sur le dessus du module WiFi
 
-Attention : ne pas brancher la CUltibox au module Wifi tant que la configuration n'a pas été transférée (cf Transférer sa configuration)
+Attention : ne pas brancher la Cultibox au module WiFi tant que la configuration n'a pas été transférée (cf Transférer sa configuration)
 
 == Connexion et paramétrage du module WiFi ==
 
 === Fonctionnement général ===
 
- * Avec votre ordinateur, scannez la liste des réseau Wifi disponible
+ * Avec votre ordinateur, scannez la liste des réseau WiFi disponible
  * Un réseau "Ad'Hoc" doit apparaître avec comme nom "Cultipi_XX" avec XX qui varie en fonction de votre module.
  * Connecter votre ordinateur sur ce réseau
  * Ouvrez un navigateur web. Dans la barre d'adresse entrez l'adresse suivante : http://10.0.0.100/cultibox
  * L'interface qui s'ouvre est celle présente dans le module WiFi. Si vous êtes sous Windows, télécharger puis installer le programme appelé "Bonjour". Il y a un bouton en haut pour le télécharger.
- * Vous pouvez maintenant configurer la connexion de votre module Wifi. Pour ce faire : scannez la liste des réseau et sélectionnez le réseau sur lequel vous souhaitez vous connecter. Ensuite entrer le mot de passe du réseau (deux fois) puis cliquer sur connecter.
+ * Vous pouvez maintenant configurer la connexion de votre module WiFi. Pour ce faire : scannez la liste des réseau et sélectionnez le réseau sur lequel vous souhaitez vous connecter. Ensuite entrer le mot de passe du réseau (deux fois) puis cliquer sur connecter.
  * L'interface se fige le temps de la mise en place de la connexion
  * Lorsque tout est configuré, la clé WiFi doit devenir bleu
  * Reconnecter votre ordinateur sur votre réseau
- * Le module Wifi est maintenant sur votre réseau
+ * Le module WiFi est maintenant sur votre réseau
 
 === Connexion avec Windows XP ===
 
 Cliquer sur "Démarrer" puis "Paramètres" puis "Connexions réseau" :
 
-http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_windowsXP_connexion_1.PNG
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_windowsXP_connexion_1.PNG
 
 Une fenêtre s'affiche. Cliquer la connexion sans fils puis dans la partie gauche de la fenêtre sur "Afficher les réseau sans fils disponible" :
 
-http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_windowsXP_connexion_2.PNG
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_windowsXP_connexion_2.PNG
 
 Sélectionner le réseau qui s'appel "Cultipi_XXXX", les quatre dernière lettre changent en fonction du module. Puis cliquer sur connecter :
 
-http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_windowsXP_connexion_3.PNG
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_windowsXP_connexion_3.PNG
 
 Cliquer sur "Je confirme la demande de connexion" :
 
-http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_windowsXP_connexion_4.PNG
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_windowsXP_connexion_4.PNG
 
 Vous devez maintenant être connecté :
 
-http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_windowsXP_connexion_5.PNG
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_windowsXP_connexion_5.PNG
 
 Passer directement à l'étape "Configurer le réseau WiFi"
 
@@ -101,15 +112,15 @@ Ouvrir un navigateur web. Une fenêtre d'authentification s'ouvre. Si ce n'est p
  * Utilisateur : cultipi
  * Mot de passe : cultipi
 
-http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_common_1.PNG
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_common_1.PNG
 
 Une fenêtre de configuration du réseau s'affiche. Cliquer sur le bouton "Réseaux disponible" :
 
-http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_common_2.PNG
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_common_2.PNG
 
 Une fenêtre s'affiche, sélectionnez votre réseau WiFi. S'il n'apparaît pas cliquer sur "Re-scanner les réseaux" :
 
-http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_common_3.PNG
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_common_3.PNG
 
 Entrer le mot de passe du réseau puis cliquer sur "Enregistrer la configuration"
 
@@ -119,24 +130,30 @@ Vous devez maintenant vous reconnecter sur votre propre réseau.
 
 === Transférer sa configuration ===
 
-Le module Wifi embarque tout le logiciel. Il va donc falloir transférer votre configuration sur le module Wifi.
+Le module WiFi embarque tout le logiciel. Il va donc falloir transférer votre configuration sur le module WiFi.
 
  * Connectez vous sur le logiciel installé sur votre ordinateur : http://localhost:6891/cultibox/index.php?menu=configuration
 
  * Exportez la configuration de votre ordinateur : 
 
-http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_configuration_1.PNG
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_configuration_1.PNG
 
- * Connectez vous sur le module wifi : http://cultipi.local , puis importez la configuration :
+ * Connectez vous sur le module WiFi : http://cultipi.local , puis importez la configuration :
 
-http://cultibox.googlecode.com/svn/wiki/img/cultipi_wifi_configuration_2.PNG
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_WiFi_configuration_2.PNG
 
 Votre module est maintenant prêt à être utilisé. 
 
- * Débrancher l'alimentation du mofule wifi, puis brancher la Cultibox au module Wifi avec le câble fourni.
+ * Débrancher l'alimentation du module WiFi, puis brancher la Cultibox au module WiFi avec le câble fourni :
+ 
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_plug_rj12.JPG
 
- * Rebrancher l'alimentation du module WiFi (faire bien attention a ce que la Cultibox n'ai pas d'alimentation branché, sinon vous risquez de détruire votre module Wifi).
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_plug_rj12_cultibox.JPG
 
+ * Rebrancher l'alimentation du module WiFi (faire bien attention a ce que la Cultibox n'ai pas d'alimentation branché, sinon vous risquez de détruire votre module WiFi).
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_plug_power.JPG
+ 
 = Utilisation =
 
 == Connexion ==
@@ -147,7 +164,7 @@ Le nom d'utilisateur est cultipi et le mot de passe par défaut est cultipi.
 == Réinitialiser la configuration réseau ==
 
 Pour réinitialiser complètement la configuration réseau :
-  * Le module WIFi doit être alimenté depuis plus de 5 minutes
+  * Le module WiFi doit être alimenté depuis plus de 5 minutes
   * La LED sur le dessus doit changer d'état toutes les deux secondes
   * Appuyer pendant 5 secondes sur le bouton du dessus
   * La LED clignote alors rapidement 10 fois

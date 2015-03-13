@@ -1,8 +1,9 @@
-#summary One-sentence summary of this page.
+#summary Création de l'image disque pour le Module Wifi
+
 
 = Introduction =
 
-La procédure suivante permet d'installer manuellement un système cultipi sur un Raspbery Pi fraîchement acquis.
+La procédure suivante permet d'installer manuellement un système Cultipi sur un Raspbery Pi fraîchement acquis.
 
 
 = Installation du système de base =
