@@ -1,3 +1,9 @@
+Cultibox (2.0.46) precise; urgency=low
+    + Suppréssion des statistiques pour le mode Cultipi
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat 14 18:34:14 CEST 2015
+
+
 Cultibox (2.0.45) precise; urgency=low
     + Remise en forme de l'icône de documentation et des textes de traduction
     + Centrage du menu
