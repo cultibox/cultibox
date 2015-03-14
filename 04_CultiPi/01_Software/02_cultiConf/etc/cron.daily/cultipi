@@ -8,9 +8,9 @@ sleep $[ ( $RANDOM % 300 )  + 1 ]s
 
 apt-get update -o Dir::Etc::sourcelist="sources.list.d/cultibox.list"  -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
 
-if [ -f /etc/apt/sources.list.d/cultibox-dev.list ]; then
-    apt-get update -o Dir::Etc::sourcelist="sources.list.d/cultibox-dev.list"  -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
-fi
+for file in "`ls /etc/apt/sources.list.d/cultibox-*.list 2>/dev/null`"; do
+     apt-get update -o Dir::Etc::sourcelist="$file" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
+done
 
 if [ "`apt-get -u upgrade --assume-no|grep cultipi`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultipi
