@@ -33,6 +33,7 @@
 
 <div id="div_user_interface" style="display:none">
     <table class="conf-table">
+        <?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { ?>
        <tr>
              <td class="conf-marge"></td>
              <td class="conf-marge-td"><?php echo __('CHECK_STATISTICS'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SEND_INFOS'); ?>" /></td>
@@ -42,6 +43,7 @@
              </select></td>
             <td></td>
        </tr>
+       <?php } ?>
         <tr>
             <td class="conf-marge"></td>
             <td><?php echo __('ADVANCED_REGUL_OPTIONS'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SECOND_REGUL_ENABLE'); ?><?php echo __('TOOLTIP_ADVANCED_REGUL_OPTIONS'); ?>" /></td>
