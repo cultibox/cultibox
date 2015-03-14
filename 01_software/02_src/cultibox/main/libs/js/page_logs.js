@@ -1685,6 +1685,11 @@ $(document).ready(function() {
         if (typeof chart.series[i] != "undefined")
         {
             if(chart.series[i].yAxis.series[0] && chart.series[i].yAxis.series[0].options.curveType != "program") {
+                for (j = 0; j < chart.series[0].yData.length; j++) {
+                    total += chart.series[0].yData[j];
+                } 
+                seriesAvg = (total / chart.series[0].yData.length).toFixed(4); // fix decimal to 4    places
+
                 // Sensor informations
                 textToDisplay += "<p style='text-align:center'><b><i><font color='"+chart.series[i].yAxis.userOptions.labels.style.color+"'>"+ chart.series[i].name + " : </font></i></b></p>";
 
@@ -1705,7 +1710,7 @@ $(document).ready(function() {
                     textToDisplay +=    "<b>N/A</b>";
                 }
             
-                textToDisplay += "<br /><br />";
+                textToDisplay += "<br /><br />"+seriesAvg;
             }
         }
     }
