@@ -522,6 +522,9 @@ msgstr "program"
 msgid "SUMARY_MAX"
 msgstr "Max"
 
+msgid "AVERAGE"
+msgstr "Average"
+
 msgid "SUMARY_MIN"
 msgstr "Min"
 
@@ -628,9 +631,6 @@ msgstr "Tolerance of secondary control"
 
 msgid "COMPUTE_REGUL_METHOD"
 msgstr "Method of calculation of the control value"
-
-msgid "AVERAGE"
-msgstr "Average"
 
 msgid "MINIMUM"
 msgstr "Minimum"

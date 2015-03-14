@@ -1685,10 +1685,11 @@ $(document).ready(function() {
         if (typeof chart.series[i] != "undefined")
         {
             if(chart.series[i].yAxis.series[0] && chart.series[i].yAxis.series[0].options.curveType != "program") {
-                for (j = 0; j < chart.series[0].yData.length; j++) {
-                    total += chart.series[0].yData[j];
+                var total=0;
+                for (j = 0; j < chart.series[i].yData.length; j++) {
+                    total += chart.series[i].yData[j];
                 } 
-                seriesAvg = (total / chart.series[0].yData.length).toFixed(4); // fix decimal to 4    places
+                seriesAvg = (total / chart.series[i].yData.length).toFixed(2); // fix decimal to 4    places
 
                 // Sensor informations
                 textToDisplay += "<p style='text-align:center'><b><i><font color='"+chart.series[i].yAxis.userOptions.labels.style.color+"'>"+ chart.series[i].name + " : </font></i></b></p>";
@@ -1709,8 +1710,8 @@ $(document).ready(function() {
                 } else {
                     textToDisplay +=    "<b>N/A</b>";
                 }
-            
-                textToDisplay += "<br /><br />"+seriesAvg;
+           
+                textToDisplay += "<br /><?php echo __('AVERAGE'); ?>: <b>"+seriesAvg+" "+chart.series[i].yAxis.userOptions.unit+"</b><br /><br />";
             }
         }
     }
