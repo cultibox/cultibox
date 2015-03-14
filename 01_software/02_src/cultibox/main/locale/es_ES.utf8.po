@@ -519,6 +519,9 @@ msgstr "Potencia"
 msgid "PROGRAM_LEGEND"
 msgstr "Programa"
 
+msgid "AVERAGE"
+msgstr "Promedio"
+
 msgid "SUMARY_MAX"
 msgstr "Max"
 
@@ -628,9 +631,6 @@ msgstr "Tolerancia de la regulación segundaria"
 
 msgid "COMPUTE_REGUL_METHOD"
 msgstr "Método de calculo del valor de regulación"
-
-msgid "AVERAGE"
-msgstr "Media"
 
 msgid "MINIMUM"
 msgstr "Mínimo"
