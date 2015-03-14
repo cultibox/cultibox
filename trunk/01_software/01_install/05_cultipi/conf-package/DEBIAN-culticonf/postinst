@@ -28,7 +28,7 @@ else
     VERSION=""
 fi
 
-if [ "$VERSION" != "150311" ]; then
+if [ "$VERSION" != "150314" ]; then
     cat << EOF > /etc/rc.local
 #!/bin/bash 
 
@@ -37,17 +37,6 @@ if [ "\`/bin/grep cultipi_ /etc/network/interfaces\`" != "" ]; then
     #Configuration of the captiv portal if it's not the case yet:
     if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
         /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
-    fi
-
-    #Getting the mac address:
-    mac="\`/sbin/ifconfig wlan0 2>/dev/null|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print \$2}'|/usr/bin/cut -d: -f5,6\`"
-    mac="\`/bin/echo \${mac} | /bin/sed  -e 's/://g'\`"
-
-    #Setting right adHoc network name cultipi_XXXX with XXXX the 4 lastest values of the mac address:
-    if [ "\$mac" != "" ]; then
-        if [ "\`/bin/grep cultipi_\${mac} /etc/network/interfaces\`" == "" ]; then
-            /bin/sed -i "s/cultipi_.*/cultipi_\$mac/g" /etc/network/interfaces
-        fi
     fi
 else
     #If it's not an adHoc network, deleteting captiv portal configuration:
@@ -124,7 +113,7 @@ EOF
     echo "options rt2800usb nohwcrypt=1" > /etc/modprobe.d/rt2800usb.conf
 
     #Upgrading image's version:
-    echo "150311" > /VERSION
+    echo "150314" > /VERSION
 
     #We need to reboot:
     touch /tmp/REBOOT-NEEDED 
