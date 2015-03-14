@@ -574,17 +574,6 @@ if [ "`/bin/grep cultipi_ /etc/network/interfaces`" != "" ]; then
     if [ "`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100`" == "" ]; then
         /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
     fi
-
-    #Getting the mac address:
-    mac="`/sbin/ifconfig wlan0 2>/dev/null|/bin/grep HWa|/usr/bin/awk -F 'HWaddr ' '{print $2}'|/usr/bin/cut -d: -f5,6`"
-    mac="`/bin/echo ${mac} | /bin/sed  -e 's/://g'`"
-
-    #Setting right adHoc network name cultipi_XXXX with XXXX the 4 lastest values of the mac address:
-    if [ "$mac" != "" ]; then
-        if [ "`/bin/grep cultipi_${mac} /etc/network/interfaces`" == "" ]; then
-            /bin/sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces
-        fi
-    fi
 else
     #If it's not an adHoc network, deleteting captiv portal configuration:
     for i in $(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print $1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING $i; done
