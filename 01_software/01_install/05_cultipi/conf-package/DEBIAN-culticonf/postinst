@@ -112,6 +112,11 @@ EOF
 
     echo "options rt2800usb nohwcrypt=1" > /etc/modprobe.d/rt2800usb.conf
 
+    echo "deb http://www.greenbox-botanic.com/cultibox/repository/armhf/ binary/" > /etc/apt/sources.list.d/cultibox.list
+    if [ -f /etc/apt/sources.list.d/cultibox-dev.list ]; then
+        echo "deb http://www.greenbox-botanic.com/cultibox/repository-dev/armhf/ binary/" > /etc/apt/sources.list.d/cultibox-dev.list
+    fi
+
     #Upgrading image's version:
     echo "150314" > /VERSION
 
