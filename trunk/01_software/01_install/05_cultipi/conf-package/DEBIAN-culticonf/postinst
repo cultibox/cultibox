@@ -28,7 +28,7 @@ else
     VERSION=""
 fi
 
-if [ "$VERSION" != "150314" ]; then
+if [ "$VERSION" != "150315" ]; then
     cat << EOF > /etc/rc.local
 #!/bin/bash 
 
@@ -118,9 +118,8 @@ EOF
     fi
 
     #Upgrading image's version:
-    echo "150314" > /VERSION
+    echo "150315" > /VERSION
 
     #We need to reboot:
     touch /tmp/REBOOT-NEEDED 
-
 fi
