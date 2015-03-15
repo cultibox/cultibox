@@ -20,14 +20,13 @@ if(is_file("/tmp/interfaces")) {
         foreach($return as $entry) {
             exec("sudo /sbin/iptables -t nat --delete PREROUTING  $entry",$output,$err);
         }
-        sleep(2);
-        exec("sudo /sbin/ifconfig wlan0 down",$output,$err);
-        exec("sudo /sbin/iwconfig wlan0 mode Managed",$output,$err);
-        exec("sudo /sbin/ifconfig wlan0 up",$output,$err);
-        sleep(2); 
         if(strcmp("$type","password_wep")==0) {
             exec("sudo /sbin/shutdown -r now",$output,$err);
         } else {
+            exec("sudo /sbin/modprobe -r rt2800usb",$output,$err);
+            exec("sleep 2",$output,$err);
+            exec("sudo /sbin/modprobe rt2800usb",$output,$err);
+            exec("sleep 5",$output,$err);
             exec("sudo /usr/sbin/invoke-rc.d networking force-reload",$output,$err);
         }
         exec("sudo /bin/mv /var/cache/lighttpd/compress/cultibox /tmp/",$output,$err);
