@@ -8,13 +8,17 @@ $main_error=array();
 $main_info=array();
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
-if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { 
+if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) {
     if((!isset($sd_card))||(empty($sd_card))) {
         $sd_card=get_sd_card();
     }
 } else {
     $sd_card = $GLOBALS['CULTIPI_CONF_TEMP_PATH'];
+    if((!is_file($sd_card."/cnf/plg/pluga"))||(!is_file($sd_card."/cnf/prg/plugv"))) {
+            check_and_update_sd_card($sd_card,$info,$error,false);
+    }
 }
+
 
 // By default the expanded menu is the user interface menu
 if((!isset($submenu))||(empty($submenu))) {
