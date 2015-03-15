@@ -82,10 +82,12 @@ proc firstLoop {} {
                 set RC [catch {
                     exec /sbin/modprobe -r rt2800usb
                     after 2000 exec /sbin/modprobe rt2800usb
-                    exec rm /var/lib/dhcp/dhclient.*.leases
-                    after 5000 exec /usr/sbin/invoke-rc.d networking force-reload
                 } msg]
                 if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error during network configuration : $msg"}
+
+                set RC [catch {
+                    after 5000 exec /usr/sbin/invoke-rc.d networking force-reload
+                } msg]
 
                 # On fait clignoter la LED 10 fois
                 for {set i 0} {$i < 10} {incr i} {
@@ -181,10 +183,14 @@ proc checkAndUpdate {} {
             set RC [catch {
                 exec /sbin/modprobe -r rt2800usb
                 after 2000 exec /sbin/modprobe rt2800usb
-                exec rm /var/lib/dhcp/dhclient.*.leases
-                after 5000 exec /usr/sbin/invoke-rc.d networking force-reload
             } msg]
             if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error during network configuration : $msg"}
+
+            
+            set RC [catch {
+                after 5000 exec /usr/sbin/invoke-rc.d networking force-reload
+            } msg]
+
 
             # On fait clignoter la LED 5 fois
             for {set i 0} {$i < 5} {incr i} {
