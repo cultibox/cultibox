@@ -23,6 +23,18 @@ proc ::wireless::outFromBootloader {} {
     # -> Si ça marche , on essaye de lire la version
     # -> Si ça marche pas, on ré-écrit le registre bootloadStateAdress
     
+    # Savoir s'il est en état bootload
+    # /usr/local/sbin/i2cset -y 1 0x55 0x62
+    # /usr/local/sbin/i2cget -y 1 0x55
+    
+    # Lire l'adresse d'une prise (prise 1)
+    # /usr/local/sbin/i2cset -y 1 0x55 0x20
+    # /usr/local/sbin/i2cget -y 1 0x55
+    
+    # Lire l'état d'une prise (prise 1)
+    # /usr/local/sbin/i2cset -y 1 0x55 0x21
+    # /usr/local/sbin/i2cget -y 1 0x55
+    
     # On essaye d'écrire le registre bootloadStateAdress
     set RC [catch {
         exec /usr/local/sbin/i2cset -y 1 $moduleAdress $bootloadStateAdress

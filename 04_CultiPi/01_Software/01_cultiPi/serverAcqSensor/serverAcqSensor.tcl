@@ -198,9 +198,9 @@ proc readSensors {} {
                         ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 1 : $computedValue (raw $valueHP $valueLP)"
                         
                         # On sauvegarde dans le repère global
-                        set ::sensor($index,value,1) $computedValue
-                        set ::sensor($index,value) $computedValue
-                        set ::sensor($index,type) $sensorType
+                        set ::sensor($index,value,1)    $computedValue
+                        set ::sensor($index,value)      $computedValue
+                        set ::sensor($index,type)       $sensorType
                         set ::sensor($index,value,time) [clock milliseconds]
                     }
                     
