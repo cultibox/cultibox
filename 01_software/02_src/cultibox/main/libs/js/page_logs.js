@@ -1689,7 +1689,7 @@ $(document).ready(function() {
                 for (j = 0; j < chart.series[i].yData.length; j++) {
                     total += chart.series[i].yData[j];
                 } 
-                seriesAvg = (total / chart.series[i].yData.length).toFixed(2); // fix decimal to 4    places
+                seriesAvg = (total / chart.series[i].yData.length).toFixed(2); // fix decimal to 2 places
 
                 // Sensor informations
                 textToDisplay += "<p style='text-align:center'><b><i><font color='"+chart.series[i].yAxis.userOptions.labels.style.color+"'>"+ chart.series[i].name + " : </font></i></b></p>";

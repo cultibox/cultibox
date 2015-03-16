@@ -463,7 +463,7 @@ msgid "DELETE_PROGRESS"
 msgstr "Progression de la suppression"
 
 msgid "SUMARY_RESUME_MINMAX"
-msgstr "Résumé des valeurs minimales et maximales"
+msgstr "Résumé des valeurs minimales, maximales et moyenne"
 
 msgid "TEMP_HUMI_SENSOR"
 msgstr "Temp & Hygro"
