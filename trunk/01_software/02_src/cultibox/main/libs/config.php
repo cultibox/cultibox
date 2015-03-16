@@ -171,7 +171,7 @@ $GLOBALS['WEBCAM_PALETTE'] = array("PNG","JPEG","MJPEG","S561","RGB32","RGB24","
 // Software mode : cuptipi or cultibox:
 $GLOBALS['MODE'] = "cultibox";
 
-// For cultipi : path to the conf
+// For cultipi : path to the conf (for windows : C:/cultibox/xampp/htdocs/cultibox)
 $GLOBALS['CULTIPI_CONF_PATH'] = "/etc/cultipi";
 
 $GLOBALS['CULTIPI_CONF_TEMP_PATH'] = $GLOBALS['CULTIPI_CONF_PATH'] . "/conf_tmp";

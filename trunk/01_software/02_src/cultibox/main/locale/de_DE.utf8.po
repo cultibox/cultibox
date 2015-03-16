@@ -175,6 +175,12 @@ msgstr "Schwellwert für die Alarmauslösung"
 msgid "CONFIGURE_ENABLE_LED"
 msgstr "Aktivieren Sie die Hintergrundbeleuchtung"
 
+msgid "CONFIGURE_SELECT_SENSORS"
+msgstr "Type du capteur"
+
+msgid "CONFIGURE_SELECT_NB_SENSORS"
+msgstr "Nombre de capteur"
+
 msgid "CHECK_STATISTICS"
 msgstr "Senden von Informationen, um die Entwicklung"
 
