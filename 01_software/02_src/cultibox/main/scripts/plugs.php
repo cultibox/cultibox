@@ -8,6 +8,17 @@ $start_load = getmicrotime();
 $main_error=array();
 $main_info=array();
 
+
+// Load config cultipi 
+if(is_file("main/libs/config_cultipi.php")) {
+   require_once 'main/libs/config_cultipi.php';
+} else if(is_file("../libs/config_cultipi.php")) {
+   require_once '../libs/config_cultipi.php';
+} else {
+   require_once '../../libs/config_cultipi.php';
+}
+
+
 // ================= VARIABLES ================= //
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $version=get_configuration("VERSION",$main_error);

@@ -175,6 +175,12 @@ msgstr "Valore soglia per l'attivazione dell'allarme"
 msgid "CONFIGURE_ENABLE_LED"
 msgstr "Attivare l'illuminazione dello schermo"
 
+msgid "CONFIGURE_SELECT_SENSORS"
+msgstr "Type du capteur"
+
+msgid "CONFIGURE_SELECT_NB_SENSORS"
+msgstr "Nombre de capteur"
+
 msgid "CHECK_STATISTICS"
 msgstr "L'invio di informazioni per aiutare a sviluppare"
 

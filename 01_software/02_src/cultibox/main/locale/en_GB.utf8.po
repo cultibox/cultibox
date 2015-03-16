@@ -175,6 +175,12 @@ msgstr "Threshold value for triggering the alarm"
 msgid "CONFIGURE_ENABLE_LED"
 msgstr "Enable the screen backlight"
 
+msgid "CONFIGURE_SELECT_SENSORS"
+msgstr "Type du capteur"
+
+msgid "CONFIGURE_SELECT_NB_SENSORS"
+msgstr "Nombre de capteur"
+
 msgid "CHECK_STATISTICS"
 msgstr "Sending information to help develop"
 

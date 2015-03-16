@@ -175,6 +175,12 @@ msgstr "Valeur du seuil de déclenchement de l'alarme"
 msgid "CONFIGURE_ENABLE_LED"
 msgstr "Activer le rétro-éclairage de l'écran"
 
+msgid "CONFIGURE_SELECT_SENSORS"
+msgstr "Type du capteur"
+
+msgid "CONFIGURE_SELECT_NB_SENSORS"
+msgstr "Nombre de capteur"
+
 msgid "CHECK_STATISTICS"
 msgstr "Envoi d'informations pour aider le développement"
 

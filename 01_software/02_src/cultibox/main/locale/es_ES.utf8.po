@@ -175,6 +175,12 @@ msgstr "Valor umbral de activación de alarma"
 msgid "CONFIGURE_ENABLE_LED"
 msgstr "Activar la iluminación de la pantalla"
 
+msgid "CONFIGURE_SELECT_SENSORS"
+msgstr "Type du capteur"
+
+msgid "CONFIGURE_SELECT_NB_SENSORS"
+msgstr "Nombre de capteur"
+
 msgid "CHECK_STATISTICS"
 msgstr "Enviar informaciones para ayudar el desarrollo"
 

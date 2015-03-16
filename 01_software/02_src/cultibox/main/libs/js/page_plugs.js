@@ -405,7 +405,7 @@ $(document).ready(function(){
                         // Add options only for network
                         data_array['plug_module_options'+i] = "";
                         if (data_array['plug_module'+i] == "network") {
-                            data_array['plug_module_options'+i] = $("input[name=" + data_array['plug_module'+i] + "_module_options" + i + "]").val();
+                            data_array['plug_module_options'+i] = $("select[name=" + data_array['plug_module'+i] + "_module_options" + i + "]").val();
                         }
 
                         // Add output of module used : For direct, mcp230xx, dimmer, network, xmax

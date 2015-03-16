@@ -181,7 +181,7 @@ if(!empty($num_module) && isset($num_module) && $old_num_module != $num_module) 
 }
 
 // Save options
-if(!empty($module_options) && isset($module_options) && $old_module_options != $module_options) {
+if(isset($module_options) && $old_module_options != $module_options) {
     insert_plug_conf("PLUG_MODULE_OPTIONS",$nb,$module_options,$main_error);
 }
 

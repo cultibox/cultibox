@@ -19,6 +19,15 @@ define("ERROR_COPY_PLGIDX", "14");
 // RET 0 if the sd card is updated, 1 if the sd card has been updated, return > 1 if an error occured
 function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$force_rtc_offset=false) {
 
+    // Load config cultipi 
+    if(is_file("main/libs/config_cultipi.php")) {
+       require_once 'main/libs/config_cultipi.php';
+    } else if(is_file("../libs/config_cultipi.php")) {
+       require_once '../libs/config_cultipi.php';
+    } else {
+       require_once '../../libs/config_cultipi.php';
+    }
+
     // Check if SD card has been found
     if(empty($sd_card) || !isset($sd_card)  || $sd_card == "")
     {
@@ -51,12 +60,149 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         if(!is_dir($sd_card . "/serverAcqSensor"))  mkdir($sd_card . "/serverAcqSensor");
         if(!is_dir($sd_card . "/serverHisto"))      mkdir($sd_card . "/serverHisto");
         if(!is_dir($sd_card . "/serverLog"))        mkdir($sd_card . "/serverLog");
-        if(!is_dir($sd_card . "/serverPlugUpdate")) mkdir($sd_card . "/cultiPi");
+        if(!is_dir($sd_card . "/serverPlugUpdate")) mkdir($sd_card . "/serverPlugUpdate");
         
-        // Create conf file
-        $paramList["verbose"] = "debug";
-        $paramList["simulator"] = "off";
-        create_conf_XML($sd_card . "/serverAcqSensor/conf.xml" , $paramList);
+        // Create cultipi conf.xml file
+        $paramListCultipiConf[] = array (
+            "name" => "verbose",
+            "level" => "debug"
+        );
+        create_conf_XML($sd_card . "/cultiPi/conf.xml" , $paramListCultipiConf);
+        
+        // Create cultipi start.xml file
+        $paramListCultipiStart[] = array ( 
+            'name' => "serverLog",
+            'waitAfterUS' => "1000",
+            'port' => "6003",
+            'pathexe' => "tclsh",
+            'path' => "./serverLog/serveurLog.tcl",
+            'xmlconf' => "./serverLog/conf.xml",
+        );
+        $paramListCultipiStart[] = array ( 
+            'name' => "serverAcqSensor",
+            'waitAfterUS' => "100",
+            'port' => "6006",
+            'pathexe' => "tclsh",
+            'path' => "./serverAcqSensor/serverAcqSensor.tcl",
+            'xmlconf' => "./serverAcqSensor/conf.xml",
+        );
+        $paramListCultipiStart[] = array ( 
+            'name' => "serverPlugUpdate",
+            'waitAfterUS' => "100",
+            'port' => "6004",
+            'pathexe' => "tclsh",
+            'path' => "./serverPlugUpdate/serverPlugUpdate.tcl",
+            'xmlconf' => "./serverPlugUpdate/conf.xml",
+        );
+        $paramListCultipiStart[] = array ( 
+            'name' => "serverHisto",
+            'waitAfterUS' => "100",
+            'port' => "6009",
+            'pathexe' => "tclsh",
+            'path' => "./serverHisto/serverHisto.tcl",
+            'xmlconf' => "./serverHisto/conf.xml",
+        );
+        create_conf_XML($sd_card . "/cultiPi/start.xml" , $paramListCultipiStart);
+        
+        // Server acq sensor
+        $paramListserverAcqSensor[] = array (
+            "name" => "verbose",
+            "level" => "debug"
+        );
+        $paramListserverAcqSensor[] = array (
+            "name" => "simulator",
+            "actif" => "off"
+        );
+        //  <item name="network_read,1,ip" ip="192.178.0.10" />
+        //  <item name="network_read,1,sensor" sensor="2" />
+        if ($GLOBALS_CULTIPI['USE_REMOTE_SENSOR'] == 1)
+        {
+            foreach ($GLOBALS_CULTIPI['REMOTE_SENSOR'] as $elemOfArray)
+            {
+                $paramListserverAcqSensor[] = array (
+                    "name" => "network_read," . $elemOfArray["SENSOR_INDEX_IN_MASTER"] . ",ip",
+                    "ip" => $GLOBALS_CULTIPI['REMOTE_SLAVE']["IP_" . $elemOfArray["REMOTE_SLAVE"]]
+                );
+                
+                $paramListserverAcqSensor[] = array (
+                    "name" => "network_read," . $elemOfArray["SENSOR_INDEX_IN_MASTER"] . ",sensor",
+                    "sensor" => $elemOfArray["SENSOR_INDEX_IN_SLAVE"]
+                );
+            }
+        }
+        if ($GLOBALS_CULTIPI['USE_DIRECT_READ'] == 1)
+        {
+            foreach ($GLOBALS_CULTIPI['DIRECT_SENSOR'] as $elemOfArray)
+            {
+                $paramListserverAcqSensor[] = array (
+                    "name"  => "direct_read," . $elemOfArray["SENSOR_INDEX"] . ",input",
+                    "input" => $elemOfArray["SENSOR_FIRST_INPUT"] 
+                );
+                
+                $paramListserverAcqSensor[] = array (
+                    "name"  => "direct_read," . $elemOfArray["SENSOR_INDEX"] . ",value",
+                    "value" => $elemOfArray["SENSOR_FIRST_VALUE"] 
+                );
+                
+                $paramListserverAcqSensor[] = array (
+                    "name"  => "direct_read," . $elemOfArray["SENSOR_INDEX"] . ",input2",
+                    "input" => $elemOfArray["SENSOR_SECOND_INPUT"] 
+                );
+                
+                $paramListserverAcqSensor[] = array (
+                    "name"  => "direct_read," . $elemOfArray["SENSOR_INDEX"] . ",value2",
+                    "value" => $elemOfArray["SENSOR_SECOND_VALUE"] 
+                );
+                
+                $paramListserverAcqSensor[] = array (
+                    "name"  => "direct_read," . $elemOfArray["SENSOR_INDEX"] . ",type",
+                    "type" => $elemOfArray["SENSOR_TYPE"] 
+                );
+                
+            }
+        }
+        create_conf_XML($sd_card . "/serverAcqSensor/conf.xml" , $paramListserverAcqSensor);
+        
+        // Server plug update
+        $paramListServerPlugUpdate[] = array (
+            "name" => "verbose",
+            "level" => "debug"
+        );
+        // Add network slave
+        //  <item name="module_CULTIPI,ip,0" ip="192.168.1.10" />
+        if ($GLOBALS_CULTIPI['USE_REMOTE_SLAVE'] == 1)
+        {
+            for($index = 0 ; $index < $GLOBALS_CULTIPI['REMOTE_NB_SLAVE']; $index++)
+            {
+                $paramListServerPlugUpdate[] = array (
+                    "name" => "module_CULTIPI,ip," . $index,
+                    "ip" => $GLOBALS_CULTIPI['REMOTE_SLAVE']["IP_" . $index]
+                );
+            }
+        }
+        create_conf_XML($sd_card . "/serverPlugUpdate/conf.xml" , $paramListServerPlugUpdate);
+        
+        // Server histo
+        $paramListServerHisto[] = array (
+            "name" => "verbose",
+            "level" => "debug"
+        );
+        $paramListServerHisto[] = array (
+            "name" => "logPeriode",
+            "valInSec" => "60"
+        );
+        $paramListServerHisto[] = array (
+            "name" => "pathMySQL",
+            "path" => "/usr/bin/mysql"
+        );
+        create_conf_XML($sd_card . "/serverHisto/conf.xml" , $paramListServerHisto);
+        
+        // Server log
+        $paramListServerLog[] = array (
+            "name" => "verbose",
+            "level" => "debug"
+        );
+        create_conf_XML($sd_card . "/serverLog/conf.xml" , $paramListServerLog);
         
     }
     
@@ -1735,8 +1881,17 @@ function create_conf_XML($file, $paramList) {
     fwrite($fid,'<conf>'. "\r\n");
     
     // Foreach param to write, add it to the file
-    foreach ($paramList as $key => $value) {
-        fwrite($fid,'    <item name="' . $key . '" value="' . $value . '" />'. "\r\n");
+    foreach ($paramList as $elemOfArray) {
+        
+        $str = "    <item ";
+        
+        foreach ($elemOfArray as $key => $value) {
+            $str .= $key . '="' . $value . '" ';
+        }
+        
+        $str .= "/>". "\r\n";
+    
+        fwrite($fid,$str);
     }
 
     // Add Footer

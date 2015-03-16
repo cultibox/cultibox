@@ -9,10 +9,18 @@
     <table class="table_width">
         <tr>    
             <td class="conf-menu-marge"></td>
-            <td <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) echo 'class="center_menu" '; ?>><button id="div_user_label" class="menu_h1" onclick="expand('user_interface'); return false;"><?php echo __('USER_CONF'); ?></button></td>
-            <td <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) echo 'class="center_menu" '; ?>><button id="div_system_label" class="menu_h1" onclick="expand('system_interface'); return false;"><?php echo __('SYSTEM_CONF'); ?></button></td>
-            <td <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) echo 'class="center_menu" '; ?>><button id="div_alarm_label" class="menu_h1" onclick="expand('alarm_interface'); return false;"><?php echo __('CONFIGURE_ALARM'); ?></button></td>
-            <td><button id="div_card_label" <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) echo 'style="display:none" '; ?>class="menu_h1" onclick="expand('card_interface'); return false;"><?php echo __('CONFIGURE_CARD'); ?></button></td>
+            <td <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) echo 'class="center_menu" '; ?>>
+                <button id="div_user_label" class="menu_h1" onclick="expand('user_interface'); return false;"><?php echo __('USER_CONF'); ?></button>
+            </td>
+            <td <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) echo 'class="center_menu" '; ?>>
+                <button id="div_system_label" class="menu_h1" onclick="expand('system_interface'); return false;"><?php echo __('SYSTEM_CONF'); ?></button>
+            </td>
+            <td <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) echo 'class="center_menu" '; ?>>
+                <button id="div_alarm_label" class="menu_h1" onclick="expand('alarm_interface'); return false;"><?php echo __('CONFIGURE_ALARM'); ?></button>
+            </td>
+            <td>
+                <button id="div_card_label" <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) echo 'style="display:none" '; ?>class="menu_h1" onclick="expand('card_interface'); return false;"><?php echo __('CONFIGURE_CARD'); ?></button>
+            </td>
             <td class="conf-menu-marge"></td>
         </tr>
     </table>    
@@ -80,11 +88,11 @@
                 <td></td>
         </tr>
         <?php } ?>
-</table>
-<br /><br />
-<hr class="hr_cultipi" />
-<br /><br />
-<table class="conf-table">
+    </table>
+    <br /><br />
+    <hr class="hr_cultipi" />
+    <br /><br />
+    <table class="conf-table">
        <tr>
              <td class="conf-marge"></td>
              <td class="conf-marge-td"><?php echo __('IMPORT_CONF_CULTIPI'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_CONF'); ?>" /><label id="import_conf_name" class="imported_file"></label></td>
@@ -118,15 +126,15 @@
             <td><?php echo __('CONFIGURE_NB_PLUGS'); ?>:</td>
             <td>
                <select name="nb_plugs" id="nb_plugs">
-                  <?php
-                  for($i=$GLOBALS['NB_MIN_PLUG'];$i<=$GLOBALS['NB_SELECTABLE_PLUG'];$i++) {
-                     if(!strcmp ("$i","$nb_plugs")) {
-                        echo "<option value=\"${i}\" selected>${i}</option>";
-                     } else {
-                        echo "<option value=\"${i}\">${i}</option>";
-                     }
-                  }
-                  ?>
+                    <?php
+                        for($i=$GLOBALS['NB_MIN_PLUG'];$i<=$GLOBALS['NB_SELECTABLE_PLUG'];$i++) {
+                            if(!strcmp ("$i","$nb_plugs")) {
+                                echo "<option value=\"${i}\" selected>${i}</option>";
+                            } else {
+                                echo "<option value=\"${i}\">${i}</option>";
+                            }
+                        }
+                    ?>
             </select>
             </td>
             <td></td>
@@ -152,28 +160,7 @@
             </td>
             <td></td>
         </tr>
-        <!--
-        <tr>
-        <td class="conf-marge"></td>
-        <td>
-           <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
-        </td>
-        <td>
-           <select name="power_frequency" id="power_frequency">
-              <?php
-              foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
-                 if(!strcmp ("$value","$power_frequency")) {
-                    echo "<option value=\"${value}\" selected>${value}</option>";
-                 } else {
-                    echo "<option value=\"${value}\">${value}</option>";
-                 }
-              }
-              ?>
-           </select>
-        </td>
-        <td></td>
-        </tr>
-        -->
+
         <tr>
             <td class="conf-marge"></td>
             <td>
@@ -195,7 +182,8 @@
             </td>
             <td></td>
         </tr>
-        <!-- Display Reset Min Max values row only if not in CUltipi-->
+        
+        <!-- Display Reset Min Max values row only if not in Cultipi-->
         <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] != "cultipi") {?>
             <tr>
                 <td class="conf-marge"></td>
@@ -208,7 +196,8 @@
                 <td><div id="error_min_max" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
             </tr>
         <?php } ?>
-        <!-- Display RTC row only if not in CUltipi-->
+        
+        <!-- Display RTC row only if not in Cultipi-->
         <?php if(!isset($GLOBALS['MODE']) || $GLOBALS['MODE'] != "cultipi") { ?>
             <tr>
                 <td class="conf-marge"></td>
@@ -236,6 +225,7 @@
                 <td></td>
             </tr>
         <?php } ?>
+        
         <!-- Display LED enable only if not in cultipi-->
         <?php if(!isset($GLOBALS['MODE']) || $GLOBALS['MODE'] != "cultipi") {?>
             <tr>  
@@ -244,7 +234,7 @@
                 <td>
                     <select name="enable_led" id="enable_led">
                     <?php 
-                        if("$enable_led"=="0001") {
+                        if($enable_led == "0001") {
                             echo "<option value='0001' selected>".__('YES')."</option>";
                             echo "<option value='0000'>".__('NO')."</option>";
                         } else {
@@ -254,9 +244,9 @@
                     ?>
                     </select>
                 </td>
-                <td></td>
             </tr>
         <?php } ?>
+
     </table>
 </div>
 
