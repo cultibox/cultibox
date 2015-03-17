@@ -1,0 +1,190 @@
+/* Force vertical scrollbar in non-IE + force height of the body element to fit at least the browser window */
+html {
+	overflow-y: scroll;
+	min-height: 100%;
+}
+
+/* Create a stacking context to prevent z-index issues */
+body { position: relative; }
+
+/* Remove outline when clicking links: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active { outline: none; }
+
+/* Removes scrollbar in IE */
+textarea { overflow: auto; }
+
+img::-moz-selection { background: transparent; }
+
+/* Remove borders */
+fieldset,
+img,
+iframe { border: 0; }
+
+/* Hand cursor on clickable input elements */
+input[type='button'],
+input[type='submit'],
+input[type='checkbox'],
+input[type='image'],
+input[type='radio'],
+input[type='reset'],
+select, button, label { cursor: pointer; }
+
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, nav, section { display: block; }
+
+
+body { margin: 0; }
+
+/* Block Space */
+p, hr,
+ul, ol, dl,
+blockquote, pre,
+fieldset, figure { margin: 10px 0; }
+
+h1, h2, h3, h4, h5, h6 { margin: 25px 0 15px 0; }
+
+/* Lists */
+ul, ol, dl { padding-left: 30px }
+dd { margin-left: 40px; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+
+h1 { font-size: 36px; line-height: 36px; }
+h2 { font-size: 24px; line-height: 24px; }
+h3 { font-size: 18px; line-height: 18px; }
+h4, h5, h6 { font-size: 16px; line-height: 16px; }
+
+/* Links */
+a, a:hover { text-decoration: none; }
+
+/* Text-level Semantics */
+small { font-size: 11px; }
+
+ins { text-decoration: none; }
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+dfn[title] { font-style: normal; }
+
+/* Horizontal Rule */
+hr {
+	display: block;
+	height: 1px;
+	padding: 0;
+	border: 0;
+	border-top: 1px solid;
+}
+
+/* Quotes */
+q, blockquote {
+	quotes: '\201C' '\201D' '\2018' '\2019';
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+}
+	
+blockquote {
+	padding: 0 20px;
+	font-size: 16px;
+	line-height: 22px;
+}
+
+blockquote:before { content: '\201C'; }
+blockquote:after { content: '\201D'; }
+
+/* Code */
+code, pre { font-family: "Courier New", Courier, monospace; }
+
+code { word-spacing: -2px; }
+
+pre {
+	padding: 10px;
+	font-size: 12px;
+	line-height: 18px;
+	white-space: pre-wrap;
+}
+
+/* Tables */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+th, td { padding: 1px; }
+
+/* Forms */
+input, select { vertical-align: middle; }
+
+select, input, textarea, button { font: 12px Arial, sans-serif; }
+
+form, textarea { margin: 0; }
+legend, fieldset, input { padding: 0; }
+
+textarea,
+input[type='text'],
+input[type='password'],
+select { padding: 2px; }
+select { line-height: 19px; } /* Needed for Safari */
+
+button,
+input[type='button'],
+input[type='submit'] { padding: 2px 3px; }
+
+
+.wrapper { max-width: 980px; }
+#maininner { }
+#menu .dropdown { max-width: 250px; }
+#menu .columns2 { max-width: 500px; }
+#menu .columns3 { max-width: 750px; }
+#menu .columns4 { max-width: 1000px; }
+
+/* Headlines */
+h1, h2, h3, h4, h5, h5, h6 { 
+	text-transform: none; 
+	color: #c3b59b;
+	font-size: 30px;
+}
+
+h1{
+	font-size: 14px;
+    font-weight:bold;
+    color: #7C502F;
+    font-style:italic;
+}
+
+h4, h5, h6 { font-size: 14px; line-height: 14px; }
+
+a { color: #777779; }
+
+a:hover,
+em, code { color: #222224; }
+
+ins, mark { background-color: #ffa; }
+mark { color: #444; }
+
+hr { border-top-color: #d2d2d4; }
+
+pre {
+	border: 1px solid #d2d2d4;
+	border-top-color: #a2a2a4;
+	border-radius: 4px;
+	background: #fefeff;
+	box-shadow: inset 0 0 12px rgba(0,0,2,0.04);
+}
+
+
+a:not([class]):active,
+a:not([class]):focus {
+	position: relative;
+	top: 1px;
+}
+
+a:not([class]):active > *,
+a:not([class]):focus > * {
+	position: relative;
+	top: -1px;
+}

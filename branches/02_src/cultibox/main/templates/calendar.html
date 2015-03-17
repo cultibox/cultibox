@@ -1,0 +1,325 @@
+<script> 
+    // Include specific css
+    loadCSS("main/libs/css/page_calendar.css");
+</script>
+
+<script>
+   $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
+</script>
+<br />
+<style id='hideday'></style>
+<style id='hidetoday'></style>
+
+<label class="title_conf"><?php echo __('CALENDAR_TITLE'); ?></label>
+
+<!-- Display buttons -->
+<table class="table_width">
+    <tr>
+        <td class="calendar-conf-marge"></td> 
+        <td class="calendar-title">
+            <!-- Button to change parameters -->
+            <input type="image" id="calendar_xml_selection" name="calendar_xml_selection" 
+                src="main/libs/img/advancedsettings.png" width="32"
+                title="<?php echo __('TOOLTIP_PARAMETERS_CALENDAR'); ?>" 
+                alt="calendar"
+            />
+
+            <!-- Button to delete all event -->
+            <input type="image" id="reset_calendar" name="reset_calendar" class="delete" 
+                   title="<?php echo __('TOOLTIP_RESET_CALENDAR'); ?>"
+                   src="main/libs/img/button_cancel.png"  width="32" 
+                    alt="calendar"
+            />
+            <!-- Button to view engrais planification-->
+            <input type="image" id="nutrient_planification" name="nutrient_planification"
+                   title="<?php echo __('TOOLTIP_CREATE_CALENDAR_PROGRAM'); ?>"
+                   src="main/libs/img/cal.png"  width="34" 
+                    alt="calendar"
+            />
+            <!-- Button to add daily program -->
+            <input type="image" id="daily_program" name="daily_program"
+                   title="<?php echo __('TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM'); ?>"
+                   src="main/libs/img/db_add.png"  width="34" 
+                   alt="calendar"  
+            />        
+        </td>
+        <td class="calendar_right">
+            <input id="datepicker_calendar" name="datepicker_calendar" type="hidden" value="">
+        </td>
+        <td class="calendar-conf-marge"></td>
+    </tr>
+</table>
+
+<br />
+
+<!-- Display the calendar -->
+<div id='calendar'></div>
+
+<!-- ===================== Modal form ========================== -->
+
+<!-- Calendar UI for event management -->
+<div id="dialog_edit" title="<?php echo __('WHAT_DIALOG_CALENDAR'); ?>" style="display:none">
+    <table class="table_width">
+        <tr>
+            <td><b><?php echo __('CALENDAR_SUBJECT'); ?>:</b></td>
+            <td><span id="title"></span></td>
+        </tr>
+        <tr>
+            <td><b><?php echo __('CALENDAR_START_DATE'); ?>:</b></td>
+            <td><span id="start_date"></span></td>
+        </tr>
+        <tr>
+            <td><b><?php echo __('CALENDAR_STOP_DATE'); ?>:</b></td>
+            <td><span id="stop_date"></span></td>
+        </tr>
+        <tr>
+            <td><span id="edit_duration_started_title" style="display:none"><b><?php echo __('CALENDAR_STARTED'); ?>:</b></span><span id="edit_duration_start_title" style="display:none"><b><?php echo __('CALENDAR_START'); ?>:</b></span></td>
+            <td><span id="edit_duration_start"></span></td>
+        </tr>
+        <tr>
+            <td><span id="edit_duration_ended_title" style="display:none"><b><?php echo __('CALENDAR_ENDED'); ?>:</b></span><span id="edit_duration_end_title" style="display:none"><b><?php echo __('CALENDAR_END'); ?>:</b></span></td>
+            <td><span id="edit_duration_end"></span></td>
+        </tr>
+        <tr>
+            <td><b><?php echo __('CALENDAR_REMARK'); ?>:</b></td>
+            <td><textarea rows="5" cols="50" id="remark" disabled></textarea></td>
+        </tr>
+        <tr>
+            <td><b><?php echo __('CALENDAR_IMPORTANT'); ?>:</b></td>
+            <td><input type="checkbox" id="important" name="important" value="important" disabled></td>
+        </tr>
+    </table>
+</div>
+
+
+<!-- UI calendar for creating event -->
+<div id="dialog_create" title="<?php echo __('MANAGE_CALENDAR'); ?>" style="display:none">
+    <form>
+        <table class="table_width">
+            <?php
+                // Allow user to select daily program only if option is activ and there are some daily program
+                if(count($program_index) > 1) { 
+            ?>
+            <tr id="daily_program_row_in_ui" >
+                <td>
+                    <b><?php echo __('CALENDAR_DAILY_PROGRAM'); ?>:</b>
+                </td>
+                <td>
+                    <input type='checkbox' id="create_dayly_program_in_ui" />
+                    <select id="select_daily_program_to_create" disabled >
+                        <?php 
+                        foreach ($program_index as $key => $value)
+                        {
+                            // Don'y display current event
+                            if ($value['id'] != 1)
+                                echo '<option value="' . $value['id'] . '">' . $value['name'] . '</option>';
+                        }
+                        ?> 
+                    </select>
+                </td>
+            </tr>
+            <?php  } ?>
+            <tr>
+                <td>
+                    <b><?php echo __('CALENDAR_SUBJECT'); ?>:</b>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <select id="select_title">
+                                    <?php 
+                                    foreach($title_list as $value)  {
+                                        echo "<option value=\"".$value."\">".$value."</option>";
+                                    }
+                                    ?> 
+                                </select>
+                            </td>
+                            <td>
+                                <div id="other_title_div" style="display:none">
+                                    <input name="other_field_title" id="other_field_title" type="text">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td><b><?php echo __('CALENDAR_START_DATE'); ?>:</b></td>
+                <td><table class="table_width"><tr><td class="calendar-title"><input id="datepicker_edit_start" name="datepicker_edit_start" type="text" class="whitefield" size="10"></td><td><div id="error_start_interval" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_DATE_INTERVAL'); ?></div></td></tr></table></tr>
+            </tr>
+            <tr>
+                <td><b><?php echo __('CALENDAR_STOP_DATE'); ?>:</b></td>
+                <td><input id="datepicker_edit_stop" name="datepicker_edit_stop" type="text" class="whitefield" size="10"></td>
+            </tr>
+            <tr>
+                <td><b><?php echo __('CALENDAR_REMARK'); ?>:</b></td>
+                <td><textarea rows="5" cols="60" id="select_remark"></textarea> 
+            </td>
+            </tr>
+            <tr>
+                <td><b><?php echo __('CALENDAR_COLOR'); ?>:</b></td>
+                <td><div id="jquery-colour-picker-example">
+                    <select id="colour" name="colour">
+                        <?php 
+                            for($i=0; $i<6; $i++) {
+                                for($j=0; $j<6; $j++) {
+                                    for($k=0; $k<6; $k++) {
+                                        $c = $GLOBALS['LIST_GRAPHIC_COLOR_CALENDAR'][$i] .$GLOBALS['LIST_GRAPHIC_COLOR_CALENDAR'][$j] .$GLOBALS['LIST_GRAPHIC_COLOR_CALENDAR'][$k];
+                                        echo "<option value=\"$c\">#$c</option>\n";
+                                    }
+                                }
+                            }
+                        ?>
+                    </select>
+            </div></td>
+            </tr>
+            <tr>
+                <td><b><?php echo __('CALENDAR_IMPORTANT'); ?>:</b></td>
+                <td><input type="checkbox" id="event_important" name="event_important" value="important">
+            </td>
+            </tr>
+        </table>
+    <input type="hidden" id="select_color" value="">
+    </form>
+</div>
+
+
+<!-- JQuery displayed when creating program is OK -->
+<div id="valid_create_calendar" style="display:none">
+    <p><?php echo __('VALID_ADD_CALENDAR'); ?></p>
+</div>
+
+<!-- JQuery displayed when creating program is NOK -->
+<div id="error_create_calendar" style="display:none">
+    <p><?php echo __('ERROR_ADD_CALENDAR_PROGRAM'); ?></p>
+</div>
+
+<!-- Jquery UI for deleting calendar -->
+<div id="reset_dialog_calendar" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
+    <p><?php echo __('RESET_CONFIRM_CALENDAR'); ?></p>
+</div>
+
+<!-- Jquery UI when deleting is OK -->
+<div id="valid_reset_calendar" style="display:none">
+    <p><?php echo __('VALID_DELETE_CALENDAR'); ?></p>
+</div>
+
+<!-- User interface to select XML to show in calendar -->
+<div id="manage_external_xml" style="display:none" title="<?php echo __('PARAMETERS_CALENDAR_TITLE'); ?>">
+    <p id="xml_section"><?php echo __('XML_DISPLAYED_FILE'); ?> : 
+        <img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MANAGE_XML'); ?>" />
+    </p>
+    <ul id="list_xml_files" class="list_class">
+    </ul>
+</div>
+
+<!-- Div modual UI for nutrient planification -->
+<div id="manage_nutrient_planification" style="display:none" title="<?php echo __('CALENDAR_ENGRAIS'); ?>">
+    <table>
+        <tr>
+            <td class="calendar-nutri-title">
+                <?php echo __('CALENDAR_SUBSTRAT'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_SUBSTRAT'); ?>" />
+            </td>
+            <td class="calendar-nutri-field">
+                <select name="substrat_select" id="substrat_select">
+                    <?php 
+                        if(count($substrat)>0) {
+                            foreach($substrat as $sub) { ?>
+                            <option value="<?php echo $sub; ?>"><?php echo $sub; ?></option>
+                        <?php 
+                            }
+                        } else { ?>
+                            <option value="" disabled><?php echo __('DISABLED_XML_FILE'); ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+            <td class="calendar-error"></td>
+        </tr>
+        <tr>
+            <td><?php echo __('CALENDAR_PROGRAM'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_PROGRAM'); ?>" /></td>
+            <td>
+                <select name="nutrient_select" id="nutrient_select">
+                    <?php 
+                        if(count($product)>0) {
+                            foreach($product as $prod) {
+                                echo '<option value="' . $prod['marque'] . " - " . $prod['periode'] . '" '; 
+                                if (strcmp($prod['substrat'],reset($substrat))!=0) 
+                                    echo 'disabled '; 
+                                echo '>';
+                                echo $prod['marque'] . " - " . $prod['periode'] . " (" . $prod['substrat'] .")";
+                                echo '</option>' . "\n";
+                            }
+                        } else {
+                            echo '<option value="" disabled>' . __('DISABLED_XML_FILE') . '</option>' . "\n";
+                        } 
+                    ?>
+                </select>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><?php echo __('CALENDAR_STARTDATE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_STARTDATE'); ?>" /></td>
+            <td><input id="calendar_startdate" name="calendar_startdate" type="text" class="whitefield" size="10" value="<?php echo $calendar_start; ?>"></td>
+            <td><div id="error_calendar_startdate" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_CALENDAR_DATE'); ?></div></td>
+        </tr>
+        <tr>
+            <td><?php echo __('CALENDAR_EVENT_NAME'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_EVENT_NAME'); ?>" /></td>
+            <td><input id="event_name" name="event_name" type="text" class="whitefield" size="10" value=""></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <?php echo __('CALENDAR_SELECT_CROISSANCE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_SELECT_CROISSANCE'); ?>" />
+           </td>
+            <td>
+                <input type="radio" name="select_croissance" id="select_croissance" value="croi" checked="" /> <?php echo __('CALENDAR_CROISSANCE'); ?>
+                <input type="radio" name="select_croissance" id="select_croissance_flo" value="flo" checked="" /> <?php echo __('CALENDAR_FLORAISON'); ?>
+                <input type="radio" name="select_croissance" id="select_croissance_and_flo" value="all" checked="" /> <?php echo __('CALENDAR_CROISSANCE_+_FLORAISON'); ?>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+<!-- JQuery UI for important message -->
+<div id="dialog_calendar_important" style="display:none" title="<?php echo __('SUMARY_IMPORTANT_LIST'); ?>">
+    <?php 
+    if(count($important_list)>0) {
+        echo '<ul>';
+            foreach($important_list as $imp) {
+                echo '<li>';
+                    echo __('EVENT_FROM')." ".substr($imp['StartTime'],0,10)." ".__('EVENT_TO')." ".substr($imp['EndTime'],0,10).":";
+                    echo "<p class='imp_center' style='color:".$imp['color']."'>".$imp['title']."</p>".$imp['Description']."<br /><br /><br />";
+                echo '</li>';
+            }
+        echo '</ul>';
+    } 
+    ?>
+</div>
+
+<!-- Drag message box for daily program -->
+<div id="manage_daily_program" style="display:none" title="<?php echo __('CALENDAR_DAILY_PROGRAM'); ?>">
+    <?php
+        // Read program index
+        $program_index = array();
+        program\get_program_index_info($program_index);
+        // Foreach programm, add a line with the name
+        foreach ($program_index as $key => $value)
+        {
+            // Don'y display current event
+            if ($value['id'] != 1)
+                echo '<div class="external-event" id="' . $value['id'] . '">' . $value['name'] . '</div>';
+        }
+    ?>
+</div>
+
+<!-- JQuery displayed when drop is NOK -->
+<div id="error_drop_event" style="display:none">
+    <p><?php echo __('ERROR_DROP_EVENT'); ?></p>
+</div>
+
+
+<div id="empty_daily_program" style="display:none">
+    <p><?php echo __('EMPTY_DAILY_PROGRAM'); ?></p>
+</div>

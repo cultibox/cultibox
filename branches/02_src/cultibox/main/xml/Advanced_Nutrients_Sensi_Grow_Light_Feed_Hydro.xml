@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+   <updated>2014-06-11T10:37:57+02:00</updated>
+   <id>http://www.cultibox.fr/</id>
+   <title>Advanced Nutrients Sensi Grow Light Feed Hydro</title>
+   <subtitle></subtitle>
+   <author>
+      <name>Cultibox</name>
+      <uri>http://www.cultibox.fr/</uri>
+      <email>info@cultibox.fr</email>
+   </author>
+   <category term = "engrais" label = "engrais">
+    <substrat>Hydro</substrat>
+    <periode>Sensi Grow Light Feed</periode>
+    <marque>Advanced Nutrients</marque>
+   </category>
+   <link rel="self" href="www.cultibox.fr/Advanced Nutrients_Hydro.xml" />
+   <icon></icon>
+   <logo></logo>
+   <rights type = "text">
+    © Cultibox, 2013
+   </rights>
+    <entry>
+      <title>S1 Croissance</title>
+      <summary>S1 Croissance</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>0</start>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Sensi Grow A</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sensi Grow B</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>B-52</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Voodoo Juice</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <color>#98FB98</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+    <entry>
+      <title>S2 Croissance</title>
+      <summary>S2 Croissance</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>7</start>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Sensi Grow A</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sensi Grow B</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>B-52</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Voodoo Juice</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <color>#9ACD32</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+    <entry>
+      <title>S3 Croissance</title>
+      <summary>S3 Croissance</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>14</start>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Sensi Grow A</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sensi Grow B</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <color>#006400</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+    <entry>
+      <title>S4 Floraison</title>
+      <summary>S4 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>21</start>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Sensi Bloom A</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sensi Bloom B</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mother Earth Tea</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Humic Acid</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Fulvic Acid</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Barricade</name>
+        <dosage>0,1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Carboload</name>
+        <dosage>0,3 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>SensiZym</name>
+        <dosage>5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Piranha</name>
+        <dosage>0,3 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Voodoo Juice</name>
+        <dosage>3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bud Blood</name>
+        <dosage>0,5 g/l</dosage>
+      </nutriment>
+      <color>#F0E68C</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+    <entry>
+      <title>S5 Floraison</title>
+      <summary>S5 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>28</start>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Sensi Bloom A</name>
+        <dosage>2,13 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sensi Bloom B</name>
+        <dosage>2,13 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mother Earth Tea</name>
+        <dosage>1,07 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Humic Acid</name>
+        <dosage>1,07 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Fulvic Acid</name>
+        <dosage>1,07 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Barricade</name>
+        <dosage>0,11 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Carboload</name>
+        <dosage>0,32 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>SensiZym</name>
+        <dosage>5,34 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Piranha</name>
+        <dosage>0,32 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Voodoo Juice</name>
+        <dosage>3,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Big Bud</name>
+        <dosage>0,32 g/l</dosage>
+      </nutriment>
+      <color>#F5DEB3</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+    <entry>
+      <title>S6 Floraison</title>
+      <summary>S6 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>35</start>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Sensi Bloom A</name>
+        <dosage>2,27 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sensi Bloom B</name>
+        <dosage>2,27 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mother Earth Tea</name>
+        <dosage>1,13 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Humic Acid</name>
+        <dosage>1,13 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Fulvic Acid</name>
+        <dosage>1,13 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>B-52</name>
+        <dosage>3,4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Barricade</name>
+        <dosage>0,11 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Carboload</name>
+        <dosage>0,34 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>SensiZym</name>
+        <dosage>5,67 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Big Bud</name>
+        <dosage>0,34 g/l</dosage>
+      </nutriment>
+      <color>#D2B48C</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+    <entry>
+      <title>S7 Floraison</title>
+      <summary>S7 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>42</start>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Sensi Bloom A</name>
+        <dosage>2,4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sensi Bloom B</name>
+        <dosage>2,4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mother Earth Tea</name>
+        <dosage>1,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Humic Acid</name>
+        <dosage>1,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Fulvic Acid</name>
+        <dosage>1,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>B-52</name>
+        <dosage>3,6 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Barricade</name>
+        <dosage>0,12 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Carboload</name>
+        <dosage>0,36 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>SensiZym</name>
+        <dosage>6 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Big Bud</name>
+        <dosage>0,36 g/l</dosage>
+      </nutriment>
+      <color>#DAA520</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+    <entry>
+      <title>S8 Floraison</title>
+      <summary>S8 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>49</start>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Sensi Bloom A</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sensi Bloom B</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mother Earth Tea</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Humic Acid</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Fulvic Acid</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>B-52</name>
+        <dosage>3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Barricade</name>
+        <dosage>0,1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Carboload</name>
+        <dosage>0,3 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>SensiZym</name>
+        <dosage>5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Overdrive</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <color>#CD853F</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+    <entry>
+      <title>S9 Floraison</title>
+      <summary>S9 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>56</start>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Sensi Bloom A</name>
+        <dosage>1,6 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sensi Bloom B</name>
+        <dosage>1,6 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mother Earth Tea</name>
+        <dosage>0,8 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Humic Acid</name>
+        <dosage>0,8 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Fulvic Acid</name>
+        <dosage>0,8 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>B-52</name>
+        <dosage>2,4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Barricade</name>
+        <dosage>0,08 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Carboload</name>
+        <dosage>0,24 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>SensiZym</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Overdrive</name>
+        <dosage>1,6 ml/l</dosage>
+      </nutriment>
+      <color>#D2691E</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+    <entry>
+      <title>S10 Floraison</title>
+      <summary>S10 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>63</start>
+      <facultative>1</facultative>
+      <nutriment>
+        <name>Sensi Bloom A</name>
+        <dosage>1,6 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sensi Bloom B</name>
+        <dosage>1,6 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mother Earth Tea</name>
+        <dosage>0,8 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Humic Acid</name>
+        <dosage>0,8 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Fulvic Acid</name>
+        <dosage>0,8 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>B-52</name>
+        <dosage>2,4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Barricade</name>
+        <dosage>0,08 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Carboload</name>
+        <dosage>0,24 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>SensiZym</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Overdrive</name>
+        <dosage>1,6 ml/l</dosage>
+      </nutriment>
+      <color>#A0522D</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+    <entry>
+      <title>S11 Floraison</title>
+      <summary>S11 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>70</start>
+      <facultative>1</facultative>
+      <nutriment>
+        <name>Sensi Bloom A</name>
+        <dosage>1,6 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sensi Bloom B</name>
+        <dosage>1,6 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mother Earth Tea</name>
+        <dosage>0,8 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Humic Acid</name>
+        <dosage>0,8 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Fulvic Acid</name>
+        <dosage>0,8 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>B-52</name>
+        <dosage>2,4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Barricade</name>
+        <dosage>0,08 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Carboload</name>
+        <dosage>0,24 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>SensiZym</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Overdrive</name>
+        <dosage>1,6 ml/l</dosage>
+      </nutriment>
+      <color>#8B4513</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+    <entry>
+      <title>S12 Rincage</title>
+      <summary>S12 Rincage</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">Rincage</content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>77</start>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Final Phase</name>
+        <dosage>2,5 ml/l</dosage>
+      </nutriment>
+      <color>#000000</color>
+      <icon>Advanced_Nutrients.png</icon>
+   </entry>
+</feed>

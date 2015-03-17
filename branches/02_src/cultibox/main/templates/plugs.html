@@ -1,0 +1,459 @@
+<script>
+   $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
+   $(".href-wizard-msgbox").click(function(e) {
+       e.preventDefault();
+       get_content("wizard");
+   });
+</script>
+
+<br />
+<form action="/cultibox/index.php?menu=plugs" method="post" name="plugForm" id="plugForm">
+    <input type="hidden" id="submenu" name="submenu" value="<?php echo $submenu; ?>" />
+    <p class="title_conf"><?php echo __('PLUG'); ?></p>
+    <br />
+    <table class="table_width">
+        <tr>
+            <td class="conf-menu-marge-plug"></td>
+            <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+                <td class="menu-plug-item">
+                    <button id="div_plug<?php echo $i; ?>" class="menu_h1 <?php if(strcmp("$selected_plug","$i")==0) echo 'plug_menu_active'; ?>" onclick="expand_plug(<?php echo $i; ?>,<?php echo $nb_plugs; ?>); return false;"><?php echo __('PLUG_MENU')." ".$i; ?></button>
+                </td>
+                <?php if($i%3==0) { ?>
+                    <td class="conf-menu-marge-plug"></td></tr><tr><td class="conf-menu-marge-plug"></td>
+                <?php }
+            } ?>
+
+            <?php $tmp_cnt=$nb_plugs % 3;
+            for($i=0;$i<3-$tmp_cnt;$i++) { ?>
+                <td></td>
+            <?php } ?>
+
+            <td class="conf-menu-marge-plug"></td>
+        </tr>
+    </table>
+    <br />
+    <hr />
+    <br />
+    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+        <div id="div_selected_plug<?php echo $i; ?>" style="<?php if($submenu!=$i) echo 'display:none'; ?>">
+            <br />
+            <div id="state_plug<?php echo $i; ?>">
+                <table class="table_width">
+                    <tr>
+                        <td class="plug-marge-td"></td>
+                        <td class="plug-marge-title">
+                            <?php echo __('NAME_PLUG'); ?>:
+                        </td>
+                        <td class="plug-marge-field-base">
+                            <input type="text" size="15" maxlength="15" name="plug_name<?php echo $i; ?>" value="<?php echo $plug_name{$i}; ?>">
+                        </td>
+                        <td></td>
+                    </tr>
+                    <!-- Select plug type (1000W / 3500W / direct pilot)-->
+                    <tr>
+                        <td></td>
+                        <td><?php echo __('PLUG_MAX_POWER'); ?>:</td>
+                        <td colspan="2">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <select id="plug_module<?php echo $i; ?>" name="plug_module<?php echo $i; ?>">
+                                            <option value="wireless" <?php if($plug_module{$i} == "wireless") { echo ' selected'; } ?>>
+                                                <?php echo __('PLUGS_WIRELESS_PLUGS'); ?>
+                                                <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_DIMMER'); ?>" />
+                                            </option>
+                                            <!-- Only for Cultipi -->
+                                            <?php if(isset($GLOBALS['MODE']) && $GLOBALS['MODE'] == "cultipi") {?>
+                                                <option value="direct" <?php if($plug_module{$i} == "direct") { echo ' selected'; } ?>>
+                                                    <?php echo __('PLUGS_DIRECT_PILOT'); ?>
+                                                    <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_DIMMER'); ?>" />
+                                                </option>
+                                                <option value="mcp230xx" <?php if($plug_module{$i} == "mcp230xx") { echo ' selected'; } ?>>
+                                                    <?php echo __('PLUGS_MODULE_MCP230XX'); ?>
+                                                    <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_DIMMER'); ?>" />
+                                                </option>
+                                                <option value="dimmer" <?php if($plug_module{$i} == "dimmer") { echo ' selected'; } ?>>
+                                                    <?php echo __('PLUGS_MODULE_DIMMER'); ?>
+                                                    <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_DIMMER'); ?>" />
+                                                </option>
+                                                <option value="network" <?php if($plug_module{$i} == "network") { echo ' selected'; } ?>>
+                                                    <?php echo __('PLUGS_MODULE_NETWORK'); ?>
+                                                    <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_DIMMER'); ?>" />
+                                                </option>
+                                                <option value="xmax" <?php if($plug_module{$i} == "xmax") { echo ' selected'; } ?>>
+                                                    <?php echo __('PLUGS_MODULE_XMAX'); ?>
+                                                    <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_DIMMER'); ?>" />
+                                                </option>
+                                            <?php } ?>
+                                            <!-- Dimmer is not ready ! -->
+                                            <!--
+                                            <option value="dimmer" <?php if($plug_module{$i} == "dimmer") { echo ' selected'; } ?>>
+                                                <?php echo __('DIMMER'); ?>
+                                                <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_DIMMER'); ?>" />
+                                            </option>
+                                            -->
+                                        </select>
+                                    </td>
+                                </tr>   
+                                <tr>
+                                    <td>
+                                        <div id="select_canal_wireless<?php echo $i; ?>" style="<?php if($plug_module{$i} != "wireless") { echo 'display:none'; } ?>">
+                                            <?php echo __('PLUG_MAX_POWER'); ?>
+                                            <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="1000" <?php if($plug_power_max{$i} == "1000") { echo "checked"; } ?>>
+                                            1000W
+                                            <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_1000'); ?>" />
+                                            <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="3500" <?php if($plug_power_max{$i} == "3500") { echo "checked"; } ?>>
+                                            3500W
+                                            <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_3500'); ?>" />
+                                        </div>
+                                        <div id="select_canal_direct<?php echo $i; ?>" style="<?php if($plug_module{$i} != "direct") { echo 'display:none'; } ?>">
+                                            <?php echo __('PLUGS_MODULE_OUTPUT'); ?>
+                                            <select id="direct_canal<?php echo $i; ?>" name="direct_module_ouput<?php echo $i; ?>">
+                                                <?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_DIRECT'];$j++) { ?>
+                                                    <option value="<?php echo $j; ?>" <?php if(intval($plug_module_output{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div id="select_canal_mcp230xx<?php echo $i; ?>" style="<?php if($plug_module{$i} != "mcp230xx") { echo 'display:none'; } ?>">
+                                            <?php echo __('PLUGS_MODULE_INDEX'); ?>
+                                            <select id="mcp230xx_module<?php echo $i; ?>" name="mcp230xx_module_num<?php echo $i; ?>">
+                                                <?php for($j=1;$j<=$GLOBALS['NB_MAX_MODULE_MCP230XX'];$j++) { ?>
+                                                    <option value="<?php echo $j; ?>" <?php if(intval($plug_num_module{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            <?php echo __('PLUGS_MODULE_OUTPUT'); ?>
+                                            <select id="mcp230xx_canal<?php echo $i; ?>" name="mcp230xx_module_ouput<?php echo $i; ?>">
+                                                <?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_MCP230XX'];$j++) { ?>
+                                                    <option value="<?php echo $j; ?>" <?php if(intval($plug_module_output{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div id="select_canal_dimmer<?php echo $i; ?>" style="<?php if($plug_module{$i} != "dimmer") { echo 'display:none'; } ?>">
+                                            <?php echo __('PLUGS_MODULE_INDEX'); ?>
+                                            <select id="dimmer_module<?php echo $i; ?>" name="dimmer_module_num<?php echo $i; ?>">
+                                                <?php for($j=1;$j<=$GLOBALS['NB_MAX_MODULE_DIMMER'];$j++) { ?>
+                                                    <option value="<?php echo $j; ?>" <?php if(intval($plug_num_module{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            <?php echo __('PLUGS_MODULE_OUTPUT'); ?>
+                                            <select id="dimmer_canal<?php echo $i; ?>" name="dimmer_module_ouput<?php echo $i; ?>">
+                                                <?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_DIMMER'];$j++) { ?>
+                                                    <option value="<?php echo $j; ?>" <?php if(intval($plug_module_output{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div id="select_canal_network<?php echo $i; ?>" style="<?php if($plug_module{$i} != "network") { echo 'display:none'; } ?>">
+                                            <?php echo __('PLUGS_MODULE_IP_ADRESS'); ?>
+                                            <select id="network_module_options<?php echo $i; ?>" name="network_module_options<?php echo $i; ?>">
+                                                <?php for($j = 0 ; $j < $GLOBALS_CULTIPI['REMOTE_NB_SLAVE'] ; $j++) { ?>
+                                                    <option value="<?php echo $j; ?>" <?php if(intval($plug_module_options{$i})==$j) { echo ' selected'; } else  { if(!$status[$j]) { echo ' disabled'; } } ?>><?php echo $GLOBALS_CULTIPI['REMOTE_SLAVE']["NAME_" . $j]; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            <?php echo __('PLUGS_MODULE_OUTPUT'); ?>
+                                            <select id="network_canal<?php echo $i; ?>" name="network_module_ouput<?php echo $i; ?>">
+                                                <?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_NETWORK'];$j++) { ?>
+                                                    <option value="<?php echo $j; ?>" <?php if(intval($plug_module_output{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div id="select_canal_xmax<?php echo $i; ?>" style="<?php if($plug_module{$i} != "xmax") { echo 'display:none'; } ?>">
+                                            <?php echo __('PLUGS_MODULE_INDEX'); ?>
+                                            <select id="xmax_module<?php echo $i; ?>" name="xmax_module_num<?php echo $i; ?>">
+                                                <?php for($j=1;$j<=$GLOBALS['NB_MAX_MODULE_XMAX'];$j++) { ?>
+                                                    <option value="<?php echo $j; ?>" <?php if(intval($plug_num_module{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            <?php echo __('PLUGS_MODULE_OUTPUT'); ?>
+                                            <select id="xmax_canal<?php echo $i; ?>" name="xmax_module_ouput<?php echo $i; ?>">
+                                                <?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_XMAX'];$j++) { ?>
+                                                    <option value="<?php echo $j; ?>" <?php if(intval($plug_module_output{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Element plugged on plug -->
+                    <tr>
+                        <td></td>
+                        <td>
+                            <?php echo __('TYPE_PLUG'); ?>:
+                        </td>
+                        <td>
+                            <select name="plug_type<?php echo $i; ?>" id="plug_type<?php echo $i; ?>" onChange='getTolerance(this.selectedIndex,<?php echo $i; ?>,<?php echo "\"$second_regul\""; ?>);' onLoad='getTolerance(this.selectedIndex,<?php echo $i; ?>,<?php echo "\"$second_regul\""; ?>);'>
+                                <option <?php if(strcmp($plug_type{$i},"other")==0) { echo 'selected';} ?> value="other"><?php echo __('PLUG_UNKNOWN'); ?></option>
+                                <option <?php if(strcmp($plug_type{$i},"lamp")==0) { echo 'selected';} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
+                                <option <?php if(strcmp($plug_type{$i},"ventilator")==0) { echo 'selected';} ?> value="ventilator"><?php echo __('PLUG_VENTILATOR'); ?></option>
+                                <option <?php if(strcmp($plug_type{$i},"heating")==0) { echo 'selected';} ?> value="heating"><?php echo __('PLUG_HEATING'); ?></option>
+                                <option <?php if(strcmp($plug_type{$i},"pump")==0) { echo 'selected';} ?> value="pump"><?php echo __('PLUG_PUMP'); ?></option>
+                                <option <?php if(strcmp($plug_type{$i},"humidifier")==0) { echo 'selected';} ?> value="humidifier"><?php echo __('PLUG_HUMIDIFIER'); ?></option>
+                                <option <?php if(strcmp($plug_type{$i},"dehumidifier")==0) { echo 'selected';} ?> value="dehumidifier"><?php echo __('PLUG_DEHUMIDIFIER'); ?></option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <?php echo __('POWER_PLUG'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_POWER'); ?>" />
+                        </td>
+                        <td>
+                            <input type="text" size="4" maxlength="4" id="plug_power<?php echo $i; ?>" name="plug_power<?php echo $i; ?>" value="<?php echo $plug_power{$i}; ?>" onKeypress="return verifInt(event);">W
+                        </td>
+                        <td><div id="error_power_value<?php echo $i; ?>" class='error_field' style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_POWER_VALUE'); ?></div></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div id="tolerance_label<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
+                            <?php echo __('TOLERANCE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_PLUG_TOLERANCE'); ?>" />
+                            </div>
+                        </td>
+                        <td>
+                            <div id="tolerance<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
+                            <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label><label id="cm<?php echo $i; ?>" style="<?php if(strcmp($plug_type{$i},"pump")!=0) { echo "display:none"; } ?>"> cm</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class='error_field' id="error_tolerance_value_temp<?php echo $i; ?>" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_TOLERANCE_VALUE_DEGREE','html'); ?></div>
+                            <div class='error_field' id="error_tolerance_value_humi<?php echo $i; ?>" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_TOLERANCE_VALUE_POURCENT','html'); ?></div>
+                            <div class='error_field' id="error_tolerance_value_water<?php echo $i; ?>" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_TOLERANCE_VALUE_CM','html'); ?></div>
+                        </td>
+                    </tr>
+                </table>
+
+                <table class="table_width">
+                    <tr>
+                        <td class="plug-marge-td"></td>
+                        <td class="plug-marge-title"><div id="label_sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)||(strcmp("$second_regul","False")==0)) { echo "display:none"; } ?>"><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></div></td>
+                        <td class="plug-marge-field">   
+                            <br />
+                            <div id="sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)||(strcmp("$second_regul","False")==0)) { echo "display:none"; } ?>">
+                                <hr />
+                                <table class="table_width">
+                                    <tr>
+                                        <?php for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR_PLUG'];$j++) { ?>
+                                            <td><?php echo __('SENSOR')." ".$j; ?>:
+
+                                            <?php if(strcmp("$second_regul","True")==0) { ?>
+                                                <select name="plug_sensor<?php echo $i; ?><?php echo $j; ?>" id="plug_sensor<?php echo $i; ?><?php echo $j; ?>">
+                                                    <option <?php if(strcmp($plug_sensor[$i][$j],"True")==0) { echo 'selected';  }?> value="True"><?php echo __('YES'); ?></option>
+                                                    <option <?php if(strcmp($plug_sensor[$i][$j],"False")==0) { echo 'selected'; }?> value="False"><?php echo __('NO'); ?></option>
+                                                </select>
+                                            <?php } else { ?>
+                                                <select name="plug_sensor<?php echo $i; ?><?php echo $j; ?>" id="plug_sensor<?php echo $i; ?><?php echo $j; ?>" disabled>
+                                                     <?php if($j==1) { ?>
+                                                    <option value="True"><?php echo __('YES'); ?></option>
+                                                     <?php } else { ?>
+                                                    <option value="False"><?php echo __('NO'); ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            <?php } ?>
+                                            </td>
+                                            <?php if (($j % 2 == 0) && ($j != $GLOBALS['NB_MAX_SENSOR_PLUG'])) { ?>
+                                                </tr><tr>
+                                            <?php } ?>
+                                        <?php } ?>
+                                   </tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="error_select_sensor<?php echo $i; ?>" style="display:none" class="error_field">
+                                <img src="/cultibox/main/libs/img/arrow_error.png" alt=""><?php echo __('ERROR_SELECT_SENSOR'); ?>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div id="label_regul_compute<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)||(strcmp("$second_regul","False")==0)) { echo "display:none"; } ?>"><?php echo __('COMPUTE_REGUL_METHOD'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_REGUL_COMPUTE_METHOD'); ?>" />
+                            </div>
+                            <br />
+                        </td>
+                        <td>
+                            <div id="regul_compute<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)||(strcmp("$second_regul","False")==0)) { echo "display:none"; } ?>">
+                                <select name="plug_compute_method<?php echo $i; ?>" id="plug_compute_method<?php echo $i; ?>" <?php if($plug_count_sensor[$i]<=1) echo ' disabled'; ?>>
+                               
+                                    <option <?php if(strcmp($plug_compute_method{$i},"M")==0) { echo 'selected'; }?> value="M"><?php echo __('AVERAGE'); ?></option>
+                                    <option <?php if(strcmp($plug_compute_method{$i},"I")==0) { echo 'selected'; }?> value="I"><?php echo __('MINIMUM'); ?></option>
+                                    <option <?php if(strcmp($plug_compute_method{$i},"A")==0) { echo 'selected'; }?> value="A"><?php echo __('MAXIMUM'); ?></option>
+                                </select>
+                                <hr />
+                            </div>
+                            <br />
+                        </td>
+                        <td>
+                            <br />
+                        </td>
+                    </tr>
+                    <?php if(strcmp("$second_regul","True")==0) { ?>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div id="second_regul_label<?php echo $i; ?>" <?php if((strcmp($plug_type{$i},"lamp")==0)||(strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"pump")==0)) echo 'style="display:none"'; ?>>
+                                    <?php echo __('ENABLE_REGUL_PLUG'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_PLUG_REGUL'); ?>" />
+                                </div>
+                            </td>
+                            <td>
+                                <div id="second_regul<?php echo $i; ?>" <?php if((strcmp($plug_type{$i},"lamp")==0)||(strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"pump")==0)) echo 'style="display:none"'; ?>>
+                                    <select id="plug_regul<?php echo $i; ?>" name="plug_regul<?php echo $i; ?>" onChange="getRegul(this.selectedIndex,<?php echo $i; ?>);" onLoad="getRegul(this.selectedIndex,<?php echo $i; ?>);">
+                                       <option <?php if(strcmp($plug_regul{$i},"True")==0) { echo 'selected';} ?> value="True"><?php echo __('VALUE_ON'); ?></option>
+                                       <option <?php if(strcmp($plug_regul{$i},"False")==0) { echo 'selected';} ?> value="False"><?php echo __('VALUE_OFF'); ?></option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    <?php } ?>
+                </table>
+
+            <?php if(strcmp("$second_regul","True")==0) { ?>
+                <div id="second_regul_param<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
+                    <table class="table_width" id="table_regul<?php echo $i; ?>">
+                        <tr>
+                            <td class="plug-regul"></td>
+                            <td class="regul"><div id="label_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},'False')==0) { echo "display:none"; } ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_SENSO'); ?>:</div></td>
+                            <td>
+                                <div id="div_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>">
+                                    <div id="unknown_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")!=0)&&(strcmp($plug_type{$i},"lamp")!=0)) { echo "display:none"; } ?>">
+                                        <select name="plug_senso<?php echo $i; ?>" onChange="getUnity(this.selectedIndex, <?php echo $i; ?>);" onLoad="getUnity(this.selectedIndex,<?php echo $i; ?>);">
+                                        <?php 
+                                        if(strcmp($plug_senso{$i},"H")==0) {
+                                             echo "<option value='T'>".__('REGUL_TEMP')."</option>";
+                                             echo "<option value='H' selected>".__('REGUL_HUMI')."</option>";
+                                        } else {
+                                             echo "<option value='T' selected>".__('REGUL_TEMP')."</option>";
+                                             echo "<option value='H'>".__('REGUL_HUMI')."</option>";
+                                        }
+                                        ?>
+                                        </select>
+                                    </div>
+                                    <div id="humi_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"ventilator")!=0)&&(strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"pump")!=0)) { echo "display:none"; } ?>">
+                                        <label class="readonly"><?php echo __('REGUL_HUMI'); ?></label>
+                                    </div>
+
+                                    <div id="temp_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>">
+                                        <label class="readonly"><?php echo __('REGUL_TEMP'); ?></label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="regul"><div id="label_regul_senss<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_SENSS'); ?>:</div></td>
+                            <td>
+                                <div id="div_regul_senss<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>">
+                                    <select name="plug_senss<?php echo $i; ?>">
+                                        <?php if(strcmp($plug_senss{$i},"-")==0) {
+                                        echo "<option value='+'>".__('REGUL_ABOVE')."</option>";
+                                        echo "<option value='-' selected>".__('REGUL_UNDER')."</option>";
+                                        } else {
+                                        echo "<option value='+' selected>".__('REGUL_ABOVE')."</option>";
+                                        echo "<option value='-'>".__('REGUL_UNDER')."</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="regul"><div id="label_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_VALUE'); ?>:</div></td>
+                            <td>
+                                <div id="div_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>">
+                                    <input type="text" size="5" maxlength="4" value="<?php echo $plug_regul_value{$i}; ?>" name="plug_regul_value<?php echo $i; ?>" id="plug_regul_value<?php echo $i; ?>" onKeypress="return verifDigit(event);">
+                                    <label id="label_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label>
+                                    <label id="label_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label>
+                                </div>
+                            </td>
+                            <td>
+                            <div class='error_field' style="display:none" id="error_regul_value<?php echo $i; ?>"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_REGUL_VALUE'); ?></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="regul">
+                                <div id="label_regul_tolerance<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_TOLERANCE'); ?>:
+                                </div>
+                            </td>
+                            <td>
+                                <div id="div_regul_tolerance_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>">
+                                    <input type="text" size="5" maxlength="4" value="<?php echo $plug_second_tolerance{$i}; ?>" name="plug_second_tolerance<?php echo $i; ?>" id="plug_second_tolerance<?php echo $i; ?>" onKeypress="return verifDigit(event);">
+                                    <label id="label_second_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label>
+                                    <label id="label_second_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div id="error_second_tolerance_value_temp<?php echo $i; ?>" class='error_field' style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_TOLERANCE_VALUE_DEGREE','html'); ?></div>
+                                <div id="error_second_tolerance_value_humi<?php echo $i; ?>" class='error_field' style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_TOLERANCE_VALUE_POURCENT','html'); ?></div>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            <?php } ?>
+            </div>
+            <br />
+            <hr />
+            <br />
+            <table class="table_width">
+                <tr>
+                    <td class="program-button">
+                        <button class="jumpto" name="jump_wizard<?php echo $i; ?>"  id="jump_wizard<?php echo $i; ?>">
+                            <?php echo __('JUMPTO_WIZARD'); ?>
+                        </button>
+                    </td>
+                    <td class="program-button">
+                        <input type="hidden" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>">
+                        <div id="button_program<?php echo $i;?>">
+                            <button class="jumpto" name="jumpto<?php echo $i; ?>" id="jumpto<?php echo $i; ?>"  onclick='addHidden(document.forms["plugForm"], "<?php echo $i; ?>","jumpto");'>
+                                <?php echo __('SAVE_AND_CONFIGURE_PROGRAM').": $i"; ?>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div id="format_style<?php echo $i; ?>" style="display:none">
+                <br />
+                <hr />
+                <br />
+            </div>
+        </div>
+
+    <?php } ?>
+    <br />
+    <br />
+    <input type="hidden" name="submit_plugs" id="submit_plugs" value="submit_plugs">
+    <table class="table_width">
+        <tr>
+            <td></td>
+            <td class="program-valid-right">
+                <input type="submit" name="reccord" id="reccord_plugs" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>">
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+
+<div id="warning_change_type_plug" style="display:none" title="<?php echo __('CONFIRMATION'); ?>">
+    <?php echo __('CONFIRMATION_CHANGEMENT_TYPE_PLUG'); ?>
+</div>
+
+<div class="popup_message" id="update_conf" title="" style="display:none">
+    <p><?php echo __('VALID_UPDATE_CONF'); ?></p>
+</div>
+
+
+<div class="popup_error" id="error_update_conf" title="" style="display:none">
+    <p><?php echo __('ERROR_UPDATE_CONF'); ?></p>
+</div>
+
+<script>expand_plug("<?php echo $submenu.','.$nb_plugs; ?>");</script>

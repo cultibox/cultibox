@@ -1,0 +1,673 @@
+<script>
+   $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
+   // Include specific css
+   loadCSS("main/libs/css/page_cultipi.css");
+</script>
+
+<?php 
+    cultipi\check_db();
+?>
+
+<br />
+<table class="table_width">
+    <tr>    
+        <td class="conf-menu-marge"></td>
+        <td class="center_menu" >
+            <button id="div_synoptic_label" class="cultipi_menu_h1" onclick="expand('synoptic_ui'); return false;"><?php echo __('CULTIPI_SYNOPTIC'); ?></button>
+        </td>
+        <td class="center_menu" >
+            <button id="div_network_label" class="cultipi_menu_h1" onclick="expand('network_conf_ui'); return false;"><?php echo __('CULTIPI_NETWORK_CONF'); ?></button>
+        </td>
+        <td class="center_menu" >
+            <button id="div_admin_label" class="cultipi_menu_h1" onclick="expand('admin_ui'); return false;"><?php echo __('CULTIPI_ADMIN'); ?></button>
+        </td>
+       <td class="conf-menu-marge"></td>
+    </tr>
+</table> 
+<br />
+
+<!-- Section synoptic -->
+<div id="div_synoptic_ui" style="">
+    <!-- Display buttons -->
+    <table class="table_width">
+        <tr>
+            <td class="calendar-conf-marge"></td> 
+            <td class="calendar-title">
+                <!-- Button to add a element -->
+                <input type="image" id="syno_add_element" name="syno_add_element"
+                       title="<?php echo __('CULTIPI_SYNO_ADD_ELEMENT'); ?>"
+                       src="main/libs/img/db_add.png"  width="34" 
+                       alt="calendar"  
+                />        
+            </td>
+            <td class="calendar-conf-marge"></td>
+            <td ><p class="pInline" ><?php echo __('SYNO_UPDATE_SENSOR_HOUR'); ?></p><p class="pInline" id="synoptic_updateSensorHour" ></p></td>
+            <td ><p class="pInline" ><?php echo __('SYNO_UPDATE_PLUG_HOUR'); ?></p><p class="pInline" id="synoptic_updatePlugHour" ></p></td>
+        </tr>
+    </table>
+    <br />
+    <hr class="hr_cultipi" />
+    <br />
+
+    <div id="set" style="min-height: 700px;" >
+        
+        <?php
+            // Add every sensor
+            
+            // Read sensor list
+            $sensorList = cultipi\getSensorOfSynoptic();
+
+            // retrieve values
+            $sensorValues = cultipi\getAllSensorLiveValue();
+            
+            foreach ($sensorList as $index => $sensor) 
+            {
+                echo '<div id="syno_elem_' . $sensor["id"] . '" class="" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;z-index:' . $sensor["z"] . '" >';
+                echo '  <table>';
+                echo '    <tr>';
+                echo '      <td id="syno_elem_title_' . $sensor["id"] . '" >Capteur ' . $sensor["indexElem"] . '</td>';
+                echo '      <td>';
+                echo '          <input type="image" id="syno_elemConfigur_' . $sensor["id"] . '" name="syno_elemConfigur_' . $sensor["id"] . '"';
+                echo '                 title=""';
+                echo '                 src="main/libs/img/advancedsettings.png"  width="22"';
+                echo '                 alt="configure"';
+                echo '                 class="syno_conf_elem_button"';
+                echo '          />';
+                echo '      </td>';
+                echo '    </tr>';
+                echo '    <tr>';
+                $sensorValuesList = explode(" ", $sensorValues[$sensor["indexElem"]]);
+                if (!array_key_exists(1, $sensorValuesList)) {$sensorValuesList[1] = "";}
+
+                $newStyle = "";
+                $tootlTipText = "";
+                $newText = "";
+                switch ($sensor["image"])
+                {
+                    case 'T_RH_sensor.png' :
+                        $newText = $tootlTipText = $sensorValuesList[0] . "°C " . $sensorValuesList[1] . "RH" ;
+                        break;
+                    case 'water_T_sensor.png': 
+                        $newText = $tootlTipText = $sensorValuesList[0] . "°C";
+                        break;
+                    case 'level_sensor.png': 
+                        $newText = $tootlTipText = $sensorValuesList[0] . "cm";
+                        break;
+                    case 'pH-sensor.png': 
+                        $newText = $tootlTipText = $sensorValuesList[0] . "ph";
+                        break;
+                    case 'conductivity-sensor.png': 
+                        $newText = $tootlTipText = $sensorValuesList[0] . "ec";
+                        break;
+                    case 'dissolved-oxygen-sensor.png': 
+                        $newText = $tootlTipText = $sensorValuesList[0] . "OD";
+                        break;
+                    case 'ORP-sensor.png': 
+                        $newText = $tootlTipText = $sensorValuesList[0] . "ORP";
+                        break;
+                    default :
+                        $newText = $tootlTipText = $sensorValuesList[0] . "???";
+                        break;
+                }
+                
+                // If defcom, set opacity to 0.4
+                if ($sensorValuesList[0] == "DEFCOM" || $sensorValuesList[0] == "TIMEOUT") {
+                    $newStyle = 'opacity: 0.4;';
+                    $tootlTipText = __($sensorValuesList[0]);
+                    $newText = "";
+                }
+                
+                echo '      <td colspan="2" ><p id="syno_elemValueSensor_val1_' . $sensor["indexElem"] . '" class="pInline" >' . $newText . '</p>';
+                echo '      </td>';
+                echo '    </tr>';
+                echo '  </table>';
+                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" name="syno_elemSensorImage_' . $sensor["indexElem"] . '" ';
+                echo '       src="main/libs/img/images-synoptic-sensor/' . $sensor["image"] . '" ';
+                echo '       style="width:' . $sensor["scale"] . 'px;cursor: move; ' . $newStyle . '" ';
+                echo '       title="' . $tootlTipText .'" ';
+                echo '       alt="capteur" ';
+                echo '       class="rotate' . $sensor["rotation"] . '">';
+                echo '</div>';
+            }
+            
+            // Add plugs
+            
+            // Read plug list
+            $plugList = cultipi\getPlugOfSynoptic();
+            
+            // retrieve values
+            $plugValues = cultipi\getAllPlugLiveValue();
+            
+            foreach ($plugList as $index => $plug) 
+            {
+                echo '<div id="syno_elem_' . $plug["id"] . '" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;z-index:' . $plug["z"] . '" >';
+                echo '  <table>';
+                echo '    <tr>';
+                echo '      <td id="syno_elem_title_' . $plug["id"] . '" >Prise ' . $plug["indexElem"] . '</td>';
+                echo '      <td>';
+                echo '          <input type="image" id="syno_elemConfigur_' . $plug["id"] . '" name="syno_elemConfigur_' . $plug["id"] . '"';
+                echo '                 src="main/libs/img/advancedsettings.png"  width="22"';
+                echo '                 alt="configure"';
+                echo '                 class="syno_conf_elem_button"';
+                echo '          />';
+                echo '      </td>';
+                echo '      <td>';
+                echo '          <input type="image" id="syno_pilotPlug_' . $plug["id"] . '" name="syno_pilotPlug_' . $plug["id"] . '"';
+                echo '                 src="main/libs/img/rpi_restart.png"  width="22"';
+                echo '                 alt="pilot"';
+                echo '                 class="syno_pilot_plug_elem_button"';
+                echo '          />';
+                echo '      </td>';
+                echo '    </tr>';
+                echo '  </table>';
+                // If defcom, set opacity to 0.4
+                $newStyle = "";
+                $tootlTipText = $plugValues[$plug["indexElem"]];
+                if ($plugValues[$plug["indexElem"]] == "DEFCOM" || $plugValues[$plug["indexElem"]] == "TIMEOUT") {
+                    $newStyle = 'opacity: 0.4;';
+                    $tootlTipText = __($plugValues[$plug["indexElem"]]);
+                } elseif ($tootlTipText == "on") {
+                    $tootlTipText = __("VALUE_ON");
+                }elseif ($tootlTipText == "off") {
+                    $tootlTipText = __("VALUE_OFF");
+                }
+                echo '  <img id="syno_elemImage_' . $plug["id"] . '" name="syno_elemPlugImage_' . $plug["indexElem"] . '" ';
+                echo '        src="main/libs/img/images-synoptic-plug/' . $plug["image"] . '" alt="Prise" ';
+                echo '        style="' . $newStyle . 'width:' . $plug["scale"] . 'px;cursor: move" ';
+                echo '        title="' . $tootlTipText .'" ';
+                echo '        class="rotate' . $plug["rotation"] . '">';
+                echo '</div>';
+            }
+            
+            // Add other items
+            $otherList = cultipi\getOtherOfSynoptic();
+            foreach ($otherList as $index => $other) 
+            {
+                echo '<div id="syno_elem_' . $other["id"] . '" class="" style="position:absolute; top:' . $other["y"] . 'px ; left:' . $other["x"] . 'px ;z-index:' . $other["z"] . '" >';
+                echo '  <table>';
+                echo '    <tr>';
+                echo '      <td id="syno_elem_title_' . $other["id"] . '" ></td>';
+                echo '      <td>';
+                echo '          <input type="image" id="syno_elemConfigur_' . $other["id"] . '" name="syno_elemConfigur_' . $other["id"] . '"';
+                echo '                 title=""';
+                echo '                 src="main/libs/img/advancedsettings.png"  width="22"';
+                echo '                 alt="configure"';
+                echo '                 class="syno_conf_elem_button"';
+                echo '          />';
+                echo '      </td>';
+                echo '    </tr>';
+                echo '    <tr>';
+                echo '    </tr>';
+                echo '  </table>';
+                echo '  <img id="syno_elemImage_' . $other["id"] . '" src="main/libs/img/images-synoptic-other/' . $other["image"] . '" ';
+                echo '                 alt="Prise" style="width:' . $other["scale"] . 'px;cursor: move" class="rotate' . $other["rotation"] . '">';
+                echo '</div>';
+            }
+            
+            
+        ?>
+    </div>
+    
+    <!-- Drag message box for add element-->
+    <div id="syno_add_element_ui" style="display:none" title="<?php echo __('CULTIPI_SYNO_ADD_ELEMENT'); ?>">
+        <?php 
+            $dir    = '../../libs/img/images-synoptic-other';
+            $files  = array_diff(scandir($dir), array('..', '.'));
+            foreach ($files as $file)
+            {
+                if (pathinfo($file, PATHINFO_EXTENSION) == "png")
+                {
+                    echo '<div class="syno_add_element_elem" id="' . $file . '">';
+                    echo '    <img src="main/libs/img/images-synoptic-other/' . $file . '" alt="' . basename($file) . '" style="width:40px; cursor: move" >';
+                    echo '</div>';
+                }
+            }
+        ?>
+    </div>
+
+    <!-- Message box for configuring element-->
+    <div id="syno_configure_element" style="display:none" title="<?php echo __('CULTIPI_SYNO_CONF'); ?>">
+        <table>
+            <tr>
+                <td>Image</td>
+                <td colspan="3" >
+                    <?php 
+                        echo '<select id="syno_configure_element_image_other" style="display:none" >';
+                        $dir    = '../../libs/img/images-synoptic-other';
+                        $files  = array_diff(scandir($dir), array('..', '.'));
+                        foreach ($files as $file)
+                        {
+                            if (pathinfo($file, PATHINFO_EXTENSION) == "png")
+                            {
+                                echo '<option value="' . $file . '" >' . basename($file) . '</option>';
+                            }
+                        }
+                        echo '</select>';
+
+                        echo '<select id="syno_configure_element_image_plug" style="display:none" >';
+                        $dir    = '../../libs/img/images-synoptic-plug';
+                        $files  = array_diff(scandir($dir), array('..', '.'));
+                        foreach ($files as $file)
+                        {
+                            if ((pathinfo($file, PATHINFO_EXTENSION) == "png" || pathinfo($file, PATHINFO_EXTENSION) == "gif") 
+                                && strpos(basename($file), "_OFF"))
+                            {
+                                // Create file name (remove extension and _ON)
+                                $newFileName = str_replace("_OFF.gif", "", str_replace("_OFF.png", "", basename($file)));
+                                echo '<option value="' . $file . '" >' . $newFileName . '</option>';
+                            }
+                        }
+                        echo '</select>';
+
+                        echo '<select id="syno_configure_element_image_sensor" style="display:none" >';
+                        $dir    = '../../libs/img/images-synoptic-sensor';
+                        $files  = array_diff(scandir($dir), array('..', '.'));
+                        foreach ($files as $file)
+                        {
+                            if (pathinfo($file, PATHINFO_EXTENSION) == "png")
+                            {
+                                echo '<option value="' . $file . '" >' . basename($file) . '</option>';
+                            }
+                        }
+                        echo '</select>';
+                    ?>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td><?php echo __('CULTIPI_SYNO_ROTATION'); ?></td>
+                <td><input id="syno_configure_element_rotate_0" type="radio" name="syno_configure_element_rotate" value="0" /> 0° </td>
+                <td><input id="syno_configure_element_rotate_90" type="radio" name="syno_configure_element_rotate" value="90" /> 90° </td>
+                <td><input id="syno_configure_element_rotate_180" type="radio" name="syno_configure_element_rotate" value="180" /> 180° </td>
+                <td><input id="syno_configure_element_rotate_270" type="radio" name="syno_configure_element_rotate" value="270" /> 270° </td>
+            </tr>
+            <tr>
+                <td><?php echo __('CULTIPI_SYNO_PROFONDEUR'); ?></td>
+                <td class="conf-field-cultipi"><input type="text" name="syno_configure_element_zindex_val" id="syno_configure_element_zindex_val" value="" size="4" readonly /></td>
+                <td colspan="3" ><div id="syno_configure_element_zindex"></div></td>
+            </tr>
+            <tr>
+                <td><?php echo __('CULTIPI_SYNO_ZOOM'); ?></td>
+                <td><input type="text" name="syno_configure_element_scale_val" id="syno_configure_element_scale_val" value="" size="4" readonly /></td>
+                <td colspan="3" ><div id="syno_configure_element_scale"></div></td>
+            </tr>          
+        </table>
+    </div>
+    
+    <!-- Message box for pilot a plug -->
+    <div id="syno_pilotPlug_element" style="display:none" title="<?php echo __('CULTIPI_SYNO_PILOTAGE'); ?>">
+        <table>
+            <tr id="syno_configure_element_force_plug">
+                <td><?php echo __('CULTIPI_SYNO_PILOTAGE'); ?></td>
+                <td colspan="2" >
+                    <select id="syno_configure_element_force_plug_time" >
+                        <option value="5">5s</option>
+                        <option value="30">30s</option>
+                        <option value="60">1min</option>
+                        <option value="600">10min</option>
+                        <option value="3600">1h</option>
+                    </select>
+                </td>
+                <td>
+                    <select id="syno_configure_element_force_plug_value" >
+                        <option value="on">On</option>
+                        <option value="off">Off</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="button" id="syno_configure_element_force_plug_pilot" name="syno_configure_element_force_plug_pilot" value="<?php echo __('CULTIPI_SYNO_PILOTER'); ?>" />
+                </td>
+            </tr>            
+        </table>
+    </div>
+    
+</div>
+
+<!-- Conf reseau -->
+<div id="div_network_conf_ui" style="display:none">
+ <table class="table_width">
+    <tr>
+        <td class="conf-marge-cultipi"></td>
+        <td>
+            <a href="" id="reset_network_img"><img src='/cultibox/main/libs/img/service_restart.png' alt='' title="<?php echo __('RESET_NETWORK_CONF'); ?>"></a>
+            <a href="" id="dl-bonjour"><img src='/cultibox/main/libs/img/download-bonjour.png' alt='' title="<?php echo __('CULTIPI_DL_BONJOUR'); ?>"></a>
+        </td>
+        <td></td>
+    </tr>
+</table>
+<br />
+<hr class="hr_cultipi" />
+<br />
+<br />
+
+    <label class="title_conf"><?php echo __('CONFIGURE_TITLE_CULTIBOX_NET'); ?></label>
+    <p class="p_center"><?php echo __('CONFIGURE_SUBTITLE'); ?></p>
+<br /><br />
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="configform" id="configform">
+
+<!-- Start of wire conf tab -->
+<table class="table_width">
+    <tr>
+        <td class="conf-marge"></td>
+        <td class="conf-title"><label class="subsub_title"><?php echo __('WIRE_CONF'); ?>:</label><img src="main/libs/img/infos.png" alt="" title="<?php if(strcmp("$eth_phy","")==0) { echo __('NO_IFACE_FOUND'); } else { echo __('PHY_ADDR').": ".strtoupper($eth_phy); } ?>" /></td>
+        <td class="conf-field">
+            <select name="activ_wire" id="activ_wire" <?php if(strcmp("$eth_phy","")==0) { echo " disabled"; } ?>>
+            <option value="True" <?php if($wire_enable) echo "selected"; ?>><?php echo __('ACTIVATED'); ?></option>
+            <option value="False" <?php if((!$wire_enable)||(strcmp("$eth_phy","")==0)) echo "selected"; ?>><?php echo __('DEACTIVATED'); ?></option>
+            </select>
+        </td>
+    </tr>
+</table>
+
+<div id="wire_interface" <?php if((!$wire_enable)||(strcmp("$eth_phy","")==0)) echo 'style="display:none"'; ?>>
+        <p class="p_center">
+           <input type="radio" name="wire_type" value="static" <?php if($wire_static) echo 'checked'; ?>><?php echo __('MANUAL_IP_ADDR'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MANUAL_IP'); ?>" /><input type="radio" name="wire_type" value="dhcp" <?php if($wire_dhcp) echo 'checked'; ?>><?php echo __('DYNAMIC_IP_ADDR'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_DYNAMIC_IP'); ?>" /></p>
+
+        <div id="wire_static" <?php if(!$wire_static) echo 'style="display:none"'; ?>>
+        <table class="table_width">
+        <tr>
+            <td class="conf-marge-field"></td>
+            <td class="conf-field-title"><?php echo __('IP_ADDR'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IP_ADDR'); ?>" /></td>
+            <td class="conf-field-field"><input type="text" size="15" id="wire_address" name="wire_address" maxlength=15 value="<?php echo $wire_address; ?>"></td>
+            <td><div id="error_wire_ip" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP'); ?></div></td>
+         </tr>
+         <tr>
+            <td></td>
+            <td><?php echo __('IP_MASK'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MASK_ADDR'); ?>" /></td>
+            <td><input type="text" size=15 maxlength=15 id="wire_mask" name="wire_mask" value="<?php echo $wire_mask; ?>"></td>
+            <td><div id="error_wire_mask" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP_MASK'); ?></div></td>
+         </tr>
+         <tr>
+            <td></td>
+            <td><?php echo __('GATEWAY'); ?>:</td>
+            <td><input type="text" size=15 maxlength=15 id="wire_gw" name="wire_gw" value="<?php echo $wire_gw; ?>"></td>
+            <td></td>
+         </tr>
+         </table>
+        </div>
+</div>
+<br />
+<hr />
+<br /><br />
+
+<!-- Start of wirless conf tab -->
+<table class="table_width">
+    <tr>
+        <td class="conf-marge"></td>
+        <td class="conf-title"><label class="subsub_title"><?php echo __('WIRELESS_CONF'); ?>:</label><img src="main/libs/img/infos.png" alt="" title="<?php if(strcmp("$wlan_phy","")==0) { echo __('NO_IFACE_FOUND'); } else { echo __('PHY_ADDR').": ".strtoupper($wlan_phy); } ?>" /></td>
+        <td>
+            <select name="activ_wifi" id="activ_wifi">
+                <option value="True" <?php if($wifi_enable) echo "selected"; ?>><?php echo __('ACTIVATED'); ?></option>
+                <option value="False" <?php if(!$wifi_enable) echo "selected"; ?>><?php echo __('DEACTIVATED'); ?></option>
+            </select>
+        </td>
+    </tr>
+</table>
+<br />
+<div id="wifi_interface" <?php if(!$wifi_enable || $wlan_phy == "") { echo 'style="display:none"'; } ?>>
+    <table class="table_width">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button id="wifi_scan"><?php echo __('WIFI_SCAN_ESSID'); ?></button></td>
+        </tr>
+        <tr>
+            <td class="conf-marge-field-wifi"></td>
+            <td class="conf-field-title-wifi"><?php echo __('CONFIGURE_WIFI_SSID'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_SSID'); ?>" /></td>
+             <td class="conf-field-field-wifi">
+                <input  type="text" size="15" name="wifi_ssid" id="wifi_ssid" value="<?php echo $wifi_ssid; ?>" />
+            </td>
+                <td><div id="error_wifi_ssid" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SSID_VALUE'); ?></div></td>
+            </tr>
+           <tr>
+              <td></td>
+              <td><?php echo __('CONFIGURE_WIFI_KEY_TYPE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_KEY_TYPE'); ?>" /></td>
+              <td>
+                    <select name="wifi_key_type" id="wifi_key_type">
+                        <?php foreach( $GLOBALS['WIFI_KEY_TYPE_LIST'] as $key) { ?>
+                            <option value="<?php echo $key; ?>" <?php if($key == $wifi_key_type) echo 'selected'; ?>><?php echo $key; ?></option>
+                        <?php } ?>
+                    </select>
+              </td>
+              <td></td>
+           </tr>
+                  <tr>
+                <td></td>
+                <td><?php echo __('CONFIGURE_WIFI_PASSWORD'); ?>:</td>
+                <td>
+                    <input  type="password" size="15" 
+                            name="wifi_password" id="wifi_password" value="" <?php if(strcmp("$wifi_key_type","NONE")==0) { echo 'disabled'; } ?> />
+                <img src='/cultibox/main/libs/img/eye.png' alt='' title="<?php echo __('SHOW_CURRENT_PWD'); ?>" id="eyes" <?php if(strcmp("$wifi_key_type","NONE")==0) echo 'style="display:none"';  ?>></td>
+                <td>
+                    <div id="error_wifi_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div><?php echo __('HEX_PASSWORD'); ?>:<input id="hex_password" type="checkbox" <?php if(strcmp("$wifi_key_type","WEP")!=0) { echo 'disabled'; } ?> />
+                    <div id="error_wifi_empty_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_EMPTY_PASSWORD'); ?></div>
+                    <div id="error_password_wep" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WEP_KEY_TYPE'); ?></div>
+                    <div id="error_password_wep_hexa" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WEP_KEY_TYPE_HEXA'); ?></div>
+                    <div id="error_password_wpa" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WPA_KEY_TYPE'); ?></div>
+                </td>
+           </tr>
+           <tr>
+                <td></td>
+                <td><?php echo __('CONFIGURE_WIFI_PASSWORD_CONFIRM'); ?>:</td>
+                <td>
+                    <input type="password" size="15" 
+                           name="wifi_password_confirm" id="wifi_password_confirm" value="" <?php if(strcmp("$wifi_key_type","NONE")==0) { echo 'disabled'; } ?>/>
+                </td>
+                <td><div id="error_wifi_password_confirm" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div></td>
+           </tr>
+           <tr>
+                <td></td>
+                <td><?php echo __('ADDR_TYPE'); ?>:</td>
+                <td>
+                    <input type="radio" name="wifi_type" value="static" <?php if(($wifi_static)&&(strcmp("$wifi_ssid","")!=0)) echo 'checked'; ?>><?php echo __('MANUAL_IP_ADDR'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MANUAL_IP'); ?>" /><br /><input type="radio" name="wifi_type" value="dhcp" <?php if(($wifi_dhcp)||(strcmp("$wifi_ssid","")==0)) echo 'checked'; ?>><?php echo __('DYNAMIC_IP_ADDR'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_DYNAMIC_IP'); ?>" /></td>
+                <td></td>   
+        </table>
+    <div id="manual_ip_wifi" <?php if((!$wifi_static)||(strcmp("$wifi_ssid","")==0)) echo "style='display:none'"; ?>>
+ <table class="table_width">
+        <tr>
+            <td class="conf-marge-field-wifi"></td>
+            <td class="conf-field-title-wifi"><?php echo __('CONFIGURE_WIFI_IP'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_IP'); ?>" /></td>
+            <td class="conf-field-field-wifi"><input type="text" size="15" name="wifi_ip" id="wifi_ip" value="<?php echo $wifi_address; ?>" />
+            <td><div id="error_wifi_ip" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP'); ?></div></td>
+        </tr>
+         <tr>
+              <td></td>
+              <td><?php echo __('CONFIGURE_WIFI_IP_MASK'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MASK_ADDR'); ?>" /></td>
+              <td><input type="text" size="15" name="wifi_mask" id="wifi_mask" value="<?php echo $wifi_mask; ?>" /></td>
+              <td><div id="error_wifi_mask" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP_MASK'); ?></div></td>
+        </tr>
+        <tr>
+              <td></td>
+              <td><?php echo __('GATEWAY'); ?>:</td>
+              <td><input type="text" size="15" name="wifi_gw" id="wifi_gw" value="<?php echo $wifi_gw; ?>" /></td>
+              <td></td>
+        </tr>
+</table>
+</div>
+</div>
+<br />
+<hr />
+<br />
+<p class="p_center">
+    <input type="submit" id="submit_conf" name="submit_conf" value="<?php echo __('SAVE_CONF'); ?>">
+</p>
+</form>
+<br />
+</div>
+
+<!-- Admin -->
+<div id="div_admin_ui" style="display:none">
+<table class="table_width">
+    <tr>
+        <td class="conf-marge-cultipi"></td>
+        <td>
+            <a href="" id="logs_httpd" name="cultipi_logs"><img src='/cultibox/main/libs/img/view-logs-http.png' alt='' title="<?php echo __('CULTIPI_LOGS_HTTPD'); ?>"></a>
+            <a href="" id="dl_logs_httpd" name="dl_cultipi_logs"><img src='/cultibox/main/libs/img/download-logs-http.png' alt='' title="<?php echo __('CULTIPI_DL_LOGS_HTTPD'); ?>"></a>
+        </td>
+        <td>
+            <a href="" id="logs_mysql" name="cultipi_logs"><img src='/cultibox/main/libs/img/view-logs-mysql.png' alt='' title="<?php echo __('CULTIPI_LOGS_MYSQL'); ?>"></a>
+            <a href="" id="dl_logs_mysql" name="dl_cultipi_logs"><img src='/cultibox/main/libs/img/download-logs-mysql.png' alt='' title="<?php echo __('CULTIPI_DL_LOGS_MYSQL'); ?>"></a>
+        </td>   
+        <td>
+            <a href="" id="logs_service" name="cultipi_logs"><img src='/cultibox/main/libs/img/view-logs-service.png' alt='' title="<?php echo __('CULTIPI_LOGS_SERVICE'); ?>"></a>
+            <a href="" id="dl_logs_service" name="dl_cultipi_logs"><img src='/cultibox/main/libs/img/download-logs-service.png' alt='' title="<?php echo __('CULTIPI_DL_LOGS_SERVICE'); ?>"></a>
+        </td>
+        <td>
+            <a href="" id="logs_cultipi" name="cultipi_logs"><img src='/cultibox/main/libs/img/view-logs-culti.png' alt='' title="<?php echo __('CULTIPI_LOGS_CULTIPI'); ?>"></a>
+            <a href="" id="dl_logs_cultipi" name="dl_cultipi_logs"><img src='/cultibox/main/libs/img/download-logs-culti.png' alt='' title="<?php echo __('CULTIPI_DL_LOGS_CULTIPI'); ?>"></a>
+            <img src='/cultibox/main/libs/img/service_on.png' alt='' title="<p class='p_center'><b><i><?php echo __('CULTIPI_SERVICE'); ?>:</i></b></p><?php echo __('SERVICE_ON'); ?>" id="cultipi_on" style="display:none">
+            <img src='/cultibox/main/libs/img/service_off.png' alt='' title="<p class='p_center'><b><i><?php echo __('CULTIPI_SERVICE'); ?>:</i></b></p><?php echo __('SERVICE_OFF'); ?>" id="cultipi_off">
+            <a href="" name="restart_service" id="restart_cultipi"><img src='/cultibox/main/libs/img/service_restart.png' alt='' title="<?php echo __('RESTART_SERVICE'); ?>" /></a>
+        </td>
+        <td>
+            <img src='/cultibox/main/libs/img/versions.png' id="version_soft" alt='' title="">
+            <a href="" name="restart_rpi" id="restart_rpi"><img src='/cultibox/main/libs/img/rpi_restart.png' alt='' title="<?php echo __('RPI_RESTART'); ?>" /></a>
+            <a href="" name="update_rpi" id="update_rpi"><img src='/cultibox/main/libs/img/update_rpi.png' alt='' title="<?php echo __('TOOLTIP_UPDATE_RPI'); ?>" /></a>
+        <td></td>
+    </tr>
+</table>
+
+<br />
+<hr class="hr_cultipi" />
+<br />
+<br />
+<p class="title_conf"><?php echo __('MGT_ACCESS'); ?></p>
+<br />
+<table class="table_width">
+<tr>
+    <td class="conf-marge-cultipi"></td>
+    <td class="conf-field-service"><?php echo __('CHANGE_PASSWORD'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CHANGE_PWD'); ?>" /></td>
+    <td><button id="change_password" name="change_password"><?php echo __('NEW_PASSWORD'); ?></button>
+    </td>
+    <td></td>
+</tr>
+</table>
+
+</div>
+
+
+
+
+
+<div id="dialog_logs_cultipi" style="display:none">
+    <div id="div_title_output"><p class="p_center info_logs"><?php echo __('OUTPUT_LOGS'); ?>:</p></div>
+    <div id="output_logs"></div>
+
+    <div id="div_title_error"><p class="p_center error_logs"><?php echo __('ERROR_LOGS'); ?>:</p></div>
+    <div id="error_logs"></div>
+</div>
+
+
+<div id="error_restart_service" title="" style="display:none">
+    <p><?php echo __('ERROR_RESTART_SERVICE'); ?></p>
+</div>
+
+<div id="success_restart_service" title="" style="display:none">
+    <p><?php echo __('SUCCESS_RESTART_SERVICE'); ?></p>
+</div>
+
+
+<div id="error_save_password" title="" style="display:none">
+    <p><?php echo __('ERROR_SAVE_PASSWORD'); ?></p>
+</div>
+
+<div id="success_save_password" title="" style="display:none">
+    <p><?php echo __('SAVED_PASSWORD'); ?></p>
+</div>
+
+<div id="confirm_restart_rpi" title="<?php echo __('CONFIRM_RESTART_RPI_TITLE'); ?>" style="display:none">
+    <?php echo __('CONFIRM_RESTART_RPI'); ?>
+</div>
+
+<div id="network_available" title="" style="display:none">
+    <?php echo __('NETWORK_AVAILABLE'); ?>
+</div>
+
+<div id="confirm_reset_network" title="" style="display:none">
+    <?php echo __('CONFIRM_RESET_NETWORK'); ?>
+</div>
+
+<div id="success_restart_rpi" title="" style="display:none">
+    <?php echo __('SUCCESS_RESTART_RPI'); ?>
+</div>
+
+<div id="confirm_restart_cultipi" title="<?php echo __('CONFIRM_RESTART_CULTIPI_TITLE'); ?>" style="display:none">
+    <?php echo __('CONFIRM_RESTART_CULTIPI'); ?>
+</div>
+
+<div id="dialog_change_password" title="<?php echo __('NEW_PASSWORD'); ?>" style="display:none">
+    <form>
+        <table class="table_width"> 
+            <tr>
+                <td class="conf-marge"></td>
+                <td class="password-title"><?php echo __('NEW_PASSWORD'); ?>:</td>
+                <td class="password-field"><input type="password" id="new_password" /></td>
+                <td><div id="error_same_password" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SAME_PASSWORD'); ?></div><div id="error_empty_password" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_EMPTY_PASSWORD'); ?></div></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><?php echo __('CONFIRM_NEW_PASSWORD'); ?>:</td>
+                <td><input type="password" id="confirm_new_password" /></td>
+                <td></td>
+            </tr>
+        </table>
+        <p class="p_center"><input type="submit" id="save_password" value="<?php echo __('SAVE_PASSWORD'); ?>"></p>
+    </form>
+</div>
+
+
+<div id="empty_network_conf" style="display:none">
+    <p><?php echo __('EMPTY_NETWORK_CONFIG'); ?></p>
+</div>
+
+<div id="error_network_file" style="display:none">
+    <p><?php echo __('ERROR_NET_FILE_CREATION'); ?></p>
+</div>
+
+<div id="network_new_addr_set" style="display:none">
+    <?php echo __('AVAILABLE_MODULE_SET'); ?>
+</div>
+
+<div id="error_restore_conf" style="display:none">
+    <p><?php echo __('RESTORED_CONF'); ?></p>
+</div>
+
+<div id="cultipi_no_update" style="display:none">
+    <p><?php echo __('CULTIPI_NO_UPDATE'); ?></p>
+</div>
+
+<div id="cultipi_access_update" style="display:none">
+    <p><?php echo __('CULTIPI_ACCESS_UPDATE'); ?></p>
+</div>
+
+
+<div id="cultipi_confirm_update" style="display:none">
+    <p><?php echo __('CULTIPI_CONFIRM_UPDATE'); ?></p>
+</div>
+
+
+<div id="cultipi_updated" style="display:none">
+    <p><?php echo __('CULTIPI_UPDATED'); ?></p>
+</div>
+
+
+<div id="wifi_essid_list" style="display:none" title="<?php echo __('WIFI_ESSID_SCAN_TITLE'); ?>">
+    <?php 
+        if(count($wifi_net_list)>0) { 
+            echo '<p>'.__('WIFI_SCAN_SUBTITLE').'</p>';
+            $checked="";
+            foreach($wifi_net_list as $essid) {
+                $essid=trim($essid);
+                if((strpos("$essid","cultipi_")!==0)&&(strcmp("$essid","")!=0)) {
+                    if(strcmp("$essid","$wifi_ssid")==0) $checked="checked";
+                    echo '<b>'.$essid.' : </b><input type="radio" name="wifi_essid" value="'.$essid.'" '.$checked.' /><br />';
+                    $checked="";
+                }
+            }
+        }
+    ?>
+</div>
+
+<script>expand("<?php echo $submenu; ?>");</script>
+

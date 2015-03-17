@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+   <updated>2013-12-01T22:19:24+02:00</updated>
+   <id>http://www.cultibox.fr/</id>
+   <title>Changement d'heure</title>
+   <subtitle></subtitle>
+   <author>
+      <name>Cultibox</name>
+      <uri>http://www.cultibox.fr/</uri>
+      <email>info@cultibox.fr</email>
+   </author>
+   <category term = "changement" label = "changement" />
+   <icon></icon>
+   <logo></logo>
+   <rights type = "text">
+    © Cultibox, 2013
+   </rights>
+   <entry>
+      <title>Heure d'hiver</title>
+      <summary>Date du changement d'heure d'hiver</summary>
+      <updated>2013-12-01T22:19:24+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "hiver" label = "hiver" />
+      <content type = "text">Changement d'heure d'hiver: reculer d'une heure les horloges</content>
+      <duration>0</duration>
+      <start>2013-10-27T03:00:00+00:00</start>
+      <icon>clock.png</icon>
+      <color>#AD4F09</color>
+   </entry>
+   <entry>
+      <title>Heure d'été</title>
+      <summary>Date du changement d'heure d'été</summary>
+      <updated>2013-12-01T22:19:24+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "ete" label = "ete" />
+      <content type = "text">Changement d'heure d'été: avancer d'une heure les horloges</content>
+      <duration>0</duration>
+      <start>2013-03-31T02:00:00+00:00</start>
+      <icon>clock.png</icon>
+      <color>#AD4F09</color>
+   </entry>
+</feed>
