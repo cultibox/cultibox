@@ -2,47 +2,7 @@
 
 #Upgrade case:
 if [ -d /var/www/cultibox ]; then
-    if [ ! -d /var/www/cultibox/run ]; then
-            mkdir -p /opt/cultibox/run
-    fi
-    #Update of the needed scripts:
-    cat > /var/www/cultibox/sql_install/my-extra.cnf << "EOF" 
-[client]
-user="root"
-password="cultibox"
-EOF
-
-    cat > /var/www/cultibox/run/get_version.sh << "EOF" 
-#!/bin/bash
-
-set -e
-
-# Test of the connection:
-/opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SELECT * FROM  configuration;" > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-        result=`/opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 --batch cultibox -e "SELECT VERSION FROM configuration;"`
-        for res in `echo $result`; do
-            if [ "`echo $res|egrep [1-9].*\.[0-9].*\.[0-9].*-.*`" != "" ]; then
-                echo $res
-                exit 0
-            fi
-        done
-fi
-exit 1
-EOF
-        chmod +x /var/www/cultibox/run/get_version.sh
-
-        if [ -f /var/www/cultibox/run/get_version.sh ]; then
-            if [ -f /tmp/cultibox_version ]; then
-                rm /tmp/cultibox_version
-            fi
-        fi
-
-        touch /tmp/cultibox_upgrade
-fi
-
-if [ -d /var/cache/lighttpd/compress/cultibox ]; then
-    rm -Rf /var/cache/lighttpd/compress/cultbox
+    touch /tmp/cultibox_upgrade
 fi
 
 exit 0

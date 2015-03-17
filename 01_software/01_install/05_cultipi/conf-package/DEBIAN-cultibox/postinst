@@ -84,8 +84,6 @@ if [  "`cat /etc/sudoers|grep www-data|grep shutdown`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /sbin/shutdown" >> /etc/sudoers
 fi
 
-
-
 if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "  * Installing the Cultibox software..."
     lang=`echo $LANG`
@@ -114,44 +112,11 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "... OK"
 else 
     echo "  * Upgrading the Cultibox's databases, this may take several minutes, please be patient..."
-    /var/www/cultibox/run/get_version.sh > /tmp/cultibox_version
-    if [ -f /tmp/cultibox_version ]; then
-        #Get previous cultibox version
-        version=`cat /tmp/cultibox_version`
-        #Removing architecture information
-        version=`echo ${version%%-*}`
-        version=`echo ${version//./}`
-
-        if [ "$version" != "" ]; then
-            for file in `ls /var/www/cultibox/sql_install/update_sql-* 2>/dev/null`; do
-               #Remove path file information
-               file_name=`basename $file`
-               #Remove extension information
-               file_name=` echo ${file_name%.*}`
-               #Get version information
-               file_name=`echo $file_name|awk -F"-" '{print $2}'`
-               file_name=`echo ${file_name//./}`
-
-               if [ "$file_name" != "" ]; then
-                    #if file version >= version
-                    if [ $file_name -ge $version ]; then
-                        /usr/bin/mysql --defaults-extra-file=/var/www/cultibox/etc/my-extra.cnf --force -f -h 127.0.0.1 --port=3891 < $file 
-                    fi
-               fi
-            done
-        fi
-        rm /tmp/cultibox_version
-    fi
-
     if [ -f /var/www/cultibox/sql_install/update_sql.sql ]; then
         /usr/bin/mysql --defaults-extra-file=/var/www/cultibox/sql_install/my-extra.cnf --force -h 127.0.0.1 --port=3891 < /var/www/cultibox/sql_install/update_sql.sql 2>/dev/null
     fi
 
     rm -f /tmp/cultibox_upgrade
-    if [ -f /tmp/cultibox_version ]; then
-        rm /tmp/cultibox_version
-    fi
-
     rm -f /var/www/cultibox/main/templates_c/*.ser 2>/dev/null
     echo "... OK"
 fi
@@ -160,5 +125,4 @@ if [ ! -d /home/cultipi/cultibox ]; then
     mkdir /home/cultipi/cultibox
     chown -R www-data:www-data /home/cultipi/cultibox
 fi
-
 
