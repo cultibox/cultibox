@@ -16,37 +16,30 @@ var main_info = <?php echo json_encode($main_info); ?>;
 var plug_alert_change= {};
 
 $(document).ready(function(){
-     pop_up_remove("main_error");
-     pop_up_remove("main_info");
+    $("#tabs-plugs").tabs();
 
-    // For each information, show it
-    $.each(main_error, function(key, entry) {
-            pop_up_add_information(entry,"main_error","error");
-    });
-
-    // For each information, show it
-    $.each(main_info, function(key, entry) {
-            pop_up_add_information(entry,"main_info","information");
-    });
-
-
-    pop_up_add_information("<?php echo __('WIZARD_ENABLE_FUNCTION'); ?>: <a href='/cultibox/index.php?menu=wizard' class='href-wizard-msgbox'><img src='main/libs/img/wizard.png' alt='<?php echo __('WIZARD'); ?>' title='' id='wizard' /></a>", "jumpto_wizard", "information");
-
-    if(sd_card=="") {
-        $.ajax({
-            cache: false,
-            async: false,
-            url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", duration: 36000}
-        });
-    }
-
-    $("#wizard").click(function(e) {
+    // Display and control user form for settings
+    $("#plug_settings").click(function(e) {
         e.preventDefault();
-        get_content("wizard",getUrlVars("selected_plug=1"));
+
+        $("#manage-plugs").dialog({
+            resizable: false,
+            width: 800,
+            modal: true,
+            closeOnEscape: true,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CLOSE_button,
+                "id": "btnClose",
+                click: function () {
+                    $( this ).dialog( "close" );
+                    return false;
+                }
+            }],
+        });
     });
 
-     $('select[id^="plug_sensor"]').change(function () {
+    $('select[id^="plug_sensor"]').change(function () {
         //Récupération du numéro de la prise en cours d'édition. L'information est contenue dans l'id de l'élément, on découpe donc l'id pour récupérer l'information
         var plug = $(this).attr('id').substring(11,12);
         var nb_sensor=0;
@@ -190,7 +183,7 @@ $(document).ready(function(){
     });
 
     // Check errors for the plugs part on submit:
-    $("#reccord_plugs, [id^='jumpto']").click(function(e) { 
+    $("#reccord_plugs").click(function(e) { 
         var button_click=$(this).attr('id');
         e.preventDefault();
         var checked=true;
@@ -405,7 +398,7 @@ $(document).ready(function(){
                         // Add options only for network
                         data_array['plug_module_options'+i] = "";
                         if (data_array['plug_module'+i] == "network") {
-                            data_array['plug_module_options'+i] = $("select[name=" + data_array['plug_module'+i] + "_module_options" + i + "]").val();
+                            data_array['plug_module_options'+i] = $("input[name=" + data_array['plug_module'+i] + "_module_options" + i + "]").val();
                         }
 
                         // Add output of module used : For direct, mcp230xx, dimmer, network, xmax
@@ -475,11 +468,7 @@ $(document).ready(function(){
                                     });
 
 
-                                    if(button_click.toLowerCase().indexOf("jumpto") >= 0) {
-                                        get_content("programs",getUrlVars("selected_plug="+$("#submenu").val()));
-                                    } else {
-                                        get_content("plugs",getUrlVars("selected_plug="+$("#submenu").val()+"&submenu="+$("#submenu").val()));
-                                    }
+                                    get_content("plugs",getUrlVars("selected_plug="+$("#submenu").val()+"&submenu="+$("#submenu").val()));
                                 }
                             }]
                         });

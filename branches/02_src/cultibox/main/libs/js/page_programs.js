@@ -78,11 +78,6 @@ $(document).ready(function(){
         get_content("programs",getUrlVars("selected_plug="+$("#selected_plug option:selected").val()+"&program_index_id="+$("#select_program_index_conf option:selected").val()));
     });
 
-    $("#jumpto").click(function(e) {
-        e.preventDefault();
-        get_content("plugs",getUrlVars("selected_plug="+$("#selected_plug option:selected").val()+"&submenu="+$("#selected_plug option:selected").val()));
-    });
-
      $("#reset_submit").click(function(e) {
         e.preventDefault();
 

@@ -1,6 +1,6 @@
 <?php
 
-// DOn't put pages in cache:
+// Don't put pages in cache:
 session_cache_limiter('nocache');
 $error=array();
 
@@ -43,10 +43,9 @@ require_once('main/libs/utilfunc_sd_card.php');
 check_database();
 
 
-// Variables for page cost :
+// Variables for optional pages to be displayed:
 $cost=get_configuration("SHOW_COST");
 $webcam=get_configuration("SHOW_WEBCAM");
-
 
 ?>
 <!DOCTYPE HTML>
@@ -59,7 +58,7 @@ $webcam=get_configuration("SHOW_WEBCAM");
         $mod_time=filemtime($filename);
         $duration=$time-$mod_time;
 
-        //If software is opened 10mn after the installation or the upgrade, we delete the cache:
+        //If software is opened 10mn before the installation or the upgrade, we delete the cache:
         if($duration<600) { 
             header( 'Expires: Sat, 26 Jul 1997 05:00:00 GMT' );
             header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' );
@@ -76,9 +75,7 @@ $webcam=get_configuration("SHOW_WEBCAM");
 
     <link href="/cultibox/favicon.ico" rel="shortcut icon"/>
     <link rel="stylesheet" href="/cultibox/css/base.css?v=<?=@filemtime('css/base.css')?>" />
-    <link rel="stylesheet" href="/cultibox/css/layout.css?v=<?=@filemtime('css/layout.css')?>" />
     <link rel="stylesheet" href="/cultibox/fonts/opensans.css?v=<?=@filemtime('fonts/opensans.css')?>" />
-
     <link rel="stylesheet" media="all" type="text/css" href="/cultibox/main/libs/css/jquery-ui-1.8.19.custom.css?v=<?=@filemtime('main/libs/css/jquery-ui-1.8.19.custom.css')?>" />
     <link rel="stylesheet" media="all" type="text/css" href="/cultibox/main/libs/css/fullcalendar.css?v=<?=@filemtime('main/libs/css/fullcalendar.css')?>" />
     <link rel="stylesheet" media="all" type="text/css" href="/cultibox/main/libs/css/jquery.colourPicker.css?v=<?=@filemtime('main/libs/css/jquery.colourPicker.css')?>" />
@@ -87,7 +84,7 @@ $webcam=get_configuration("SHOW_WEBCAM");
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery-1.8.3.js?v=<?=@filemtime('main/libs/js/jquery-1.8.3.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery-ui-1.9.2.custom.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery-ui-1.9.2.custom.min.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.min.js')?>"></script>
-    <script type="text/javascript" src="/cultibox/main/libs/js/highcharts.js?v=<?=@filemtime('main/libs/js/highcharts.js')?>"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/highstock.js?v=<?=@filemtime('main/libs/js/highstock.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/exporting.js?v=<?=@filemtime('main/libs/js/exporting.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery-ui-timepicker-addon.js?v=<?=@filemtime('main/libs/js/jquery-ui-timepicker-addon.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery.colourPicker.js?v=<?=@filemtime('main/libs/js/jquery.colourPicker.js')?>"></script>
@@ -103,16 +100,20 @@ $webcam=get_configuration("SHOW_WEBCAM");
 
 
 <body id="page" class="page">
+    <!-- Message for diff conf: -->
     <div id="diff_conf" style="display:none">
-    <?php echo __('DIR_CONF_NOT_UPTODATE_POPUP'); ?>
-    <p class="disable_popup">
-        <?php echo __('DISABLE_POPUP'); ?>
-        <input type="checkbox" id="disable_popup" name="disable_popup" />
-    </p>
+        <?php echo __('DIR_CONF_NOT_UPTODATE_POPUP'); ?>
+        <p class="disable_popup">
+            <?php echo __('DISABLE_POPUP'); ?>
+            <input type="checkbox" id="disable_popup" name="disable_popup" />
+        </p>
     </div>
+
+    <!-- Message for sync_conf: -->
     <div id="sync_conf" style="display:none">
         <?php echo __('SYNC_CONF'); ?>
     </div>
+
     <div id="scrollto"></div>
     <div id="page-bg">
         <div>
@@ -137,16 +138,15 @@ $webcam=get_configuration("SHOW_WEBCAM");
                                 <li class="translate"><a href="/cultibox/index.php?lang=de_DE" id="de_DE"><img src="/cultibox/main/libs/img/de.gif" alt="Übersetzen Sie die Software Deutsch (DE)" title="Übersetzen Sie die Software Deutsch (DE)" /></a></li>
                                 
                                 <li ><a <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) { ?>href="/documentation_cultibox.pdf"<?php } else { ?>href="/cultibox/main/docs/documentation_cultibox.pdf" <?php } ?> target="_blank"><img src="/cultibox/main/libs/img/help.png" alt="<?php echo __('MENU_HELP'); ?>" title="<?php echo __('MENU_HELP'); ?>" /></a></li>
-                            
                             </ul>
                         </div>
-
                                           
                         <div id="box">                      
-                            <img src="/cultibox/main/libs/img/box.png" alt="" height="95" width="105">
+                            <img src="/cultibox/main/libs/img/box.png" alt="">
                         </div>
                                     
                         <a class="logo" href="/cultibox" id="welcome-logo"><img src="/cultibox/main/libs/img/logo_cultibox.png" alt=""></a>    
+                    </div>
                 </header>
                 
                         
@@ -156,8 +156,6 @@ $webcam=get_configuration("SHOW_WEBCAM");
                             <li id="menu-configuration"><a href="/cultibox/index.php?menu=configuration" class="level1 href-configuration"><span><?php echo __('MENU_CONF'); ?></span></a></li>
 
                             <li id="menu-logs"><a href="/cultibox/index.php?menu=logs" class="level1 href-logs"><span><?php echo __('MENU_LOGS'); ?></span></a></li>
-
-                            <li id="menu-plugs"><a href="/cultibox/index.php?menu=plugs" class="level1 href-plugs"><span><?php echo __('MENU_PLUGS'); ?></span></a></li>
 
                             <li id="menu-programs"><a href="/cultibox/index.php?menu=programs" class="level1 href-programs"><span><?php echo __('MENU_PROGS'); ?></span></a></li>
 
@@ -199,9 +197,9 @@ $webcam=get_configuration("SHOW_WEBCAM");
 
                 <!-- To check that javascript is enable: -->
                 <noscript>
-                <div id="compat-js" class="text_info">
-                <p><?php echo __('ENABLE_JAVASCRIPT'); ?></p>
-                </div>
+                    <div id="compat-js" class="text_info">
+                        <p><?php echo __('ENABLE_JAVASCRIPT'); ?></p>
+                    </div>
                 </noscript>
                 
                 <!--  Main content part: -->

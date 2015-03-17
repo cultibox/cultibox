@@ -310,7 +310,9 @@ $(function () {
         });
         }
 
-        chart = new Highcharts.Chart({
+
+        // create the chart
+        $('#container').highcharts('StockChart', {
             chart: {
                 backgroundColor: '#F7F7F9',
                 borderWidth: 3,
@@ -337,8 +339,19 @@ $(function () {
 
                             if($('input[type=radio][name=type]:checked').attr('value')=="day") {
                                 var startDate=$("#datepicker").val();
+                                var dmy = startDate.split("-");  
+                                var joindate = new Date(
+                                    parseInt(dmy[0], 10),
+                                    parseInt(dmy[1], 10) - 1,
+                                    parseInt(dmy[2], 10)
+                                );
+                                joindate.setDate(joindate.getDate() - 1); // substitute 1 with actual number of days to add
+                                startDate=joindate.getFullYear()+"-"+("0" + (joindate.getMonth() + 1)).slice(-2) + "-" +("0" + joindate.getDate()).slice(-2); 
+                                joindate.setDate(joindate.getDate() + 2); 
+                                var endDate=joindate.getFullYear()+"-"+("0" + (joindate.getMonth() + 1)).slice(-2) + "-" +("0" + joindate.getDate()).slice(-2);
                             } else {
                                 var startDate=$("#startyear").val()+"-"+$("#startmonth").val();
+                                var endDate=startDate;
                             }
                             if (cheBu.attr("checked") == "checked") {
                            
@@ -350,7 +363,8 @@ $(function () {
                                         day:1,
                                         month:$('input[type=radio][name=type]:checked').attr('value'),
                                         datatype:$(this).attr("datatype"),
-                                        startDate:startDate
+                                        startDate:startDate,        
+                                        endDate:endDate
                                     },
                                     url: 'main/modules/external/logs_get_serie.php',
                                     success: function(json) {
@@ -470,6 +484,7 @@ $(function () {
                 useHTML: true,
                 text: <?php echo "'<b>".__('HISTO_GRAPH')." (".$legend_date.")*</b>'"; ?>,
             },
+
             subtitle: {
                 useHTML: true,
                 text: document.ontouchstart === undefined ?
@@ -488,12 +503,25 @@ $(function () {
                 resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>,
                 contextButtonTitle: <?php echo "'".__('CONTEXT_MENU')."'"; ?>
             },
-            scrollbar: {
+             scrollbar: {
                 enabled: true
             },
-        
             rangeSelector: {
-                selected: 1
+                
+                buttons: [{
+                    type: 'day',
+                    count: 1,
+                    text: 'd'
+                }, {
+                    type: 'hour',
+                    count: 1,
+                    text: 'h'
+                }, {
+                    type: 'minute',
+                    count: 20,
+                    text: 'm'
+                }],
+                selected: 0 
             },
             xAxis: {
                 type: 'datetime',
@@ -507,7 +535,9 @@ $(function () {
                 events: {
                     // Display button for resetting zoom
                     afterSetExtremes: function(event){
-                        $('#resetXzoom').show();
+                        if(showzoomX) {
+                            $('#resetXzoom').show();
+                        }
                         showzoomX=true;
                     }
                 }
@@ -537,9 +567,9 @@ $(function () {
                         echo '    unit: "' . $yaxis['unit'] . '",' . PHP_EOL;
                         echo '    min: 0,' . PHP_EOL;
                         echo '    allowDecimals: true,' . PHP_EOL;
-                        if($count % 2 == 0 ) {
+                        /*if($count % 2 == 0 ) {
                             echo '    opposite: true,' . PHP_EOL;
-                        }
+                        }*/
                         echo '    events: {' . PHP_EOL;
                         echo '        afterSetExtremes: function() {' . PHP_EOL;
                         // If it's zoomed, display button to unzoom
@@ -588,37 +618,16 @@ $(function () {
                     }
                 ?>
             ],
-            tooltip: {
-                shared: true,
-                useHTML: true,
-                formatter: function() {
-                    var s = '<p align="center"><b>'+ Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x) +'</b><br />';
-
-                    $.each(this.points, function(i, point) {
-                    
-                        var valueToTidsplay = point.y;
-                    
-                        if (point.series.options.curveType == "program")
-                        {
-                            if (valueToTidsplay == "99.9")
-                                valueToTidsplay = "<?php echo __('VALUE_ON') ; ?>";
-                            if (valueToTidsplay == "0")
-                                valueToTidsplay = "<?php echo __('VALUE_OFF') ; ?>";
-                        }
-                    
-                        s += '<br/><font color="' + point.series.yAxis.userOptions.labels.style.color + '">' + point.series.options.name + ' : '+ valueToTidsplay + " " + point.series.options.tooltip.valueSuffix + '</font>';
-                    });
-                    s=s+"</p>";
-                
-                    return s;
-                }
-            },
             legend: {
+                enabled: true,
                 width: 450,
-                itemWidth: 225,
+                itemWidth: 220,
                 useHTML: true,
                     layout: 'horizontal',
                     verticalAlign: 'bottom',
+                    borderWidth: 0.2,
+                    borderRadius: 12,
+                    itemMarginBottom: 5,
                     navigation: {
                         activeColor: '#3E576F',
                         animation: true,
@@ -630,6 +639,29 @@ $(function () {
                             fontSize: '12px'    
                         }
                     }
+            },
+            tooltip: {
+                shared: true,
+                useHTML: true,
+                formatter: function() {
+                    var s = '<p align="center"><b>'+ Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x) +'</b></p>';
+
+                    $.each(this.points, function(i, point) {
+
+                        var valueToTidsplay = point.y.toFixed(2);
+
+                        if (point.series.options.curveType == "program")
+                        {
+                            if (valueToTidsplay == "99.9")
+                                valueToTidsplay = "<?php echo __('VALUE_ON') ; ?>";
+                            if (valueToTidsplay == "0")
+                                valueToTidsplay = "<?php echo __('VALUE_OFF') ; ?>";
+                        }
+
+                        s += '<font color="' + point.series.yAxis.userOptions.labels.style.color + '">' + point.series.options.name + ' : '+ valueToTidsplay + " " + point.series.options.tooltip.valueSuffix + '</font><br />';
+                    });
+                    return s;
+                }
             },
             credits: {
                 enabled: false
@@ -710,27 +742,13 @@ $(function () {
             series: []
         });
 
-
-        /*
-        if(chart.series) {
-        chart.series.each(function (item) {
-            if(item.data=="") {
-                    item.options.showInLegend = false;
-                    item.legendItem = item.legendItem.destroy();;
-                    chart.legend.destroyItem(item);
-            }
-            chart.legend.render();
-        });
-        }*/
-
-
+        chart = $('#container').highcharts();
     });
 
 
     $('#resetXzoom').click(function() {
         if(showzoomX) {
             chart.zoomOut();
-            showzoomX=false;
             $('#resetXzoom').css("display","none");
         }
 
@@ -1682,7 +1700,7 @@ $(document).ready(function() {
 
     for (var i = 0; i < 10; i++) {
         // If this curve is used
-        if (typeof chart.series[i] != "undefined")
+        if (typeof chart.series[i] != "undefined" && typeof chart.series[i].yAxis.userOptions.labels.style != "undefined") 
         {
             if(chart.series[i].yAxis.series[0] && chart.series[i].yAxis.series[0].options.curveType != "program") {
                 var total=0;
@@ -1690,14 +1708,16 @@ $(document).ready(function() {
                     total += chart.series[i].yData[j];
                 } 
                 seriesAvg = (total / chart.series[i].yData.length).toFixed(2); // fix decimal to 2 places
+                if(seriesAvg=="NaN") seriesAvg="N/A";
 
                 // Sensor informations
+                console.log(chart.series[i].yAxis.userOptions);
                 textToDisplay += "<p style='text-align:center'><b><i><font color='"+chart.series[i].yAxis.userOptions.labels.style.color+"'>"+ chart.series[i].name + " : </font></i></b></p>";
 
                 textToDisplay += " <?php echo __('SUMARY_MIN'); ?> : ";
                 if(chart.series[i].dataMin!=null) {
                     MinDate = getXValue(chart.series[i].yAxis,chart.series[i].dataMin,chart.series[i].name);    
-                    textToDisplay +=    "<b>" + chart.series[i].dataMin + " " + chart.series[i].yAxis.userOptions.unit + " ("+MinDate+")</b>";
+                    textToDisplay +=    "<b>" + chart.series[i].dataMin.toFixed(2) + " " + chart.series[i].yAxis.userOptions.unit + " ("+MinDate+")</b>";
                 } else {
                     textToDisplay +=    "<b>N/A</b>";
                 }
@@ -1706,7 +1726,7 @@ $(document).ready(function() {
 
                 if(chart.series[i].dataMax!=null) {
                     MaxDate = getXValue(chart.series[i].yAxis,chart.series[i].dataMax,chart.series[i].name); 
-                    textToDisplay +=    "<b>" + chart.series[i].dataMax + " " + chart.series[i].yAxis.userOptions.unit + " ("+MaxDate+")</b>";
+                    textToDisplay +=    "<b>" + chart.series[i].dataMax.toFixed(2) + " " + chart.series[i].yAxis.userOptions.unit + " ("+MaxDate+")</b>";
                 } else {
                     textToDisplay +=    "<b>N/A</b>";
                 }

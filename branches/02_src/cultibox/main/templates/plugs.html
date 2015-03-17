@@ -1,46 +1,19 @@
-<script>
-   $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
-   $(".href-wizard-msgbox").click(function(e) {
-       e.preventDefault();
-       get_content("wizard");
-   });
-</script>
-
-<br />
+<div id="manage-plugs" title="<?php echo __('PLUG'); ?>" style="display:none">
+<div id="tabs-plugs"> 
 <form action="/cultibox/index.php?menu=plugs" method="post" name="plugForm" id="plugForm">
     <input type="hidden" id="submenu" name="submenu" value="<?php echo $submenu; ?>" />
-    <p class="title_conf"><?php echo __('PLUG'); ?></p>
-    <br />
-    <table class="table_width">
-        <tr>
-            <td class="conf-menu-marge-plug"></td>
-            <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
-                <td class="menu-plug-item">
-                    <button id="div_plug<?php echo $i; ?>" class="menu_h1 <?php if(strcmp("$selected_plug","$i")==0) echo 'plug_menu_active'; ?>" onclick="expand_plug(<?php echo $i; ?>,<?php echo $nb_plugs; ?>); return false;"><?php echo __('PLUG_MENU')." ".$i; ?></button>
-                </td>
-                <?php if($i%3==0) { ?>
-                    <td class="conf-menu-marge-plug"></td></tr><tr><td class="conf-menu-marge-plug"></td>
-                <?php }
-            } ?>
+    <ul>
+    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+        <li><a href="#div_selected_plug<?php echo $i; ?>"><?php echo __('PLUG_MENU')." ".$i; ?></a></li>
+    <?php } ?>
+    </ul>
 
-            <?php $tmp_cnt=$nb_plugs % 3;
-            for($i=0;$i<3-$tmp_cnt;$i++) { ?>
-                <td></td>
-            <?php } ?>
-
-            <td class="conf-menu-marge-plug"></td>
-        </tr>
-    </table>
-    <br />
-    <hr />
-    <br />
     <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
         <div id="div_selected_plug<?php echo $i; ?>" style="<?php if($submenu!=$i) echo 'display:none'; ?>">
             <br />
             <div id="state_plug<?php echo $i; ?>">
                 <table class="table_width">
                     <tr>
-                        <td class="plug-marge-td"></td>
                         <td class="plug-marge-title">
                             <?php echo __('NAME_PLUG'); ?>:
                         </td>
@@ -51,7 +24,6 @@
                     </tr>
                     <!-- Select plug type (1000W / 3500W / direct pilot)-->
                     <tr>
-                        <td></td>
                         <td><?php echo __('PLUG_MAX_POWER'); ?>:</td>
                         <td colspan="2">
                             <table>
@@ -144,11 +116,7 @@
                                         </div>
                                         <div id="select_canal_network<?php echo $i; ?>" style="<?php if($plug_module{$i} != "network") { echo 'display:none'; } ?>">
                                             <?php echo __('PLUGS_MODULE_IP_ADRESS'); ?>
-                                            <select id="network_module_options<?php echo $i; ?>" name="network_module_options<?php echo $i; ?>">
-                                                <?php for($j = 0 ; $j < $GLOBALS_CULTIPI['REMOTE_NB_SLAVE'] ; $j++) { ?>
-                                                    <option value="<?php echo $j; ?>" <?php if(intval($plug_module_options{$i})==$j) { echo ' selected'; } else  { if(!$status[$j]) { echo ' disabled'; } } ?>><?php echo $GLOBALS_CULTIPI['REMOTE_SLAVE']["NAME_" . $j]; ?></option>
-                                                <?php } ?>
-                                            </select>
+                                            <input type="text" size="15" maxlength="15" name="network_module_options<?php echo $i; ?>" value="<?php echo $plug_module_options{$i}; ?>">
                                             <?php echo __('PLUGS_MODULE_OUTPUT'); ?>
                                             <select id="network_canal<?php echo $i; ?>" name="network_module_ouput<?php echo $i; ?>">
                                                 <?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_NETWORK'];$j++) { ?>
@@ -178,7 +146,6 @@
                     
                     <!-- Element plugged on plug -->
                     <tr>
-                        <td></td>
                         <td>
                             <?php echo __('TYPE_PLUG'); ?>:
                         </td>
@@ -196,7 +163,6 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td></td>
                         <td>
                             <?php echo __('POWER_PLUG'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_POWER'); ?>" />
                         </td>
@@ -206,7 +172,6 @@
                         <td><div id="error_power_value<?php echo $i; ?>" class='error_field' style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_POWER_VALUE'); ?></div></td>
                     </tr>
                     <tr>
-                        <td></td>
                         <td>
                             <div id="tolerance_label<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
                             <?php echo __('TOLERANCE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_PLUG_TOLERANCE'); ?>" />
@@ -268,7 +233,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <td></td>
                         <td>
                             <div id="label_regul_compute<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)||(strcmp("$second_regul","False")==0)) { echo "display:none"; } ?>"><?php echo __('COMPUTE_REGUL_METHOD'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_REGUL_COMPUTE_METHOD'); ?>" />
                             </div>
@@ -292,7 +256,6 @@
                     </tr>
                     <?php if(strcmp("$second_regul","True")==0) { ?>
                         <tr>
-                            <td></td>
                             <td>
                                 <div id="second_regul_label<?php echo $i; ?>" <?php if((strcmp($plug_type{$i},"lamp")==0)||(strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"pump")==0)) echo 'style="display:none"'; ?>>
                                     <?php echo __('ENABLE_REGUL_PLUG'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_PLUG_REGUL'); ?>" />
@@ -409,14 +372,6 @@
                             <?php echo __('JUMPTO_WIZARD'); ?>
                         </button>
                     </td>
-                    <td class="program-button">
-                        <input type="hidden" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>">
-                        <div id="button_program<?php echo $i;?>">
-                            <button class="jumpto" name="jumpto<?php echo $i; ?>" id="jumpto<?php echo $i; ?>"  onclick='addHidden(document.forms["plugForm"], "<?php echo $i; ?>","jumpto");'>
-                                <?php echo __('SAVE_AND_CONFIGURE_PROGRAM').": $i"; ?>
-                            </button>
-                        </div>
-                    </td>
                 </tr>
             </table>
 
@@ -441,6 +396,8 @@
         </tr>
     </table>
 </form>
+</div> 
+</div>
 
 
 <div id="warning_change_type_plug" style="display:none" title="<?php echo __('CONFIRMATION'); ?>">

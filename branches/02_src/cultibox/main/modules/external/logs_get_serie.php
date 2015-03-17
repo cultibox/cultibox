@@ -16,7 +16,7 @@ $startDay = strtotime ($_GET['startDate']);
 
 if ($_GET['month'] == "day") {
     //$endDay = strtotime("+1 day", strtotime($_GET['startDate']));
-    $endDay = strtotime($_GET['startDate']);
+    $endDay = strtotime($_GET['endDate']);
 } else {
     $date = $_GET['startDate'] . "-01";
     $endDay = strtotime("+1 month", strtotime($date));

@@ -30,7 +30,13 @@
                 title="<?php echo __('TOOLTIP_PARAMETERS_PROGRAM'); ?>" 
                 alt="program"
             />
-        </td>       
+            <!-- Button for plug -->
+            <input type="image" id="plug_settings" name="plug_settings" 
+                src="main/libs/img/plug-mgt.png" 
+                title="<?php echo __('TOOLTIP_PARAMETERS_PROGRAM'); ?>" 
+                alt="plug"
+            />
+        </td>
     </tr>
 </table>
 
@@ -51,7 +57,6 @@
         <td>
             <p class="p_center">
                 <button id="resetXzoom" name="buttonX" style="display:none"><?php echo __('RESET_ZOOM_TITLE'); ?></button>
-                <button id="resetzoom" name="button" style="display:none"><?php echo __('RESET_ZOOM_TITLE'); ?></button>
             </p>
         </td>
         <td></td>
@@ -230,14 +235,6 @@
 <div id="same_dialog_program" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
     <p><?php echo __('CONFIRM_SAME_PROGRAM'); ?></p>
 </div>
-<table class="table_width">
-    <tr>
-        <td class="program-marge-jumpto"></td>
-        <td>
-                <button class="jumpto" id="jumpto" name="jump"><?php echo __('JUMPTO_PLUG'); ?></button>
-        </td>
-    </tr>
-</table>
 
 <!-- Daily program management -->
 <div id="dialog-form-save-daily" title="<?php echo __('SAVE','html'); ?>" style="display:none">
@@ -493,4 +490,13 @@
 </div>
 
 <div id="preparing-file-modal" title="" style="display: none;"><?php echo __('PREPARING_EXPORT'); ?></div>
+
+
+<?php 
+    ob_start();
+    include $GLOBALS['BASE_PATH'].'main/libs/js/page_plugs.js';
+    include $GLOBALS['BASE_PATH'].'main/templates/plugs.html';
+    $include = ob_get_clean();
+    echo $include;
+?>
 

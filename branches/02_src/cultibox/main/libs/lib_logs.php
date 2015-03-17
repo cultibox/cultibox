@@ -372,14 +372,16 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day",$ratio=100) {
         
     // Get all point bewteen two dates
     if($day=="day") {
-        $dateStartForLogsTable  = date ("ymd", $dateStart);
+        $dateStartForLogsTable  = date ("ymd", $dateStart)."00000000";
+        $dateEndForLogsTable=date ("ymd", $dateEnd)."99999999";
     } else {
-        $dateStartForLogsTable  = date ("ym", $dateStart);
+        $dateStartForLogsTable  = date ("ym", $dateStart)."0000000000";
+        $dateEndForLogsTable=date ("ym", $dateEnd)."9999999999";
     }
 
     $sql = "SELECT timestamp , time_catch, date_catch, record1 , record2 FROM logs"
             . " WHERE sensor_nb = {$sensor}"
-            . " AND timestamp LIKE '{$dateStartForLogsTable}%'"
+            . " AND timestamp BETWEEN {$dateStartForLogsTable} AND {$dateEndForLogsTable}"
             . " ORDER BY date_catch,time_catch ASC;";
 
     try {

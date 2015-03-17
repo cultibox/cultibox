@@ -2151,7 +2151,7 @@ function format_regul_sumary($number=0, &$out) {
             $resume=$resume." < ".$result[0]['PLUG_REGUL_VALUE'].$unity."</b>";
         }
     } else {
-        $resume=__('SUMARY_REGUL_SUBTITLE').": <b>".__('SECOND_REGUL_OFF')."</b>";
+        $resume=__('SUMARY_REGUL_SUBTITLE').": <b>".__('SECOND_REGUL_OFF');
     }
 
     return $resume;
