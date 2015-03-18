@@ -55,7 +55,7 @@ set confStart(serverLog,xmlconf) [file join $fileName(cultiPi,confDir) [::piXML:
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : serveurLog xmlconf : $confStart(serverLog,xmlconf) , file exists ? [file exists $confStart(serverLog,xmlconf)]"
 set confStart(serverLog,waitAfterUS) [::piXML::searchOptionInElement waitAfterUS $confStart(serverLog)]
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : serveurLog waitAfterUS : $confStart(serverLog,waitAfterUS)"
-set confStart(serverLog,port) [::piXML::searchOptionInElement port $confStart(serverLog)]
+set confStart(serverLog,port) [::piServer::findAvailableSocket [::piXML::searchOptionInElement port $confStart(serverLog)]]
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : serveurLog port : $confStart(serverLog,port)"
 set tempLogPath [::piXML::searchItemByName logPath [lindex [::piXML::open_xml $confStart(serverLog,xmlconf)] 2]]
 set confStart(serverLog,logsRootDir) [::piXML::searchOptionInElement logfile $tempLogPath]
@@ -134,7 +134,7 @@ foreach moduleXML $confStart(start) {
         puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName xmlconf : $confStart($moduleName,xmlconf) , file exists ? [file exists $confStart($moduleName,xmlconf)]"
         set confStart($moduleName,waitAfterUS) [::piXML::searchOptionInElement waitAfterUS $moduleXML]
         puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName waitAfterUS : $confStart($moduleName,waitAfterUS)"
-        set confStart($moduleName,port) [::piXML::searchOptionInElement port $moduleXML]
+        set confStart($moduleName,port) [::piServer::findAvailableSocket [::piXML::searchOptionInElement port $moduleXML]]
         puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName port : $confStart($moduleName,port)"
 
         ::piLog::log [clock milliseconds] "info" "Load $moduleName"
