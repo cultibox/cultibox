@@ -166,7 +166,7 @@ $webcam=get_configuration("SHOW_WEBCAM");
                             <li id="menu-cost" <?php if(!$cost) { echo 'style="display:none"'; } ?>><a href="/cultibox/index.php?menu=wizard" class="level1 href-cost"><span><?php echo __('MENU_COST'); ?></span></a></li>
 
                             <li id="menu-wizard" class="level1 item173"><a href="/cultibox/index.php?menu=wizard" class="level1 href-wizard" ><span><?php echo __('MENU_WIZARD'); ?></span></a></li>
-                    
+
                             <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) { ?>
                                     <li id="menu-cultipi" class="level1 item164"><a href="/cultibox/index.php?menu=cultipi" class="level1 href-cultipi" ><span><?php echo __('MENU_CULTIPI'); ?></span></a></li>
                             <?php } ?>

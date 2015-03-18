@@ -15,6 +15,156 @@ var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
 var plug_alert_change= {};
 
+// {{{ getTolerance()
+// ROLE display the tolerance informations or not
+// IN  input value: display or not the informations
+// HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
+// USED BY: templates/plugs.html 
+function getTolerance(i,j,secondR) {
+    var divTolerance = document.getElementById('tolerance'+j);
+    var divToleranceLabel = document.getElementById('tolerance_label'+j);
+    var pDegree = document.getElementById('degree'+j);
+    var pPourcent = document.getElementById('pourcent'+j);
+    var pCm = document.getElementById('cm'+j);
+    var divHumiRegul = document.getElementById('humi_regul_senso'+j);
+    var divTempRegul = document.getElementById('temp_regul_senso'+j);
+    var divUnknownRegul = document.getElementById('unknown_regul_senso'+j);
+    var labelDeg = document.getElementById('label_degree'+j);
+    var labelPct = document.getElementById('label_pourcent'+j);
+    var seconLabel = document.getElementById('second_regul_label'+j);
+    var secondVal = document.getElementById('second_regul'+j);
+    var secondParam = document.getElementById('second_regul_param'+j);
+    var labelSecondDeg = document.getElementById('label_second_degree'+j);
+    var labelSecondPct = document.getElementById('label_second_pourcent'+j);
+    var labelSensor = document.getElementById('label_sensor'+j);
+    var Sensor = document.getElementById('sensor'+j);
+    var labelComputeRegul = document.getElementById('label_regul_compute'+j);    
+    var computeRegul = document.getElementById('regul_compute'+j);
+
+    // Unshow every element of regulation
+    divTolerance.style.display = 'none'; 
+    divToleranceLabel.style.display = 'none'; 
+    pDegree.style.display = 'none'; 
+    pPourcent.style.display = 'none';
+    seconLabel.style.display = 'none'; 
+    secondVal.style.display = 'none'; 
+    secondParam.style.display = 'none'; 
+    divHumiRegul.style.display = 'none'; 
+    divTempRegul.style.display = 'none';
+    divUnknownRegul.style.display = 'none';
+    labelDeg.style.display = 'none';
+    labelPct.style.display = 'none';
+    pCm.style.display = 'none';
+    labelSecondDeg.style.display = 'none';
+    labelSecondPct.style.display = 'none';
+    labelSensor.style.display = 'none'; 
+    Sensor.style.display = 'none'; 
+    labelComputeRegul.style.display = 'none';
+    computeRegul.style.display = 'none';
+    
+    // Show it
+    switch(i) {
+        case "extractor" :
+        case "intractor" :
+        case "ventilator" :
+        case "heating" :
+            divTolerance.style.display = ''; 
+            divToleranceLabel.style.display = ''; 
+            pDegree.style.display = ''; 
+            if(secondR=="True") {
+                divHumiRegul.style.display = ''; 
+                labelPct.style.display = ''; 
+                labelSecondPct.style.display = '';
+                seconLabel.style.display = ''; 
+                secondVal.style.display = ''; 
+                secondParam.style.display = ''; 
+                Sensor.style.display = '';
+                labelSensor.style.display = '';
+                labelComputeRegul.style.display = '';
+                computeRegul.style.display = '';
+            }
+            break;
+        case "pump" :
+        case "pumpfilling" :
+        case "pumpempting" :
+            //Pump: no second regulation
+            divTolerance.style.display = '';
+            divToleranceLabel.style.display = '';
+            pCm.style.display = '';
+            if(secondR=="True") {
+                Sensor.style.display = '';
+                labelSensor.style.display = '';
+                labelComputeRegul.style.display = '';
+                computeRegul.style.display = '';
+            }
+            break;
+        case "humidifier" :
+        case "dehumidifier" :
+            divTolerance.style.display = ''; 
+            divToleranceLabel.style.display = ''; 
+            pDegree.style.display = 'none'; 
+            pPourcent.style.display = ''; 
+            pCm.style.display = 'none';
+            if(secondR=="True") {
+                divTempRegul.style.display = ''; 
+                labelDeg.style.display = '';
+                labelSecondDeg.style.display = '';
+                seconLabel.style.display = ''; 
+                secondVal.style.display = ''; 
+                secondParam.style.display = ''; 
+                Sensor.style.display = '';
+                labelSensor.style.display = '';
+                labelComputeRegul.style.display = '';
+                computeRegul.style.display = '';
+            }
+            break;
+    }
+}
+// }}}
+
+// {{{ getRegul()
+// ROLE display the regulation informations or not
+// IN  input value: display or not the informations
+// HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
+// USED BY: templates/plugs.html 
+function getRegul(i,j) {
+      var divRval = document.getElementById('div_regul_value'+j);
+      var divRsenso = document.getElementById('div_regul_senso'+j);
+      var divRsenss = document.getElementById('div_regul_senss'+j);
+      var labelRsenss = document.getElementById('label_regul_senss'+j);
+      var labelRsenso = document.getElementById('label_regul_senso'+j);
+      var labelRvalue = document.getElementById('label_regul_value'+j);
+      var secondTolLabel = document.getElementById('label_regul_tolerance'+j);
+      var secondTolValue = document.getElementById('div_regul_tolerance_value'+j);
+      //var tableRegul = document.getElementById('table_regul'+j);
+
+      switch(i) {
+         case "False" :
+            divRval.style.display = 'none';
+            divRsenso.style.display = 'none';
+            divRsenss.style.display = 'none';
+            labelRvalue.style.display = 'none';
+            labelRsenso.style.display = 'none';
+            labelRsenss.style.display = 'none';
+            secondTolLabel.style.display = 'none';
+            secondTolValue.style.display = 'none';
+            break;
+         case "True" :
+         default:
+            divRval.style.display = '';
+            divRsenso.style.display = '';
+            divRsenss.style.display = '';
+            labelRvalue.style.display = '';
+            labelRsenso.style.display = '';
+            labelRsenss.style.display = '';
+            secondTolLabel.style.display = '';
+            secondTolValue.style.display = '';
+            break;
+      }
+}
+// }}}
+
+
 $(document).ready(function(){
      pop_up_remove("main_error");
      pop_up_remove("main_info");
@@ -29,7 +179,19 @@ $(document).ready(function(){
             pop_up_add_information(entry,"main_info","information");
     });
 
-
+    // Update informations shows
+    <?php
+        for($i=1;$i<=$nb_plugs;$i++) {
+            echo "getTolerance('" . $plug_type{$i} . "'," . $i . ",'" . $second_regul . "');";
+        }
+        
+        for($i=1;$i<=$nb_plugs;$i++) {
+            echo "getRegul('" . $plug_regul{$i} . "'," . $i . ");";
+        }
+    ?>
+    
+    
+    
     pop_up_add_information("<?php echo __('WIZARD_ENABLE_FUNCTION'); ?>: <a href='/cultibox/index.php?menu=wizard' class='href-wizard-msgbox'><img src='main/libs/img/wizard.png' alt='<?php echo __('WIZARD'); ?>' title='' id='wizard' /></a>", "jumpto_wizard", "information");
 
     if(sd_card=="") {
@@ -135,14 +297,14 @@ $(document).ready(function(){
         var canal=$("#dimmer_canal"+id+" option:selected" ).val();
 
         $("select[name*='dimmer_canal']").each(function( index ) {
-                var new_id=$(this).attr('name').substr($(this).attr('name').length-1);
-                if(new_id!=id) {
-                    var option = $("option[value='" + canal + "']", this);
-                    option.attr("disabled","disabled");
+            var new_id=$(this).attr('name').substr($(this).attr('name').length-1);
+            if(new_id!=id) {
+                var option = $("option[value='" + canal + "']", this);
+                option.attr("disabled","disabled");
 
-                    var option = $("option[value='" + prev + "']", this);
-                    option.removeAttr("disabled");
-                }
+                var option = $("option[value='" + prev + "']", this);
+                option.removeAttr("disabled");
+            }
         });
 
         $("input[name='plug_power_max"+id+"']").focus();
@@ -231,7 +393,11 @@ $(document).ready(function(){
                $("#plug_type"+i).val()=="humidifier" ||
                $("#plug_type"+i).val()=="dehumidifier" ||
                $("#plug_type"+i).val()=="ventilator" || 
-               $("#plug_type"+i).val()=="pump")
+               $("#plug_type"+i).val()=="pump" || 
+               $("#plug_type"+i).val()=="extractor" || 
+               $("#plug_type"+i).val()=="intractor" || 
+               $("#plug_type"+i).val()=="pumpfiling" || 
+               $("#plug_type"+i).val()=="pumpempting")
             {
                 if($("#plug_tolerance"+i).val()=="0" || $("#plug_tolerance"+i).val()=="" )
                 {
@@ -249,17 +415,24 @@ $(document).ready(function(){
                         }
                     }).done(function(data) {
                         if(data!=1) {
-                            if(($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")) {
-                                $("#error_tolerance_value_humi"+i).show(700);
+                            switch ($("#plug_type"+i).val()) {
+                                case 'humidifier' :
+                                case 'dehumidifier' :
+                                    $("#error_tolerance_value_humi"+i).show(700);
+                                    break;
+                                case 'extractor' :
+                                case 'intractor' :
+                                case 'ventilator' :
+                                case 'heating' :
+                                    $("#error_tolerance_value_temp"+i).show(700);
+                                    break;
+                                case 'pumpfiling' :
+                                case 'pumpempting' :
+                                case 'pump' :
+                                    $("#error_tolerance_value_water"+i).show(700);
+                                    break;
                             }
 
-                            if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
-                                $("#error_tolerance_value_temp"+i).show(700);
-                            }
-
-                            if($("#plug_type"+i).val()=="pump") {
-                                $("#error_tolerance_value_water"+i).show(700);
-                            }
                             checked=false;
                             jump_plug=i;
                         }
@@ -281,13 +454,27 @@ $(document).ready(function(){
                         data: {value:$("#plug_second_tolerance"+i).val(),type:'tolerance',plug: $("#plug_type"+i).val()}
                         }).done(function(data) {
                             if(data!=1) {
-                                if(($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")) {
-                                    $("#error_second_tolerance_value_temp"+i).show(700);
+                            
+                                switch ($("#plug_type"+i).val()) {
+                                    case 'humidifier' :
+                                    case 'dehumidifier' :
+                                        $("#error_second_tolerance_value_temp"+i).show(700);
+                                        break;
+                                    case 'extractor' :
+                                    case 'intractor' :
+                                    case 'ventilator' :
+                                    case 'heating' :
+                                        $("#error_second_tolerance_value_humi"+i).show(700);
+                                        break;
+                                    case 'pumpfiling' :
+                                    case 'pumpempting' :
+                                    case 'pump' :
+                                        // TODO : Normallement la régulation secondaire est désactivé pour la pompe
+                                        // Dans ce cas, ce code ne doit pas exister
+                                        $("#error_second_tolerance_value_humi"+i).show(700);
+                                        break;
                                 }
 
-                                if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="pump")) {
-                                    $("#error_second_tolerance_value_humi"+i).show(700);
-                                }
                                 checked=false;
                                 jump_plug=i;
                             }

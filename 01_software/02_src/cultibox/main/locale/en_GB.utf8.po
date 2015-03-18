@@ -593,6 +593,18 @@ msgstr "Heating"
 msgid "PLUG_PUMP"
 msgstr "Water Pump"
 
+msgid "PLUG_PUMPFILLING"
+msgstr "Pompe de rempissage"
+
+msgid "PLUG_PUMPEMPTING"
+msgstr "Pompe de vidage"
+
+msgid "PLUG_EXTRACTOR"
+msgstr "Extracteur"
+
+msgid "PLUG_INTRACTOR"
+msgstr "Intracteur"
+
 msgid "VALIDATION_PLUG_CONF"
 msgstr "Save Configuration"
 

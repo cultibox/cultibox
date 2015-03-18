@@ -57,14 +57,18 @@
                 <td class="wizard-title"><?php echo __('TYPE_PLUG')." $selected_plug:"; ?></td>
                 <td>
                     <select name="plug_type" id="plug_type" <?php if($selected_plug==1) echo 'disabled'; ?>>
-                        <option <?php if(strcmp($plug_type,"lamp")==0) { echo "selected";} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
-                        <option <?php if(strcmp($plug_type,"ventilator")==0) { echo 'selected';} ?> value="ventilator"><?php echo __('PLUG_VENTILATOR'); ?></option>
-                        <option <?php if(strcmp($plug_type,"heating")==0) { echo 'selected';} ?> value="heating"><?php echo __('PLUG_HEATING'); ?></option>
-                        <option <?php if(strcmp($plug_type,"pump")==0) { echo 'selected';} ?> value="pump"><?php echo __('PLUG_PUMP'); ?></option>
-                        <option <?php if(strcmp($plug_type,"humidifier")==0) { echo 'selected';} ?> value="humidifier"><?php echo __('PLUG_HUMIDIFIER'); ?></option>
-                        <option <?php if(strcmp($plug_type,"dehumidifier")==0) { echo 'selected';} ?> value="dehumidifier"><?php echo __('PLUG_DEHUMIDIFIER'); ?></option>
-                        <option <?php if(strcmp($plug_type,"other")==0) { echo 'selected';} ?> value="other"><?php echo __('PLUG_UNKNOWN'); ?></option>
-                    </select>
+                        <option <?php if($plug_type{$i} == "other") { echo 'selected';} ?> value="other"><?php echo __('PLUG_UNKNOWN'); ?></option>
+                        <option <?php if($plug_type{$i} == "lamp") { echo 'selected';} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
+                        <option <?php if($plug_type{$i} == "ventilator") { echo 'selected';} ?> value="ventilator"><?php echo __('PLUG_VENTILATOR'); ?></option>
+                        <option <?php if($plug_type{$i} == "extractor") { echo 'selected';} ?> value="extractor"><?php echo __('PLUG_EXTRACTOR'); ?></option>
+                        <option <?php if($plug_type{$i} == "intractor") { echo 'selected';} ?> value="intractor"><?php echo __('PLUG_INTRACTOR'); ?></option>
+                        <option <?php if($plug_type{$i} == "heating") { echo 'selected';} ?> value="heating"><?php echo __('PLUG_HEATING'); ?></option>
+                        <option <?php if($plug_type{$i} == "pump") { echo 'selected';} ?> value="pump"><?php echo __('PLUG_PUMP'); ?></option>
+                        <option <?php if($plug_type{$i} == "pumpfilling") { echo 'selected';} ?> value="pumpfilling"><?php echo __('PLUG_PUMPFILLING'); ?></option>
+                        <option <?php if($plug_type{$i} == "pumpempting") { echo 'selected';} ?> value="pumpempting"><?php echo __('PLUG_PUMPEMPTING'); ?></option>
+                        <option <?php if($plug_type{$i} == "humidifier") { echo 'selected';} ?> value="humidifier"><?php echo __('PLUG_HUMIDIFIER'); ?></option>
+                        <option <?php if($plug_type{$i} == "dehumidifier") { echo 'selected';} ?> value="dehumidifier"><?php echo __('PLUG_DEHUMIDIFIER'); ?></option>
+                     </select>
                     <?php if($selected_plug==1) { ?>
                         <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_AVANCED_PLUG_WIZARD'); ?>" />
                     <?php } ?>

@@ -314,7 +314,7 @@ $(document).ready(function(){
                 varToUpdate = $( this ).attr('name');
 
 
-                if($.trim(varToUpdate)!="") {
+                if(varToUpdate.trim() != "") {
                     $.ajax({
                         type: "GET",
                         cache: false,
@@ -409,49 +409,53 @@ $(document).ready(function(){
             newValue    = $("#rtc_offset").val();
             varToUpdate = $("#rtc_offset").attr('name');
 
-             $.ajax({
-                type: "GET",
-                cache: false,
-                async: false,
-                url: "main/modules/external/update_configuration.php",
-                data: {
+            if ($( "#rtc_offset" ).length && varToUpdate.trim() != "") {
+                 $.ajax({
+                    type: "GET",
+                    cache: false,
+                    async: false,
+                    url: "main/modules/external/update_configuration.php",
+                    data: {
                         value:newValue, 
                         variable:varToUpdate,
                         sd_card:sd_card
                     }
-            }).done(function (data) {
-                try {
+                }).done(function (data) {
+                    try {
+                            if($.parseJSON(data)!="") {
+                                check_update=false;
+                            }
+                        } catch(err) {
+                            check_update=false;
+                        }
+                });
+            }
+
+            //RESET MIN MAX process:
+            newValue    = $("#reset_minmax").val();
+            varToUpdate = $("#reset_minmax").attr('name');
+
+            if ($( "#reset_minmax" ).length && varToUpdate.trim() != "") {
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    async: false,
+                    url: "main/modules/external/update_configuration.php",
+                    data: {
+                            value:newValue,
+                            variable:varToUpdate,
+                            sd_card:sd_card
+                        }
+                }).done(function (data) {
+                    try {
                         if($.parseJSON(data)!="") {
                             check_update=false;
                         }
                     } catch(err) {
                         check_update=false;
                     }
-            });
-
-            //RESET MIN MAX process:
-            newValue    = $("#reset_minmax").val();
-            varToUpdate = $("#reset_minmax").attr('name');
-
-            $.ajax({
-                type: "GET",
-                cache: false,
-                async: false,
-                url: "main/modules/external/update_configuration.php",
-                data: {
-                        value:newValue,
-                        variable:varToUpdate,
-                        sd_card:sd_card
-                    }
-            }).done(function (data) {
-                try {
-                    if($.parseJSON(data)!="") {
-                        check_update=false;
-                    }
-                } catch(err) {
-                    check_update=false;
-                }
-            });
+                });
+            }
 
 
             //ALARM VALUE process:
@@ -463,25 +467,27 @@ $(document).ready(function(){
 
             varToUpdate = $("#alarm_value").attr('name');
 
-            $.ajax({
-                type: "GET",
-                cache: false,
-                async: false,
-                url: "main/modules/external/update_configuration.php",
-                data: {
-                        value:newValue,
-                        variable:varToUpdate,
-                        sd_card:sd_card
-                    }
-            }).done(function (data) {
-                try {
-                    if($.parseJSON(data)!="") {
+            if ($( "#alarm_value" ).length && varToUpdate.trim() != "") {
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    async: false,
+                    url: "main/modules/external/update_configuration.php",
+                    data: {
+                            value:newValue,
+                            variable:varToUpdate,
+                            sd_card:sd_card
+                        }
+                }).done(function (data) {
+                    try {
+                        if($.parseJSON(data)!="") {
+                            check_update=false;
+                        }
+                    } catch(err) {
                         check_update=false;
                     }
-                } catch(err) {
-                    check_update=false;
-                }
-            });
+                });
+            }
 
 
             if(sd_card!="") {

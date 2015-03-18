@@ -157,15 +157,45 @@
         <tr>
             <td></td>
             <td><div id="regul_label" style="<?php if(strcmp("$regul_program","regul")!=0) echo "display:none"; ?>">
-                    <label id="regul_label_temp"  style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)) { echo ''; } else { echo 'display:none'; } ?>"> 
+                    <label id="regul_label_temp"  style="
+                        <?php
+                            if($plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "heating" ||
+                               $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "ventilator" ||
+                               $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "extractor" ||
+                               $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "intractor")
+                            {
+                                echo '';
+                            } else {
+                                echo 'display:none';*
+                            }
+                        ?>"> 
                         <?php echo __('TEMP_WISHED').":"; ?>
                     </label>
 
-                    <label id="regul_label_water"  style="<?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"pump")==0) { echo ''; } else { echo 'display:none'; } ?>">
+                    <label id="regul_label_water"  style="
+                        <?php
+                            if($plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "pump" ||
+                               $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "pumpfilling" ||
+                               $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "pumpempting")
+                            {
+                                echo '';
+                            } else {
+                                echo 'display:none';
+                            }
+                        ?>">
                         <?php echo __('WATER_WISHED').":"; ?>
                     </label>
                     
-                    <label id="regul_label_humi" style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) { echo ''; } else { echo 'display:none'; } ?>">
+                    <label id="regul_label_humi" style="
+                        <?php
+                            if($plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "humidifier" ||
+                               $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "dehumidifier" )
+                            {
+                                echo '';
+                            } else {
+                                echo 'display:none';
+                            }
+                        ?>">
                         <?php echo __('HUMI_WISHED').":"; ?>
                     </label><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_VALUE'); ?>" />
                     </div>
@@ -182,20 +212,54 @@
                        <?php if(!empty($value_program)) { 
                                ?> value="<?php echo $value_program;?>" <?php 
                         } else { 
-                              if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"pump")==0))  { 
-                                      echo 'value="22"'; 
-                               } elseif((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) { 
-                                      echo 'value="55"'; 
-                              } 
+                            if($plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "heating" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "ventilator" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "extractor" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "intractor" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "pump" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "pumpfilling" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "pumpempting")  { 
+                                echo 'value="22"'; 
+                            } elseif($plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "humidifier" ||
+                                     $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "dehumidifier") { 
+                                echo 'value="55"'; 
+                            } 
                         } ?> />
 
-                    <label id="regul_value_temp" style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)) { echo ''; } else { echo 'display:none'; } ?>">°C
+                    <label id="regul_value_temp" style="
+                        <?php if($plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "heating" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "ventilator" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "extractor" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "intractor")
+                            {
+                                echo ''; 
+                            } else {
+                                echo 'display:none'; 
+                            }
+                        ?>">°C
                     </label>
 
-                    <label id="regul_value_water" style="<?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"pump")==0) { echo ''; } else { echo 'display:none'; } ?>">cm
+                    <label id="regul_value_water" style="
+                        <?php if($plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "pump" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "pumpfilling" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "pumpempting")
+                            {
+                                echo '';
+                            } else {
+                                echo 'display:none';
+                            } 
+                        ?>">cm
                     </label>
 
-                    <label id="regul_value_humi" style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) { echo ''; } else { echo 'display:none'; } ?>">%
+                    <label id="regul_value_humi" style="
+                        <?php if($plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "humidifier" ||
+                                 $plugs_infos[$selected_plug-1]['PLUG_TYPE'] == "dehumidifier")
+                            {
+                                echo '';
+                            } else {
+                                echo 'display:none';
+                            }
+                        ?>">%
                     </label>
                 </div>
             </td>

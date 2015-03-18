@@ -80,15 +80,27 @@ switch($type) {
 
             $plug_type=$_GET['plug_type'];
             $check=array();
-            if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
-                $check=check_format_values_program($value,"temp",$tolerance);
-            } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
-                $check=check_format_values_program($value,"humi",$tolerance);
-            } elseif(strcmp($plug_type,"pump")==0) {
-                $check=check_format_values_program($value,"cm",$tolerance);
-            } else {
-                $check=check_format_values_program($value,"other",$tolerance);
+            switch ($plug_type) {
+                case "extractor":
+                case "intractor":
+                case "ventilator":
+                case "heating":
+                    $check = check_format_values_program($value,"temp",$tolerance);
+                    break;
+                case "pumpfiling":
+                case "pumpempting":
+                case "pump":
+                    $check=check_format_values_program($value,"cm",$tolerance);
+                    break;
+                case "humidifier":
+                case "dehumidifier":
+                    $check = check_format_values_program($value,"humi",$tolerance);
+                    break;
+                default:
+                    $check=check_format_values_program($value,"other",$tolerance);
+                    break;
             }
+
             if(count($check)==0) {
                 echo json_encode("error");
             } else {

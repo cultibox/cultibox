@@ -1739,36 +1739,57 @@ function create_plugconf_from_database($nb=0,&$out) {
             }
 
             //Main regulation:
-            if($data['PLUG_TYPE']=="ventilator") {
-                $reg="REG:T+${tol}";
-            } else if($data['PLUG_TYPE']=="heating") {
-                $reg="REG:T-${tol}";
-            } else if($data['PLUG_TYPE']=="pump") {
-                $reg="REG:T-${tol}";
-            } else if($data['PLUG_TYPE']=="humidifier") {
-                $reg="REG:H-${tol}";
-            } else if($data['PLUG_TYPE']=="dehumidifier") {
-                $reg="REG:H+${tol}";
-            } else {
-                $reg="REG:N+000";
+            switch ($data['PLUG_TYPE']) {
+                case "extractor":
+                case "intractor":
+                case "ventilator":
+                    $reg="REG:T+${tol}";
+                    break;
+                case "heating":
+                    $reg="REG:T-${tol}";
+                    break;
+                case "pumpfiling":
+                    $reg="REG:L-${tol}";
+                    break;
+                case "pumpempting":
+                    $reg="REG:L+${tol}";
+                    break;
+                case "pump":
+                    $reg="REG:T-${tol}";
+                    break;
+                case "humidifier":
+                    "REG:H-${tol}";
+                    break;
+                case "dehumidifier":
+                    $reg="REG:H+${tol}";
+                    break;
+                default:
+                    $reg="REG:N+000";
+                    break;
             }
 
-
             // Second regulation:
-            if(strcmp("$second_regul","True")==0) {
+            if($second_regul == "True") {
                 //Default second regulation value:
-                if($data['PLUG_TYPE']=="ventilator") {
-                    $sec="SEC:T+1000";
-                } else if($data['PLUG_TYPE']=="heating") {
-                    $sec="SEC:N-1000";
-                } else if($data['PLUG_TYPE']=="pump") {
-                    $sec="SEC:N-1000";
-                } else if($data['PLUG_TYPE']=="humidifier") {
-                    $sec="SEC:N-1000";
-                } else if($data['PLUG_TYPE']=="dehumidifier") {
-                    $sec="SEC:N+1000";
-                } else {
-                    $sec="SEC:N+0000";
+                switch ($data['PLUG_TYPE']) {
+                    case "extractor":
+                    case "intractor":
+                    case "ventilator":
+                        $sec="SEC:T+1000";
+                        break;
+                    case "heating":
+                        $sec="SEC:N-1000";
+                        break;
+                    case "dehumidifier":
+                        $sec="SEC:N+1000";
+                        break;
+                    case "humidifier":
+                    case "pumpfiling":
+                    case "pumpempting":
+                    case "pump":
+                    default:
+                        $sec="SEC:N-1000";
+                        break;
                 }
 
                 //User second regulation value:

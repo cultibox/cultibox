@@ -41,25 +41,22 @@ $value_program=getvar('value_program');
 if((empty($value_program))||(!isset($value_program))) {
     if((!empty($plug_type))&&(isset($plug_type))) {
         switch ($plug_type) {
+            case 'extractor':
+            case 'intractor':
             case 'heating':
-                $value_program=22.0;
-                break;
             case 'ventilator':
                 $value_program=22.0;
                 break;
             case 'humidifier':
-                $value_program=55.0;
-                break;
             case 'dehumidifier':
                 $value_program=55.0;
                 break;
-            case 'lamp':
-                $value_program=0.0;
+            case "pumpfiling":
+            case "pumpempting":
+            case "pump":
+                $value_program=22.0;
                 break;
-            case 'pump':
-                $value_program=0.0;
-                break;
-            case 'other' :
+            default :
                 $value_program=0.0;
                break;
         }
@@ -87,24 +84,29 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
 
         $chtime=check_times($start_time,$end_time); 
 
-        if(strcmp($plug_type,"lamp")!=0) {
-            if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
-                if((!isset($type))||(empty($type))) {
-                    $type="1";
-                } 
-            } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
-                if((!isset($type))||(empty($type))) {
+        switch ($plug_type) {
+            case 'extractor':
+            case 'intractor':
+            case 'heating':
+            case 'ventilator':
+            case 'humidifier':
+            case 'dehumidifier':
+            case "pumpfiling":
+            case "pumpempting":
+            case "pump":
+                if(!isset($type) || empty($type)) {
                     $type="1";
                 }
-            }elseif(strcmp($plug_type,"pump")==0) {
-                if((!isset($type))||(empty($type))) {
-                    $type="1";
+                break;
+            default :
+                if(!isset($type) || empty($type))  {
+                    $type="0";
                 }
-            } 
-        } 
+               break;
+        }
 
         if((!isset($type))||(empty($type)))  {
-            $type="0";
+            
         }
 
         if($chtime) {
@@ -157,39 +159,40 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
 
                 //Regulation customization if plug type changes:
                 if(strcmp("$plug_type","$old_plug_type")!=0) {
+
                     $plug_regul=get_plug_conf("PLUG_REGUL",$selected_plug,$main_error);
                     
                     switch ($plug_type) {
+                        case 'extractor':
+                        case 'intractor':
                         case 'heating':
                         case 'ventilator':
                             insert_plug_conf("PLUG_SENSO",$prog[0]["selected_plug"],"H",$main_error);
                             insert_plug_conf("PLUG_REGUL_VALUE",$prog[0]["selected_plug"],"35",$main_error);
-    
-                        break;
-
+                            break;
                         case 'humidifier':
                         case 'dehumidifier':
                             insert_plug_conf("PLUG_SENSO",$prog[0]["selected_plug"],"T",$main_error);
                             insert_plug_conf("PLUG_REGUL_VALUE",$prog[0]["selected_plug"],"70",$main_error);
-                        break;
-                            
+                            break;
+                        case 'pumpfiling':
+                        case 'pumpempting':
                         case 'pump':
-                           insert_plug_conf("PLUG_REGUL",$prog[0]["selected_plug"],"False",$main_error);
-                           insert_plug_conf("PLUG_SENSO",$prog[0]["selected_plug"],"T",$main_error);
-                           insert_plug_conf("PLUG_SENSS",$prog[0]["selected_plug"],"+",$main_error);
-                           insert_plug_conf("PLUG_REGUL_VALUE",$prog[0]["selected_plug"],"35",$main_error);
-                           insert_plug_conf("PLUG_SECOND_TOLERANCE",$prog[0]["selected_plug"],"0",$main_error);
-                        break;
-                        case 'lamp':
-                        case 'other' :
-                           insert_plug_conf("PLUG_REGUL",$prog[0]["selected_plug"],"False",$main_error); 
-                           insert_plug_conf("PLUG_REGUL_SENSOR",$prog[0]["selected_plug"],"1",$main_error);
-                           insert_plug_conf("PLUG_SENSO",$prog[0]["selected_plug"],"T",$main_error);
-                           insert_plug_conf("PLUG_SENSS",$prog[0]["selected_plug"],"+",$main_error);
-                           insert_plug_conf("PLUG_REGUL_VALUE",$prog[0]["selected_plug"],"35",$main_error);
-                           insert_plug_conf("PLUG_SECOND_TOLERANCE",$prog[0]["selected_plug"],"0",$main_error);
-                           insert_plug_conf("PLUG_COMPUTE_METHOD",$prog[0]["selected_plug"],"M",$main_error);
-                        break;
+                            insert_plug_conf("PLUG_REGUL",$prog[0]["selected_plug"],"False",$main_error);
+                            insert_plug_conf("PLUG_SENSO",$prog[0]["selected_plug"],"T",$main_error);
+                            insert_plug_conf("PLUG_SENSS",$prog[0]["selected_plug"],"+",$main_error);
+                            insert_plug_conf("PLUG_REGUL_VALUE",$prog[0]["selected_plug"],"35",$main_error);
+                            insert_plug_conf("PLUG_SECOND_TOLERANCE",$prog[0]["selected_plug"],"0",$main_error);
+                            break;
+                        default :
+                            insert_plug_conf("PLUG_REGUL",$prog[0]["selected_plug"],"False",$main_error); 
+                            insert_plug_conf("PLUG_REGUL_SENSOR",$prog[0]["selected_plug"],"1",$main_error);
+                            insert_plug_conf("PLUG_SENSO",$prog[0]["selected_plug"],"T",$main_error);
+                            insert_plug_conf("PLUG_SENSS",$prog[0]["selected_plug"],"+",$main_error);
+                            insert_plug_conf("PLUG_REGUL_VALUE",$prog[0]["selected_plug"],"35",$main_error);
+                            insert_plug_conf("PLUG_SECOND_TOLERANCE",$prog[0]["selected_plug"],"0",$main_error);
+                            insert_plug_conf("PLUG_COMPUTE_METHOD",$prog[0]["selected_plug"],"M",$main_error);
+                            break;
                     }
                 }
             } else {

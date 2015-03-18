@@ -17,16 +17,28 @@ $second_regul   = get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
 $module = getvar("plug_module${nb}");
 
 // Regulation is not available for lamp and other
-if($type == "lamp" || $type == "other") {
-    $regul = "False";
-} else {
-    $regul       = getvar("plug_regul${nb}");
-    $regul_senss = getvar("plug_senss${nb}");
-    $regul_value = getvar("plug_regul_value${nb}");
-    $regul_value = str_replace(',','.',$regul_value);
-    $regul_value = str_replace(' ','',$regul_value);
-    $second_tol  = getvar("plug_second_tolerance${nb}");
-    $second_tol  = str_replace(',','.',$second_tol);
+switch ($type) 
+{
+    case "extractor":
+    case "intractor":
+    case "ventilator":
+    case "heating":
+    case "pumpfiling":
+    case "pumpempting":
+    case "pump":
+    case "humidifier":
+    case "dehumidifier":
+        $regul = "False";
+        break;
+    default:
+        $regul       = getvar("plug_regul${nb}");
+        $regul_senss = getvar("plug_senss${nb}");
+        $regul_value = getvar("plug_regul_value${nb}");
+        $regul_value = str_replace(',','.',$regul_value);
+        $regul_value = str_replace(' ','',$regul_value);
+        $second_tol  = getvar("plug_second_tolerance${nb}");
+        $second_tol  = str_replace(',','.',$second_tol);
+        break;
 }
 
 // retrieve max power
@@ -77,14 +89,22 @@ if( !empty($name) && isset($name) && $old_name != $name) {
 }
    
 // Save tolerance
-if( $type == "heating" ||
-    $type == "humidifier" ||
-    $type == "dehumidifier" ||
-    $type == "ventilator" ||
-    $type == "pump")
-{
-    insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$main_error);
-} 
+switch ($type) {
+    case "extractor":
+    case "intractor":
+    case "ventilator":
+    case "heating":
+    case "pumpfiling":
+    case "pumpempting":
+    case "pump":
+    case "humidifier":
+    case "dehumidifier":
+        insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$main_error);
+        break;
+    default:
+        return true;
+        break;
+}
 
 
 if(!empty($power) && isset($power) && $old_power != $power) {
@@ -115,15 +135,25 @@ if(!empty($second_tol) && isset($second_tol) && $old_second_tol != $second_tol) 
     insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,$second_tol,$main_error);
 }
 
-
-if($type == "other" || $type == "lamp") {
-    $regul_senso = getvar("plug_senso${nb}");
-} elseif($type == "heating" || $type == "ventilator" || $type == "pump") {
-    $regul_senso = "H";
-} elseif($type == "humidifier" || $type == "dehumidifier") {
-    $regul_senso = "T";
-} else {
-    $regul_senso = "";
+switch ($type) {
+    case "extractor":
+    case "intractor":
+    case "ventilator":
+    case "heating":
+        $regul_senso = "H";
+        break;
+    case "pumpfiling":
+    case "pumpempting":
+    case "pump":
+        $regul_senso = "L";
+        break;
+    case "humidifier":
+    case "dehumidifier":
+        $regul_senso = "T";
+        break;
+    default:
+        $regul_senso = getvar("plug_senso${nb}");
+        break;
 }
 
 if(!empty($regul_senso) && isset($regul_senso) && $old_senso != $regul_senso) {
@@ -150,23 +180,39 @@ if(!empty($type) && isset($type) && $old_type != $type) {
     insert_plug_conf("PLUG_TYPE",$nb,$type,$main_error);
 
     //If second regulation is deactivated but the type of plug change, we also change default value for second regulation:
-    if($second_regul== "False") {
-        if($type == "other" || $type == "lamp") {
-            insert_plug_conf("PLUG_REGUL_VALUE",$nb,"70",$main_error);
-            insert_plug_conf("PLUG_SENSO",$nb,"H",$main_error);
-            insert_plug_conf("PLUG_SENSS",$nb,"+",$main_error);
-            insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"0",$main_error);
-        } elseif($type == "heating" || $type == "ventilator" || $type == "pump") {
-            insert_plug_conf("PLUG_REGUL_VALUE",$nb,"70",$main_error);
-            insert_plug_conf("PLUG_SENSO",$nb,"H",$main_error);
-            insert_plug_conf("PLUG_SENSS",$nb,"+",$main_error);
-            insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"0",$main_error);
-        } elseif($type == "humidifier" || $type == "dehumidifier") {      
-            insert_plug_conf("PLUG_REGUL_VALUE",$nb,"35",$main_error);
-            insert_plug_conf("PLUG_SENSO",$nb,"T",$main_error);
-            insert_plug_conf("PLUG_SENSS",$nb,"+",$main_error);
-            insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"0",$main_error);
-        } 
+    if($second_regul == "False") {
+        switch ($type) {
+            case "extractor":
+            case "intractor":
+            case "ventilator":
+            case "heating":
+                insert_plug_conf("PLUG_REGUL_VALUE",$nb,"70",$main_error);
+                insert_plug_conf("PLUG_SENSO",$nb,"H",$main_error);
+                insert_plug_conf("PLUG_SENSS",$nb,"+",$main_error);
+                insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"0",$main_error);
+                break;
+            case "pumpfiling":
+            case "pumpempting":
+            case "pump":
+                insert_plug_conf("PLUG_REGUL_VALUE",$nb,"22",$main_error);
+                insert_plug_conf("PLUG_SENSO",$nb,"L",$main_error);
+                insert_plug_conf("PLUG_SENSS",$nb,"+",$main_error);
+                insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"0",$main_error);
+                break;
+            case "humidifier":
+            case "dehumidifier":
+                insert_plug_conf("PLUG_REGUL_VALUE",$nb,"35",$main_error);
+                insert_plug_conf("PLUG_SENSO",$nb,"T",$main_error);
+                insert_plug_conf("PLUG_SENSS",$nb,"+",$main_error);
+                insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"0",$main_error);
+                break;
+            default:
+                insert_plug_conf("PLUG_REGUL_VALUE",$nb,"70",$main_error);
+                insert_plug_conf("PLUG_SENSO",$nb,"H",$main_error);
+                insert_plug_conf("PLUG_SENSS",$nb,"+",$main_error);
+                insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"0",$main_error);
+                break;
+        }
     }
 }
 

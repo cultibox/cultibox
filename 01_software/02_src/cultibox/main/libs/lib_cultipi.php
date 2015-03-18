@@ -303,15 +303,31 @@ function getPlugOfSynoptic () {
 
         // If empty create them 
         if (empty($sensorParameters)) {
-
-            if ($plugParam[$i - 1]["PLUG_TYPE"] ==  "lamp") {
-                $image = "lampe_OFF.png";
-            } elseif ($plugParam[$i - 1]["PLUG_TYPE"] ==  "ventilator") {
-                $image = "ventilateur_OFF.gif";
-            } elseif ($plugParam[$i - 1]["PLUG_POWER_MAX"] ==  "1000") {
-                $image = "1000W_OFF.png";
-            } else {
-                $image = "3500W_OFF.png";
+            switch ($plugParam[$i - 1]["PLUG_TYPE"]) 
+            {
+                case "lamp" :
+                    $image = "lampe_OFF.png";
+                    break;
+                case "extractor" :
+                case "intractor" :
+                case "ventilator" :
+                    $image = "lampe_OFF.png";
+                    break;
+                case "pump" :
+                case "pumpfiling" :
+                case "pumpempting" :
+                    $image = "lampe_OFF.png";
+                    break;
+                default :
+                    if ($plugParam[$i - 1]["PLUG_POWER_MAX"] ==  "1000") 
+                    {
+                        $image = "1000W_OFF.png";
+                    }
+                    else
+                    {
+                        $image = "3500W_OFF.png";
+                    }
+                    break;
             }
         
             addElementInSynoptic("plug", $i, $image);

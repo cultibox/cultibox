@@ -400,24 +400,36 @@ function check_date($datestart="",$dateend="") {
 //    $tolerance          the value to check
 // RET false is there is a wrong value, true else
 function check_tolerance_value($type,&$tolerance=0) {
-   $tolerance=str_replace(",",".",$tolerance);
+   $tolerance = str_replace(",",".",$tolerance);
 
     if(!is_numeric($tolerance)) return false;
 
-   if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)||(strcmp($type,"pump")==0)) {
-      if(($tolerance >= 0)&&($tolerance <= 10)) {
-         return true;
-      } else {
-         return false;
-      }
-   } else if((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
-      if(($tolerance >= 0)&&($tolerance <= 25.5)) {
-         return true;
-      } else {
-         return false;
-      }   
-   }
-   return true;
+    switch ($data['PLUG_TYPE']) {
+        case "extractor":
+        case "intractor":
+        case "ventilator":
+        case "heating":
+        case "pumpfiling":
+        case "pumpempting":
+        case "pump":
+            if($tolerance >= 0 && $tolerance <= 10) {
+                return true;
+            } else {
+                return false;
+            }
+            break;
+        case "humidifier":
+        case "dehumidifier":
+            if($tolerance >= 0 && $tolerance <= 25.5) {
+                return true;
+            } else {
+                return false;
+            }
+            break;
+        default:
+            return true;
+            break;
+    }
 }
 // }}}
 
@@ -631,13 +643,24 @@ function format_data_sumary($data) {
             $resume[]="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.":<br /> ".$plugs_info['PLUG_NAME']."</i></b></p><p align='center'>".__('EMPTY_ACTION')."</p>";
         } else {
             switch($plugs_info['PLUG_TYPE']) {
-                    case 'lamp': $unity=""; break;
-                    case 'other': $unity=""; break;
-                    case 'ventilator': $unity="°C"; break;
-                    case 'heating': $unity="°C"; break;
-                    case 'pump': $unity="cm"; break;
-                    case 'humidifier': $unity="%"; break; 
-                    case 'dehumidifier': $unity="%"; break;
+                case 'extractor':
+                case 'intractor':
+                case 'ventilator':
+                case 'heating':
+                    $unity="°C";
+                    break;
+                case 'pumpfiling':
+                case 'pumpempting':
+                case 'pump':
+                    $unity="cm";
+                    break;
+                case 'humidifier': 
+                case 'dehumidifier':
+                    $unity="%";
+                    break;
+                default :
+                    $unity="";
+                    break;
             }
             $actions=array();
             $actions=explode('[',$plugs_info["data"]);
@@ -892,6 +915,12 @@ function translate_PlugType ($plug) {
         case 'other':
             $ret['translate'] = __('PLUG_UNKNOWN');
             break;
+        case 'extractor' :
+            $ret['translate'] = __('PLUG_EXTRACTOR');
+            break;
+        case 'intractor' :
+            $ret['translate'] = __('PLUG_INTRACTOR');
+            break;
         case 'ventilator': 
             $ret['translate'] =__('PLUG_VENTILATOR');
             break;
@@ -901,6 +930,12 @@ function translate_PlugType ($plug) {
         case 'pump': 
             $ret['translate'] = __('PLUG_PUMP');
             break;
+        case 'pumpfilling' :
+            $ret['translate'] = __('PLUG_PUMPFILLING');
+            break;
+        case 'pumpempting' :
+            $ret['translate'] = __('PLUG_PUMPEMPTING');
+            break;            
         case 'lamp': 
             $ret['translate'] = __('PLUG_LAMP');
             break;
