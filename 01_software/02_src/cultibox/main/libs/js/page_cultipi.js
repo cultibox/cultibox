@@ -691,14 +691,10 @@ $(document).ready(function(){
         return base;
     }
     
-    var updateIsAked = 0;
+
     // Loop for updating sensors
     function updateSensors() {
     
-        if (updateIsAked == 1) {
-            return 0;
-        }
-        updateIsAked = 1;
         $.ajax({
             beforeSend: function(jqXHR) {
                 $.xhrPool.push(jqXHR);
@@ -789,14 +785,10 @@ $(document).ready(function(){
             }
         });
     }
-    $.timeout.push(setInterval(updateSensors, 13000));
+    $.timeout.push(setInterval(updateSensors, 3000));
 
     // Loop for updating plugs
     function updatePlugs() {
-        if (updateIsAked == 1) {
-            return 0;
-        }
-        updateIsAked = 1;
         
         $.ajax({
             beforeSend: function(jqXHR) {
@@ -858,7 +850,7 @@ $(document).ready(function(){
             }
         });
     }
-    $.timeout.push(setInterval(updatePlugs, 7000));
+    $.timeout.push(setInterval(updatePlugs, 2000));
     
 
     // Display services logs:

@@ -316,7 +316,7 @@ function getPlugOfSynoptic () {
                 case "pump" :
                 case "pumpfiling" :
                 case "pumpempting" :
-                    $image = "lampe_OFF.png";
+                    $image = "pompe_OFF.png";
                     break;
                 default :
                     if ($plugParam[$i - 1]["PLUG_POWER_MAX"] ==  "1000") 
@@ -332,11 +332,15 @@ function getPlugOfSynoptic () {
         
             addElementInSynoptic("plug", $i, $image);
             
-            $ret_array[] = getSynopticDBElemByname("plug",$i);
+            $sensorParameters = getSynopticDBElemByname("plug",$i);
+            $sensorParameters["PLUG_NAME"] = $plugParam[$i - 1]["PLUG_NAME"];
+            
+            $ret_array[] = $sensorParameters;
             
         } 
         else
         { 
+            $sensorParameters["PLUG_NAME"] = $plugParam[$i - 1]["PLUG_NAME"];
             $ret_array[] = $sensorParameters;
         }
 
