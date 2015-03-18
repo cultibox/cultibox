@@ -23,6 +23,91 @@ var reload_page=false;
 var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
 
+// {{{ getRegulation()
+// ROLE display the regulation informations or not
+// IN  input value: display or not the informations
+// HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
+// USED BY: templates/programs.html 
+function getRegulation(i, type) {
+      var divValTemp = document.getElementById('regul_value_temp');
+      var divLabelTemp = document.getElementById('regul_label_temp');
+      var divValHumi = document.getElementById('regul_value_humi');
+      var divLabelHumi = document.getElementById('regul_label_humi');
+      var divLabelWater = document.getElementById('regul_label_water');
+      var divValWater = document.getElementById('regul_value_water');
+
+      if(i=="dimmer") {
+            divValHumi.style.display = '';
+            divLabelHumi.style.display = 'none';
+            divValTemp.style.display = 'none';
+            divLabelTemp.style.display = 'none';
+            divValWater.style.display = 'none';
+            divLabelWater.style.display = 'none';
+            var divValue = document.getElementById('value_program');
+            divValue.value="50";
+
+            var divDimmerLabel=document.getElementById('dimmer_label');
+            divDimmerLabel.style.display = '';
+      } else {
+        var divDimmerLabel=document.getElementById('dimmer_label');
+        divDimmerLabel.style.display = 'none';
+        switch(type) {
+            case 'humidifier' :
+            case 'dehumidifier' : 
+                divValHumi.style.display = '';
+                divLabelHumi.style.display = '';
+                divValTemp.style.display = 'none';
+                divLabelTemp.style.display = 'none';
+                divValWater.style.display = 'none';
+                divLabelWater.style.display = 'none';
+                var divValue = document.getElementById('value_program');
+                divValue.value="55";
+                break;
+            case 'extractor' :
+            case 'intractor' :
+            case 'heating' : 
+            case 'ventilator' : 
+                divValHumi.style.display = 'none';
+                divLabelHumi.style.display = 'none';
+                divValTemp.style.display = '';
+                divLabelTemp.style.display = '';
+                divValWater.style.display = 'none';
+                divLabelWater.style.display = 'none';
+
+                var divValue = document.getElementById('value_program');
+                divValue.value="22";
+                break;
+            case 'pumpfiling' :
+            case 'pumpempting' :
+            case 'pump' :
+                divValHumi.style.display = 'none';
+                divLabelHumi.style.display = 'none';
+                divValTemp.style.display = 'none';
+                divLabelTemp.style.display = 'none';
+                divValWater.style.display = '';
+                divLabelWater.style.display = '';
+
+                var divValue = document.getElementById('value_program');
+                divValue.value="22";
+                break;
+            default:
+                var divValue = document.getElementById('value_program');
+                divValue.value="";
+                break;
+        }
+      }
+
+      var divValueRegul = document.getElementById('regul_value');
+      var divLabelRegul = document.getElementById('regul_label');
+    
+      switch(i) {
+         case 'regul' : divLabelRegul.style.display = ''; divValueRegul.style.display = ''; break;
+         case 'dimmer': divLabelRegul.style.display = 'none'; divValueRegul.style.display = ''; break;
+         default: divLabelRegul.style.display = 'none'; divValueRegul.style.display = 'none'; break;
+      }
+
+}
+// }}}
 
 $(document).ready(function(){
      if(limit && apply) {
@@ -845,8 +930,8 @@ $(document).ready(function(){
         }},{
         text: CLOSE_button,
         click: function () {
-		    $( this ).dialog( "close" );
-	    }
+            $( this ).dialog( "close" );
+        }
         }],
         close: function() {
             program_name.val( "" ).removeClass( "ui-state-error" );
@@ -919,226 +1004,253 @@ $(document).ready(function() {
       color: '#fffff'
    },
    onBlock: function() {
-   chart = new Highcharts.Chart({
-      chart: {
-         backgroundColor: '#F7F7F9',
-         borderWidth: 3,
-         borderColor: '#959891',
-         borderRadius: 20,
-         spacingRight: 35,
-         renderTo: 'plug',
-         type: 'spline',
-         zoomType: 'x'
-      },
-      title: {
-        useHTML: true,
-        text: <?php echo "'".__('CURRENT_PLUG_PROGRAM').": '"; ?>,
-        margin: 40
-      },
-       subtitle: {
+        chart = new Highcharts.Chart({
+            chart: {
+                backgroundColor: '#F7F7F9',
+                borderWidth: 3,
+                borderColor: '#959891',
+                borderRadius: 20,
+                spacingRight: 35,
+                renderTo: 'plug',
+                type: 'spline',
+                zoomType: 'x'
+            },
+            title: {
+                useHTML: true,
+                text: <?php echo "'".__('CURRENT_PLUG_PROGRAM').": '"; ?>,
+                margin: 40
+            },
+            subtitle: {
+                useHTML: true,
+                text: document.ontouchstart === undefined ?
+                <?php echo "'".__('DRAG_PLOT')."'"; ?>:
+                <?php echo "'".__('DRAG_PLOT')."'"; ?>
+            },
+            lang: {
              useHTML: true,
-             text: document.ontouchstart === undefined ?
-               <?php echo "'".__('DRAG_PLOT')."'"; ?>:
-               <?php echo "'".__('DRAG_PLOT')."'"; ?>
-      },
-      lang: {
-         useHTML: true,
-         printChart: <?php echo "'".__('PRINT_HIGHCHART')."',"; ?>
-         exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART')."',"; ?>
-         downloadPNG : <?php echo "'".__('EXPORT_PNG')."',"; ?>
-         downloadJPEG : <?php echo "'".__('EXPORT_JPEG')."',"; ?>
-         downloadPDF : <?php echo "'".__('EXPORT_PDF')."',"; ?>
-         downloadSVG : <?php echo "'".__('EXPORT_SVG')."',"; ?>
-         resetZoom : <?php echo "'".__('RESET_ZOOM_TITLE')."',"; ?>
-         resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>,
-         contextButtonTitle: <?php echo "'".__('CONTEXT_MENU')."'"; ?>
-      },
-      legend: {
-            layout: 'vertical',
-            verticalAlign: 'bottom',
-            align: 'right',
-            y: -<?php echo ($GLOBALS['NB_MAX_PLUG']-$nb_plugs)*16; ?>,
-            x: +25,
-            maxHeight: 200,
-            navigation: {
-                activeColor: '#3E576F',
-                animation: true,
-                arrowSize: 10,
-                inactiveColor: '#CCC',
-                style: {
-                    fontWeight: 'bold',
-                    color: '#333',
-                    fontSize: '10px'    
-                }
-            }
-         },
-        xAxis: {
-         type: 'datetime',
-         endOnTick: true,
-         showFirstLabel: false,
-         showLastLabel: true,
-         dateTimeLabelFormats: { // don't display the dummy year
-            hours: '%H',
-            minutes: '%M',
-            seconds: '%S'
-         },
-         min: 0,
-         max: 86399999,
-         tickInterval: 6 * 3600 * 1000,
-         labels: {
-            formatter: function () {
-                var tmp=Highcharts.dateFormat('%H:%M', this.value);
-                if(tmp=="00:00") return "24:00";
-                return tmp;
-            }
-         },
-         events: {
-                afterSetExtremes: function(event){
-                    $('#resetXzoom').show();
-                    showzoomX=true;
-                    if(chart.resetZoomButton) {
-                            chart.resetZoomButton.hide();
+             printChart: <?php echo "'".__('PRINT_HIGHCHART')."',"; ?>
+             exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART')."',"; ?>
+             downloadPNG : <?php echo "'".__('EXPORT_PNG')."',"; ?>
+             downloadJPEG : <?php echo "'".__('EXPORT_JPEG')."',"; ?>
+             downloadPDF : <?php echo "'".__('EXPORT_PDF')."',"; ?>
+             downloadSVG : <?php echo "'".__('EXPORT_SVG')."',"; ?>
+             resetZoom : <?php echo "'".__('RESET_ZOOM_TITLE')."',"; ?>
+             resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>,
+             contextButtonTitle: <?php echo "'".__('CONTEXT_MENU')."'"; ?>
+            },
+            legend: {
+                layout: 'vertical',
+                verticalAlign: 'bottom',
+                align: 'right',
+                y: -<?php echo ($GLOBALS['NB_MAX_PLUG']-$nb_plugs)*16; ?>,
+                x: +25,
+                maxHeight: 200,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 10,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '10px'    
                     }
-            }
-        }
-      },
-      yAxis: {
-            min: -1,
-            max: 100,
-            startOnTick: false,
-            endOnTick: false,
-            labels: {
-                     useHTML: true,
-                     formatter: function() {
-    if((this.value>=0)&&(this.value<=100)) {      
-               <?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"other")==0)) { ?>
-               if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-               if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
-<?php } else if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"ventilator")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"heating")==0)) { ?>
-               if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
-               if(this.value>0) return this.value+'°C';
-               if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-<?php } else if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"pump")==0)) { ?>
-               if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
-               if(this.value>0) return this.value+' cm';
-               if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-<?php } else if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"dehumidifier")==0)) { ?>
-               if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
-               if(this.value>0) return this.value+'%';
-               if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-
-<?php } else { ?>
-               return this.value;
-
-<?php } ?>
-            }
-                     }
-              },
-         title: false
-      },
-      plotOptions: {
-            series: {
+                }
+            },
+            xAxis: {
+             type: 'datetime',
+             endOnTick: true,
+             showFirstLabel: false,
+             showLastLabel: true,
+             dateTimeLabelFormats: { // don't display the dummy year
+                hours: '%H',
+                minutes: '%M',
+                seconds: '%S'
+            },
+            min: 0,
+            max: 86399999,
+            tickInterval: 6 * 3600 * 1000,
+                labels: {
+                formatter: function () {
+                    var tmp=Highcharts.dateFormat('%H:%M', this.value);
+                    if(tmp=="00:00") return "24:00";
+                    return tmp;
+                }
+                },
                 events: {
-                    legendItemClick: function(event) {
-                            if(this.index==$('#selected_plug').val()-1) {
-                                return false;
-                            }
+                    afterSetExtremes: function(event){
+                        $('#resetXzoom').show();
+                        showzoomX=true;
+                        if(chart.resetZoomButton) {
+                                chart.resetZoomButton.hide();
+                        }
                     }
-                },
-                marker : {
-                    lineWidth : 2,
-                    radius : 6,
-                    symbol : 'circle'
-                },
-                dataLabels: {
-                    enabled: false,
-                    borderRadius: 5,
-                    backgroundColor: 'rgba(252, 255, 197, 0.7)',
-                    borderWidth: 1,
-                    borderColor: '#AAA',
-                    y: -8,
-                    x: +20,
+                }
+            },
+          yAxis: {
+                min: -1,
+                max: 100,
+                startOnTick: false,
+                endOnTick: false,
+                labels: {
                     useHTML: true,
-                    formatter: function(){ 
-                        if (this.visible) {                      
-                            if(this.y=="99.9") { return "<?php echo __('CHART_FORCE_ON_VALUE'); ?>"; }
-                            else if(this.y=="0") { return "<?php echo __('VALUE_OFF'); ?>"; }
-                            else { 
-                                var unity="";
-                                if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="heating")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="ventilator")) {
-                                    unity="°C";
-                                } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="dehumidifier")) {
-                                    unity="%";
-                                } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="pump")) {
-                                    unity=" cm"; 
+                    formatter: function() {
+                        if(this.value == 0) return "<?php echo __("VALUE_OFF") ;?>";
+                        if(this.value >= 0 && this.value <= 100) {
+                        <?php
+                            switch ($plugs_infos[$selected_plug-1]["PLUG_TYPE"]) {
+                                case "ventilator" :
+                                case "heating" :
+                                case "extractor" :
+                                case "intractor" :
+                                    echo 'if(this.value == 100) return "' . __("CHART_FORCE_ON_VALUE") . '";';
+                                    echo "return this.value+'°C';";
+                                    break;
+                                case "pumpfiling" :
+                                case "pumpempting" :
+                                case "pump" :
+                                    echo 'if(this.value == 100) return "' . __("CHART_FORCE_ON_VALUE") . '";';
+                                    echo "return this.value+'cm';";
+                                    break;
+                                case "humidifier" :
+                                case "dehumidifier" :
+                                    echo 'if(this.value == 100) return "' . __("CHART_FORCE_ON_VALUE") . '";';
+                                    echo "return this.value+'%';";
+                                    break;
+                                default :
+                                    echo 'if(this.value == 100) return "' . __("VALUE_ON") . '";';
+                                    echo "return this.value;";
+                                    break;
+                            }
+                        ?>
+                        }
+                    }
+                },
+                title: false
+            },
+            plotOptions: {
+                series: {
+                    events: {
+                        legendItemClick: function(event) {
+                                if(this.index==$('#selected_plug').val()-1) {
+                                    return false;
                                 }
-                                return "<?php echo __('VALUE_REGUL'); ?>: "+this.y+unity;
+                        }
+                    },
+                    marker : {
+                        lineWidth : 2,
+                        radius : 6,
+                        symbol : 'circle'
+                    },
+                    dataLabels: {
+                        enabled: false,
+                        borderRadius: 5,
+                        backgroundColor: 'rgba(252, 255, 197, 0.7)',
+                        borderWidth: 1,
+                        borderColor: '#AAA',
+                        y: -8,
+                        x: +20,
+                        useHTML: true,
+                        formatter: function(){ 
+                            if (this.visible) {                      
+                                if(this.y=="99.9") { return "<?php echo __('CHART_FORCE_ON_VALUE'); ?>"; }
+                                else if(this.y=="0") { return "<?php echo __('VALUE_OFF'); ?>"; }
+                                else { 
+                                    var unity="";
+                                    switch (plugs_infoJS[this.series.index]["PLUG_TYPE"]) {
+                                        case "extractor" :
+                                        case "intractor" :
+                                        case "ventilator" :
+                                        case "heating" :
+                                            unity="°C";
+                                            break;
+                                        case "humidifier" :
+                                        case "dehumidifier" :
+                                            unity="%";
+                                            break;
+                                        case "pump" :
+                                        case "pumpfiling" :
+                                        case "pumpempting" :
+                                            unity="cm";
+                                            break;
+                                    }
+                                    return "<?php echo __('VALUE_REGUL'); ?>: "+this.y+unity;
+                                }
                             }
                         }
                     }
                 }
-            }
-      },
-      credits: {
-                   enabled: false
-      },
-      tooltip: {
-         useHTML: true,
-         formatter: function() {
-            if(this.y == 99.9) {
-                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("CHART_FORCE_ON_VALUE"); ?></p>";
-            } else if(this.y == 0) {
-                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("VALUE_OFF"); ?></p>";
-            } else { 
-                var unity="";
-                if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="heating")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="ventilator")) {
-                    unity="°C";
-                } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="dehumidifier")) {
-                    unity="%";
-                } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="pump")) {
-                    unity=" cm";
-                }
-                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b>"+this.y+unity+" (<?php echo __('REGULATION'); ?>)</p><br />"+resume_regul[this.series.index+1];
-            } 
-         }
-      },
-      series: [
-            <?php 
-            $count=0;
-            foreach($plugs_infos as $plugs) {  
-            ?>
-
-        {
-         <?php if($plugs['id']==$selected_plug) { ?>
-            name: <?php echo "'<b>".clean_highchart_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_highchart_message($plugs_infos[$plugs['id']-1]['translate']).")</b>',"; ?>
-         <?php } else { ?>
-            name: <?php echo "'".clean_highchart_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_highchart_message($plugs_infos[$plugs['id']-1]['translate']).")',"; ?>
-         <?php } ?>
-         color: <?php echo "'".$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs['id']-1]."'"; ?>,
-         showCheckbox: false,
-         
-         <?php if($plugs['id']!=$selected_plug) { echo "visible: false,"; } else { echo "selected: true,"; } ?>
-         data: [
-            <?php echo $plugs_infos[$plugs['id']-1]["data"]; ?>
-         ]
-         ,events: {
-                    checkboxClick: function(event) {
-                        var series = chart.series[<?php echo $count; ?>];
-                        if (series.visible) {
-                            series.hide();
-                        } else {
-                            series.show();
+            },
+            credits: {
+                enabled: false
+            },
+            tooltip: {
+                useHTML: true,
+                formatter: function() {
+                    if(this.y == 99.9) {
+                        return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("CHART_FORCE_ON_VALUE"); ?></p>";
+                    } else if(this.y == 0) {
+                        return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("VALUE_OFF"); ?></p>";
+                    } else { 
+                        var unity="";
+                        switch (plugs_infoJS[this.series.index]["PLUG_TYPE"]) {
+                            case "extractor" :
+                            case "intractor" :
+                            case "ventilator" :
+                            case "heating" :
+                                unity="°C";
+                                break;
+                            case "humidifier" :
+                            case "dehumidifier" :
+                                unity="%";
+                                break;
+                            case "pump" :
+                            case "pumpfiling" :
+                            case "pumpempting" :
+                                unity="cm";
+                                break;
                         }
-                    }
-               }
-      }
-     <?php 
-     $count=$count+1;
-     if($count!=count($plugs_infos)) echo ","; 
-    } ?>
-] 
-   });
-   }
+                        return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b>"+this.y+unity+" (<?php echo __('REGULATION'); ?>)</p><br />"+resume_regul[this.series.index+1];
+                    } 
+                }
+            },
+            series: [
+                <?php 
+                $count=0;
+                foreach($plugs_infos as $plugs) {  
+                ?>
+
+                    {
+                     <?php if($plugs['id']==$selected_plug) { ?>
+                        name: <?php echo "'<b>".clean_highchart_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_highchart_message($plugs_infos[$plugs['id']-1]['translate']).")</b>',"; ?>
+                     <?php } else { ?>
+                        name: <?php echo "'".clean_highchart_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_highchart_message($plugs_infos[$plugs['id']-1]['translate']).")',"; ?>
+                     <?php } ?>
+                     color: <?php echo "'".$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs['id']-1]."'"; ?>,
+                     showCheckbox: false,
+                     
+                     <?php if($plugs['id']!=$selected_plug) { echo "visible: false,"; } else { echo "selected: true,"; } ?>
+                     data: [
+                        <?php echo $plugs_infos[$plugs['id']-1]["data"]; ?>
+                     ]
+                     ,events: {
+                        checkboxClick: function(event) {
+                            var series = chart.series[<?php echo $count; ?>];
+                            if (series.visible) {
+                                series.hide();
+                            } else {
+                                series.show();
+                            }
+                        }
+                   }
+                  }
+                 <?php 
+                 $count=$count+1;
+                 if($count!=count($plugs_infos)) echo ","; 
+                } ?>
+            ] 
+        });
+    }
     });
     $.unblockUI();
 
@@ -1172,38 +1284,60 @@ $(document).ready(function() {
             labels: {
                 useHTML: true,
                 formatter: function() {
-                    if((this.value>=0)&&(this.value<=100)) {      
-                        if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="lamp")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="other")) {
-                            if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                            if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
-                        } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="ventilator")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="heating")) { 
-                            if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
-                            if(this.value>0) return this.value+'°C';
-                            if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                        } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="pump")) { 
-                            if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
-                            if(this.value>0) return this.value+' cm';
-                            if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                        } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="dehumidifier")) { 
-                            if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
-                            if(this.value>0) return this.value+'%';
-                            if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                        } else { 
-                            return this.value;
+                    if((this.value>=0)&&(this.value<=100)) {
+                    
+                        switch (plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]) {
+                            case "extractor" :
+                            case "intractor" :
+                            case "ventilator" :
+                            case "heating" :
+                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                                if(this.value>0) return this.value+'°C';
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                                break;
+                            case "humidifier" :
+                            case "dehumidifier" :
+                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                                if(this.value>0) return this.value+'%';
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                                break;
+                            case "pump" :
+                            case "pumpfiling" :
+                            case "pumpempting" :
+                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                                if(this.value>0) return this.value+' cm';
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                                break;
+                            default :
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                                if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
+                                break;
                         }
+                        return this.value;
                     }
                 }
-           }
+            }
         });
 
-        if((plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']=="other")||(plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']=="lamp")) {
-            if($('#regul_program option[value="regul"]').length!=0) {
-                $("#regul_program option[value='regul']").remove();
-            }
-        } else {
-            if($('#regul_program option[value="regul"]').length==0) {
-                $("#regul_program").append('<option value="regul"><?php echo __('VALUE_REGUL'); ?></option>');
-            }
+        switch (plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']) {
+            case "extractor":
+            case "intractor":
+            case "ventilator":
+            case "heating":
+            case "pumpfiling":
+            case "pumpempting":
+            case "pump":
+            case "humidifier":
+            case "dehumidifier":
+                if($('#regul_program option[value="regul"]').length==0) {
+                    $("#regul_program").append('<option value="regul"><?php echo __('VALUE_REGUL'); ?></option>');
+                }
+                break;
+            default:
+                if($('#regul_program option[value="regul"]').length!=0) {
+                    $("#regul_program option[value='regul']").remove();
+                }
+                break;
         }
 
         var regul="";
@@ -1309,40 +1443,62 @@ $(document).ready(function() {
 
         chart.yAxis[0].update({
             labels: {
-                     useHTML: true,
-                     formatter: function() {
-                        if((this.value>=0)&&(this.value<=100)) {      
-                            if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="lamp")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="other")) {
-                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                                if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
-                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="ventilator")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="heating")) { 
+                useHTML: true,
+                formatter: function() {
+                    if((this.value>=0)&&(this.value<=100)) {
+                    
+                        switch (plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]) {
+                            case "extractor" :
+                            case "intractor" :
+                            case "ventilator" :
+                            case "heating" :
                                 if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
                                 if(this.value>0) return this.value+'°C';
                                 if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="pump")) { 
-                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
-                                if(this.value>0) return this.value+' cm';
-                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="dehumidifier")) { 
+                                break;
+                            case "humidifier" :
+                            case "dehumidifier" :
                                 if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
                                 if(this.value>0) return this.value+'%';
                                 if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                            } else { 
-                                return this.value;
-                            }
+                                break;
+                            case "pump" :
+                            case "pumpfiling" :
+                            case "pumpempting" :
+                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                                if(this.value>0) return this.value+' cm';
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                                break;
+                            default :
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                                if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
+                                break;
                         }
-                  }
-           }
+                        return this.value;
+                    }
+                }
+            }
         });
 
-        if((plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']=="other")||(plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']=="lamp")) {
-            if($('#regul_program option[value="regul"]').length!=0) {
-                $("#regul_program option[value='regul']").remove();
-            }
-        } else {
-            if($('#regul_program option[value="regul"]').length==0) {
-                $("#regul_program").append('<option value="regul"><?php echo __('VALUE_REGUL'); ?></option>');
-            }
+        switch (plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']) {
+            case "extractor":
+            case "intractor":
+            case "ventilator":
+            case "heating":
+            case "pumpfiling":
+            case "pumpempting":
+            case "pump":
+            case "humidifier":
+            case "dehumidifier":
+                if($('#regul_program option[value="regul"]').length!=0) {
+                    $("#regul_program option[value='regul']").remove();
+                }
+                break;
+            default:
+                if($('#regul_program option[value="regul"]').length==0) {
+                    $("#regul_program").append('<option value="regul"><?php echo __('VALUE_REGUL'); ?></option>');
+                }
+                break;
         }
 
         var regul="";

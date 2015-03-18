@@ -649,7 +649,7 @@ $(document).ready(function(){
     
     // Function used to pilot a plug
     $("#syno_configure_element_force_plug_pilot").click(function(){
-    
+
         $.ajax({
             cache: false,
             type: "POST",
@@ -661,7 +661,7 @@ $(document).ready(function(){
             },
             url: "main/modules/external/synoptic.php",
             success: function (data) {
-        
+
             // Change text
             if ($( "#syno_configure_element_force_plug_value option:selected" ).val() == "on") {
                 $('#syno_elemImage_' + idOfElem).attr('title',"<?php echo __('VALUE_ON'); ?>");
@@ -675,7 +675,7 @@ $(document).ready(function(){
             } else  {
                 $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_ON", "_OFF"));
             }
-            
+
             // Change opacity
             $('#syno_elemImage_' + idOfElem ).css("opacity", "1");
 
@@ -687,8 +687,8 @@ $(document).ready(function(){
 
     function baseName(str)
     {
-       var base = new String(str).substring(str.lastIndexOf('/') + 1); 
-       return base;
+        var base = new String(str).substring(str.lastIndexOf('/') + 1); 
+        return base;
     }
     
     var updateIsAked = 0;
@@ -729,7 +729,7 @@ $(document).ready(function(){
                             newBaseName = baseName($('img[name="syno_elemSensorImage_' + key + '"]').attr('src'));
                             var valueSplitted = value.split(" "); 
                             switch(newBaseName) {
-                               case 'T_RH_sensor.png' :
+                                case 'T_RH_sensor.png' :
                                     $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "°C " + valueSplitted[1] + "RH");
                                     $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "°C " + valueSplitted[1] + "RH");
                                     break;
@@ -756,6 +756,10 @@ $(document).ready(function(){
                                 case 'ORP-sensor.png': 
                                     $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "ORP");
                                     $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "ORP");
+                                    break;
+                                case 'symbole_cuve.png': 
+                                    $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "cm");
+                                    $('img[name="syno_elemSensorImage_' + key + '"]').attr('title',valueSplitted[0]  + "cm");
                                     break;
                                 default :
                                     $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]  + "???");
@@ -836,12 +840,11 @@ $(document).ready(function(){
                         }
                         
                         // Update image
-                        if (value == "ON") {
+                        if (value == "on") {
                             $('img[name="syno_elemPlugImage_' + key + '"]').attr('src',$('img[name="syno_elemPlugImage_' + key + '"]').attr('src').replace("_OFF", "_ON"));
                         } else  {
                             $('img[name="syno_elemPlugImage_' + key + '"]').attr('src',$('img[name="syno_elemPlugImage_' + key + '"]').attr('src').replace("_ON", "_OFF"));
                         }
-
                     }
                 });
                 
