@@ -78,22 +78,22 @@ proc ::piLog::log {time traceType trace} {
             set toSend 1
         }
         "info" {
-            if {$traceType == "debug" || $traceType == "info"} {
+            if {$traceType == "info" || $traceType == "warning"  || $traceType == "error" || $traceType == "error_critic"} {
                 set toSend 1
             }
         }
         "warning" {
-            if {$traceType == "debug" || $traceType == "info" || $traceType == "warning" } {
+            if {$traceType == "warning"  || $traceType == "error" || $traceType == "error_critic"} {
                 set toSend 1
             }
         }
         "error" {
-            if {$traceType == "debug" || $traceType == "info" || $traceType == "warning"  || $traceType == "error"} {
+            if {$traceType == "error" || $traceType == "error_critic"} {
                 set toSend 1
             }
         }
         "error_critic" {
-            if {$traceType == "debug" || $traceType == "info" || $traceType == "warning"  || $traceType == "error" || $traceType == "error_critic"} {
+            if {$traceType == "error_critic"} {
                 set toSend 1
             }
         }
@@ -102,37 +102,39 @@ proc ::piLog::log {time traceType trace} {
             set toSend 1
         }
     }
-   
-    
-    # If channel is not open, log in local
-    if {$channel == ""} {
-        if { [expr [string compare "$::tcl_platform(platform)" "windows" ] == 0] } {
-            set env_cpi  [file join [file dirname [file dirname [info script]]]]
+
+    if {$toSend == 1} {
+        if {$channel == ""} {
+            # If channel is not open, log in local
+            if { [expr [string compare "$::tcl_platform(platform)" "windows" ] == 0] } {
+                set env_cpi  [file join [file dirname [file dirname [info script]]]]
+            } else {
+                set env_cpi  [file join $::env(HOME) cultipi]
+            }
+            
+            set env_home [file join $env_cpi ${module}]
+            
+            # On crée le dossier s'il n'existe pas
+            if {[file isdirectory $env_cpi] == 0} {
+                file mkdir $env_cpi
+            }
+            if {[file isdirectory $env_home] == 0} {
+                file mkdir $env_home
+            }
+            
+            set fid [open [file join $env_home log_local.txt ] a+]
+            puts $fid $StringToWrite
+            close $fid
         } else {
-            set env_cpi  [file join $::env(HOME) cultipi]
+            set rc [catch \
+            {
+                puts $channel $StringToWrite
+                flush $channel
+            } msg]
+            if {$rc == 1} { return $msg }
         }
-        
-        set env_home [file join $env_cpi ${module}]
-        
-        # On crée le dossier s'il n'existe pas
-        if {[file isdirectory $env_cpi] == 0} {
-            file mkdir $env_cpi
-        }
-        if {[file isdirectory $env_home] == 0} {
-            file mkdir $env_home
-        }
-        
-        set fid [open [file join $env_home log_local.txt ] a+]
-        puts $fid $StringToWrite
-        close $fid
-    } else {
-        set rc [catch \
-        {
-            puts $channel $StringToWrite
-            flush $channel
-        } msg]
-        if {$rc == 1} { return $msg }
     }
+
     
 
     return 0
