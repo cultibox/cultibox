@@ -2,5 +2,5 @@
 <conf>
     <!-- Example : http://wfr.tcl.tk/1151 -->
     <item name="logPath" logfile="/var/log/cultipi" />
-    <item name="verbose" level="debug" />
+    <item name="verbose" level="warning" />
 </conf>

@@ -2,5 +2,5 @@
 <conf>
     <item name="logPeriode" valInSec="60" />
     <item name="pathMySQL" path="c:/cultibox/xampp/mysql/bin/mysql.exe" />
-    <item name="verbose" level="debug" />
+    <item name="verbose" level="warning" />
 </conf>

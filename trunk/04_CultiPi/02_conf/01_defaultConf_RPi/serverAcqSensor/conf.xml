@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <conf>
-    <item name="verbose" level="debug" />
+    <item name="verbose" level="warning" />
     <item name="simulator" actif="off" />
 </conf>
