@@ -49,6 +49,7 @@ set RC [catch {
 ::piLog::log [clock milliseconds] "info" "confXML : $confXML"
 ::piLog::log [clock milliseconds] "info" "port serverLogs : $port(serverLogs)"
 ::piLog::log [clock milliseconds] "info" "port serverCultiPi : $port(serverCultiPi)"
+::piLog::log [clock milliseconds] "info" "verbose : $configXML(verbose)"
 if {$RC != 0} {
     ::piLog::log [clock milliseconds] "error" "$msg"
 }

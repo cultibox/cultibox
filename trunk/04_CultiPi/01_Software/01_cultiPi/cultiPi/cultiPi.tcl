@@ -94,7 +94,14 @@ if {$RC != 0} {
 }
 
 # On attend 20 seconds
-after 20000
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : Waiting 20 seconds"
+after 5000
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : 15 seconds remaining"
+after 5000
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : 10 seconds remaining"
+after 5000
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : 5 seconds remaining"
+after 5000
 
 # On change la vitesse du bus I2C
 # set RC [catch {

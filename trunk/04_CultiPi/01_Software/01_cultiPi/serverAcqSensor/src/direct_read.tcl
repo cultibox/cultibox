@@ -24,6 +24,15 @@ namespace eval ::direct_read {
     set pin(8,GPIO) 5
     set pin(8,init) 0
 
+    set errorMessage(read,1) ""
+    set errorMessage(read,2) ""
+    set errorMessage(read,3) ""
+    set errorMessage(read,4) ""
+    set errorMessage(read,5) ""
+    set errorMessage(read,6) ""
+    set errorMessage(read,7) ""
+    set errorMessage(read,8) ""
+    
 }
 
 # Cette proc est utilisée pour initialiser les variables
@@ -65,7 +74,8 @@ proc ::direct_read::initPin {pinIndex} {
 
 
 proc ::direct_read::read_value {input} {
-    variable pin 
+    variable pin
+    variable errorMessage
 
     
     # S'il elle n'est pas initialisée, on le fait
@@ -79,9 +89,13 @@ proc ::direct_read::read_value {input} {
     } msg]
 
     if {$RC != 0} {
-        ::piLog::log [clock milliseconds] "error" "::direct_read::read_value default when reading value of input $input (GPIO : $pin($input,GPIO)) message:-$msg-"
+        if {$errorMessage(read,$input) == ""} {
+            ::piLog::log [clock milliseconds] "error" "::direct_read::read_value default when reading value of input $input (GPIO : $pin($input,GPIO)) message:-$msg-"
+        }
+        set errorMessage(read,$input) "error is already send"
     } else {
         ::piLog::log [clock milliseconds] "debug" "::direct_read::read_value input $input (GPIO : $pin($input,GPIO)) value $value"
+        set errorMessage(read,$input) ""
     }
     
     return $value
