@@ -76,7 +76,6 @@ $webcam=get_configuration("SHOW_WEBCAM");
 
     <link href="/cultibox/favicon.ico" rel="shortcut icon"/>
     <link rel="stylesheet" href="/cultibox/css/base.css?v=<?=@filemtime('css/base.css')?>" />
-    <link rel="stylesheet" href="/cultibox/css/layout.css?v=<?=@filemtime('css/layout.css')?>" />
     <link rel="stylesheet" href="/cultibox/fonts/opensans.css?v=<?=@filemtime('fonts/opensans.css')?>" />
 
     <link rel="stylesheet" media="all" type="text/css" href="/cultibox/main/libs/css/jquery-ui-1.8.19.custom.css?v=<?=@filemtime('main/libs/css/jquery-ui-1.8.19.custom.css')?>" />
@@ -143,10 +142,11 @@ $webcam=get_configuration("SHOW_WEBCAM");
 
                                           
                         <div id="box">                      
-                            <img src="/cultibox/main/libs/img/box.png" alt="" height="95" width="105">
+                            <img src="/cultibox/main/libs/img/box.png" alt="">
                         </div>
                                     
                         <a class="logo" href="/cultibox" id="welcome-logo"><img src="/cultibox/main/libs/img/logo_cultibox.png" alt=""></a>    
+                    </div>
                 </header>
                 
                         
