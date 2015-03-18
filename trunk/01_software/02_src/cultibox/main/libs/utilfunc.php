@@ -404,7 +404,7 @@ function check_tolerance_value($type,&$tolerance=0) {
 
     if(!is_numeric($tolerance)) return false;
 
-    switch ($data['PLUG_TYPE']) {
+    switch ($type) {
         case "extractor":
         case "intractor":
         case "ventilator":
