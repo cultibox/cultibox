@@ -16,7 +16,7 @@ package require piXML
 set port [lindex $argv 0]
 set logDir [lindex $argv 1]
 
-set logFile "/var/logs/cultipi/cultipi.log"
+set logFile "/var/log/cultipi/cultipi.log"
 
 if {$logDir != "" && [file isdirectory $logDir]} {
     set logFile [file join $logDir cultipi.log]
