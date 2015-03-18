@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <conf>
-    <item name="verbose" level="debug" />
+    <item name="verbose" level="warning" />
     <item name="simulator" actif="off" />
+    <item name="direct_read,1,input" input="1" />
+    <item name="direct_read,1,value" value="1" />
+    <item name="direct_read,1,input2" input="2" />
+    <item name="direct_read,1,value2" value="2" />
+    <item name="direct_read,1,type" type="CUVE" />
 </conf>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<starts>
-    <!-- Example : http://wfr.tcl.tk/1151 -->
+<conf>
     <item name="serverLog" waitAfterUS="1000" port="6003" pathexe="tclsh" path="./serverLog/serveurLog.tcl" xmlconf="./serverLog/conf.xml" />
     <item name="serverAcqSensor" waitAfterUS="100" port="6006" pathexe="tclsh" path="./serverAcqSensor/serverAcqSensor.tcl" xmlconf="./serverAcqSensor/conf.xml" />
     <item name="serverPlugUpdate" waitAfterUS="100" port="6004" pathexe="tclsh" path="./serverPlugUpdate/serverPlugUpdate.tcl" xmlconf="./serverPlugUpdate/conf.xml" />
     <item name="serverHisto" waitAfterUS="100" port="6009" pathexe="tclsh" path="./serverHisto/serverHisto.tcl" xmlconf="./serverHisto/conf.xml" />
-</starts>
+</conf>
