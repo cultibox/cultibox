@@ -602,6 +602,9 @@ msgstr "Extracteur"
 msgid "PLUG_INTRACTOR"
 msgstr "Intracteur"
 
+msgid "PLUG_CO2"
+msgstr "CO²"
+
 msgid "VALIDATION_PLUG_CONF"
 msgstr "Konfiguration speichern"
 
