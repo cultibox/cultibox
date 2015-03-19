@@ -2,19 +2,10 @@
 
     require_once('../../libs/config.php');
 
-    
-    
-    $tmp_plg_conf   = $GLOBALS['CULTIPI_CONF_TEMP_PATH'] . "/cnf/plg";
-    $current_conf   = $GLOBALS['CULTIPI_CONF_PATH'] . "/01_defaultConf_RPi/serverPlugUpdate/";
-    $tmp_prg_conf   = $GLOBALS['CULTIPI_CONF_TEMP_PATH'] . "/cnf/prg";
-
-    // TODO : Un seul copy doit permettre de tout faire (c'est ce que j'ai fait pour windows)
     $path_ouput             = $GLOBALS['CULTIPI_CONF_PATH'] . "/01_defaultConf_RPi";
-    $path_cultiPi           = $GLOBALS['CULTIPI_CONF_TEMP_PATH'] . "/cultiPi";
-    $path_serverAcqSensor   = $GLOBALS['CULTIPI_CONF_TEMP_PATH'] . "/serverAcqSensor";
-    $path_serverHisto       = $GLOBALS['CULTIPI_CONF_TEMP_PATH'] . "/serverHisto";
-    $path_serverLog         = $GLOBALS['CULTIPI_CONF_TEMP_PATH'] . "/serverLog";
-    $path_serverPlugUpdate  = $GLOBALS['CULTIPI_CONF_TEMP_PATH'] . "/serverPlugUpdate";
+    $path_ouput_linux_rm    = $GLOBALS['CULTIPI_CONF_PATH'] . "/01_defaultConf_RPi/*";
+    $path_ouput_linux_cp    = $GLOBALS['CULTIPI_CONF_PATH'] . "/01_defaultConf_RPi/";
+    $path_input_linux_cp    = $GLOBALS['CULTIPI_CONF_TEMP_PATH'] . "/*";
     
     switch(php_uname('s')) {
         case 'Windows NT':
@@ -27,35 +18,16 @@
             }
             break;
         default : 
-            exec("sudo cp -R $path_cultiPi $path_ouput",$ret,$err);
+            exec("sudo rm -rf -R $path_ouput_linux",$ret,$err);
             if ($err != 0) 
             {
                 echo json_encode($err);
-                break;
             }
-            exec("sudo cp -R $path_serverAcqSensor $path_ouput",$ret,$err);
+            break;            
+            exec("sudo cp -R $path_input_linux_cp $path_ouput_linux_cp",$ret,$err);
             if ($err != 0) 
             {
                 echo json_encode($err);
-                break;
-            }
-            exec("sudo cp -R $path_serverHisto $path_ouput",$ret,$err);
-            if ($err != 0) 
-            {
-                echo json_encode($err);
-                break;
-            }
-            exec("sudo cp -R $path_serverLog $path_ouput",$ret,$err);
-            if ($err != 0) 
-            {
-                echo json_encode($err);
-                break;
-            }
-            exec("sudo cp -R $path_serverPlugUpdate $path_ouput",$ret,$err);
-            if ($err != 0) 
-            {
-                echo json_encode($err);
-                break;
             }
             break;
     }
