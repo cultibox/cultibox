@@ -297,6 +297,35 @@
     <!-- Message box for pilot a plug -->
     <div id="syno_pilotPlug_element" style="display:none" title="<?php echo __('CULTIPI_SYNO_PILOTAGE'); ?>">
         <table>
+            <tr id="syno_configure_element_force_plug_on_off">
+                <td>Valeur : </td>
+                <td>
+                    <select id="syno_configure_element_force_plug_value" >
+                        <option value="on">On</option>
+                        <option value="off">Off</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id="syno_configure_element_force_plug_xmax_1">
+                <td>Bleu : </td>
+                <td colspan="2"><input type="text" name="syno_configure_element_force_plug_xmax_1_slider_val" id="syno_configure_element_force_plug_xmax_1_slider_val" value="" size="2" readonly /></td>
+                <td><div id="syno_configure_element_force_plug_xmax_1_slider"></div></td>
+            </tr>
+            <tr id="syno_configure_element_force_plug_xmax_2">
+                <td>Rouge : </td>
+                <td colspan="2"><input type="text" name="syno_configure_element_force_plug_xmax_2_slider_val" id="syno_configure_element_force_plug_xmax_2_slider_val" value="" size="2" readonly /></td>
+                <td><div id="syno_configure_element_force_plug_xmax_2_slider"></div></td>
+            </tr>
+            <tr id="syno_configure_element_force_plug_xmax_3">
+                <td>Blanc : </td>
+                <td colspan="2"><input type="text" name="syno_configure_element_force_plug_xmax_3_slider_val" id="syno_configure_element_force_plug_xmax_3_slider_val" value="" size="2" readonly /></td>
+                <td><div id="syno_configure_element_force_plug_xmax_3_slider"></div></td>
+            </tr>
+            <tr id="syno_configure_element_force_plug_dimmer">
+                <td>Valeur : </td>
+                <td colspan="2"><input type="text" name="syno_configure_element_force_plug_dimmer_slider_val" id="syno_configure_element_force_plug_dimmer_slider_val" value="" size="2" readonly /></td>
+                <td><div id="syno_configure_element_force_plug_dimmer_slider"></div></td>
+            </tr>
             <tr id="syno_configure_element_force_plug">
                 <td><?php echo __('CULTIPI_SYNO_PILOTAGE'); ?></td>
                 <td colspan="2" >
@@ -309,15 +338,9 @@
                     </select>
                 </td>
                 <td>
-                    <select id="syno_configure_element_force_plug_value" >
-                        <option value="on">On</option>
-                        <option value="off">Off</option>
-                    </select>
-                </td>
-                <td>
                     <input type="button" id="syno_configure_element_force_plug_pilot" name="syno_configure_element_force_plug_pilot" value="<?php echo __('CULTIPI_SYNO_PILOTER'); ?>" />
                 </td>
-            </tr>            
+            </tr>
         </table>
     </div>
     

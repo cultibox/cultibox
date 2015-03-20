@@ -31,7 +31,9 @@ var syno_configure_element_object_old = {
     rotation:"0",
     image:""
 };
+
 var idOfElem = "";
+var typeOfElem = "";
 
 var absolut_X_position = "";
 var absolut_Y_position = "";
@@ -492,134 +494,191 @@ $(document).ready(function(){
             url: "main/modules/external/synoptic.php",
             success: function (data) {
             
-            if(data != "") {
+                if(data != "") {
 
-                syno_configure_element_object = jQuery.parseJSON(data);
+                    syno_configure_element_object = jQuery.parseJSON(data);
 
-                // Parse if needed
-                syno_configure_element_object.scale = parseInt(syno_configure_element_object.scale)
-                syno_configure_element_object.z     = parseInt(syno_configure_element_object.z)
-                
-                // Add some elements to the object
-                syno_configure_element_object.scaleImageId  = "syno_elemImage_" + idOfElem ;
-                syno_configure_element_object.zindexImageId = "syno_elem_" + idOfElem ;
-                
-                // Save it
-                syno_configure_element_object_old = syno_configure_element_object;
-                
-                // Update style of each configure element
-                $("#syno_configure_element_rotate_0" ).prop("checked", false);
-                $("#syno_configure_element_rotate_90" ).prop("checked", false);
-                $("#syno_configure_element_rotate_180" ).prop("checked", false);
-                $("#syno_configure_element_rotate_270" ).prop("checked", false);
-                $("#syno_configure_element_rotate_" + syno_configure_element_object.rotation ).prop("checked", true);
-                
-                $("#syno_configure_element_scale_val").val(syno_configure_element_object.scale);
-                $("#syno_configure_element_scale").slider("value",syno_configure_element_object.scale);
-                
-                $("#syno_configure_element_zindex_val").val(syno_configure_element_object.z);
-                $("#syno_configure_element_zindex").slider("value",syno_configure_element_object.z);
+                    // Parse if needed
+                    syno_configure_element_object.scale = parseInt(syno_configure_element_object.scale)
+                    syno_configure_element_object.z     = parseInt(syno_configure_element_object.z)
+                    
+                    // Add some elements to the object
+                    syno_configure_element_object.scaleImageId  = "syno_elemImage_" + idOfElem ;
+                    syno_configure_element_object.zindexImageId = "syno_elem_" + idOfElem ;
+                    
+                    // Save it
+                    syno_configure_element_object_old = syno_configure_element_object;
+                    
+                    // Update style of each configure element
+                    $("#syno_configure_element_rotate_0" ).prop("checked", false);
+                    $("#syno_configure_element_rotate_90" ).prop("checked", false);
+                    $("#syno_configure_element_rotate_180" ).prop("checked", false);
+                    $("#syno_configure_element_rotate_270" ).prop("checked", false);
+                    $("#syno_configure_element_rotate_" + syno_configure_element_object.rotation ).prop("checked", true);
+                    
+                    $("#syno_configure_element_scale_val").val(syno_configure_element_object.scale);
+                    $("#syno_configure_element_scale").slider("value",syno_configure_element_object.scale);
+                    
+                    $("#syno_configure_element_zindex_val").val(syno_configure_element_object.z);
+                    $("#syno_configure_element_zindex").slider("value",syno_configure_element_object.z);
 
-                $('#syno_configure_element_image_' + syno_configure_element_object.element + ' option[value="' + syno_configure_element_object.image + '"]').prop('selected', true);
+                    $('#syno_configure_element_image_' + syno_configure_element_object.element + ' option[value="' + syno_configure_element_object.image + '"]').prop('selected', true);
 
-                // Select correct image option
-                $("#syno_configure_element_image_other").hide();
-                $("#syno_configure_element_image_plug").hide();
-                $("#syno_configure_element_image_sensor").hide();
-                $("#syno_configure_element_image_" + syno_configure_element_object.element).show();
-                
+                    // Select correct image option
+                    $("#syno_configure_element_image_other").hide();
+                    $("#syno_configure_element_image_plug").hide();
+                    $("#syno_configure_element_image_sensor").hide();
+                    $("#syno_configure_element_image_" + syno_configure_element_object.element).show();
+                    
 
 
-                $("#syno_configure_element").dialog({
-                    resizable: false,
-                    width: 400,
-                    closeOnEscape: true,
-                    dialogClass: "popup_message",
-                    title:"Configurer " + elementTitle,
-                    open: function( event, ui ) {
-                        // remove delete button for plugs and sensor
-                        if (syno_configure_element_object.element == "other") {
-                            $("#DELETE_button").show();
-                        } else {
-                            $("#DELETE_button").hide();
-                        }
-                    },
-                    buttons: [{
-                        id: "DELETE_button",
-                        text: DELETE_button,
-                        click: function () {
-                        
-                            $.ajax({
-                                cache: false,
-                                type: "POST",
-                                data: {
-                                    id:idOfElem,
-                                    action:"deleteElement"
-                                },
-                                url: "main/modules/external/synoptic.php"
-                            }).done(function (data) {
-                            });
+                    $("#syno_configure_element").dialog({
+                        resizable: false,
+                        width: 400,
+                        closeOnEscape: true,
+                        dialogClass: "popup_message",
+                        title:"Configurer " + elementTitle,
+                        open: function( event, ui ) {
+                            // remove delete button for plugs and sensor
+                            if (syno_configure_element_object.element == "other") {
+                                $("#DELETE_button").show();
+                            } else {
+                                $("#DELETE_button").hide();
+                            }
+                        },
+                        buttons: [{
+                            id: "DELETE_button",
+                            text: DELETE_button,
+                            click: function () {
                             
-                            // Delete it
-                            $( "#syno_elem_" + idOfElem ).remove();
+                                $.ajax({
+                                    cache: false,
+                                    type: "POST",
+                                    data: {
+                                        id:idOfElem,
+                                        action:"deleteElement"
+                                    },
+                                    url: "main/modules/external/synoptic.php"
+                                }).done(function (data) {
+                                });
+                                
+                                // Delete it
+                                $( "#syno_elem_" + idOfElem ).remove();
+                                
+                                $( this ).dialog( "close" );
+                                return false;
+                            }
+                        } , {
+                            text: CANCEL_button,
+                            click: function () {
                             
-                            $( this ).dialog( "close" );
-                            return false;
-                        }
-                    } , {
-                        text: CANCEL_button,
-                        click: function () {
-                        
-                            // Roll back object value
+                                // Roll back object value
+                                
+                                // Image
+                                $('#syno_elemImage_' + idOfElem).attr('src', 'main/libs/img/images-synoptic-' + syno_configure_element_object_old.element + '/' + syno_configure_element_object_old.image);
                             
-                            // Image
-                            $('#syno_elemImage_' + idOfElem).attr('src', 'main/libs/img/images-synoptic-' + syno_configure_element_object_old.element + '/' + syno_configure_element_object_old.image);
-                        
-                            //scale
-                            $('#' + syno_configure_element_object.scaleImageId).width(syno_configure_element_object_old.scale);
+                                //scale
+                                $('#' + syno_configure_element_object.scaleImageId).width(syno_configure_element_object_old.scale);
+                                
+                                //z
+                                $('#' + syno_configure_element_object_old.zindexImageId).zIndex(syno_configure_element_object_old.z);
+                                
+                                //rotation
+                                // retrieve the class
+                                var className = $('#' + syno_configure_element_object_old.scaleImageId).attr('class');
+                                $('#' + syno_configure_element_object_old.scaleImageId).removeClass(className);
+                                var newClass = syno_configure_element_object_old.rotation;
+                                $('#' + syno_configure_element_object_old.scaleImageId).addClass("rotate" + newClass);
                             
-                            //z
-                            $('#' + syno_configure_element_object_old.zindexImageId).zIndex(syno_configure_element_object_old.z);
+                                $( this ).dialog( "close" );
+                                return false;
+                            }
+                        }, {
+                            text: SAVE_button,
+                            click: function () {
                             
-                            //rotation
-                            // retrieve the class
-                            var className = $('#' + syno_configure_element_object_old.scaleImageId).attr('class');
-                            $('#' + syno_configure_element_object_old.scaleImageId).removeClass(className);
-                            var newClass = syno_configure_element_object_old.rotation;
-                            $('#' + syno_configure_element_object_old.scaleImageId).addClass("rotate" + newClass);
-                        
-                            $( this ).dialog( "close" );
-                            return false;
-                        }
-                    }, {
-                        text: SAVE_button,
-                        click: function () {
-                        
-                            $.ajax({
-                                cache: false,
-                                type: "POST",
-                                data: {
-                                    id:idOfElem,
-                                    z:$("#syno_configure_element_zindex_val").val(),
-                                    scale:$("#syno_configure_element_scale_val").val(),
-                                    image:$( "#syno_configure_element_image_" + syno_configure_element_object.element + " option:selected" ).val(),
-                                    rotation:$('input[name=syno_configure_element_rotate]:checked').val(),
-                                    action:"updateZScaleImageRotation"
-                                },
-                                url: "main/modules/external/synoptic.php"
-                            }).done(function (data) {
-                            
-                            });
-                            $( this ).dialog( "close" );
-                            return false;
-                        }
-                    }]
-                });
-                
-            }
+                                $.ajax({
+                                    cache: false,
+                                    type: "POST",
+                                    data: {
+                                        id:idOfElem,
+                                        z:$("#syno_configure_element_zindex_val").val(),
+                                        scale:$("#syno_configure_element_scale_val").val(),
+                                        image:$( "#syno_configure_element_image_" + syno_configure_element_object.element + " option:selected" ).val(),
+                                        rotation:$('input[name=syno_configure_element_rotate]:checked').val(),
+                                        action:"updateZScaleImageRotation"
+                                    },
+                                    url: "main/modules/external/synoptic.php"
+                                }).done(function (data) {
+                                
+                                });
+                                $( this ).dialog( "close" );
+                                return false;
+                            }
+                        }]
+                    });
+                    
+                }
             }, error: function(data) {
             }
         });
+    });
+    
+    
+    //////////////////////////////////////////////////////////////////
+    // Control plug section
+
+    // Slider for xmax_1
+    syno_configure_element_force_plug_xmax_1_slider_val = 0;
+    $("#syno_configure_element_force_plug_xmax_1_slider_val").val(syno_configure_element_force_plug_xmax_1_slider_val);
+    $("#syno_configure_element_force_plug_xmax_1_slider").slider({
+        max: 9,
+        min: 0,
+        slide: function( event, ui ) {
+            // While sliding, update the value in the div element
+            $("#syno_configure_element_force_plug_xmax_1_slider_val").val(ui.value);
+        },
+        step: 1,
+        value: syno_configure_element_force_plug_xmax_1_slider_val
+    });
+    // Slider for xmax_2
+    syno_configure_element_force_plug_xmax_2_slider_val = 0;
+    $("#syno_configure_element_force_plug_xmax_2_slider_val").val(syno_configure_element_force_plug_xmax_2_slider_val);
+    $("#syno_configure_element_force_plug_xmax_2_slider").slider({
+        max: 9,
+        min: 0,
+        slide: function( event, ui ) {
+            // While sliding, update the value in the div element
+            $("#syno_configure_element_force_plug_xmax_2_slider_val").val(ui.value);
+        },
+        step: 1,
+        value: syno_configure_element_force_plug_xmax_2_slider_val
+    });
+    // Slider for xmax_3
+    syno_configure_element_force_plug_xmax_3_slider_val = 0;
+    $("#syno_configure_element_force_plug_xmax_3_slider_val").val(syno_configure_element_force_plug_xmax_3_slider_val);
+    $("#syno_configure_element_force_plug_xmax_3_slider").slider({
+        max: 9,
+        min: 0,
+        slide: function( event, ui ) {
+            // While sliding, update the value in the div element
+            $("#syno_configure_element_force_plug_xmax_3_slider_val").val(ui.value);
+        },
+        step: 1,
+        value: syno_configure_element_force_plug_xmax_3_slider_val
+    });
+    // Slider for dimmer
+    syno_configure_element_force_plug_dimmer_slider_val = 0;
+    $("#syno_configure_element_force_plug_dimmer_slider_val").val(syno_configure_element_force_plug_dimmer_slider_val);
+    $("#syno_configure_element_force_plug_dimmer_slider").slider({
+        max: 100,
+        min: 0,
+        slide: function( event, ui ) {
+            // While sliding, update the value in the div element
+            $("#syno_configure_element_force_plug_dimmer_slider_val").val(ui.value);
+        },
+        step: 1,
+        value: syno_configure_element_force_plug_dimmer_slider_val
     });
     
     // Display and control user form for pilot plug
@@ -628,27 +687,92 @@ $(document).ready(function(){
 
         idOfElem = $(this).attr('id').split("_")[2];
 
-        // retriev name of this element
+        // Retrieve name of this element
         elementTitle = $("#syno_elem_title_" + idOfElem).html();
         
-        $("#syno_pilotPlug_element").dialog({
-            resizable: false,
-            width: 400,
-            closeOnEscape: true,
-            dialogClass: "popup_message",
-            title:"Piloter " + elementTitle,
-            buttons: [{
-                text: CLOSE_button,
-                click: function () {
-                    $( this ).dialog( "close" );
-                    return false;
+        // Retrieve type of the element
+        $.ajax({
+            cache: false,
+            type: "POST",
+            data: {
+                id:idOfElem,
+                action:"getPlugInformation"
+            },
+            url: "main/modules/external/synoptic.php",
+            success: function (data) {
+            
+                if(data != "") {
+
+                    syno_pilot_element_object = jQuery.parseJSON(data);
+                    
+                    typeOfElem = syno_pilot_element_object.PLUG_MODULE;
+                    
+                    // Select correct options
+                    switch (typeOfElem)
+                    {
+                        case "xmax" :
+                            $("#syno_configure_element_force_plug_xmax_1").show();
+                            $("#syno_configure_element_force_plug_xmax_2").show();
+                            $("#syno_configure_element_force_plug_xmax_3").show();
+                            $("#syno_configure_element_force_plug_dimmer").hide();
+                            $("#syno_configure_element_force_plug_on_off").hide();
+                            break;
+                        case "dimmer" :
+                            $("#syno_configure_element_force_plug_xmax_1").hide();
+                            $("#syno_configure_element_force_plug_xmax_2").hide();
+                            $("#syno_configure_element_force_plug_xmax_3").hide();
+                            $("#syno_configure_element_force_plug_dimmer").show();
+                            $("#syno_configure_element_force_plug_on_off").hide();
+                            break;
+                        default :
+                            $("#syno_configure_element_force_plug_xmax_1").hide();
+                            $("#syno_configure_element_force_plug_xmax_2").hide();
+                            $("#syno_configure_element_force_plug_xmax_3").hide();
+                            $("#syno_configure_element_force_plug_dimmer").hide();
+                            $("#syno_configure_element_force_plug_on_off").show();
+                            break;
+                    }
+
+                    $("#syno_pilotPlug_element").dialog({
+                        resizable: false,
+                        width: 400,
+                        closeOnEscape: true,
+                        dialogClass: "popup_message",
+                        title:"Piloter " + elementTitle,
+                        buttons: [{
+                            text: CLOSE_button,
+                            click: function () {
+                                $( this ).dialog( "close" );
+                                return false;
+                            }
+                        }]
+                    });
+                    
                 }
-            }]
+            }, error: function(data) {
+            }
         });
     });
     
     // Function used to pilot a plug
     $("#syno_configure_element_force_plug_pilot").click(function(){
+
+        // Retrieve the good value to send
+        switch (typeOfElem)
+        {
+            case "xmax" :
+                valToSend = syno_configure_element_force_plug_xmax_1_slider_val.toString() 
+                          + syno_configure_element_force_plug_xmax_2_slider_val.toString()
+                          + "."
+                          + syno_configure_element_force_plug_xmax_3_slider_val;
+                break;
+            case "dimmer" :
+                valToSend = syno_configure_element_force_plug_dimmer_slider_val;
+                break;
+            default :
+                valToSend = $( "#syno_configure_element_force_plug_value option:selected" ).val()
+                break;
+        }
 
         $.ajax({
             cache: false,
@@ -656,24 +780,19 @@ $(document).ready(function(){
             data: {
                 action:"forcePlug",
                 id:idOfElem,
-                value:$( "#syno_configure_element_force_plug_value option:selected" ).val(),
+                value:valToSend,
                 time:$( "#syno_configure_element_force_plug_time option:selected" ).val()
             },
             url: "main/modules/external/synoptic.php",
             success: function (data) {
 
-            // Change text
-            if ($( "#syno_configure_element_force_plug_value option:selected" ).val() == "on") {
-                $('#syno_elemImage_' + idOfElem).attr('title',"<?php echo __('VALUE_ON'); ?>");
-            } else {
+            // Change text and image
+            if (valToSend == "off" || valToSend == "000" || valToSend == 0) {
                 $('#syno_elemImage_' + idOfElem).attr('title',"<?php echo __('VALUE_OFF'); ?>");
-            }
-
-            // Change image
-            if ($( "#syno_configure_element_force_plug_value option:selected" ).val() == "on") {
-                $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_OFF", "_ON"));
-            } else  {
                 $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_ON", "_OFF"));
+            } else {
+                $('#syno_elemImage_' + idOfElem).attr('title',"<?php echo __('VALUE_ON'); ?>");
+                $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_OFF", "_ON"));
             }
 
             // Change opacity
@@ -684,6 +803,9 @@ $(document).ready(function(){
             }
         });
     });
+    //////////////////////////////////////////////////////////////////
+    
+    
 
     function baseName(str)
     {
@@ -808,44 +930,44 @@ $(document).ready(function(){
             url: "main/modules/external/synoptic.php",
             success: function (data) {
 
-            var objJSON = jQuery.parseJSON(data);
+                var objJSON = jQuery.parseJSON(data);
 
-            if (objJSON.error == "") {
-            
-                $.each( objJSON, function( key, value ) {
-                    // Check if element exists
-                    if ($('img[name="syno_elemPlugImage_' + key + '"]').length != 0 ) {
-                    
-                        // Change text and opacity
-                        if (value == "on") {
-                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('VALUE_ON'); ?>");
-                            $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "1");
-                        } else if (value == "off") {
-                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('VALUE_OFF'); ?>");
-                            $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "1");
-                        } else if (value == "TIMEOUT") {
-                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('TIMEOUT'); ?>");
-                            $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "0.4");
-                        } else {
-                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('DEFCOM'); ?>");
-                            $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "0.4");
-                        }
+                if (objJSON.error == "") {
+                
+                    $.each( objJSON, function( key, value ) {
+                        // Check if element exists
+                        if ($('img[name="syno_elemPlugImage_' + key + '"]').length != 0 ) {
                         
-                        // Update image
-                        if (value == "on") {
-                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('src',$('img[name="syno_elemPlugImage_' + key + '"]').attr('src').replace("_OFF", "_ON"));
-                        } else  {
-                            $('img[name="syno_elemPlugImage_' + key + '"]').attr('src',$('img[name="syno_elemPlugImage_' + key + '"]').attr('src').replace("_ON", "_OFF"));
+                            // Change text and opacity
+                            if (value == "on") {
+                                $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('VALUE_ON'); ?>");
+                                $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "1");
+                            } else if (value == "off") {
+                                $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('VALUE_OFF'); ?>");
+                                $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "1");
+                            } else if (value == "TIMEOUT") {
+                                $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('TIMEOUT'); ?>");
+                                $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "0.4");
+                            } else {
+                                $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('DEFCOM'); ?>");
+                                $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "0.4");
+                            }
+                            
+                            // Update image
+                            if (value == "on") {
+                                $('img[name="syno_elemPlugImage_' + key + '"]').attr('src',$('img[name="syno_elemPlugImage_' + key + '"]').attr('src').replace("_OFF", "_ON"));
+                            } else  {
+                                $('img[name="syno_elemPlugImage_' + key + '"]').attr('src',$('img[name="syno_elemPlugImage_' + key + '"]').attr('src').replace("_ON", "_OFF"));
+                            }
                         }
-                    }
-                });
+                    });
+                    
+                    var ladate=new Date();
+                    $('#synoptic_updatePlugHour').html(addZ(ladate.getHours())+":"+addZ(ladate.getMinutes())+":"+addZ(ladate.getSeconds()));
+                    
+                }
                 
-                var ladate=new Date();
-                $('#synoptic_updatePlugHour').html(addZ(ladate.getHours())+":"+addZ(ladate.getMinutes())+":"+addZ(ladate.getSeconds()));
-                
-            }
-            
-            updateIsAked = 0;
+                updateIsAked = 0;
             }, error: function(data) {
             }
         });

@@ -571,7 +571,7 @@ function updateZScaleImageRotation($elem,$z,$scale,$image,$rotation) {
 // IN $value : Value to force
 // IN $time : Time to force
 // RET NA
-function forcePlug($number,$value,$time) {
+function forcePlug($number,$time,$value) {
 
     $ret = "";
 
@@ -590,6 +590,26 @@ function forcePlug($number,$value,$time) {
     return "";
 }
 // }}}
+
+// {{{ getPlugInformation()
+// ROLE Retrieve sensor information in db with this ID
+// IN $id : id of element 
+// RET Every information about this element in DB
+function getPlugInformation ($id) {
+
+    // Search informations about the plug
+    $synoInfo = getSynopticDBElemByID($id);
+
+    // Read plugs informations
+    $plugParam = \plugs\getDB();
+    
+    // Search plugIndex associated
+    $ret_Array = $plugParam[$synoInfo["indexElem"]-1];
+    
+    return $ret_Array;
+}
+// }}}
+
 
 }
 
