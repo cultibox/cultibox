@@ -4,7 +4,7 @@
 sleep $[ ( $RANDOM % 300 )  + 1 ]s
 
 #If there was an error whith dpkg/apt:
-/usr/bin/dpkg --configure -a
+/usr/bin/dpkg --configure -a --force-confdef --force-confold
 
 apt-get update -o Dir::Etc::sourcelist="sources.list.d/cultibox.list"  -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
 
