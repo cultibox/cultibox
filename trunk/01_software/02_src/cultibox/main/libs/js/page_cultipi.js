@@ -761,19 +761,19 @@ $(document).ready(function(){
         switch (typeOfElem)
         {
             case "xmax" :
-                valToSend = syno_configure_element_force_plug_xmax_1_slider_val.toString() 
-                          + syno_configure_element_force_plug_xmax_2_slider_val.toString()
+                valToSend = $("#syno_configure_element_force_plug_xmax_1_slider_val").val().toString() 
+                          + $("#syno_configure_element_force_plug_xmax_2_slider_val").val().toString()
                           + "."
-                          + syno_configure_element_force_plug_xmax_3_slider_val;
+                          + $("#syno_configure_element_force_plug_xmax_3_slider_val").val().toString();
                 break;
             case "dimmer" :
-                valToSend = syno_configure_element_force_plug_dimmer_slider_val;
+                valToSend = $("#syno_configure_element_force_plug_dimmer_slider_val").val();
                 break;
             default :
                 valToSend = $( "#syno_configure_element_force_plug_value option:selected" ).val()
                 break;
         }
-
+                alert(valToSend);
         $.ajax({
             cache: false,
             type: "POST",
@@ -786,17 +786,17 @@ $(document).ready(function(){
             url: "main/modules/external/synoptic.php",
             success: function (data) {
 
-            // Change text and image
-            if (valToSend == "off" || valToSend == "000" || valToSend == 0) {
-                $('#syno_elemImage_' + idOfElem).attr('title',"<?php echo __('VALUE_OFF'); ?>");
-                $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_ON", "_OFF"));
-            } else {
-                $('#syno_elemImage_' + idOfElem).attr('title',"<?php echo __('VALUE_ON'); ?>");
-                $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_OFF", "_ON"));
-            }
+                // Change text and image
+                if (valToSend == "off" || valToSend == "00.0" || valToSend == 0) {
+                    $('#syno_elemImage_' + idOfElem).attr('title',"<?php echo __('VALUE_OFF'); ?>");
+                    $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_ON", "_OFF"));
+                } else {
+                    $('#syno_elemImage_' + idOfElem).attr('title',"<?php echo __('VALUE_ON'); ?>");
+                    $('#syno_elemImage_' + idOfElem ).attr('src',$('#syno_elemImage_' + idOfElem ).attr('src').replace("_OFF", "_ON"));
+                }
 
-            // Change opacity
-            $('#syno_elemImage_' + idOfElem ).css("opacity", "1");
+                // Change opacity
+                $('#syno_elemImage_' + idOfElem ).css("opacity", "1");
 
 
             }, error: function(data) {
