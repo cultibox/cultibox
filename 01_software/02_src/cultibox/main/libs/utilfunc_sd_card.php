@@ -65,7 +65,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         // Create cultipi conf.xml file
         $paramListCultipiConf[] = array (
             "name" => "verbose",
-            "level" => "waring"
+            "level" => "warning"
         );
         create_conf_XML($sd_card . "/cultiPi/conf.xml" , $paramListCultipiConf);
         
@@ -107,7 +107,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         // Server acq sensor
         $paramListserverAcqSensor[] = array (
             "name" => "verbose",
-            "level" => "waring"
+            "level" => "warning"
         );
         $paramListserverAcqSensor[] = array (
             "name" => "simulator",
@@ -166,7 +166,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         // Server plug update
         $paramListServerPlugUpdate[] = array (
             "name" => "verbose",
-            "level" => "waring"
+            "level" => "warning"
         );
         // Add network slave
         //  <item name="module_CULTIPI,ip,0" ip="192.168.1.10" />
@@ -185,7 +185,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         // Server histo
         $paramListServerHisto[] = array (
             "name" => "verbose",
-            "level" => "waring"
+            "level" => "warning"
         );
         $paramListServerHisto[] = array (
             "name" => "logPeriode",
@@ -200,7 +200,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         // Server log
         $paramListServerLog[] = array (
             "name" => "verbose",
-            "level" => "waring"
+            "level" => "warning"
         );
         create_conf_XML($sd_card . "/serverLog/conf.xml" , $paramListServerLog);
         
