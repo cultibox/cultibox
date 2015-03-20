@@ -164,9 +164,15 @@ proc emeteur_update_loop {} {
             # update plug
             for {set i 1} {$i <= $::EMETEUR_NB_PLUG_MAX} {incr i} \
             {
+            
+                if {[array get ::plug "$i,module"] == ""} {
+                    set ::plug($i,module) "NA"
+                }
+                set module $::plug($i,module)
+            
                 set plgPrgm [lindex $::actualProgramm [expr $i - 1]]
                 # On ne met à jour que les plugs qui font de régulation
-                if {$plgPrgm != "on" && $plgPrgm != "off"} {
+                if {$plgPrgm != "on" && $plgPrgm != "off" && $module != "XMAX"} {
                     updatePlug $i
                 }
             }
@@ -213,7 +219,7 @@ proc updatePlug {plugNumber} {
     } elseif {$plgPrgm == ""} {
         ::piLog::log [clock milliseconds] "error" "Plug $plugNumber programme is empty"
         
-    } elseif {$plgPrgm != "off" && $plgPrgm != "on"} {
+    } elseif {$plgPrgm != "off" && $plgPrgm != "on" && ${module} != "XMAX"} {
         # Si c'est de la régulation
         emeteur_regulation $plugNumber $plgPrgm 
         

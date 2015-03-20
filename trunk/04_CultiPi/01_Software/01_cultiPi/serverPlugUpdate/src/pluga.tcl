@@ -35,6 +35,9 @@ proc readPluga {plugaFileName} {
     }
     close $fid
     
+    set nbPlug [expr $nbPlug - 1]
+    
+    ::piLog::log [clock milliseconds] "debug" "pluga nbPlug find $nbPlug"
     return $nbPlug
 
 }
