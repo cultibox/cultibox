@@ -318,6 +318,9 @@ function getPlugOfSynoptic () {
                 case "pumpempting" :
                     $image = "pompe_OFF.png";
                     break;
+                case "co2" :
+                    $image = "CO2_OFF.png";
+                    break;
                 default :
                     if ($plugParam[$i - 1]["PLUG_POWER_MAX"] ==  "1000") 
                     {
