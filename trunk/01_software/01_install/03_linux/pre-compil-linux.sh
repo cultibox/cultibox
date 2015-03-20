@@ -42,6 +42,7 @@ case "$1" in
            tar zxvfp xampp-linux-1.8.3.4-amd64.tar.gz -C ../01_src/01_xampp/cultibox/opt/
 
            cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
+           mkdir -p ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs
            cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION.txt
            cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/opt/lampp/VERSION_FIRM.txt
@@ -99,6 +100,7 @@ EOF
             tar zxvfp xampp-linux-1.8.3.4-i386.tar.gz -C ../01_src/01_xampp/cultibox/opt/
 
             cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
+            mkdir -p ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs
             cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION.txt
             cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/opt/lampp/VERSION_FIRM.txt
