@@ -81,7 +81,7 @@ case "$1" in
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/var/www/cultibox/LICENSE
            mkdir -p ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install
            cp ../../01_install/01_src/02_sql/cultibox_* ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/
-           cp ../../02_install/01_src/02_sql/fake_log.sql ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/
+           cp ../../01_install/01_src/02_sql/fake_log.sql ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/
            cp ../../01_install/01_src/02_sql/user_cultibox.sql ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/
            cp ../../01_install/01_src/02_sql/update_sql.sql ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/
 
