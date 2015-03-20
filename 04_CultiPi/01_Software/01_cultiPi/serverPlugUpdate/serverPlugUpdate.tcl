@@ -98,7 +98,7 @@ while {$status == "retry_needed"} {
 ::CULTIPI::init
 
 # Parse pluga filename and send adress to module if needed
-set nbPlug [readPluga $plugaFileName]
+set EMETEUR_NB_PLUG_MAX [readPluga $plugaFileName]
 
 # Chargement des paramètres de chaque prise
 plugXX_load $confPath

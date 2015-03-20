@@ -33,6 +33,7 @@ if {$piHour < 1421942284} {
         puts  "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiTime : Mise à jour de l'heure du RPi"
         
         #date MMDDhhmmYY.ss
+        #date 0319150815.30
         exec sudo date [clock format $rtcHour -format "%m%d%H%M%y.%S"]
         
         puts  "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiTime : L'heure est mise à jour"

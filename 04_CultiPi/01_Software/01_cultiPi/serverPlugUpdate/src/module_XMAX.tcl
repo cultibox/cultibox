@@ -1,33 +1,27 @@
 
 namespace eval ::XMAX {
     variable adresse_module
-    variable adresse_I2C
     variable register
 
     # @0x23 cultibox : 0x46
     set adresse_module(105) 0x23
-    set adresse_module(105,PWM) 1
-    set adresse_module(106) 0x23
-    set adresse_module(106,PWM) 2
-    set adresse_module(107) 0x23
-    set adresse_module(107,PWM) 3
-    set adresse_module(108) 0x23
-    set adresse_module(108,PWM) 4
 
-    
     # Définition des registres
     set register(STATUS)    0x00
     set register(PWM_1)     0x01
     set register(PWM_2)     0x02
     set register(PWM_3)     0x03
     set register(PWM_4)     0x04
+    set register(PWM_FAN)   0x05
+    set register(TARGET_TEMP) 0x06
+    set register(TEMP)  0x07
     
     # Dernière valeur de GPIO
     set register(PWM_1_LAST) 0x00
     set register(PWM_2_LAST) 0x00
     set register(PWM_3_LAST) 0x00
     set register(PWM_4_LAST) 0x00
-    
+    set register(TEMP_LAST)  0x00
 
 }
 
@@ -47,11 +41,10 @@ proc ::XMAX::setValue {plugNumber value address} {
     set PWM_selected  "NA"
     # Il faut que la clé existe
     if {[array get adresse_module $address] != ""} {
-        set moduleAdresse $adresse_module($address)
-        set PWM_selected  $adresse_module($address,PWM)
+        set I2Cadress $adresse_module($address)
     }        
     
-    if {$moduleAdresse == "NA"} {
+    if {$I2Cadress == "NA"} {
         ::piLog::log [clock milliseconds] "error" "::XMAX::setValue Adress $address does not exists "
         return
     }
@@ -59,36 +52,75 @@ proc ::XMAX::setValue {plugNumber value address} {
     # On sauvegarde l'état de la prise
     ::savePlugSendValue $plugNumber $value
     
-    # On met à jour le registre
+    # On met à jour les registres
     switch $value {
         "on" {
-            set newValueForPWM 255
-            set register(PWM_${PWM_selected}_LAST) 
+            set newValueForPWM(1) 255
+            set newValueForPWM(2) 255
+            set newValueForPWM(3) 255
         }
         "off" {
-            set newValueForPWM 0
-            set register(PWM_${PWM_selected}_LAST) 0
+            set newValueForPWM(1) 0
+            set newValueForPWM(2) 0
+            set newValueForPWM(3) 0
         }
         default {
-            set newValueForPWM $value
-            set register(PWM_${PWM_selected}_LAST) $value
+            # On split la valeur a envoyer
+            # La valeur ressemble à ça 35.6
+            set value [expr round($value * 10)]
+
+            set newValueForPWM(3) [string index $value end]
+            if {$newValueForPWM(3) == ""} {
+                set newValueForPWM(3) 0
+            } elseif {$newValueForPWM(3) == 9} {
+                set newValueForPWM(3) 255
+            } else {
+                set newValueForPWM(3) [expr $newValueForPWM(3) * 28]
+            }
+            
+            set newValueForPWM(2) [string index $value end-1]
+            if {$newValueForPWM(2) == ""} {
+                set newValueForPWM(2) 0
+            } elseif {$newValueForPWM(2) == 9} {
+                set newValueForPWM(2) 255
+            } else {
+                set newValueForPWM(2) [expr $newValueForPWM(2) * 28]
+            }
+            
+            set newValueForPWM(1) [string index $value end-2]
+            if {$newValueForPWM(1) == ""} {
+                set newValueForPWM(1) 0
+            } elseif {$newValueForPWM(1) == 9} {
+                set newValueForPWM(1) 255
+            } else {
+                set newValueForPWM(1) [expr $newValueForPWM(1) * 28]
+            }
+            
         }
     }
     
-    # Si c'est la même valeur qu'avant, on n'envoie pas
-    if {$newValueForPWM == $register(PWM_${PWM_selected}_LAST)} {
-        ::piLog::log [clock milliseconds] "debug" "::XMAX::setValue Output PWM_1 does not send (same as old value)"
-        return
-    }
-
-    # On pilote le registre de sortie
-    set RC [catch {
-        exec /usr/local/sbin/i2cset -y 1 $adresse_module $register(PWM_${PWM_selected}) $register(PWM_${PWM_selected}_LAST)
-    } msg]
-    if {$RC != 0} {
-        ::piLog::log [clock milliseconds] "error" "::XMAX::setValue Module $i does not respond :$msg "
-    } else {
-        ::piLog::log [clock milliseconds] "debug" "::XMAX::setValue Output PWM_${PWM_selected} to $register(PWM_${PWM_selected}_LAST) OK"
+    for {set i 1} {$i < 4} {incr i} {
+        # Si c'est la même valeur qu'avant, on n'envoie pas
+        if {$newValueForPWM($i) == $register(PWM_${i}_LAST)} {
+            ::piLog::log [clock milliseconds] "debug" "::XMAX::setValue Output PWM_${i} does not send (same as old value ($newValueForPWM($i)))"
+        } else {
+            # Exemple
+            #  /usr/local/sbin/i2cset -y 1 0x23 12 125
+            
+            # On pilote le registre de sortie
+            set RC [catch {
+                exec /usr/local/sbin/i2cset -y 1 $I2Cadress $register(PWM_${i}) $newValueForPWM(${i})
+            } msg]
+            if {$RC != 0} {
+                ::piLog::log [clock milliseconds] "error" "::XMAX::setValue Module ${i} with value $newValueForPWM(${i}) does not respond :$msg "
+            } else {
+                # On debug !
+                ::piLog::log [clock milliseconds] "debug" "::XMAX::setValue Output PWM_${i} to $newValueForPWM(${i}) OK"
+            }
+            # on enregistre
+            set register(PWM_${i}_LAST) $newValueForPWM(${i})
+        }
+        after 1
     }
 
 }

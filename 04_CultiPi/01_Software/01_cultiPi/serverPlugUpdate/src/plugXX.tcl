@@ -47,7 +47,6 @@ proc plugXX_load {confPath} {
                         set precision [string trimleft [string range $OneLine 6 8] "0"]
                         if {$precision == ""} {set precision 0}
                         set ::plug($i,REG,precision) [expr $precision / 10.0]
-                        puts "$::plug($i,REG,type) $::plug($i,REG,sens) $::plug($i,REG,precision)"
                     }
                     "SEC:" {
                         
