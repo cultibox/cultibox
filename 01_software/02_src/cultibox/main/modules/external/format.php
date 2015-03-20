@@ -102,7 +102,8 @@ if((!isset($path))||(empty($path))) {
                 // Read from database program
                 $program = create_program_from_database($out,$value['program_idx']);
 
-                if(!save_program_on_sd($path,$program,"plu" . $value['plugv_filename'])) {      
+                $fileName = "${path}/cnf/prg/" . "plu" . $value['plugv_filename'];
+                if(!save_program_on_sd($fileName,$program)) {      
                     echo "-1";
                     return 0;
                 }
@@ -110,7 +111,8 @@ if((!isset($path))||(empty($path))) {
 
             //For plugv
             $program = create_program_from_database($out);
-            if(!save_program_on_sd($path,$program)) {
+            $fileName = "${path}/cnf/prg/" . "plugv";
+            if(!save_program_on_sd($fileName,$program)) {
                 echo "-1";
                 return 0;
             }

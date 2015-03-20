@@ -56,11 +56,13 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
 
     // If we are in cultipi mode, create file systeme structure
     if ($GLOBALS['MODE'] == "cultipi") {
-        if(!is_dir($sd_card . "/cultiPi"))          mkdir($sd_card . "/cultiPi");
-        if(!is_dir($sd_card . "/serverAcqSensor"))  mkdir($sd_card . "/serverAcqSensor");
-        if(!is_dir($sd_card . "/serverHisto"))      mkdir($sd_card . "/serverHisto");
-        if(!is_dir($sd_card . "/serverLog"))        mkdir($sd_card . "/serverLog");
-        if(!is_dir($sd_card . "/serverPlugUpdate")) mkdir($sd_card . "/serverPlugUpdate");
+        if(!is_dir($sd_card . "/cultiPi"))              mkdir($sd_card . "/cultiPi");
+        if(!is_dir($sd_card . "/serverAcqSensor"))      mkdir($sd_card . "/serverAcqSensor");
+        if(!is_dir($sd_card . "/serverHisto"))          mkdir($sd_card . "/serverHisto");
+        if(!is_dir($sd_card . "/serverLog"))            mkdir($sd_card . "/serverLog");
+        if(!is_dir($sd_card . "/serverPlugUpdate"))     mkdir($sd_card . "/serverPlugUpdate");
+        if(!is_dir($sd_card . "/serverPlugUpdate/prg")) mkdir($sd_card . "/serverPlugUpdate/prg");
+        if(!is_dir($sd_card . "/serverPlugUpdate/plg")) mkdir($sd_card . "/serverPlugUpdate/plg");
         
         // Create cultipi conf.xml file
         $paramListCultipiConf[] = array (
@@ -218,10 +220,16 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         // Read from database program
         $program = create_program_from_database($main_error,$value['program_idx']);
 
-        if(!compare_program($program,$sd_card,"plu" . $value['plugv_filename'])) {
+        if ($GLOBALS['MODE'] == "cultipi") {
+            $fileName = $sd_card . "/serverPlugUpdate/prg/" . "plu" . $value['plugv_filename'];
+        } else {
+            $fileName = "${sd_card}/cnf/prg/" . "plu" . $value['plugv_filename'];
+        }
+
+        if(!compare_program($program,$fileName)) {
             $conf_uptodate=false;
 
-            if(!save_program_on_sd($sd_card,$program,"plu" . $value['plugv_filename'])) {  
+            if(!save_program_on_sd($fileName,$program)) {  
                 $confsave_prog=false;
             }
         }
@@ -229,10 +237,17 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
 
     //For plugv
     $program = create_program_from_database($main_error);
-    if(!compare_program($program,$sd_card)) {
+
+    if ($GLOBALS['MODE'] == "cultipi") {
+        $fileName = $sd_card . "/serverPlugUpdate/prg/" . "plugv";
+    } else {
+        $fileName = "${sd_card}/cnf/prg/" . "plugv";
+    }
+    
+    if(!compare_program($program,$fileName)) {
         $conf_uptodate=false;
 
-        if(!save_program_on_sd($sd_card,$program)) {
+        if(!save_program_on_sd($fileName,$program)) {
             $confsave_prog=false;
         }
     }
@@ -552,12 +567,9 @@ function check_cultibox_card($dir="") {
 // IN   $sd_card        path to the sd card to save datas
 //      $program        the program to be save in the sd card 
 // RET true if data correctly written, false else
-function save_program_on_sd($sd_card,$program,$filename = "plugv") {
+function save_program_on_sd($file,$program) {
     $out=array();
 
-    // Init file name
-    $file = "${sd_card}/cnf/prg/${filename}";
-    
     // Init out program file contants
     $prog="";
     $nbPlug=count($program);
@@ -619,8 +631,8 @@ function save_program_on_sd($sd_card,$program,$filename = "plugv") {
 //      $sd_card      sd card path to save data
 //      $file         file to be compared to
 // RET false is there is something to write, true else
-function compare_program($data,$sd_card,$file="plugv") {
-    $file="${sd_card}/cnf/prg/".$file;
+function compare_program($data,$file) {
+
     $out=array();
 
     if(is_file("${file}")) {
@@ -678,8 +690,13 @@ function compare_program($data,$sd_card,$file="plugv") {
 // RET false is there is something to write, true else
 function compare_pluga($sd_card) {
     $out  = array();
-    $file = "${sd_card}/cnf/plg/pluga";
     
+    if ($GLOBALS['MODE'] == "cultipi") {
+        $file = $sd_card . "/serverPlugUpdate/plg/pluga";
+    } else {
+        $file = "${sd_card}/cnf/plg/pluga";
+    }
+
     // Check if the file exists
     if(is_file($file)) {
         $nb=0;
@@ -884,8 +901,14 @@ function create_plgidx($data) {
 //      $ data        data to be compared to
 // RET false is there is something to write, true else
 function compare_plgidx($data,$sd_card) {
-    if(!is_file("${sd_card}/cnf/prg/plgidx")) return false;
-    $file="${sd_card}/cnf/prg/plgidx";
+
+    if ($GLOBALS['MODE'] == "cultipi") {
+        $file = $sd_card . "/serverPlugUpdate/prg/plgidx";
+    } else {
+        $file = "${sd_card}/cnf/prg/plgidx";
+    }
+
+    if(!is_file($file)) return false;
 
     $plgidx=@file("$file");
     if((count($data))!=(count($plgidx))) return false;
@@ -904,7 +927,13 @@ function compare_plgidx($data,$sd_card) {
 //      $out            error or warning messages
 // RET false is an error occured, true else
 function write_pluga($sd_card,&$out) {
-    $file="$sd_card/cnf/plg/pluga";
+
+    if ($GLOBALS['MODE'] == "cultipi") {
+        $file = $sd_card . "/serverPlugUpdate/plg/pluga";
+    } else {
+        $file="$sd_card/cnf/plg/pluga";
+    }
+    
 
     if($f=@fopen($file,"w+")) {
         $pluga="";
@@ -1003,12 +1032,19 @@ function write_pluga($sd_card,&$out) {
 //      $sd_card        the sd card to be written
 // RET false is an error occured, true else
 function write_plugconf($data,$sd_card) {
+
+    if ($GLOBALS['MODE'] == "cultipi") {
+        $path = $sd_card . "/serverPlugUpdate/plg/";
+    } else {
+        $path = "${sd_card}/cnf/plg/";
+    }
+
    for($i=0;$i<count($data);$i++) {
       $nb=$i+1;
       if($nb<10) {
-         $file="$sd_card/cnf/plg/plug0$nb";
+         $file = $path . "plug0" . $nb;
       } else {
-         $file="$sd_card/cnf/plg/plug$nb";
+         $file = $path . "plug" . $nb;
       }
 
       if($f=@fopen("$file","w+")) {
@@ -1032,7 +1068,13 @@ function write_plugconf($data,$sd_card) {
 //      $sd_card        the sd card to be written
 // RET false is an error occured, true else
 function write_plgidx($data,$sd_card) {
-   $file="$sd_card/cnf/prg/plgidx";
+
+    if ($GLOBALS['MODE'] == "cultipi") {
+        $file = $sd_card . "/serverPlugUpdate/prg/plgidx";
+    } else {
+        $file = "${sd_card}/cnf/prg/plgidx";
+    }
+
    if($f=@fopen("$file","w+")) {
       if(!@fputs($f,implode("\r\n", $data))) {
             return false;
@@ -1051,12 +1093,19 @@ function write_plgidx($data,$sd_card) {
 //      sd_card     path to the sd_card
 // OUT false is there is a difference, true else
 function compare_plugconf($data, $sd_card="") {
+
+    if ($GLOBALS['MODE'] == "cultipi") {
+        $path = $sd_card . "/serverPlugUpdate/plg/";
+    } else {
+        $path = "${sd_card}/cnf/prg/";
+    }
+
    for($i=0;$i<count($data);$i++) {
         $nb=$i+1;
         if($nb<10) {
-            $file="$sd_card/cnf/plg/plug0$nb";
+            $file= $path . "plug0$nb";
         } else {
-            $file="$sd_card/cnf/plg/plug$nb";
+            $file= $path . "plug$nb";
         }
 
         if(!is_file($file)) return false;
