@@ -19,8 +19,9 @@ foreach ($program_index as $key => $value)      {
     // Read from database program       
     $program = create_program_from_database($main_error,$value['program_idx']);         
          
-    // SAve programm on SD      
-    save_program_on_sd($sd_card,$program,"plu" . $value['plugv_filename']);         
+    // Save programm on SD
+    $file = "${sd_card}/cnf/prg/" . "plu" . $value['plugv_filename'];
+    save_program_on_sd($file,$program);         
 }       
   
 
