@@ -147,9 +147,14 @@
             $plugParam = cultipi\getSynopticDBElemByID($id);
             
             # Pilot plug
-            $ret_array = cultipi\forcePlug($plugParam["indexElem"],$value,$time);
+            $ret_array = cultipi\forcePlug($plugParam["indexElem"],$time,$value);
 
-            break;            
+            break;  
+        case "getPlugInformation" :
+            if((isset($_POST['id'])) && (!empty($_POST['id']))) {
+                $ret_array = cultipi\getPlugInformation($_POST['id']);
+            }
+            break;              
         default:
             break;
     }

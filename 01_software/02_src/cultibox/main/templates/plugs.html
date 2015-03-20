@@ -163,12 +163,6 @@
                                                     <option value="<?php echo $j; ?>" <?php if(intval($plug_num_module{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option>
                                                 <?php } ?>
                                             </select>
-                                            <?php echo __('PLUGS_MODULE_OUTPUT'); ?>
-                                            <select id="xmax_canal<?php echo $i; ?>" name="xmax_module_ouput<?php echo $i; ?>">
-                                                <?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_XMAX'];$j++) { ?>
-                                                    <option value="<?php echo $j; ?>" <?php if(intval($plug_module_output{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option>
-                                                <?php } ?>
-                                            </select>
                                         </div>
                                     </td>
                                 </tr>
