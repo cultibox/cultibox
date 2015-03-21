@@ -51,9 +51,12 @@ if(!isset($type)) {
 }
 
 // Check if there are logs recorded, delete fake logs if it's the case:
-if((logs\check_export_table_csv("logs",$main_error) == true)&&(logs\are_fake_logs("1","","",$main_error))) {
-     logs\reset_fake_log();
+if(logs\check_export_table_csv("logs",$main_error) == true) {
+    if(logs\are_fake_logs("1","","",$main_error)) {
+        logs\reset_fake_log();
+    }
 }
+
 
 
 
@@ -91,6 +94,8 @@ $check_log  = logs\check_export_table_csv("logs",$main_error);
 $check_power= logs\check_export_table_csv("power",$main_error);
 
 
+
+
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { 
     if((!isset($sd_card))||(empty($sd_card))) {
@@ -105,7 +110,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
     setcookie("CHECK_SD", "False", time()+1800,"/",false,false);
 }
 
-
 // Read and update DB with index file
 if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) {
     $sensor_type = array(); 
@@ -114,11 +118,11 @@ if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) {
         // Update database with sensors
         update_sensor_type($sensor_type);
     }
+    // Clean index file
+    clean_index_file($sd_card);
 }
 
 
-// Clean index file
-clean_index_file($sd_card);
 
 
 //More default values:

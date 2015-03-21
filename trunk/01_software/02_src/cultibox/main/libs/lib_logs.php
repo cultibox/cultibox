@@ -444,8 +444,7 @@ function are_fake_logs ($sensor, $dateStart="", $dateEnd="", $day="day")
 
 
     if(strcmp("$dateStart","")==0) {
-        $sql = "SELECT timestamp FROM logs"
-            . " WHERE fake_log != 'False' limit 1;";    
+        $sql = "SELECT * FROM logs LIMIT 1";
     } else {
         // Get all point bewteen two dates
         if($day=="day") {
@@ -460,11 +459,15 @@ function are_fake_logs ($sensor, $dateStart="", $dateEnd="", $day="day")
     }
 
 
-
     try {
         $sth = $db->prepare($sql);
         $sth->execute();
         $row = $sth->fetch();
+        if(strcmp("$dateStart","")==0) {
+            if($row['fake_log']=="False") {
+                    $row = null;
+            }
+        }
     } catch(\PDOException $e) {
         print_r($e->getMessage());
     }
