@@ -383,14 +383,23 @@ $(function () {
                                                         if (chart.series[this.index].visible) {
                                                             // Hide the graph
                                                             chart.series[this.index].hide();
-
-                                                            // Hide legend
-                                                            chart.yAxis[item.yaxis].update({
-                                                                title:{
-                                                                    text:""
+                                                            var uniq=true;
+                                                            var index=this.index;
+                                                            $.each(chart.series, function(i, val) {
+                                                                if(val.index!=index && val.visible) {
+                                                                    if(val.userOptions.curveType==chart.series[index].userOptions.curveType) {
+                                                                        uniq=false;
+                                                                     }
                                                                 }
                                                             });
-                                                            
+                                                            // Hide legend
+                                                            if(uniq) {
+                                                                chart.yAxis[item.yaxis].update({
+                                                                    title:{
+                                                                        text:""
+                                                                    }
+                                                                }); 
+                                                            }
                                                         } else {
                                                             chart.series[this.index].show();
                                                             // Show legend
@@ -398,7 +407,7 @@ $(function () {
                                                                 title:{
                                                                     text:item.legend
                                                                 }
-                                                            });
+                                                            }); 
                                                         }
                                                     },
                                                     load: function() {
@@ -1069,6 +1078,10 @@ $(document).ready(function() {
             }
         });
 
+        if(($(this).attr("datatype")=="power")||($(this).attr("datatype")=="program")) {
+            $("#select_curve").dialog("close");
+        }
+
         // Init a var on highchart
         var chart = $('#container').highcharts();
         var cheBu = $(this);
@@ -1161,31 +1174,43 @@ $(document).ready(function() {
                             events: {
                                 // On click on the check box, show or hide the serie
                                 checkboxClick: function(event) {
-                                
                                     var chart = $('#container').highcharts();
 
                                     if (chart.series[this.index].visible) {
                                         // Hide the graph
                                         chart.series[this.index].hide();
-                                        // Hide legend
-                                        chart.yAxis[item.yaxis].update({
-                                            title:{
-                                                text:""
-                                            }
-                                        });
-                                        
-                                    } else {
-                                        chart.series[this.index].show();
-                                        // Show legend
-                                        chart.yAxis[item.yaxis].update({
-                                            title:{
-                                                text:item.legend
-                                            }
-                                        });
-                                    }
+                                         var uniq=true;
+                                         var index=this.index;
+                                         $.each(chart.series, function(i, val) {
+                                              if(val.index!=index && val.visible) {
+                                                    if(val.userOptions.curveType==chart.series[index].userOptions.curveType) {
+                                                           uniq=false;
+                                                     }
+                                               }
+                                          });
+                                          // Hide legend
+                                          if(uniq) {
+                                                 chart.yAxis[item.yaxis].update({
+                                                       title:{
+                                                            text:""
+                                                       }
+                                                  });
+                                          }
+                                      } else {
+                                            chart.series[this.index].show();
+                                            // Show legend
+                                            chart.yAxis[item.yaxis].update({
+                                               title:{
+                                                   text:item.legend
+                                                }
+                                            }); 
+                                      }
                                 },
                                 load: function() {
                                      $.unblockUI();
+                                     if(($(cheBu).attr("datatype")=="power")||($(cheBu).attr("datatype")=="program")) {
+                                          $("#select_curve").dialog("open");
+                                      }
                                 }
                             },
                             data: []
@@ -1214,10 +1239,16 @@ $(document).ready(function() {
 
                         $.unblockUI();
 
+                        if(($(cheBu).attr("datatype")=="power")||($(cheBu).attr("datatype")=="program")) {
+                            $("#select_curve").dialog("open");
+                        }
                     });
                 },
                 error: function() {
                     $.unblockUI();
+                    if(($(cheBu).attr("datatype")=="power")||($(cheBu).attr("datatype")=="program")) {
+                        $("#select_curve").dialog("open");
+                    }
                 },
                 cache: false
             });
@@ -1243,6 +1274,10 @@ $(document).ready(function() {
                 }
             }); 
             $.unblockUI();
+
+            if(($(cheBu).attr("datatype")=="power")||($(cheBu).attr("datatype")=="program")) {
+                $("#select_curve").dialog("open");
+            }
         }
     });
 })

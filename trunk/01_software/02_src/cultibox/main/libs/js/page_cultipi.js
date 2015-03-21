@@ -165,7 +165,7 @@ $(document).ready(function(){
                         inTable = inTable +  '      <td>';
                         inTable = inTable +  '          <input type="image" id="syno_elemConfigur_' + objJSON.id + '" name="syno_elemConfigur_' + objJSON.id + '"';
                         inTable = inTable +  '                 title=""';
-                        inTable = inTable +  '                 src="main/libs/img/advancedsettings.png"  width="22"';
+                        inTable = inTable +  '                 src="main/libs/img/advancedsettings.png"';
                         inTable = inTable +  '                 alt="configure"';
                         inTable = inTable +  '                 class="syno_conf_elem_button"';
                         inTable = inTable +  '          />';
@@ -915,7 +915,7 @@ $(document).ready(function(){
                 });
                 
                 var ladate=new Date();
-                $('#synoptic_updateSensorHour').html(addZ(ladate.getHours())+":"+addZ(ladate.getMinutes())+":"+addZ(ladate.getSeconds()));
+                $('#synoptic_updateSensorHour').html("<b>"+addZ(ladate.getHours())+":"+addZ(ladate.getMinutes())+":"+addZ(ladate.getSeconds())+"</b>");
                 
             }
             updateIsAked = 0;
@@ -979,7 +979,7 @@ $(document).ready(function(){
                     });
                     
                     var ladate=new Date();
-                    $('#synoptic_updatePlugHour').html(addZ(ladate.getHours())+":"+addZ(ladate.getMinutes())+":"+addZ(ladate.getSeconds()));
+                    $('#synoptic_updatePlugHour').html("<b>"+addZ(ladate.getHours())+":"+addZ(ladate.getMinutes())+":"+addZ(ladate.getSeconds())+"</b>");
                     
                 }
                 
