@@ -54,6 +54,22 @@ $(document).ready(function(){
         $('#version_soft').attr('title', version);
      });
 
+     $.ajax({
+         cache: false,
+         async: true,
+         url: "main/modules/external/scan_network.php"
+     }).done(function (data) {
+         $("#wifi_essid_list").empty();
+         $("#wifi_essid_list").append("<p><?php echo __('WIFI_SCAN_SUBTITLE'); ?></p>");
+         $.each($.parseJSON(data),function(index,value) {
+             var checked="";
+             if($("#wifi_ssid").val()==value) {
+                 checked="checked";
+             }
+             $("#wifi_essid_list").append('<b>'+value+' : </b><input type="radio" name="wifi_essid" value="'+value+'" '+checked+' /><br />');
+         });
+      });
+
     $.ajax({
           cache: false,
           async: true,

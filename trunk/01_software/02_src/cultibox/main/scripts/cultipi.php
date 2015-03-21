@@ -65,9 +65,6 @@ if(strcmp("$wifi_gw","")==0) $wifi_gw="0.0.0.0";
 $eth_phy=get_phy_addr("eth0");
 $wlan_phy=get_phy_addr("wlan0");
 
-exec("sudo /sbin/iwlist wlan0 scan |/bin/grep ESSID|/usr/bin/awk -F \"\\\"\" '{print $2}'",$wifi_net_list,$error);
-
-
 if(find_config($net_config,"wlan0","wpa-psk","bool")) {
     $wifi_key_type="WPA AUTO";
     $wifi_password=find_config($net_config,"wlan0","wpa-psk ","val");
