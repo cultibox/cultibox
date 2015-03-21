@@ -676,20 +676,6 @@
 
 
 <div id="wifi_essid_list" style="display:none" title="<?php echo __('WIFI_ESSID_SCAN_TITLE'); ?>">
-    <?php 
-        if(count($wifi_net_list)>0) { 
-            echo '<p>'.__('WIFI_SCAN_SUBTITLE').'</p>';
-            $checked="";
-            foreach($wifi_net_list as $essid) {
-                $essid=trim($essid);
-                if((strpos("$essid","cultipi_")!==0)&&(strcmp("$essid","")!=0)) {
-                    if(strcmp("$essid","$wifi_ssid")==0) $checked="checked";
-                    echo '<b>'.$essid.' : </b><input type="radio" name="wifi_essid" value="'.$essid.'" '.$checked.' /><br />';
-                    $checked="";
-                }
-            }
-        }
-    ?>
 </div>
 
 <script>expand("<?php echo $submenu; ?>");</script>
