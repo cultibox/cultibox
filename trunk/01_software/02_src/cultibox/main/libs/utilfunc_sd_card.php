@@ -28,6 +28,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
        require_once '../../libs/config_cultipi.php';
     }
 
+
     // Check if SD card has been found
     if(empty($sd_card) || !isset($sd_card)  || $sd_card == "")
     {
@@ -41,6 +42,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
     // Check if SD card can be writable
     if(!check_sd_card($sd_card)) return ERROR_WRITE_SD;
 
+
     // Check and update path
     $logs = "$sd_card/logs";
     $cnf  = "$sd_card/cnf";
@@ -48,14 +50,15 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
     $prg  = "$cnf/prg";
     $bin  = "$sd_card/bin";
 
-    if(!is_dir($logs)) mkdir($logs);
-    if(!is_dir($cnf)) mkdir($cnf);
-    if(!is_dir($plg)) mkdir($plg);
-    if(!is_dir($prg)) mkdir($prg);
-    if(!is_dir($bin)) mkdir($bin);
-
-    // If we are in cultipi mode, create file systeme structure
-    if ($GLOBALS['MODE'] == "cultipi") {
+   
+    if(!isset($GLOBALS['MODE']) || $GLOBALS['MODE'] != "cultipi") { 
+        if(!is_dir($logs)) mkdir($logs);
+        if(!is_dir($cnf)) mkdir($cnf);
+        if(!is_dir($plg)) mkdir($plg);
+        if(!is_dir($prg)) mkdir($prg);
+        if(!is_dir($bin)) mkdir($bin);
+    } else {
+        // If we are in cultipi mode, create file systeme structure
         if(!is_dir($sd_card . "/cultiPi"))              mkdir($sd_card . "/cultiPi");
         if(!is_dir($sd_card . "/serverAcqSensor"))      mkdir($sd_card . "/serverAcqSensor");
         if(!is_dir($sd_card . "/serverHisto"))          mkdir($sd_card . "/serverHisto");
@@ -286,9 +289,11 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         }
     }
 
-    if(!check_and_copy_index($sd_card)) {
-        $main_error_tab[]=__('ERROR_COPY_INDEX');
-        return ERROR_COPY_INDEX;
+    if(!isset($GLOBALS['MODE']) || $GLOBALS['MODE'] != "cultipi") {
+        if(!check_and_copy_index($sd_card)) {
+            $main_error_tab[]=__('ERROR_COPY_INDEX');
+            return ERROR_COPY_INDEX;
+        }
     }
 
     $data=array();
