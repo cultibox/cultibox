@@ -448,7 +448,7 @@ $(document).ready(function(){
     // Slider for zoom
     $("#syno_configure_element_scale").slider({
         max: 1000,
-        min: 50,
+        min: 10,
         slide: function( event, ui ) {
             // While sliding, update the value in the div element
             $("#syno_configure_element_scale_val").val(ui.value);
