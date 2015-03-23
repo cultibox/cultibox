@@ -386,7 +386,7 @@ function getAllSensorLiveValue() {
     $return_array = array();
     $return_array["error"] = "";
     
-    $commandLine = 'tclsh "/opt/cultipi/cultiPi/get.tcl" serverAcqSensor ';
+    $commandLine = 'tclsh "/opt/cultipi/cultiPi/get.tcl" serverAcqSensor localhost ';
     for ($i = 1; $i <= 6; $i++) {
         $commandLine = $commandLine . ' "::sensor(' . $i . ',value)"';
     }
@@ -431,7 +431,7 @@ function getSensorLiveValue($number) {
     $return_array["error"] = "";
     
     try {
-        $ret = exec('tclsh "/opt/cultipi/cultiPi/get.tcl" serverAcqSensor "::sensor(' . $number . ',value)"');
+        $ret = exec('tclsh "/opt/cultipi/cultiPi/get.tcl" serverAcqSensor localhost "::sensor(' . $number . ',value)"');
     } catch (Exception $e) {
         echo 'Exception reçue : ',  $e->getMessage(), "\n";
         $return_array["error"] = $e->getMessage();
@@ -458,7 +458,7 @@ function getAllPlugLiveValue() {
     $return_array = array();
     $return_array["error"] = "";
     
-    $commandLine = 'tclsh "/opt/cultipi/cultiPi/get.tcl" serverPlugUpdate ';
+    $commandLine = 'tclsh "/opt/cultipi/cultiPi/get.tcl" localhost serverPlugUpdate ';
     for ($i = 1; $i <= 16; $i++) {
         $commandLine = $commandLine . ' "::plug(' . $i . ',value)"';
     }
@@ -502,7 +502,7 @@ function getPlugLiveValue($number) {
     $return_array["error"] = "";
     
     try {
-        $ret = exec('tclsh "/opt/cultipi/cultiPi/get.tcl" serverPlugUpdate "::plug(' . $number . ',value)"');
+        $ret = exec('tclsh "/opt/cultipi/cultiPi/get.tcl" serverPlugUpdate localhost "::plug(' . $number . ',value)"');
     } catch (Exception $e) {
         echo 'Exception reçue : ',  $e->getMessage(), "\n";
         $return_array["error"] = $e->getMessage();
