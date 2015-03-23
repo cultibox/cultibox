@@ -584,7 +584,7 @@ function forcePlug($number,$time,$value) {
     $return_array["error"] = "";
     
     try {
-        $ret = exec('tclsh "/opt/cultipi/cultiPi/set.tcl" serverPlugUpdate ' . $number . ' ' . $value . ' ' . $time);
+        $ret = exec('tclsh "/opt/cultipi/cultiPi/set.tcl" serverPlugUpdate localhost ' . $number . ' ' . $value . ' ' . $time);
     } catch (Exception $e) {
         echo 'Exception reçue : ',  $e->getMessage(), "\n";
         $return_array["error"] = $e->getMessage();
