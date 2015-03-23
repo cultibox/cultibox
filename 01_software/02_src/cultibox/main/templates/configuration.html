@@ -127,7 +127,7 @@
             <td>
                <select name="nb_plugs" id="nb_plugs">
                     <?php
-                        for($i=$GLOBALS['NB_MIN_PLUG'];$i<=$GLOBALS['NB_SELECTABLE_PLUG'];$i++) {
+                        for($i=$GLOBALS['NB_MIN_PLUG'];$i<=$GLOBALS['NB_MAX_PLUG'];$i++) {
                             if(!strcmp ("$i","$nb_plugs")) {
                                 echo "<option value=\"${i}\" selected>${i}</option>";
                             } else {
