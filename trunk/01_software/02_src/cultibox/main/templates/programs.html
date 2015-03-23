@@ -323,7 +323,7 @@
             </td>
             <td>
                 <form action="/cultibox/index.php?menu=programs" method="post">
-                    <input id="add_plug" type="submit" name="add_plug" <?php if($nb_plugs>=$GLOBALS['NB_SELECTABLE_PLUG']) { ?> disabled value="<?php echo __('MAX_PLUG_REACHED'); ?>" class="inputDisable" <?php } else { ?>value="<?php echo __('ADD_PLUG'); ?>" <?php } ?>>
+                    <input id="add_plug" type="submit" name="add_plug" <?php if($nb_plugs>=$GLOBALS['NB_MAX_PLUG']) { ?> disabled value="<?php echo __('MAX_PLUG_REACHED'); ?>" class="inputDisable" <?php } else { ?>value="<?php echo __('ADD_PLUG'); ?>" <?php } ?>>
                 </form>
             </td>
         </tr>
