@@ -789,7 +789,7 @@ $(document).ready(function(){
                 valToSend = $( "#syno_configure_element_force_plug_value option:selected" ).val()
                 break;
         }
-                alert(valToSend);
+
         $.ajax({
             cache: false,
             type: "POST",
