@@ -8,16 +8,20 @@ if [ ! -d /etc/cultipi/conf_tmp ]; then
     mkdir /etc/cultipi/conf_tmp
 fi
 
-if [ ! -d /etc/cultipi/conf_tmp/logs ]; then
-    mkdir -p /etc/cultipi/conf_tmp/logs
+if [ -d /etc/cultipi/conf_tmp/logs ]; then
+    rm -Rf /etc/cultipi/conf_tmp/logs
 fi
 
-if [ ! -d /etc/cultipi/conf_tmp/cnf/plg ]; then
-    mkdir -p /etc/cultipi/conf_tmp/cnf/plg
+if [ -d /etc/cultipi/conf_tmp/cnf ]; then
+    rm -Rf /etc/cultipi/conf_tmp/cnf
 fi
 
-if [ ! -d /etc/cultipi/conf_tmp/cnf/prg ]; then
-    mkdir -p /etc/cultipi/conf_tmp/cnf/prg
+if [ -d /etc/cultipi/conf_tmp/bin ]; then
+    rm -Rf /etc/cultipi/conf_tmp/bin
+fi
+
+if [ -f /etc/cultipi/conf_tmp.log.txt ]; then
+    rm /etc/cultipi/conf_tmp.log.txt
 fi
 
 chown -R www-data:www-data /etc/cultipi/conf_tmp
