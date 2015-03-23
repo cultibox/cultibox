@@ -19,13 +19,14 @@ set port(serverHisto) 6009
 
 set module   [lindex $argv 0]
 set variable [lindex $argv 1]
+set adresseIP [lindex $argv 2]
 
 #puts "Reading variable [lrange $argv 1 [expr $argc - 1]] of module $module"
 
 
 # Demande d'écriture du repere
 # Trame standard : [FROM] [INDEX] [commande] [argument]
-::piServer::sendToServer $port($module) "$port(serverSet) 0 setRepere [lrange $argv 1 [expr $argc - 1]]"
+::piServer::sendToServer $port($module) "$port(serverSet) 0 setRepere [lrange $argv 1 [expr $argc - 1]]" $adresseIP
 
 
 # tclsh /opt/cultipi/cultiPi/set.tcl serverPlugUpdate 1 on 20
