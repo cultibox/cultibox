@@ -735,9 +735,9 @@ function compare_pluga($sd_card) {
             $tmp_MODULE_OPTIONS = get_plug_conf("PLUG_MODULE_OPTIONS",$i+1,$out);
 
             // Get module output used
-            $tmp_MODULE_OUPUT = get_plug_conf("PLUG_MODULE_OUTPUT",$i+1,$out);
-            if ($tmp_MODULE_OUPUT == "") 
-                $tmp_MODULE_OUPUT = 1;
+            $tmp_MODULE_OUTPUT = get_plug_conf("PLUG_MODULE_OUTPUT",$i+1,$out);
+            if ($tmp_MODULE_OUTPUT == "") 
+                $tmp_MODULE_OUTPUT = 1;
 
             // Create adress for this plug
             $tmp_pluga = 0;
@@ -751,29 +751,29 @@ function compare_pluga($sd_card) {
                     break;
                 case "direct":
                     // Direct plug case (Adresse 50 --> 58)
-                    $tmp_pluga = $tmp_MODULE_OUPUT + 49;
+                    $tmp_pluga = $tmp_MODULE_OUTPUT + 49;
                     break;
                 case "mcp230xx":
                     // MCP plug case 
                     // Module 1 : (Adresse 60 --> 67)
                     // Module 2 : (Adresse 70 --> 77)
                     // Module 3 : (Adresse 80 --> 87)
-                    $tmp_pluga = 60 + 10 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    $tmp_pluga = 60 + 10 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUTPUT - 1;
                     break;
                 case "dimmer":
                     // Dimmer plug case 
                     // Module 1 : (Adresse 90 --> 93)
                     // Module 2 : (Adresse 95 --> 98)
                     // Module 3 : (Adresse 100 --> 103)
-                    $tmp_pluga = 90 + 5 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    $tmp_pluga = 90 + 5 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUTPUT - 1;
                     break;
                 case "network":
-                    $tmp_pluga = 1000 + 16 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    $tmp_pluga = 1000 + 16 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUTPUT - 1;
                     break;
                 case "xmax":
                     // xmax plug case 
                     // Module 1 : (Adresse 105 --> 108)
-                    $tmp_pluga = 105 + $tmp_MODULE_OUPUT - 1;
+                    $tmp_pluga = 105 + $tmp_MODULE_OUTPUT - 1;
                     break;                    
             }
 
@@ -971,9 +971,9 @@ function write_pluga($sd_card,&$out) {
             $tmp_MODULE_OPTIONS = get_plug_conf("PLUG_MODULE_OPTIONS",$i+1,$out);
 
             // Get module output used
-            $tmp_MODULE_OUPUT = get_plug_conf("PLUG_MODULE_OUPUT",$i+1,$out);
-            if ($tmp_MODULE_OUPUT == "") 
-                $tmp_MODULE_OUPUT = 1;
+            $tmp_MODULE_OUTPUT = get_plug_conf("PLUG_MODULE_OUTPUT",$i+1,$out);
+            if ($tmp_MODULE_OUTPUT == "") 
+                $tmp_MODULE_OUTPUT = 1;
 
             // Create adress for this plug
             $tmp_pluga = 0;
@@ -987,29 +987,29 @@ function write_pluga($sd_card,&$out) {
                     break;
                 case "direct":
                     // Direct plug case (Adresse 50 --> 58)
-                    $tmp_pluga = $tmp_MODULE_OUPUT + 49;
+                    $tmp_pluga = $tmp_MODULE_OUTPUT + 49;
                     break;
                 case "mcp230xx":
                     // MCP plug case 
                     // Module 1 : (Adresse 60 --> 67)
                     // Module 2 : (Adresse 70 --> 77)
                     // Module 3 : (Adresse 80 --> 87)
-                    $tmp_pluga = 60 + 10 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    $tmp_pluga = 60 + 10 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUTPUT - 1;
                     break;
                 case "dimmer":
                     // Dimmer plug case 
                     // Module 1 : (Adresse 90 --> 93)
                     // Module 2 : (Adresse 95 --> 98)
                     // Module 3 : (Adresse 100 --> 103)
-                    $tmp_pluga = 90 + 5 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    $tmp_pluga = 90 + 5 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUTPUT - 1;
                     break;
                 case "network":
-                    $tmp_pluga = 1000 + 16 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUPUT - 1;
+                    $tmp_pluga = 1000 + 16 * ($tmp_NUM_MODULE - 1) + $tmp_MODULE_OUTPUT - 1;
                     break;
                 case "xmax":
                     // xmax plug case 
                     // Module 1 : (Adresse 105 --> 108)
-                    $tmp_pluga = 105 + $tmp_MODULE_OUPUT - 1;
+                    $tmp_pluga = 105 + $tmp_MODULE_OUTPUT - 1;
                     break;                    
             }
 
