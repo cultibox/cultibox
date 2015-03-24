@@ -735,7 +735,7 @@ function compare_pluga($sd_card) {
             $tmp_MODULE_OPTIONS = get_plug_conf("PLUG_MODULE_OPTIONS",$i+1,$out);
 
             // Get module output used
-            $tmp_MODULE_OUPUT = get_plug_conf("PLUG_MODULE_OUPUT",$i+1,$out);
+            $tmp_MODULE_OUPUT = get_plug_conf("PLUG_MODULE_OUTPUT",$i+1,$out);
             if ($tmp_MODULE_OUPUT == "") 
                 $tmp_MODULE_OUPUT = 1;
 
