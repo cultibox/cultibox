@@ -373,7 +373,7 @@ $(function () {
                                                 sensor: $(cheBu).attr("id"),
                                                 selected: true,
                                                 tooltip: {
-                                                    valueSuffix:" " + item.unit
+                                                    valueSuffix:" " + item.unit 
                                                 },
                                                 events: {
                                                     // On click on the check box, show or hide the serie
@@ -598,7 +598,16 @@ $(function () {
                 ?>
             ],
             tooltip: {
+                positioner:function(boxWidth, boxHeight, point){
+                    if (point.plotX>450) {
+                        return { x: point.plotX-250,y: 100 };
+                    } else {
+                        return { x: point.plotX+100, y: 100 };
+                    }
+                }
+                ,
                 shared: true,
+                backgroundColor:'rgba(255, 255, 255, 0.5)',
                 useHTML: true,
                 formatter: function() {
                     var s = '<p align="center"><b>'+ Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x) +'</b><br />';
