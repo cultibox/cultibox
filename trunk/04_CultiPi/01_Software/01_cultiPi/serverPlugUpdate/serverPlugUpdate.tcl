@@ -93,7 +93,7 @@ while {$status == "retry_needed"} {
     after 100
 }
 
-# On initialise le module CUltipi
+# On initialise le module Cultipi
 ::piLog::log [clock milliseconds] "info" "init module CULTIPI"
 ::CULTIPI::init
 
