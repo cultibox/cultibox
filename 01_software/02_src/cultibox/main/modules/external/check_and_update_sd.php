@@ -30,9 +30,11 @@
     }
 
     // Search and update log information form SD card
-    $return=sd_card_update_log_informations($sd_card);
-    if( $return > 1 ) {
-        $main_error[]=get_error_sd_card_update_message($return);
+    if(!isset($GLOBALS['MODE']) || $GLOBALS['MODE'] != "cultipi") {
+        $return=sd_card_update_log_informations($sd_card);
+        if( $return > 1 ) {
+            $main_error[]=get_error_sd_card_update_message($return);
+        }
     }
 
     // Create output array
