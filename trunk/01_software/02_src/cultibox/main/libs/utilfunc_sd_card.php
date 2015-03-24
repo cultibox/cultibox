@@ -314,29 +314,31 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         }
     }
 
-    // Read value on sd Card
-    if(!$force_rtc_offset) {
-        $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
-        $sdConfRtc = get_decode_rtc_offset($sdConfRtc);
 
-        // Update database
-        insert_configuration("RTC_OFFSET",$sdConfRtc,$main_error);
-    }
+    if(!isset($GLOBALS['MODE']) || $GLOBALS['MODE'] != "cultipi") {
+        // Read value on sd Card
+        if(!$force_rtc_offset) {
+            $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
+            $sdConfRtc = get_decode_rtc_offset($sdConfRtc);
 
+            // Update database
+            insert_configuration("RTC_OFFSET",$sdConfRtc,$main_error);
+        }
+    
 
-    $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
-    $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
-    $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
-    $alarmenable    = get_configuration("ALARM_ACTIV",$main_error);
-    $alarmvalue     = get_configuration("ALARM_VALUE",$main_error);
-    $resetvalue     = get_configuration("RESET_MINMAX",$main_error);
-    $rtc            = get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
-    $enableled      = get_configuration("ENABLE_LED",$main_error);
-    if($updatefrequency == "-1") {
-        $updatefrequency="0";
-    }
+        $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
+        $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
+        $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
+        $alarmenable    = get_configuration("ALARM_ACTIV",$main_error);
+        $alarmvalue     = get_configuration("ALARM_VALUE",$main_error);
+        $resetvalue     = get_configuration("RESET_MINMAX",$main_error);
+        $rtc            = get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
+        $enableled      = get_configuration("ENABLE_LED",$main_error);
+        if($updatefrequency == "-1") {
+            $updatefrequency="0";
+        }
 
-    if(!compare_sd_conf_file($sd_card,
+        if(!compare_sd_conf_file($sd_card,
                              $recordfrequency,
                              $updatefrequency,
                              $powerfrequency,
@@ -345,9 +347,9 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
                              $resetvalue,
                              $rtc,
                              $enableled))
-    {
-        $conf_uptodate=false;
-        if(!write_sd_conf_file($sd_card,
+        {
+            $conf_uptodate=false;
+            if(!write_sd_conf_file($sd_card,
                                $recordfrequency,
                                $updatefrequency,
                                $powerfrequency,
@@ -357,9 +359,10 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
                                $rtc,
                                $enableled,
                                $main_error))
-        {
-            $main_error_tab[]=__('ERROR_WRITE_SD_CONF');
-            return ERROR_WRITE_SD_CONF;
+            {
+                $main_error_tab[]=__('ERROR_WRITE_SD_CONF');
+                return ERROR_WRITE_SD_CONF;
+            }
         }
     }
 

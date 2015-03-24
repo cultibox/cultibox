@@ -102,7 +102,6 @@ switch ($type) {
         insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$main_error);
         break;
     default:
-        return true;
         break;
 }
 
