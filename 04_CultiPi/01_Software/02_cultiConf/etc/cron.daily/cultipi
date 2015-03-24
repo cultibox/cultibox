@@ -85,7 +85,7 @@ uptime=$(</proc/uptime)
 uptime=${uptime%%.*}
 
 if [ "$uptime" != "" ]; then
-    if [ $uptime -gt 604800 ]; then
+    if [ $uptime -gt 432000 ]; then
         shutdown -r now
     fi
 fi
