@@ -49,6 +49,8 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
     $plg  = "$cnf/plg";
     $prg  = "$cnf/prg";
     $bin  = "$sd_card/bin";
+    $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
+    $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
 
    
     if(!isset($GLOBALS['MODE']) || $GLOBALS['MODE'] != "cultipi") { 
@@ -173,6 +175,42 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
             "name" => "verbose",
             "level" => "warning"
         );
+
+        $paramListServerPlugUpdate[] = array (
+            "name" => "wireless_freq_plug_update",
+            "value" => "$updatefrequency"
+        );
+
+
+        $alarmenable    = get_configuration("ALARM_ACTIV",$main_error);
+        $alarmvalue     = get_configuration("ALARM_VALUE",$main_error);
+
+        $alarmvalue=$alarmvalue*100;
+        while(strlen($alarmvalue)<4) {
+            $alarmvalue="0$alarmvalue";
+        }
+
+        $paramListServerPlugUpdate[] = array (
+            "name" => "alarm_activ",
+            "value" => "$alarmenable"
+        );
+
+        $paramListServerPlugUpdate[] = array (
+            "name" => "alarm_value",
+            "value" => "$alarmvalue"
+        );
+
+        $paramListServerPlugUpdate[] = array (
+            "name" => "alarm_sensor",
+            "value" => "T"
+        );
+
+        $paramListServerPlugUpdate[] = array (
+            "name" => "alarm_sens",
+            "value" => "+"
+        );
+
+
         // Add network slave
         //  <item name="module_CULTIPI,ip,0" ip="192.168.1.10" />
         if ($GLOBALS_CULTIPI['USE_REMOTE_SLAVE'] == 1)
@@ -194,12 +232,13 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         );
         $paramListServerHisto[] = array (
             "name" => "logPeriode",
-            "valInSec" => "60"
+            "valInSec" => $recordfrequency*60
         );
         $paramListServerHisto[] = array (
             "name" => "pathMySQL",
             "path" => "/usr/bin/mysql"
         );
+    
         create_conf_XML($sd_card . "/serverHisto/conf.xml" , $paramListServerHisto);
         
         // Server log
@@ -332,9 +371,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         }
     
 
-        $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
         $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
-        $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
         $alarmenable    = get_configuration("ALARM_ACTIV",$main_error);
         $alarmvalue     = get_configuration("ALARM_VALUE",$main_error);
         $resetvalue     = get_configuration("RESET_MINMAX",$main_error);
