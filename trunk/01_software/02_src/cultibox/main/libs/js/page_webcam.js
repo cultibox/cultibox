@@ -46,9 +46,10 @@ getSnapshot = function(first) {
         cache: false,
         async: true,
         url: "main/modules/external/get_snapshot.php",
-        data: {width: width, height: height,brightness:brightness,contrast:contrast,palette:palette}
+        data: {width: width, height: height,brightness:brightness,contrast:contrast,palette:palette},   
       }).done(function (data) {
-            var objJSON = jQuery.parseJSON(data);
+            try {
+                var objJSON = jQuery.parseJSON(data);
 
             if(objJSON=="0") {
                 d = new Date();
@@ -86,6 +87,12 @@ getSnapshot = function(first) {
             $.timeout.push(setTimeout(function() {
                 getSnapshot(0);
             },5000));
+
+            } catch(err) {
+                $.timeout.push(setTimeout(function() {
+                    getSnapshot(0);
+                },5000));
+            }
      });
 }
 // }}}

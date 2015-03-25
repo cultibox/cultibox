@@ -19,15 +19,8 @@ $module = getvar("plug_module${nb}");
 // Regulation is not available for lamp and other
 switch ($type) 
 {
-    case "extractor":
-    case "intractor":
-    case "ventilator":
-    case "heating":
-    case "pumpfiling":
-    case "pumpempting":
-    case "pump":
-    case "humidifier":
-    case "dehumidifier":
+    case "lamp":
+    case "other":
         $regul = "False";
         break;
     default:
@@ -40,6 +33,7 @@ switch ($type)
         $second_tol  = str_replace(',','.',$second_tol);
         break;
 }
+
 
 // retrieve max power
 $power_max  = getvar("plug_power_max${nb}");
