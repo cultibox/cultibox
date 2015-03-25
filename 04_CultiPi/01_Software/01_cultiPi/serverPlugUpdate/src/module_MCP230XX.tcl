@@ -99,6 +99,8 @@ proc ::MCP230XX::init {moduleAdresse} {
 
     # On définit chaque pin en sortie
     # /usr/local/sbin/i2cset -y 1 0x20 0x00 0x00
+    # lecture de l'état des sorties
+    # /usr/local/sbin/i2cget -y 1 0x20 0x00
     set RC [catch {
         exec /usr/local/sbin/i2cset -y 1 $moduleAdresse $register(IODIR) 0x00
     } msg]
@@ -117,7 +119,7 @@ proc ::MCP230XX::setValue {plugNumber value address} {
     variable adresse_I2C
     variable register
 
-    # On cherche le nom du module cooresspondant
+    # On cherche le nom du module correspondant
     set moduleAdresse "NA"
     set outputPin "NA"
     # Il faut que la clé existe
@@ -148,13 +150,14 @@ proc ::MCP230XX::setValue {plugNumber value address} {
     
     # On pilote le registre de sortie
     # /usr/local/sbin/i2cset -y 1 0x20 0x09 0x0F
+    # /usr/local/sbin/i2cget -y 1 0x20 0x09
     set RC [catch {
         exec /usr/local/sbin/i2cset -y 1 $moduleAdresse $register(GPIO) $register(${moduleAdresse},GPIO_LAST)
     } msg]
     if {$RC != 0} {
         ::piLog::log [clock milliseconds] "error" "::MCP230XX::setValue Module $moduleAdresse does not respond :$msg "
     } else {
-        ::piLog::log [clock milliseconds] "debug" "::MCP230XX::setValue Output GPIO to $register(${moduleAdresse},GPIO_LAST) OK"
+        ::piLog::log [clock milliseconds] "info" "::MCP230XX::setValue Output GPIO to $register(${moduleAdresse},GPIO_LAST) OK (output pin $outputPin)"
     }
 
 }
