@@ -203,10 +203,16 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         create_conf_XML($sd_card . "/serverHisto/conf.xml" , $paramListServerHisto);
         
         // Server log
+         $paramListServerLog[] = array (
+            "name" => "logPath",
+            "logfile" => "/var/log/cultipi"
+        );
+
         $paramListServerLog[] = array (
             "name" => "verbose",
             "level" => "warning"
         );
+
         create_conf_XML($sd_card . "/serverLog/conf.xml" , $paramListServerLog);
         
     }
@@ -1710,11 +1716,17 @@ function check_and_copy_plgidx($sd_card="") {
         $path="../../../tmp/cnf/prg/plgidx";
     }
 
+    if(!isset($GLOBALS['MODE']) || $GLOBALS['MODE'] != "cultipi") {
+        $dest="$sd_card/cnf/prg/plgidx";
+    } else {
+        $dest="$sd_card/serverPlugUpdate/prg/plgidx";
+    }
+
     //Si le fichier sur la carte SD n'existe pas:
     if(!is_file("$sd_card/cnf/prg/plgidx")) {
         //Si le chemin de référence a été trouvé:
         if(strcmp("$path","")!=0) {
-            if(!@copy("$path", "$sd_card/cnf/prg/plgidx")) {
+            if(!@copy("$path", "$dest")) {
                 //Si la copie n'a pas réussie:
                 return false;
             } else {
@@ -1729,8 +1741,8 @@ function check_and_copy_plgidx($sd_card="") {
            return false;
         } else {
            //On compare si le fichier de référence et le fichier sur la carte SD sont différents:
-           if(filesize("$path")!=filesize("$sd_card/cnf/prg/plgidx")) {
-               if(!@copy("$path", "$sd_card/cnf/prg/plgidx")) {
+           if(filesize("$path")!=filesize("$dest")) {
+               if(!@copy("$path", "$dest")) {
                    return false;
                 } else {
                    return true;

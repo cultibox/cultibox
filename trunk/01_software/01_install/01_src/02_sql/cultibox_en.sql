@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 -- Dumping data for table `plugs`
 --
 
-INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_POWER_MAX`, `PLUG_REGUL`, `PLUG_REGUL_SENSOR`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`, `PLUG_SECOND_TOLERANCE`,`PLUG_COMPUTE_METHOD`) VALUES
+INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_POWER_MAX`, `PLUG_REGUL`, `PLUG_REGUL_SENSOR`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`, `PLUG_SECOND_TOLERANCE`,`PLUG_COMPUTE_METHOD`,`PLUG_MODULE`) VALUES
 (1, '', 'Plug1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
 (2, '', 'Plug2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
 (3, '', 'Plug3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M','wireless'),
