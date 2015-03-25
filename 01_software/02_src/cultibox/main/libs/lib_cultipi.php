@@ -458,7 +458,7 @@ function getAllPlugLiveValue() {
     $return_array = array();
     $return_array["error"] = "";
     
-    $commandLine = 'tclsh "/opt/cultipi/cultiPi/get.tcl" localhost serverPlugUpdate ';
+    $commandLine = 'tclsh "/opt/cultipi/cultiPi/get.tcl" serverPlugUpdate localhost ';
     for ($i = 1; $i <= 16; $i++) {
         $commandLine = $commandLine . ' "::plug(' . $i . ',value)"';
     }
