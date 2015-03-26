@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <conf>
     <item name="verbose" level="warning" />
-    <item name="logPeriode" valInSec="300" />
+    <item name="logPeriode" valInSec="60" />
     <item name="pathMySQL" path="/usr/bin/mysql" />
 </conf>
