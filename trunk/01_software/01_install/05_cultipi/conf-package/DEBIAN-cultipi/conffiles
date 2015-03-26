@@ -1,6 +1,9 @@
 /etc/cultipi/conf.xml
 /etc/cultipi/01_defaultConf_RPi/serverLog/conf.xml
 /etc/cultipi/01_defaultConf_RPi/cultiPi/start.xml
+/etc/cultipi/01_defaultConf_RPi/serverAcqSensor/conf.xml
+/etc/cultipi/01_defaultConf_RPi/serverHisto/conf.xml
+/etc/cultipi/01_defaultConf_RPi/serverPlugUpdate/conf.xml
 /etc/cultipi/01_defaultConf_RPi/serverPlugUpdate/prg/plgidx
 /etc/cultipi/01_defaultConf_RPi/serverPlugUpdate/prg/plugv
 /etc/cultipi/01_defaultConf_RPi/serverPlugUpdate/prg/plu00
