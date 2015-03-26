@@ -13,13 +13,13 @@ proc messageGestion {message networkhost} {
         }
         "pid" {
             ::piLog::log [clock milliseconds] "info" "Asked pid"
-            ::piServer::sendToServer $serverForResponse "$::port(serverPlugUpdate) $indexForResponse pid serverPlugUpdate [pid]"
+            ::piServer::sendToServer $serverForResponse "$::port(serverPlugUpdate) $indexForResponse pid serverPlugUpdate [pid]" $networkhost
         }
         "getRepere" {
             # Pour toutes les variables demandées
             set indexVar 3
             set returnList ""
-            while {[set variable [::piTools::lindexRobust $message $indexVar]] != ""} {
+            while {[set variable [::piTools::lindexRobust $message $indexVar]] != "" && $indexVar < [llength $message - 1]} {} {
                 # La variable est le nom de la variable à lire
                 
                 ::piLog::log [clock milliseconds] "debug" "Asked getRepere $variable"
@@ -37,7 +37,7 @@ proc messageGestion {message networkhost} {
             }
 
             ::piLog::log [clock milliseconds] "debug" "response : $serverForResponse $indexForResponse getRepere $returnList"
-            ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $returnList"
+            ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $returnList" $networkhost
             
         }
         "setRepere" {

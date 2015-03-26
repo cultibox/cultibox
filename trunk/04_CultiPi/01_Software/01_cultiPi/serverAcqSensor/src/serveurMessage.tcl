@@ -13,14 +13,14 @@ proc messageGestion {message networkhost} {
         }
         "pid" {
             ::piLog::log [clock milliseconds] "info" "Asked pid"
-            ::piServer::sendToServer $serverForResponse "$::port(serverAcqSensor) $indexForResponse pid serverAcqSensor [pid]"
+            ::piServer::sendToServer $serverForResponse "$::port(serverAcqSensor) $indexForResponse pid serverAcqSensor [pid]" $networkhost
         }
         "getRepere" {
         
             # Pour toutes les variables demandées
             set indexVar 3
             set returnList ""
-            while {[set variable [::piTools::lindexRobust $message $indexVar]] != ""} {
+            while {[set variable [::piTools::lindexRobust $message $indexVar]] != "" && $indexVar < [llength $message - 1]} {
                 # La variable est le nom de la variable à lire
                 
                 ::piLog::log [clock milliseconds] "info" "Asked getRepere $variable"
@@ -38,14 +38,14 @@ proc messageGestion {message networkhost} {
                     
                     lappend returnList $returnValue
                 } else {
-                    ::piLog::log [clock milliseconds] "error" "Asked variable $variable - variable doesnot exists"
+                    ::piLog::log [clock milliseconds] "error" "Asked variable $variable by $networkhost - variable doesnot exists"
                 }
                 
                 incr indexVar
             }
 
             ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere $returnList"
-            ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $returnList"
+            ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $returnList" $networkhost
 
         }
         "subscription" {
@@ -81,14 +81,14 @@ proc messageGestion {message networkhost} {
                         # Reponse doit être > à l'ancienne valeur + BMA ou < à l'ancienne valeur - BMA
                         if {$reponse > [expr $::subscriptionVariable($SubscriptionIndex) + $BandeMorteAcquisition] || $reponse < [expr $::subscriptionVariable($SubscriptionIndex) - $BandeMorteAcquisition]} {
                             
-                            ::piServer::sendToServer $serverForResponse "$serverForResponse [incr ::TrameIndex] _subscription ::sensor($repere) $reponse $time"
+                            ::piServer::sendToServer $serverForResponse "$serverForResponse [incr ::TrameIndex] _subscription ::sensor($repere) $reponse $time" $networkhost
                             set ::subscriptionVariable($SubscriptionIndex) $reponse
                         } else {
                             ::piLog::log [clock milliseconds] "debug" "Doesnot send ::sensor($repere) besause it's between BMA"
                         
                         }
                     } else {
-                        ::piServer::sendToServer $serverForResponse "$serverForResponse [incr ::TrameIndex] _subscription ::sensor($repere) $reponse $time"
+                        ::piServer::sendToServer $serverForResponse "$serverForResponse [incr ::TrameIndex] _subscription ::sensor($repere) $reponse $time" $networkhost
                         set ::subscriptionVariable($SubscriptionIndex) $reponse
                     }
                 }

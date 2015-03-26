@@ -21,7 +21,7 @@ proc messageGestion {message networkhost} {
             set module [::piTools::lindexRobust $message 3]
             ::piLog::log [clock milliseconds] "info" "Asked port of $module"
             # Comme c'est une réponse, le nom du serveur est celui de celui qui a demandé
-            ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse _getPort $module $::confStart($module,port)"
+            ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse _getPort $module $::confStart($module,port)" $networkhost
         }
         "_subscription" -
         "_subscriptionEvenement" {
