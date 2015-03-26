@@ -44,7 +44,7 @@ proc messageGestion {message host} {
 
 # Demande lecture du repere
 # Trame standard : [FROM] [INDEX] [commande] [argument]
-::piServer::sendToServer $port($module) "$port(serverGet) 0 getRepere [lrange $argv 1 [expr $argc - 1]]" $adresseIP
+::piServer::sendToServer $port($module) "$port(serverGet) 0 getRepere [lrange $argv 2 [expr $argc - 1]]" $adresseIP
 
 # Après 2 secondes, s'il n'a pas répondu on le tue
 set killID [after 2000 {
@@ -55,6 +55,7 @@ set killID [after 2000 {
 vwait forever
 
 # tclsh /opt/cultipi/cultiPi/get.tcl serverAcqSensor localhost "::sensor(1,value)" "::sensor(2,value)"
+# tclsh /opt/cultipi/cultiPi/get.tcl serverPlugUpdate localhost "::plug(1,value)" "::plug(2,value)"
 # tclsh /opt/cultipi/cultiPi/get.tcl serverAcqSensor localhost "::sensor(firsReadDone)" 
 # tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\get.tcl" serverAcqSensor localhost "::sensor(1,value)"
 # tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\get.tcl" serverAcqSensor localhost "::sensor(1,value)" "::sensor(2,value)"
