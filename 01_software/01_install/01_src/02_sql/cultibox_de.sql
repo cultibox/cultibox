@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 
 
 INSERT INTO `configuration` (`id`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_WATER_GRAPH`, `COLOR_LEVEL_GRAPH`, `COLOR_PH_GRAPH`, `COLOR_EC_GRAPH`, `COLOR_OD_GRAPH`, `COLOR_ORP_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `ALARM_ACTIV`, `ALARM_VALUE`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `STATISTICS`,`ADVANCED_REGUL_OPTIONS`,`SHOW_COST`,`SHOW_WEBCAM`,`RESET_MINMAX`, `RTC_OFFSET`) VALUES
-(1, '1.1.28', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 5, 1, 3, 1, '0000', '60', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 0,0, '00:00',0);
+(1, '1.1.28', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 1, 1, 3, 1, '0000', '60', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 0,0, '00:00',0);
 
 -- --------------------------------------------------------
 
