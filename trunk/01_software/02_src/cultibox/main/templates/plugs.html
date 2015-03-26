@@ -16,7 +16,7 @@
             <td class="conf-menu-marge-plug"></td>
             <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
                 <td class="menu-plug-item">
-                    <button id="div_plug<?php echo $i; ?>" class="menu_h1 <?php if(strcmp("$selected_plug","$i")==0) echo 'plug_menu_active'; ?>" onclick="expand_plug(<?php echo $i; ?>,<?php echo $nb_plugs; ?>); return false;"><?php echo __('PLUG_MENU')." ".$i; ?></button>
+                    <button id="div_plug<?php echo $i; ?>" class="menu_h1 <?php if(strcmp("$selected_plug","$i")==0) echo 'plug_menu_active'; ?>" onclick="expand_plug(<?php echo $i; ?>,<?php echo $nb_plugs; ?>); return false;"><?php echo $plugs_infos[$i-1]['PLUG_NAME']; ?></button>
                 </td>
                 <?php if($i%3==0) { ?>
                     <td class="conf-menu-marge-plug"></td></tr><tr><td class="conf-menu-marge-plug"></td>
