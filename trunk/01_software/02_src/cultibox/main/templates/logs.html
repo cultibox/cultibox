@@ -388,7 +388,7 @@
                 for($plugs=1;$plugs<=$nb_plugs;$plugs++) {
                     echo '<td class="log-div-margin-param"></td>';
                     $plugArrayTranslate =  translate_PlugType($plugs_infos[$plugs - 1]['PLUG_TYPE']);
-                    echo '<td class="log-marge-day-title">' . __('PLUG_MENU') . " " . $plugs . " (" . $plugArrayTranslate . ")";
+                    echo '<td class="log-marge-day-title">' . $plugs_infos[$plugs-1]["PLUG_NAME"] . " (" . $plugArrayTranslate . ")";
                     echo '<input type="checkbox" style="margin-right:30px;"'
                         . ' plug="' . $plugs . '"' 
                         . ' startDate="' . $legend_date . '"'
@@ -429,7 +429,7 @@
                 for($plugs=1;$plugs<=$nb_plugs;$plugs++) {  
                     echo '<td class="log-div-margin-param"></td>';
                     $plugArrayTranslate =  translate_PlugType($plugs_infos[$plugs - 1]['PLUG_TYPE']);
-                    echo '<td class="log-marge-day-title">' . __('PLUG_MENU') . " " . $plugs . " (" . $plugArrayTranslate . ")";
+                    echo '<td class="log-marge-day-title">' . $plugs_infos[$plugs-1]["PLUG_NAME"] . " (" . $plugArrayTranslate . ")";
                     echo '<input type="checkbox" style="margin-right:30px;"'
                         . ' plug="' . $plugs . '"' 
                         . ' startDate="' . $legend_date . '"'
