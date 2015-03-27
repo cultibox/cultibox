@@ -955,22 +955,23 @@ $(document).ready(function(){
                         if ($('img[name="syno_elemPlugImage_' + key + '"]').length != 0 ) {
                         
                             // Change text and opacity
-                            if (value == "on") {
-                                $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('VALUE_ON'); ?>");
-                                $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "1");
-                            } else if (value == "off") {
+                            if (value == "DEFCOM") {
+                                $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('DEFCOM'); ?>");
+                                $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "0.4");
+                            } else if (value == "off" || value == "00.0") {
                                 $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('VALUE_OFF'); ?>");
                                 $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "1");
                             } else if (value == "TIMEOUT") {
                                 $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('TIMEOUT'); ?>");
                                 $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "0.4");
                             } else {
-                                $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('DEFCOM'); ?>");
-                                $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "0.4");
+                                // On case
+                                $('img[name="syno_elemPlugImage_' + key + '"]').attr('title',"<?php echo __('VALUE_ON'); ?>");
+                                $('img[name="syno_elemPlugImage_' + key + '"]').css("opacity", "1");
                             }
                             
                             // Update image
-                            if (value == "on") {
+                            if (value != "DEFCOM" && value != "off" && value != "TIMEOUT" && value != "00.0" ) {
                                 $('img[name="syno_elemPlugImage_' + key + '"]').attr('src',$('img[name="syno_elemPlugImage_' + key + '"]').attr('src').replace("_OFF", "_ON"));
                             } else  {
                                 $('img[name="syno_elemPlugImage_' + key + '"]').attr('src',$('img[name="syno_elemPlugImage_' + key + '"]').attr('src').replace("_ON", "_OFF"));
