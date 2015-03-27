@@ -106,6 +106,9 @@ proc ::XMAX::setValue {plugNumber value address} {
         } else {
             # Exemple
             #  /usr/local/sbin/i2cset -y 1 0x23 12 125
+            # 1 multicolor
+            # 2 jaune
+            # 3 rouge
             
             # On pilote le registre de sortie
             set RC [catch {
