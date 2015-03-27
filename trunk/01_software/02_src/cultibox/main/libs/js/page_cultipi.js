@@ -657,6 +657,11 @@ $(document).ready(function(){
         step: 1,
         value: syno_configure_element_force_plug_xmax_1_slider_val
     });
+    $("#syno_configure_element_force_plug_xmax_1_slider_val").change(function() {
+       syno_configure_element_force_plug_xmax_1_slider_val = $("#syno_configure_element_force_plug_xmax_1_slider_val").val();
+       $( "#syno_configure_element_force_plug_xmax_1_slider" ).slider( "option", "value", syno_configure_element_force_plug_xmax_1_slider_val );
+    });
+    
     // Slider for xmax_2
     syno_configure_element_force_plug_xmax_2_slider_val = 0;
     $("#syno_configure_element_force_plug_xmax_2_slider_val").val(syno_configure_element_force_plug_xmax_2_slider_val);
@@ -670,6 +675,11 @@ $(document).ready(function(){
         step: 1,
         value: syno_configure_element_force_plug_xmax_2_slider_val
     });
+    $("#syno_configure_element_force_plug_xmax_2_slider_val").change(function() {
+       syno_configure_element_force_plug_xmax_2_slider_val = $("#syno_configure_element_force_plug_xmax_2_slider_val").val();
+       $( "#syno_configure_element_force_plug_xmax_2_slider" ).slider( "option", "value", syno_configure_element_force_plug_xmax_2_slider_val );
+    });
+    
     // Slider for xmax_3
     syno_configure_element_force_plug_xmax_3_slider_val = 0;
     $("#syno_configure_element_force_plug_xmax_3_slider_val").val(syno_configure_element_force_plug_xmax_3_slider_val);
@@ -683,6 +693,11 @@ $(document).ready(function(){
         step: 1,
         value: syno_configure_element_force_plug_xmax_3_slider_val
     });
+    $("#syno_configure_element_force_plug_xmax_3_slider_val").change(function() {
+       syno_configure_element_force_plug_xmax_3_slider_val = $("#syno_configure_element_force_plug_xmax_3_slider_val").val();
+       $( "#syno_configure_element_force_plug_xmax_3_slider" ).slider( "option", "value", syno_configure_element_force_plug_xmax_3_slider_val );
+    });
+    
     // Slider for dimmer
     syno_configure_element_force_plug_dimmer_slider_val = 0;
     $("#syno_configure_element_force_plug_dimmer_slider_val").val(syno_configure_element_force_plug_dimmer_slider_val);
@@ -696,7 +711,11 @@ $(document).ready(function(){
         step: 1,
         value: syno_configure_element_force_plug_dimmer_slider_val
     });
-    
+    $("#syno_configure_element_force_plug_dimmer_slider_val").change(function() {
+       syno_configure_element_force_plug_dimmer_slider_val = $("#syno_configure_element_force_plug_dimmer_slider_val").val();
+       $( "#syno_configure_element_force_plug_dimmer_slider" ).slider( "option", "value", syno_configure_element_force_plug_dimmer_slider_val );
+    });
+
     // Display and control user form for pilot plug
     $('body').on('click', '.syno_pilot_plug_elem_button', function(e) {
         e.preventDefault();
