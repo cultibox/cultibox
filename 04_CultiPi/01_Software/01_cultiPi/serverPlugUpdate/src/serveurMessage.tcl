@@ -19,7 +19,7 @@ proc messageGestion {message networkhost} {
             # Pour toutes les variables demandées
             set indexVar 3
             set returnList ""
-            while {[set variable [::piTools::lindexRobust $message $indexVar]] != "" && $indexVar < [llength $message - 1]} {} {
+            while {[set variable [::piTools::lindexRobust $message $indexVar]] != "" && $indexVar < [llength $message - 1]} {
                 # La variable est le nom de la variable à lire
                 
                 ::piLog::log [clock milliseconds] "debug" "Asked getRepere $variable"
@@ -34,6 +34,7 @@ proc messageGestion {message networkhost} {
                 }
                 
                 incr indexVar
+
             }
 
             ::piLog::log [clock milliseconds] "debug" "response : $serverForResponse $indexForResponse getRepere $returnList"
