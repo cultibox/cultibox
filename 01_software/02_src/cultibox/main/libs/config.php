@@ -165,10 +165,10 @@ $GLOBALS['WEBCAM_RESOLUTION'] = array("320x240", "320x480", "400x300","480x360",
 $GLOBALS['WEBCAM_PALETTE'] = array("PNG","JPEG","MJPEG","S561","RGB32","RGB24","BGR32","BGR24","YUYV","UYVY","YUV420P","BAYER","SGBRG8","SGRBG8","RGB565","RGB555","Y16","GREY");
 
 // Software mode : cultipi or cultibox:
-$GLOBALS['MODE'] = "cultipi";
+$GLOBALS['MODE'] = "cultibox";
 
 // For cultipi : path to the conf (for windows : C:/cultibox/xampp/htdocs/cultibox)
-$GLOBALS['CULTIPI_CONF_PATH'] = "C:/cultibox/xampp/htdocs/cultibox";
+$GLOBALS['CULTIPI_CONF_PATH'] = "/etc/cultipi";
 
 $GLOBALS['CULTIPI_CONF_TEMP_PATH'] = $GLOBALS['CULTIPI_CONF_PATH'] . "/conf_tmp";
 ?>
