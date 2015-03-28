@@ -9,9 +9,9 @@ namespace eval ::XMAX {
     # Définition des registres
     set register(STATUS)    0x00
     set register(PWM_1)     0x01
-    set register(PWM_2)     0x02
-    set register(PWM_3)     0x03
-    set register(PWM_4)     0x04
+    set register(PWM_2)     0x03
+    set register(PWM_3)     0x04
+    set register(PWM_4)     0x02
     set register(PWM_FAN)   0x05
     set register(TARGET_TEMP) 0x06
     set register(TEMP)  0x07
@@ -101,14 +101,14 @@ proc ::XMAX::setValue {plugNumber value address} {
     
     for {set i 1} {$i < 4} {incr i} {
         # Si c'est la même valeur qu'avant, on n'envoie pas
-        if {$newValueForPWM($i) == $register(PWM_${i}_LAST)} {
-            ::piLog::log [clock milliseconds] "debug" "::XMAX::setValue Output PWM_${i} does not send (same as old value ($newValueForPWM($i)))"
-        } else {
+        # if {$newValueForPWM($i) == $register(PWM_${i}_LAST)} {
+        #    ::piLog::log [clock milliseconds] "debug" "::XMAX::setValue Output PWM_${i} does not send (same as old value ($newValueForPWM($i)))"
+        #} else {
             # Exemple
             #  /usr/local/sbin/i2cset -y 1 0x23 12 125
             # 1 multicolor
-            # 2 jaune
-            # 3 rouge
+            # 3 Rouge
+            # 4 Bleu
             
             # On pilote le registre de sortie
             set RC [catch {
@@ -123,7 +123,7 @@ proc ::XMAX::setValue {plugNumber value address} {
                 # on enregistre
                 set register(PWM_${i}_LAST) $newValueForPWM(${i})
             }
-        }
+        #}
         after 10
     }
 
