@@ -1062,6 +1062,62 @@ $(document).ready(function(){
     }
     $.timeout.push(setInterval(updatePlugs, 2000));
     
+    // Loop for updating plugs
+    function updateCultipiStatus() {
+        
+        $.ajax({
+            beforeSend: function(jqXHR) {
+                $.xhrPool.push(jqXHR);
+            },
+            complete: function(jqXHR) {
+                var index = $.xhrPool.indexOf(jqXHR);
+                if (index > -1) {
+                    $.xhrPool.splice(index, 1);
+                }
+            },
+            cache: false,
+            type: "POST",
+            data: {
+                action:"getCultiPiStatus"
+            },
+            url: "main/modules/external/synoptic.php",
+            success: function (data) {
+
+                var objJSON = jQuery.parseJSON(data);
+
+                if (objJSON.error == "") {
+                
+                    switch (objJSON.status) {
+                        case "starting" :
+                        case "loading_serverLog" :
+                        case "init_log" :
+                        case "wait_20s" :
+                        case "checking_date" :
+                        case "loading_serverAcqSensor" :
+                        case "loading_serverPlugUpdate" :
+                        case "loading_serverHisto" :
+                            $('#synoptic_updateCultipiStatus').attr('src','main/libs/img/service_restart.png');
+                            $('#synoptic_updateCultipiStatus').attr('title','<?php echo __('SYNO_UPDATE_CULTIPI_STATUS_START'); ?>');
+                            break;
+                        case "initialized" :
+                            $('#synoptic_updateCultipiStatus').attr('src','main/libs/img/service_on.png');
+                            $('#synoptic_updateCultipiStatus').attr('title','<?php echo __('SYNO_UPDATE_CULTIPI_STATUS_STARTED'); ?>');
+                            break;
+                        case "TIMEOUT" :
+                        case "DEFCOM" :
+                        default :
+                            $('#synoptic_updateCultipiStatus').attr('src','main/libs/img/button_cancel.png');
+                            $('#synoptic_updateCultipiStatus').attr('title','<?php echo __('SYNO_UPDATE_CULTIPI_STATUS_TIMEOUT'); ?>');
+                            break;
+                    }
+                }
+            }, error: function(data) {
+            }
+        });
+    }
+    $.timeout.push(setInterval(updateCultipiStatus, 5000));
+    
+    
 
     // Display services logs:
     $("a[name='cultipi_logs']").click(function(e) {

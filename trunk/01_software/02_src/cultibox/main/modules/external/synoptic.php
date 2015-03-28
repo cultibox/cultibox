@@ -154,7 +154,10 @@
             if((isset($_POST['id'])) && (!empty($_POST['id']))) {
                 $ret_array = cultipi\getPlugInformation($_POST['id']);
             }
-            break;              
+            break;
+        case "getCultiPiStatus" :
+            $ret_array = cultipi\getCultiPiStatus();
+            break;            
         default:
             break;
     }

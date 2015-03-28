@@ -613,6 +613,27 @@ function getPlugInformation ($id) {
 }
 // }}}
 
+// {{{ getCultiPiStatus()
+// ROLE Retrieve CultiPiStatus
+// RET CultiPiStatus
+function getCultiPiStatus() {
+
+    $ret = "";
+
+    $return_array = array();
+    $return_array["status"] = "TIMEOUT"; 
+    $return_array["error"] = "";
+    
+    try {
+        $return_array["status"] = exec('tclsh "/opt/cultipi/cultiPi/get.tcl"  serverCultipi localhost "statusInitialisation"');
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        $return_array["error"] = $e->getMessage();
+    }
+
+    return $return_array;
+}
+// }}}
 
 }
 

@@ -1922,6 +1922,15 @@ msgstr "verwendet wird, nicht aktualisierte Konfiguration, klicken Sie hier, um 
 msgid "WAIT_UPDATED_CONF"
 msgstr "Überprüfen der Konfiguration"
 
+msgid "SYNO_UPDATE_CULTIPI_STATUS_START"
+msgstr "Wifi -Modul beim Systemstart"
+
+msgid "SYNO_UPDATE_CULTIPI_STATUS_STARTED"
+msgstr "Schritte Wifi -Modul"
+
+msgid "SYNO_UPDATE_CULTIPI_STATUS_TIMEOUT"
+msgstr "Wifi -Modul antwortet nicht"
+
 msgid "CULTIPI_IMAGE_VERSION"
 msgstr "Version des Bildes"
 
