@@ -34,7 +34,7 @@ else
     VERSION=""
 fi
 
-if [ "$VERSION" != "150315" ]; then
+if [ $VERSION -lt 150315 ]; then
     cat << EOF > /etc/rc.local
 #!/bin/bash 
 
@@ -128,4 +128,8 @@ EOF
 
     #We need to reboot:
     touch /tmp/REBOOT-NEEDED 
+fi
+
+if [ $VERSION -lt 280315 ]; then
+    /usr/sbin/adduser www-data i2c
 fi
