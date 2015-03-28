@@ -1121,7 +1121,7 @@ function create_network_file($myConf) {
 
         if(strcmp($myConf['wire_type'],"static")==0) {
             $myArray[]="iface eth0 inet static";
-            $myArray[]="address ".$myConf['wire_ip'];
+            $myArray[]="address ".$myConf['wire_address'];
             $myArray[]="netmask ".$myConf['wire_mask'];
 
             if((strcmp($myConf['wire_gw'],"")!=0)&&(strcmp($myConf['wire_gw'],"0.0.0.0")!=0)) {

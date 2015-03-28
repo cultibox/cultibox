@@ -11,11 +11,17 @@ if [ -f /etc/cron.hourly/cultipi ]; then
     chown root:root /etc/cron.hourly/cultipi
 fi
 
+if [ -f /etc/default/cultipi ]; then
+    chmod 644 /etc/default/cultipi
+    chown root:root /etc/default/cultipi
+fi
 
 if [ ! -O /etc/logrotate.d/cultipi ] || [ ! -G /etc/logrotate.d/cultipi ]; then
     chown root:root /etc/logrotate.d/cultipi
     chmod 644 /etc/logrotate.d/cultipi
 fi
+
+
 
 if [ "`cat /etc/crontab|grep culticron`" == "" ]; then
     echo "*/1 *   * * *   root    /bin/bash /etc/default/culticron" >> /etc/crontab

@@ -26,6 +26,28 @@ if [ "$CULTIRAZ_ACTIV" == "yes" ]; then
     fi
 fi
 
+# Check aliveness of wlan connection:
 if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
-    /bin/ping -c 1 -I wlan0 8.8.8.8 >/dev/null
+    ip="`/sbin/ifconfig wlan0 | grep \"inet adr\" | awk -F: '{print $2}' | awk '{print $1}'`"
+    # If no ip address is defined but wlan exists, we have to restart wlan configuration:
+    if [ "$ip" == "" ]; then
+        /sbin/ifdown wlan0
+        sleep 2
+        /sbin/ifup --force wlan0
+    else
+        # If ip address is defined, we have to check if we can access the gateway in Managed Mode only:
+        mode="`/sbin/iwconfig wlan0|/bin/grep -i \"Mode:managed\"`"
+        if [ "$mode" != "" ]; then
+            gw="`/sbin/route|/bin/grep wlan0|/bin/grep default|/usr/bin/awk -F\" \" '{print$2}'`"
+            if [ "$gw" != "" ]; then
+                # If we can't access the gateway, we have lost the connection, we have to restart the connection:
+                /bin/ping -c 1 $gw >/dev/null 2>&1
+                if [ $? -ne 0 ]; then
+                    /sbin/ifdown wlan0
+                    sleep 2
+                    /sbin/ifup --force wlan0
+                fi
+            fi
+        fi
+    fi
 fi
