@@ -607,7 +607,7 @@ $(function () {
                 }
                 ,
                 shared: true,
-                backgroundColor:'rgba(255, 255, 255, 0.5)',
+                backgroundColor:'rgba(255, 255, 255, 0.8)',
                 useHTML: true,
                 formatter: function() {
                     var s = '<p align="center"><b>'+ Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x) +'</b><br />';
