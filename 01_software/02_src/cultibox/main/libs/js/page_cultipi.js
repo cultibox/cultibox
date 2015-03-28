@@ -485,7 +485,7 @@ $(document).ready(function(){
                 $('#' + syno_configure_element_object.scaleImageId + "_td").css("height",$('#' + syno_configure_element_object.scaleImageId).height());
             } else {
                 $('#' + syno_configure_element_object.scaleImageId + "_td").css("height",$('#' + syno_configure_element_object.scaleImageId).width());
-            }
+        }
         }
     );
     
@@ -755,20 +755,6 @@ $(document).ready(function(){
     // Display and control user form for pilot plug
     $('body').on('click', '.syno_pilot_plug_elem_button', function(e) {
         e.preventDefault();
-        $.blockUI({
-            message: "",
-            centerY: 0,
-            css: {
-                top: '20%',
-                border: 'none',
-                padding: '5px',
-                backgroundColor: 'grey',
-                '-webkit-border-radius': '10px',
-                '-moz-border-radius': '10px',
-                opacity: .9,
-                color: '#fffff'
-            }
-        });
 
         idOfElem = $(this).attr('id').split("_")[2];
 
@@ -828,7 +814,6 @@ $(document).ready(function(){
                             text: CLOSE_button,
                             click: function () {
                                 $( this ).dialog( "close" );
-                                $.unblockUI();
                                 return false;
                             }
                         }]
@@ -836,7 +821,6 @@ $(document).ready(function(){
                     
                 }
             }, error: function(data) {
-                $.unblockUI();
             }
         });
     });
