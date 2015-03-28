@@ -32,6 +32,9 @@ source [file join $rootDir cultiPi src checkI2C.tcl]
 # Port number
 set port(server) [::piServer::findAvailableSocket 6000]
 
+# Initialisation de la variable status
+set ::statusInitialisation "starting"
+
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
 
@@ -42,9 +45,13 @@ puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : conf :
 # Load cultiPi configuration
 set confStart(start) [lindex [::piXML::open_xml [file join $fileName(cultiPi,confDir) cultiPi start.xml]] 2]
 
+# Load server Culti Pi
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Load server" ; update
+::piServer::start messageGestion $port(server)
 
 # Load serverLog
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Starting serveurLog"
+set ::statusInitialisation "loading_serverLog"
 set confStart(serverLog,pid) ""
 set confStart(serverLog) [::piXML::searchItemByName serverLog $confStart(start)]
 set confStart(serverLog,pathexe) [::piXML::searchOptionInElement pathexe $confStart(serverLog)]
@@ -65,20 +72,16 @@ set TimeStartserveurLog [clock milliseconds]
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : serveurLog : $confStart(serverLog,pathexe) \"$confStart(serverLog,path)\" $confStart(serverLog,port) \"$confStart(serverLog,logsRootDir)\""
 
 set confStart(serverLog,pipeID) [open "| $confStart(serverLog,pathexe) \"$confStart(serverLog,path)\" $confStart(serverLog,port) \"$confStart(serverLog,logsRootDir)\""]
-after $confStart(serverLog,waitAfterUS)
+after $confStart(serverLog,waitAfterUS) 
+update
 
 # init log
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Open log" ; update
+set ::statusInitialisation "init_log"
 ::piLog::openLog $confStart(serverLog,port) "culipi"
 ::piLog::log $TimeStartcultiPi "info" "starting serveur"
 ::piLog::log $TimeStartserveurLog "info" "starting serveurLog"
 ::piLog::log $TimeStartserveurLog "info" "Port : $port(server)"
-
-# Load server Culti Pi
-puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Load server" ; update
-::piLog::log [clock millisecond] "info" "starting serveur"
-::piServer::start messageGestion $port(server)
-::piLog::log [clock millisecond] "info" "serveur is started"
 
 # On alimente les esclaves
 set RC [catch {
@@ -94,14 +97,16 @@ if {$RC != 0} {
 }
 
 # On attend 20 seconds
+set ::statusInitialisation "wait_20s"
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : Waiting 20 seconds"
-after 5000
-puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : 15 seconds remaining"
-after 5000
-puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : 10 seconds remaining"
-after 5000
-puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : 5 seconds remaining"
-after 5000
+for {set i 0} {$i < 200} {incr i} {
+    if {[expr $i % 10] == 0} {
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : [expr 20 - $i / 10] seconds remaining"
+    }
+    after 100
+    update
+}
+
 
 # On change la vitesse du bus I2C
 # set RC [catch {
@@ -120,11 +125,13 @@ proc checkDate {} {
         puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Date is not correct ([clock seconds] under 1419700000) , waiting ..."; update
         ::piLog::log [clock millisecond] "info" "Date is not correct, waiting ..."
         after 1000 checkDate
+        update
     }
 }
 
+set ::statusInitialisation "checking_date"
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Check date" ; update
-after 200 checkDate
+after 200 checkDate ; update
 vwait dateIsCorrect
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Date is OK, continue" ; update
 
@@ -147,8 +154,11 @@ foreach moduleXML $confStart(start) {
         ::piLog::log [clock milliseconds] "info" "Load $moduleName"
         puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName exec : $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port) $port(server)"
         set confStart($moduleName,pipeID) [open "| $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port) $port(server)"]
+        
+        set ::statusInitialisation "loading_${moduleName}"
+        
         after $confStart($moduleName,waitAfterUS)
-               
+        update
     }
 }
 
@@ -164,6 +174,7 @@ proc askPid {} {
     }
 }
 after 5000 askPid
+update
 
 proc updateRepere {} {
 
@@ -175,6 +186,8 @@ proc updateRepere {} {
 }
 
 updateRepere
+
+set ::statusInitialisation "initialized"
 
 vwait forever
 

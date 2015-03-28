@@ -118,12 +118,13 @@ proc ::XMAX::setValue {plugNumber value address} {
                 ::piLog::log [clock milliseconds] "error" "::XMAX::setValue Module ${i} with value $newValueForPWM(${i}) does not respond :$msg "
             } else {
                 # On debug !
-                ::piLog::log [clock milliseconds] "debug" "::XMAX::setValue Output PWM_${i} to $newValueForPWM(${i}) OK"
+                ::piLog::log [clock milliseconds] "info" "::XMAX::setValue Output PWM_${i} to $newValueForPWM(${i}) OK"
+
+                # on enregistre
+                set register(PWM_${i}_LAST) $newValueForPWM(${i})
             }
-            # on enregistre
-            set register(PWM_${i}_LAST) $newValueForPWM(${i})
         }
-        after 1
+        after 10
     }
 
 }
