@@ -126,3 +126,7 @@ if [ ! -d /home/cultipi/cultibox ]; then
     chown -R www-data:www-data /home/cultipi/cultibox
 fi
 
+
+find /var/www/cultibox/ -name "*-dist"|xargs rm
+
+
