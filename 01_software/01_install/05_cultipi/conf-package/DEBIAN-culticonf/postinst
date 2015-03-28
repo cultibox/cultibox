@@ -135,5 +135,6 @@ if [ $VERSION -lt 280315 ]; then
     echo "280315" > /VERSION
 fi
 
-find /etc/default/ -name "*-dist"
+find /etc/default/ -name "*-dist"|xargs rm 2>/dev/null
+
 
