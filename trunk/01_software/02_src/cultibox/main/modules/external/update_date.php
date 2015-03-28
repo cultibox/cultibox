@@ -19,7 +19,7 @@ if(isset($_GET['date']) && !empty($_GET['date'])) {
 
             // Update RTC Hour using RPi hour
             try {
-                $ret = exec('tclsh "/opt/cultiTime/setDate.tcl"');
+                $ret = exec('tclsh "/opt/cultitime/setDate.tcl"');
             } catch (Exception $e) {
                 echo 'Exception reçue : ',  $e->getMessage(), "\n";
             }
