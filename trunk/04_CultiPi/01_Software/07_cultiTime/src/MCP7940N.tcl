@@ -34,7 +34,7 @@ proc ::MCP7940N::readSeconds {} {
     
     # Lecture du nombre d'heure
     set result [exec /usr/local/sbin/i2cget -y 1 0x6f 0x02 b]
-    set heures [expr 0x[string index $result 2] & 0x1][string index $result 3]
+    set heures [expr 0x[string index $result 2] & 0x3][string index $result 3]
     
     # Lecture du jour
     set result [exec /usr/local/sbin/i2cget -y 1 0x6f 0x04 b]
@@ -76,7 +76,7 @@ proc ::MCP7940N::setSeconds {secondes} {
     set result [exec /usr/local/sbin/i2cset -y 1 0x6f 0x04 $ToWrite]
     
     # Écriture du nombre d'heures
-    set ToWrite [expr 0x[clock format $secondes -format "%H"] & 0x1f]
+    set ToWrite [expr 0x[clock format $secondes -format "%H"] & 0x3f]
     set result [exec /usr/local/sbin/i2cset -y 1 0x6f 0x02 $ToWrite]
     
     # Écriture du nombre de minute
