@@ -132,4 +132,8 @@ fi
 
 if [ $VERSION -lt 280315 ]; then
     /usr/sbin/adduser www-data i2c
+    echo "280315" > /VERSION
 fi
+
+find /etc/default/ -name "*-dist"
+
