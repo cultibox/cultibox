@@ -1,6 +1,8 @@
 
 proc messageGestion {message networkhost} {
 
+    global statusInitialisation
+
     # Trame standard : [FROM] [INDEX] [commande] [argument]
     set serverForResponse   [::piTools::lindexRobust $message 0]
     set indexForResponse    [::piTools::lindexRobust $message 1]
@@ -22,6 +24,38 @@ proc messageGestion {message networkhost} {
             ::piLog::log [clock milliseconds] "info" "Asked port of $module"
             # Comme c'est une réponse, le nom du serveur est celui de celui qui a demandé
             ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse _getPort $module $::confStart($module,port)" $networkhost
+        }
+        "getRepere" {
+        
+            # Pour toutes les variables demandées
+            set indexVar 3
+            set returnList ""
+            while {[set variable [::piTools::lindexRobust $message $indexVar]] != ""} {
+                # La variable est le nom de la variable à lire
+                
+                ::piLog::log [clock milliseconds] "info" "Asked getRepere $variable by $networkhost"
+                
+                if {[info exists ::$variable] == 1} {
+                
+                    eval set returnValue $$variable
+
+                    lappend returnList $returnValue
+                } else {
+                    ::piLog::log [clock milliseconds] "error" "Asked variable $variable by $networkhost - variable doesnot exists"
+                }
+                
+                incr indexVar
+                
+                # On evite le localhost final
+                if {[::piTools::lindexRobust $message [expr $indexVar + 1]] == ""} {
+                    break;
+                }
+                
+            }
+
+            ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere - $returnList - to $networkhost"
+            ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $returnList" $networkhost
+
         }
         "_subscription" -
         "_subscriptionEvenement" {

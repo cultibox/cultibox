@@ -60,4 +60,5 @@ vwait forever
 # tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\get.tcl" serverAcqSensor 192.168.0.100 "::sensor(1,value)"
 # tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\get.tcl" serverAcqSensor localhost "::sensor(1,value)"
 # tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\get.tcl" serverAcqSensor localhost "::sensor(1,value)" "::sensor(2,value)"
+# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\get.tcl" serverCultipi localhost "statusInitialisation"
 # tclsh /home/sdf/Bureau/Cultipi/cultiPi/get.tcl serverAcqSensor 192.168.1.55 "::sensor(1,value)"
