@@ -10,5 +10,9 @@ puts  "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiTime : 
 ::MCP7940N::start
 
 # L'heure est correcte, on met à jour le RTC
+puts  "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiTime : Mise à jour de l'heure"
 ::MCP7940N::setSeconds [clock seconds]
-        
+
+set rtcHour [::MCP7940N::readSeconds]
+puts  "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiTime : L'heure du RTC est [clock format $rtcHour -format "%Y %b %d %H:%M:%S"]"
+

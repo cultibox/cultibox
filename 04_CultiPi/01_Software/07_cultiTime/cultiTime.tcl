@@ -56,13 +56,13 @@ proc updateRTCTime {} {
         ::MCP7940N::setSeconds [clock seconds]
         
         # L'heure est correct, on attend 24 heures
-        after [expr 100 * 24 * 60 * 60] updateRTCTime
+        after [expr 1000 * 24 * 60 * 60] updateRTCTime
     } else {
     
         puts  "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiTime : L'heure du RPi est incorrecte. On attend une minute avant de sauvegarder l'heure"
     
         # l'heure est incorrect, on attend que 1 minutes
-        after [expr 100 * 60] updateRTCTime
+        after [expr 1000 * 60] updateRTCTime
     }
 
     
