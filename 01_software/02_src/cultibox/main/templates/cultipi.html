@@ -50,16 +50,16 @@
     <br />
 
     <div id="set" style="min-height: 700px;" >
-        
+
         <?php
             // Add every sensor
-            
+
             // Read sensor list
             $sensorList = cultipi\getSensorOfSynoptic();
 
             // retrieve values
             $sensorValues = cultipi\getAllSensorLiveValue();
-            
+
             foreach ($sensorList as $index => $sensor) 
             {
                 echo '<div id="syno_elem_' . $sensor["id"] . '" class="" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;z-index:' . $sensor["z"] . '" >';
@@ -109,29 +109,38 @@
                         $newText = $tootlTipText = $sensorValuesList[0] . "???";
                         break;
                 }
-                
+
                 // If defcom, set opacity to 0.4
                 if ($sensorValuesList[0] == "DEFCOM" || $sensorValuesList[0] == "TIMEOUT") {
                     $newStyle = 'opacity: 0.4;';
                     $tootlTipText = __($sensorValuesList[0]);
                     $newText = "";
                 }
-                
+
                 echo '      <td colspan="2" ><p id="syno_elemValueSensor_val1_' . $sensor["indexElem"] . '" class="pInline" >' . $newText . '</p>';
                 echo '      </td>';
                 echo '    </tr>';
+                echo '    <tr>';
+                $newHeight = "";
+                if ($sensor["rotation"] == 90 || $sensor["rotation"] == 270)
+                {
+                    $newHeight = 'style="height:' . $sensor["scale"] . 'px;"';
+                }
+                echo '      <td id="syno_elemImage_' . $sensor["id"] . '_td" colspan="3" ' . $newHeight . ' >';
+                echo '          <img id="syno_elemImage_' . $sensor["id"] . '" name="syno_elemSensorImage_' . $sensor["indexElem"] . '" ';
+                echo '              src="main/libs/img/images-synoptic-sensor/' . $sensor["image"] . '" ';
+                echo '              style="width:' . $sensor["scale"] . 'px;cursor: move; ' . $newStyle . ';" ';
+                echo '              title="' . $tootlTipText .'" ';
+                echo '              alt="capteur" ';
+                echo '              class="rotate' . $sensor["rotation"] . '">';
+                echo '      </td>';
+                echo '    </tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" name="syno_elemSensorImage_' . $sensor["indexElem"] . '" ';
-                echo '       src="main/libs/img/images-synoptic-sensor/' . $sensor["image"] . '" ';
-                echo '       style="width:' . $sensor["scale"] . 'px;cursor: move; ' . $newStyle . '" ';
-                echo '       title="' . $tootlTipText .'" ';
-                echo '       alt="capteur" ';
-                echo '       class="rotate' . $sensor["rotation"] . '">';
                 echo '</div>';
             }
-            
+
             // Add plugs
-            
+
             // Read plug list
             $plugList = cultipi\getPlugOfSynoptic();
             
@@ -159,7 +168,13 @@
                 echo '          />';
                 echo '      </td>';
                 echo '    </tr>';
-                echo '  </table>';
+                echo '    <tr>';
+                $newHeight = "";
+                if ($plug["rotation"] == 90 || $plug["rotation"] == 270)
+                {
+                    $newHeight = 'style="height:' . $plug["scale"] . 'px;"';
+                }
+                echo '      <td id="syno_elemImage_' . $plug["id"] . '_td" colspan="3" ' . $newHeight . ' >';
                 // If defcom, set opacity to 0.4
                 $newStyle = "";
                 $tootlTipText = $plugValues[$plug["indexElem"]];
@@ -171,11 +186,14 @@
                 }elseif ($tootlTipText == "off") {
                     $tootlTipText = __("VALUE_OFF");
                 }
-                echo '  <img id="syno_elemImage_' . $plug["id"] . '" name="syno_elemPlugImage_' . $plug["indexElem"] . '" ';
-                echo '        src="main/libs/img/images-synoptic-plug/' . $plug["image"] . '" alt="Prise" ';
-                echo '        style="' . $newStyle . 'width:' . $plug["scale"] . 'px;cursor: move" ';
-                echo '        title="' . $tootlTipText .'" ';
-                echo '        class="rotate' . $plug["rotation"] . '">';
+                echo '          <img id="syno_elemImage_' . $plug["id"] . '" name="syno_elemPlugImage_' . $plug["indexElem"] . '" ';
+                echo '              src="main/libs/img/images-synoptic-plug/' . $plug["image"] . '" alt="Prise" ';
+                echo '              style="' . $newStyle . 'width:' . $plug["scale"] . 'px;cursor: move";" ';
+                echo '              title="' . $tootlTipText .'" ';
+                echo '              class="rotate' . $plug["rotation"] . '">';
+                echo '      </td>';
+                echo '    </tr>';
+                echo '  </table>';
                 echo '</div>';
             }
             
@@ -196,11 +214,19 @@
                 echo '          />';
                 echo '      </td>';
                 echo '    </tr>';
-                echo '    <tr>';
-                echo '    </tr>';
+                $newHeight = "";
+                if ($other["rotation"] == 90 || $other["rotation"] == 270)
+                {
+                    $newHeight = 'style="height:' . $other["scale"] . 'px;"';
+                }
+                echo '      <td id="syno_elemImage_' . $other["id"] . '_td" colspan="3" ' . $newHeight . ' >';
+                echo '      <img id="syno_elemImage_' . $other["id"] . '" src="main/libs/img/images-synoptic-other/' . $other["image"] . '" ';
+                echo '          alt="Prise"';
+                echo '          style="width:' . $other["scale"] . 'px;cursor: move"';
+                echo '          class="rotate' . $other["rotation"] . ';" ';
+                echo '      ">';
+                echo '    </td></tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $other["id"] . '" src="main/libs/img/images-synoptic-other/' . $other["image"] . '" ';
-                echo '                 alt="Prise" style="width:' . $other["scale"] . 'px;cursor: move" class="rotate' . $other["rotation"] . '">';
                 echo '</div>';
             }
             
