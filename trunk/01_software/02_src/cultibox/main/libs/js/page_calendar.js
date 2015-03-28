@@ -818,6 +818,20 @@ $(document).ready(function() {
                     return "";
                 }
 
+                $.blockUI({
+                  message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                  centerY: 0,
+                  css: {
+                        top: '20%',
+                        border: 'none',
+                        padding: '5px',
+                        backgroundColor: 'grey',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .9,
+                        color: '#fffff'
+                    }
+                });
                 // Update datatbase in ajax
                 $.ajax({
                     cache: false,
@@ -831,6 +845,7 @@ $(document).ready(function() {
                     }
                 }).done(function (data) {
                     $('#calendar').fullCalendar( 'refetchEvents' );
+                    $.unblockUI();
                     if(data==1) {
                         display_modal_ui("#valid_create_calendar" , "popup_message");
                     } else {

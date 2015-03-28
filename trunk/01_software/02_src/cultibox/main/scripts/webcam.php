@@ -11,13 +11,6 @@ $main_info=array();
 $sd_card=""; //Path of the SD card
 
 
-$brightness=get_webcam("brightness",$main_error);
-$contrast=get_webcam("contrast",$main_error);
-$resolution=get_webcam("resolution",$main_error);
-$palette=get_webcam("palette",$main_error);
-
-
-
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { 
     if((!isset($sd_card))||(empty($sd_card))) {
@@ -36,11 +29,14 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 $screen="";
-$date_creation="";
+$webcam_conf=webcam\get_webcam_conf();
 
-if(is_file($GLOBALS['BASE_PATH']."tmp/webcam.jpg")) {
-    $screen="/cultibox/tmp/webcam.jpg";
-    $date_creation=date("H:i:s", filectime($GLOBALS['BASE_PATH']."tmp/webcam.jpg"));
+
+
+for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) {
+    if(is_file($GLOBALS['BASE_PATH']."tmp/webcam$i.jpg")) {
+        $screen{$i}="/cultibox/tmp/webcam$i.jpg";
+    }
 }
 
 

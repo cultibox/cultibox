@@ -726,8 +726,12 @@ td.conf-field-cultipi {
     width: 20%;
 }
 
+td.conf-marge-webcam {
+    width: 50%;
+}
+
 td.conf-title-webcam {
-    width: 10%;
+    width: 20%;
 }
 
 td.conf-field-service {

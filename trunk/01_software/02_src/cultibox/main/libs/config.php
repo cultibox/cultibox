@@ -171,6 +171,10 @@ $GLOBALS['MODE'] = "cultibox";
 $GLOBALS['CULTIPI_CONF_PATH'] = "/etc/cultipi";
 
 $GLOBALS['CULTIPI_CONF_TEMP_PATH'] = $GLOBALS['CULTIPI_CONF_PATH'] . "/conf_tmp";
+
+// Maximal number of webcam plugged:
+$GLOBALS['MAX_WEBCAM'] = 4;
+
 ?>
 
 
