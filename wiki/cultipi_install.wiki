@@ -243,10 +243,11 @@ apt-get autoremove
 rm -Rf i2c-tools-master
 }}}
 
-Et à donner les droits à l'utilisateur cultipi:
+Et à donner les droits à l'utilisateur cultipi et www-data:
 
 {{{
 adduser cultipi i2c
+adduser www-data i2c
 }}}
 	
  * Ajout du binaire GPIO:
