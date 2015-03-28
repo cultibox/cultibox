@@ -4,60 +4,53 @@
 <br />
 <p class="title_conf"><?php echo __('TITLE_WEBCAM'); ?></p>
 <br />
-<div id="webcam" style="display:none"> 
-    <p class="p_center">
-        <img id="screen_webcam" src="<?php echo $screen; ?>" title="" class="screenshot" alt="" />
-    </p>
-    <p class="p_date_creation" id="date_creation_webcam">
-        <?php if(strcmp("$date_creation","")!=0) { 
-           echo __('TIME_CREATION_IMG')." ".$date_creation;
-        } ?>
-    </p>
-</div>
+        <table class="table_width">
+        <tr>
+<?php for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) { ?>
+            <td>
+                <div id="webcam<?php echo $i; ?>" style="display:none"> 
+                <img id="screen_webcam<?php echo $i; ?>" src="<?php echo $screen{$i}; ?>" title="" class="screenshot" alt="" />
+                <div id="div_link_webcam<?php echo $i; ?>" style="display:none"><a href="" id="link_webcam<?php echo $i; ?>" name="<?php echo $i; ?>"><img src='/cultibox/main/libs/img/update_rpi.png' alt='' title="" /></a></div>
+            </td>
+<?php } ?>
+        </tr>
+        </table>
 
-<div id="error_webcam" style="display:none" class="text_info">
-    <?php echo __('ERROR_WEBCAM'); ?>
-</div>
-
-<br />
-<br />
-<hr />
-<br />
-<br />
-<p class="title_conf"><?php echo __('MENU_CONF'); ?></p>
-<table class="table_width">
-    <tr>
+<?php for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) { ?>
+    <div id="configure_webcam<?php echo $i; ?>" style="display:none">
+        <table class="table_width">
+        <tr>
         <td  class="conf-marge-cultipi"></td>
-        <td class="conf-title-webcam"><?php echo __('BRIGHTNESS'); ?>: </td><td class="conf-marge"><input type="checkbox" id="brightness_box" <?php if(strcmp("$brightness","-1")!=0) echo 'checked';  ?> /></td>
-        <td class="conf-status-cultipi"><div class="slider_div" id="brightness_slider" <?php if(strcmp("$brightness","-1")==0) echo 'style="display:none"';  ?>></div></td>
-        <td><div id="brightness_value" <?php if(strcmp("$brightness","-1")==0) echo 'style="display:none"';  ?>><input type="text" name="brightness" id="brightness" value="<?php if(strcmp("$brightness","-1")==0) { echo '0'; } else { echo $brightness; } ?>" size="4" readonly />%</td>
+        <td class="conf-title-webcam"><?php echo __('BRIGHTNESS'); ?>: </td>
+        <td class="conf-marge-cultipi"><div class="slider_div" id="brightness_slider<?php echo $i; ?>"></div></td>
+        <td><input type="text" name="brightness" id="brightness<?php echo $i; ?>" value="<?php echo $webcam_conf[$i]['brightness']; ?>" size="4" readonly />%</td>
     </tr>
     <tr>
         <td></td>
-        <td><?php echo __('CONTRAST'); ?>:</td><td> <input type="checkbox" id="contrast_box"  <?php if(strcmp("$contrast","-1")!=0) echo 'checked';  ?> /></td>
-        <td><div id="contrast_slider" class="slider_div" <?php if(strcmp("$contrast","-1")==0) echo 'style="display:none"';  ?>></div></td>
-        <td><div id="contrast_value" <?php if(strcmp("$contrast","-1")==0) echo 'style="display:none"';  ?>><input type="text" name="contrast" id="contrast" value="<?php if(strcmp("$contrast","-1")==0) { echo '0'; } else { echo $contrast; } ?>" size="4" readonly />%</div></td>
+        <td><?php echo __('CONTRAST'); ?>:</td>
+        <td><div id="contrast_slider<?php echo $i; ?>" class="slider_div"></div></td>
+        <td><input type="text" name="contrast" id="contrast<?php echo $i; ?>" value="<?php echo $webcam_conf[$i]['contrast']; ?>" size="4" readonly />%</td>
     </tr>
     <tr>
         <td></td>
-        <td><?php echo __('RESOLUTION'); ?>:</td><td> <input type="checkbox" id="resolution_box"  <?php if(strcmp("$resolution","-1")!=0) echo 'checked';  ?> /></td>
-        <td><div id="resolution_option" <?php if(strcmp("$resolution","-1")==0) echo 'style="display:none"';  ?>>
-            <select name="resolution_value" id="resolution_value" >
+        <td><?php echo __('RESOLUTION'); ?>:</td>
+        <td>
+            <select name="resolution_value" id="resolution_value<?php echo $i; ?>">
                 <?php foreach( $GLOBALS['WEBCAM_RESOLUTION'] as $key) { ?>
-                    <option value="<?php echo $key; ?>" <?php if(strcmp("$resolution","$key")==0) echo 'selected'; ?>><?php echo $key; ?></option>
+                    <option value="<?php echo $key; ?>" <?php if(strcmp($webcam_conf[$i]['resolution'],"$key")==0) echo 'selected'; ?>><?php echo $key; ?></option>
                 <?php } ?>
             </select>
             </div>
-        </td> 
+        </td>
         <td></td>
-    </tr>
+ </tr>
     <tr>
         <td></td>
-        <td><?php echo __('PALETTE'); ?>:</td><td> <input type="checkbox" id="palette_box"  <?php if(strcmp("$palette","-1")!=0) echo 'checked';  ?> /></td>
-        <td><div id="palette_option" <?php if(strcmp("$palette","-1")==0) echo 'style="display:none"';  ?>>
-            <select name="palette_value" id="palette_value" >
+        <td><?php echo __('PALETTE'); ?>:</td>
+        <td>
+            <select name="palette_value" id="palette_value<?php echo $i; ?>">
                 <?php foreach( $GLOBALS['WEBCAM_PALETTE'] as $key) { ?>
-                    <option value="<?php echo $key; ?>" <?php if(strcmp("$palette","$key")==0) echo 'selected'; ?>><?php echo $key; ?></option>
+                    <option value="<?php echo $key; ?>" <?php if(strcmp($webcam_conf[$i]['palette'],"$key")==0) echo 'selected'; ?>><?php echo $key; ?></option>
                 <?php } ?>
             </select>
             </div>
@@ -65,5 +58,10 @@
         <td></td>
     </tr>
 </table>
+</div>
+<?php } ?>
 
+<div id="error_webcam" style="display:none" class="text_info">
+    <?php echo __('ERROR_WEBCAM'); ?>
+</div>
 

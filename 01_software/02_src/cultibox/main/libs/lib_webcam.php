@@ -65,6 +65,52 @@ function check_db() {
     } 
     $db=null;
   }
+
+
+  //Get webcam conf from files, ret array containing datas
+  function get_webcam_conf() {
+        $return=array();
+
+        for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) {
+            if(is_file($GLOBALS['BASE_PATH']."tmp/webcam$i.conf")) {
+                $handle = fopen($GLOBALS['BASE_PATH']."tmp/webcam$i.conf", "r");
+                if($handle) {
+                    while(($line = fgets($handle)) !== false) {
+                    // process the line read.
+                    if(strpos($line, "resolution")!==false) {
+                        $value=explode(" ",$line);
+                        $return[$i]['resolution']=trim($value[1]);
+                    }
+
+                    if(strpos($line, "brightness")!==false) {
+                        $value=explode("=",$line);
+                        $value[1]=trim($value[1]);
+                        $return[$i]['brightness']=substr($value[1],0,strlen($value[1])-1);
+                    }
+
+                    if(strpos($line, "contrast")!==false) {
+                        $value=explode("=",$line);
+                        $value[1]=trim($value[1]);
+                        $return[$i]['contrast']=substr($value[1],0,strlen($value[1])-1);
+                    }
+
+                    if(strpos($line, "palette")!==false) {
+                        $value=explode(" ",$line);
+                        $return[$i]['palette']=trim($value[1]);
+                    }
+                    }
+                    fclose($handle);
+                } else {
+                    // error opening the file.
+                    $return[$i]['resolution']="320x240";
+                    $return[$i]['brightness']="50";
+                    $return[$i]['contrast']="50";
+                    $return[$i]['palette']="MJPEG";
+                } 
+            }
+        }
+        return $return;
+  }
 }
 
 ?>
