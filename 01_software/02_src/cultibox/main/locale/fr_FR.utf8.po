@@ -1951,6 +1951,15 @@ msgstr "La configuration utilisée n'est pas à jour, cliquez ici pour mettre la
 msgid "WAIT_UPDATED_CONF"
 msgstr "Vérification de la configuration"
 
+msgid "SYNO_UPDATE_CULTIPI_STATUS_START"
+msgstr "Module Wifi en cours de démarrage"
+
+msgid "SYNO_UPDATE_CULTIPI_STATUS_STARTED"
+msgstr "Module Wifi démarré"
+
+msgid "SYNO_UPDATE_CULTIPI_STATUS_TIMEOUT"
+msgstr "Module Wifi ne répond pas"
+
 msgid "SYNO_UPDATE_PLUG_HOUR"
 msgstr "Dernière mise à jour des prises : "
 
