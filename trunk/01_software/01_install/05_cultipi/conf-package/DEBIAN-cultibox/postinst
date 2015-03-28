@@ -121,12 +121,12 @@ else
     echo "... OK"
 fi
 
+find /var/www/cultibox/ -name "*-dist"|xargs rm 2>/dev/null
+
+
 if [ ! -d /home/cultipi/cultibox ]; then
     mkdir /home/cultipi/cultibox
     chown -R www-data:www-data /home/cultipi/cultibox
 fi
-
-
-find /var/www/cultibox/ -name "*-dist"|xargs rm
 
 

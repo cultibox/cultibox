@@ -28,6 +28,6 @@ chown -R www-data:www-data /etc/cultipi/conf_tmp
 chown -R cultipi:cultipi /var/log/cultipi
 chmod 755 /var/log/cultipi
 
-find /etc/cultipi/ -name "*-dist"|xargs rm
+find /etc/cultipi/ -name "*-dist"|xargs rm 2>/dev/null
 
 /etc/init.d/cultipi force-reload
