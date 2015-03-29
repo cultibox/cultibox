@@ -42,3 +42,69 @@ proc stopCultiPi {} {
         set ::forever 0
     }
 }
+
+# La variable outPutStyle permet de définir comment les logs doivent être sortis
+# outPutStyle : puts ou log
+proc restartSlave {outPutStyle} {
+
+    # On eteint les esclaves
+    set RC [catch {
+        exec gpio -g mode 18 out
+        exec gpio -g write 18 0
+    } msg]
+    if {$RC != 0} {
+        if {$outPutStyle == "puts"} {
+            puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : GPIO : error $msg"
+        } else {
+            ::piLog::log [clock milliseconds] "error" "restartSlave : GPIO 1 : error $msg"
+        }
+    }
+
+    after 200
+    
+    # On alimente les esclaves
+    set RC [catch {
+        exec gpio -g write 18 1
+
+        # On pilote le fil vers les esclaves
+        exec gpio -g mode 17 out
+        exec gpio -g write 17 1
+    } msg]
+    if {$RC != 0} {
+        if {$outPutStyle == "puts"} {
+            puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : GPIO : error $msg"
+        } else {
+            ::piLog::log [clock milliseconds] "error" "restartSlave : GPIO 2 : error $msg"
+        }
+        
+    }
+
+    # On attend 5 seconds
+    set ::statusInitialisation "wait_20s"
+    set nbSeconds 5
+    if {$outPutStyle == "puts"} {
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : Waiting $nbSeconds seconds"
+    } else {
+         ::piLog::log [clock milliseconds] "info" "restartSlave : Waiting $nbSeconds seconds"
+    }
+    
+    for {set i 0} {$i < [expr $nbSeconds * 10]} {incr i} {
+        if {[expr $i % 10] == 0} {
+            
+            if {$outPutStyle == "puts"} {
+                puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : [expr $nbSeconds - $i / 10] seconds remaining"
+            } else {
+                ::piLog::log [clock milliseconds] "info" "restartSlave : [expr $nbSeconds - $i / 10] seconds remaining"
+            }
+
+        }
+        after 100
+        update
+    }
+
+    if {$outPutStyle == "puts"} {
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : End of restart slave"
+    } else {
+        ::piLog::log [clock milliseconds] "info" "restartSlave : End of restart slave"
+    }
+}

@@ -9,6 +9,10 @@ proc messageGestion {message networkhost} {
     set commande            [::piTools::lindexRobust $message 2]
 
     switch ${commande} {
+        "restartSlave" {
+            ::piLog::log [clock milliseconds] "info" "Demande de redémarrage"
+            restartSlave "log"
+        }
         "stop" {
             ::piLog::log [clock milliseconds] "info" "Demande Arret de Culti Pi"
             stopCultiPi
