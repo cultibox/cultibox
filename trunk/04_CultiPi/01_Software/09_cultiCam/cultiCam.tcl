@@ -42,9 +42,14 @@ proc takePhoto {webcamIndex} {
 
     puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Take Snapshot webcam ${webcamIndex}" ; update
 
+    if {[array names ::configXML -exact "confPathWebcam,${webcamIndex}"] == ""} {
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error conf of webcam doesnot exists"
+        return
+    }
+    
     # On prend un image
     set RC [catch {
-        exec sudo fswebcam --no-banner /var/www/cultibox/tmp/webcam_${webcamIndex}_temp.jpg 
+        exec sudo fswebcam -c  $::configXML(confPathWebcam,${webcamIndex})
     } msg]
     if {$RC != 0} {
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during taking snapshot webcam ${webcamIndex} , error : $msg"

@@ -5,6 +5,6 @@
     <item name="dailySnapshotHour"  hour="12" />
     <item name="dailySnapshotMin"   min="5" />
     <item name="nbWebcam"           input="2" />
-    <item name="confPathWebcam,1"    value="/etc/cultiCam/conf_webcam1" />
-    <item name="confPathWebcam,2"    value="/etc/cultiCam/conf_webcam2" />
+    <item name="confPathWebcam,0"    value="/etc/culticam/webcam0.conf" />
+    <item name="confPathWebcam,1"    value="/etc/culticam/webcam1.conf" />
 </conf>
