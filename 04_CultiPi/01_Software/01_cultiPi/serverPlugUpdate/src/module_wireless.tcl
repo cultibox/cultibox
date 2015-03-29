@@ -42,6 +42,7 @@ proc ::wireless::outFromBootloader {} {
     if {$RC != 0} {
         set ::plug(etat,bootload) "DEFCOM"
         ::piLog::log [clock milliseconds] "error_critic" "::wireless::outFromBootloader We need to restart module:$msg "
+        ::piServer::sendToServer $::port(serverCultiPi) "$::port(serverAcqSensor) [incr ::TrameIndex] stop"
         return "restart_needed"
     } else {
         ::piLog::log [clock milliseconds] "debug" "::wireless::outFromBootloader write bootloadStateAdress OK"
