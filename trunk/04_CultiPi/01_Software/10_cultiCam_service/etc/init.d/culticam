@@ -1,0 +1,65 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          culticam
+# Required-Start:    $all 
+# Required-Stop:     $all 
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start culticam daemon at boot time
+# Description:       Enable culticam service provided by daemon.
+### END INIT INFO
+
+
+PATH="/sbin:/bin:/usr/sbin:/usr/bin" 
+
+DAEMONUSER="cultipi"
+DEAMON_NAME="culticam"
+
+. /lib/lsb/init-functions
+
+d_start () {
+        log_daemon_msg "Starting system $DEAMON_NAME Daemon"
+        sudo -u $DAEMONUSER nohup /usr/bin/tclsh "/opt/culticam/cultiCam.tcl" >>/var/log/cultipi/cultipi-service.log 2>&1 &
+        sleep 4
+        log_end_msg $?
+}
+
+d_stop () {
+        log_daemon_msg "Stopping system $DEAMON_NAME Daemon"
+        for pid in "`ps ax|grep cultiCam.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
+            if [ "$pid" != "" ]; then
+                kill -9 $pid
+            fi
+        done
+        sleep 1
+        log_end_msg $?
+}
+
+case "$1" in
+
+        start|stop)
+                d_${1}
+                ;;
+
+        restart|reload|force-reload)
+                        d_stop
+                        d_start
+                ;;
+        force-stop)
+                d_stop
+                ;;
+        status)
+                if [ "`ps ax|grep cultiCam.tcl|grep tclsh`" != "" ]; then
+                    echo "[ ok ] $DEAMON_NAME service is running..."
+                    exit 0
+                else 
+                    echo "[ fail ] $DEAMON_NAME service is not running..."
+                    exit 1
+                fi
+                ;;
+        *)
+                echo "Usage: /etc/init.d/$DEAMON_NAME {start|stop|force-stop|restart|reload|force-reload|status}"
+                exit 1
+                ;;
+esac
+exit 0

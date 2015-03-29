@@ -105,6 +105,8 @@ proc ::XMAX::setValue {plugNumber value address} {
         #    ::piLog::log [clock milliseconds] "debug" "::XMAX::setValue Output PWM_${i} does not send (same as old value ($newValueForPWM($i)))"
         #} else {
             # Exemple
+            # gpio -g write 18 0 ; gpio -g write 18 1
+            # /usr/local/sbin/i2cset -y 1 0x23 1 0
             #  /usr/local/sbin/i2cset -y 1 0x23 12 125
             # 1 multicolor
             # 3 Rouge
@@ -116,6 +118,9 @@ proc ::XMAX::setValue {plugNumber value address} {
             } msg]
             if {$RC != 0} {
                 ::piLog::log [clock milliseconds] "error" "::XMAX::setValue Module ${i} with value $newValueForPWM(${i}) does not respond :$msg "
+                
+                # On lui demande de redémarrer
+                ::piServer::sendToServer $::port(serverCultiPi) "$::port(serverAcqSensor) [incr ::TrameIndex] restartSlave"
             } else {
                 # On debug !
                 ::piLog::log [clock milliseconds] "info" "::XMAX::setValue Output PWM_${i} to $newValueForPWM(${i}) OK"

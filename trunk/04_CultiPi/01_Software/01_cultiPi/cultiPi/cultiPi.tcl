@@ -83,39 +83,9 @@ set ::statusInitialisation "init_log"
 ::piLog::log $TimeStartserveurLog "info" "starting serveurLog"
 ::piLog::log $TimeStartserveurLog "info" "Port : $port(server)"
 
-# On alimente les esclaves
-set RC [catch {
-exec gpio -g mode 18 out
-exec gpio -g write 18 1
+# On démarre les esclaves
+restartSlave puts
 
-# On pilote le fil vers les esclaves
-exec gpio -g mode 17 out
-exec gpio -g write 17 1
-} msg]
-if {$RC != 0} {
-    puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : GPIO : error $msg"
-}
-
-# On attend 20 seconds
-set ::statusInitialisation "wait_20s"
-puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : Waiting 20 seconds"
-for {set i 0} {$i < 200} {incr i} {
-    if {[expr $i % 10] == 0} {
-        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : [expr 20 - $i / 10] seconds remaining"
-    }
-    after 100
-    update
-}
-
-
-# On change la vitesse du bus I2C
-# set RC [catch {
-    # exec sudo modprobe -r i2c_bcm2708
-    # exec sudo modprobe i2c_bcm2708 baudrate=32000
-# } msg]
-# if {$RC != 0} {
-    # puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : I2C speed : error $msg"
-# }
 
 # On attend que la date soit correcte
 proc checkDate {} {
@@ -188,6 +158,7 @@ proc updateRepere {} {
 updateRepere
 
 set ::statusInitialisation "initialized"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : started"
 
 vwait forever
 

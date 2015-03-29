@@ -189,7 +189,7 @@ proc readSensors {} {
                         
                         # On demande un reboot du logiciel dans ce cas
                         ::piLog::log [clock milliseconds] "error" "Ask software cultipi reboot"
-                        ::piServer::sendToServer $::port(serverCultiPi) "$::port(serverAcqSensor) [incr ::TrameIndex] stop"
+                        ::piServer::sendToServer $::port(serverCultiPi) "$::port(serverAcqSensor) [incr ::TrameIndex] restartSlave"
                         
                     } else {
                         set computedValue [expr ($valueHP * 256 + $valueLP) / 100.0]
