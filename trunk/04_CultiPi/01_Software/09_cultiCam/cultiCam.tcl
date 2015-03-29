@@ -26,7 +26,8 @@ array set configXML {
     timeBeforeTwoSnapshots  5
     dailySnapshotHour       12
     dailySnapshotMin        0
-    nbWebcam                2
+    nbWebcam                0
+    
 }
 set RC [catch {
     array set configXML [::piXML::convertXMLToArray $confXML]
@@ -34,6 +35,7 @@ set RC [catch {
 if {$RC != 0} {
     puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during loading XML , error : $msg"
 }
+puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : XML Infos : [array get configXML]"
 
 # On prend une photo toutes les X secondes
 proc takePhoto {webcamIndex} {
@@ -90,5 +92,5 @@ for {set i 0} {$i < $::configXML(nbWebcam)} {incr i} {
 # On attend indéfiniment
 vwait forever
 
-# tclsh "C:\cultibox\04_CultiPi\01_Software\09_cultiCam\cultiCam.tcl" "C:\cultibox\04_CultiPi\01_Software\09_cultiCam\conf.xml"
+# tclsh "C:\cultibox\04_CultiPi\01_Software\09_cultiCam\cultiCam.tcl" "C:\cultibox\04_CultiPi\01_Software\09_cultiCam\exemple_conf.xml"
 # tclsh /opt/culticam/cultiCam.tcl /etc/culticam/conf.xml

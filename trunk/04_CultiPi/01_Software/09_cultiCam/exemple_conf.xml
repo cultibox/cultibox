@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<conf>
+    <item name="verbose" level="debug" />
+    <item name="timeBeforeTwoSnapshots" senconds="5" />
+    <item name="dailySnapshotHour"  hour="12" />
+    <item name="dailySnapshotMin"   min="5" />
+    <item name="nbWebcam"           input="2" />
+    <item name="confPathWebcam,1"    value="/etc/cultiCam/conf_webcam1" />
+    <item name="confPathWebcam,2"    value="/etc/cultiCam/conf_webcam2" />
+</conf>
