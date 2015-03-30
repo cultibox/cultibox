@@ -16,7 +16,6 @@ fi
 sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/init.d\/cultipi/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/bin\/chown/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/bin\/cat/d" /etc/sudoers
-sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/fswebcam/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/sbin\/shutdown/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/sbin\/ifconfig/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/sbin\/iwlist/d" /etc/sudoers

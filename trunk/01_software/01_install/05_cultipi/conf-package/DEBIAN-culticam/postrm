@@ -16,3 +16,6 @@ if [ "$1" == "purge" ] || [ "$1" == "remove" ]; then
     fi
 fi
 
+sed -i "/cultipi ALL = (root) NOPASSWD: \/usr\/bin\/fswebcam/d" /etc/sudoers
+
+

@@ -72,8 +72,8 @@ function check_db() {
         $return=array();
 
         for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) {
-            if(is_file($GLOBALS['BASE_PATH']."tmp/webcam$i.conf")) {
-                $handle = fopen($GLOBALS['BASE_PATH']."tmp/webcam$i.conf", "r");
+            if(is_file("/etc/culticam/webcam$i.conf")) {
+                $handle = fopen("/etc/culticam/webcam$i.conf", "r");
                 if($handle) {
                     while(($line = fgets($handle)) !== false) {
                     // process the line read.

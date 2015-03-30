@@ -135,6 +135,13 @@ if [ $VERSION -lt 280315 ]; then
     echo "280315" > /VERSION
 fi
 
+if [ $VERSION -lt 300315 ]; then
+    if [  "`cat /etc/sudoers|grep www-data|grep fswebcam`" == "" ]; then
+        sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/fswebcam/d" /etc/sudoers
+    fi
+    echo "300315" > /VERSION
+fi
+
 find /etc/default/ -name "*-dist"|xargs rm 2>/dev/null; echo ""
 
 
