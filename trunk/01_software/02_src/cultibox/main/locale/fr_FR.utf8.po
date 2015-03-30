@@ -1922,7 +1922,10 @@ msgid "CULTIRAZ_SOFT"
 msgstr "Logiciel CultiRAZ"
 
 msgid "CULTITIME_SOFT"
-msgstr "Logiciel CultiTime"
+msgstr "Logiciel Cultitime"
+
+msgid "CULTICAM_SOFT"
+msgstr "Logiciel Culticam"
 
 msgid "CULTIPI_SERVICE"
 msgstr "Status du service Cultipi"
