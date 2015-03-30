@@ -7,19 +7,19 @@
        echo json_encode("1");
     } else {
         $return=array();
-        $webcam=false;
+        $webcam="0";
         for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) {
             foreach($output as $device) {
                 if($i==substr(trim($device), -1)) {
-                    $webcam=true;
-                }
+                    if(!is_file("../../tmp/webcam$i.jpg")) {            
+                        $webcam="2";
+                    } else {
+                        $webcam="1";
+                    }
+                } 
             }
-            if($webcam) {
-                $return[$i]="1";
-                $webcam=false;
-            } else {
-                $return[$i]="0";
-            }
+            $return[$i]="$webcam";
+            $webcam="0";
         } 
         echo json_encode($return);
     }
