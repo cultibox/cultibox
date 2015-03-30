@@ -1,7 +1,9 @@
 
 proc messageGestion {message networkhost} {
 
-    global statusInitialisation
+    global statusInitialisation cultipiActualHour
+    
+    set ::cultipiActualHour [clock format [clock seconds] -format "%d/%m/%Y %H:%M"]
 
     # Trame standard : [FROM] [INDEX] [commande] [argument]
     set serverForResponse   [::piTools::lindexRobust $message 0]
@@ -49,12 +51,6 @@ proc messageGestion {message networkhost} {
                 }
                 
                 incr indexVar
-                
-                # On evite le localhost final
-                if {[::piTools::lindexRobust $message [expr $indexVar + 1]] == ""} {
-                    break;
-                }
-                
             }
 
             ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere - $returnList - to $networkhost"

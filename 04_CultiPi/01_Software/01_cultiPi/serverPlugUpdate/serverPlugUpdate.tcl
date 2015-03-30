@@ -49,20 +49,25 @@ array set configXML {
 
 # Chargement de la conf XML
 set RC [catch {
-array set configXML [::piXML::convertXMLToArray $confXML]
+    array set configXML [::piXML::convertXMLToArray $confXML]
 } msg]
+if {$RC != 0} {
+    ::piLog::log [clock milliseconds] "error" "$msg"
+}
 
 # On initialise la connexion avec le server de log
 ::piLog::openLog $port(serverLogs) "serverPlugUpdate" $configXML(verbose)
+
 ::piLog::log [clock milliseconds] "info" "starting serverPlugUpdate - PID : [pid]"
 ::piLog::log [clock milliseconds] "info" "port serverPlugUpdate : $port(serverPlugUpdate)"
 ::piLog::log [clock milliseconds] "info" "confXML : $confXML"
 ::piLog::log [clock milliseconds] "info" "port serverLogs : $port(serverLogs)"
 ::piLog::log [clock milliseconds] "info" "port serverCultiPi : $port(serverCultiPi)"
-::piLog::log [clock milliseconds] "info" "verbose : $configXML(verbose)"
-if {$RC != 0} {
-    ::piLog::log [clock milliseconds] "error" "$msg"
+# On affiche les infos dans le fichier de debug
+foreach element [array names configXML] {
+    ::piLog::log [clock milliseconds] "info" "$element : $configXML($element)"
 }
+
 
 proc bgerror {message} {
     ::piLog::log [clock milliseconds] error_critic "bgerror in $::argv - pid [pid] -$message-"
@@ -86,22 +91,21 @@ proc stopIt {} {
 set confPath [file dirname $confXML]
 set plugaFileName [file join $confPath plg pluga]
 
-# On démarre le chip de l'emmeteur
-set status "retry_needed"
-while {$status == "retry_needed"} {
-    set status [::wireless::outFromBootloader]
-    after 100
-}
-
-# On initialise le module Cultipi
-::piLog::log [clock milliseconds] "info" "init module CULTIPI"
-::CULTIPI::init
 
 # Parse pluga filename and send adress to module if needed
 set EMETEUR_NB_PLUG_MAX [readPluga $plugaFileName]
 
 # Chargement des paramètres de chaque prise
 plugXX_load $confPath
+
+# Pour chaque module utilisé, on l'initialise
+foreach module [array names ::moduleSlaveUsed] {
+    if {$module != "info" && $module != "NA" } {
+        ::piLog::log [clock milliseconds] "info" "Module $module is used. So init it"
+        ::${module}::init $::moduleSlaveUsed(${module})
+    }
+}
+
 
 # initialisation de la partie émetteur
 ::piLog::log [clock milliseconds] "info" "emeteur_init"
@@ -119,8 +123,10 @@ emeteur_update_loop
 ::piLog::log [clock milliseconds] "info" "::sensor::loop"
 ::sensor::loop
 
-# Une fois la boucle de régulation démarrée , on peut activer le pilotage des prises
-::wireless::start
+# Une fois la boucle de régulation démarrée , on peut activer le pilotage des prises (seulement si des prises wireless sont configurées)
+if {[array names moduleSlaveUsed -exact wireless] != ""} {
+    ::wireless::start
+}
 
 # Pour les client qui ont un abonnement événementiel aux données
 emeteur_subscriptionEvenement

@@ -16,7 +16,7 @@ namespace eval ::CULTIPI {
 }
 
 # Cette proc est utilisée pour initialiser les modules
-proc ::CULTIPI::init {} {
+proc ::CULTIPI::init {plugList} {
 
     for {set j 0} {$j < 10} {incr j} {
         if {[array get ::configXML module_CULTIPI,ip,$j] == ""} {
