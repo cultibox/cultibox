@@ -3,12 +3,20 @@ proc stopCultiPi {} {
     ::piLog::log [clock milliseconds] "info" "Debut arret Culti Pi"
     
     ::piLog::log [clock milliseconds] "info" "Extinction des alimentations"
-    exec gpio -g write 18 0
+    set RC [catch {
+        exec gpio -g write 18 0
+    } msg]
+    if {$RC != 0} {
+        ::piLog::log [clock milliseconds] "error" "restartSlave : stopCultiPi : error $msg"
+    }
+
 
     # Arret de tous les modules
     foreach moduleXML $::confStart(start) {
         set moduleName [::piXML::searchOptionInElement name $moduleXML]
-        if {$moduleName != "serverLog"} {
+        
+        # SI le numéro du port est vide ,c'est qu'on a pas encore lancé le module
+        if {$moduleName != "serverLog" && $::confStart($moduleName,port) != ""} {
             ::piLog::log [clock milliseconds] "info" "Demande arret $moduleName"
             # Arret du module
             ::piServer::sendToServer $::confStart($moduleName,port) "[clock milliseconds] 000 stop"
@@ -39,7 +47,8 @@ proc stopCultiPi {} {
     
     after 500 {
         puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiPi : Bye Bye ! "
-        set ::forever 0
+        set ::forever 1
+        exit
     }
 }
 

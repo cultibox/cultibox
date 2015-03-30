@@ -26,7 +26,7 @@ namespace eval ::XMAX {
 }
 
 # Cette proc est utilisée pour initialiser les modules
-proc ::XMAX::init {} {
+proc ::XMAX::init {address} {
     variable adresse_module
     variable register
 

@@ -6,6 +6,9 @@ set SLAVE_MODULE_2_ADRESS 0x31 ;# Dans la Cultibox 0x62
 set SLAVE_MODULE_3_ADRESS 0x32 ;# Dans la Cultibox 0x64
 set SLAVE_MODULE_4_ADRESS 0x33 ;# Dans la Cultibox 0x66
 
+# La liste des modules utilisées
+set ::moduleSlaveUsed(info) "Ce vecteur définit les modules utilisés"
+
 proc readPluga {plugaFileName} {
 
     ::piLog::log [clock milliseconds] "info" "pluga filename : $plugaFileName"
@@ -21,11 +24,9 @@ proc readPluga {plugaFileName} {
             # On en déduit le module
             set ::plug($nbPlug,module) [::address::get_module $::plug($nbPlug,adress)]
 
-            # On transmet au module de pilotage sans fils les adresses
-            if {$::plug($nbPlug,module) == "wireless"} {
-                ::wireless::setAdress $nbPlug $::plug($nbPlug,adress)
-            }
-            
+            # On sauvegarde dans le vecteur ce module. Cela permettra de l'initialiser plus tard
+            lappend ::moduleSlaveUsed($::plug($nbPlug,module)) $nbPlug
+
             ::piLog::log [clock milliseconds] "debug" "pluga plug $nbPlug - Address : $::plug($nbPlug,adress) - Module : $::plug($nbPlug,module)"
             
         }

@@ -93,25 +93,47 @@ namespace eval ::MCP230XX {
 }
 
 # Cette proc est utilisée pour initialiser les modules
-proc ::MCP230XX::init {moduleAdresse} {
+proc ::MCP230XX::init {plugList} {
     variable adresse_module
     variable register
 
-    # On définit chaque pin en sortie
-    # /usr/local/sbin/i2cset -y 1 0x20 0x00 0x00
-    # lecture de l'état des sorties
-    # /usr/local/sbin/i2cget -y 1 0x20 0x00
-    set RC [catch {
-        exec /usr/local/sbin/i2cset -y 1 $moduleAdresse $register(IODIR) 0x00
-    } msg]
-    if {$RC != 0} {
-        ::piLog::log [clock milliseconds] "error" "::MCP230XX::init Module $moduleAdresse does not respond :$msg "
-    } else {
-        ::piLog::log [clock milliseconds] "info" "::MCP230XX::init init IODIR to 0x00 OK"
-        set register(${moduleAdresse},init_done) 1
+    # Pour chaque adresse, on cherche le module et on l'initialise
+    foreach plug $plugList {
+    
+        set address $::plug($plug,adress)
+    
+        # On cherche le nom du module correspondant
+        set moduleAdresse "NA"
+        set outputPin "NA"
+        # Il faut que la clé existe
+        if {[array get adresse_module $address] != ""} {
+            set moduleAdresse $adresse_module($address)
+            set outputPin     $adresse_module($address,out)
+        }        
+        
+        if {$moduleAdresse == "NA"} {
+            ::piLog::log [clock milliseconds] "error" "::MCP230XX::init Adress $address does not exists "
+            return
+        }
+        
+        # On vérifie que l module est initialisé
+        if {$register(${moduleAdresse},init_done) == 0} {
+            # On définit chaque pin en sortie
+            # /usr/local/sbin/i2cset -y 1 0x20 0x00 0x00
+            # lecture de l'état des sorties
+            # /usr/local/sbin/i2cget -y 1 0x20 0x00
+            set RC [catch {
+                exec /usr/local/sbin/i2cset -y 1 $moduleAdresse $register(IODIR) 0x00
+            } msg]
+            if {$RC != 0} {
+                ::piLog::log [clock milliseconds] "error" "::MCP230XX::init Module $moduleAdresse does not respond :$msg "
+            } else {
+                ::piLog::log [clock milliseconds] "info" "::MCP230XX::init init IODIR to 0x00 OK"
+                set register(${moduleAdresse},init_done) 1
+            }
+        }
+    
     }
-
-
 }
 
 proc ::MCP230XX::setValue {plugNumber value address} {
@@ -131,11 +153,6 @@ proc ::MCP230XX::setValue {plugNumber value address} {
     if {$moduleAdresse == "NA"} {
         ::piLog::log [clock milliseconds] "error" "::MCP230XX::setValue Adress $address does not exists "
         return
-    }
-    
-    # On vérifie que l module est initialisé
-    if {$register(${moduleAdresse},init_done) == 0} {
-        ::MCP230XX::init ${moduleAdresse}
     }
 
     # On sauvegarde l'état de la prise

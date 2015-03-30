@@ -42,7 +42,6 @@ proc ::wireless::outFromBootloader {} {
     if {$RC != 0} {
         set ::plug(etat,bootload) "DEFCOM"
         ::piLog::log [clock milliseconds] "error_critic" "::wireless::outFromBootloader We need to restart module:$msg "
-        ::piServer::sendToServer $::port(serverCultiPi) "$::port(serverAcqSensor) [incr ::TrameIndex] stop"
         return "restart_needed"
     } else {
         ::piLog::log [clock milliseconds] "debug" "::wireless::outFromBootloader write bootloadStateAdress OK"
@@ -128,6 +127,8 @@ proc ::wireless::start {} {
     return 0
 }
 
+
+
 # Cette proc est utlisée pour définir l'adresse d'une prise dans le module sans fils
 proc ::wireless::setAdress {plugNumber adress} {
     variable moduleAdress 
@@ -154,6 +155,28 @@ proc ::wireless::setAdress {plugNumber adress} {
     }
 }
 
+# Cette proc est utilisée pour initialiser le module
+proc ::wireless::init {plugList} {
+
+    # On démarre le chip de l'emmeteur
+    set status "retry_needed"
+    while {$status == "retry_needed"} {
+        set status [::wireless::outFromBootloader]
+        
+        if {$status == "restart_needed"} {
+            ::piServer::sendToServer $::port(serverCultiPi) "$::port(serverCultiPi) [incr ::TrameIndex] stop"
+        }
+        
+        after 100
+    }
+
+    # On envoi les adresse
+    foreach plug $plugList {
+        ::wireless::setAdress $plug $::plug($plug,adress)
+    }
+
+}
+
 # Cette proc est utilisée pour piloter une prise dans le module sans fils
 proc ::wireless::setValue {plugNumber value address} {
     variable moduleAdress 
@@ -167,7 +190,7 @@ proc ::wireless::setValue {plugNumber value address} {
 
     # On sauvegarde l'état de la prise
     ::savePlugSendValue $plugNumber $value
-    
+
     if {$value == "on"} {
         set value 1 
     } else {

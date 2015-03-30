@@ -39,6 +39,39 @@ namespace eval ::direct {
     set pin(8,init) 0
 }
 
+# Cette procédure permet d'initialiser le module
+proc ::direct::init {plugList} {
+    variable pin 
+
+    # Pour chaque adresse, on cherche la pin et on l'initialise 
+    foreach plug $plugList {
+    
+        set address $::plug($plug,adress)
+    
+        set pinNumber "NA"
+        set pinIndex 0
+        for {set i 1} {$i <= 8} {incr i} {
+            if {$pin($i,address) == $address} {
+                set pinNumber $pin($i,GPIO)
+                set pinIndex $i
+                break
+            }
+        }
+        
+        if {$pinNumber == "NA"} {
+            ::piLog::log [clock milliseconds] "error" "::direct::init Adress $address does not exists "
+            return
+        }
+        
+        # S'il elle n'est pas initialisée, on le fait
+        if {$pin($pinIndex,init) == 0} {
+            initPin $pinIndex
+        }
+    
+    }
+
+}
+
 # Cette proc est utlisée pour initialiser les pins en sortie
 proc ::direct::initPin {pinIndex} {
     variable pin
@@ -76,11 +109,6 @@ proc ::direct::setValue {plugNumber value address} {
     if {$pinNumber == "NA"} {
         ::piLog::log [clock milliseconds] "error" "::direct::setValue Adress $address does not exists "
         return
-    }
-    
-    # S'il elle n'est pas initialisée, on le fait
-    if {$pin($pinIndex,init) == 0} {
-        initPin $pinIndex
     }
 
     # On sauvegarde l'état de la prise

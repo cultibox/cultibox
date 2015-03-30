@@ -45,6 +45,13 @@ puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : conf :
 # Load cultiPi configuration
 set confStart(start) [lindex [::piXML::open_xml [file join $fileName(cultiPi,confDir) cultiPi start.xml]] 2]
 
+# On initialise les variables
+foreach moduleXML $::confStart(start) {
+    set moduleName [::piXML::searchOptionInElement name $moduleXML]
+    set ::confStart(${moduleName},pid) ""
+    set ::confStart($moduleName,port) ""
+}
+
 # Load server Culti Pi
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Load server" ; update
 ::piServer::start messageGestion $port(server)
@@ -106,28 +113,27 @@ vwait dateIsCorrect
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Date is OK, continue" ; update
 
 # Lancement de tous les modules
-foreach moduleXML $confStart(start) {
+foreach moduleXML $::confStart(start) {
     set moduleName [::piXML::searchOptionInElement name $moduleXML]
     if {$moduleName != "serverLog"} {
-        set confStart(${moduleName},pid) ""
-        set confStart(${moduleName},pathexe) [::piXML::searchOptionInElement pathexe $moduleXML]
-        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName pathexe : $confStart(${moduleName},pathexe)"
-        set confStart($moduleName,path) [file join $rootDir [::piXML::searchOptionInElement path $moduleXML]]
-        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName path : $confStart($moduleName,path)"
-        set confStart($moduleName,xmlconf) [file join $fileName(cultiPi,confDir) [::piXML::searchOptionInElement xmlconf $moduleXML]]
-        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName xmlconf : $confStart($moduleName,xmlconf) , file exists ? [file exists $confStart($moduleName,xmlconf)]"
-        set confStart($moduleName,waitAfterUS) [::piXML::searchOptionInElement waitAfterUS $moduleXML]
-        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName waitAfterUS : $confStart($moduleName,waitAfterUS)"
-        set confStart($moduleName,port) [::piServer::findAvailableSocket [::piXML::searchOptionInElement port $moduleXML]]
-        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName port : $confStart($moduleName,port)"
+        set ::confStart(${moduleName},pathexe) [::piXML::searchOptionInElement pathexe $moduleXML]
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName pathexe : $::confStart(${moduleName},pathexe)"
+        set ::confStart($moduleName,path) [file join $rootDir [::piXML::searchOptionInElement path $moduleXML]]
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName path : $::confStart($moduleName,path)"
+        set ::confStart($moduleName,xmlconf) [file join $fileName(cultiPi,confDir) [::piXML::searchOptionInElement xmlconf $moduleXML]]
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName xmlconf : $::confStart($moduleName,xmlconf) , file exists ? [file exists $::confStart($moduleName,xmlconf)]"
+        set ::confStart($moduleName,waitAfterUS) [::piXML::searchOptionInElement waitAfterUS $moduleXML]
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName waitAfterUS : $::confStart($moduleName,waitAfterUS)"
+        set ::confStart($moduleName,port) [::piServer::findAvailableSocket [::piXML::searchOptionInElement port $moduleXML]]
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName port : $::confStart($moduleName,port)"
 
         ::piLog::log [clock milliseconds] "info" "Load $moduleName"
-        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName exec : $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port) $port(server)"
-        set confStart($moduleName,pipeID) [open "| $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port) $port(server)"]
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName exec : $::confStart($moduleName,pathexe) \"$::confStart($moduleName,path)\" $::confStart($moduleName,port) \"$::confStart($moduleName,xmlconf)\" $::confStart(serverLog,port) $::port(server)"
+        set ::confStart($moduleName,pipeID) [open "| $::confStart($moduleName,pathexe) \"$::confStart($moduleName,path)\" $::confStart($moduleName,port) \"$::confStart($moduleName,xmlconf)\" $::confStart(serverLog,port) $::port(server)"]
         
         set ::statusInitialisation "loading_${moduleName}"
         
-        after $confStart($moduleName,waitAfterUS)
+        after $::confStart($moduleName,waitAfterUS)
         update
     }
 }
@@ -160,7 +166,7 @@ updateRepere
 set ::statusInitialisation "initialized"
 puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : started"
 
-vwait forever
+vwait ::forever
 
 # tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\cultiPi.tcl" "C:\cultibox\04_CultiPi\02_conf"
 

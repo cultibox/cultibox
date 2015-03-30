@@ -42,12 +42,6 @@ proc messageGestion {message networkhost} {
                 }
                 
                 incr indexVar
-                
-                # On evite le localhost final
-                if {[::piTools::lindexRobust $message [expr $indexVar + 1]] == ""} {
-                    break;
-                }
-                
             }
 
             ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere - $returnList - to $networkhost"

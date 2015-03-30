@@ -60,7 +60,7 @@ namespace eval ::DIMMER {
 }
 
 # Cette proc est utilisée pour initialiser les modules
-proc ::DIMMER::init {} {
+proc ::DIMMER::init {plugList} {
     variable adresse_module
     variable adresse_I2C
     variable register
