@@ -618,19 +618,32 @@ function getPlugInformation ($id) {
 // RET CultiPiStatus
 function getCultiPiStatus() {
 
+    global $cultipiPath;
+
     $ret = "";
 
     $return_array = array();
-    $return_array["status"] = "TIMEOUT"; 
+    $return_array["status"] = "TIMEOUT";
+    $return_array["cultihour"] = ""; 
     $return_array["error"] = "";
     
     try {
-        $return_array["status"] = exec('tclsh "/opt/cultipi/cultiPi/get.tcl"  serverCultipi localhost "statusInitialisation"');
+        $ret = exec('tclsh "/opt/cultipi/cultiPi/get.tcl"  serverCultipi localhost statusInitialisation cultipiActualHour');
     } catch (Exception $e) {
         echo 'Exception reçue : ',  $e->getMessage(), "\n";
         $return_array["error"] = $e->getMessage();
     }
+    
+    $arr = explode ("\t", $ret);
 
+    if (array_key_exists(0, $arr)) {
+        $return_array["status"] = $arr[0];
+    }
+    
+    if (array_key_exists(1, $arr)) {
+        $return_array["cultihour"] = $arr[1];
+    }
+    
     return $return_array;
 }
 // }}}
