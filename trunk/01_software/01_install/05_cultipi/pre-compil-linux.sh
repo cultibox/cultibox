@@ -12,6 +12,7 @@ function usage {
             echo "                      cultitime <version>|version ?jenkins?"
             echo "                      culticonf <version>|version ?jenkins?"
             echo "                      cultidoc <version>|version ?jenkins?"
+            echo "                      culticam <version>|version ?jenkins?"
             echo "                      apt-gen"
             echo "                      clean"
             exit 1
@@ -34,6 +35,8 @@ if [ "$2" == "version" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/07_cultiTime/VERSION`
     elif [ "$1" == "culticonf" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/02_cultiConf/VERSION`
+    elif [ "$1" == "culticam" ]; then
+        VERSION=`cat ../../../04_CultiPi/01_Software/09_cultiCam/VERSION`
     fi
 else
     VERSION=$2
@@ -185,6 +188,25 @@ EOF
 
            mv cultidoc.deb ../../05_cultipi/Output/cultidoc-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
+      "culticam")
+           rm -Rf ../01_src/01_xampp/*
+           mkdir ../01_src/01_xampp/culticam
+           cp -R ./conf-package/DEBIAN-culticam ../01_src/01_xampp/culticam/DEBIAN
+
+           mkdir -p ../01_src/01_xampp/culticam/opt/culitcam
+           mkdir -p ../01_src/01_xampp/culticam/etc/init.d
+
+           cp -R ../../../04_CultiPi/01_Software/09_cultiCam/* ../01_src/01_xampp/culticam/opt/culticam/
+           rm -f ../01_src/01_xampp/culticam/opt/culticam/VERSION
+
+           cp ../../../04_CultiPi/01_Software/10_cultiCam_service/etc/init.d/culticam ../01_src/01_xampp/culticam/etc/init.d/culticam
+
+           sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/culticam/DEBIAN/control
+           find ./../01_src/01_xampp/culticam/ -name ".svn"|xargs rm -Rf
+           cd ./../01_src/01_xampp/ && dpkg-deb --build culticam
+
+           mv culticam.deb ../../05_cultipi/Output/culticam-armhf_`echo $VERSION`-r`echo $revision`.deb
+      ;;
       "apt-gen")
            cultipi="`ls -t Output/cultipi*|head -1`"
            cp $cultipi repository/binary/
@@ -203,6 +225,9 @@ EOF
 
            cultidoc="`ls -t Output/cultidoc*|head -1`"
            cp $cultidoc repository/binary/
+
+           cultidoc="`ls -t Output/culticam*|head -1`"
+           cp $culticam repository/binary/
 
            cd repository
            dpkg-scanpackages binary /dev/null | gzip -9c > binary/Packages.gz

@@ -56,12 +56,12 @@ proc takePhoto {webcamIndex} {
     }
     
     # On la sauvegarde
-    set RC [catch {
-        file copy -force /var/www/cultibox/tmp/webcam_${webcamIndex}_temp.jpg  /var/www/cultibox/tmp/webcam_${webcamIndex}.jpg 
-    } msg]
-    if {$RC != 0} {
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during copying snapshot webcam ${webcamIndex} , error : $msg"
-    }
+    #set RC [catch {
+    #    file copy -force /var/www/cultibox/tmp/webcam${webcamIndex}.jpg  /var/www/cultibox/tmp/webcam_${webcamIndex}.jpg 
+    #} msg]
+    #if {$RC != 0} {
+    #    puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during copying snapshot webcam ${webcamIndex} , error : $msg"
+    #}
     
     
     # On la sauvegarde dans les photos journalière une fois par jour

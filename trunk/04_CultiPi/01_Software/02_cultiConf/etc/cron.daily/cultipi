@@ -49,11 +49,18 @@ elif [ "`dpkg -s cultidoc 2>/dev/null|grep Version`" == "" ]; then
     apt-get install -y  --force-yes cultidoc
 fi
 
+if [ "`apt-get -u upgrade --assume-no|grep culticam`" != "" ]; then
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" culticam
+elif [ "`dpkg -s culticam 2>/dev/null|grep Version`" == "" ]; then
+    apt-get install -y  --force-yes culticam
+fi
+
 if [ "`apt-get -u upgrade --assume-no|grep culticonf`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" culticonf
 elif [ "`dpkg -s culticonf 2>/dev/null|grep Version`" == "" ]; then
     apt-get install -y  --force-yes culticonf
 fi
+
 
 
 if [ -d /var/www/cultibox/tmp/import ]; then

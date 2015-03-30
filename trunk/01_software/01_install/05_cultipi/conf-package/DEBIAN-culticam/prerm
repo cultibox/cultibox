@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ -f /etc/init.d/culticam ]; then   
+    /etc/init.d/culticam stop
+    sleep 2
+
+    # Killing remaining process:
+    if [ "`ps ax|grep cultiCam.tcl|grep tclsh`" != "" ]; then
+        for process in `ps ax|grep cultiCam.tcl| grep tclsh| awk -F" " '{print $1}'`; do
+            if [ "$process" != "" ]; then
+                kill -9 $process
+            fi
+        done
+    fi
+fi
+exit 0
