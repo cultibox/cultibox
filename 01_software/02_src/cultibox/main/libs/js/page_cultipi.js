@@ -168,7 +168,7 @@ $(document).ready(function(){
                             cache: false,
                             async: true,
                             url: "main/modules/external/update_webcam.php",
-                            data: {id:selected,brightness:$("#brightness"+selected).val() , contrast:$("#contrast"+selected).val(), resolution:$("#resolution_value"+selected+" option:selected").val(), palette:$("#palette_value"+selected+" option:selected").val()}
+                            data: {id:selected,brightness:$("#brightness"+selected).val() , contrast:$("#contrast"+selected).val(), resolution:$("#resolution_value"+selected+" option:selected").val(), palette:$("#palette_value"+selected+" option:selected").val(), title: $("#webcam_name"+selected).val()}
                          }).done(function (data) {
 
                           
