@@ -44,7 +44,7 @@ fi
 
 
 # Remove svn up when using jenkins
-if [ "$3" == "" ]; then
+if [ "$3" == "up" ]; then
     (cd ../../../ && svn up)
 fi
 
@@ -194,13 +194,10 @@ EOF
            cp -R ./conf-package/DEBIAN-culticam ../01_src/01_xampp/culticam/DEBIAN
 
            mkdir -p ../01_src/01_xampp/culticam/opt/culticam
-           mkdir -p ../01_src/01_xampp/culticam/etc/init.d
-           mkdir -p ../01_src/01_xampp/culticam/etc/culticam
 
-           cp -R ../../../04_CultiPi/01_Software/09_cultiCam/cultiCam.tcl ../01_src/01_xampp/culticam/opt/culticam/
-           cp ../../../04_CultiPi/01_Software/09_cultiCam/etc/culticam/* ../01_src/01_xampp/culticam/etc/culticam/
+           cp -R ../../../04_CultiPi/01_Software/09_cultiCam/* ../01_src/01_xampp/culticam/opt/culticam/
            rm -f ../01_src/01_xampp/culticam/opt/culticam/VERSION
-           cp ../../../04_CultiPi/01_Software/10_cultiCam_service/etc/init.d/culticam ../01_src/01_xampp/culticam/etc/init.d/
+           cp -R ../../../04_CultiPi/01_Software/10_cultiCam_service/* ../01_src/01_xampp/culticam/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/culticam/DEBIAN/control
            find ./../01_src/01_xampp/culticam/ -name ".svn"|xargs rm -Rf
@@ -227,7 +224,7 @@ EOF
            cultidoc="`ls -t Output/cultidoc*|head -1`"
            cp $cultidoc repository/binary/
 
-           cultidoc="`ls -t Output/culticam*|head -1`"
+           culticam="`ls -t Output/culticam*|head -1`"
            cp $culticam repository/binary/
 
            cd repository
