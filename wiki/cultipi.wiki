@@ -137,6 +137,10 @@ Pour utiliser votre nouveau logiciel, entrer dans la barre d'adresse http://cult
 
 Le nom d'utilisateur est cultipi et le mot de passe par défaut est cultipi.
 
+= Autoriser l'accès à votre Module WiFi depuis le web = 
+
+Vous pouvez autoriser l'accès au logiciel depuis le web . Pour cela suivre la procédure suivante : [cultipi_ouverture_port lien]
+
 == Réinitialiser la configuration réseau ==
 
 Pour réinitialiser complètement la configuration réseau :
