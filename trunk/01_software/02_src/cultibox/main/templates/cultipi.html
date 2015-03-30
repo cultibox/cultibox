@@ -732,15 +732,17 @@
             <img id="screen_webcam<?php echo $i; ?>" src="<?php echo $screen{$i}; ?>" title="" class="screenshot" alt="" style="display:none" />
             <div id="div_link_webcam<?php echo $i; ?>" style="display:none"><a href="" id="link_webcam<?php echo $i; ?>" name="<?php echo $i; ?>"><img src='/cultibox/main/libs/img/update_rpi.png' alt='' title="" /></a></div>
 
-            <div id="error_webcam<?php echo $i; ?>" style="display:none" class="text_info">
-                <?php echo __('ERROR_WEBCAM'); ?>
+            <div id="error_webcam<?php echo $i; ?>" style="display:none" class="error_field">
+                <p class="p_center">
+                   <?php echo $webcam_conf[$i]['name']." ".__('ERROR_WEBCAM'); ?> 
+                </p>
             </div>
 
             <div id="configure_webcam<?php echo $i; ?>" style="display:none">
                 <table class="table_width">
                     <tr>
                         <td  class="conf-marge-cultipi"></td>
-                        <td class="conf-title-webcam"><?php echo __('NAME'); ?>: </td>
+                        <td class="conf-title-webcam"><?php echo __('TITLE_WEBCAM'); ?>: </td>
                         <td class="conf-marge-cultipi"><input type="text" size=30 maxlength="30" id="webcam_name<?php echo $i; ?>" name="webcam_name<?php echo $i; ?>" value="<?php echo $webcam_conf[$i]['name']; ?>" /></td>
                         <td></td>
                     </tr>

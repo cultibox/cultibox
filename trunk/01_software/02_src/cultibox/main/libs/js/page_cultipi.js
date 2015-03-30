@@ -59,9 +59,14 @@ function get_webcam(first) {
             try {
                 var objJSON = jQuery.parseJSON(data);
                 $.each(objJSON, function(idx, obj) {
-                    if(obj=="1") {
+                    if(obj!="0") {
                         d = new Date();
-                        $("#screen_webcam"+idx).attr("src", "tmp/webcam"+idx+".jpg?v="+d.getTime());
+                        if(obj==1) {
+                            var src="tmp/webcam"+idx+".jpg?v="+d.getTime();
+                        } else {
+                            var src="";
+                        }
+                        $("#screen_webcam"+idx).attr("src", src);
                         $("#screen_webcam"+idx).show();
                         $("#error_webcam"+idx).css("display","none");
                         $("#div_link_webcam"+idx).show();
@@ -151,7 +156,7 @@ $(document).ready(function(){
         var selected=$(this).attr('name');
         $("#configure_webcam"+$(this).attr('name')).dialog({
              resizable: false,
-             width: 550,
+             width: 650,
              modal: false,
              closeOnEscape: false,
              dialogClass: "popup_message",

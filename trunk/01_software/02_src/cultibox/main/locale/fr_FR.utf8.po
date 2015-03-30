@@ -223,9 +223,6 @@ msgstr "Décalage de l'horloge interne"
 msgid "RTC_OFFSET_UNITY"
 msgstr "seconde(s)"
 
-msgid "SHOW_WEBCAM"
-msgstr "Afficher le menu de la Webcam"
-
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1518,7 +1515,7 @@ msgid "ERROR_PROGRAM_WRONG_NAME"
 msgstr "Le nom du programme doit contenir entre 3 et 16 caractères"
 
 msgid "ERROR_WEBCAM"
-msgstr "Aucune Webcam détectée"
+msgstr "non détectée"
 
 msgid "ERROR_SAME_PASSWORD"
 msgstr "Les mots de passe doivent correspondre"
@@ -2011,7 +2008,7 @@ msgid "RESOLUTION"
 msgstr "Résolution"
 
 msgid "TITLE_WEBCAM"
-msgstr "Image actuellement capturée par la Webcam"
+msgstr "Nom de la webcam"
 
 msgid "TIME_CREATION_IMG"
 msgstr "Image capturée à"
