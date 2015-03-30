@@ -1952,7 +1952,10 @@ msgid "CULTIRAZ_SOFT"
 msgstr "Software CultiRAZ"
 
 msgid "CULTITIME_SOFT"
-msgstr "Software CultiTime"
+msgstr "Software Cultitime"
+
+msgid "CULTICAM_SOFT"
+msgstr "Software Culticam"
 
 msgid "CULTIPI_SERVICE"
 msgstr "Cultipi service status"

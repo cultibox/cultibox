@@ -193,13 +193,14 @@ EOF
            mkdir ../01_src/01_xampp/culticam
            cp -R ./conf-package/DEBIAN-culticam ../01_src/01_xampp/culticam/DEBIAN
 
-           mkdir -p ../01_src/01_xampp/culticam/opt/culitcam
+           mkdir -p ../01_src/01_xampp/culticam/opt/culticam
            mkdir -p ../01_src/01_xampp/culticam/etc/init.d
+           mkdir -p ../01_src/01_xampp/culticam/etc/culticam
 
-           cp -R ../../../04_CultiPi/01_Software/09_cultiCam/* ../01_src/01_xampp/culticam/opt/culticam/
+           cp -R ../../../04_CultiPi/01_Software/09_cultiCam/cultiCam.tcl ../01_src/01_xampp/culticam/opt/culticam/
+           cp ../../../04_CultiPi/01_Software/09_cultiCam/etc/culticam/* ../01_src/01_xampp/culticam/etc/culticam/
            rm -f ../01_src/01_xampp/culticam/opt/culticam/VERSION
-
-           cp ../../../04_CultiPi/01_Software/10_cultiCam_service/etc/init.d/culticam ../01_src/01_xampp/culticam/etc/init.d/culticam
+           cp ../../../04_CultiPi/01_Software/10_cultiCam_service/etc/init.d/culticam ../01_src/01_xampp/culticam/etc/init.d/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/culticam/DEBIAN/control
            find ./../01_src/01_xampp/culticam/ -name ".svn"|xargs rm -Rf
