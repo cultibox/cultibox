@@ -14,10 +14,10 @@ En fonction de l'opérateur, la procédure change. Mais on peut résumer cette p
  * Vous avez besoin de l'adresse IP de votre module WiFi. Vous pouvez retrouver son adresse en utilisant l'aide suivante : [cultipi_adresse_ip Adresse Ip]
  * Se connecter à l'interface administreteur de votre box internet
  * Rajouter un routage de port avec la configuration suivante :
-   * Adresse IP cible : l'adresse IP de votre module WiFi
-   * Port cible : 80
+   * Adresse IP cible (Appelé aussi "Adresse IP locale", "Adresse IP du serveur", "Destination") : l'adresse IP de votre module WiFi
+   * Port cible (Appelé aussi "port fin", "Port interne", "Au port", "Port destination") : 80
    * Protocole : TCP
-   * Port extérieur : Entrer un chiffre entre 1000 et 65000. (Par exemple 6891)
+   * Port extérieur (Appelé aussi "port début", "Port externe", "Du port", "Port source") : Entrer un chiffre entre 1000 et 65000. (Par exemple 6891)
  * Une fois la configuration réalisée, procéder de la manière suivante pour vérifier que cela fonctionne
    * Il vous faut votre adresse IP publique. Pour cela rendez-vous sur le site http://www.whatismyip.com/ . Puis relevez l'adresse indiqué en haut de la page
    * Testez ensuite la connexion : ouvrez un navigateur web, puis entrez : http://{votre_adresse_ip}:{port_exterieur}/cultibox . Par exemple si votre adresse IP publique est 86.116.6.10 est que vous avez choisit le port 6891 , il faut entrer l'adresse suivante : http://86.116.6.10:6891/cultibox
@@ -61,22 +61,55 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Inventel_interface_ad
  * Entrer les informations suivantes pour vous connecter :
    * Utilisateur : admin
    * Mot de passe : admin
+ * Cliquez ensuite sur "Serveur LAN" . Si le menu n'est pas disponible, cliquez d'abord sur "Menu Basic" :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Sagem_interface_admin_1.png
 
+ * Cliquez sur "Ajouter" : 
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Sagem_interface_admin_2.png
 
+ * Entrer les informations suivantes dans la fenêtre :
+    * Nom du serveur : Cultibox
+    * Accès activé : Oui
+    * Protocole : TCP
+    * Du Port : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Au port : 80
+    * Adresse IP locale : l'adresse IP de votre Module WiFi
+ * Cliquer sur "Appliquer"
+ * Puis sur "Maintenant" :
+ 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Sagem_interface_admin_3.png
+
+ * Puis sur "Sauver" et enfin "Redémarrer" :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Sagem_interface_admin_4.png
 
 === Livebox Orange ===
  
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.1.1
+ * Entrer les informations suivantes pour vous connecter :
+   * Utilisateur : admin
+   * Mot de passe : admin
+   
 http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_admin_1.png
+  
+ * Cliquez ensuite sur "Configuration" puis "Livebox" puis "Paramètres avancés" :
   
 http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_admin_2.png 
 
+ * Cliquer ensuite sur "Ajouter une nouvelle rêgle" :
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_admin_3.png 
+
+ * Entrer les informations suivantes dans la fenêtre :
+    * Application / Service : Cultibox
+    * Port Externe : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Port Interne : 80
+    * Protocole : TCP
+    * Equipement : cultipi
+    * Activer : Oui
+ * Puis cliquer sur "Sauver" :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_admin_4.png
 
@@ -84,49 +117,106 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_adm
 
 === Freebox V5 ===
 
+ * Dans un navigateur web, entrer l'adresse suivante :  http://www.free.fr/
+ * Dans la barre en haut , vous pouvez trouver votre compte : « Mon Compte » :
+ 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_1.png
+
+ * Cliquez dessus pour accéder à votre page de login : 
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_2.png
 
+ * Entrez vos identifiants pour vous connecter. Vous arriverez alors sur la page principale de configuration :
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_3.png
+
+ * Cliquez alors sur l'onglet « Internet » pour obtenir cet écran :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_4.png
 
+ * Dans cette page, vous trouverez en bas à gauche le lien « Configurer mon routeur Freebox (en savoir plus) ». Cliquez dessus.
+ * Dans la section "Redirection de port", entrez les informations suivantes :
+    * Port : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Protocole : TCP
+    * Destination : Adresse ip du module WiFi
+    * Port : 80
+ * Puis cliquer sur "Ajouter"
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_5.png
-
-http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_6.png
-
 
 === Freebox Révolution ===
 
+ * Dans un navigateur web, entrer l'adresse suivante :  http://mafreebox.freebox.fr/
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_revolution_interface_admin_1.png
+
+ * Une fois votre mot de passe entré, vous devez avoir la page suivante : 
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_revolution_interface_admin_2.png
 
-http://cultibox.googlecode.com/svn/wiki/img/routage_Free_revolution_interface_admin_3.png
+ * Rendez-vous dans le menu « Réseau local » puis dans l'onglet « Redirection de port ».
+ * Entrez les informations suivantes :
+    * Port externe : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Protocole : TCP
+    * IP : Adresse IP du module WiFi
+    * Port interne : 80
 
-http://cultibox.googlecode.com/svn/wiki/img/routage_Free_revolution_interface_admin_4.png
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_revolution_interface_admin_3.png
 
 
 === AliceBox ===
 
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.1.1
+ * Entrer les informations suivantes pour vous connecter :
+   * Utilisateur : alice
+   * Mot de passe : alice
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_1.png
+ 
+ * Cliquez sur « Configuration avancée » dans le menu à gauche pour accéder à celui-ci :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_2.png
 
+ * Accèdez alors au sous-menu « Serveur virtuels (NAT) » pour obtenir l'écran de configuration des ports :
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_3.png
+
+ * Cliquez sur « Ajouter » pour configurer l'ouverture d'un port. 
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_4.png
 
+ * Sélectionnez « Autre service » et entrez le nom "Cultibox"
+ * Adresse IP du poste serveur :  Adresse IP du module WiFi
+ * Port extérieur début/fin : entrez le port extérieur à utiliser. Par exemple 6891.
+ * Port interne début/fin : 80
+
+ * Une fois fait, vous n'avez plus qu'à « Sauvegarder / Appliquer » pour valider votre configuration.
+ 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_5.png
 
 
 == Neufbox et SFRBox ==
 
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.1.1
+ * Entrer les informations suivantes pour vous connecter :
+   * Utilisateur : admin
+   * Mot de passe : admin (ou la clé WPA insrite sous la box)
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_neuf_neufbox_interface_admin_1.png
 
+ * Une fois connecté, rendez-vous dans l'onglet « Réseau ». Dans le nouveau sous-menu qui apparait, rendez-vous dans « NAT » comme sur l'image ci-dessous : 
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_neuf_neufbox_interface_admin_2.png
+
+ * Entrez les informations suivantes :
+    * Nom : Cultibox
+    * Protocole : TCP
+    * Type : Port
+    * Port externe : entrez le port extérieur à utiliser. Par exemple 6891.
+    * IP : Adresse IP du module WiFi
+    * Port déstination : 80
+    * Activer : Oui
+  * Cliquer ensuite sur le petit "+" en fin de ligne
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_neuf_neufbox_interface_admin_3.png
 
@@ -134,36 +224,104 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_neuf_neufbox_interface_admin
 
 === DartyBox Sagem ===
 
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.1.254
+ * Entrer les informations suivantes pour vous connecter :
+   * Utilisateur : DBAdmin 
+   * Mot de passe : dbox1234
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_darty_sagem_interface_admin_1.png
+
+ * Cliquez sur « Redirection de port & DMZ » dans le menu « Configuration » :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_darty_sagem_interface_admin_2.png
 
+ *  Cliquez sur « Ajouter » pour commencer à ouvrir un port de la box.
+ * Entrez les informations suivantes :
+    * Nom du serveur : Cultibox
+    * Accès Activé : Oui
+    * Protocole : TCP
+    * Du port : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Au port : 80
+    * Adresse IP Locale : Adresse IP du module WiFi
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_darty_sagem_interface_admin_3.png
 
+ * Une fois toutes ces informations entrées, valider l'ouverture de votre port en cliquant sur « Appliquer ».
 
 === DartyBox BEWAN ===
 
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.1.254
+ * Entrer les informations suivantes pour vous connecter :
+   * Utilisateur : DartyBox  
+   * Mot de passe : 1234
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_darty_bewan_interface_admin_1.png
+
+ * Dans le menu à gauche, vous trouverez l'onglet « Routeur ». Cliquez dessus pour accéder à la configuration des ports.
+ * Dans le sous-menu, vous trouverez « Nat et DMZ » comme sur l'image ci-dessous :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_darty_bewan_interface_admin_2.png
 
+ * Cliquez sur « Modifier » pour commencer à ouvrir un port :
+ 
 http://cultibox.googlecode.com/svn/wiki/img/routage_darty_bewan_interface_admin_3.png
 
+ * Entrez les informations suivantes :
+    * Nom : Cultibox
+    * Protocole : TCP
+    * Port (depuis) : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Port (jusqu'à) : 80
+    * Adresse IP Locale : Adresse IP du module WiFi
+ * Puis cliquer sur "Ajouter"
 
 === DartyBox THD ===
 
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.1.1
+ * Entrer les informations suivantes pour vous connecter :
+   * Utilisateur : admin  
+   * Mot de passe : DartyBox ou 1234
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_darty_thd_interface_admin_1.png
+
+ * Si le sous-menu du « Paramètres avancés » n'est pas visible, cliquez sur le petit « - » à droite de celui-ci pour afficher le menu comme sur l'image ci-dessus.
+ * Dans le sous-menu, vous trouverez « Ouverture de Port ». Cliquez dessus pour accéder à la page de configuration :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_darty_thd_interface_admin_2.png
 
+ * Entrez les informations suivantes :
+    * Nom : Cultibox
+    * Port de début : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Port de fin : 80
+    * Protocole : TCP
+    * Adresse IP Locale : Adresse IP du module WiFi
+ * Puis cliquer sur "Ajouter"
 
 == BBox ou Bouygues box ==
 
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.1.254
+ * Par défaut, vous arrivez sur la page d'administration de la BBox :
+ 
 http://cultibox.googlecode.com/svn/wiki/img/routage_bouygues_bbox_interface_admin_1.png
+
+ * A droite, vous trouverez dans le menu « Configuration du routeur ». Cliquez dessus : 
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_bouygues_bbox_interface_admin_2.png
 
+ * Les logins par défaut sont :
+    * Identifiant : « admin »
+    * Mot de passe : « admin »
+ * Une fois connecté, cliquez en haut dans la barre de menu sur « NAT/PAT ». Vous devriez obtenir cet écran :
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_bouygues_bbox_interface_admin_3.png
+
+ * Entrez les informations suivantes :
+    * Nom de la règle : Cultibox
+    * Protocole : TCP
+    * Port / Plage de port : port
+    * Port source : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Adresse IP de destination : Adresse IP du module WiFi
+    * Port de destination : 80
+ * Puis cliquer sur "Valider"
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_bouygues_bbox_interface_admin_4.png
 
@@ -171,29 +329,83 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_bouygues_bbox_interface_admi
 == Numéricable ==
 === NetGear DG834 ===
 
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.0.1
+ * Entrer les informations suivantes pour vous connecter :
+   * Utilisateur : admin  
+   * Mot de passe : password
+ * Une fois connecté, vous arriverez sur la page d'accueil :
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_DG834_interface_admin_1.png
+
+ * Dans le menu à gauche, vous trouverez le menu « Services ». Cliquez dessus pour accéder à la page de configuration des ports :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_DG834_interface_admin_2.png
 
+ * Sur cette page, cliquez sur « Ajouter Service Personnalisé » pour ouvrir un nouveau port :
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_DG834_interface_admin_3.png
 
+ * Entrez les informations suivantes :
+    * Nom : Cultibox
+    * Protocole : TCP
+    * Port de début : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Port de fin : 80
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_DG834_interface_admin_4.png
+
+ * Rendez-vous dans le menu « Règles Pare-feu ».
+ * Cliquez sur « Ajouter » pour configurer votre nouveau service.
+ * Entrez les informations suivantes :
+    * Service : Cultibox
+    * Action : toujours autoriser
+    * Envoyer au serveur lan : Adresse IP du module WiFi
+    * Utilisateur WAN : Tous
+    * Journal : Jamais
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_DG834_interface_admin_5.png
 
 === NetGear CVG834G ===
 
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.0.1
+ * Entrer les informations suivantes pour vous connecter :
+   * Utilisateur : admin  
+   * Mot de passe : password
+ * Cliquez sur « Transfert de Port » :
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_CVG834G_interface_admin_1.png
 
+ * Entrez les informations suivantes :
+    * Nom : Cultibox
+    * Port de début : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Port de fin : 80
+    * Protocole : TCP
+    * Adresse IP Locale : Adresse IP du module WiFi
+  * Puis cliquer sur "Ajouter"
 
 === NetGear WGR614V7 ===
 
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.0.1
+ * Entrer les informations suivantes pour vous connecter :
+   * Utilisateur : admin  
+   * Mot de passe : password
+ * Une fois connecté sur votre box, vous arriverez sur la page d'accueil :
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_WGR614V7_interface_admin_1.png
+
+ * Dans le menu à gauche, vous trouverez « Port Forwarding/Port Triggering », cliquez dessus pour accéder à la page de configuration des ports.
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_WGR614V7_interface_admin_2.png
 
+ * En bas de cette nouvelle page se trouve un bouton « Add Custom Services ». Cliquez dessus pour commencer à ouvrir un port.
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_WGR614V7_interface_admin_3.png
 
+ * Entrez les informations suivantes :
+    * Service name : Cultibox
+    * Service Type : TCP
+    * Starting port : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Ending Port : 80
+    * Server IP Address : Adresse IP du module WiFi
 
 = Suisse =
 
@@ -202,8 +414,7 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_WGR614V7_interfa
 === Boitier Horizon ===
 
  * Dans un navigateur web, entrer l'adresse suivante : http://192.168.192.1
-
- * Vous entrer dans l'interface d'administration de votre réseau : 
+ * Vous entrez dans l'interface d'administration de votre réseau : 
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_UPC_horizon_interface_admin.png
 
@@ -225,12 +436,27 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_UPC_horizon_interface_admin.
 
 == Belgacom - Bbox-2 ==
 
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.192.1
+ * Vous devriez arriver sur la page d'accueil de votre Bbox-2 :
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_belgacom_bbox_interface_admin_1.png
+
+ * Dans la barre de menu à gauche, vous devriez trouver dans « Advanced Settings » le sous-menu « LAN servers ». Cliquez dessus pour vous rendre sur la page de configuration des ports :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_belgacom_bbox_interface_admin_2.png
 
+ * Cliquez sur la derniere ligne du tableau
+
 http://cultibox.googlecode.com/svn/wiki/img/routage_belgacom_bbox_interface_admin_3.png
 
-
+ * Entrez les informations suivantes :
+    * Service name : Cultibox
+    * Access Activated : Yes
+    * Public start port : entrez le port extérieur à utiliser. Par exemple 6891.
+    * Public end port : entrez le même port extérieur à utiliser. Par exemple 6891.
+    * Service Type : TCP
+    * Lan Start Port : 80
+    * Local IP Address : Adresse IP du module WiFi
+  * Puis cliquez sur Apply
 
 
