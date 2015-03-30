@@ -5,14 +5,14 @@
 
 = Introduction =
 
-Pour accéder à votre module WiFi depuis internet, il est nécéssaire d'ouvrir les ports de votre box internet.
+Pour accéder à votre module WiFi depuis internet, il est nécessaire d'ouvrir les ports de votre box internet.
 
 Cette configuration ne doit pas être réalisée si vous souhaitez accéder à votre Module WiFi uniquement depuis chez vous.
 
 En fonction de l'opérateur, la procédure change. Mais on peut résumer cette procédure :
 
- * Vous avez besoin de l'adresse IP de votre module WiFi. Vous pouvez retrouver son adresse en utilisant l'aide suivante : [cultipi_adresse_ip Adresse Ip]
- * Se connecter à l'interface administreteur de votre box internet
+ * Vous avez besoin de l'adresse IP de votre module WiFi. Vous pouvez retrouver son adresse en utilisant l'aide suivante : [cultipi_adresse_ip Adresse IP]
+ * Se connecter à l'interface administrateur de votre box internet
  * Rajouter un routage de port avec la configuration suivante :
    * Adresse IP cible (Appelé aussi "Adresse IP locale", "Adresse IP du serveur", "Destination") : l'adresse IP de votre module WiFi
    * Port cible (Appelé aussi "port fin", "Port interne", "Au port", "Port destination") : 80
@@ -24,7 +24,7 @@ En fonction de l'opérateur, la procédure change. Mais on peut résumer cette p
 
    Ci dessous, une procédure plus détaillé pour chaque opérateur.
    
-   Pour les boxs Française, nous avons repris les images et une partie du texte depuis le site web suivant : https://craym.eu/tutoriels/utilitaires/ouvrir_les_ports_de_sa_box.html
+   Pour les Boxs Française, nous avons repris les images et une partie du texte depuis le site web suivant : https://craym.eu/tutoriels/utilitaires/ouvrir_les_ports_de_sa_box.html
    
 = France =
 
@@ -49,7 +49,7 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Inventel_interface_ad
  
  * Entrer les informations suivantes dans la fenêtre :
     * Sélectionnez "Service personnalisé"
-    * Entrer dans le champs de texte "cultibox"
+    * Entrer dans le champs de texte "Cultibox"
     * Dans le champ "Protocole" entrez TCP
     * Dans le champ "Port externe" entrez le port extérieur à utiliser. Par exemple 6891.
     * Dans le champ "Port interne", entrez 80
@@ -98,7 +98,7 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_adm
   
 http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_admin_2.png 
 
- * Cliquer ensuite sur "Ajouter une nouvelle rêgle" :
+ * Cliquer ensuite sur "Ajouter une nouvelle règle" :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_admin_3.png 
 
@@ -107,7 +107,7 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_adm
     * Port Externe : entrez le port extérieur à utiliser. Par exemple 6891.
     * Port Interne : 80
     * Protocole : TCP
-    * Equipement : cultipi
+    * Équipement : cultipi
     * Activer : Oui
  * Puis cliquer sur "Sauver" :
 
@@ -138,7 +138,7 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_4.pn
  * Dans la section "Redirection de port", entrez les informations suivantes :
     * Port : entrez le port extérieur à utiliser. Par exemple 6891.
     * Protocole : TCP
-    * Destination : Adresse ip du module WiFi
+    * Destination : Adresse IP du module WiFi
     * Port : 80
  * Puis cliquer sur "Ajouter"
 
@@ -177,7 +177,7 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admi
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_2.png
 
- * Accèdez alors au sous-menu « Serveur virtuels (NAT) » pour obtenir l'écran de configuration des ports :
+ * Accédez alors au sous-menu « Serveur virtuels (NAT) » pour obtenir l'écran de configuration des ports :
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_3.png
 
@@ -200,7 +200,7 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admi
  * Dans un navigateur web, entrer l'adresse suivante : http://192.168.1.1
  * Entrer les informations suivantes pour vous connecter :
    * Utilisateur : admin
-   * Mot de passe : admin (ou la clé WPA insrite sous la box)
+   * Mot de passe : admin (ou la clé WPA inscrite sous la box)
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_neuf_neufbox_interface_admin_1.png
 
@@ -214,7 +214,7 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_neuf_neufbox_interface_admin
     * Type : Port
     * Port externe : entrez le port extérieur à utiliser. Par exemple 6891.
     * IP : Adresse IP du module WiFi
-    * Port déstination : 80
+    * Port destination : 80
     * Activer : Oui
   * Cliquer ensuite sur le petit "+" en fin de ligne
 
@@ -445,7 +445,7 @@ http://cultibox.googlecode.com/svn/wiki/img/routage_belgacom_bbox_interface_admi
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_belgacom_bbox_interface_admin_2.png
 
- * Cliquez sur la derniere ligne du tableau
+ * Cliquez sur la dernière ligne du tableau
 
 http://cultibox.googlecode.com/svn/wiki/img/routage_belgacom_bbox_interface_admin_3.png
 
