@@ -125,35 +125,6 @@ function insert_configuration($key,$value,&$out) {
 // }}}
 
 
-// {{{ insert_webcam()
-// ROLE set webcam value for specific entries
-// IN $key      the key selectable from the database 
-//    $value   value of the key to insert
-//    $out      errors or warnings messages
-// RET none
-function insert_webcam($key,$value,&$out) {
-
-   $sql = "UPDATE webcam SET " . $key . " = \"" . $value . "\" WHERE id = 1;";
-
-   $db=db_priv_pdo_start();
-   try {
-        $db->exec("$sql");
-   } catch(PDOException $e) {
-        $ret=$e->getMessage();
-   }
-   $db=null;
-
-   if((isset($ret))&&(!empty($ret))) {
-      if($GLOBALS['DEBUG_TRACE']) {
-         $out[]=__('ERROR_UPDATE_SQL').$ret;
-      } else {
-         $out[]=__('ERROR_UPDATE_SQL');
-      }
-   }
-}
-// }}}
-
-
 // {{{ insert_informations()
 // ROLE set informations value for specific entries
 // IN $key      the key selectable from the database 
@@ -698,9 +669,6 @@ function check_database() {
 
     //Check logs table:
     logs\check_db();
-
-    //Check webcam table:
-    webcam\check_db();
 
     //Check power table:
     power\check_db();
