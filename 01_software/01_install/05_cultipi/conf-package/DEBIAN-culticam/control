@@ -1,0 +1,9 @@
+Package: culticam
+Version: 1.0.0-debian
+Section: Utilities
+Maintainer: Yann Genevois <yann.genevois@cultibox.fr>
+Homepage: http://www.cultibox.fr
+Priority: extra
+Architecture: armhf
+Description: Culticam manage webcam snapshot for Cultibox
+

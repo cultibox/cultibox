@@ -12,7 +12,7 @@ if [ "$1" == "purge" ] || [ "$1" == "remove" ]; then
     update-rc.d -f cultitime remove >/dev/null 2>&1
 
     if [ -f /etc/init.d/cultitime ]; then
-        rm -Rf /etc/init.d/culitime
+        rm -Rf /etc/init.d/cultitime
     fi
 fi
 
