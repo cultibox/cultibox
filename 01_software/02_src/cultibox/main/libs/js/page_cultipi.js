@@ -1081,17 +1081,17 @@ $(document).ready(function(){
                         case "loading_serverPlugUpdate" :
                         case "loading_serverHisto" :
                             $('#synoptic_updateCultipiStatus').attr('src','main/libs/img/service_restart.png');
-                            $('#synoptic_updateCultipiStatus').attr('title','<?php echo __('SYNO_UPDATE_CULTIPI_STATUS_START'); ?>');
+                            $('#synoptic_updateCultipiStatus').attr('title','<?php echo __('SYNO_UPDATE_CULTIPI_STATUS_START'); ?>' + " - Heure locale : " + objJSON.cultihour);
                             break;
                         case "initialized" :
                             $('#synoptic_updateCultipiStatus').attr('src','main/libs/img/service_on.png');
-                            $('#synoptic_updateCultipiStatus').attr('title','<?php echo __('SYNO_UPDATE_CULTIPI_STATUS_STARTED'); ?>');
+                            $('#synoptic_updateCultipiStatus').attr('title','<?php echo __('SYNO_UPDATE_CULTIPI_STATUS_STARTED'); ?>' + " - Heure locale : " + objJSON.cultihour);
                             break;
                         case "TIMEOUT" :
                         case "DEFCOM" :
                         default :
                             $('#synoptic_updateCultipiStatus').attr('src','main/libs/img/button_cancel.png');
-                            $('#synoptic_updateCultipiStatus').attr('title','<?php echo __('SYNO_UPDATE_CULTIPI_STATUS_TIMEOUT'); ?>');
+                            $('#synoptic_updateCultipiStatus').attr('title','<?php echo __('SYNO_UPDATE_CULTIPI_STATUS_TIMEOUT'); ?>' + " - Heure locale : " + objJSON.cultihour);
                             break;
                     }
                 }
