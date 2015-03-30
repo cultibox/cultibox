@@ -11,6 +11,9 @@
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
+var nb_webcam = <?php echo json_encode($GLOBALS['MAX_WEBCAM']); ?>;
+var webcam_conf = <?php echo json_encode($webcam_conf); ?>;
+
 
 // GLobal var for slidder
 var syno_configure_element_object = {
@@ -37,6 +40,54 @@ var typeOfElem = "";
 
 var absolut_X_position = "";
 var absolut_Y_position = "";
+
+function get_webcam(first) {
+      $.ajax({
+        beforeSend: function(jqXHR) {
+                $.xhrPool.push(jqXHR);
+        },
+        complete: function(jqXHR) {
+            var index = $.xhrPool.indexOf(jqXHR);
+            if (index > -1) {
+                $.xhrPool.splice(index, 1);
+            }
+        },
+        cache: false,
+        async: true,
+        url: "main/modules/external/get_webcam.php"
+      }).done(function (data) {
+            try {
+                var objJSON = jQuery.parseJSON(data);
+                $.each(objJSON, function(idx, obj) {
+                    if(obj=="1") {
+                        d = new Date();
+                        $("#screen_webcam"+idx).attr("src", "tmp/webcam"+idx+".jpg?v="+d.getTime());
+                        $("#screen_webcam"+idx).show();
+                        $("#error_webcam"+idx).css("display","none");
+                        $("#div_link_webcam"+idx).show();
+                    } else {
+                        d = new Date();
+                        $("#screen_webcam"+idx).attr("src", "");
+                        $("#screen_webcam"+idx).css("display","none");
+                        $("#error_webcam"+idx).show();
+                        $("#div_link_webcam"+idx).css("display","none");
+                    }
+                });
+
+                if(first=="1") {
+                    $("#webcam0").show();
+                }
+
+                $.timeout.push(setTimeout(function() {
+                    get_webcam("0");
+                },5000));
+            } catch(err) {
+                $.timeout.push(setTimeout(function() {
+                    get_webcam("0");
+                },5000));
+            }
+        });
+}
 
 $(document).ready(function(){
      pop_up_remove("main_error");
@@ -69,6 +120,96 @@ $(document).ready(function(){
              $("#wifi_essid_list").append('<b>'+value+' : </b><input type="radio" name="wifi_essid" value="'+value+'" '+checked+' /><br />');
          });
       });
+
+
+     for(i=0;i<nb_webcam;i++) {
+        var val=i;
+        $("#brightness_slider"+i).slider({
+            max: 100,
+            min: 0,
+            slide: function( event, ui) {
+                $("#brightness"+$(this).attr('id').substr($(this).attr('id').length - 1)).val(ui.value);
+            },
+            step: 1,
+            value: webcam_conf[i]['brightness']
+        });
+
+        $("#contrast_slider"+i).slider({
+            max: 100,
+            min: 0,
+            slide: function( event, ui ) {
+                $("#contrast"+$(this).attr('id').substr($(this).attr('id').length - 1)).val(ui.value);
+            },
+            step: 1,
+            value: webcam_conf[i]['contrast']
+        });
+    }
+
+
+    $('a[id^="link_webcam"]').click(function(e) {
+        e.preventDefault();
+        var selected=$(this).attr('name');
+        $("#configure_webcam"+$(this).attr('name')).dialog({
+             resizable: false,
+             width: 550,
+             modal: false,
+             closeOnEscape: false,
+             dialogClass: "popup_message",
+             buttons: [{
+                 text: SAVE_button,
+                 click: function () {
+                         $(this).dialog('close');
+                         $.ajax({
+                            cache: false,
+                            async: true,
+                            url: "main/modules/external/update_webcam.php",
+                            data: {id:selected,brightness:$("#brightness"+selected).val() , contrast:$("#contrast"+selected).val(), resolution:$("#resolution_value"+selected+" option:selected").val(), palette:$("#palette_value"+selected+" option:selected").val()}
+                         }).done(function (data) {
+
+                          
+                         });
+                 }
+             },{
+                 text: CANCEL_button,
+                 "id": "btnClose",
+                  click: function () {
+                         $(this).dialog('close');
+                   }
+             }]
+        });
+    });
+
+    $("input[name=webcam]:radio").change(function () {
+        for(i=0;i<nb_webcam;i++) {
+            if(i==$("input[type='radio'][name='webcam']:checked").val()) {
+                $("#webcam"+i).show();
+            } else {
+                $("#webcam"+i).css("display","none");
+            }
+        }
+    });
+
+    
+    $('#syno_webcam').click(function(e) {
+        e.preventDefault();
+        get_webcam("1");
+        $("#show_webcam").dialog({
+             resizable: true,
+             modal: true,
+             width: 800,
+             height: 600,
+             closeOnEscape: false,
+             dialogClass: "popup_message",
+             buttons: [{
+                 text: CLOSE_button,
+                 "id": "btnClose",
+                  click: function () {
+                         $(this).dialog('close');
+                   }
+             }]
+        });
+    });
+
 
     $.ajax({
           cache: false,

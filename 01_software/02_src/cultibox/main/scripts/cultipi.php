@@ -82,6 +82,15 @@ if(find_config($net_config,"wlan0","wpa-psk","bool")) {
 if(strpos("$wifi_ssid","cultipi_")===0) $wifi_ssid="";
 
 
+$webcam_conf=webcam\get_webcam_conf();
+
+for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) {
+    if(is_file("/tmp/webcam$i.jpg")) {
+        $screen{$i}="/tmp/webcam$i.jpg";
+    }
+}
+
+
 //Compute time loading for debug option
 $end_load = getmicrotime();
 

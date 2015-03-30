@@ -45,8 +45,6 @@ check_database();
 
 // Variables for page cost :
 $cost=get_configuration("SHOW_COST");
-$webcam=get_configuration("SHOW_WEBCAM");
-
 
 ?>
 <!DOCTYPE HTML>
@@ -170,8 +168,6 @@ $webcam=get_configuration("SHOW_WEBCAM");
                             <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) { ?>
                                     <li id="menu-cultipi" class="level1 item164"><a href="/cultibox/index.php?menu=cultipi" class="level1 href-cultipi" ><span><?php echo __('MENU_CULTIPI'); ?></span></a></li>
                             <?php } ?>
-
-                            <li id="menu-webcam" <?php if(!$webcam) { echo 'style="display:none"'; } ?>><a href="/cultibox/index.php?menu=webcam" class="level1 href-webcam" ><span><?php echo __('MENU_WEBCAM'); ?></span></a></li>
                    </ul>
             </div>               
 

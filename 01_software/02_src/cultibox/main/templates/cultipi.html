@@ -39,6 +39,11 @@
                        src="main/libs/img/db_add.png"  
                        alt="calendar"  
                 />        
+                <input type="image" id="syno_webcam" name="syno_webcam"
+                       title=""
+                       src="main/libs/img/webcam_icon.png"  
+                       alt="webcam"  
+                />
             </td>
             <td class="calendar-conf-marge"></td>
             <td ><p class="pInline" ><?php echo __('SYNO_UPDATE_SENSOR_HOUR'); ?></p><p class="pInline" id="synoptic_updateSensorHour" ></p></td>
@@ -347,12 +352,12 @@
                 <td colspan="2"><div id="syno_configure_element_force_plug_xmax_1_slider"></div></td>
             </tr>
             <tr id="syno_configure_element_force_plug_xmax_2">
-                <td>Rouge : </td>
+                <td>Bleu : </td>
                 <td><input type="text" name="syno_configure_element_force_plug_xmax_2_slider_val" id="syno_configure_element_force_plug_xmax_2_slider_val" value="" size="2" /></td>
                 <td colspan="2"><div id="syno_configure_element_force_plug_xmax_2_slider"></div></td>
             </tr>
             <tr id="syno_configure_element_force_plug_xmax_3">
-                <td>Bleu : </td>
+                <td>Rouge : </td>
                 <td><input type="text" name="syno_configure_element_force_plug_xmax_3_slider_val" id="syno_configure_element_force_plug_xmax_3_slider_val" value="" size="2" /></td>
                 <td colspan="2"><div id="syno_configure_element_force_plug_xmax_3_slider"></div></td>
             </tr>
@@ -711,6 +716,70 @@
 
 
 <div id="wifi_essid_list" style="display:none" title="<?php echo __('WIFI_ESSID_SCAN_TITLE'); ?>">
+</div>
+
+<div id="show_webcam" style="display:none" title="<?php echo __('MENU_WEBCAM'); ?>"> 
+    <?php for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) { ?>
+        <div id="webcam<?php echo $i; ?>" style="display:none" class="step">
+            <img id="screen_webcam<?php echo $i; ?>" src="<?php echo $screen{$i}; ?>" title="" class="screenshot" alt="" style="display:none" />
+            <div id="div_link_webcam<?php echo $i; ?>" style="display:none"><a href="" id="link_webcam<?php echo $i; ?>" name="<?php echo $i; ?>"><img src='/cultibox/main/libs/img/update_rpi.png' alt='' title="" /></a></div>
+
+            <div id="error_webcam<?php echo $i; ?>" style="display:none" class="text_info">
+                <?php echo __('ERROR_WEBCAM'); ?>
+            </div>
+
+            <div id="configure_webcam<?php echo $i; ?>" style="display:none">
+                <table class="table_width">
+                    <tr>
+                        <td  class="conf-marge-cultipi"></td>
+                        <td class="conf-title-webcam"><?php echo __('BRIGHTNESS'); ?>: </td>
+                        <td class="conf-marge-cultipi"><div class="slider_div" id="brightness_slider<?php echo $i; ?>"></div></td>
+                        <td><input type="text" name="brightness" id="brightness<?php echo $i; ?>" value="<?php echo $webcam_conf[$i]['brightness']; ?>" size="4" readonly />%</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><?php echo __('CONTRAST'); ?>:</td>
+                        <td><div id="contrast_slider<?php echo $i; ?>" class="slider_div"></div></td>
+                        <td><input type="text" name="contrast" id="contrast<?php echo $i; ?>" value="<?php echo $webcam_conf[$i]['contrast']; ?>" size="4" readonly />%</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><?php echo __('RESOLUTION'); ?>:</td>
+                        <td>
+                            <select name="resolution_value" id="resolution_value<?php echo $i; ?>">
+                                <?php foreach( $GLOBALS['WEBCAM_RESOLUTION'] as $key) { ?>
+                                    <option value="<?php echo $key; ?>" <?php if(strcmp($webcam_conf[$i]['resolution'],"$key")==0) echo 'selected'; ?>><?php echo $key; ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><?php echo __('PALETTE'); ?>:</td>
+                        <td>
+                            <select name="palette_value" id="palette_value<?php echo $i; ?>">
+                                <?php foreach( $GLOBALS['WEBCAM_PALETTE'] as $key) { ?>
+                                    <option value="<?php echo $key; ?>" <?php if(strcmp($webcam_conf[$i]['palette'],"$key")==0) echo 'selected'; ?>><?php echo $key; ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    <?php } ?>
+
+    <br />
+    <hr />
+    <br />
+    <p class="p_center">
+    <?php for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) { ?>
+            <input type="radio" name="webcam" value="<?php echo $i; ?>" <?php if($i==0) echo ' checked'; ?>/>
+    <?php } ?>
+    </p>
 </div>
 
 <script>expand("<?php echo $submenu; ?>");</script>

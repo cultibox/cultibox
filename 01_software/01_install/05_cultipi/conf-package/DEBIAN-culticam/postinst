@@ -4,4 +4,8 @@ if [ -f /etc/init.d/culticam ]; then
     update-rc.d culticam defaults
 fi
 
+if [  "`cat /etc/sudoers|grep cultipi|grep fswebcam`" == "" ]; then
+        echo "cultipi ALL = (root) NOPASSWD: /usr/bin/fswebcam" >> /etc/sudoers
+fi  
+
 /etc/init.d/culticam force-reload
