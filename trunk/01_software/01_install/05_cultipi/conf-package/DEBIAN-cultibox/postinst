@@ -121,7 +121,7 @@ else
     echo "... OK"
 fi
 
-find /var/www/cultibox/ -name "*-dist"|xargs rm 2>/dev/null
+find /var/www/cultibox/ -name "*-dist"|xargs rm 2>/dev/null; echo ""
 
 
 if [ ! -d /home/cultipi/cultibox ]; then
