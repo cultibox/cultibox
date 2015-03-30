@@ -48,38 +48,6 @@ EOF;
 // }}}
 
 
-// {{{ get_webcam()
-// ROLE get webcam value for specific entries
-// IN $key   the key selectable from the database 
-//    $out   errors or warnings messages
-// RET $res   value of the key   
-function get_webcam($key,&$out="") {
-        $sql = <<<EOF
-SELECT {$key} FROM `webcam` WHERE id = 1
-EOF;
-    $db=db_priv_pdo_start();
-    try {
-        $sth=$db->prepare("$sql");
-        $sth-> execute();
-        $res=$sth->fetch();
-    } catch(PDOException $e) {
-        $ret=$e->getMessage();
-    }
-    $db=null;
-
-    if((isset($ret))&&(!empty($ret))) {
-        if($GLOBALS['DEBUG_TRACE']) {
-            $out[]=__('ERROR_SELECT_SQL').$ret;
-        } else {
-            $out[]=__('ERROR_SELECT_SQL');
-        }
-    }
-    return $res[0];
-}
-// }}}
-
-
-
 // {{{ get_informations()
 // ROLE get informations value for specific entries
 // IN $key   the key selectable from the database 

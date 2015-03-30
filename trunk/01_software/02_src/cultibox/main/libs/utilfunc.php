@@ -12,7 +12,6 @@ if(is_file("main/libs/l10n.php")) {
    require_once 'main/libs/lib_plugs.php';
    require_once 'main/libs/lib_power.php';
    require_once 'main/libs/lib_cultipi.php';
-   require_once 'main/libs/lib_webcam.php';
 } else if(is_file("../libs/l10n.php")) {
    require_once '../libs/l10n.php';
    require_once '../libs/lib_programs.php';
@@ -24,7 +23,6 @@ if(is_file("main/libs/l10n.php")) {
    require_once '../libs/lib_plugs.php';
    require_once '../libs/lib_power.php';
    require_once '../libs/lib_cultipi.php';
-   require_once '../libs/lib_webcam.php';
 } else {
    require_once '../../libs/l10n.php';
    require_once '../../libs/lib_programs.php';
@@ -36,7 +34,6 @@ if(is_file("main/libs/l10n.php")) {
    require_once '../../libs/lib_plugs.php';
    require_once '../../libs/lib_power.php';
    require_once '../../libs/lib_cultipi.php';
-   require_once '../../libs/lib_webcam.php';
 }
 
 
@@ -1196,6 +1193,60 @@ function create_network_file($myConf) {
     fclose($f);
     return 1;
 }
+// }}}
+
+
+// {{{
+function get_webcam_conf() {
+        $return=array();
+
+        for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) {
+            if(is_file("/etc/culticam/webcam$i.conf")) {
+                $handle = fopen("/etc/culticam/webcam$i.conf", "r");
+                if($handle) {
+                    while(($line = fgets($handle)) !== false) {
+                    // process the line read.
+                    if(strpos($line, "resolution")!==false) {
+                        $value=explode(" ",$line);
+                        $return[$i]['resolution']=trim($value[1]);
+                    }
+
+                    if(strpos($line, "brightness")!==false) {
+                        $value=explode("=",$line);
+                        $value[1]=trim($value[1]);
+                        $return[$i]['brightness']=substr($value[1],0,strlen($value[1])-1);
+                    }
+
+                    if(strpos($line, "contrast")!==false) {
+                        $value=explode("=",$line);
+                        $value[1]=trim($value[1]);
+                        $return[$i]['contrast']=substr($value[1],0,strlen($value[1])-1);
+                    }
+
+                    if(strpos($line, "palette")!==false) {
+                        $value=explode(" ",$line);
+                        $return[$i]['palette']=trim($value[1]);
+                    }
+
+                    if(strpos($line, "title")!==false) {
+                        $value=explode("\"",$line);
+                        $return[$i]['name']=trim($value[1]);
+                        $return[$i]['name']=substr($value[1],0,strlen($value[1])-1);
+                    }
+                    }
+                    fclose($handle);
+                } else {
+                    // error opening the file.
+                    $return[$i]['resolution']="400x300";
+                    $return[$i]['brightness']="55";
+                    $return[$i]['contrast']="33";
+                    $return[$i]['palette']="MJPEG";
+                    $return[$i]['name']="Webcam $i";
+                  }
+            }
+        }
+        return $return;
+  }
 // }}}
 
 ?>

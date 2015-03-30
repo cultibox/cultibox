@@ -719,6 +719,14 @@
 </div>
 
 <div id="show_webcam" style="display:none" title="<?php echo __('MENU_WEBCAM'); ?>"> 
+    <p class="p_center">
+    <?php for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) { ?>
+            <input type="radio" name="webcam" value="<?php echo $i; ?>" <?php if($i==0) echo ' checked'; ?>/>
+    <?php } ?>
+    </p>
+    <br />
+    <hr />
+    <br />
     <?php for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) { ?>
         <div id="webcam<?php echo $i; ?>" style="display:none" class="step">
             <img id="screen_webcam<?php echo $i; ?>" src="<?php echo $screen{$i}; ?>" title="" class="screenshot" alt="" style="display:none" />
@@ -730,6 +738,12 @@
 
             <div id="configure_webcam<?php echo $i; ?>" style="display:none">
                 <table class="table_width">
+                    <tr>
+                        <td  class="conf-marge-cultipi"></td>
+                        <td class="conf-title-webcam"><?php echo __('NAME'); ?>: </td>
+                        <td class="conf-marge-cultipi"><input type="text" size=30 maxlength="30" id="webcam_name<?php echo $i; ?>" name="webcam_name<?php echo $i; ?>" value="<?php echo $webcam_conf[$i]['name']; ?>" /></td>
+                        <td></td>
+                    </tr>
                     <tr>
                         <td  class="conf-marge-cultipi"></td>
                         <td class="conf-title-webcam"><?php echo __('BRIGHTNESS'); ?>: </td>
@@ -771,15 +785,6 @@
         </div>
 
     <?php } ?>
-
-    <br />
-    <hr />
-    <br />
-    <p class="p_center">
-    <?php for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) { ?>
-            <input type="radio" name="webcam" value="<?php echo $i; ?>" <?php if($i==0) echo ' checked'; ?>/>
-    <?php } ?>
-    </p>
 </div>
 
 <script>expand("<?php echo $submenu; ?>");</script>
