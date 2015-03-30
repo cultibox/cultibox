@@ -29,7 +29,13 @@
         if((isset($_GET['resolution']))&&(!empty($_GET['resolution']))) {
             $resolution=$_GET['resolution'];
         } else {
-            $resolution="320x240";
+            $resolution="400x300";
+        }
+
+        if((isset($_GET['title']))&&(!empty($_GET['title']))) {
+            $title=$_GET['title'];
+        } else {
+            $title="Webcam ".$id;
         }
 
         $conf=array();
@@ -39,6 +45,7 @@
         $conf[]="set brightness=".$brightness."%";
         $conf[]="set contrast=".$contrast."%";
         $conf[]="skip 2";
+        $conf[]="title \"".$title."\"";
         $conf[]="top-banner";
         $conf[]="font /usr/share/fonts/truetype/msttcorefonts/arial.ttf";
         $conf[]="timestamp \"%d-%m-%Y %H:%M:%S\"";
