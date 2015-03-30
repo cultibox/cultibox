@@ -1,0 +1,32 @@
+#summary  Module WiFi Adresse IP
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+Ce chapitre de l'aide permet de retrouver l'adresse IP de votre module WiFi. C'est notamement essentiel pour pouvoir accéder à votre Module WiFi depuis le monde.
+   
+Il y a plusieurs façon de retrouver l'adresse IP de votre Module WiFi.
+
+= Solution Bonjour =
+   
+Si vous êtes sous WIndows, vous avez du installer le programme "Bonjour". Sous Mac, il est installé par défaut.
+
+Ouvrez une invite de commande (windows) ou un terminal (Linux et Mac). Puis entre la commande suivante :
+
+{{{
+    ping cultipi.local
+}}}
+   
+Dans la fenêtre, l'adresse IP du module WIFi apparaît :
+
+http://cultibox.googlecode.com/svn/wiki/img/cultipi_ip_ping.png
+
+= Solution Serveur DHCP =
+
+Lorsque votre module WiFi se connecte à votre réseau WiFi, votre box internet fourni une adresse au module WiFi grâce à un module qu'on appel DHCP.
+
+Connectez-vous sur l'interface d'administration de votre box Internet.
+
+Puis dans la partie DHCP, vous devez trouver le Module WiFi (sous le nom cultipi) avec son adresse IP.

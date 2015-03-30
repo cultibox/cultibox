@@ -1,0 +1,236 @@
+#summary  Module WiFi Ouverture de port
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+Pour accéder à votre module WiFi depuis internet, il est nécéssaire d'ouvrir les ports de votre box internet.
+
+Cette configuration ne doit pas être réalisée si vous souhaitez accéder à votre Module WiFi uniquement depuis chez vous.
+
+En fonction de l'opérateur, la procédure change. Mais on peut résumer cette procédure :
+
+ * Vous avez besoin de l'adresse IP de votre module WiFi. Vous pouvez retrouver son adresse en utilisant l'aide suivante : [cultipi_adresse_ip Adresse Ip]
+ * Se connecter à l'interface administreteur de votre box internet
+ * Rajouter un routage de port avec la configuration suivante :
+   * Adresse IP cible : l'adresse IP de votre module WiFi
+   * Port cible : 80
+   * Protocole : TCP
+   * Port extérieur : Entrer un chiffre entre 1000 et 65000. (Par exemple 6891)
+ * Une fois la configuration réalisée, procéder de la manière suivante pour vérifier que cela fonctionne
+   * Il vous faut votre adresse IP publique. Pour cela rendez-vous sur le site http://www.whatismyip.com/ . Puis relevez l'adresse indiqué en haut de la page
+   * Testez ensuite la connexion : ouvrez un navigateur web, puis entrez : http://{votre_adresse_ip}:{port_exterieur}/cultibox . Par exemple si votre adresse IP publique est 86.116.6.10 est que vous avez choisit le port 6891 , il faut entrer l'adresse suivante : http://86.116.6.10:6891/cultibox
+
+   Ci dessous, une procédure plus détaillé pour chaque opérateur.
+   
+   Pour les boxs Française, nous avons repris les images et une partie du texte depuis le site web suivant : https://craym.eu/tutoriels/utilitaires/ouvrir_les_ports_de_sa_box.html
+   
+= France =
+
+== Orange ==
+
+=== Livebox Inventel ===
+
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.1.1
+ 
+http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Inventel_interface_admin_1.png
+
+ * Entrer les informations suivantes pour vous connecter :
+   * Utilisateur : admin
+   * Mot de passe : admin
+ * Dans le menu à gauche, sélectionnez le menu « Configuration » puis « Avancée ». Vous trouverez alors dans ce menu l'onglet « Routeur » comme dans l'image ci-dessous :
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Inventel_interface_admin_2.png
+ 
+ * Cliquez sur « Ajouter » : 
+ 
+http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Inventel_interface_admin_3.png
+ 
+ * Entrer les informations suivantes dans la fenêtre :
+    * Sélectionnez "Service personnalisé"
+    * Entrer dans le champs de texte "cultibox"
+    * Dans le champ "Protocole" entrez TCP
+    * Dans le champ "Port externe" entrez le port extérieur à utiliser. Par exemple 6891.
+    * Dans le champ "Port interne", entrez 80
+    * Dans le champ "Adresse IP du serveur" entrez l'adresse IP de votre Module WiFi
+
+=== Livebox Sagem ===
+
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.1.1
+ * Entrer les informations suivantes pour vous connecter :
+   * Utilisateur : admin
+   * Mot de passe : admin
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Sagem_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Sagem_interface_admin_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Sagem_interface_admin_3.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Sagem_interface_admin_4.png
+
+=== Livebox Orange ===
+ 
+http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_admin_1.png
+  
+http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_admin_2.png 
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_admin_3.png 
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Orange_Livebox_interface_admin_4.png
+
+== Free ==
+
+=== Freebox V5 ===
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_3.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_4.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_5.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_V5_interface_admin_6.png
+
+
+=== Freebox Révolution ===
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_revolution_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_revolution_interface_admin_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_revolution_interface_admin_3.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_revolution_interface_admin_4.png
+
+
+=== AliceBox ===
+
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_3.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_4.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_Free_alicebox_interface_admin_5.png
+
+
+== Neufbox et SFRBox ==
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_neuf_neufbox_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_neuf_neufbox_interface_admin_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_neuf_neufbox_interface_admin_3.png
+
+== Darty ==
+
+=== DartyBox Sagem ===
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_darty_sagem_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_darty_sagem_interface_admin_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_darty_sagem_interface_admin_3.png
+
+
+=== DartyBox BEWAN ===
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_darty_bewan_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_darty_bewan_interface_admin_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_darty_bewan_interface_admin_3.png
+
+
+=== DartyBox THD ===
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_darty_thd_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_darty_thd_interface_admin_2.png
+
+
+== BBox ou Bouygues box ==
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_bouygues_bbox_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_bouygues_bbox_interface_admin_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_bouygues_bbox_interface_admin_3.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_bouygues_bbox_interface_admin_4.png
+
+
+== Numéricable ==
+=== NetGear DG834 ===
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_DG834_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_DG834_interface_admin_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_DG834_interface_admin_3.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_DG834_interface_admin_4.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_DG834_interface_admin_5.png
+
+=== NetGear CVG834G ===
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_CVG834G_interface_admin_1.png
+
+
+=== NetGear WGR614V7 ===
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_WGR614V7_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_WGR614V7_interface_admin_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_numericable_WGR614V7_interface_admin_3.png
+
+
+= Suisse =
+
+== UPC Cablecom ==
+
+=== Boitier Horizon ===
+
+ * Dans un navigateur web, entrer l'adresse suivante : http://192.168.192.1
+
+ * Vous entrer dans l'interface d'administration de votre réseau : 
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_UPC_horizon_interface_admin.png
+
+ * Entrer les informations suivantes pour vous connecter :
+    * Utilisateur : admin
+    * Mot de passe : admin
+ * Dans l'interface, cliquez sur Avancé puis Transmission
+    * Dans le champ "Plage de port public" entrez le port extérieur à utiliser. Par exemple 6891.
+    * Dans le champ "Adresse IP Cible" entrez l'adresse IP de votre Module WiFi
+    * Dans le champ "Plage de port cible", entrez 80
+    * Dans le champ "Protocole" entrez TCP
+
+ http://community.upc-cablecom.ch/posts/576171dfbf?commentId=35319#35319
+ 
+ http://community.upc-cablecom.ch/posts/d3859f64be?commentId=34435#34435
+ 
+
+= Belgique =
+
+== Belgacom - Bbox-2 ==
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_belgacom_bbox_interface_admin_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_belgacom_bbox_interface_admin_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/routage_belgacom_bbox_interface_admin_3.png
+
+
+
+

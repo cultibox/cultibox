@@ -321,7 +321,7 @@ CULTICRON_ACTIV="no"
 /etc/init.d/cultipi status
 }}}
 
-Il est aussi possible de voir en détail les processus lancés par la commande:
+ * Il est aussi possible de voir en détail les processus lancés par la commande:
 
 {{{
 ps ax|grep tclsh
@@ -338,6 +338,19 @@ cp /etc/network/interfaces.BASE /etc/network/interfaces
 
 {{{
 /etc/cron.daily/cultipi
+
+}}}
+
+ * Pour désactiver le service cultipi au démarrage du système :
+
+{{{
+update-rc.d -f cultipi remove
+}}}
+
+ * Pour réactiver le service cultipi au démarrage du système :
+
+{{{
+update-rc.d -f cultipi defaults
 }}}
 
  * Pour arrêter le logiciel Cultipi:
