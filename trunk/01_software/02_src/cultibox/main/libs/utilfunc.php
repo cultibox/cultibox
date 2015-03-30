@@ -1231,7 +1231,6 @@ function get_webcam_conf() {
                     if(strpos($line, "title")!==false) {
                         $value=explode("\"",$line);
                         $return[$i]['name']=trim($value[1]);
-                        $return[$i]['name']=substr($value[1],0,strlen($value[1])-1);
                     }
                     }
                     fclose($handle);
