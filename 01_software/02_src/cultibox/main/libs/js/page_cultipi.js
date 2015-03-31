@@ -199,6 +199,13 @@ $(document).ready(function(){
     
     $('#syno_webcam').click(function(e) {
         e.preventDefault();
+        $.ajax({
+          cache: false,
+          async: true,
+          url: "main/modules/external/enable_webcam.php",
+          data: {action:"enable"}
+        });
+        
         get_webcam("1");
         $("#show_webcam").dialog({
              resizable: true,
@@ -211,6 +218,12 @@ $(document).ready(function(){
                  text: CLOSE_button,
                  "id": "btnClose",
                   click: function () {
+                         $.ajax({
+                          cache: false,
+                          async: true,
+                          url: "main/modules/external/enable_webcam.php",
+                          data: {action:"disable"}
+                         });
                          $(this).dialog('close');
                    }
              }]
