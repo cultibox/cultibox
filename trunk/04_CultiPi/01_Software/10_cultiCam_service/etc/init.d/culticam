@@ -19,7 +19,7 @@ DEAMON_NAME="culticam"
 
 d_start () {
         log_daemon_msg "Starting system $DEAMON_NAME Daemon"
-        sudo -u $DAEMONUSER nohup /usr/bin/tclsh "/opt/culticam/cultiCam.tcl" >>/var/log/cultipi/cultipi-service.log 2>&1 &
+        sudo -u $DAEMONUSER nohup /usr/bin/tclsh "/opt/culticam/cultiCam.tcl" "/etc/culticam/conf.xml" >>/var/log/cultipi/cultipi-service.log 2>&1 &
         sleep 4
         log_end_msg $?
 }
