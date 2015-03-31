@@ -1246,7 +1246,8 @@ function get_webcam_conf() {
         }
 
         for($i=0;$i<count($return);$i++) {
-            if(!array_key_exists('name', $return[$i])) $return[$i]['name']="Webcam $i";
+            $name=$i+1;
+            if(!array_key_exists('name', $return[$i])) $return[$i]['name']="Webcam $name";
             if(!array_key_exists('palette', $return[$i])) $return[$i]['palette']="AUTO";
             if(!array_key_exists('resolution', $return[$i])) $return[$i]['resolution']="400x300";
             if(!array_key_exists('brightness', $return[$i])) $return[$i]['brightness']="55";
