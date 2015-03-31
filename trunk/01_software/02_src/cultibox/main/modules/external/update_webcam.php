@@ -50,7 +50,9 @@
         $conf[]="font /usr/share/fonts/truetype/msttcorefonts/arial.ttf";
         $conf[]="timestamp \"%d-%m-%Y %H:%M:%S\"";
         $conf[]="save /var/www/cultibox/tmp/webcam${id}.jpg";
-        $conf[]="palette $palette";
+        if(strcmp("$palette","AUTO")!=0) {
+            $conf[]="palette $palette";
+        }
 
         if($f=fopen("/tmp/webcam".$id.".conf","w")) {
             foreach($conf as $myInf) {
