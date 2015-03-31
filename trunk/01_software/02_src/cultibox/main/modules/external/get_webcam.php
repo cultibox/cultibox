@@ -11,7 +11,7 @@
         for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) {
             foreach($output as $device) {
                 if($i==substr(trim($device), -1)) {
-                    if(!is_file("../../tmp/webcam$i.jpg")) {            
+                    if(!is_file("../../../tmp/webcam$i.jpg")) {            
                         $webcam="2";
                     } else {
                         $webcam="1";

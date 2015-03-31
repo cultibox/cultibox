@@ -63,11 +63,13 @@ function get_webcam(first) {
                         d = new Date();
                         if(obj==1) {
                             var src="tmp/webcam"+idx+".jpg?v="+d.getTime();
+                            $("#screen_webcam"+idx).attr("src", src);   
+                            $("#screen_webcam"+idx).show();
                         } else {
                             var src="";
+                            $("#screen_webcam"+idx).attr("src", src);
+                            $("#screen_webcam"+idx).hide();
                         }
-                        $("#screen_webcam"+idx).attr("src", src);
-                        $("#screen_webcam"+idx).show();
                         $("#error_webcam"+idx).css("display","none");
                         $("#div_link_webcam"+idx).show();
                     } else {
