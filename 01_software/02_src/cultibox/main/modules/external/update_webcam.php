@@ -44,7 +44,7 @@
         $conf[]="resolution ".$resolution;
         $conf[]="set brightness=".$brightness."%";
         $conf[]="set contrast=".$contrast."%";
-        $conf[]="skip 2";
+        $conf[]="skip 10";
         $conf[]="title \"".$title."\"";
         $conf[]="top-banner";
         $conf[]="font /usr/share/fonts/truetype/msttcorefonts/arial.ttf";
