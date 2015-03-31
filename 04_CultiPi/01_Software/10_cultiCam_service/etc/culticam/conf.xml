@@ -4,6 +4,8 @@
     <item name="timeBeforeTwoSnapshots" senconds="5" />
     <item name="dailySnapshotHour"  hour="12" />
     <item name="dailySnapshotMin"   min="5" />
+    <item name="lock_snapshotFile"  file="/var/lock/culticam_snapshot" />
+    <item name="lock_reloadConfFile"  file="/var/lock/culticam_reloadConf" />
     <item name="nbWebcam"           input="4" />
     <item name="confPathWebcam,0"    value="/etc/culticam/webcam0.conf" />
     <item name="confPathWebcam,1"    value="/etc/culticam/webcam1.conf" />
