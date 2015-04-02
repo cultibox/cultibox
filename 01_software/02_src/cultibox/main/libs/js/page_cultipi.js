@@ -14,6 +14,15 @@ var main_info = <?php echo json_encode($main_info); ?>;
 var nb_webcam = <?php echo json_encode($GLOBALS['MAX_WEBCAM']); ?>;
 var webcam_conf = <?php echo json_encode($webcam_conf); ?>;
 
+//To delete setTimeout et setInterval:
+$.webcam = [];
+$.webcam.abortAll = function() {
+    $(this).each(function(idx, jqXHR) {
+        clearTimeout(jqXHR);
+    });
+    $.webcam.length = 0
+};
+
 
 // GLobal var for slidder
 var syno_configure_element_object = {
@@ -43,15 +52,6 @@ var absolut_Y_position = "";
 
 function get_webcam(first) {
       $.ajax({
-        beforeSend: function(jqXHR) {
-                $.xhrPool.push(jqXHR);
-        },
-        complete: function(jqXHR) {
-            var index = $.xhrPool.indexOf(jqXHR);
-            if (index > -1) {
-                $.xhrPool.splice(index, 1);
-            }
-        },
         cache: false,
         async: true,
         url: "main/modules/external/get_webcam.php"
@@ -85,13 +85,13 @@ function get_webcam(first) {
                     $("#webcam0").show();
                 }
 
-                $.timeout.push(setTimeout(function() {
+                $.webcam.push(setTimeout(function() {
                     get_webcam("0");
-                },5000));
+                },2000));
             } catch(err) {
-                $.timeout.push(setTimeout(function() {
+                $.webcam.push(setTimeout(function() {
                     get_webcam("0");
-                },5000));
+                },2000));
             }
         });
 }
@@ -210,8 +210,7 @@ $(document).ready(function(){
         $("#show_webcam").dialog({
              resizable: true,
              modal: true,
-             width: 800,
-             height: 600,
+             width: Math.round($( window ).width()*80/100),
              closeOnEscape: false,
              dialogClass: "popup_message",
              buttons: [{
@@ -224,6 +223,21 @@ $(document).ready(function(){
                           url: "main/modules/external/enable_webcam.php",
                           data: {action:"disable"}
                          });
+
+                         for(i=0;i<nb_webcam;i++) {
+                            $("#screen_webcam"+i).attr("src", "");
+                            if(i==0) {
+                                $("#screen_webcam"+i).show();
+                                $("#webcam"+i).show();
+                            } else {
+                                $("#screen_webcam"+i).css("display","none");
+                                $("#webcam"+i).css("display","none");
+                            }
+                            $("#error_webcam"+i).css("display","none");
+                            $("#div_link_webcam"+i).css("display","none");
+                         }
+                         $("#webcam_id0").prop("checked", true);
+                         $.webcam.abortAll();
                          $(this).dialog('close');
                    }
              }]

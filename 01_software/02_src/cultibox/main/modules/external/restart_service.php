@@ -16,6 +16,7 @@ if(is_file("/tmp/interfaces")) {
     if((count($output)==1)&&(strcmp($output[0],"0")==0)) {
         exec("sudo /etc/init.d/isc-dhcp-server stop",$output,$err);
         exec("sudo /etc/init.d/dnsmasq stop",$output,$err);
+        exec("sudo /etc/init.d/hostapd stop",$output,$err);
         exec("sudo /sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print $1 }' | /usr/bin/tac",$return,$err);
         foreach($return as $entry) {
             exec("sudo /sbin/iptables -t nat --delete PREROUTING  $entry",$output,$err);
