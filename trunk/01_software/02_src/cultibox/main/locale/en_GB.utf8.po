@@ -1589,6 +1589,9 @@ msgstr "Data saving in progress, please wait..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_WEBCAM"
+msgstr "Click on the image to view the webcam connected"
+
 msgid "TOOLTIP_IMPORT_CONF"
 msgstr "This feature allows you to import a backup of a Cultibox software as a sql file"
 

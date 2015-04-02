@@ -1589,6 +1589,9 @@ msgstr "Copia de datos en curso, espere por favor..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_WEBCAM"
+msgstr "Haga clic en la imagen para ver la webcam conectada"
+
 msgid "TOOLTIP_IMPORT_CONF" 
 msgstr "Esta característica le permite importar una copia de seguridad de un software Cultibox como un archivo sql"
 

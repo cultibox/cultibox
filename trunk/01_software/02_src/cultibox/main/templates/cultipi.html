@@ -40,7 +40,7 @@
                        alt="calendar"  
                 />        
                 <input type="image" id="syno_webcam" name="syno_webcam"
-                       title=""
+                       title="<?php echo __('TOOLTIP_WEBCAM'); ?>"
                        src="main/libs/img/webcam_icon.png"  
                        alt="webcam"  
                 />
@@ -721,7 +721,7 @@
 <div id="show_webcam" style="display:none" title="<?php echo __('MENU_WEBCAM'); ?>"> 
     <p class="p_center">
     <?php for($i=0;$i<$GLOBALS['MAX_WEBCAM'];$i++) { ?>
-            <input type="radio" name="webcam" value="<?php echo $i; ?>" <?php if($i==0) echo ' checked'; ?>/>
+            <input type="radio" name="webcam" id="webcam_id<?php echo $i; ?>" value="<?php echo $i; ?>" <?php if($i==0) echo ' checked'; ?>/>
     <?php } ?>
     </p>
     <br />

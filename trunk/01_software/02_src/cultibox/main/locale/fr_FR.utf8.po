@@ -1587,6 +1587,9 @@ msgstr "Sauvegarde des données en cours, patientez s'il vous plait..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_WEBCAM"
+msgstr "Cliquez sur l'image pour afficher les webcams connectées"
+
 msgid "TOOLTIP_IMPORT_CONF"
 msgstr "Cette fonctionnalité permet d'importer une sauvegarde d'un logiciel Cultibox sous forme d'un fichier sql"
 
