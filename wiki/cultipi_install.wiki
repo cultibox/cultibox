@@ -552,11 +552,7 @@ allow-hotplug wlan0
 iface wlan0 inet static
 address 10.0.0.100
 netmask 255.0.0.0
-wireless-channel 4
-wireless-essid cultipi_network
-wireless-mode ad-hoc
-wireless-power off
-post-up /etc/rc.local; /etc/init.d/isc-dhcp-server force-reload; /etc/init.d/dnsmasq force-reload
+post-up /etc/rc.local; /etc/init.d/isc-dhcp-server force-reload; /etc/init.d/dnsmasq force-reload; /etc/init.d/hostapd force-reload
 }}}
 
 Puis sauvegarder le fichier avec la commande:
@@ -644,12 +640,13 @@ echo "options rt2800usb nohwcrypt=1" > /etc/modprobe.d/rt2800usb.conf
 }}}
 
 
- * Installation et configuration d'un serveur DHCP pour le mode adHoc e de dnsmasq:
+ * Installation et configuration d'un serveur DHCP pour le mode AP, de dnsmasq et de hostapd:
 
 {{{
-apt-get install isc-dhcp-server dnsmasq
+apt-get install isc-dhcp-server dnsmasq hostapd
 update-rc.d -f dnsmasq remove
 update-rc.d -f isc-dhcp-server remove
+update-rc.d -f hostapd remove
 }}}
 
 {{{
@@ -694,12 +691,32 @@ listen-address=10.0.0.100
 no-dhcp-interface=wlan0
 }}}
 
+ * Configuration de hostapd:
 
- * Redémarrage du serveur DHCP et de dnsmasq:
+Créer et ajouter les lignes suivantes dans */etc/hostapd/hostapd.conf*:
+
+{{{
+interface=wlan0
+ssid=cultipi_network
+hw_mode=g
+channel=4
+auth_algs=1
+wmm_enabled=0
+}}}
+
+
+Ajouter la ligne suivante dans */etc/default/hostapd*:
+
+{{{
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+}}}
+
+ * Redémarrage du serveur DHCP, dnsmasq et hostapd:
 
 {{{
 /etc/init.d/isc-dhcp-server force-reload
 /etc/init.d/dnsmasq force-reload
+/etc/init.d/hostapd force-reload
 }}}
 
  * Configuration de avahi:
