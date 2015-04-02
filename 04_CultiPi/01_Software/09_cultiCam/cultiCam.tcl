@@ -22,7 +22,7 @@ puts  "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : D
 # On initialise la conf XML
 array set configXML {
     verbose                 debug
-    timeBeforeTwoSnapshots  5
+    timeBeforeTwoSnapshots  1
     dailySnapshotHour       12
     dailySnapshotMin        0
     nbWebcam                0

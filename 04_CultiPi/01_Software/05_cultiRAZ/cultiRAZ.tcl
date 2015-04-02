@@ -175,6 +175,7 @@ proc checkAndUpdate {} {
                 if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
                     exec /bin/cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
                 }
+                exec /etc/init.d/lighttpd force-reload
             } msg]
             if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error Lighttpd password reset : $msg"}
 
@@ -186,7 +187,6 @@ proc checkAndUpdate {} {
             } msg]
             if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error during network configuration : $msg"}
 
-            
             set RC [catch {
                 after 5000 exec /usr/sbin/invoke-rc.d networking force-reload
             } msg]

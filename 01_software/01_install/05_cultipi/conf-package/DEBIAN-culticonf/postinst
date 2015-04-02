@@ -130,16 +130,45 @@ EOF
     touch /tmp/REBOOT-NEEDED 
 fi
 
-if [ $VERSION -lt 280315 ]; then
+if [ $VERSION -lt 150328 ]; then
     /usr/sbin/adduser www-data i2c
-    echo "280315" > /VERSION
+    echo "150328" > /VERSION
 fi
 
-if [ $VERSION -lt 300315 ]; then
+if [ $VERSION -lt 150330 ]; then
     if [  "`cat /etc/sudoers|grep www-data|grep fswebcam`" == "" ]; then
         sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/fswebcam/d" /etc/sudoers
     fi
-    echo "300315" > /VERSION
+    echo "150330" > /VERSION
+fi
+
+
+if [ $VERSION -lt 150402 ]; then
+    if [  "`cat /etc/sudoers|grep www-data|grep iwconfig`" == "" ]; then
+        sed -i "/www-data ALL = (root) NOPASSWD: \/sbin\/iwconfig/d" /etc/sudoers
+    fi
+
+    cat << EOF > /etc/network/interfaces.BASE
+# interfaces(5) file used by ifup(8) and ifdown(8)
+#IFACE LO
+auto lo
+iface lo inet loopback
+
+#IFACE ETH0
+allow-hotplug eth0
+iface eth0 inet dhcp
+
+#IFACE WLAN0
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet static
+address 10.0.0.100
+netmask 255.0.0.0
+post-up /etc/rc.local; /etc/init.d/isc-dhcp-server force-reload; /etc/init.d/dnsmasq force-reload; /etc/init.d/hostapd force-reload
+EOF
+
+    echo "150402" > /VERSION
+
 fi
 
 find /etc/default/ -name "*-dist"|xargs rm 2>/dev/null; echo ""

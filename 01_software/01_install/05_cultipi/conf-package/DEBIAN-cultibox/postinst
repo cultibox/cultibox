@@ -9,7 +9,7 @@ if [  "`cat /etc/sudoers|grep www-data|grep ifconfig`" == "" ]; then
 fi
  
 if [  "`cat /etc/sudoers|grep www-data|grep iwlist`" == "" ]; then
-    echo "www-data ALL = (root) NOPASSWD: /sbin/iwlist" >> /etc/sudoers
+    echo "www-data ALL = (root) NOPASSWD: /usr/sbin/iw" >> /etc/sudoers
 fi
  
 if [  "`cat /etc/sudoers|grep www-data|grep ifup`" == "" ]; then
@@ -54,10 +54,6 @@ fi
 
 if [  "`cat /etc/sudoers|grep www-data|grep rc.local`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /etc/rc.local" >> /etc/sudoers
-fi
-
-if [  "`cat /etc/sudoers|grep www-data|grep iwconfig`" == "" ]; then
-    echo "www-data ALL = (root) NOPASSWD: /sbin/iwconfig" >> /etc/sudoers
 fi
 
 if [  "`cat /etc/sudoers|grep www-data|grep modprobe`" == "" ]; then
