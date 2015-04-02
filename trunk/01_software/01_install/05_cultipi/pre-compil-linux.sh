@@ -160,6 +160,7 @@ EOF
            mkdir -p ../01_src/01_xampp/culticonf/etc/default
 
            cp -R ./conf-package/DEBIAN-culticonf ../01_src/01_xampp/culticonf/DEBIAN
+           cp -R ../../../04_CultiPi/01_Software/02_cultiConf/usr ../01_src/01_xampp/culticonf/
 
            cp ../../../04_CultiPi/01_Software/02_cultiConf/etc/logrotate.d/cultipi ../01_src/01_xampp/culticonf/etc/logrotate.d/
            cp ../../../04_CultiPi/01_Software/02_cultiConf/etc/cron.daily/cultipi ../01_src/01_xampp/culticonf/etc/cron.daily/ 
