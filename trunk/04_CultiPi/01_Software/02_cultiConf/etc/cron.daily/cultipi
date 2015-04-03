@@ -72,11 +72,19 @@ if [ -d /var/www/cultibox/tmp/export ]; then
 fi
 
 if [ -f /tmp/PACKAGES-NEEDED ]; then
-    packages="`cat /tmp/PACKAGES-NEDDED`"
+    packages="`cat /tmp/PACKAGES-NEEDED`"
     if [ "$packages" != "" ]; then
         apt-get update
         apt-get install -y --force-yes $packages
         apt-get clean
+
+        #Post installation script for configuration:
+        for package in `cat /tmp/PACKAGES-NEEDED`; do
+           if [ -f /tmp/$package ]; then
+            bash /tmp/$package
+           fi    
+        done
+
         rm -Rf /tmp/PACKAGES-NEEDED
     fi
 fi
