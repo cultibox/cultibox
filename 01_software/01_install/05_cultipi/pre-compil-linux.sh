@@ -158,6 +158,7 @@ EOF
            mkdir -p ../01_src/01_xampp/culticonf/etc/cron.hourly
            mkdir -p ../01_src/01_xampp/culticonf/etc/logrotate.d
            mkdir -p ../01_src/01_xampp/culticonf/etc/default
+           mkdir -p ../01_src/01_xampp/culticonf/etc/cuticonf
 
            cp -R ./conf-package/DEBIAN-culticonf ../01_src/01_xampp/culticonf/DEBIAN
            cp -R ../../../04_CultiPi/01_Software/02_cultiConf/usr ../01_src/01_xampp/culticonf/
@@ -166,6 +167,7 @@ EOF
            cp ../../../04_CultiPi/01_Software/02_cultiConf/etc/cron.daily/cultipi ../01_src/01_xampp/culticonf/etc/cron.daily/ 
            cp ../../../04_CultiPi/01_Software/02_cultiConf/etc/cron.hourly/cultipi ../01_src/01_xampp/culticonf/etc/cron.hourly/
            cp ../../../04_CultiPi/01_Software/02_cultiConf/etc/default/culticron ../01_src/01_xampp/culticonf/etc/default/
+           cp -R ./../../04_CultiPi/01_Software/02_cultiConf/etc/culticonf/* ../01_src/01_xampp/culticonf/etc/culticonf/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/culticonf/DEBIAN/control
            find ./../01_src/01_xampp/culticonf/ -name ".svn"|xargs rm -Rf
