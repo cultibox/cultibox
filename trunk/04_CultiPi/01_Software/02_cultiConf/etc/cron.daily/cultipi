@@ -71,26 +71,25 @@ if [ -d /var/www/cultibox/tmp/export ]; then
     rm -Rf /var/www/cultibox/tmp/export/*
 fi
 
-if [ -f /tmp/PACKAGES-NEEDED ]; then
-    packages="`cat /tmp/PACKAGES-NEEDED`"
+if [ -f /etc/culticonf/packages ]; then
+    packages="`cat /etc/culticonf/packages`"
     if [ "$packages" != "" ]; then
         apt-get update
-        apt-get install -y --force-yes $packages
-        apt-get clean
+        for pack in $packages; do
+            if [ "`dpkg -l $pack 2>/dev/null`" == "" ]; then
+                apt-get install -y --force-yes $pack
 
-        #Post installation script for configuration:
-        for package in `cat /tmp/PACKAGES-NEEDED`; do
-           if [ -f /tmp/$package ]; then
-            bash /tmp/$package
-           fi    
+                if [ -f /etc/culticonf/postinst/$pack ]; then
+                    bash /etc/culticonf/postinst/$pack
+                fi
+            fi
         done
-
-        rm -Rf /tmp/PACKAGES-NEEDED
+        apt-get clean
     fi
 fi
 
-if [ -f /tmp/REBOOT-NEEDED ]; then
-    rm -Rf /tmp/REBOOT-NEEDED
+if [ -f /var/lock/REBOOT_NEEDED ]; then
+    rm -Rf /var/lock/REBOOT_NEEDED
     shutdown -r now
 fi
 

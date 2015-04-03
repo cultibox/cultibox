@@ -1,0 +1,12 @@
+#/bin/bash
+
+update-rc.d hostapd remove
+
+echo "interface=wlan0" > /etc/hostapd/hostapd.conf
+echo "ssid=cultipi_network" >> /etc/hostapd/hostapd.conf
+echo "hw_mode=g" >> /etc/hostapd/hostapd.conf
+echo "channel=4" >> /etc/hostapd/hostapd.conf
+echo "auth_algs=1" >> /etc/hostapd/hostapd.conf
+echo "wmm_enabled=0" >> /etc/hostapd/hostapd.conf
+
+echo "DAEMON_CONF=\"/etc/hostapd/hostapd.conf\""  >> /etc/default/hostapd
