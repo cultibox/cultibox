@@ -76,7 +76,7 @@ if [ -f /etc/culticonf/packages ]; then
     if [ "$packages" != "" ]; then
         apt-get update
         for pack in $packages; do
-            if [ "`dpkg -l $pack 2>/dev/null`" == "" ]; then
+            if [ "`dpkg -l $pack 2>/dev/null|grep ii`" == "" ]; then
                 apt-get install -y --force-yes $pack
 
                 if [ -f /etc/culticonf/postinst/$pack ]; then
