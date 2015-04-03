@@ -20,6 +20,60 @@ function(){
 });
 <?php } ?>
 
+function open_wifi_wizard(step) {
+    $("#wifi_wizard_step"+step).dialog({
+       resizable: false,
+       height:150,
+       width: 500,
+       closeOnEscape: false,
+       modal: true,
+       dialogClass: "popup_message",
+       buttons: [{
+           text: CLOSE_button,
+           click: function () {
+               $( this ).dialog( "close" ); return false;
+           }},
+           {
+           text: PREVIOUS_button,
+           click: function () {
+               open_wifi_wizard(step-1);
+               $( this ).dialog( "close" ); return false;
+           }},{
+           text: NEXT_button,
+           click: function () {
+               if(step==2) {
+                   $.ajax({
+                       cache: false,
+                       url: "main/modules/external/get_variable.php",
+                       data: {name:"sd_card"}
+                  }).done(function (data) {
+                      if(jQuery.parseJSON(data) == "") {
+                          $("#error_wifi_sd").dialog({
+                              resizable: false,
+                              height:150,
+                              width: 500,
+                              closeOnEscape: false,
+                              modal: true,
+                              dialogClass: "popup_error",
+                              buttons: [{
+                                text: CLOSE_button,
+                                click: function () {
+                                    $( this ).dialog( "close" ); return false;
+                                }}]
+                            });
+                      } else {
+                          open_wifi_wizard(step+1);
+                          $( this ).dialog( "close" ); return false;
+                      }
+                  });
+               } else {
+                   open_wifi_wizard(step+1);
+                   $( this ).dialog( "close" ); return false;
+               }
+           }}]
+    });
+};
+
 
 <?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { ?>
 $(document).ready(function(){
@@ -80,6 +134,12 @@ $(document).ready(function(){
             data: {name:"LOAD_LOG", value: "False", duration:36000}
         });
     }
+
+     $("#wifi_wizard").click(function(e) {
+        e.preventDefault();
+        open_wifi_wizard(1);
+    });
+
 
     $("#go_wizard").click(function(e) {
        e.preventDefault();

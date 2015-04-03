@@ -12,6 +12,8 @@ var DIR_CONF_NOT_UPTODATE="";
 var RELOAD_button="";
 var SELECT_button="";
 var LOADING="";
+var NEXT_button="";
+var PREVIOUS_button="";
 
 
 var lang="";
@@ -127,6 +129,8 @@ if(lang=="it_IT") {
     DIR_CONF_UPDATE="Votre configuration est à jour";
     DIR_CONF_NOT_UPTODATE="La configuration utilisée n'est pas à jour, cliquez ici pour mettre la configuration à jour: <button id='update_conf'>Mise à jour de la configuration</button>";
     LOADING="Chargement des données en cours, patientez s'il vous plait...";
+    NEXT_button="Etape suivante";
+    PREVIOUS_button="Etape précédente"
 }
 
 
