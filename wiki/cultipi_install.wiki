@@ -745,7 +745,7 @@ Relancer ensuite *avahi* avec la commande:
 Pour finir il suffit d'installer les paquets gérant le système Cultipi:
 
 {{{
-apt-get install cultibox cultipi cultitime cultiraz culticonf
+apt-get install cultibox cultipi cultitime cultiraz culticonf culticam cultidoc
 }}}
  
 
