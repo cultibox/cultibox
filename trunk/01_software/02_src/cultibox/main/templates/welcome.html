@@ -102,5 +102,32 @@
 } 
 ?>
 
+<?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) {
+<button id="wifi_wizard">wifi wizard</button>
+<div id="wifi_wizard_step1" style="display:none" title="Assistant de migration vers le module wifi">
+    Bienvenu dans l'assistant de migration vers le module Wifi cultipii.
+    Avant de commencer, assurez d'avoir à disposition:
+    <ul>
+        <li>Une cultibox et ses équipements</li>
+        <li>Un Cultipi et ses équipements</li>
+    </ul>
+    Si cela est le cas, vous pouvez passer à l'étape suivante en cliquant sur le bouton associé.
+</div>
+
+<div id="wifi_wizard_step2" style="display:none" title="Assistant de migration vers le module wifi">
+    Etape 2, copie du nouveau firmware pour la cultibox.
+    Branchez la carte SD de votre cultibox dans votre ordinateur et passez à l'étape suivante.
+</div>
+
+<div id="wifi_wizard_step3" style="display:none" title="Assistant de migration vers le module wifi">
+    Etape 3: export conf
+
+</div>
+
+<div id="error_wifi_sd" style="display:none">
+    Pas de carte SD, branchez en une puis passez à l'étape suivante
+</div>
+<?php } ?>
+
 
 

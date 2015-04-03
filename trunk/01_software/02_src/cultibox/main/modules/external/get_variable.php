@@ -31,9 +31,9 @@ if((!isset($name))||(empty($name))) {
         case 'SD_CARD':
             $sd_card=get_sd_card();
             if(!$sd_card) {
-                echo "";
+                echo json_encode("");
             } else {
-                echo $sd_card;
+                echo json_encode("$sd_card");
             }
             break;
         case 'IMPORTANT':
@@ -67,8 +67,6 @@ if((!isset($name))||(empty($name))) {
             break;
         case 'COST' : echo json_encode(get_configuration("SHOW_COST",$error));
                      break;
-        case 'WEBCAM': echo json_encode(get_configuration("SHOW_WEBCAM",$error));
-                        break;
         case 'LANG' : if((isset($_COOKIE['LANG']))&&(!empty($_COOKIE['LANG']))) {
                         echo json_encode($_COOKIE['LANG']);
                       } else {

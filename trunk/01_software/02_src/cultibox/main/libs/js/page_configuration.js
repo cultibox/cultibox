@@ -518,24 +518,6 @@ $(document).ready(function(){
             });
 
 
-            <?php if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) { ?>
-                $.ajax({
-                    cache: false,
-                    url: "main/modules/external/get_variable.php",
-                    data: {name:"webcam"}
-                }).done(function (data) {
-                    try {
-                        if(jQuery.parseJSON(data)=="1") {
-                            $("#menu-webcam").show();
-                        } else {
-                            $("#menu-webcam").css('display','none');
-                        }
-                    } catch(err) {
-                    }
-                });
-            <?php } ?>
-
-
             if(check_update) {
                         $("#update_conf").dialog({
                             resizable: false,
