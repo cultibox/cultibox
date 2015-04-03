@@ -143,7 +143,7 @@ if [ $VERSION -lt 150330 ]; then
 fi
 
 
-if [ $VERSION -lt 150402 ]; then
+if [ $VERSION -ne 150402 ]; then
     if [  "`cat /etc/sudoers|grep www-data|grep iwconfig`" == "" ]; then
         sed -i "/www-data ALL = (root) NOPASSWD: \/sbin\/iwconfig/d" /etc/sudoers
     fi
@@ -168,6 +168,22 @@ post-up /etc/rc.local; /etc/init.d/isc-dhcp-server force-reload; /etc/init.d/dns
 EOF
 
     echo "150402" > /VERSION
+
+    echo "hostapd" > /tmp/PACKAGES-NEEDED
+    cat << EOF > /tmp/hostapd
+#/bin/bash
+
+update-rc.d hostapd remove
+
+echo "interface=wlan0" > /etc/hostapd/hostapd.conf
+echo "ssid=cultipi_network" >> /etc/hostapd/hostapd.conf
+echo "hw_mode=g" >> /etc/hostapd/hostapd.conf
+echo "channel=4" >> /etc/hostapd/hostapd.conf
+echo "auth_algs=1" >> /etc/hostapd/hostapd.conf
+echo "wmm_enabled=0" >> /etc/hostapd/hostapd.conf
+
+echo "DAEMON_CONF=\"/etc/hostapd/hostapd.conf\""  >> /etc/default/hostapd
+EOF
 
 fi
 
