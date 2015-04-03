@@ -158,7 +158,7 @@ EOF
            mkdir -p ../01_src/01_xampp/culticonf/etc/cron.hourly
            mkdir -p ../01_src/01_xampp/culticonf/etc/logrotate.d
            mkdir -p ../01_src/01_xampp/culticonf/etc/default
-           mkdir -p ../01_src/01_xampp/culticonf/etc/cuticonf
+           mkdir -p ../01_src/01_xampp/culticonf/etc/culticonf
 
            cp -R ./conf-package/DEBIAN-culticonf ../01_src/01_xampp/culticonf/DEBIAN
            cp -R ../../../04_CultiPi/01_Software/02_cultiConf/usr ../01_src/01_xampp/culticonf/
