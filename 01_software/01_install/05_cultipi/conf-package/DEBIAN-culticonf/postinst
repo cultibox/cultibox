@@ -31,21 +31,21 @@ fi
 if [ -f /VERSION ]; then
     VERSION="`cat /VERSION`"
 else
-    VERSION=""
+    VERSION="000000"
 fi
 
 if [ $VERSION -lt 150315 ]; then
     cat << EOF > /etc/rc.local
 #!/bin/bash 
 
-#Case of an adHoc network:
+#Case of an Access Point:
 if [ "\`/bin/grep cultipi_ /etc/network/interfaces\`" != "" ]; then
     #Configuration of the captiv portal if it's not the case yet:
     if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
         /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
     fi
 else
-    #If it's not an adHoc network, deleteting captiv portal configuration:
+    #If it's not an Acces Point mode , deleteting captiv portal configuration:
     for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
 fi
 
