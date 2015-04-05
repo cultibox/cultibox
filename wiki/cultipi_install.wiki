@@ -109,7 +109,7 @@ dpkg-reconfigure tzdata
  * Installation des packages utiles et utilitaires:
 
 {{{
-apt-get install sudo localepurge vim libnss-mdns avahi-daemon tcl ifplugd fswebcam bootlogd zip unzip unrar-free
+apt-get install sudo localepurge vim libnss-mdns avahi-daemon tcl ifplugd fswebcam bootlogd zip unzip unrar-free ttf-mscorefonts-installer
 }}}
 
  * Modification de cron.daily:
