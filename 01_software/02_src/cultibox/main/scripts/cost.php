@@ -11,6 +11,7 @@ $main_info=array();
 if(!isset($startday)) {
     $startday=getvar('startday');
 }
+
 if(!isset($endday)) {
     $endday=getvar('endday');
 }
@@ -137,7 +138,7 @@ if(strcmp($cost_type,"standard")==0) {
 
 
 //Computing cost value:
-if(strcmp($select_plug,"distinct_all")!=0) {
+if((strcmp($select_plug,"distinct_all")!=0)&&(strcmp($select_plug,"all")!=0)) {
     if((isset($submit_cost))&&(!empty($submit_cost))) {
         $theorical_power="0";
         $real_power="0";
@@ -158,13 +159,8 @@ if(strcmp($select_plug,"distinct_all")!=0) {
         }
     }
 
-    if(strcmp($select_plug,"all")==0) {
-        $title=__('PRICE_SELECT_ALL_PLUG');
-        $color_cost = "purple";
-    } else {
-        $title=$plugs_infos[$select_plug-1]['PLUG_NAME'];
-        $color_cost=$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$select_plug-1];
-    }
+    $title=$plugs_infos[$select_plug-1]['PLUG_NAME'];
+    $color_cost=$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$select_plug-1];
 
 
     $data_price[]= array( 
@@ -203,8 +199,31 @@ if(strcmp($select_plug,"distinct_all")!=0) {
             "theorical" => "$theorical_power",
             "title" => "$title",
             "color" => $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs-1]
-       ); 
+       ) ; 
     }
+
+
+    if(strcmp($select_plug,"all")==0) {
+        $title=__('PRICE_SELECT_ALL_PLUG');
+        $color_cost = "purple";
+
+        $cost_real=0;
+        $cost_theo=0;
+        foreach($data_price as $data) {
+            $cost_real=$data['real']+$cost_real;
+            $cost_theo=$data['theorical']+$cost_theo;
+        }
+
+        unset($data_price);
+        $data_price[]= array(
+            "number" => "$select_plug",
+            "theorical" => "$cost_theo",
+            "real" => "$cost_real",
+            "title" => "$title",
+            "color" => "$color_cost"
+        );
+    } 
+
 }
 
 //Get and format resume for cost configuration

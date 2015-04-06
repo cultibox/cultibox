@@ -1209,6 +1209,9 @@ msgstr "Aucun programme journalier n'a encore été défini. Vous pouvez créer 
 
 
 # For the cost part:
+msgid "START_COMPUTE"
+msgstr "Lancer le calcul du coût"
+
 msgid "SELECT_START_DAY"
 msgstr "Jour de départ (AAAA-MM-JJ)"
 
@@ -1636,7 +1639,7 @@ msgid "TOOLTIP_PLUG_REGUL"
 msgstr "La régulation secondaire a un fonctionnement compliqué et différent de la régulation principale. Veuillez bien lire la documentation avant de l'activer pour une prise. Si vous désirez piloter une prise pour qu'elle régule une condition climatique, il n'est pas nécessaire d'activer la régulation secondaire."
 
 msgid "TOOLTIP_COST_PRICE"
-msgstr "Le prix du  kilowatt-heure. Renseigner ce champ permet de calculer le prix de  revient de votre installation dans le menu 'Coût'"
+msgstr "Le prix du  kilowatt-heure."
 
 msgid "TOOLTIP_COST_TYPE"
 msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du kilowatt-heure varie en fonction de l'heure à laquelle vous le consommez."
@@ -1738,7 +1741,7 @@ msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
 msgstr "Définissez le programme à appliquer"
 
 msgid "TOOLTIP_DEFINE_COST"
-msgstr "Cet onglet calcule le coût théorique et réel de votre installation.<br /><ul class='list_class_tooltip'><li><b>Le coût théorique</b> est réalisé à partir des informations de vos programmes de prise. Il est à noter que les programmes journaliers ne sont pas pris en compte dans ce calcul. La régulation (qui peut couper ou allumer une prise) n'est pas comptabilisée (la prise est considérée comme en marche). Le prix affiché sera donc le prix maximal si la régulation ne s'est pas déclenchée.<br /><br /></li><li><b>Le coût réel</b> est réalisé à partir des informations des fichiers de puissance (fichiers power: pwr_XX) de la Cultibox. Ces fichiers renseignent lorsqu'une prise s'est allumée et s'est étteinte. La régulation est donc prise en compte dans ce calcul de coût.</li></ul><b>Conclusion:</b> il est possible de noter de légères différences entre le calcul réel et le calcul théorique qui peuvent provenir d'une régulation non prise en compte ou encore de la précision des fichiers power (enregistrement toutes les X minutes alors que les programmes sont précis à la seconde)."
+msgstr "Cet onglet calcule le coût théorique et réel de votre installation.<br /><ul class='list_class_tooltip'><li><b>Le coût théorique</b> est réalisé à partir des informations de vos programmes de prise. Il est à noter que les programmes journaliers ne sont pas pris en compte dans ce calcul. La régulation (qui peut couper ou allumer une prise) n'est pas comptabilisée non plus (la prise est considérée comme en marche pour le calcul). <br /><br /></li><li><b>Le coût réel</b> est réalisé à partir des informations de mise en marche et d'arrêt enregistrées par votre module de gestion du climat. La régulation et les programmes journaliers sont pris en compte dans ce calcul.</li></ul><b>Conclusion:</b> il est possible de noter de légères différences entre le calcul réel et le calcul théorique qui peuvent provenir de la régulation ou des programmes journaliers configurés."
 
 msgid "TOOLTIP_CALENDAR_SUBSTRAT"
 msgstr "En fonction du substrat que vous sélectionnez, les programmes d'engrais sont filtrés. Vous ne pouvez sélectionner que des programmes associés à votre substrat."

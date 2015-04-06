@@ -20,6 +20,16 @@ title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
 
+//To delete current ajax call:
+$.computeCost = [];
+$.computeCost.abortAll = function() {
+    $(this).each(function(idx, jqXHR) {
+        jqXHR.abort();
+    });
+    $.computeCost.length = 0
+};
+
+
 compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,index,plug) {
         var step=100/count;
         var pourcent=(count-nb_jours)*step;
@@ -30,6 +40,15 @@ compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,
         }
 
         $.ajax({
+              beforeSend: function(jqXHR) {
+                $.computeCost.push(jqXHR);
+              },
+              complete: function(jqXHR) {
+                  var index = $.computeCost.indexOf(jqXHR);
+                  if (index > -1) {
+                    $.computeCost.splice(index, 1);
+                  }
+              },
               cache: false,
               async: true,
               url: "main/modules/external/compute_cost.php",
@@ -55,15 +74,25 @@ compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,
                      } else {
                         $("#progress_bar_cost_"+type+nb).progressbar({value:100});
                         if(type=="theorical") {
-                            chart.series[index].data[1].update(Math.round(cost*100)/100);
-                            $("#valid_cost_compute_theorical"+nb).show();
+                            if(typeof chart.series[index] == "undefined") {
+                                chart.series[0].data[1].update((Math.round(cost*100)/100)+chart.series[0].data[1].y);
+                                $("#valid_cost_compute_theorical"+nb).show();
+                            } else {
+                                chart.series[index].data[1].update(Math.round(cost*100)/100);
+                                $("#valid_cost_compute_theorical"+nb).show();
+                            }
                         } else {
-                            chart.series[index].data[0].update(Math.round(cost*100)/100);
-                            $("#valid_cost_compute_real"+nb).show();
+                            if(typeof chart.series[index] == "undefined") {
+                                chart.series[0].data[0].update((Math.round(cost*100)/100)+chart.series[0].data[0].y);
+                                $("#valid_cost_compute_real"+nb).show();
+                            } else {
+                                chart.series[index].data[0].update(Math.round(cost*100)/100);
+                                $("#valid_cost_compute_real"+nb).show();
+                            }
                         }
 
                         if(($("#valid_cost_compute_theorical").css("display")!="none")&&($("#valid_cost_compute_theorical").css("display")!="none")) {
-                            $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
+                            $("#btnClose").html('<span class="ui-button-text">'+COMPUTE_button+'</span>');
                         }
                      }
                  }
@@ -87,7 +116,7 @@ $(document).ready(function() {
     });
 
 
-    var list_power="";
+         var list_power="";
          if(($("#select_plug option:selected").val()=="all")||($("#select_plug option:selected").val()=="distinct_all")) {
             for(i=1;i<=nb_plugs;i++) {
                if(list_power=="") {
@@ -281,13 +310,13 @@ $(document).ready(function() {
    if((typeof(submit_cost)!='undefined')&&(submit_cost)) {
         $("#progress_cost").dialog({
             resizable: false,
-            <?php if(strcmp($select_plug,"distinct_all")==0) { ?>
-                width: 750,
+            <?php if((strcmp($select_plug,"distinct_all")==0)||(strcmp($select_plug,"all")==0)) { ?>
+                width: 800,
             <?php } else { ?> 
                 width: 550,
             <?php } ?>
             modal: true,
-            <?php if(strcmp($select_plug,"distinct_all")==0) { ?>
+            <?php if((strcmp($select_plug,"distinct_all")==0)||(strcmp($select_plug,"all")==0)) { ?>
                 position: 'top',
             <?php } ?>
             dialogClass: "popup_message",
@@ -295,6 +324,7 @@ $(document).ready(function() {
                     text: CANCEL_button,
                     "id": "btnClose",
                     click: function () {
+                        $.computeCost.abortAll();
                         $( this ).dialog( "close" );  
                         scrolltodiv("anchor-cost"); 
                     }
@@ -306,7 +336,7 @@ $(document).ready(function() {
                 var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
                 var nb_jours=diffdate(Date1,Date2);
 
-                if($("#select_plug").val()!="distinct_all") {
+                if(($("#select_plug option:selected").val()!="all")&&($("#select_plug option:selected").val()!="distinct_all")) {
                     compute_cost("theorical",$("#datepicker_start").val(),$("#select_plug").val(), nb_jours,nb_jours,"0",chart,0,0);
                     compute_cost("real",$("#datepicker_start").val(),$("#select_plug").val(), nb_jours,nb_jours,"0",chart,0,0);
                     $("#progress_bar_cost_theorical").progressbar({value:0});
@@ -316,7 +346,6 @@ $(document).ready(function() {
                         compute_cost("theorical",$("#datepicker_start").val(),plugs, nb_jours,nb_jours,"0",chart,plugs-1,nb_plugs);
                         compute_cost("real",$("#datepicker_start").val(),plugs, nb_jours,nb_jours,"0",chart,plugs-1,nb_plugs);
                     }
-                    
                 }
             }
         });

@@ -24,7 +24,7 @@ function db_priv_pdo_start($user="cultibox") {
 //there isn't a user configuration management yet.
 function get_configuration($key,&$out="") {
         $sql = <<<EOF
-SELECT {$key} FROM `configuration` WHERE id = 1
+SELECT {$key} FROM configuration WHERE id = 1
 EOF;
     $db=db_priv_pdo_start();
     try {
@@ -55,7 +55,7 @@ EOF;
 // RET $res   value of the key   
 function get_informations($key,&$out="") {
    $sql = <<<EOF
-SELECT {$key} FROM `informations` WHERE id = 1
+SELECT {$key} FROM informations WHERE id = 1
 EOF;
     $db=db_priv_pdo_start();
     try {
@@ -215,87 +215,35 @@ function get_data_power($date="",$dateend="",$id=0,&$out,$short="") {
             } 
           }
           if((!isset($dateend))||(empty($dateend))) {
-              if(empty($short)) {
                   $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN ({$list}) ORDER by time_catch,plug_number ASC, plug_number ASC
+SELECT  * FROM power WHERE timestamp LIKE "{$date}%" AND plug_number IN ({$list}) ORDER by plug_number ASC, time_catch ASC
 EOF;
-               } else {
-                   $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN ({$list}) AND `record` != 0 ORDER by time_catch,plug_number ASC, plug_number ASC
-EOF;
-               }
           } else {
               $date=$date."00000000";
               $dateend=str_replace("-","",$dateend);
               $dateend=substr($dateend,2,8);
               $dateend=$dateend."99999999";
 
-              if(empty($short)) {
                   $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN ({$list})
+SELECT  * FROM power WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND plug_number IN ({$list}) ORDER BY plug_number ASC, time_catch ASC
 EOF;
-              } else {
-                  $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN ({$list}) AND `record` != 0
-EOF;
-              }
           }
-      } else if(strcmp("$id","all")==0) {
-         if((!isset($dateend))||(empty($dateend))) {
-            if(empty($short)) {
-            $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs`) GROUP BY time_catch,plug_number ORDER by timestamp ASC, plug_number ASC
-EOF;
-            } else {
-            $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs`) AND `record` != 0 GROUP BY time_catch,plug_number ORDER by timestamp ASC, plug_number ASC
-EOF;
-            }
-         } else {
-         $date=$date."00000000";
-         $dateend=str_replace("-","",$dateend);
-         $dateend=substr($dateend,2,8);
-         $dateend=$dateend."99999999";
-        
-         if(empty($short)) {  
-      $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs`)
-EOF;
-         } else {
-$sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs`) AND `record` != 0
-EOF;
-         }
-        }
       } else {
          if((!isset($dateend))||(empty($dateend))) {
-            if(empty($short)) {
             $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` = "{$id}" ORDER by time_catch,plug_number ASC, plug_number ASC
+SELECT  * FROM power WHERE timestamp LIKE "{$date}%" AND plug_number = "{$id}" ORDER by plug_number ASC, time_catch ASC
 EOF;
-            } else {
-            $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` = "{$id}" AND `record` != 0 ORDER by time_catch,plug_number ASC, plug_number ASC
-EOF;
-            }
         } else {
             $date=$date."00000000";
             $dateend=str_replace("-","",$dateend);
             $dateend=substr($dateend,2,8);
             $dateend=$dateend."99999999";
     
-            if(empty($short)) {
             $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` = "{$id}" 
+SELECT  * FROM power WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND plug_number = "{$id}" ORDER by plug_number ASC, time_catch ASC
 EOF;
-            } else {
-            $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` = "{$id}" AND `record` != 0
-EOF;
-            }
       }
     }
-
 
         $db=db_priv_pdo_start();
         try {
@@ -319,7 +267,7 @@ EOF;
 
    
         $sql = <<<EOF
-SELECT `PLUG_POWER` FROM `plugs` WHERE `id` <= {$nb_plugs};  
+SELECT PLUG_POWER FROM plugs WHERE id <= {$nb_plugs};  
 EOF;
 
         $db=db_priv_pdo_start();
@@ -333,7 +281,6 @@ EOF;
         $db=null;
 
         
-
         if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
             $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -384,7 +331,6 @@ EOF;
                 $res_power[]=0;
             }
         }
-
 
         if(count($res)>0) {
             $timestamp=$res[0]['timestamp'];
@@ -470,11 +416,11 @@ function get_theorical_power($id=0,$type="",&$out,&$error=0) {
    $res="";
    if(strcmp("$id","all")==0) {
           $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` > 0 AND `plug_id` <= ${nb_plugs} AND `plug_id` IN (SELECT `id` FROM `plugs`) 
+SELECT * FROM programs WHERE plug_id > 0 AND plug_id <= ${nb_plugs} AND plug_id IN (SELECT id FROM plugs) AND number = 1
 EOF;
       } else {
       $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` = "{$id}" AND `plug_id` IN (SELECT `id` FROM `plugs`)
+SELECT * FROM programs WHERE plug_id = "{$id}" AND plug_id IN (SELECT id FROM plugs) AND number = 1
 EOF;
    }
 
@@ -488,6 +434,7 @@ EOF;
    }
    $db=null;
 
+
    if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
                       $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -500,7 +447,7 @@ EOF;
 
    if(count($res)>0) {
       $sql = <<<EOF
-SELECT `PLUG_POWER` FROM `plugs` WHERE `id` <= ${nb_plugs}
+SELECT PLUG_POWER FROM plugs WHERE id <= ${nb_plugs}
 EOF;
 
      $db=db_priv_pdo_start();
@@ -549,7 +496,7 @@ EOF;
 
                $time_end=mktime($ehh,$emm,$ess,0,0,1971);
                $time_start=mktime($shh,$smm,$sss,0,0,1971);
-               $time_final=$time_end-$time_start;
+               $time_final=($time_end-$time_start)/10;
 
                if(strcmp($type,"hpc")==0) {
                     while($time_start<=$time_end) {
@@ -576,7 +523,7 @@ EOF;
                 }
 
          }
-      return number_format($theorical,2);
+      return number_format($theorical,4);
    }
    return 0;
 }
@@ -599,9 +546,8 @@ function get_real_power($data="",$type="",&$out)  {
         if($price==0) {
             return 0;
         }
-        $price=($price/60)/1000;
+        $price=($price/3600)/1000;
    } else {
-
         $price_hp=get_configuration("COST_PRICE_HP",$out);
         $price_hc=get_configuration("COST_PRICE_HC",$out);
         $start_hc=get_configuration("START_TIME_HC",$out);
@@ -629,20 +575,55 @@ function get_real_power($data="",$type="",&$out)  {
         }
 
 
-        $price_hc=($price_hc/60)/1000;
-        $price_hp=($price_hp/60)/1000;
+        $price_hc=($price_hc/3600)/1000;
+        $price_hp=($price_hp/3600)/1000;
   }
 
   if(strcmp($type,"standard")==0) {
       $compute=0;
+      $previous=0;
+      $tmp_val=array();
       foreach($data as $val) {
-         $compute=$compute+($val['record']*$price);
+         if($previous==0) {
+            if($val['record']!=0) {
+                $tmp_val=$val;
+                $previous=$val['record'];
+            }
+         } else {
+            if($val['record']!=$tmp_val['record']) {
+                $ehh=substr($val['time_catch'],0,2);
+                $emm=substr($val['time_catch'],2,2);
+                $ess=substr($val['time_catch'],4,2);
+                $shh=substr($tmp_val['time_catch'],0,2);
+                $smm=substr($tmp_val['time_catch'],2,2);
+                $sss=substr($tmp_val['time_catch'],4,2);
+
+                $time=(mktime($ehh,$emm,$ess)-mktime($shh,$smm,$sss))/10;
+
+                $compute=$compute+($tmp_val['record']*$price*$time); 
+                if($val['record']==0) {
+                    $tmp_val=array();
+                    $previous=0;
+                } else {
+                    $tmp_val=$val['record'];
+                    $previous=$val['record']; 
+                }   
+            }
+        }
+      }
+
+      if($previous!=0) {
+            $shh=substr($tmp_val['time_catch'],0,2);
+            $smm=substr($tmp_val['time_catch'],2,2);
+            $sss=substr($tmp_val['time_catch'],4,2);
+
+            $time=(mktime(23,59,59)-mktime($shh,$smm,$sss))/10;
+            $compute=$compute+($tmp_val['record']*$price*$time);
       }
   } else {
 
     date_default_timezone_set('UTC');
     $compute=0;
-
     foreach($data as $val) {
                $hh=substr($val['time_catch'],0,2);
                $mm=substr($val['time_catch'],2,2);
@@ -660,7 +641,6 @@ function get_real_power($data="",$type="",&$out)  {
                           $price=$price_hc;
                    } else {
                           $price=$price_hp;
-                          return "test: ".$val['time_catch'];
                    }
                } else {
                    if(($time>=$starthc)||($time<=$stophc)) {
@@ -673,7 +653,7 @@ function get_real_power($data="",$type="",&$out)  {
     } 
              
   }
-  return number_format($compute,2);
+  return number_format($compute,4);
 
 }
 // }}}
@@ -1726,7 +1706,7 @@ function create_plugconf_from_database($nb=0,&$out) {
                     $reg="REG:T-${tol}";
                     break;
                 case "humidifier":
-                    "REG:H-${tol}";
+                    $reg="REG:H-${tol}";
                     break;
                 case "dehumidifier":
                     $reg="REG:H+${tol}";
