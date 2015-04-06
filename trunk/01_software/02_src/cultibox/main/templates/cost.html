@@ -77,45 +77,43 @@
 </table>
 <br />
 <input type="hidden" name="submit_cost" id="submit_cost" value="submit_cost">
-<p class="p_center"><input type="submit" name="view-cost" id="view-cost" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);"></p>
+<p class="p_center"><input type="submit" name="view-cost" id="view-cost" value="<?php echo __('START_COMPUTE'); ?>" onKeypress="return verifDigit(event);"></p>
 </form>
 <hr />
 <br />
 
 <div id="progress_cost" title="<?php echo __('COMPUTE_COST'); ?>" style="display:none">
-    <?php if(strcmp($select_plug,"distinct_all")!=0) { ?>
-    <p><?php echo __('PROGRESS_COST_THEORICAL'); ?>:</p>
-    <div id="progress_bar_cost_theorical"></div>
-    <p class="p_center">
-        <label class="format_error" id="error_cost_compute_theorical" style="display:none"><?php echo __('ERROR_COMPUTE_COST'); ?></label>
-        <label class="format_success" id="valid_cost_compute_theorical" style="display:none"><?php echo __('VALID_THEORICAL_COST_COMPUTE'); ?></label>
+    <?php if((strcmp($select_plug,"distinct_all")!=0)&&(strcmp($select_plug,"all")!=0)) { ?>
+    <p><?php echo __('PROGRESS_COST_THEORICAL'); ?>:
+        <img src="main/libs/img/button_cancel.png" title="<?php echo __('ERROR_COMPUTE_COST'); ?>" id="error_cost_compute_theorical" style="display:none"  height="22" width="22" />
+        <img src="main/libs/img/ok_button.png" title="<?php echo __('VALID_THEORICAL_COST_COMPUTE'); ?>" id="valid_cost_compute_theorical" style="display:none" height="22" width="22" />
     </p>
+    <div id="progress_bar_cost_theorical"></div>
     <br />
    
-    <p><?php echo __('PROGRESS_COST_REAL'); ?>:</p> 
+    <p><?php echo __('PROGRESS_COST_REAL'); ?>:
+i       <img src="main/libs/img/button_cancel.png" title="<?php echo __('ERROR_COMPUTE_COST'); ?>" id="error_cost_compute_real" style="display:none" height="22" width="22" />
+        <img src="main/libs/img/ok_button.png" title="<?php echo __('VALID_REAL_COST_COMPUTE'); ?>" id="valid_cost_compute_real" style="display:none" height="22" width="22" />
+    </p> 
     <div id="progress_bar_cost_real"></div>
-    <p class="p_center">
-        <label class="format_error" id="error_cost_compute_real" style="display:none"><?php echo __('ERROR_COMPUTE_COST'); ?></label>
-        <label class="format_success" id="valid_cost_compute_real" style="display:none"><?php echo __('VALID_REAL_COST_COMPUTE'); ?></label>
-    </p>
     <?php } else { ?>
         <table class="table_width">
         <?php for($nb=1; $nb<=$nb_plugs; $nb++) { ?>
             <?php if ($nb % 2 != 0) echo '<tr>'; ?>
             <?php if ($nb % 2 == 0) echo '<td class="cost-marge"></td>'; ?>
             <td>
-            <p><?php echo __('COMPUTE_COST_PLUG_THEORICAL')." ".$nb; ?>:</p>
+            <p><?php echo __('COMPUTE_COST_PLUG_THEORICAL')." ".$nb; ?>: 
+                <img src="main/libs/img/button_cancel.png" id="error_cost_compute_theorical<?php echo $nb; ?>" title="<?php echo __('ERROR_COMPUTE_COST'); ?>" style="display:none" height="22" width="22" />
+                <img src="main/libs/img/ok_button.png" id="valid_cost_compute_theorical<?php echo $nb; ?>" title="<?php echo __('VALID_THEORICAL_COST_COMPUTE'); ?>" style="display:none" height="22" width="22" />
+            </p>
             <div id="progress_bar_cost_theorical<?php echo $nb; ?>"></div>
             <p class="p_center">
-                <label class="format_error" id="error_cost_compute_theorical<?php echo $nb; ?>" style="display:none"><?php echo __('ERROR_COMPUTE_COST'); ?></label>
-                <label class="format_success" id="valid_cost_compute_theorical<?php echo $nb; ?>" style="display:none"><?php echo __('VALID_THEORICAL_COST_COMPUTE'); ?></label>
             </p>
-            <p><?php echo __('COMPUTE_COST_PLUG_REAL')." ".$nb; ?>:</p> 
+            <p><?php echo __('COMPUTE_COST_PLUG_REAL')." ".$nb; ?>:
+                <img src="main/libs/img/button_cancel.png" id="error_cost_compute_real<?php echo $nb; ?>" title="<?php echo __('ERROR_COMPUTE_COST'); ?>" style="display:none" height="22" width="22" />
+                <img src="main/libs/img/ok_button.png" id="valid_cost_compute_real<?php echo $nb; ?>" title="<?php echo __('VALID_REAL_COST_COMPUTE'); ?>" style="display:none" height="22" width="22" />
+            </p> 
             <div id="progress_bar_cost_real<?php echo $nb; ?>"></div>
-            <p class="p_center">
-                <label class="format_error" id="error_cost_compute_real<?php echo $nb; ?>" style="display:none"><?php echo __('ERROR_COMPUTE_COST'); ?></label>
-                <label class="format_success" id="valid_cost_compute_real<?php echo $nb; ?>" style="display:none"><?php echo __('VALID_REAL_COST_COMPUTE'); ?></label>
-            </p>
             <hr />
             <br />
             </td>

@@ -477,7 +477,7 @@ $(function () {
             title: {
                 margin: 35,
                 useHTML: true,
-                text: <?php echo "'<b>".__('HISTO_GRAPH')." (".$legend_date.")*</b>'"; ?>,
+                text: <?php echo "'<b>".__('HISTO_GRAPH')." (".$legend_date.")</b>'"; ?>,
             },
             subtitle: {
                 useHTML: true,
@@ -598,37 +598,34 @@ $(function () {
                 ?>
             ],
             tooltip: {
-                positioner:function(boxWidth, boxHeight, point){
-                    if (point.plotX>450) {
-                        return { x: point.plotX-250,y: 100 };
-                    } else {
-                        return { x: point.plotX+100, y: 100 };
-                    }
-                }
-                ,
                 shared: true,
-                backgroundColor:'rgba(255, 255, 255, 0.8)',
                 useHTML: true,
                 formatter: function() {
-                    var s = '<p align="center"><b>'+ Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x) +'</b><br />';
+                    var s = '<p align="center"><b>'+ Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x) +'</b></p><table class="table_width"><tr>';
+                    var chart = $('#container').highcharts();
 
-                    $.each(this.points, function(i, point) {
-                    
-                        var valueToTidsplay = point.y;
-                    
-                        if (point.series.options.curveType == "program")
+                    var xVal=this.x;
+                    var count=0;
+                    $.each(chart.series, function(i, serie) {
+                        var valueToTidsplay = getYValue(serie,xVal);
+                        count=count+1;
+
+
+                        if (serie.options.curveType == "program")
                         {
                             if (valueToTidsplay == "99.9")
                                 valueToTidsplay = "<?php echo __('VALUE_ON') ; ?>";
                             if (valueToTidsplay == "0")
                                 valueToTidsplay = "<?php echo __('VALUE_OFF') ; ?>";
                         }
-                    
-                        s += '<br/><font color="' + point.series.yAxis.userOptions.labels.style.color + '">' + point.series.options.name + ' : '+ valueToTidsplay + " " + point.series.options.tooltip.valueSuffix + '</font>';
+
+                        if(valueToTidsplay==null) valueToTidsplay="N/A";
+                        s += '<td><font color="' + serie.yAxis.userOptions.labels.style.color + '">' + serie.options.name + ' : '+ valueToTidsplay + " " + serie.options.tooltip.valueSuffix + '</font></td>';
+                        if(count%2===0) s=s+"</tr><tr>";
                     });
-                    s=s+"</p>";
-                
-                    return s;
+
+                    $("#data").html(s) ;
+                    return false;
                 }
             },
             legend: {
@@ -758,6 +755,8 @@ $(function () {
 // Function used at start to load logs
 $(document).ready(function() {
 
+    <?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { ?>
+
     var name="load_log";
     $.ajax({
         cache: false,
@@ -797,6 +796,8 @@ $(document).ready(function() {
             });
         }
     });
+
+    <?php } ?>
 
     $("#import_log").click(function(e) {
         e.preventDefault();
@@ -1178,7 +1179,8 @@ $(document).ready(function() {
                             sensor: $(cheBu).attr("id"),
                             selected: true,
                             tooltip: {
-                                valueSuffix:" " + item.unit
+                                valueSuffix:" " + item.unit,
+                                shared: true
                             },
                             events: {
                                 // On click on the check box, show or hide the serie
@@ -1242,6 +1244,8 @@ $(document).ready(function() {
                             }
                         });  
 
+                        chart.yAxis[item.yaxis].isDirty = true;
+                        chart.redraw();
                         // Save serie index displayed
                         $(cheBu).attr("serieID" , serieID.index);
                         $(cheBu).attr("yaxis" , item.yaxis);
@@ -1809,6 +1813,18 @@ function getXValue(chartObj,yValue,name){
  });
  return return_value;    
 }
- 
+
+
+function getYValue(chartObj,xValue){
+ var yValue=null;
+ if(typeof chartObj.points != "undefined") {
+    var points=chartObj.points;
+    for(var i=0;i<points.length;i++){
+        if(points[i].x>xValue)break;
+        yValue=points[i].y;
+    }
+ }
+ return yValue;
+} 
  
 </script>

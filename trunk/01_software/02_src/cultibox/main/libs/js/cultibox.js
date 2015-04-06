@@ -14,6 +14,7 @@ var SELECT_button="";
 var LOADING="";
 var NEXT_button="";
 var PREVIOUS_button="";
+var COMPUTE_button="";
 
 
 var lang="";
@@ -131,6 +132,7 @@ if(lang=="it_IT") {
     LOADING="Chargement des données en cours, patientez s'il vous plait...";
     NEXT_button="Etape suivante";
     PREVIOUS_button="Etape précédente"
+    COMPUTE_button="Afficher le résultat"
 }
 
 

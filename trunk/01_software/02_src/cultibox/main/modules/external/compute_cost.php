@@ -29,13 +29,12 @@ if((isset($startday))&&(!empty($startday))&&(isset($select_plug))&&(!empty($sele
         $startTime = strtotime("$startday 12:00");
 
         $thisDate = date('Y-m-d', $startTime); // 2010-05-01, 2010-05-02, etc
-        $data_power=get_data_power($thisDate,$thisDate,$select_plug,$main_error,"short");
+        $data_power=get_data_power($thisDate,$thisDate,$select_plug,$main_error);
 
         $power=get_real_power($data_power,$cost_type,$main_error);
 
         unset($data_power);
     }
-
     echo "$power";
 }
 
