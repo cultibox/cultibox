@@ -71,6 +71,10 @@ if [ -d /var/www/cultibox/tmp/export ]; then
     rm -Rf /var/www/cultibox/tmp/export/*
 fi
 
+if [ "`ls /var/www/cultibox/tmp/webcam*.jpg 2>/dev/null`" != "" ]; then
+    rm /var/www/cultibox/tmp/webcam*.jpg
+fi
+
 if [ -f /etc/culticonf/packages ]; then
     packages="`cat /etc/culticonf/packages`"
     if [ "$packages" != "" ]; then
