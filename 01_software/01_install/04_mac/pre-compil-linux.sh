@@ -20,9 +20,9 @@ if [ "$2" == "" ] && [ "$1" != "clean" ] && [ "$1" != "uninstall" ]; then
     usage
 fi
 
-# Remove svn up when using jenkins
+# Remove git up when using jenkins
 if [ "$3" == "" ]; then
-    (cd ../../../ && svn up)
+    (cd ../../../ && git pull)
 fi
 
 VERSION=$2
@@ -80,7 +80,7 @@ EOF
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/main/libs/lib_configuration.php
 
 
-            find ../01_src/01_xampp/cultibox/ -name ".svn"|xargs rm -Rf
+            find ../01_src/01_xampp/cultibox/ -name ".git"|xargs rm -Rf
             set +e
             ssh root@$SERVER "if [ -d /Applications/cultibox ]; then rm -Rf /Applications/cultibox; fi"
             rsync -av ../01_src/01_xampp/cultibox root@$SERVER:/Applications/
@@ -110,7 +110,7 @@ EOF
             cp conf-package/cultibox_apache.plist  ../01_src/01_xampp/cultibox/package/
             cp conf-package/uninstall  ../01_src/01_xampp/cultibox/package/
 
-            find ../01_src/01_xampp/cultibox/ -name ".svn"|xargs rm -Rf
+            find ../01_src/01_xampp/cultibox/ -name ".git"|xargs rm -Rf
             set +e
             ssh root@$SERVER "if [ -d /Applications/cultibox ]; then rm -Rf /Applications/cultibox; fi"
             rsync -av ../01_src/01_xampp/cultibox root@$SERVER:/Applications/

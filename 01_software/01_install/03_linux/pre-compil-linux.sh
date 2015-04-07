@@ -23,9 +23,9 @@ fi
 
 VERSION=$2
 
-# Remove svn up when using jenkins
+# Remove git pull when using jenkins
 if [ "$3" == "" ]; then
-    (cd ../../../ && svn up)
+    (cd ../../../ && git pull)
 fi
 
 
@@ -79,7 +79,7 @@ EOF
 
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-amd64'/" ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/libs/lib_configuration.php
 
-           find ./../01_src/01_xampp/cultibox/opt/lampp -name ".svn"|xargs rm -Rf
+           find ./../01_src/01_xampp/cultibox/opt/lampp -name ".git"|xargs rm -Rf
            mv ../01_src/01_xampp/cultibox/opt/lampp ../01_src/01_xampp/cultibox/opt/cultibox
 
            chown -R root:root ./../01_src/01_xampp/*
@@ -136,7 +136,7 @@ EOF
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-i386'/" ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/libs/lib_configuration.php
 
 
-           find ./../01_src/01_xampp/cultibox/opt/lampp -name ".svn"|xargs rm -Rf
+           find ./../01_src/01_xampp/cultibox/opt/lampp -name ".git"|xargs rm -Rf
            mv ../01_src/01_xampp/cultibox/opt/lampp ../01_src/01_xampp/cultibox/opt/cultibox
            chown -R root:root ./../01_src/01_xampp/*
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultibox

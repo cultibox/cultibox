@@ -22,9 +22,9 @@ if [ "$2" == "" ] && [ "$1" != "clean" ]; then
 fi
 
 
-(cd ../../../ && svn up)
+(cd ../../../ && git pull)
 if [ "$3" == "byWindows" ] ; then
-    (cd ../../../wiki && svn up)
+    (cd ../../../wiki && git pull)
 fi
 
 echo "Remove previous files"
