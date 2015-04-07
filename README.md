@@ -18,6 +18,6 @@ rendez-vous:
 
 
 Quoi de neuf?
- * Liste des [évolutions pour le logiciel](www.github.com)
+ * Liste des [évolutions pour le logiciel](https://github.com/cultibox/cultibox/blob/master/01_software/CHANGELOG)
  * Lise des [évolutions pour le firmware](www.github.com)
 
