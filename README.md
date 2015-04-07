@@ -1,4 +1,5 @@
-**Cultibox: qui peut te battre?**
+**Cultibox**
+============
 
 La Cultibox est un boitier de contrôle du climat permettant de piloter des prises 
 avec des programmes définits ou de réagir en fonction des informations remontées
