@@ -13,8 +13,8 @@ Pour plus d'informations sur le logiciel open source permettant de piloter le bo
 rendez-vous:
 
  * sur la [documentation utilisateur](www.github.com) 
- * sur la [liste des tickets (Amélioration, bug ...)](www.github.com)
- * sur le [dépôt du code source](www.github.com)
+ * sur la [liste des tickets (Amélioration, bug ...)](https://github.com/cultibox/cultibox/issues)
+ * sur le [dépôt du code source](https://github.com/cultibox/cultibox/)
 
 
 Quoi de neuf?
