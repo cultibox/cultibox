@@ -135,7 +135,9 @@
     <table>
     <tr>
     <td class="wizard-marge-submit"></td>
-    <td class="wizard-input-submit"><input type=submit name="close" id="close" value="<?php echo __('CLOSE_WIZARD'); ?>"></td>
+    <td class="wizard-input-submit">
+        <input type=submit name="close" id="close" value="<?php echo __('CLOSE_WIZARD'); ?>">
+    </td>
     <td class="wizard-input-previous"><input type=submit name="previous" id="previous" value="<?php echo __('WIZARD_PREVIOUS_STEP'); ?>" <?php if(($selected_plug==1)||($step==1)) { echo 'style="display:none"'; } ?>></td>
     <td class="wizard-input-previous"><input type=submit name="next" id="next" value="<?php echo __('WIZARD_NEXT_STEP'); ?>" <?php if($selected_plug==1) { echo 'style="display:none"'; } ?>></td>
     <td class="wizard-input-submit">
