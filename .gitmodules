@@ -1,0 +1,3 @@
+[submodule "01_software/02_src/cultibox"]
+	path = 01_software/02_src/cultibox
+	url = https://github.com/cultibox/cultiboxUI.git
