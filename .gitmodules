@@ -1,3 +1,6 @@
 [submodule "01_software/02_src/cultibox"]
 	path = 01_software/02_src/cultibox
 	url = https://github.com/cultibox/cultiboxUI.git
+[submodule "04_CultiPi/01_Software/01_cultiPi"]
+	path = 04_CultiPi/01_Software/01_cultiPi
+	url = https://github.com/cultibox/cultipiCore.git
