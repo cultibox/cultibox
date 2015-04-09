@@ -576,8 +576,6 @@ function save_log($file="",$month=0,$day=0,$type="logs") {
 }
 // }}}
 
-
-
 }
 
 ?>
