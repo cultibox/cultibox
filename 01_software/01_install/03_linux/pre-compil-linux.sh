@@ -25,7 +25,7 @@ VERSION=$2
 
 # Remove git pull when using jenkins
 if [ "$3" == "" ]; then
-    (cd ../../../ && git pull)
+    (cd ../../../ && git pull && cd 01_software/02_src/cultibox/main/cultibox.wiki/ && git pull && cd ../../../../../04_CultiPi/01_Software/01_cultiPi/ && git pull)
 fi
 
 

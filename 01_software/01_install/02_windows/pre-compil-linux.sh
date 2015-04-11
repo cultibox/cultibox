@@ -22,7 +22,7 @@ if [ "$2" == "" ] && [ "$1" != "clean" ]; then
 fi
 
 
-(cd ../../../ && git pull)
+(cd ../../../ && git pull && cd 01_software/02_src/cultibox/main/cultibox.wiki/ && git pull && cd ../../../../../04_CultiPi/01_Software/01_cultiPi/ && git pull)
 if [ "$3" == "byWindows" ] ; then
     (cd ../../../wiki && git pull)
 fi
