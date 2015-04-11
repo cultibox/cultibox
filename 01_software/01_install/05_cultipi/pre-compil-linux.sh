@@ -53,7 +53,7 @@ revision=`date +%y%m%d%H%M`
 case "$1" in
       "cultipi")
            rm -Rf ../01_src/01_xampp/*
-           mkdir ../01_src/01_xampp/cultipi
+           mkdir -p ../01_src/01_xampp/cultipi
            cp -R ./conf-package/DEBIAN-cultipi ../01_src/01_xampp/cultipi/DEBIAN
 
            mkdir -p ../01_src/01_xampp/cultipi/opt/cultipi
@@ -74,7 +74,9 @@ case "$1" in
            mv cultipi.deb ../../05_cultipi/Output/cultipi-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultibox")
-           rm -Rf ../01_src/01_xampp/*
+           if [ -d ../01_src/01_xampp ]; then
+            rm -Rf ../01_src/01_xampp/*
+           fi
            mkdir -p ../01_src/01_xampp/cultibox/var/www
            cp -R ./conf-package/DEBIAN-cultibox ../01_src/01_xampp/cultibox/DEBIAN
 
@@ -115,8 +117,10 @@ EOF
            mv cultibox.deb ../../05_cultipi/Output/cultibox-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;  
       "cultiraz")
-           rm -Rf ../01_src/01_xampp/*
-           mkdir ../01_src/01_xampp/cultiraz
+           if [ -d ../01_src/01_xampp ]; then
+            rm -Rf ../01_src/01_xampp/*
+           fi
+           mkdir -p ../01_src/01_xampp/cultiraz
            cp -R ./conf-package/DEBIAN-cultiraz ../01_src/01_xampp/cultiraz/DEBIAN
 
            mkdir -p ../01_src/01_xampp/cultiraz/opt/cultiraz
@@ -134,8 +138,10 @@ EOF
            mv cultiraz.deb ../../05_cultipi/Output/cultiraz-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultitime")
-           rm -Rf ../01_src/01_xampp/*
-           mkdir ../01_src/01_xampp/cultitime
+           if [ -d ../01_src/01_xampp ]; then
+            rm -Rf ../01_src/01_xampp/*
+           fi
+           mkdir -p ../01_src/01_xampp/cultitime
            cp -R ./conf-package/DEBIAN-cultitime ../01_src/01_xampp/cultitime/DEBIAN
 
            mkdir -p ../01_src/01_xampp/cultitime/opt/cultitime
@@ -153,8 +159,10 @@ EOF
            mv cultitime.deb ../../05_cultipi/Output/cultitime-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "culticonf")
-           rm -Rf ../01_src/01_xampp/*
-           mkdir ../01_src/01_xampp/culticonf
+           if [ -d ../01_src/01_xampp ]; then
+            rm -Rf ../01_src/01_xampp/*
+           fi
+           mkdir -p ../01_src/01_xampp/culticonf
            mkdir -p ../01_src/01_xampp/culticonf/etc/cron.daily
            mkdir -p ../01_src/01_xampp/culticonf/etc/cron.hourly
            mkdir -p ../01_src/01_xampp/culticonf/etc/logrotate.d
@@ -177,8 +185,10 @@ EOF
            mv culticonf.deb ../../05_cultipi/Output/culticonf-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultidoc")
-           rm -Rf ../01_src/01_xampp/*
-           mkdir ../01_src/01_xampp/cultidoc
+           if [ -d ../01_src/01_xampp ]; then
+            rm -Rf ../01_src/01_xampp/*
+           fi
+           mkdir -p ../01_src/01_xampp/cultidoc
            mkdir -p ../01_src/01_xampp/cultidoc/var/www/cultibox/main
 
            cp -R ./conf-package/DEBIAN-cultidoc ../01_src/01_xampp/cultidoc/DEBIAN
@@ -191,8 +201,10 @@ EOF
            mv cultidoc.deb ../../05_cultipi/Output/cultidoc-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "culticam")
-           rm -Rf ../01_src/01_xampp/*
-           mkdir ../01_src/01_xampp/culticam
+           if [ -d ../01_src/01_xampp ]; then
+            rm -Rf ../01_src/01_xampp/*
+           fi
+           mkdir -p ../01_src/01_xampp/culticam
            cp -R ./conf-package/DEBIAN-culticam ../01_src/01_xampp/culticam/DEBIAN
 
            mkdir -p ../01_src/01_xampp/culticam/opt/culticam
@@ -235,7 +247,9 @@ EOF
            rm binary/culti*.deb
       ;;
       "clean")
+           if [ -d ../01_src/01_xampp ]; then
             rm -Rf ../01_src/01_xampp/*
+           fi
       ;;
       *)
             usage
