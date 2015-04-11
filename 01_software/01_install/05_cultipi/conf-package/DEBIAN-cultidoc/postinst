@@ -1,1 +1,5 @@
 #!/bin/bash
+
+if [ -f /var/www/documentation_cultibox.pdf ]; then
+    rm /var/www/documentation_cultibox.pdf
+fi

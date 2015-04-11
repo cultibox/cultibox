@@ -39,7 +39,6 @@ VERSION=$2
 case "$1" in
     "windows"|"windows-xp")
         echo "Documentation generation"
-        (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl  && pdflatex documentation.tex && pdflatex documentation.tex)
 
         if [ "$1" == "windows-xp" ]; then
             cp ./install_script_xp.iss ./install_script_current.iss
@@ -66,8 +65,6 @@ case "$1" in
         if [ "$3" == "byWindows" ]; then
             chmod -R 777 ../01_src/01_xampp/cultibox
         fi
-        mkdir -p         cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/htdocs/cultibox/main/docs
-        cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/htdocs/cultibox/main/docs/documentation_cultibox.pdf
         cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
         cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/VERSION_FIRM.txt
         cp conf-package/lgpl3.txt ../01_src/01_xampp/LICENSE.txt

@@ -31,13 +31,11 @@ SERVER=macosx
 
 case "$1" in
       "osx" )
-            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && pdflatex documentation.tex && pdflatex documentation.tex)
             rm -Rf ../01_src/01_xampp/*
             tar zxvfp xampp-mac-1.8.3.tar.gz -C ../01_src/01_xampp/
             mv ../01_src/01_xampp/XAMPP ../01_src/01_xampp/cultibox
             cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox
             mkdir -p ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/main/docs 
-            cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/main/docs/documentation_cultibox.pdf
 
             cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/xamppfiles/etc/
             cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/xamppfiles/etc/

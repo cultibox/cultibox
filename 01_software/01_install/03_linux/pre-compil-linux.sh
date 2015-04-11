@@ -31,7 +31,6 @@ fi
 
 case "$1" in
       "ubuntu64")
-           (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && pdflatex documentation.tex && pdflatex documentation.tex)
            rm -Rf ../01_src/01_xampp/*
            mkdir ../01_src/01_xampp/cultibox
            cp -R ./conf-package/DEBIAN64 ../01_src/01_xampp/cultibox/DEBIAN
@@ -43,7 +42,6 @@ case "$1" in
 
            cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
            mkdir -p ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs
-           cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION.txt
            cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/opt/lampp/VERSION_FIRM.txt
 
@@ -89,7 +87,6 @@ EOF
            mv cultibox.deb ../../03_linux/Output/cultibox-ubuntu-amd64_`echo $VERSION`.deb
       ;;
       "ubuntu32")
-            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
             rm -Rf ../01_src/01_xampp/*
             mkdir ../01_src/01_xampp/cultibox
             cp -R ./conf-package/DEBIAN ../01_src/01_xampp/cultibox/DEBIAN
@@ -101,7 +98,6 @@ EOF
 
             cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
             mkdir -p ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs
-            cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION.txt
             cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/opt/lampp/VERSION_FIRM.txt
 

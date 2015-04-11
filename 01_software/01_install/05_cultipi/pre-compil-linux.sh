@@ -79,6 +79,7 @@ case "$1" in
            cp -R ./conf-package/DEBIAN-cultibox ../01_src/01_xampp/cultibox/DEBIAN
 
            cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/var/www/cultibox
+           rm -Rf ../01_src/01_xampp/cultibox/var/www/cultibox/main/cultibox.wiki
            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/var/www/cultibox/VERSION.txt
 
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/var/www/cultibox/LICENSE
@@ -176,14 +177,12 @@ EOF
            mv culticonf.deb ../../05_cultipi/Output/culticonf-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultidoc")
-           (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
-
            rm -Rf ../01_src/01_xampp/*
            mkdir ../01_src/01_xampp/cultidoc
-           mkdir -p ../01_src/01_xampp/cultidoc/var/www/
+           mkdir -p ../01_src/01_xampp/cultidoc/var/www/cultibox/main
 
            cp -R ./conf-package/DEBIAN-cultidoc ../01_src/01_xampp/cultidoc/DEBIAN
-           cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultidoc/var/www/documentation_cultibox.pdf
+           cp -R ../../02_src/cultibox/main/cultibox.wiki ../01_src/01_xampp/cultidoc/var/www/main/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultidoc/DEBIAN/control
            find ./../01_src/01_xampp/cultidoc/ -name ".git"|xargs rm -Rf
