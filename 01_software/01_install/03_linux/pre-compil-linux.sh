@@ -31,8 +31,10 @@ fi
 
 case "$1" in
       "ubuntu64")
-           rm -Rf ../01_src/01_xampp/*
-           mkdir ../01_src/01_xampp/cultibox
+           if [ -d ../01_src/01_xampp ]; then
+            rm -Rf ../01_src/01_xampp/*
+           fi
+           mkdir -p ../01_src/01_xampp/cultibox
            cp -R ./conf-package/DEBIAN64 ../01_src/01_xampp/cultibox/DEBIAN
            mkdir ../01_src/01_xampp/cultibox/opt
            mkdir -p ../01_src/01_xampp/cultibox/usr/share/applications/
@@ -87,8 +89,10 @@ EOF
            mv cultibox.deb ../../03_linux/Output/cultibox-ubuntu-amd64_`echo $VERSION`.deb
       ;;
       "ubuntu32")
-            rm -Rf ../01_src/01_xampp/*
-            mkdir ../01_src/01_xampp/cultibox
+            if [ -d ../01_src/01_xampp ]; then
+              rm -Rf ../01_src/01_xampp/*
+            fi
+            mkdir -p ../01_src/01_xampp/cultibox
             cp -R ./conf-package/DEBIAN ../01_src/01_xampp/cultibox/DEBIAN
             mkdir ../01_src/01_xampp/cultibox/opt
             mkdir -p ../01_src/01_xampp/cultibox/usr/share/applications/

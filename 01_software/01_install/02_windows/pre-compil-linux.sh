@@ -31,7 +31,10 @@ echo "Remove previous files"
 if [ -f ./install_script_current.iss ]; then
    rm -Rf ./install_script_current.iss
 fi
-rm -Rf ../01_src/01_xampp/*
+
+if [ -d ../01_src/01_xampp ]; then
+    rm -Rf ../01_src/01_xampp/*
+fi
 
 
 VERSION=$2
@@ -48,7 +51,7 @@ case "$1" in
             
         sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
 
-        mkdir ../01_src/01_xampp/cultibox
+        mkdir -p ../01_src/01_xampp/cultibox
 
         echo "Extraction de xampp"
         if [ "$1" == "windows" ]; then

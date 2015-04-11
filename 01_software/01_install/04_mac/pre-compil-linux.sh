@@ -31,7 +31,11 @@ SERVER=macosx
 
 case "$1" in
       "osx" )
-            rm -Rf ../01_src/01_xampp/*
+            if [ -d ../01_src/01_xampp ]; then
+                rm -Rf ../01_src/01_xampp/*
+            else 
+                mkdir ../01_src/01_xampp
+            fi
             tar zxvfp xampp-mac-1.8.3.tar.gz -C ../01_src/01_xampp/
             mv ../01_src/01_xampp/XAMPP ../01_src/01_xampp/cultibox
             cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox
@@ -97,7 +101,9 @@ EOF
             rm -Rf ../01_src/01_xampp/*
       ;;
       "uninstall")
-            rm -Rf ../01_src/01_xampp/*
+            if [ -d ../01_src/01_xampp ]; then
+                rm -Rf ../01_src/01_xampp/*
+            fi
             mkdir -p ../01_src/01_xampp/cultibox/package
             cp conf-package/takecontrol.png ../01_src/01_xampp/cultibox/package
             cp conf-package/post* ../01_src/01_xampp/cultibox/package/
