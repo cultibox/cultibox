@@ -192,7 +192,7 @@ EOF
            mkdir -p ../01_src/01_xampp/cultidoc/var/www/cultibox/main
 
            cp -R ./conf-package/DEBIAN-cultidoc ../01_src/01_xampp/cultidoc/DEBIAN
-           cp -R ../../02_src/cultibox/main/cultibox.wiki ../01_src/01_xampp/cultidoc/var/www/main/
+           cp -R ../../02_src/cultibox/main/cultibox.wiki ../01_src/01_xampp/cultidoc/var/www/cultibox/main/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultidoc/DEBIAN/control
            find ./../01_src/01_xampp/cultidoc/ -name ".git"|xargs rm -Rf
