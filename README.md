@@ -29,4 +29,4 @@ Et concrètement?
 `git clone --recursive https://github.com/cultibox/cultibox.git`
  * Pour récupérer le wiki avec git: 
 
- `git clone --recursive https://github.com/cultibox/cultibox.wiki.git`
+`git clone --recursive https://github.com/cultibox/cultibox.wiki.git`
