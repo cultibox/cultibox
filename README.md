@@ -25,6 +25,8 @@ Quoi de neuf?
 
 Et concrètement?
  * Pour récupérer le dépôt principal avec git:
-`git clone https://github.com/cultibox/cultibox.git`
+
+`git clone --recursive https://github.com/cultibox/cultibox.git`
  * Pour récupérer le wiki avec git: 
- `git clone https://github.com/cultibox/cultibox.wiki.git`
+
+`git clone --recursive https://github.com/cultibox/cultibox.wiki.git`
