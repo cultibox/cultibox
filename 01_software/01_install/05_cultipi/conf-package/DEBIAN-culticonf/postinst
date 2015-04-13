@@ -170,6 +170,20 @@ EOF
     echo "150403" > /VERSION
 fi
 
+if [ $VERSION -lt 150413 ]; then
+    if [ "`cat /etc/mysql/my.cnf|grep infile`" == "" ]; then
+        nb="`grep -n  \"\[mysql\]\" /etc/mysql/my.cnf|awk -F \":\" '{print $1}'`"
+        if [ "$nb" != "" ]; then
+            nb=`expr $nb + 1`;
+            sed -i "${nb}i local-infile= 1" /etc/mysql/my.cnf
+        fi
+        /etc/init.d/mysql force-reload
+    fi
+
+    echo "150413" > /VERSION
+fi
+
+
 find /etc/default/ -name "*-dist"|xargs rm 2>/dev/null; echo ""
 
 
