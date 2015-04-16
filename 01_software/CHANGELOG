@@ -1,3 +1,11 @@
+Cultibox (2.0.48) precise; urgency=low
+    + Réorganisation des onglets
+    + Fusion programme/prises
+    + Ajout des fonctionnalités dans des icones cliquables
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Apr 16 12:25:31 CEST 2015
+
+
 Cultibox (2.0.47) precise; urgency=low
     + Ajout de plusieurs webcams
 
