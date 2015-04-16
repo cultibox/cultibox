@@ -2,6 +2,9 @@ Cultibox (2.0.48) precise; urgency=low
     + Réorganisation des onglets
     + Fusion programme/prises
     + Ajout des fonctionnalités dans des icones cliquables
+    + Ajout de la page cost comme icone
+    + Correction de l'aide et ajout d'un css spécifique à l'aide
+    + Correction du wizard
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Thu Apr 16 12:25:31 CEST 2015
 
