@@ -5,6 +5,8 @@ Cultibox (2.0.48) precise; urgency=low
     + Ajout de la page cost comme icone
     + Correction de l'aide et ajout d'un css spécifique à l'aide
     + Correction du wizard
+    + Correction des webcams si aucune webcam n'est branchée
+    + Ajout d'un bouton pour uploader ses images dans le cultipi
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Thu Apr 16 12:25:31 CEST 2015
 
