@@ -7,6 +7,7 @@ Cultibox (2.0.48) precise; urgency=low
     + Correction du wizard
     + Correction des webcams si aucune webcam n'est branchée
     + Ajout d'un bouton pour uploader ses images dans le cultipi
+    + Programme des prises dans une boite de dialogue
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Thu Apr 16 12:25:31 CEST 2015
 
