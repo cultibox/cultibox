@@ -101,7 +101,7 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     esac
     /usr/bin/mysql --defaults-extra-file=/var/www/cultibox/sql_install/my-extra.cnf -h 127.0.0.1 --port=3891 < /var/www/cultibox/sql_install/fake_log.sql
 
-    /usr/bin/mysql --defaults-extra-file=/var/www/cultibox/sql_install/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "DELETE from sensors WHERE id > 1"
+    /usr/bin/mysql --defaults-extra-file=/var/www/cultibox/sql_install/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "UPDATE sensors SET type=0  WHERE id > 1"
 
     echo "... OK"
 else 
