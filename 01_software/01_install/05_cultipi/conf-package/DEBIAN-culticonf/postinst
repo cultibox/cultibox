@@ -184,6 +184,39 @@ if [ $VERSION -lt 150413 ]; then
 fi
 
 
+if [ $VERSION -lt 150421 ]; then
+    cat << EOF > /etc/rc.local
+#!/bin/bash 
+
+#Case of an Access Point:
+if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" != "" ] && [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    #Configuration of the captiv portal if it's not the case yet:
+    if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
+else
+    #If it's not an Acces Point mode , deleteting captiv portal configuration:
+    for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
+fi
+
+#To accelerate boot time, eth0 is not configured at boot time (due to the time DHCP uses to respond when a wire is not plugged).
+#But we have to configure the interface if a wire is plugged:
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    /sbin/ifup --force eth0
+else
+    /sbin/ifdown --force eth0
+fi
+
+#Configuration of the keymap in FR:
+/usr/bin/loadkeys fr
+
+exit 0
+EOF
+
+    echo "150421" > /VERSION
+fi
+
+
 find /etc/default/ -name "*-dist"|xargs rm 2>/dev/null; echo ""
 
 
