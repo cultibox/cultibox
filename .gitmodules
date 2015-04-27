@@ -4,3 +4,6 @@
 [submodule "04_CultiPi/01_Software/01_cultiPi"]
 	path = 04_CultiPi/01_Software/01_cultiPi
 	url = https://github.com/cultibox/cultipiCore.git
+[submodule "01_software/02_src/cultibox/main/cultibox.wiki"]
+    path = 01_software/02_src/cultibox/main/cultibox.wiki
+    url = https://github.com/cultibox/cultibox.wiki.git
