@@ -24,6 +24,12 @@ if [ -f /etc/cultipi/conf_tmp.log.txt ]; then
     rm /etc/cultipi/conf_tmp.log.txt
 fi
 
+
+if [  "`cat /etc/sudoers|grep cultipi|grep shutdown`" == "" ]; then
+    echo "cultipi ALL = (root) NOPASSWD: /sbin/shutdown" >> /etc/sudoers
+fi
+
+
 chown -R www-data:www-data /etc/cultipi/conf_tmp
 chown -R cultipi:cultipi /var/log/cultipi
 chmod 755 /var/log/cultipi
