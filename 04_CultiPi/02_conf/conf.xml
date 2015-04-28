@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<confs>
-    <!-- Example : http://wfr.tcl.tk/1151 -->
-    <conf dir="01_defaultConf_RPi" />
-</confs>
