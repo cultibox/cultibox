@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<conf>
-    <item name="serverLog" waitAfterUS="1000" port="6003" pathexe="tclsh" path="./serverLog/serveurLog.tcl" xmlconf="./serverLog/conf.xml" />
-    <item name="serverAcqSensor" waitAfterUS="100" port="6006" pathexe="tclsh" path="./serverAcqSensor/serverAcqSensor.tcl" xmlconf="./serverAcqSensor/conf.xml" />
-    <item name="serverPlugUpdate" waitAfterUS="100" port="6004" pathexe="tclsh" path="./serverPlugUpdate/serverPlugUpdate.tcl" xmlconf="./serverPlugUpdate/conf.xml" />
-    <item name="serverHisto" waitAfterUS="100" port="6009" pathexe="tclsh" path="./serverHisto/serverHisto.tcl" xmlconf="./serverHisto/conf.xml" />
-    <item name="serverCultibox" waitAfterUS="100" port="6013" pathexe="tclsh" path="./serverCultibox/serverCultibox.tcl" xmlconf="./serverCultibox/conf.xml" />
-    <item name="serverMail" waitAfterUS="100" port="6015" pathexe="tclsh" path="./serverMail/serverMail.tcl" xmlconf="./serverMail/conf.xml" />
-</conf>

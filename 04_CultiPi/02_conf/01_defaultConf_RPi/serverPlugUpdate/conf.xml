@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<conf>
-    <item name="verbose" level="warning" />
-    <item name="wireless_freq_plug_update" value="1" />
-    <item name="alarm_activ" value="0000" />
-    <item name="alarm_value" value="6000" />
-    <item name="alarm_sensor" value="T" />
-    <item name="alarm_sens" value="+" />
-</conf>

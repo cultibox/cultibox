@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<conf>
-    <item name="logPath" logfile="/var/log/cultipi" />
-    <item name="verbose" level="warning" />
-</conf>

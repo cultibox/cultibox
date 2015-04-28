@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<conf>
-    <!-- Example : http://wfr.tcl.tk/1151 -->
-    <item name="logPath" logfile="C:/cultibox/04_CultiPi" />
-    <item name="verbose" level="warning" />
-</conf>
