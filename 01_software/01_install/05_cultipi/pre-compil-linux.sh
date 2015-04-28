@@ -64,8 +64,8 @@ case "$1" in
            rm -f ../01_src/01_xampp/cultipi/opt/cultipi/VERSION
            cp -R ../../../04_CultiPi/01_Software/01_cultiPi/_conf/01_defaultConf_RPi ../01_src/01_xampp/cultipi/etc/cultipi/
 
-           cp -R ../../../04_CultiPi/02_conf/01_defaultConf_RPi  ../01_src/01_xampp/cultipi/etc/cultipi/
-           cp -R ../../../04_CultiPi/02_conf/conf.xml  ../01_src/01_xampp/cultipi/etc/cultipi/
+           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/_conf/01_defaultConf_RPi  ../01_src/01_xampp/cultipi/etc/cultipi/
+           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/_conf/conf.xml  ../01_src/01_xampp/cultipi/etc/cultipi/
 
            cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/init.d/cultipi ../01_src/01_xampp/cultipi/etc/init.d/cultipi
 
