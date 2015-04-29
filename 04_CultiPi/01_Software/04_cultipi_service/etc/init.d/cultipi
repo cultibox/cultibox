@@ -38,7 +38,7 @@ case "$1" in
         d_${1}
         ;;
 
-    restart|reload|force-reload)
+    restart|reload)
         d_stop
         for pid in "`ps ax|grep cultiPi.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
             if [ "$pid" != "" ]; then
