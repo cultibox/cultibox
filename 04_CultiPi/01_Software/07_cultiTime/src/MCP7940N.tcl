@@ -8,11 +8,15 @@ namespace eval ::MCP7940N {
 proc ::MCP7940N::start {} {
 
     # On démarre le comptage de l'heure
-    set err [catch {
-        exec /usr/local/sbin/i2cset -y1 1 0x6f 0x00 0x80
-    } msg]
-    if {$err != 0 } {
-        puts  "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : ::MCP7940N::start : Error $msg"
+    for {set i 0} {$i < 5} {incr i} {
+        set err [catch {
+            exec /usr/local/sbin/i2cset -y1 1 0x6f 0x00 0x80
+        } msg]
+        if {$err != 0 } {
+            puts  "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : ::MCP7940N::start : Error $msg"
+        } else {
+            set i 6
+        }
     }
     
     # On active la sauvegarde de l'heure sur vbat
