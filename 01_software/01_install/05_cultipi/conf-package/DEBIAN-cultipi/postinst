@@ -32,6 +32,9 @@ fi
 
 chown -R www-data:www-data /etc/cultipi/conf_tmp
 chown -R cultipi:cultipi /var/log/cultipi
+chown -R cultipi:cultipi /opt/cultipi
+chown cultipi:cultipi /etc/init.d/cultipi
+chmod 744 /etc/init.d/cultipi
 chmod 755 /var/log/cultipi
 
 find /etc/cultipi/ -name "*-dist"|xargs rm 2>/dev/null; echo ""

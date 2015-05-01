@@ -3,3 +3,5 @@
 if [ -f /var/www/documentation_cultibox.pdf ]; then
     rm /var/www/documentation_cultibox.pdf
 fi
+
+chown -R www-data:www-data /var/www/cultibox/main/cultibox.wiki

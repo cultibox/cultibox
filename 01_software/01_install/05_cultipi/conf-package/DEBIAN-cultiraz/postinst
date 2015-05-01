@@ -4,4 +4,8 @@ if [ -f /etc/init.d/cultiraz ]; then
     update-rc.d cultiraz defaults
 fi
 
+chown -R cultipi:cultipi /opt/cultiraz
+chown cultipi:cultipi /etc/init.d/cultiraz
+chmod 744 /etc/init.d/cultiraz
+
 /etc/init.d/cultiraz force-reload

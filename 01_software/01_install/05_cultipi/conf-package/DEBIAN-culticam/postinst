@@ -8,6 +8,8 @@ if [  "`cat /etc/sudoers|grep cultipi|grep fswebcam`" == "" ]; then
         echo "cultipi ALL = (root) NOPASSWD: /usr/bin/fswebcam" >> /etc/sudoers
 fi  
 
-chmod +x /etc/init.d/culticam
+chown -R cultipi:cultipi /opt/culticam
+chown cultipi:cultipi /etc/init.d/culticam
+chmod 744 /etc/init.d/culticam
 
 /etc/init.d/culticam force-reload
