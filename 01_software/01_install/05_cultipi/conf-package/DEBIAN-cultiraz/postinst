@@ -7,6 +7,6 @@ fi
 
 chown -R cultipi:cultipi /opt/cultiraz
 chown cultipi:cultipi /etc/init.d/cultiraz
-chmod 644 /etc/init.d/cultiraz
+chmod 744 /etc/init.d/cultiraz
 
 /etc/init.d/cultiraz force-reload

@@ -19,7 +19,7 @@ fi
 
 if [ -f /etc/default/culticron ]; then
     chown root:root /etc/default/culticron
-    chmod 644 /etc/default/culticron
+    chmod 744 /etc/default/culticron
 fi
 
 if [ ! -O /etc/logrotate.d/cultipi ] || [ ! -G /etc/logrotate.d/cultipi ]; then

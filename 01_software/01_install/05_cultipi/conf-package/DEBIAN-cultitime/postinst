@@ -11,6 +11,6 @@ fi
 
 chown -R cultipi:cultipi /opt/cultitime
 chown cultipi:cultipi /etc/init.d/cultitime
-chmod 644 /etc/init.d/cultitime
+chmod 744 /etc/init.d/cultitime
 
 /etc/init.d/cultitime force-reload
