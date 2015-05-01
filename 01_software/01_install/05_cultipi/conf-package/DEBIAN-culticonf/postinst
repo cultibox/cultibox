@@ -1,6 +1,4 @@
 #!/bin/bash
-set -x
-
 
 if [ -f /etc/cron.daily/cultipi ]; then
     chmod 755 /etc/cron.daily/cultipi

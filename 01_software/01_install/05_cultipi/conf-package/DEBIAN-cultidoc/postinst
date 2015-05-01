@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 if [ -f /var/www/documentation_cultibox.pdf ]; then
     rm /var/www/documentation_cultibox.pdf
 fi

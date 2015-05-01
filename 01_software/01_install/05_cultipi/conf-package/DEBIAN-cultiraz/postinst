@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 if [ -f /etc/init.d/cultiraz ]; then
     update-rc.d cultiraz defaults
