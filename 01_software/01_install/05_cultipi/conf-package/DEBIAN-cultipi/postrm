@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 sed -i "/cultipi ALL = (root) NOPASSWD: \/sbin\/shutdown/d" /etc/sudoers
 
