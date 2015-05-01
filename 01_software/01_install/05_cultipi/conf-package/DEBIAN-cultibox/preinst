@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 #Upgrade case:
 if [ -d /var/www/cultibox ]; then

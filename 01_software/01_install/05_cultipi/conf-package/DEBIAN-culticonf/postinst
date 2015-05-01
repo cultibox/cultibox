@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 
 if [ -f /etc/cron.daily/cultipi ]; then
@@ -16,11 +17,23 @@ if [ -f /etc/default/cultipi ]; then
     chown root:root /etc/default/cultipi
 fi
 
+if [ -f /etc/default/culticron ]; then
+    chown root:root /etc/default/culticron
+    chmod 644 /etc/default/culticron
+fi
+
 if [ ! -O /etc/logrotate.d/cultipi ] || [ ! -G /etc/logrotate.d/cultipi ]; then
     chown root:root /etc/logrotate.d/cultipi
     chmod 644 /etc/logrotate.d/cultipi
 fi
 
+if [ -d /etc/culticonf/postinst/ ]; then
+    chown -R root:root /etc/culticonf/postinst
+fi
+
+if [ -f /etc/culticonf/packages ]; then
+    chown root:root /etc/culticonf/packages
+fi
 
 
 if [ "`cat /etc/crontab|grep culticron`" == "" ]; then

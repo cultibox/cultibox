@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 if [ "$1" == "purge" ] || [ "$1" == "remove" ]; then
     if [ "`ps ax|grep cultiCam.tcl|grep tclsh`" != "" ]; then
