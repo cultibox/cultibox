@@ -76,6 +76,10 @@ if [  "`cat /etc/sudoers|grep www-data|grep shutdown`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /sbin/shutdown" >> /etc/sudoers
 fi
 
+if [  "`cat /etc/sudoers|grep www-data|grep tail`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /usr/bin/tail" >> /etc/sudoers
+fi
+
 if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "  * Installing the Cultibox software..."
     lang=`echo $LANG`
