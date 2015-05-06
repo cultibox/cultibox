@@ -70,7 +70,7 @@ case "$1" in
            cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/init.d/cultipi ../01_src/01_xampp/cultipi/etc/init.d/cultipi
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultipi/DEBIAN/control
-           find ./../01_src/01_xampp/cultipi/ -name ".git"|xargs rm -Rf 
+           find ./../01_src/01_xampp/cultipi/ -name ".git*"|xargs rm -Rf 
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultipi
            
            mv cultipi.deb ../../05_cultipi/Output/cultipi-armhf_`echo $VERSION`-r`echo $revision`.deb
@@ -113,7 +113,7 @@ EOF
            sed -i "s/^$GLOBALS.*\"cultibox\"/\$GLOBALS['MODE']=\"cultipi\"/g" ../01_src/01_xampp/cultibox/var/www/cultibox/main/libs/config.php 
 
 
-           find ./../01_src/01_xampp/cultibox/ -name ".git"|xargs rm -Rf
+           find ./../01_src/01_xampp/cultibox/ -name ".git*"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultibox
 
            mv cultibox.deb ../../05_cultipi/Output/cultibox-armhf_`echo $VERSION`-r`echo $revision`.deb
@@ -134,7 +134,7 @@ EOF
            cp ../../../04_CultiPi/01_Software/06_cultiRAZ_service/etc/init.d/cultiraz ../01_src/01_xampp/cultiraz/etc/init.d/cultiraz
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultiraz/DEBIAN/control
-           find ./../01_src/01_xampp/cultiraz/ -name ".git"|xargs rm -Rf
+           find ./../01_src/01_xampp/cultiraz/ -name ".git*"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultiraz
 
            mv cultiraz.deb ../../05_cultipi/Output/cultiraz-armhf_`echo $VERSION`-r`echo $revision`.deb
@@ -155,7 +155,7 @@ EOF
            cp ../../../04_CultiPi/01_Software/08_cultiTime_service/etc/init.d/cultitime ../01_src/01_xampp/cultitime/etc/init.d/cultitime
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultitime/DEBIAN/control
-           find ./../01_src/01_xampp/cultitime/ -name ".git"|xargs rm -Rf
+           find ./../01_src/01_xampp/cultitime/ -name ".git*"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultitime
 
            mv cultitime.deb ../../05_cultipi/Output/cultitime-armhf_`echo $VERSION`-r`echo $revision`.deb
@@ -181,7 +181,7 @@ EOF
            cp -R ../../../04_CultiPi/01_Software/02_cultiConf/etc/culticonf/* ../01_src/01_xampp/culticonf/etc/culticonf/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/culticonf/DEBIAN/control
-           find ./../01_src/01_xampp/culticonf/ -name ".git"|xargs rm -Rf
+           find ./../01_src/01_xampp/culticonf/ -name ".git*"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build culticonf
 
            mv culticonf.deb ../../05_cultipi/Output/culticonf-armhf_`echo $VERSION`-r`echo $revision`.deb
@@ -197,7 +197,7 @@ EOF
            cp -R ../../02_src/cultibox/main/cultibox.wiki ../01_src/01_xampp/cultidoc/var/www/cultibox/main/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultidoc/DEBIAN/control
-           find ./../01_src/01_xampp/cultidoc/ -name ".git"|xargs rm -Rf
+           find ./../01_src/01_xampp/cultidoc/ -name ".git*"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultidoc
 
            mv cultidoc.deb ../../05_cultipi/Output/cultidoc-armhf_`echo $VERSION`-r`echo $revision`.deb
@@ -216,7 +216,7 @@ EOF
            cp -R ../../../04_CultiPi/01_Software/10_cultiCam_service/* ../01_src/01_xampp/culticam/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/culticam/DEBIAN/control
-           find ./../01_src/01_xampp/culticam/ -name ".git"|xargs rm -Rf
+           find ./../01_src/01_xampp/culticam/ -name ".git*"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build culticam
 
            mv culticam.deb ../../05_cultipi/Output/culticam-armhf_`echo $VERSION`-r`echo $revision`.deb
