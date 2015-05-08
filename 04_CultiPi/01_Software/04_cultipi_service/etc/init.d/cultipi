@@ -40,6 +40,7 @@ case "$1" in
 
     restart|reload)
         d_stop
+
         for pid in "`ps ax|grep cultiPi.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
             if [ "$pid" != "" ]; then
                 kill -9 $pid
@@ -55,11 +56,31 @@ case "$1" in
                 kill -9 $pid
             fi
         done
+        for pid in "`ps ax|grep serveur |grep tclsh |awk -F " " '{print $1}'`"; do
+            if [ "$pid" != "" ]; then
+                kill -9 $pid
+            fi
+        done
+        for pid in "`ps ax|grep cultiPi.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
+            if [ "$pid" != "" ]; then
+                kill -9 $pid
+            fi
+        done
         d_start
         ;;
     force-stop)
         d_stop
         for pid in "`ps ax|grep server |grep tclsh |awk -F " " '{print $1}'`"; do
+            if [ "$pid" != "" ]; then
+                kill -9 $pid
+            fi
+        done
+        for pid in "`ps ax|grep serveur |grep tclsh |awk -F " " '{print $1}'`"; do
+            if [ "$pid" != "" ]; then
+                kill -9 $pid
+            fi
+        done
+        for pid in "`ps ax|grep cultiPi.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
             if [ "$pid" != "" ]; then
                 kill -9 $pid
             fi
