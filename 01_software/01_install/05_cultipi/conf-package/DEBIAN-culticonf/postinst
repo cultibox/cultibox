@@ -227,6 +227,13 @@ EOF
     echo "150421" > /VERSION
 fi
 
+if [ $VERSION -lt 150521 ]; then
+    if [ ! -f /etc/lighttpd/ssl/cultipi.pem ]; then
+        /usr/bin/openssl req -new -x509 -keyout cultipi.pem -out server.pem -days 3650 -nodes -subj "/C=FR/ST=Grenoble/L=Grenoble/O=Greenbox SAS/CN=cultibox.fr"
+    fi
+
+    echo "150521" > /VERSION
+fi
 
 find /etc/default/ -name "*-dist"|xargs rm 2>/dev/null; echo ""
 

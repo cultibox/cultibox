@@ -68,6 +68,16 @@ proc firstLoop {} {
                     }
                 } msg]
                 if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error Lighttpd password reset : $msg"}
+
+                #On vérifie la configuration de lighttpd:
+                set RC [catch {
+                    if { [file exists /etc/lighttpd/lighttpd.conf.base] == 1} {
+                        exec mv /etc/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf.https
+                        exec mv /etc/lighttpd/lighttpd.conf.base /etc/lighttpd/lighttpd.conf
+                    }
+                } msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error Lighttpd configuration reset : $msg"}
+
                 
                 set RC [catch {
                     exec dpkg-reconfigure cultibox 
@@ -76,7 +86,6 @@ proc firstLoop {} {
                     exec dpkg-reconfigure culticonf
                 } msg]
                 if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error dpkg-reconfigure : $msg"}
-
 
                 #On redémare les services:
                 set RC [catch {
@@ -87,6 +96,10 @@ proc firstLoop {} {
 
                 set RC [catch {
                     after 5000 exec /usr/sbin/invoke-rc.d networking force-reload
+                } msg]
+
+                set RC [catch {
+                    after 5000 exec /usr/sbin/invoke-rc.d lighttpd force-reload
                 } msg]
 
                 # On fait clignoter la LED 10 fois
@@ -172,10 +185,17 @@ proc checkAndUpdate {} {
 
             # Remise en place du mot de passe d'origine:
             set RC [catch {
+                if { [file exists /etc/lighttpd/lighttpd.conf.base] == 1} {
+                    exec mv /etc/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf.https
+                    exec mv /etc/lighttpd/lighttpd.conf.base /etc/lighttpd/lighttpd.conf
+                }
+            } msg]
+                if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error Lighttpd configuration reset : $msg"}
+
+            set RC [catch {
                 if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
                     exec /bin/cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
                 }
-                exec /etc/init.d/lighttpd force-reload
             } msg]
             if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error Lighttpd password reset : $msg"}
 
@@ -189,6 +209,10 @@ proc checkAndUpdate {} {
 
             set RC [catch {
                 after 5000 exec /usr/sbin/invoke-rc.d networking force-reload
+            } msg]
+
+            set RC [catch {
+                after 5000 exec /usr/sbin/invoke-rc.d lighttpd force-reload
             } msg]
 
 
