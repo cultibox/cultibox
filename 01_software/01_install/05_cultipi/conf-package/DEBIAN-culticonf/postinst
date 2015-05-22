@@ -232,6 +232,67 @@ if [ $VERSION -lt 150521 ]; then
         /usr/bin/openssl req -new -x509 -keyout cultipi.pem -out server.pem -days 3650 -nodes -subj "/C=FR/ST=Grenoble/L=Grenoble/O=Greenbox SAS/CN=cultibox.fr"
     fi
 
+    if [ ! -f /etc/lighttpd/lighttpd.conf.https ]; then
+        cat << EOF > /etc/lighttpd/lighttpd.conf.https
+server.modules = (
+   "mod_access",
+   "mod_alias",
+   "mod_compress",
+   "mod_redirect",
+   "mod_auth"
+   #"mod_rewrite",
+)
+
+server.document-root        = "/var/www"
+server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+server.errorlog             = "/var/log/lighttpd/error.log"
+server.pid-file             = "/var/run/lighttpd.pid"
+server.username             = "www-data"
+server.groupname            = "www-data"
+server.port                 = 80
+
+auth.backend = "htdigest"
+auth.backend.htdigest.userfile = "/etc/lighttpd/.passwd"
+auth.debug = 2
+
+index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+
+compress.cache-dir          = "/var/cache/lighttpd/compress/"
+compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+
+# default listening port for IPv6 falls back to the IPv4 port
+include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+include_shell "/usr/share/lighttpd/create-mime.assign.pl"
+include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
+
+\$SERVER["socket"] == ":443" {
+  ssl.engine = "enable" 
+  ssl.pemfile = "/etc/lighttpd/ssl/cultipi.pem" 
+}
+
+
+\$HTTP["scheme"] == "http" {
+    # capture vhost name with regex conditiona -> %0 in redirect pattern
+    # must be the most inner block to the redirect rule
+    \$HTTP["host"] =~ ".*" {
+        url.redirect = (".*" => "https://%0\$0")
+    }
+}
+
+url.redirect = ("^/$" => "/cultibox/")
+
+auth.require = ( "/cultibox/" =>
+    (
+    "method" => "digest",
+    "realm" => "Identification",
+    "require" => "valid-user"
+    )
+)
+EOF
+    fi
+
     echo "150521" > /VERSION
 fi
 
