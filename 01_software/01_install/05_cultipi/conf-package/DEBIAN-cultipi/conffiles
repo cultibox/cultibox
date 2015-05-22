@@ -4,7 +4,6 @@
 /etc/cultipi/01_defaultConf_RPi/serverAcqSensor/conf.xml
 /etc/cultipi/01_defaultConf_RPi/serverCultibox/conf.xml
 /etc/cultipi/01_defaultConf_RPi/serverHisto/conf.xml
-/etc/cultipi/01_defaultConf_RPi/serverIrrigation/conf.xml
 /etc/cultipi/01_defaultConf_RPi/serverLog/conf.xml
 /etc/cultipi/01_defaultConf_RPi/serverMail/conf.xml
 /etc/cultipi/01_defaultConf_RPi/serverPlugUpdate/conf.xml

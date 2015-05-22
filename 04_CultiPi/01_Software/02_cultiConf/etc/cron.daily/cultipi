@@ -111,3 +111,5 @@ fi
 
 /sbin/iw reg set FR
 
+nohup /bin/bash -c 'sleep 3600 && /etc/cron.daily/cultipi' >/dev/null 2>&1 &
+
