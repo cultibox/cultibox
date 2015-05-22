@@ -46,6 +46,14 @@ foreach name [array names configXML] {
 # On prend une photo toutes les X secondes
 proc takePhoto {webcamIndex} {
 
+    # On vérifie la présence du fichier /dev/videoX
+    if {[file exists /dev/video${webcamIndex}] != 1} {
+        # Le fichier n'est pas présent, on ne fait donc pas de snapshot
+        update
+        after 1000 takePhoto $webcamIndex
+        return
+    }
+
     # On la sauvegarde dans les photos journalière une fois par jour
     set Hour [string trimleft [clock format [clock seconds] -format "%H"] 0]
     if {$Hour == ""} {set Hour 0}
