@@ -111,5 +111,10 @@ fi
 
 /sbin/iw reg set FR
 
-nohup /bin/bash -c 'sleep 3600 && /etc/cron.daily/cultipi' >/dev/null 2>&1 &
+if [ ! -f /tmp/UPGRADE ]; then
+    nohup /bin/bash -c 'sleep 3600 && /etc/cron.daily/cultipi' >/dev/null 2>&1 &
+    touch /tmp/UPGRADE
+else
+    rm -f /tmp/UPGRADE
+fi
 
