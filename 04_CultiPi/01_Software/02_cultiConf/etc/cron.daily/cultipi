@@ -64,7 +64,7 @@ fi
 
 
 if [ -d /var/www/cultibox/tmp/import ]; then
-    rm -Rf /var/www/cultibox/tmp/import/*
+    /m -Rf /var/www/cultibox/tmp/import/*
 fi
 
 if [ -d /var/www/cultibox/tmp/export ]; then
@@ -97,8 +97,6 @@ if [ -f /var/lock/REBOOT_NEEDED ]; then
     shutdown -r now
 fi
 
-rm -Rf /tmp/*
-
 uptime=$(</proc/uptime)
 uptime=${uptime%%.*}
 
@@ -118,3 +116,5 @@ else
     rm -f /tmp/UPGRADE
 fi
 
+
+rm -Rf /tmp/*
