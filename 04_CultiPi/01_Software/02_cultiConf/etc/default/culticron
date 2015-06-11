@@ -1,6 +1,7 @@
 CULTIPI_ACTIV="yes"
 CULTITIME_ACTIV="yes"
 CULTIRAZ_ACTIV="yes"
+CULTISSH_ACTIV="no"
 
 
 if [ "$CULTIPI_ACTIV" == "yes" ]; then
@@ -23,6 +24,25 @@ if [ "$CULTIRAZ_ACTIV" == "yes" ]; then
     /etc/init.d/cultiraz status >/dev/null
     if [ $? -ne 0 ]; then
         /etc/init.d/cultiraz force-reload >/dev/null 2>&1
+    fi
+fi
+
+if [ "$CULTISSH_ACTIV" == "yes" ]; then
+    if [ -f /etc/culticonf/reverse_ssh.conf ]; then
+        . /etc/culticonf/reverse_ssh.conf
+
+        if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT|/bin/grep $REVERSE_IP`" == "" ]; then
+            nohup /usr/bin/ssh -NR $REVERSE_PORT:localhost:22 cultipi@$REVERSE_IP
+        fi
+    fi
+else
+    if [ -f /etc/culticonf/reverse_ssh.conf ]; then
+        . /etc/culticonf/reverse_ssh.conf
+
+        pid="`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT|/bin/grep $REVERSE_IP|awk -F ' ' '{print $1}'`" 
+        if [ "$pid" != "" ]; then
+            kill -9 $pid
+        fi
     fi
 fi
 
