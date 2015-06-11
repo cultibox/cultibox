@@ -297,6 +297,7 @@ EOF
     echo "150521" > /VERSION
 fi
 
+
 find /etc/default/ -name "*-dist"|xargs rm 2>/dev/null; echo ""
 
 
