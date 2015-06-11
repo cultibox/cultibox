@@ -163,14 +163,14 @@ proc streamCheck {} {
     if {[file exists $::configXML(lock_start_stream)] == 1} {
     
         # Le fichier est présent, on fait donc un snapshot
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Start Video Stream webcam ${webcamIndex}" ; update
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Start Video Stream" ; update
 
         # On lance le flux video
         set RC [catch {
             /etc/init.d/motion start
         } msg]
         if {$RC != 0} {
-            puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during starting video stream webcam ${webcamIndex} , error : $msg"
+            puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during starting video stream webcam, error : $msg"
         }
 
         # Suppression du fichier de lock
@@ -181,14 +181,14 @@ proc streamCheck {} {
     if {[file exists $::configXML(lock_stop_stream)] == 1} {
     
         # Le fichier est présent, on fait donc un snapshot
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Stop Video Stream webcam ${webcamIndex}" ; update
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Stop Video Stream" ; update
 
         # On lance le flux video
         set RC [catch {
             /etc/init.d/motion stop
         } msg]
         if {$RC != 0} {
-            puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during stoping video stream webcam ${webcamIndex} , error : $msg"
+            puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during stoping video stream, error : $msg"
         }
 
         # Suppression du fichier de lock
