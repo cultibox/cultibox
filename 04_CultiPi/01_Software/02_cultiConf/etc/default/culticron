@@ -1,6 +1,7 @@
 CULTIPI_ACTIV="yes"
 CULTITIME_ACTIV="yes"
 CULTIRAZ_ACTIV="yes"
+CULTICAM_ACTIV="yes"
 CULTISSH_ACTIV="no"
 
 
@@ -26,6 +27,14 @@ if [ "$CULTIRAZ_ACTIV" == "yes" ]; then
         /etc/init.d/cultiraz force-reload >/dev/null 2>&1
     fi
 fi
+
+if [ "$CULTICAM_ACTIV" == "yes" ]; then
+    /etc/init.d/culticam status >/dev/null
+    if [ $? -ne 0 ]; then
+        /etc/init.d/culticam force-reload >/dev/null 2>&1
+    fi
+fi
+
 
 if [ "$CULTISSH_ACTIV" == "yes" ]; then
     if [ -f /etc/culticonf/reverse_ssh.conf ]; then
