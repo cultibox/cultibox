@@ -2,3 +2,7 @@
 /etc/culticam/webcam1.conf
 /etc/culticam/webcam2.conf
 /etc/culticam/webcam3.conf
+/etc/culticam/thread1.conf
+/etc/culticam/thread2.conf
+/etc/culticam/thread3.conf
+/etc/culticam/thread4.conf
