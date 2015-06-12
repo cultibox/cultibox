@@ -107,7 +107,6 @@ proc takePhotoOnDemand {} {
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Take Snapshot webcam" ; update
 
         # On prend un image
-        puts "sudo fswebcam -c /etc/culticam/webcam${webIndex}.conf"
         set RC [catch {
             exec sudo fswebcam -c "/etc/culticam/webcam${webIndex}.conf"
         } msg]
