@@ -15,6 +15,7 @@ fi
 
 chown -R cultipi:cultipi /opt/culticam
 chown cultipi:cultipi /etc/init.d/culticam
+chown -R cultipi:cultipi /etc/culticam
 chmod 744 /etc/init.d/culticam
 
 /etc/init.d/culticam force-reload
