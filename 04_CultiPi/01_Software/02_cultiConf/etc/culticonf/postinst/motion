@@ -5,6 +5,7 @@ sed -i "s/; thread \/usr\/local\/etc\/thread2.conf/thread \/etc\/culticam\/threa
 sed -i "s/; thread \/usr\/local\/etc\/thread3.conf/thread \/etc\/culticam\/thread3.conf/g" /etc/motion/motion.conf
 sed -i "s/; thread \/usr\/local\/etc\/thread4.conf/thread \/etc\/culticam\/thread4.conf/g" /etc/motion/motion.conf
 sed -i "s/daemon off/daemon on/g" /etc/motion/motion.conf
+sed -i "s/webcam_localhost on/webcam_localhost off/g" /etc/motion/motion.conf
 
 for i in 0 1 2 3; do
     if [ -f /etc/culticam/webcam${i}.conf ]; then
