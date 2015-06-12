@@ -167,11 +167,9 @@ proc streamCheck {} {
 
         # On lance le flux video
         set RC [catch {
-            /etc/init.d/motion start
+            exec sudo /etc/init.d/motion start
         } msg]
-        if {$RC != 0} {
-            puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during starting video stream webcam, error : $msg"
-        }
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : $msg"
 
         # Suppression du fichier de lock
         file delete -force $::configXML(lock_start_stream)
@@ -183,8 +181,9 @@ proc streamCheck {} {
 
         # On stop le flux video
         set RC [catch {
-            /etc/init.d/motion force-stop
+            exec sudo /etc/init.d/motion stop
         } msg]
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : $msg"
 
         # Suppression du fichier de lock
         file delete -force $::configXML(lock_stop_stream)

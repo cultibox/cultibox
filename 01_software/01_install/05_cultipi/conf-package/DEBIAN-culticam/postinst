@@ -8,6 +8,11 @@ if [  "`cat /etc/sudoers|grep cultipi|grep fswebcam`" == "" ]; then
         echo "cultipi ALL = (root) NOPASSWD: /usr/bin/fswebcam" >> /etc/sudoers
 fi  
 
+if [  "`cat /etc/sudoers|grep cultipi|grep motion`" == "" ]; then
+        echo "cultipi ALL = (root) NOPASSWD: /etc/init.d/motion" >> /etc/sudoers
+fi
+
+
 chown -R cultipi:cultipi /opt/culticam
 chown cultipi:cultipi /etc/init.d/culticam
 chmod 744 /etc/init.d/culticam
