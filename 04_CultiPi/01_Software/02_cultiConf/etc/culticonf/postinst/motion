@@ -4,6 +4,7 @@ sed -i "s/; thread \/usr\/local\/etc\/thread1.conf/thread \/etc\/culticam\/threa
 sed -i "s/; thread \/usr\/local\/etc\/thread2.conf/thread \/etc\/culticam\/thread2.conf/g" /etc/motion/motion.conf
 sed -i "s/; thread \/usr\/local\/etc\/thread3.conf/thread \/etc\/culticam\/thread3.conf/g" /etc/motion/motion.conf
 sed -i "s/; thread \/usr\/local\/etc\/thread4.conf/thread \/etc\/culticam\/thread4.conf/g" /etc/motion/motion.conf
+sed -i "s/daemon off/daemon on/g" /etc/motion/motion.conf
 
 for i in 0 1 2 3; do
     if [ -f /etc/culticam/webcam${i}.conf ]; then
@@ -45,3 +46,5 @@ for i in 0 1 2 3; do
         sed -i "s/^v4l2_palette .*/v4l2_palette $palette/g" /etc/culticam/thread${j}.conf
     fi
 done
+sed -i "s/start_motion_daemon=no/start_motion_daemon=yes/g" /etc/default/motion
+
