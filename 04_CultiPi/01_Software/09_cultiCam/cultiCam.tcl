@@ -67,8 +67,8 @@ proc takePhoto {webcamIndex} {
         
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Take daily photo webcam $webcamIndex"
         
-        # On prend un image
-        puts "exec sudo fswebcam -c  $::configXML(confPathWebcam,${webcamIndex})"
+        # On prend une image
+        puts "exec sudo fswebcam -c $::configXML(confPathWebcam,${webcamIndex})"
         set RC [catch {
             exec sudo fswebcam -c  $::configXML(confPathWebcam,${webcamIndex})
         } msg]
@@ -89,37 +89,38 @@ proc takePhoto {webcamIndex} {
         set ::dailyPhotoIsTake($webcamIndex) ${date}
     }
 
-    # Prise de snapshot a la demande
-    if {[file exists $::configXML(lock_snapshotFile)] == 1} {
-    
-        # Le fichier est présent, on fait donc un snapshot
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Take Snapshot webcam ${webcamIndex}" ; update
-
-        # On vérifie la présence du fichier de configuration
-        if {[array names ::configXML -exact "confPathWebcam,${webcamIndex}"] == ""} {
-            puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error conf of webcam doesnot exists"
-            
-            update
-            after 20 "takePhoto $webcamIndex"
-            
-            return
-        }
-        
-        # On prend un image
-        set RC [catch {
-            exec sudo fswebcam -c $::configXML(confPathWebcam,${webcamIndex})
-        } msg]
-        if {$RC != 0} {
-            puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during taking snapshot webcam ${webcamIndex} , error : $msg"
-        }
-
-        file delete -force $::configXML(lock_snapshotFile)
-    }
-
     update
     after 20 "takePhoto $webcamIndex"
     return
 }
+
+
+# On prend une photo toutes les X secondes
+proc takePhotoOnDemand {} {
+     # Prise de snapshot a la demande
+    if {[file exists $::configXML(lock_snapshotFile)] == 1} {
+        set fp [open $::configXML(lock_snapshotFile) r]
+        set confFile [read $fp]
+        close $fp
+        set webIndex [expr $confFile*1]
+
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Take Snapshot webcam" ; update
+
+        # On prend un image
+        puts "sudo fswebcam -c /etc/culticam/webcam${webIndex}.conf"
+        set RC [catch {
+            exec sudo fswebcam -c "/etc/culticam/webcam${webIndex}.conf"
+        } msg]
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Taking snapshot webcam $webIndex : $msg"
+        file delete -force $::configXML(lock_snapshotFile)
+    }
+
+    update
+    after 20 "takePhotoOnDemand"
+    return
+}
+
+takePhotoOnDemand
 
 # Pour chaque webcam, on lance la boucle d'acquisition
 for {set i 0} {$i < $::configXML(nbWebcam)} {incr i} {
@@ -179,17 +180,12 @@ proc streamCheck {} {
     
     # Fermeture du flux video
     if {[file exists $::configXML(lock_stop_stream)] == 1} {
-    
-        # Le fichier est présent, on fait donc un snapshot
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Stop Video Stream" ; update
 
-        # On lance le flux video
+        # On stop le flux video
         set RC [catch {
-            /etc/init.d/motion stop
+            /etc/init.d/motion force-stop
         } msg]
-        if {$RC != 0} {
-            puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during stoping video stream, error : $msg"
-        }
 
         # Suppression du fichier de lock
         file delete -force $::configXML(lock_stop_stream)
