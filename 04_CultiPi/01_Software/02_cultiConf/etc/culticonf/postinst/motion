@@ -49,3 +49,5 @@ for i in 0 1 2 3; do
 done
 sed -i "s/start_motion_daemon=no/start_motion_daemon=yes/g" /etc/default/motion
 
+update-rc.d -f motion remove
+

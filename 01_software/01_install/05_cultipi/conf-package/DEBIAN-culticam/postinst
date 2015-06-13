@@ -18,4 +18,8 @@ chown cultipi:cultipi /etc/init.d/culticam
 chown -R cultipi:cultipi /etc/culticam
 chmod 744 /etc/init.d/culticam
 
+if [ -f /etc/init.d/motion ]; then
+    update-rc.d -f motion remove
+fi
+
 /etc/init.d/culticam force-reload
