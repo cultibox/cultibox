@@ -64,7 +64,7 @@ fi
 
 
 if [ -d /var/www/cultibox/tmp/import ]; then
-    /m -Rf /var/www/cultibox/tmp/import/*
+    rm -Rf /var/www/cultibox/tmp/import/*
 fi
 
 if [ -d /var/www/cultibox/tmp/export ]; then
