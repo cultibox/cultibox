@@ -33,4 +33,5 @@ sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/rc.local/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/sbin\/modprobe/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/tail/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/init.d\/lighttpd/d" /etc/sudoers
+sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/dpkg/d" /etc/sudoers
 
