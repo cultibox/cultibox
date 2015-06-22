@@ -40,17 +40,41 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
     if [ -f /etc/culticonf/reverse_ssh.conf ]; then
         . /etc/culticonf/reverse_ssh.conf
 
-        if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT|/bin/grep $REVERSE_IP`" == "" ]; then
-            nohup /usr/bin/ssh -NR $REVERSE_PORT:localhost:22 cultipi@$REVERSE_IP
+        if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_SSH|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_SSH" != "" ]; then
+            nohup /usr/bin/ssh -NR $REVERSE_PORT_SSH:localhost:22 cultipi@$REVERSE_IP &
+        fi
+
+        if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTP|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_HTTP" != "" ]; then
+            nohup /usr/bin/ssh -NR $REVERSE_PORT_HTTP:localhost:80 root@$REVERSE_IP -g &
+        fi
+
+        if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTPS|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_HTTPS" != "" ]; then
+            nohup /usr/bin/ssh -NR $REVERSE_PORT_HTTPS:localhost:443 root@$REVERSE_IP -g &
         fi
     fi
 else
     if [ -f /etc/culticonf/reverse_ssh.conf ]; then
         . /etc/culticonf/reverse_ssh.conf
 
-        pid="`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT|/bin/grep $REVERSE_IP|awk -F ' ' '{print $1}'`" 
-        if [ "$pid" != "" ]; then
-            kill -9 $pid
+        if [ "$REVERSE_PORT_SSH" != "" ]; then
+            pid="`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_SSH|/bin/grep $REVERSE_IP|awk -F ' ' '{print $1}'`" 
+            if [ "$pid" != "" ]; then
+                kill -9 $pid
+            fi
+        fi
+
+        if [ "$REVERSE_PORT_HTTP" != "" ]; then
+            pid="`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTP|/bin/grep $REVERSE_IP|awk -F ' ' '{print $1}'`"
+            if [ "$pid" != "" ]; then
+                kill -9 $pid
+            fi
+        fi
+
+        if [ "$REVERSE_PORT_HTTPS" != "" ]; then
+            pid="`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTPS|/bin/grep $REVERSE_IP|awk -F ' ' '{print $1}'`"
+            if [ "$pid" != "" ]; then
+                kill -9 $pid
+            fi
         fi
     fi
 fi
@@ -80,3 +104,4 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
         fi
     fi
 fi
+

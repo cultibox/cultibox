@@ -297,9 +297,11 @@ EOF
     echo "150521" > /VERSION
 fi
 
-if [ $VERSION -lt 150612 ]; then
-    echo "150612" > /VERSION
-
+if [ $VERSION -lt 150622 ]; then
+   echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+   echo "    UserKnownHostsFile /dev/null" >> /etc/ssh/ssh_config
+   echo "    ServerAliveInterval 60" >> /etc/ssh/ssh_config
+   echo "150622" > /VERSION
 fi
 
 
