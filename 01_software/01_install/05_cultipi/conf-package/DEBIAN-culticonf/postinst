@@ -301,6 +301,38 @@ if [ $VERSION -lt 150622 ]; then
    echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
    echo "    UserKnownHostsFile /dev/null" >> /etc/ssh/ssh_config
    echo "    ServerAliveInterval 60" >> /etc/ssh/ssh_config
+   cat << EOF > /etc/ifplugd/action.d/ifupdown
+#!/bin/bash 
+
+logger -t IFPLUGD: \$1 \$2
+
+#For routes, we have to restart network:
+
+route del default
+if [ "\$2" == "up" ]; then
+    if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+        /sbin/ifup --force eth0
+        gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep eth0|sed -e 's/post-up //g'\`"
+        if [ "\$gw" != "" ]; then
+            eval \$gw
+        fi
+    fi
+
+    if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ]; then
+        gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep wlan0|sed -e 's/post-up //g'\`"
+        if [ "\$gw" != "" ]; then
+            eval \$gw
+        fi
+    fi
+else
+    if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ]; then
+        /sbin/ifdown --force wlan0
+        sleep 1
+        /sbin/ifup --force wlan0
+    fi
+    /sbin/ifdown --force eth0
+fi
+EOF
    echo "150622" > /VERSION
 fi
 
