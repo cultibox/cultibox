@@ -309,16 +309,18 @@ logger -t IFPLUGD: \$1 \$2
 #For routes, we have to restart network:
 
 route del default
-if [ "\$2" == "up" ]; then
+if [ "\$2" == "up" ]; then  
+    default="no"
     if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
         /sbin/ifup --force eth0
         gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep eth0|sed -e 's/post-up //g'\`"
         if [ "\$gw" != "" ]; then
+            default="yes"
             eval \$gw
         fi
     fi
 
-    if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ]; then
+    if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ] && [ "\$default" == "no" ]; then
         gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep wlan0|sed -e 's/post-up //g'\`"
         if [ "\$gw" != "" ]; then
             eval \$gw
