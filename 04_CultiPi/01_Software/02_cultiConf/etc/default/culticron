@@ -91,7 +91,7 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
         # If ip address is defined, we have to check if we can access the gateway in Managed Mode only:
         mode="`/sbin/iwconfig wlan0|/bin/grep -i \"Mode:managed\"`"
         if [ "$mode" != "" ]; then
-            gw="`/sbin/route|/bin/grep wlan0|/bin/grep default|/usr/bin/awk -F\" \" '{print$2}'`"
+            gw="`/sbin/ip route show | grep wlan0 | /bin/grep default | /usr/bin/awk -F\" \" '{print$3}'`"
             if [ "$gw" != "" ]; then
                 # If we can't access the gateway, we have lost the connection, we have to restart the connection:
                 /bin/ping -c 1 $gw >/dev/null 2>&1
