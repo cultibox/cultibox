@@ -1,7 +1,10 @@
 #!/bin/bash
 
 #Random sleep:
-sleep $[ ( $RANDOM % 300 )  + 1 ]s
+if [ "$1" == "" ]; then
+    sleep $[ ( $RANDOM % 300 )  + 1 ]s
+fi
+
 
 #If there was an error whith dpkg/apt:
 /usr/bin/dpkg --configure -a --force-confdef --force-confold

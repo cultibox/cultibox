@@ -1,3 +1,5 @@
+set -x 
+
 CULTIPI_ACTIV="yes"
 CULTITIME_ACTIV="yes"
 CULTIRAZ_ACTIV="yes"
@@ -41,15 +43,15 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
         . /etc/culticonf/reverse_ssh.conf
 
         if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_SSH|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_SSH" != "" ]; then
-            nohup /usr/bin/ssh -NR $REVERSE_PORT_SSH:localhost:22 cultipi@$REVERSE_IP &
+            /usr/bin/ssh -f -NR $REVERSE_PORT_SSH:localhost:22 cultipi@$REVERSE_IP 
         fi
 
         if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTP|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_HTTP" != "" ]; then
-            nohup /usr/bin/ssh -NR $REVERSE_PORT_HTTP:localhost:80 root@$REVERSE_IP -g &
+            /usr/bin/ssh -f -NR $REVERSE_PORT_HTTP:localhost:80 root@$REVERSE_IP -g
         fi
 
         if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTPS|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_HTTPS" != "" ]; then
-            nohup /usr/bin/ssh -NR $REVERSE_PORT_HTTPS:localhost:443 root@$REVERSE_IP -g &
+            /usr/bin/ssh -f -NR $REVERSE_PORT_HTTPS:localhost:443 root@$REVERSE_IP -g
         fi
     fi
 else
