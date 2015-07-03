@@ -22,11 +22,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
-<tr>
 	<td>click</td>
 	<td>link=Configuration</td>
 	<td></td>
@@ -113,11 +108,6 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=dl_logs_mysql</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
 	<td>id=dl_logs_service</td>
 	<td></td>
 </tr>
@@ -163,27 +153,17 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=manual_upgrade</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>LOCATOR_DETECTION_FAILED</td>
-	<td>/home/yann/Bureau/Téléchargements/id_rsa(1)</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//button[@type='button'])[8]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
 	<td>css=#update_rpi &gt; img</td>
 	<td></td>
 </tr>
 <tr>
+    <td>waitForElementPresent</td>
+    <td>id=btnCloseUp</td>
+    <td></td>
+</tr>
+<tr>
 	<td>click</td>
-	<td>xpath=(//button[@type='button'])[3]</td>
+	<td>id=btnCloseUp</td>
 	<td></td>
 </tr>
 <tr>
@@ -202,9 +182,19 @@
 	<td></td>
 </tr>
 <tr>
+    <td>waitForElementPresent</td>
+    <td>id=close-update-conf</td>
+    <td></td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>id=close-update-conf</td>
 	<td></td>
+</tr>
+<tr>
+    <td>waitForElementPresent</td>
+    <td>id=close-diff-conf</td>
+    <td></td>
 </tr>
 <tr>
 	<td>click</td>
@@ -247,19 +237,19 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>xpath=(//button[@type='button'])[7]</td>
-	<td></td>
+    <td>setSpeed</td>
+    <td>0</td>
+    <td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>//span[@id=':21x']/b</td>
-	<td></td>
+    <td>pause</td>
+    <td>60000</td>
+    <td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>css=div.gE.hI</td>
-	<td></td>
+    <td>open</td>
+    <td>/cultibox/</td>
+    <td></td>
 </tr>
 </tbody></table>
 </body>
