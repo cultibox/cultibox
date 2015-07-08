@@ -474,8 +474,23 @@ sh_config
         echo "    ExitOnForwardFailure yes" >> /etc/ssh/ssh_config
     fi
 
-    sed -i "s/.*\/etc\/default\/culticron//g" /etc/crontab
+    if [ "`grep bash_aliases /root/.bashrc`" == "" ]; then
+        cat << EOF >> /root/.bashrc
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
+EOF
+    fi
+
+    if [ "`grep bash_aliases /home/cultipi/.bashrc`" == "" ]; then
+        cat << EOF >> /home/cultipi/.bashrc
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+EOF
+    fi
 
     echo "150706" > /VERSION
 fi
