@@ -445,6 +445,42 @@ EOF
 fi
 
 
+if [ $VERSION -lt 150706 ]; then
+    if [ "`grep '#IgnoreUserKnownHosts' /etc/ssh/sshd_config`" != "" ]; then
+        sed -i "s/#IgnoreUserKnownHosts.*/IgnoreUserKnownHosts yes/g" /etc/ssh/sshd_config
+    elif [ "`grep '^IgnoreUserKnownHosts yes'`" != "" ]; then
+        echo "IgnoreUserKnownHosts yes" >> /etc/ssh/sshd_config
+    fi
+
+    if [ "`grep 'ServerAliveInterval' /etc/ssh/ssh_config|grep -v '#'`" != "" ]; then
+        sed -i "s/ServerAliveInterval.*/    ServerAliveInterval 15/g" /etc/ssh/ssh_config
+    else
+        echo "    ServerAliveInterval 15" >> /etc/ssh/ssh_config
+    fi
+
+
+    if [ "`grep 'ServerAliveCountMax' /etc/ssh/ssh_config|grep -v '#'`" != "" ]; then
+        sed -i "s/ServerAliveCountMax.*/    ServerAliveCountMax 3/g" /etc/ssh/s
+sh_config
+    else   
+        echo "    ServerAliveCountMax 3" >> /etc/ssh/ssh_config
+    fi
+
+
+    if [ "`grep 'ExitOnForwardFailure' /etc/ssh/ssh_config|grep -v '#'`" != "" ]; then
+        sed -i "s/ExitOnForwardFailure.*/    ExitOnForwardFailure yes/g" /etc/ssh/s
+sh_config
+    else   
+        echo "    ExitOnForwardFailure yes" >> /etc/ssh/ssh_config
+    fi
+
+    sed -i "s/.*\/etc\/default\/culticron//g" /etc/crontab
+fi
+
+    echo "150706" > /VERSION
+fi
+
+
 
 find /etc/default/ -name "*-dist"|xargs rm 2>/dev/null; echo ""
 

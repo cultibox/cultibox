@@ -1,5 +1,9 @@
 #!/bin/bash
 
+exec 2>&1
+exec > >(logger -t "culticron.hourly")
+
+echo "Updating repositories..."
 apt-get update -o Dir::Etc::sourcelist="sources.list.d/cultibox.list"  -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
 
 for file in "`ls /etc/apt/sources.list.d/cultibox-*.list 2>/dev/null`"; do
@@ -7,3 +11,4 @@ for file in "`ls /etc/apt/sources.list.d/cultibox-*.list 2>/dev/null`"; do
         apt-get update -o Dir::Etc::sourcelist="$file" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
     fi
 done
+echo "...ok"

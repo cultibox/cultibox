@@ -111,7 +111,7 @@ proc takePhotoOnDemand {} {
             exec sudo fswebcam -c "/etc/culticam/webcam${webIndex}.conf"
         } msg]
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Taking snapshot webcam $webIndex : $msg"
-        file delete -force $::configXML(lock_snapshotFile)
+        after 5000 file delete -force $::configXML(lock_snapshotFile)
     }
 
     update
@@ -172,7 +172,7 @@ proc streamCheck {} {
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : $msg"
 
         # Suppression du fichier de lock
-        file delete -force $::configXML(lock_start_stream)
+        after 5000 file delete -force $::configXML(lock_start_stream)
     }
     
     # Fermeture du flux video

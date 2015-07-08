@@ -2,4 +2,5 @@ hostapd
 ttf-mscorefonts-installer
 tcl-tls
 motion
+autossh
 

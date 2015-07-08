@@ -1,4 +1,6 @@
-set -x 
+exec 2>&1
+exec > >(logger -t "culticron.minutly")
+
 
 CULTIPI_ACTIV="yes"
 CULTITIME_ACTIV="yes"
@@ -10,7 +12,9 @@ CULTISSH_ACTIV="no"
 if [ "$CULTIPI_ACTIV" == "yes" ]; then
     /etc/init.d/cultipi status >/dev/null
     if [ $? -ne 0 ]; then
+        echo "Restarting cultipi service..."
         /etc/init.d/cultipi force-reload >/dev/null 2>&1
+        echo "...ok"
     fi
 fi
 
@@ -18,7 +22,9 @@ fi
 if [ "$CULTITIME_ACTIV" == "yes" ]; then
     /etc/init.d/cultitime status >/dev/null
     if [ $? -ne 0 ]; then
+        echo "Restarting cultitime service..."
         /etc/init.d/cultitime force-reload >/dev/null 2>&1
+        echo "...ok"
     fi
 fi
 
@@ -26,14 +32,18 @@ fi
 if [ "$CULTIRAZ_ACTIV" == "yes" ]; then
     /etc/init.d/cultiraz status >/dev/null
     if [ $? -ne 0 ]; then
+        echo "Restarting cultiraz service..."
         /etc/init.d/cultiraz force-reload >/dev/null 2>&1
+        echo "...ok"
     fi
 fi
 
 if [ "$CULTICAM_ACTIV" == "yes" ]; then
     /etc/init.d/culticam status >/dev/null
     if [ $? -ne 0 ]; then
+        echo "Restarting culticam service..."
         /etc/init.d/culticam force-reload >/dev/null 2>&1
+        echo "...ok"
     fi
 fi
 
@@ -43,15 +53,21 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
         . /etc/culticonf/reverse_ssh.conf
 
         if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_SSH|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_SSH" != "" ]; then
-            /usr/bin/ssh -f -NR $REVERSE_PORT_SSH:localhost:22 cultipi@$REVERSE_IP 
+            echo "Starting reverse SSH..."
+            export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_SSH:localhost:22 cultipi@$REVERSE_IP
+            echo "...ok"
         fi
 
         if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTP|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_HTTP" != "" ]; then
-            /usr/bin/ssh -f -NR $REVERSE_PORT_HTTP:localhost:80 root@$REVERSE_IP -g
+            echo "Starting reverse HTTP..."
+            export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_HTTP:localhost:80 cultipi@$REVERSE_IP -g
+            echo "...ok"
         fi
 
         if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTPS|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_HTTPS" != "" ]; then
-            /usr/bin/ssh -f -NR $REVERSE_PORT_HTTPS:localhost:443 root@$REVERSE_IP -g
+            echo "Starting reverse HTTPS..."
+            export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_HTTPS:localhost:443 cultipi@$REVERSE_IP -g
+            echo "...ok"
         fi
     fi
 else
@@ -59,24 +75,30 @@ else
         . /etc/culticonf/reverse_ssh.conf
 
         if [ "$REVERSE_PORT_SSH" != "" ]; then
+            echo "Killing reverse SSH..."
             pid="`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_SSH|/bin/grep $REVERSE_IP|awk -F ' ' '{print $1}'`" 
             if [ "$pid" != "" ]; then
                 kill -9 $pid
             fi
+            echo "...ok"
         fi
 
         if [ "$REVERSE_PORT_HTTP" != "" ]; then
+            echo "Killing rerverse HTTP..."
             pid="`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTP|/bin/grep $REVERSE_IP|awk -F ' ' '{print $1}'`"
             if [ "$pid" != "" ]; then
                 kill -9 $pid
             fi
+            echo "...ok"
         fi
 
         if [ "$REVERSE_PORT_HTTPS" != "" ]; then
+            echo "Killing reverse HTTPS..."
             pid="`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTPS|/bin/grep $REVERSE_IP|awk -F ' ' '{print $1}'`"
             if [ "$pid" != "" ]; then
                 kill -9 $pid
             fi
+            echo "...ok"
         fi
     fi
 fi
@@ -86,9 +108,11 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
     ip="`/sbin/ifconfig wlan0 | grep \"inet adr\" | awk -F: '{print $2}' | awk '{print $1}'`"
     # If no ip address is defined but wlan exists, we have to restart wlan configuration:
     if [ "$ip" == "" ]; then
+        echo "Restarting wlan configuration, wlan not configured..."
         /sbin/ifdown wlan0
         sleep 2
         /sbin/ifup --force wlan0
+        echo "...ok"
     else
         # If ip address is defined, we have to check if we can access the gateway in Managed Mode only:
         mode="`/sbin/iwconfig wlan0|/bin/grep -i \"Mode:managed\"`"
@@ -98,9 +122,11 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
                 # If we can't access the gateway, we have lost the connection, we have to restart the connection:
                 /bin/ping -c 1 $gw >/dev/null 2>&1
                 if [ $? -ne 0 ]; then
+                    echo "Restarting wlan configuration, gateway unreachable..."
                     /sbin/ifdown wlan0
                     sleep 2
                     /sbin/ifup --force wlan0
+                    echo "...ok"
                 fi
             fi
         fi
