@@ -126,7 +126,22 @@ proc takePhotoOnDemand {} {
             exec sudo fswebcam -c "/etc/culticam/webcam${webIndex}.conf"
         } msg]
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Taking snapshot webcam $webIndex : $msg"
-        after 5000 file delete -force $::configXML(lock_snapshotFile)
+       
+        for {set i 0} {$i < 10} {incr i} {
+            set RC [catch {
+                file delete -force $::configXML(lock_snapshotFile)
+            } msg]
+            
+            if {$RC != 0} {
+                puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during deleting file - $::configXML(lock_snapshotFile) - try [expr $i + 1] / 10 , error : $msg"
+                after 20
+                update
+            } else {
+                break
+            }
+        }
+        
+        
     }
 
     update
