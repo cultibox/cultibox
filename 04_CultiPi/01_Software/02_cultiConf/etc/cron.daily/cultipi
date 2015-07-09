@@ -12,7 +12,7 @@ fi
 #If there was an error whith dpkg/apt:
 /usr/bin/dpkg --configure -a --force-confdef --force-confold
 
-echo "Updating repositories..."
+echo "--> Updating repositories..."
 apt-get update -o Dir::Etc::sourcelist="sources.list.d/cultibox.list"  -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
 
 for file in "`ls /etc/apt/sources.list.d/cultibox-*.list 2>/dev/null`"; do
@@ -23,98 +23,96 @@ done
 echo "...ok"
 
 if [ "`apt-get -u upgrade --assume-no|grep cultipi`" != "" ]; then
-    echo "Upgrading cultipi package..."
+    echo "--> Upgrading cultipi package..."
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultipi
     echo "...ok"
 elif [ "`dpkg -s cultipi 2>/dev/null|grep Version`" == "" ]; then
-    echo "Installing cultipi package..."
+    echo "--> Installing cultipi package..."
     apt-get install -y  --force-yes cultipi
     echo "...ok"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultibox`" != "" ]; then
-    echo "Upgrading cultibox package..."
+    echo "--> Upgrading cultibox package..."
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultibox
     rm -Rf /var/cache/lighttpd/compress/*
-    if [ "$1" == "" ]; then
-        /etc/init.d/lighttpd force-reload
-    fi
-    echo "... ok"
+    /etc/init.d/lighttpd force-reload
+    echo "...ok"
 elif [ "`dpkg -s cultibox 2>/dev/null|grep Version`" == "" ]; then
-    echo "Installing cultibox package..."
+    echo "--> Installing cultibox package..."
     apt-get install -y  --force-yes cultibox
-    echo "... ok"
+    echo "...ok"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultiraz`" != "" ]; then
-    echo "Upgrading cultiraz package..."
+    echo "--> Upgrading cultiraz package..."
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultiraz
-    echo "... ok"
+    echo "...ok"
 elif [ "`dpkg -s cultiraz 2>/dev/null|grep Version`" == "" ]; then
-    echo "Installing cultiraz package..."
+    echo "--> Installing cultiraz package..."
     apt-get install -y  --force-yes cultiraz
-    echo "... ok"
+    echo "...ok"
 fi
 
 
 if [ "`apt-get -u upgrade --assume-no|grep cultitime`" != "" ]; then
-    echo "Upgrading cultitime package..."
+    echo "--> Upgrading cultitime package..."
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultitime
-    echo "... ok"
+    echo "...ok"
 elif [ "`dpkg -s cultitime 2>/dev/null|grep Version`" == "" ]; then
-    echo "Installing cultitime package..."
+    echo "--> Installing cultitime package..."
     apt-get install -y  --force-yes cultitime
-    echo "... ok"
+    echo "...ok"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultidoc`" != "" ]; then
-    echo "Upgrading cultidoc package..."
+    echo "--> Upgrading cultidoc package..."
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultidoc
-    echo "... ok"
+    echo "...ok"
 elif [ "`dpkg -s cultidoc 2>/dev/null|grep Version`" == "" ]; then
-    echo "Installing cultidoc package..."
+    echo "--> Installing cultidoc package..."
     apt-get install -y  --force-yes cultidoc
-    echo "... ok"
+    echo "...ok"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep culticam`" != "" ]; then
-    echo "Upgrading culticam package..."
+    echo "--> Upgrading culticam package..."
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" culticam
-    echo "... ok"
+    echo "...ok"
 elif [ "`dpkg -s culticam 2>/dev/null|grep Version`" == "" ]; then
-    echo "Installing culticam package..."
+    echo "--> Installing culticam package..."
     apt-get install -y  --force-yes culticam
-    echo "... ok"
+    echo "...ok"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep culticonf`" != "" ]; then
-    echo "Upgrading culticonf package..."
+    echo "--> Upgrading culticonf package..."
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" culticonf
-    echo "... ok"
+    echo "...ok"
 elif [ "`dpkg -s culticonf 2>/dev/null|grep Version`" == "" ]; then
-    echo "Installing culticonf package..."
+    echo "--> Installing culticonf package..."
     apt-get install -y  --force-yes culticonf
-    echo "... ok"
+    echo "...ok"
 fi
 
 
 
 if [ -d /var/www/cultibox/tmp/import ]; then
-    echo "Cleaning import directory..."
+    echo "--> Cleaning import directory..."
     rm -Rf /var/www/cultibox/tmp/import/*
-    echo "... ok"
+    echo "...ok"
 fi
 
 if [ -d /var/www/cultibox/tmp/export ]; then
-    echo "Cleaning cultibox directory..."
+    echo "--> Cleaning cultibox directory..."
     rm -Rf /var/www/cultibox/tmp/export/*
-    echo "... ok"
+    echo "...ok"
 fi
 
 if [ "`ls /var/www/cultibox/tmp/webcam*.jpg 2>/dev/null`" != "" ]; then
-    echo "Cleaning webcam files..."
+    echo "--> Cleaning webcam files..."
     rm /var/www/cultibox/tmp/webcam*.jpg
-    echo "... ok"
+    echo "...ok"
 fi
 
 if [ -f /etc/culticonf/packages ]; then
@@ -123,14 +121,14 @@ if [ -f /etc/culticonf/packages ]; then
         apt-get update
         for pack in $packages; do
             if [ "`dpkg -l $pack 2>/dev/null|grep ii`" == "" ]; then
-                echo "Installing package $pack..."
+                echo "--> Installing package $pack..."
                 apt-get install -y --force-yes $pack
-                echo "... ok"
+                echo "...ok"
 
                 if [ -f /etc/culticonf/postinst/$pack ]; then
-                    echo "Executing postinstall script for $pack"
+                    echo "--> Executing postinstall script for $pack"
                     bash /etc/culticonf/postinst/$pack
-                    echo "... ok"
+                    echo "...ok"
                 fi
             fi
         done
@@ -139,10 +137,10 @@ if [ -f /etc/culticonf/packages ]; then
 fi
 
 if [ -f /var/lock/REBOOT_NEEDED ]; then
-    echo "Rebooting system by lock file..."
+    echo "--> Rebooting system by lock file..."
     rm -Rf /var/lock/REBOOT_NEEDED
     shutdown -r now
-    echo "... ok"
+    echo "...ok"
 fi
 
 uptime=$(</proc/uptime)
@@ -150,9 +148,9 @@ uptime=${uptime%%.*}
 
 if [ "$uptime" != "" ]; then
     if [ $uptime -gt 432000 ]; then
-        echo "Rebooting system by uptime..."
+        echo "--> Rebooting system by uptime..."
         shutdown -r now
-        echo "... ok"
+        echo "...ok"
     fi
 fi
 
@@ -166,6 +164,6 @@ else
     rm -f /var/lock/UPGRADE
 fi
 
-echo "Cleaning tmp directory..."
+echo "--> Cleaning tmp directory..."
 rm -Rf /tmp/*
-echo "... ok"
+echo "...ok"

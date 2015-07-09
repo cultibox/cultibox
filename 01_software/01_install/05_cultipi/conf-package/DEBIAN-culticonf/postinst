@@ -453,14 +453,14 @@ if [ $VERSION -lt 150706 ]; then
     fi
 
     if [ "`grep 'ServerAliveInterval' /etc/ssh/ssh_config|grep -v '#'`" != "" ]; then
-        sed -i "s/ServerAliveInterval.*/    ServerAliveInterval 15/g" /etc/ssh/ssh_config
+        sed -i "s/ServerAliveInterval.*/ServerAliveInterval 15/g" /etc/ssh/ssh_config
     else
         echo "    ServerAliveInterval 15" >> /etc/ssh/ssh_config
     fi
 
 
     if [ "`grep 'ServerAliveCountMax' /etc/ssh/ssh_config|grep -v '#'`" != "" ]; then
-        sed -i "s/ServerAliveCountMax.*/    ServerAliveCountMax 3/g" /etc/ssh/s
+        sed -i "s/ServerAliveCountMax.*/ServerAliveCountMax 3/g" /etc/ssh/s
 sh_config
     else   
         echo "    ServerAliveCountMax 3" >> /etc/ssh/ssh_config
@@ -468,7 +468,7 @@ sh_config
 
 
     if [ "`grep 'ExitOnForwardFailure' /etc/ssh/ssh_config|grep -v '#'`" != "" ]; then
-        sed -i "s/ExitOnForwardFailure.*/    ExitOnForwardFailure yes/g" /etc/ssh/s
+        sed -i "s/ExitOnForwardFailure.*/ExitOnForwardFailure yes/g" /etc/ssh/s
 sh_config
     else   
         echo "    ExitOnForwardFailure yes" >> /etc/ssh/ssh_config
