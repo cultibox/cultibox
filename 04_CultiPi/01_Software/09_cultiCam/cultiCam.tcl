@@ -99,10 +99,25 @@ proc takePhoto {webcamIndex} {
 proc takePhotoOnDemand {} {
      # Prise de snapshot a la demande
     if {[file exists $::configXML(lock_snapshotFile)] == 1} {
-        set fp [open $::configXML(lock_snapshotFile) r]
-        set confFile [read $fp]
-        close $fp
-        set webIndex [expr $confFile*1]
+        set webIndex 1 
+        for {set i 0} {$i < 3} {incr i} {
+            set RC [catch {
+                set fp [open $::configXML(lock_snapshotFile) r]
+                set confFile [read $fp]
+                close $fp
+                set webIndex [expr $confFile * 1]
+            } msg]
+            
+            if {$RC != 0} {
+                puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during opening file - $::configXML(lock_snapshotFile) - try [expr $i + 1] / 3 , error : $msg"
+                after 20
+                update
+            } else {
+                break
+            }
+            
+        }
+
 
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Take Snapshot webcam" ; update
 
