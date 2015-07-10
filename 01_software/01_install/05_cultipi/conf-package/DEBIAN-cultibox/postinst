@@ -136,4 +136,6 @@ if [ ! -d /home/cultipi/cultibox ]; then
     chown -R www-data:www-data /home/cultipi/cultibox
 fi
 
+chmod 777 /var/www/cultibox/tmp
+
 
