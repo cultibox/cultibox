@@ -54,48 +54,57 @@ fi
 
 if [ "$CULTISSH_ACTIV" == "yes" ]; then
     if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_SSH|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_SSH" != "" ]; then
+        pid="`ps ax|/bin/grep ssh|/bin/grep ':22'|/bin/grep -v 'grep'|awk -F ' ' '{print $1}'`"
+        if [ "$pid" != "" ]; then
+            echo "--> Killing old reverse SSH..."
+            kill -9 $pid
+            echo "...ok"
+        fi
+ 
         echo "--> Starting reverse SSH..."
         export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_SSH:localhost:22 cultipi@$REVERSE_IP
         echo "...ok"
     fi
 
     if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTP|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_HTTP" != "" ]; then
+        pid="`ps ax|/bin/grep ssh|/bin/grep ':80'|/bin/grep -v 'grep'|awk -F ' ' '{print $1}'`"
+        if [ "$pid" != "" ]; then
+            echo "--> Killing old reverse HTTP..."
+            kill -9 $pid
+            echo "...ok"
+        fi
+
+
         echo "--> Starting reverse HTTP..."
         export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_HTTP:localhost:80 cultipi@$REVERSE_IP -g
         echo "...ok"
     fi
 
-    if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTPS|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_HTTPS" != "" ]; then
+    if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTPS|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_HTTPS" != "" ]; then   
+        pid="`ps ax|/bin/grep ssh|/bin/grep '443'|/bin/grep -v 'grep'|awk -F ' ' '{print $1}'`"
+        if [ "$pid" != "" ]; then
+            echo "--> Killing old reverse HTTPS..."
+            kill -9 $pid
+            echo "...ok"
+        fi
+
         echo "--> Starting reverse HTTPS..."
         export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_HTTPS:localhost:443 cultipi@$REVERSE_IP -g
         echo "...ok"
     fi
 else
-    if [ "$REVERSE_PORT_SSH" != "" ]; then
-        pid="`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_SSH|/bin/grep $REVERSE_IP|awk -F ' ' '{print $1}'`" 
-        if [ "$pid" != "" ]; then
-            echo "--> Killing reverse SSH..."
-            kill -9 $pid
-            echo "...ok"
-        fi
+    pid="`ps ax|/bin/grep autossh|/bin/grep -v 'grep'|awk -F ' ' '{print $1}'`"
+    if [ "$pid" != "" ]; then
+        echo "--> Killing auto SSH..."
+        kill -9 $pid
+        echo "...ok"
     fi
 
-    if [ "$REVERSE_PORT_HTTP" != "" ]; then
-        pid="`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTP|/bin/grep $REVERSE_IP|awk -F ' ' '{print $1}'`"
-        if [ "$pid" != "" ]; then
-            echo "--> Killing reverse HTTP..."
-            kill -9 $pid
-            echo "...ok"
-        fi
-    fi
-
-    if [ "$REVERSE_PORT_HTTPS" != "" ]; then
-        pid="`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_HTTPS|/bin/grep $REVERSE_IP|awk -F ' ' '{print $1}'`"
-        if [ "$pid" != "" ]; then
-            echo "--> Killing reverse HTTPS..."
-            kill -9 $pid
-            echo "...ok"
-        fi
+    pid="`ps ax|/bin/grep 'ssh -NR'|/bin/grep -v 'grep'|awk -F ' ' '{print $1}'`"
+    if [ "$pid" != "" ]; then
+        echo "--> Killing remaining SSH..."
+        kill -9 $pid
+        echo "...ok"
     fi
 fi
 
