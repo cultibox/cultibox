@@ -5,7 +5,7 @@ exec > >(logger -t "culticron.daily")
 
 #Random sleep:
 if [ "$1" == "" ]; then
-    sleep $[ ( $RANDOM % 300 )  + 1 ]s
+    sleep $[ ( $RANDOM % 3600 )  + 1 ]s
 fi
 
 
