@@ -171,7 +171,7 @@ fi
 /sbin/iw reg set FR
 
 if [ ! -f /var/lock/UPGRADE ]; then
-    nohup /bin/bash -c 'sleep 3600 && /etc/cron.daily/cultipi' >/dev/null 2>&1 &
+    nohup /bin/bash -c 'sleep 3600 && /etc/cron.daily/cultipi --now' >/dev/null 2>&1 &
     touch /var/lock/UPGRADE
 else
     rm -f /var/lock/UPGRADE
