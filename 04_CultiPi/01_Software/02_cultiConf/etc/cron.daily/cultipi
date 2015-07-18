@@ -1,10 +1,23 @@
 #!/bin/bash
 
-exec 2>&1
-exec > >(logger -t "culticron.daily")
+while [ $# -gt 0 ]
+do
+    case "$1" in
+        (--now) now=yes;;
+        (--manual) manual=yes;;
+        (*)  break;;
+    esac
+    shift
+done
+
+
+if [ "$manual" != "yes" ]; then
+    exec 2>&1
+    exec > >(logger -t "culticron.daily")
+fi
 
 #Random sleep:
-if [ "$1" == "" ]; then
+if [ "$now" != "yes" ]; then
     sleep $[ ( $RANDOM % 3600 )  + 1 ]s
 fi
 
