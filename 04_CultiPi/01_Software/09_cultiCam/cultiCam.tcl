@@ -121,7 +121,6 @@ proc reloadXML {} {
         if {$RC != 0} {
             puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : reloadXML : Error during deleting lock file (path : $::configXML(lock_reloadConfFile)) , error : $msg"
         }
-        
     }
 
     after 250 reloadXML
@@ -135,10 +134,9 @@ reloadXML
 
 proc mjpgCheck {} {
 
-    # Ouverture du service mjpg
     if {[file exists $::configXML(lock_start_service)] == 1} {
     
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Start Video Stream" ; update
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Start Video Service" ; update
 
         # On lance le service
         set RC [catch {
@@ -147,12 +145,12 @@ proc mjpgCheck {} {
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : $msg"
 
         # Suppression du fichier de lock
-        after 5000 file delete -force $::configXML(lock_start_stream)
+        after 5000 file delete -force $::configXML(lock_start_service)
     }
     
     # Fermeture du service
     if {[file exists $::configXML(lock_stop_service)] == 1} {
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Stop Video Stream" ; update
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Stop Video Service" ; update
 
         set RC [catch {
             exec sudo /etc/init.d/mjpg_streamer stop
@@ -160,13 +158,13 @@ proc mjpgCheck {} {
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : $msg"
 
         # Suppression du fichier de lock
-        file delete -force $::configXML(lock_stop_stream)
+        file delete -force $::configXML(lock_stop_service)
     }
 
     after 50 mjpgCheck
 }
 
-puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : reloadXML : Starting stream check" 
+puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : reloadXML : Starting mjpg_streamer check" 
 mjpgCheck
 
 # On attend indéfiniment

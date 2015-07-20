@@ -21,26 +21,28 @@ if [ -f /var/lock/culticam_enable ]; then
 	. /etc/culticam/webcam$webcam.conf
 
 	if [ "$BRIGHTNESS" != "" ] && [ $BRIGHTNESS -gt 0 ]; then
-		BRIGHT="-br $BRIGHTNESS"
+		BRIGHT=""
+        #-br $BRIGHTNESS"
 	else 
 		BRIGHT=""
 	fi
 	
 	if [ "$CONTRAST" != "" ] && [ $CONTRAST -gt 0 ]; then
-		CON="-co $CONTRAST"
+		CON=""
+        #-co $CONTRAST"
 	else 
 		CON=""
 	fi
-	
-	args="-i \"/usr/lib/input_uvc.so -d $DEVICE -r $RESOLUTION $BRIGHT $CON -f 30 -n -y\" -o \"/usr/lib/output_http.so -p 8081\""
 else 
-	args="-i \"/usr/lib/input_uvc.so -d /dev/video0 -r 800x600 -f 30 -n -y\" -o \"/usr/lib/output_http.so -p 8081\""
+    DEVICE="/dev/video0"
+    RESOLUTION="800x600"
+    BRIGHT=""
+    CON=""
 fi
 
 d_start () {
         log_daemon_msg "Starting system $DEAMON_NAME Daemon"
-        nohup mjpg_streamer $args
-		sleep 4
+        nohup mjpg_streamer -i "/usr/lib/input_uvc.so -d $DEVICE -r $RESOLUTION $BRIGHT $CON  -n -y" -o "/usr/lib/output_http.so -p 8081" >>/var/log/cultipi/cultipi-service.log 2>&1 &
         log_end_msg $?
 }
 
