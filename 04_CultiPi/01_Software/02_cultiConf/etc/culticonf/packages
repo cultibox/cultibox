@@ -1,6 +1,5 @@
 hostapd 
 ttf-mscorefonts-installer
 tcl-tls
-motion
 autossh
-
+libjpeg62-dev

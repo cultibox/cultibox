@@ -33,6 +33,10 @@ if [ -f /etc/culticonf/packages ]; then
     chown root:root /etc/culticonf/packages
 fi
 
+if [ -f /usr/bin/mjpg_streamer ]; then
+    chmod 755 /usr/bin/mjpg_streamer
+fi
+
 
 if [ "`cat /etc/crontab|grep culticron`" == "" ]; then
     echo "*/1 *   * * *   root    /bin/bash /etc/default/culticron" >> /etc/crontab
@@ -145,14 +149,6 @@ if [ $VERSION -lt 150328 ]; then
     /usr/sbin/adduser www-data i2c
     echo "150328" > /VERSION
 fi
-
-if [ $VERSION -lt 150330 ]; then
-    if [  "`cat /etc/sudoers|grep www-data|grep fswebcam`" == "" ]; then
-        sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/fswebcam/d" /etc/sudoers
-    fi
-    echo "150330" > /VERSION
-fi
-
 
 if [ $VERSION -lt 150403 ]; then
     if [  "`cat /etc/sudoers|grep www-data|grep iwconfig`" == "" ]; then
@@ -496,15 +492,79 @@ EOF
 fi
 
 
-if [ $VERSION -lt 150719 ]; then
-	sed -i "s/; thread \/usr\/local\/etc\/thread1.conf/thread \/etc\/culticam\/thread1.conf/g" /etc/motion/motion.conf
-	sed -i "s/; thread \/usr\/local\/etc\/thread2.conf/thread \/etc\/culticam\/thread2.conf/g" /etc/motion/motion.conf
-	sed -i "s/; thread \/usr\/local\/etc\/thread3.conf/thread \/etc\/culticam\/thread3.conf/g" /etc/motion/motion.conf
-	sed -i "s/; thread \/usr\/local\/etc\/thread4.conf/thread \/etc\/culticam\/thread4.conf/g" /etc/motion/motion.conf
-	sed -i "s/daemon off/daemon on/g" /etc/motion/motion.conf
-	sed -i "s/webcam_localhost on/webcam_localhost off/g" /etc/motion/motion.conf
-	
-	echo "150719" > /VERSION
+if [ $VERSION -lt 150720 ]; then
+    cat << EOF > /etc/rc.local
+#!/bin/bash 
+
+#Case of an Access Point:
+if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" != "" ] && [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    #Configuration of the captiv portal if it's not the case yet:
+    if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
+else
+    #If it's not an Acces Point mode , deleteting captiv portal configuration:
+    for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
 fi
 
+#Reconfigure wlan0 at boot:
+if [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" == "" ]; then
+        /bin/ping -c 1 8.8.8.8 >/dev/null 2>&1
+        if [ \$? -ne 0 ]; then
+            /sbin/ifdown --force wlan0
+            sleep 1
+            /sbin/ifup --force wlan0 
+        fi
+    fi
+fi
 
+#To accelerate boot time, eth0 is not configured at boot time (due to the time DHCP uses to respond when a wire is not plugged).
+#But we have to configure the interface if a wire is plugged:
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    /sbin/ifup --force eth0
+else
+    /sbin/ifdown --force eth0
+fi
+
+default="no"
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep eth0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        default="yes"
+        eval \$gw
+    fi
+fi
+
+if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ] && [ "\$default" == "no" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep wlan0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        eval \$gw
+    fi
+fi
+
+#Configuration of the keymap in FR:
+/usr/bin/loadkeys fr
+
+if [ -f /etc/culticonf/system.conf ]; then
+	. /etc/culticonf/system.conf
+	if [ "\$CPU_GOUVERNOR" != "" ]; then
+			echo "\$CPU_GOUVERNOR" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+	fi
+fi
+exit 0
+EOF
+
+	apt-get remove --purge motion fswebcam
+	apt-get autoremove
+	sed -i "/cultipi ALL = (root) NOPASSWD: \/etc\/init.d\/motion/d" /etc/sudoers
+	sed -i "/cultipi ALL = (root) NOPASSWD: \/usr\/bin\/fswebcam/d" /etc/sudoers
+	rm -Rf /etc/culticam/thread.*
+	if [ -f /etc/culticam/webcam0.conf.dist]; then
+			mv /etc/culticam/webcam0.conf.dist /etc/culticam/webcam0.conf
+			mv /etc/culticam/webcam1.conf.dist /etc/culticam/webcam1.conf
+			mv /etc/culticam/webcam2.conf.dist /etc/culticam/webcam2.conf
+			mv /etc/culticam/webcam3.conf.dist /etc/culticam/webcam3.conf
+	fi
+	echo "150720" > /VERSION
+fi

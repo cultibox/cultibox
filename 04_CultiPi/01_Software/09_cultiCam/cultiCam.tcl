@@ -26,10 +26,9 @@ array set configXML {
     dailySnapshotHour       12
     dailySnapshotMin        0
     nbWebcam                0
-    lock_snapshotFile       /var/lock/culticam_snapshot
     lock_reloadConfFile     /var/lock/culticam_reloadConf
-    lock_start_stream       /var/lock/culticam_stream 
-    lock_stop_stream        /var/lock/culticam_disable     
+    lock_start_service       /var/lock/culticam_enable 
+    lock_stop_service        /var/lock/culticam_disable     
 }
 set RC [catch {
     array set configXML [::piXML::convertXMLToArray $confXML]
@@ -95,80 +94,27 @@ proc takePhoto {webcamIndex} {
 }
 
 
-# On prend une photo toutes les X secondes
-proc takePhotoOnDemand {} {
-     # Prise de snapshot a la demande
-    if {[file exists $::configXML(lock_snapshotFile)] == 1} {
-        set webIndex 1 
-        for {set i 0} {$i < 3} {incr i} {
-            set RC [catch {
-                set fp [open $::configXML(lock_snapshotFile) r]
-                set confFile [read $fp]
-                close $fp
-                set webIndex [expr $confFile * 1]
-            } msg]
-            
-            if {$RC != 0} {
-                puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during opening file - $::configXML(lock_snapshotFile) - try [expr $i + 1] / 3 , error : $msg"
-                after 20
-                update
-            } else {
-                break
-            }
-            
-        }
-
-
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Take Snapshot webcam" ; update
-
-        # On prend un image
-        set RC [catch {
-            exec sudo fswebcam -c "/etc/culticam/webcam${webIndex}.conf"
-        } msg]
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Taking snapshot webcam $webIndex : $msg"
-       
-        for {set i 0} {$i < 10} {incr i} {
-            set RC [catch {
-                file delete -force $::configXML(lock_snapshotFile)
-            } msg]
-            
-            if {$RC != 0} {
-                puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Error during deleting file - $::configXML(lock_snapshotFile) - try [expr $i + 1] / 10 , error : $msg"
-                after 20
-                update
-            } else {
-                break
-            }
-        }
-        
-        
-    }
-
-    update
-    after 20 "takePhotoOnDemand"
-    return
-}
-
-takePhotoOnDemand
-
 # Pour chaque webcam, on lance la boucle d'acquisition
-for {set i 0} {$i < $::configXML(nbWebcam)} {incr i} {
+#for {set i 0} {$i < $::configXML(nbWebcam)} {incr i} {
 
     # Initialisation de la variable qui sauvegarde quand la photo journalière est faite
-    set ::dailyPhotoIsTake($i) ""
+ #   set ::dailyPhotoIsTake($i) ""
     
     # Démarrage de l'acquisition
-    after [expr $i * 1000] "takePhoto $i"
-    update
-}
+#    after [expr $i * 1000] "takePhoto $i"
+#    update
+#}
+
 
 # On vérifie régulièrement s'il faut recharger le fichier de conf 
 proc reloadXML {} {
 
     if {[file exists $::configXML(lock_reloadConfFile)] == 1} {
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : reloadXML: Reload conf file"
-        array set ::configXML [::piXML::convertXMLToArray $::confXML]
-        
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : reloadXML: Restart mjpg service with new conf"
+        set RC [catch {
+            exec sudo /etc/init.d/mjpg_streamer force-reload
+        } msg]
+		
         set RC [catch {
             file delete -force  $::configXML(lock_reloadConfFile)
         } msg]
@@ -187,17 +133,16 @@ puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : re
 reloadXML
 
 
-proc streamCheck {} {
+proc mjpgCheck {} {
 
-    # Ouverture du flux video
-    if {[file exists $::configXML(lock_start_stream)] == 1} {
+    # Ouverture du service mjpg
+    if {[file exists $::configXML(lock_start_service)] == 1} {
     
-        # Le fichier est présent, on fait donc un snapshot
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Start Video Stream" ; update
 
-        # On lance le flux video
+        # On lance le service
         set RC [catch {
-            exec sudo /etc/init.d/motion start
+            exec sudo /etc/init.d/mjpg_streamer start
         } msg]
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : $msg"
 
@@ -205,13 +150,12 @@ proc streamCheck {} {
         after 5000 file delete -force $::configXML(lock_start_stream)
     }
     
-    # Fermeture du flux video
-    if {[file exists $::configXML(lock_stop_stream)] == 1} {
+    # Fermeture du service
+    if {[file exists $::configXML(lock_stop_service)] == 1} {
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Stop Video Stream" ; update
 
-        # On stop le flux video
         set RC [catch {
-            exec sudo /etc/init.d/motion stop
+            exec sudo /etc/init.d/mjpg_streamer stop
         } msg]
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : $msg"
 
@@ -219,11 +163,11 @@ proc streamCheck {} {
         file delete -force $::configXML(lock_stop_stream)
     }
 
-    after 50 streamCheck
+    after 50 mjpgCheck
 }
 
 puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : reloadXML : Starting stream check" 
-streamCheck
+mjpgCheck
 
 # On attend indéfiniment
 vwait forever
