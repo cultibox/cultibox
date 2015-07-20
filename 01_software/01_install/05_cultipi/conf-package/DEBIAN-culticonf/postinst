@@ -560,7 +560,7 @@ EOF
 	sed -i "/cultipi ALL = (root) NOPASSWD: \/etc\/init.d\/motion/d" /etc/sudoers
 	sed -i "/cultipi ALL = (root) NOPASSWD: \/usr\/bin\/fswebcam/d" /etc/sudoers
 	rm -Rf /etc/culticam/thread.*
-	if [ -f /etc/culticam/webcam0.conf.dist]; then
+	if [ -f /etc/culticam/webcam0.conf.dist ]; then
 			mv /etc/culticam/webcam0.conf.dist /etc/culticam/webcam0.conf
 			mv /etc/culticam/webcam1.conf.dist /etc/culticam/webcam1.conf
 			mv /etc/culticam/webcam2.conf.dist /etc/culticam/webcam2.conf
