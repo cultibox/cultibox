@@ -156,10 +156,10 @@ proc mjpgCheck {} {
         set RC [catch {
             exec sudo /etc/init.d/mjpg_streamer stop
         } msg]
-        after 2000 puts "...ok"
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : $msg"
 
         # Suppression du fichier de lock
+        after 2000 puts "...ok"
         file delete -force $::configXML(lock_stop_service)
     }
 

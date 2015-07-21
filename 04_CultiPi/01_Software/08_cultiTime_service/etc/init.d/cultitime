@@ -23,7 +23,7 @@ d_start () {
             echo -n  "\n[ ok ] $DEAMON_NAME service is already running.\n"
             exit 0
         else
-			udo -u $DAEMONUSER nohup /usr/bin/tclsh "/opt/cultitime/cultiTime.tcl" >>/var/log/cultipi/cultipi-service.log 2>&1 &
+			sudo -u $DAEMONUSER nohup /usr/bin/tclsh "/opt/cultitime/cultiTime.tcl" >>/var/log/cultipi/cultipi-service.log 2>&1 &
 			sleep 4
 			log_end_msg $?
 		fi
