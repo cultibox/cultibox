@@ -122,11 +122,8 @@ if [ -d /var/www/cultibox/tmp/export ]; then
     echo "...ok"
 fi
 
-if [ "`ls /var/www/cultibox/tmp/webcam*.jpg 2>/dev/null`" != "" ]; then
-    echo "--> Cleaning webcam files..."
-    rm /var/www/cultibox/tmp/webcam*.jpg
-    echo "...ok"
-fi
+rm -Rf /var/www/cultibox/main/templates_c/*.ser 2>/dev/null
+
 
 if [ -f /etc/culticonf/packages ]; then
     packages="`cat /etc/culticonf/packages`"
