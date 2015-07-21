@@ -92,6 +92,20 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
         export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_HTTPS:localhost:443 cultipi@$REVERSE_IP -g
         echo "...ok"
     fi
+	
+	if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_WEBCAM|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_WEBCAM" != "" ]; then
+        pid="`ps ax|/bin/grep ssh|/bin/grep ':8081'|/bin/grep -v 'grep'|awk -F ' ' '{print $1}'`"
+        if [ "$pid" != "" ]; then
+            echo "--> Killing old reverse WEBCAM..."
+            kill -9 $pid
+            echo "...ok"
+        fi
+
+
+        echo "--> Starting reverse WEBCAM..."
+        export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_WEBCAM:localhost:8081 cultipi@$REVERSE_IP -g
+        echo "...ok"
+    fi
 else
     pid="`ps ax|/bin/grep autossh|/bin/grep -v 'grep'|awk -F ' ' '{print $1}'`"
     if [ "$pid" != "" ]; then

@@ -18,14 +18,19 @@ DEAMON_NAME="cultitime"
 . /lib/lsb/init-functions
 
 d_start () {
-        log_daemon_msg "Starting system $DEAMON_NAME Daemon"
-        sudo -u $DAEMONUSER nohup /usr/bin/tclsh "/opt/cultitime/cultiTime.tcl" >>/var/log/cultipi/cultipi-service.log 2>&1 &
-        sleep 4
-        log_end_msg $?
+        log_daemon_msg "Starting system $DEAMON_NAME service"
+		if [ "`ps ax|grep cultiTime.tcl|grep tclsh`" != "" ]; then
+            echo -n  "\n[ ok ] $DEAMON_NAME service is already running.\n"
+            exit 0
+        else
+			udo -u $DAEMONUSER nohup /usr/bin/tclsh "/opt/cultitime/cultiTime.tcl" >>/var/log/cultipi/cultipi-service.log 2>&1 &
+			sleep 4
+			log_end_msg $?
+		fi
 }
 
 d_stop () {
-        log_daemon_msg "Stopping system $DEAMON_NAME Daemon"
+        log_daemon_msg "Stopping system $DEAMON_NAME service"
         for pid in "`ps ax|grep cultiTime.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
             if [ "$pid" != "" ]; then
                 kill -9 $pid

@@ -110,10 +110,11 @@ proc takePhoto {webcamIndex} {
 proc reloadXML {} {
 
     if {[file exists $::configXML(lock_reloadConfFile)] == 1} {
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : reloadXML: Restart mjpg service with new conf"
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : reloadXML: Restart mjpg service with new conf..."
         set RC [catch {
             exec sudo /etc/init.d/mjpg_streamer force-reload
         } msg]
+        after 2000 puts "...ok"
 		
         set RC [catch {
             file delete -force  $::configXML(lock_reloadConfFile)
@@ -135,26 +136,27 @@ reloadXML
 proc mjpgCheck {} {
 
     if {[file exists $::configXML(lock_start_service)] == 1} {
-    
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Start Video Service" ; update
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Start Video Service..." 
 
         # On lance le service
         set RC [catch {
             exec sudo /etc/init.d/mjpg_streamer start
         } msg]
+        after 2000 puts "...ok"
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : $msg"
 
         # Suppression du fichier de lock
-        after 5000 file delete -force $::configXML(lock_start_service)
+        file delete -force $::configXML(lock_start_service)
     }
     
     # Fermeture du service
     if {[file exists $::configXML(lock_stop_service)] == 1} {
-        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Stop Video Service" ; update
+        puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : Stop Video Service..." 
 
         set RC [catch {
             exec sudo /etc/init.d/mjpg_streamer stop
         } msg]
+        after 2000 puts "...ok"
         puts "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiCam : $msg"
 
         # Suppression du fichier de lock

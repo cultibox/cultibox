@@ -41,13 +41,19 @@ else
 fi
 
 d_start () {
-        log_daemon_msg "Starting system $DEAMON_NAME Daemon"
-        nohup mjpg_streamer -i "/usr/lib/input_uvc.so -d $DEVICE -r $RESOLUTION $BRIGHT $CON  -n -y" -o "/usr/lib/output_http.so -p 8081" >>/var/log/cultipi/cultipi-service.log 2>&1 &
-        log_end_msg $?
+        log_daemon_msg "Starting system $DEAMON_NAME service"
+
+        if [ "`ps ax|grep mjpg_streamer|grep '.so'`" != "" ]; then
+            echo -n  "\n[ ok ] $DEAMON_NAME service is already running.\n"
+            exit 0
+        else
+            nohup mjpg_streamer -i "/usr/lib/input_uvc.so -d $DEVICE -r $RESOLUTION $BRIGHT $CON -f 30  -n -y" -o "/usr/lib/output_http.so -p 8081" >>/var/log/cultipi/cultipi-service.log 2>&1 &
+            log_end_msg $?
+        fi
 }
 
 d_stop () {
-        log_daemon_msg "Stopping system $DEAMON_NAME Daemon"
+        log_daemon_msg "Stopping system $DEAMON_NAME service"
         for pid in "`ps ax|grep mjpg_streamer |grep .so |awk -F " " '{print $1}'`"; do
             if [ "$pid" != "" ]; then
                 kill -9 $pid
