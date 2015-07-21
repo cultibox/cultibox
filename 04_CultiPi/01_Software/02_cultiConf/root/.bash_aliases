@@ -1,19 +1,19 @@
-alias wget_php='wget -O - -q'
+alias cpiwget='wget --password=cultipi --user=cultipi -O - -q'
 alias cpilog='tail -f /var/log/cultipi/cultipi.log'
 alias cpislog='tail -f /var/log/cultipi/cultipi-service.log'
 alias cpireload='/etc/init.d/cultipi force-reload'
 alias cpimysql='mysql -u cultibox -pcultibox cultibox '
 alias cpiupdate='bash -x /etc/cron.daily/cultipi --now'
 
-function rsensor { 
+function cpirsensor { 
     tclsh /opt/cultipi/cultiPi/get.tcl serverAcqSensor localhost "::sensor($1,value)"
 }
 
-function rplug {
+function cpirplug {
     tclsh /opt/cultipi/cultiPi/get.tcl serverPlugUpdate localhost "::plug($1,value)"
 }
 
-function splug {
+function cpisplug {
     tclsh /opt/cultipi/cultiPi/set.tcl serverPlugUpdate localhost $*
 }
 
