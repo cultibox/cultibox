@@ -124,8 +124,6 @@ proc checkAndUpdate {} {
          
             set ::compteur 0  
 			resetConf
-            vwait endReset
-            set endReset 0
             
             puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : fin du RAZ de la configuration du Cultipi demandée"
 
