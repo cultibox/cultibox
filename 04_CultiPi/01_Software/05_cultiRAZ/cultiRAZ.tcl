@@ -215,9 +215,6 @@ proc resetPackages {} {
 
 puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Vérification de la remise en état usine du Cultipi"
 firstLoop
-vwait firstLoopFinish
-set compteur 0
-
 
 puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Vérification de l'effacement de la configuration du Cultipi"
 
