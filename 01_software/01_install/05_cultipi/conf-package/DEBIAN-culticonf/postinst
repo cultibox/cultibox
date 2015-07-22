@@ -566,3 +566,12 @@ EOF
 	fi
 	echo "150720" > /VERSION
 fi
+
+if [ $VERSION -lt 150721 ]; then
+	cp /boot/cmdline.txt /boot/cmdline.txt.back
+	echo "dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=noop rootwait" > /boot/cmdline.txt
+	usermod -a -G dialout cultipi
+	touch /var/lock/REBOOT_NEEDED 
+	echo "rtc-ds1307" >> /etc/modules
+	echo "150721" > /VERSION
+fi

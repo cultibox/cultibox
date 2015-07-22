@@ -43,6 +43,8 @@ elif [ "`dpkg -s cultipi 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing cultipi package..."
     apt-get install -y  --force-yes cultipi
     echo "...ok"
+else
+	echo "--> No upgrade available for Cultipi package"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultibox`" != "" ]; then
@@ -55,6 +57,8 @@ elif [ "`dpkg -s cultibox 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing cultibox package..."
     apt-get install -y  --force-yes cultibox
     echo "...ok"
+else
+	echo "--> No upgrade available for Cultibox package"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultiraz`" != "" ]; then
@@ -65,6 +69,8 @@ elif [ "`dpkg -s cultiraz 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing cultiraz package..."
     apt-get install -y  --force-yes cultiraz
     echo "...ok"
+else
+	echo "--> No upgrade available for CultiRAZ package"
 fi
 
 
@@ -76,6 +82,8 @@ elif [ "`dpkg -s cultitime 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing cultitime package..."
     apt-get install -y  --force-yes cultitime
     echo "...ok"
+else
+	echo "--> No upgrade available for Cultitime package"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultidoc`" != "" ]; then
@@ -86,6 +94,8 @@ elif [ "`dpkg -s cultidoc 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing cultidoc package..."
     apt-get install -y  --force-yes cultidoc
     echo "...ok"
+else
+	echo "--> No upgrade available for Cultidoc package"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep culticam`" != "" ]; then
@@ -96,6 +106,8 @@ elif [ "`dpkg -s culticam 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing culticam package..."
     apt-get install -y  --force-yes culticam
     echo "...ok"
+else
+	echo "--> No upgrade available for Culticam package"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep culticonf`" != "" ]; then
@@ -106,6 +118,8 @@ elif [ "`dpkg -s culticonf 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing culticonf package..."
     apt-get install -y  --force-yes culticonf
     echo "...ok"
+else
+	echo "--> No upgrade available for Culticonf package"
 fi
 
 
