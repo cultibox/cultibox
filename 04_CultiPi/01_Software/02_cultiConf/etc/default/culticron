@@ -54,7 +54,7 @@ fi
 
 if [ "$CULTISSH_ACTIV" == "yes" ]; then
     if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_SSH|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_SSH" != "" ]; then
-        pid="`ps ax|/bin/grep ssh|/bin/grep ':22'|/bin/grep -v 'grep'|awk -F ' ' '{print $1}'`"
+        pid="`ps ax|/bin/grep ssh|/bin/grep ':666'|/bin/grep -v 'grep'|awk -F ' ' '{print $1}'`"
         if [ "$pid" != "" ]; then
             echo "--> Killing old reverse SSH..."
             kill -9 $pid
@@ -62,7 +62,7 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
         fi
  
         echo "--> Starting reverse SSH..."
-        export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_SSH:localhost:22 cultipi@$REVERSE_IP
+        export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_SSH:localhost:666 cultipi@$REVERSE_IP
         echo "...ok"
     fi
 
