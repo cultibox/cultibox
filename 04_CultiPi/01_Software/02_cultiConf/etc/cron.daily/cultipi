@@ -26,13 +26,7 @@ fi
 /usr/bin/dpkg --configure -a --force-confdef --force-confold
 
 echo "--> Updating repositories..."
-apt-get update -o Dir::Etc::sourcelist="sources.list.d/cultibox.list"  -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
-
-for file in "`ls /etc/apt/sources.list.d/cultibox-*.list 2>/dev/null`"; do
-    if [ "$file" != "" ]; then
-        apt-get update -o Dir::Etc::sourcelist="$file" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
-    fi
-done
+apt-get update
 echo "...ok"
 
 if [ "`apt-get -u upgrade --assume-no|grep cultipi`" != "" ]; then
@@ -142,7 +136,6 @@ rm -Rf /var/www/cultibox/main/templates_c/*.ser 2>/dev/null
 if [ -f /etc/culticonf/packages ]; then
     packages="`cat /etc/culticonf/packages`"
     if [ "$packages" != "" ]; then
-        apt-get update
         for pack in $packages; do
             if [ "`dpkg -l $pack 2>/dev/null|grep ii`" == "" ]; then
                 echo "--> Installing package $pack..."
@@ -155,32 +148,17 @@ if [ -f /etc/culticonf/packages ]; then
                     echo "...ok"
                 fi
             fi
-        done
-        apt-get clean
-    fi
-fi
-
-if [ -f /var/lock/REBOOT_NEEDED ]; then
-    echo "--> Rebooting system by lock file..."
-    rm -Rf /var/lock/REBOOT_NEEDED
-    shutdown -r now
-    echo "...ok"
-fi
-
-uptime=$(</proc/uptime)
-uptime=${uptime%%.*}
-
-if [ "$uptime" != "" ]; then
-    if [ $uptime -gt 432000 ]; then
-        echo "--> Rebooting system by uptime..."
-        shutdown -r now
-        echo "...ok"
+        done       
     fi
 fi
 
 
 /sbin/iw reg set FR
 
+echo "--> Cleaning tmp directory..."
+rm -Rf /tmp/*
+echo "...ok"
+	
 if [ ! -f /var/lock/UPGRADE ]; then
     nohup /bin/bash -c 'sleep 3600 && /etc/cron.daily/cultipi --now' >/dev/null 2>&1 &
     touch /var/lock/UPGRADE
@@ -188,6 +166,17 @@ else
     rm -f /var/lock/UPGRADE
 fi
 
-echo "--> Cleaning tmp directory..."
-rm -Rf /tmp/*
-echo "...ok"
+uptime=$(</proc/uptime)
+uptime=${uptime%%.*}
+if [ -f /var/lock/REBOOT_NEEDED ]; then
+    echo "--> Rebooting system by lock file..."
+    rm -Rf /var/lock/REBOOT_NEEDED
+    shutdown -r now
+    echo "...ok"
+elif [ "$uptime" != "" ]; then
+    if [ $uptime -gt 432000 ]; then
+        echo "--> Rebooting system by uptime..."
+        shutdown -r now
+        echo "...ok"
+    fi
+fi	
