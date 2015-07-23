@@ -643,5 +643,5 @@ fi
 if [ $VERSION -lt 150723 ]; then
 	#Changing reverse SSH default port: rebooting
 	touch /var/lock/REBOOT_NEEDED 
-	echo "150721" > /VERSION
+	echo "150723" > /VERSION
 fi
