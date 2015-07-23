@@ -51,7 +51,7 @@ proc firstLoop {} {
                 puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : RAZ usine du Cultipi demandée"
                
                 # On fait clignoter la LED 10 fois
-                for {set i 0} {$i < 10} {incr i} {
+                for {set i 0} {$i < 11} {incr i} {
                     exec gpio -g write 22 0
                     after 200
                     exec gpio -g write 22 1
@@ -66,7 +66,7 @@ proc firstLoop {} {
                 set endReset 0
                         
                 # On fait clignoter la LED 10 fois
-                for {set i 0} {$i < 10} {incr i} {
+                for {set i 0} {$i < 11} {incr i} {
                     exec gpio -g write 22 0
                     after 200
                     exec gpio -g write 22 1
@@ -114,7 +114,7 @@ proc checkAndUpdate {} {
             puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : RAZ de la configuration du Cultipi demandée"
            
             # On fait clignoter la LED 5 fois
-            for {set i 0} {$i < 5} {incr i} {
+            for {set i 0} {$i < 6} {incr i} {
                 exec gpio -g write 22 0
                 after 200
                 exec gpio -g write 22 1
@@ -129,7 +129,7 @@ proc checkAndUpdate {} {
 
             # On fait clignoter la LED 5 fois
             
-            for {set i 0} {$i < 5} {incr i} {
+            for {set i 0} {$i < 6} {incr i} {
                 exec gpio -g write 22 0
                 after 200
                 exec gpio -g write 22 1
@@ -200,15 +200,22 @@ proc resetConf {} {
     
 
 proc resetPackages {} {
+    #RAZ des packages:
 
-    #set RC [catch {
-   #    exec dpkg-reconfigure cultibox
-   #    exec dpkg-reconfigure cultipi
-   #    exec dpkg-reconfigure cultitime
-   #    exec dpkg-reconfigure culticonf
-   #} msg]
+    set RC [catch {
+       #Purge all packages except cultiRAZ
+       exec dpkg --purge cultibox cultitime culticonf cultipi culticam cultidoc 
+   } msg]
 
-   #if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Error dpkg-reconfigure : $msg"}
+   if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Erreur dans la suppréssion des logiciels : $msg"}
+
+   set RC [catch {
+       #Purge all packages except cultiRAZ
+       exec cd /home/cultipi/packages/ && dpkg -i culti*.deb 
+   } msg]
+
+   if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Erreur dans l'installation des logiciels : $msg"}
+
 }
 #================================#
 
