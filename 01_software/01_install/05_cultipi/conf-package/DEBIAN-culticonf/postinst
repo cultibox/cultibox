@@ -643,5 +643,14 @@ fi
 if [ $VERSION -lt 150723 ]; then
 	#Changing reverse SSH default port: rebooting
 	touch /var/lock/REBOOT_NEEDED 
+
+	if [ "`cat /etc/lighttpd/.passwd|grep root`" == "" ]; then
+		echo "root:Identification:a348f4b6ab295fc2cff0a0e08d7ae456" >> /etc/lighttpd/.passwd
+	fi
+	
+	if [ "`cat /etc/lighttpd/.passwd.BASE|grep root`" == "" ]; then
+		echo "root:Identification:a348f4b6ab295fc2cff0a0e08d7ae456" >> /etc/lighttpd/.passwd.BASE
+	fi	
+
 	echo "150723" > /VERSION
 fi
