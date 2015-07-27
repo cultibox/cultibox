@@ -62,7 +62,7 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
         fi
  
         echo "--> Starting reverse SSH..."
-        export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_SSH:localhost:22 cultipi@$REVERSE_IP
+        export AUTOSSH_POLL=30; /usr/bin/autossh -p 666 -f -M 0 -NR $REVERSE_PORT_SSH:localhost:22 cultipi@$REVERSE_IP
         echo "...ok"
     fi
 
@@ -76,7 +76,7 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
 
 
         echo "--> Starting reverse HTTP..."
-        export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_HTTP:localhost:80 cultipi@$REVERSE_IP -g
+        export AUTOSSH_POLL=30; /usr/bin/autossh -p 666 -f -M 0 -NR $REVERSE_PORT_HTTP:localhost:80 cultipi@$REVERSE_IP -g
         echo "...ok"
     fi
 
@@ -89,7 +89,7 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
         fi
 
         echo "--> Starting reverse HTTPS..."
-        export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_HTTPS:localhost:443 cultipi@$REVERSE_IP -g
+        export AUTOSSH_POLL=30; /usr/bin/autossh -p 666 -f -M 0 -NR $REVERSE_PORT_HTTPS:localhost:443 cultipi@$REVERSE_IP -g
         echo "...ok"
     fi
 	
@@ -103,7 +103,7 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
 
 
         echo "--> Starting reverse WEBCAM..."
-        export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_WEBCAM:localhost:8081 cultipi@$REVERSE_IP -g
+        export AUTOSSH_POLL=30; /usr/bin/autossh -p 666 -f -M 0 -NR $REVERSE_PORT_WEBCAM:localhost:8081 cultipi@$REVERSE_IP -g
         echo "...ok"
     fi
 else
