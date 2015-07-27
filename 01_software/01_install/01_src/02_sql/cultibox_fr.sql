@@ -217,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `programs` (
   `plug_id` int(11) NOT NULL,
   `time_start` varchar(6) NOT NULL,
   `time_stop` varchar(6) NOT NULL,
-  `value` decimal(3,1) NOT NULL,
+  `value` decimal(5,1) NOT NULL,
   `number` int(11) NOT NULL DEFAULT '1',
   `date_start` varchar(10) NOT NULL DEFAULT '0000-00-00',
   `date_end` varchar(10) NOT NULL DEFAULT '0000-00-00',
