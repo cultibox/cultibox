@@ -1,12 +1,12 @@
 #!/bin/bash
 
 function check_package_manager {
-    count = 0
-    while [ "`ps ax|grep apt|grep -v 'grep'`" != "" ] || [ "`ps ax|grep dpkg|grep -v 'grep'`" != "" ];do
+    count=0
+    while [ "`ps ax|grep 'apt-'|grep -v 'grep'`" != "" ] || [ "`ps ax|grep dpkg|grep -v 'grep'`" != "" ];do
         sleep 3
-        count = `expr $count + 1`
+        count=`expr $count + 1`
 
-        if [ $count -gt 20 ]; then
+        if [ $count -gt 100 ]; then
             return 1
         fi
     done

@@ -3,6 +3,26 @@
 exec 2>&1
 exec > >(logger -t "culticron.hourly")
 
-echo "Updating repositories..."
+function check_package_manager {
+    count=0
+    while [ "`ps ax|grep 'apt-'|grep -v 'grep'`" != "" ] || [ "`ps ax|grep dpkg|grep -v 'grep'`" != "" ];do
+        sleep 3
+        count=`expr $count + 1`
+
+        if [ $count -gt 100 ]; then
+            return 1
+        fi
+    done
+    return 0
+}
+
+
+check_package_manager
+if [ $? -eq 1 ]; then
+    echo "--> Error, a package manager is already running... exiting"
+    exit 1
+fi
+
+echo "--> Updating repositories..."
 apt-get update
 echo "...ok"
