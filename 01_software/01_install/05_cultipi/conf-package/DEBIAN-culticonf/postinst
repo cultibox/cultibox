@@ -38,7 +38,7 @@ if [ -f /usr/bin/mjpg_streamer ]; then
 fi
 
 
-if [ "`cat /etc/crontab|grep culticron`" == "" ]; then
+if [ "`cat /etc/crontab|grep '[c]ulticron'`" == "" ]; then
     echo "*/1 *   * * *   root    /bin/bash /etc/default/culticron" >> /etc/crontab
 fi
 
