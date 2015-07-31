@@ -59,7 +59,8 @@ proc firstLoop {} {
                     update
                 }
                 
-               
+              
+                resetPackages 
                 set ::compteur 0
                 resetConf
                 vwait endReset  
@@ -178,23 +179,10 @@ proc resetConf {} {
 
     if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Erreur lors du RAZ du mot de passe lighttpd : $msg"}
 
-    #On redémare les services:
+    #On redémare le cultipi:
     set RC [catch {
-        exec /sbin/modprobe -r rt2800usb
-        after 2000 exec /sbin/modprobe rt2800usb
+        exec /sbin/shutdown -r now
     } msg]
-
-
-    if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Erreur lors du RAZ des services réseaux : $msg"}
-
-    set RC [catch {
-        after 5000 exec /usr/sbin/invoke-rc.d networking force-reload; echo ""
-    } msg]
-
-    set RC [catch {
-        after 5000 exec /usr/sbin/invoke-rc.d lighttpd force-reload
-    } msg]
-
     set endReset 1
 }
     
@@ -204,14 +192,17 @@ proc resetPackages {} {
 
     set RC [catch {
        #Purge all packages except cultiRAZ
-       exec dpkg --purge cultibox cultitime culticonf cultipi culticam cultidoc 
+       exec dpkg --purge cultibox cultitime culticonf culticam cultidoc cultipi
    } msg]
 
-   if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Erreur dans la suppréssion des logiciels : $msg"}
-
    set RC [catch {
-       #Purge all packages except cultiRAZ
-       exec cd /home/cultipi/packages/ && dpkg -i culti*.deb 
+       #Install all packages except cultiRAZ
+       exec dpkg -i /home/cultipi/packages/cultipi.deb 
+       exec dpkg -i /home/cultipi/packages/cultibox.deb
+       exec dpkg -i /home/cultipi/packages/cultitime.deb
+       exec dpkg -i /home/cultipi/packages/culticam.deb
+       exec dpkg -i /home/cultipi/packages/cultidoc.deb
+       exec dpkg -i /home/cultipi/packages/culticonf.deb
    } msg]
 
    if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Erreur dans l'installation des logiciels : $msg"}
@@ -222,6 +213,7 @@ proc resetPackages {} {
 
 puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Vérification de la remise en état usine du Cultipi"
 firstLoop
+vwait firstLoopFinish
 
 puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Vérification de l'effacement de la configuration du Cultipi"
 
