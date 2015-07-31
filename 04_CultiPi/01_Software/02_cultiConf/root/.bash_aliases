@@ -1,4 +1,6 @@
 alias cpiwget='wget --password=cultipi --user=cultipi -O - -q'
+alias cpisynconf='wget --password=cultipi --user=cultipi http://localhost/cultibox/main/modules/external/sync_conf.php'
+alias cpicreateconf='wget --password=cultipi --user=cultipi http://localhost/cultibox/main/modules/external/check_and_update_sd.php?sd_card=/etc/cultipi/conf_tmp'
 alias cpilog='tail -f /var/log/cultipi/cultipi.log'
 alias cpislog='tail -f /var/log/cultipi/cultipi-service.log'
 alias cpireload='/etc/init.d/cultipi force-reload'
