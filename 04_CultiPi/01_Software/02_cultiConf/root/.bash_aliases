@@ -19,3 +19,10 @@ function cpisplug {
     tclsh /opt/cultipi/cultiPi/set.tcl serverPlugUpdate localhost $*
 }
 
+function cpiversion {
+    for PACKAGE in cultipi cultibox cultiraz cultitime cultidoc culticam culticonf
+    do
+        version=$(dpkg -s $PACKAGE 2>/dev/null|grep Version)
+        echo "$PACKAGE : $version"
+    done
+}
