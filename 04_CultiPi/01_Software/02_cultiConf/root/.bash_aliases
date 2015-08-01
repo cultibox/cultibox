@@ -1,11 +1,11 @@
-alias cpiwget='wget --password=cultipi --user=cultipi -O - -q'
-alias cpisynconf='wget --password=cultipi --user=cultipi http://localhost/cultibox/main/modules/external/sync_conf.php'
-alias cpicreateconf='wget --password=cultipi --user=cultipi http://localhost/cultibox/main/modules/external/check_and_update_sd.php?sd_card=/etc/cultipi/conf_tmp'
+alias cpiwget='wget --user=root --password=_cultipi38_ -O -'
+alias cpisynconf='wget --password=_cultipi38_ --user=root http://localhost/cultibox/main/modules/external/sync_conf.php -O -'
+alias cpicreateconf='wget --password=_cultipi38_ --user=root http://localhost/cultibox/main/modules/external/check_and_update_sd.php?sd_card=/etc/cultipi/conf_tmp -O -'
 alias cpilog='tail -f /var/log/cultipi/cultipi.log'
 alias cpislog='tail -f /var/log/cultipi/cultipi-service.log'
 alias cpireload='/etc/init.d/cultipi force-reload'
 alias cpimysql='mysql -u cultibox -pcultibox cultibox '
-alias cpiupdate='bash -x /etc/cron.daily/cultipi --now'
+alias cpiupdate='bash -x /etc/cron.daily/cultipi --now --manual'
 
 function cpirsensor { 
     tclsh /opt/cultipi/cultiPi/get.tcl serverAcqSensor localhost "::sensor($1,value)"
