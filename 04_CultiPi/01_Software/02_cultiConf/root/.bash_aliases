@@ -6,19 +6,19 @@ alias cpiupdate='bash -x /etc/cron.daily/cultipi --now --manual'
 
 function cpiwget {
     echo "password:"
-    read PASSWORD
+    read -s PASSWORD
     wget --user=root --password=$PASSWORD -O -
 }
 
 function cpisynconf {
     echo "password:"
-    read PASSWORD
+    read -s PASSWORD
     wget --password=$PASSWORD --user=root http://localhost/cultibox/main/modules/external/sync_conf.php -O -
 }
 
 function cpicreateconf {
     echo "password:"
-    read PASSWORD
+    read -s PASSWORD
     wget --password=$PASSWORD --user=root http://localhost/cultibox/main/modules/external/check_and_update_sd.php?sd_card=/etc/cultipi/conf_tmp -O -
 }
 
