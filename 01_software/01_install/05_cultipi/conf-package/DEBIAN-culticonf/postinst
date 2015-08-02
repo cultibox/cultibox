@@ -33,6 +33,14 @@ if [ -f /etc/culticonf/packages ]; then
     chown root:root /etc/culticonf/packages
 fi
 
+if [ -f /root/.bash_aliases ]; then
+    chown root:root /root/.bash_aliases
+fi
+
+if [ -f /homme/cultipi/.bash_aliases ]; then
+    chown cultipi:cultipi /home/cultipi/.bash_aliases
+fi
+
 if [ -f /usr/bin/mjpg_streamer ]; then
     chmod 755 /usr/bin/mjpg_streamer
 fi
