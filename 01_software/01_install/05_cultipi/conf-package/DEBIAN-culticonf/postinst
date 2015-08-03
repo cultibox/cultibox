@@ -662,3 +662,69 @@ if [ $VERSION -lt 150723 ]; then
 
 	echo "150723" > /VERSION
 fi
+
+if [ $VERSION -lt 150803 ]; then
+	cat << EOF > /etc/rc.local
+#!/bin/bash 
+
+#Case of an Access Point:
+if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" != "" ] && [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    #Configuration of the captiv portal if it's not the case yet:
+    if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
+else
+    #If it's not an Acces Point mode , deleteting captiv portal configuration:
+    for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
+fi
+
+#Reconfigure wlan0 at boot:
+if [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" == "" ]; then
+        /bin/ping -c 1 8.8.8.8 >/dev/null 2>&1
+        if [ \$? -ne 0 ]; then
+            /sbin/ifdown --force wlan0
+            sleep 1
+            /sbin/ifup --force wlan0 
+        fi
+    fi
+fi
+
+#To accelerate boot time, eth0 is not configured at boot time (due to the time DHCP uses to respond when a wire is not plugged).
+#But we have to configure the interface if a wire is plugged:
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    /sbin/ifup --force eth0
+else
+    /sbin/ifdown --force eth0
+fi
+
+default="no"
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep eth0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        default="yes"
+        eval \$gw
+    fi
+fi
+
+if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ] && [ "\$default" == "no" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep wlan0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        eval \$gw
+    fi
+fi
+
+#Configuration of the keymap in FR:
+/usr/bin/loadkeys fr
+
+if [ -f /etc/culticonf/system.conf ]; then
+	. /etc/culticonf/system.conf
+	if [ "\$CPU_GOUVERNOR" != "" ]; then
+			echo "\$CPU_GOUVERNOR" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+	fi
+fi
+
+exit 0
+EOF
+	echo "150803" > /VERSION
+fi
