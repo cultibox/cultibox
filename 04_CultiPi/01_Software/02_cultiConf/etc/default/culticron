@@ -152,3 +152,10 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
     fi
 fi
 
+if [ "`ls /var/www/cultibox/main/templates_c/*.ser 2>/dev/null`" != "" ]; then
+    for file in `ls /var/www/cultibox/main/templates_c/*.ser 2>/dev/null`; do
+        if [ "`ls -lh  $file| cut -d \" \" -f5`" == "0" ]; then
+            rm $file
+        fi
+    done
+fi
