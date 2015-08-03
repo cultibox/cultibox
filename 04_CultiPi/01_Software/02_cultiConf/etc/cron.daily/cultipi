@@ -2,7 +2,7 @@
 
 function check_package_manager {
     count=0
-    while [ "`ps ax|grep 'apt-'|grep -v 'grep'`" != "" ] || [ "`ps ax|grep 'dpkg -'|grep -v 'grep'`" != "" ];do
+    while [ "`ps ax|grep 'apt-'|grep -v 'grep'`" != "" ] || [ "`ps ax|grep 'dpkg -i'|grep -v 'grep'`" != "" ]; do
         sleep 3
         count=`expr $count + 1`
 
@@ -49,22 +49,107 @@ echo "--> Updating repositories..."
 apt-get update
 echo "...ok"
 
-for PACKAGE in cultipi cultibox cultiraz cultitime cultidoc culticam culticonf
-do
-    if [ "`apt-get -u upgrade --assume-no|grep $PACKAGE`" != "" ]; then
-        echo "--> Upgrading $PACKAGE package..."
-        sleep 2
-        apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" $PACKAGE
-        echo "...ok"
-    elif [ "`dpkg -s $PACKAGE 2>/dev/null|grep Version`" == "" ]; then
-        echo "--> Installing $PACKAGE package..."
-        sleep 2
-        apt-get install -y  --force-yes $PACKAGE
-        echo "...ok"
-    else
-        echo "--> $PACKAGE package is up-to-date"
-    fi
-done
+if [ "`apt-get -u upgrade --assume-no|grep cultipi`" != "" ]; then
+    echo "--> Upgrading cultipi package..."
+	sleep 2
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultipi
+    echo "...ok"
+elif [ "`dpkg -s cultipi 2>/dev/null|grep Version`" == "" ]; then
+    echo "--> Installing cultipi package..."
+	sleep 2
+    apt-get install -y  --force-yes cultipi
+    echo "...ok"
+else
+	echo "--> Cultipi package is up-to-date"
+fi
+
+if [ "`apt-get -u upgrade --assume-no|grep cultibox`" != "" ]; then
+    echo "--> Upgrading cultibox package..."
+	sleep 2
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultibox
+    rm -Rf /var/cache/lighttpd/compress/*
+    /etc/init.d/lighttpd force-reload
+    echo "...ok"
+elif [ "`dpkg -s cultibox 2>/dev/null|grep Version`" == "" ]; then
+    echo "--> Installing cultibox package..."
+	sleep 2
+    apt-get install -y  --force-yes cultibox
+    echo "...ok"
+else
+	echo "--> Cultibox package is up-to-date"
+fi
+
+if [ "`apt-get -u upgrade --assume-no|grep cultiraz`" != "" ]; then
+    echo "--> Upgrading cultiraz package..."
+	sleep 2
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultiraz
+    echo "...ok"
+elif [ "`dpkg -s cultiraz 2>/dev/null|grep Version`" == "" ]; then
+    echo "--> Installing cultiraz package..."
+	sleep 2 
+    apt-get install -y  --force-yes cultiraz
+    echo "...ok"
+else
+	echo "--> CultiRAZ package is up-to-date"
+fi
+
+
+if [ "`apt-get -u upgrade --assume-no|grep cultitime`" != "" ]; then
+    echo "--> Upgrading cultitime package..."
+	sleep 2
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultitime
+    echo "...ok"
+elif [ "`dpkg -s cultitime 2>/dev/null|grep Version`" == "" ]; then
+    echo "--> Installing cultitime package..."
+	sleep 2
+    apt-get install -y  --force-yes cultitime
+    echo "...ok"
+else
+	echo "--> Cultitime package is up-to-date"
+fi
+
+if [ "`apt-get -u upgrade --assume-no|grep cultidoc`" != "" ]; then
+    echo "--> Upgrading cultidoc package..."
+	sleep 2
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultidoc
+    echo "...ok"
+elif [ "`dpkg -s cultidoc 2>/dev/null|grep Version`" == "" ]; then
+    echo "--> Installing cultidoc package..."
+	sleep 2
+    apt-get install -y  --force-yes cultidoc
+    echo "...ok"
+else
+	echo "--> Cultidoc package is up-to-date"
+fi
+
+if [ "`apt-get -u upgrade --assume-no|grep culticam`" != "" ]; then
+    echo "--> Upgrading culticam package..."
+	sleep 2
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" culticam
+    echo "...ok"
+elif [ "`dpkg -s culticam 2>/dev/null|grep Version`" == "" ]; then
+    echo "--> Installing culticam package..."
+	sleep 2
+    apt-get install -y  --force-yes culticam
+    echo "...ok"
+else
+	echo "--> Culticam package is up-to-date"
+fi
+
+if [ "`apt-get -u upgrade --assume-no|grep culticonf`" != "" ]; then
+    echo "--> Upgrading culticonf package..."
+	sleep 2
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" culticonf
+    echo "...ok"
+elif [ "`dpkg -s culticonf 2>/dev/null|grep Version`" == "" ]; then
+    echo "--> Installing culticonf package..."
+	sleep 2
+    apt-get install -y  --force-yes culticonf
+    echo "...ok"
+else
+	echo "--> Culticonf package is up-to-date"
+fi
+
 
 
 if [ -d /var/www/cultibox/tmp/import ]; then

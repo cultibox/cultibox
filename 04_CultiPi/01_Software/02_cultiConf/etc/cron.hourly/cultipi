@@ -5,7 +5,7 @@ exec > >(logger -t "culticron.hourly")
 
 function check_package_manager {
     count=0
-    while [ "`ps ax|grep 'apt-'|grep -v 'grep'`" != "" ] || [ "`ps ax|grep dpkg|grep -v 'grep'`" != "" ];do
+        while [ "`ps ax|grep 'apt-'|grep -v 'grep'`" != "" ] || [ "`ps ax|grep 'dpkg -i'|grep -v 'grep'`" != "" ] || [ "`ps ax|grep 'cron.daily/cultipi'|grep -v 'grep'`" != "" ]; do
         sleep 3
         count=`expr $count + 1`
 
