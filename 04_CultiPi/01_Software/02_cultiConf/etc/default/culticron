@@ -124,6 +124,7 @@ fi
 
 # Check aliveness of wlan connection:
 if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
+    /sbin/iwconfig wlan0 power off
     ip="`/sbin/ifconfig wlan0 | grep \"inet adr\" | awk -F: '{print $2}' | awk '{print $1}'`"
     # If no ip address is defined but wlan exists, we have to restart wlan configuration:
     if [ "$ip" == "" ]; then
@@ -141,11 +142,27 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
                 # If we can't access the gateway, we have lost the connection, we have to restart the connection:
                 /bin/ping -c 1 $gw >/dev/null 2>&1
                 if [ $? -ne 0 ]; then
-                    echo "--> Restarting wlan configuration, gateway unreachable..."
-                    /sbin/ifdown wlan0
-                    sleep 2
-                    /sbin/ifup --force wlan0
-                    echo "...ok"
+                    if [ -f /tmp/gw_check ]; then
+                        gw_check="`cat /tmp/gw_check`"
+                    else
+                        gw_check=0
+                    fi
+
+
+                    gw_check=`expr $gw_check + 1`
+                    if [ $gw_check -ge 5 ]; then
+                        echo "--> Restarting wlan configuration, gateway unreachable..."
+                        /sbin/ifdown wlan0
+                        sleep 2
+                        /sbin/ifup --force wlan0
+                        echo "...ok"
+                    else
+                        echo "$gw_check" > /tmp/gw_check
+                    fi
+                else
+                    if [ -f /tmp/gw_check ]; then
+                        rm /tmp/gw_check
+                    fi
                 fi
             fi
         fi

@@ -156,12 +156,18 @@ if [ -d /var/www/cultibox/tmp/import ]; then
     echo "--> Cleaning import directory..."
     rm -Rf /var/www/cultibox/tmp/import/*
     echo "...ok"
+else
+    mkdir /var/www/cultibox/tmp/import
+	chown www-data:www-data /var/www/cultibox/tmp/import
 fi
 
 if [ -d /var/www/cultibox/tmp/export ]; then
     echo "--> Cleaning cultibox directory..."
     rm -Rf /var/www/cultibox/tmp/export/*
     echo "...ok"
+else
+	mkdir /var/www/cultibox/tmp/export
+	chown www-data:www-data /var/www/cultibox/tmp/export
 fi
 
 rm -Rf /var/www/cultibox/main/templates_c/*.ser 2>/dev/null
