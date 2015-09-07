@@ -800,7 +800,6 @@ EOF
 fi
 
 
-
 if [ $VERSION -lt 150824 ]; then
 	cat << EOF > /etc/rc.local
 #!/bin/bash 
@@ -867,4 +866,9 @@ fi
 exit 0
 EOF
 	echo "150824" > /VERSION
+fi
+
+if [ $VERSION -lt 150907 ]; then
+	echo "options 8192cu rtw_power_mgnt=0 rtw_enusbss=0" > /etc/modprobe.d/8192cu.conf
+	echo "150907" > /VERSION
 fi

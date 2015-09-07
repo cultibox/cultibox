@@ -131,6 +131,9 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
     if [ "$ip" == "" ]; then
         echo "--> Restarting wlan configuration, wlan not configured..."
         /sbin/ifdown wlan0
+		sleep 2
+		/sbin/rmmod 8192cu 2>/dev/null
+		/sbin/modprobe 8192cu 2>/dev/null
         sleep 2
         /sbin/ifup --force wlan0
         echo "...ok"
@@ -155,6 +158,9 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
                         echo "--> Restarting wlan configuration, gateway unreachable..."
                         /sbin/ifdown wlan0
                         sleep 2
+						/sbin/rmmod 8192cu 2>/dev/null
+						/sbin/modprobe 8192cu 2>/dev/null
+						sleep 2
                         /sbin/ifup --force wlan0
                         echo "...ok"
                     else
