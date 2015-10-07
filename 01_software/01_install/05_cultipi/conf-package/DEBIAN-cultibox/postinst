@@ -8,7 +8,7 @@ if [  "`cat /etc/sudoers|grep www-data|grep ifconfig`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /sbin/ifconfig" >> /etc/sudoers
 fi
  
-if [  "`cat /etc/sudoers|grep www-data|grep iwlist`" == "" ]; then
+if [  "`cat /etc/sudoers|grep www-data|grep iw`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /usr/sbin/iw" >> /etc/sudoers
 fi
  
