@@ -158,9 +158,22 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
                         echo "--> Restarting wlan configuration, gateway unreachable..."
                         /sbin/ifdown wlan0
                         sleep 2
-						/sbin/rmmod 8192cu 2>/dev/null
-						/sbin/modprobe 8192cu 2>/dev/null
-						sleep 2
+                        if [ "`lsmod |grep ath9k`" != "" ]; then
+                            /sbin/rmmod ath9k_htc
+                            /sbin/rmmod ath9k_common
+                            /sbin/rmmod ath9k_hw
+                            /sbin/rmmod ath
+                            sleep 5
+                            /sbin/modprobe ath9k_htc
+                            /sbin/modprobe ath9k_common
+                            /sbin/modprobe ath9k_hw
+                            /sbin/modprobe ath
+                         else
+                            /sbin/rmmod 8192cu 2>/dev/null
+                            sleep 5
+                            /sbin/modprobe 8192cu 2>/dev/null
+                            sleep 5
+                        fi
                         /sbin/ifup --force wlan0
                         echo "...ok"
                     else
