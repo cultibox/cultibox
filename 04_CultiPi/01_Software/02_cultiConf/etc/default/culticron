@@ -125,7 +125,7 @@ fi
 # Check aliveness of wlan connection:
 if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
     /sbin/iwconfig wlan0 power off
-    ip="`/sbin/ifconfig wlan0 | grep \"inet adr\" | awk -F: '{print $2}' | awk '{print $1}'`"
+    ip="`/sbin/ifconfig wlan0 | grep \"inet addr\" | awk -F: '{print $2}' | awk '{print $1}'`"
     # If no ip address is defined but wlan exists, we have to restart wlan configuration:
     if [ "$ip" == "" ]; then
         echo "--> Restarting wlan configuration, wlan not configured..."
