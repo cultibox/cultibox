@@ -48,6 +48,10 @@ if [  "`cat /etc/sudoers|grep www-data|grep iptables`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /sbin/iptables" >> /etc/sudoers
 fi
 
+if [  "`cat /etc/sudoers|grep www-data|grep ntp`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /etc/init.d/ntp" >> /etc/sudoers
+fi
+
 if [  "`cat /etc/sudoers|grep www-data|grep date`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /bin/date" >> /etc/sudoers
 fi
