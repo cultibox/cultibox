@@ -52,8 +52,10 @@ revision=`date +%y%m%d%H%M`
 
 case "$1" in
       "cultipi")
-           rm -Rf ../01_src/01_xampp/*
-           mkdir -p ../01_src/01_xampp/cultipi
+           if [ -d ../01_src/01_xampp ]; then
+		       rm -Rf ../01_src/01_xampp/*
+           fi
+		   mkdir -p ../01_src/01_xampp/cultipi
            cp -R ./conf-package/DEBIAN-cultipi ../01_src/01_xampp/cultipi/DEBIAN
 
            mkdir -p ../01_src/01_xampp/cultipi/opt/cultipi
