@@ -3,3 +3,5 @@ ttf-mscorefonts-installer
 tcl-tls
 autossh
 libjpeg62-dev
+python3
+python3-pip

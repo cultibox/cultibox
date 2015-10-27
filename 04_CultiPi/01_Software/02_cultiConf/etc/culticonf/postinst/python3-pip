@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pip-3.2 install pyusb
