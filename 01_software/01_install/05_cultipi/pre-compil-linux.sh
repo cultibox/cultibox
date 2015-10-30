@@ -85,6 +85,7 @@ case "$1" in
            cp -R ./conf-package/DEBIAN-cultibox ../01_src/01_xampp/cultibox/DEBIAN
 
            cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/var/www/cultibox
+		   cp -R ../../02_src/mobile ../01_src/01_xampp/cultibox/var/www/mobile
            rm -Rf ../01_src/01_xampp/cultibox/var/www/cultibox/main/cultibox.wiki
            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/var/www/cultibox/VERSION.txt
 

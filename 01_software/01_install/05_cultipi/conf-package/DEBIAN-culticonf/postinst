@@ -936,3 +936,147 @@ exit 0
 EOF
 	echo "151027" > /VERSION
 fi
+
+if [ $VERSION -lt 151030 ]; then
+
+	cat << EOF > /tmp/https
+server.modules = (
+   "mod_access",
+   "mod_alias",
+   "mod_compress",
+   "mod_redirect",
+   "mod_auth"
+   #"mod_rewrite",
+)
+
+server.document-root        = "/var/www"
+server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+server.errorlog             = "/var/log/lighttpd/error.log"
+server.pid-file             = "/var/run/lighttpd.pid"
+server.username             = "www-data"
+server.groupname            = "www-data"
+server.port                 = 80
+
+auth.backend = "htdigest"
+auth.backend.htdigest.userfile = "/etc/lighttpd/.passwd"
+auth.debug = 2
+
+index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+
+compress.cache-dir          = "/var/cache/lighttpd/compress/"
+compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+
+# default listening port for IPv6 falls back to the IPv4 port
+include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+include_shell "/usr/share/lighttpd/create-mime.assign.pl"
+include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
+
+\$SERVER["socket"] == ":443" {
+  ssl.engine = "enable"
+  ssl.pemfile = "/etc/lighttpd/ssl/cultipi.pem"
+}
+
+
+\$HTTP["scheme"] == "http" {
+    # capture vhost name with regex conditiona -> %0 in redirect pattern
+    # must be the most inner block to the redirect rule
+    \$HTTP["host"] =~ ".*" {
+        url.redirect = (".*" => "https://%0\$0")
+    }
+}
+
+\$HTTP["url"] =~ "^/mobile" {
+    auth.require = ( "/mobile/" =>
+        (
+        "method" => "digest",
+        "realm" => "Identification",
+        "require" => "valid-user"
+        )
+    )
+}
+
+\$HTTP["url"] !~ "^/mobile" {
+     url.redirect = ("^/\$" => "/cultibox/")
+}
+
+auth.require = ( "/cultibox/" =>
+    (
+    "method" => "digest",
+    "realm" => "Identification",
+    "require" => "valid-user"
+    )
+)	
+EOF
+
+
+
+	cat << EOF > /tmp/http
+server.modules = (
+   "mod_access",
+   "mod_alias",
+   "mod_compress",
+   "mod_redirect",
+   "mod_auth"
+   #"mod_rewrite",
+)
+
+server.document-root        = "/var/www"
+server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+server.errorlog             = "/var/log/lighttpd/error.log"
+server.pid-file             = "/var/run/lighttpd.pid"
+server.username             = "www-data"
+server.groupname            = "www-data"
+server.port                 = 80
+
+auth.backend = "htdigest"
+auth.backend.htdigest.userfile = "/etc/lighttpd/.passwd"
+auth.debug = 2
+
+index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+
+compress.cache-dir          = "/var/cache/lighttpd/compress/"
+compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+
+# default listening port for IPv6 falls back to the IPv4 port
+include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+include_shell "/usr/share/lighttpd/create-mime.assign.pl"
+include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
+
+\$HTTP["url"] =~ "^/mobile" {
+    auth.require = ( "/mobile/" =>
+        (
+        "method" => "digest",
+        "realm" => "Identification",
+        "require" => "valid-user"
+        )
+    )
+}
+
+\$HTTP["url"] !~ "^/mobile" {
+     url.redirect = ("^/\$" => "/cultibox/")
+}
+
+
+auth.require = ( "/cultibox/" =>
+    (
+    "method" => "digest",
+    "realm" => "Identification",
+    "require" => "valid-user"
+    )
+)	
+EOF
+	if [ -f /etc/lighttpd/lighttpd.https ]; then
+		mv /tmp/http /etc/lighttpd/lighttpd.conf
+		mv /tmp/https /etc/lighttpd/lighttpd.conf.https
+	else
+		mv /tmp/http /etc/lighttpd/lighttpd.conf.base
+		mv /tmp/https /etc/lighttpd/lighttpd.conf
+	fi
+	
+	/etc/init.d/lighttpd force-reload
+	echo "151030" > /VERSION
+fi
