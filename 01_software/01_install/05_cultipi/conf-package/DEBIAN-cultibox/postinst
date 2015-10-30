@@ -3,6 +3,7 @@
 echo "  * Configuring/checking Cultibox environment..."
 
 chown -R www-data:www-data /var/www/cultibox
+chown -R www-data:www-data /var/www/mobile
 
 if [  "`cat /etc/sudoers|grep www-data|grep ifconfig`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /sbin/ifconfig" >> /etc/sudoers
