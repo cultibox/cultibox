@@ -937,7 +937,7 @@ EOF
 	echo "151027" > /VERSION
 fi
 
-if [ $VERSION -lt 151030 ]; then
+if [ $VERSION -lt 151031 ]; then
 
 	cat << EOF > /tmp/https
 server.modules = (
@@ -1069,7 +1069,7 @@ auth.require = ( "/cultibox/" =>
     )
 )	
 EOF
-	if [ -f /etc/lighttpd/lighttpd.https ]; then
+	if [ -f /etc/lighttpd/lighttpd.conf.https ]; then
 		mv /tmp/http /etc/lighttpd/lighttpd.conf
 		mv /tmp/https /etc/lighttpd/lighttpd.conf.https
 	else
@@ -1078,5 +1078,5 @@ EOF
 	fi
 	
 	/etc/init.d/lighttpd force-reload
-	echo "151030" > /VERSION
+	echo "151031" > /VERSION
 fi
