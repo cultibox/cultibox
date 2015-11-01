@@ -207,17 +207,9 @@ else
     rm -f /var/lock/UPGRADE
 fi
 
-uptime=$(</proc/uptime)
-uptime=${uptime%%.*}
 if [ -f /var/lock/REBOOT_NEEDED ]; then
     echo "--> Rebooting system by lock file..."
     rm -Rf /var/lock/REBOOT_NEEDED
     shutdown -r now
     echo "...ok"
-elif [ "$uptime" != "" ]; then
-    if [ $uptime -gt 432000 ]; then
-        echo "--> Rebooting system by uptime..."
-        shutdown -r now
-        echo "...ok"
-    fi
-fi	
+fi
