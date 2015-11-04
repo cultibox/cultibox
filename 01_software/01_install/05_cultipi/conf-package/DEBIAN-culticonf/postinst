@@ -15,6 +15,12 @@ if [ -f /etc/default/cultipi ]; then
     chown root:root /etc/default/cultipi
 fi
 
+if [ -f /usr/sbin/hub-ctrl ]; then
+	chown root:root /usr/sbin/hub-ctrl
+	chmod 744 /usr/sbin/hub-ctrl
+fi
+
+	
 if [ -f /etc/default/culticron ]; then
     chown root:root /etc/default/culticron
     chmod 744 /etc/default/culticron
@@ -1080,12 +1086,7 @@ EOF
 	/etc/init.d/lighttpd force-reload
 	sed -i "s/#hdmi_force_hotplug=1/hdmi_force_hotplug=1/g" /boot/config.txt
 	sed -i "s/#hdmi_drive=2/hdmi_drive=2/g" /boot/config.txt
-	
-	if [ -f /usr/sbin/hub-ctrl ]; then
-		chown root:root /usr/sbin/hub-ctrl
-		chmod 744 /usr/sbin/hub-ctrl
-	fi
-	
+		
 	if [ "`grep modprobe /etc/sudoers|grep www-data`" != "" ]; then
 		sed -i "s/.* \/sbin\/modprobe//g" /etc/sudoers
 	fi

@@ -105,6 +105,10 @@ if [  "`cat /etc/sudoers|grep www-data|grep iwlist`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /sbin/iwlist" >> /etc/sudoers
 fi
 
+if [  "`cat /etc/sudoers|grep www-data|grep pkill`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /usr/bin/pkill" >> /etc/sudoers
+fi
+
 if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "  * Installing the Cultibox software..."
     lang=`echo $LANG`
