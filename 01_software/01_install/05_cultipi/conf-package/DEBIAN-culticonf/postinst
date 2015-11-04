@@ -51,6 +51,10 @@ if [ -f /usr/bin/mjpg_streamer ]; then
     chmod 755 /usr/bin/mjpg_streamer
 fi
 
+if [ -f /usr/sbin/hostapd ]; then
+    chmod 755 /usr/sbin/hostapd
+	chown root:root /usr/sbin/hostapd
+fi
 
 if [ "`cat /etc/crontab|grep '[c]ulticron'`" == "" ]; then
     echo "*/1 *   * * *   root    /bin/bash /etc/default/culticron" >> /etc/crontab
