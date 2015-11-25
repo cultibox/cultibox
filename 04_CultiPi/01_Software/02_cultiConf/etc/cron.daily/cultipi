@@ -1,11 +1,44 @@
 #!/bin/bash
 
-exec 2>&1
-exec > >(logger -t "culticron.daily")
+function check_package_manager {
+    count=0
+    while [ "`ps ax|grep 'apt-'|grep -v 'grep'`" != "" ] || [ "`ps ax|grep 'dpkg -i'|grep -v 'grep'`" != "" ]; do
+        sleep 3
+        count=`expr $count + 1`
+
+        if [ $count -gt 100 ]; then
+            return 1
+        fi
+    done
+    return 0
+}
+
+
+while [ $# -gt 0 ]
+do
+    case "$1" in
+        (--now) now=yes;;
+        (--manual) manual=yes;;
+        (*)  break;;
+    esac
+    shift
+done
+
+
+if [ "$manual" != "yes" ]; then
+    exec 2>&1
+    exec > >(logger -t "culticron.daily")
+fi
 
 #Random sleep:
-if [ "$1" == "" ]; then
+if [ "$now" != "yes" ]; then
     sleep $[ ( $RANDOM % 3600 )  + 1 ]s
+fi
+
+check_package_manager
+if [ $? -eq 1 ]; then
+    echo "--> Error, a package manager is already running... exiting"
+    exit 1
 fi
 
 
@@ -13,86 +46,108 @@ fi
 /usr/bin/dpkg --configure -a --force-confdef --force-confold
 
 echo "--> Updating repositories..."
-apt-get update -o Dir::Etc::sourcelist="sources.list.d/cultibox.list"  -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
-
-for file in "`ls /etc/apt/sources.list.d/cultibox-*.list 2>/dev/null`"; do
-    if [ "$file" != "" ]; then
-        apt-get update -o Dir::Etc::sourcelist="$file" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
-    fi
-done
+apt-get update
 echo "...ok"
 
 if [ "`apt-get -u upgrade --assume-no|grep cultipi`" != "" ]; then
     echo "--> Upgrading cultipi package..."
+	sleep 2
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultipi
     echo "...ok"
 elif [ "`dpkg -s cultipi 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing cultipi package..."
+	sleep 2
     apt-get install -y  --force-yes cultipi
     echo "...ok"
+else
+	echo "--> Cultipi package is up-to-date"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultibox`" != "" ]; then
     echo "--> Upgrading cultibox package..."
+	sleep 2
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultibox
     rm -Rf /var/cache/lighttpd/compress/*
     /etc/init.d/lighttpd force-reload
     echo "...ok"
 elif [ "`dpkg -s cultibox 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing cultibox package..."
+	sleep 2
     apt-get install -y  --force-yes cultibox
     echo "...ok"
+else
+	echo "--> Cultibox package is up-to-date"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultiraz`" != "" ]; then
     echo "--> Upgrading cultiraz package..."
+	sleep 2
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultiraz
     echo "...ok"
 elif [ "`dpkg -s cultiraz 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing cultiraz package..."
+	sleep 2 
     apt-get install -y  --force-yes cultiraz
     echo "...ok"
+else
+	echo "--> CultiRAZ package is up-to-date"
 fi
 
 
 if [ "`apt-get -u upgrade --assume-no|grep cultitime`" != "" ]; then
     echo "--> Upgrading cultitime package..."
+	sleep 2
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultitime
     echo "...ok"
 elif [ "`dpkg -s cultitime 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing cultitime package..."
+	sleep 2
     apt-get install -y  --force-yes cultitime
     echo "...ok"
+else
+	echo "--> Cultitime package is up-to-date"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultidoc`" != "" ]; then
     echo "--> Upgrading cultidoc package..."
+	sleep 2
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" cultidoc
     echo "...ok"
 elif [ "`dpkg -s cultidoc 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing cultidoc package..."
+	sleep 2
     apt-get install -y  --force-yes cultidoc
     echo "...ok"
+else
+	echo "--> Cultidoc package is up-to-date"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep culticam`" != "" ]; then
     echo "--> Upgrading culticam package..."
+	sleep 2
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" culticam
     echo "...ok"
 elif [ "`dpkg -s culticam 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing culticam package..."
+	sleep 2
     apt-get install -y  --force-yes culticam
     echo "...ok"
+else
+	echo "--> Culticam package is up-to-date"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep culticonf`" != "" ]; then
     echo "--> Upgrading culticonf package..."
+	sleep 2
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confmiss" culticonf
     echo "...ok"
 elif [ "`dpkg -s culticonf 2>/dev/null|grep Version`" == "" ]; then
     echo "--> Installing culticonf package..."
+	sleep 2
     apt-get install -y  --force-yes culticonf
     echo "...ok"
+else
+	echo "--> Culticonf package is up-to-date"
 fi
 
 
@@ -101,28 +156,31 @@ if [ -d /var/www/cultibox/tmp/import ]; then
     echo "--> Cleaning import directory..."
     rm -Rf /var/www/cultibox/tmp/import/*
     echo "...ok"
+else
+    mkdir /var/www/cultibox/tmp/import
+	chown www-data:www-data /var/www/cultibox/tmp/import
 fi
 
 if [ -d /var/www/cultibox/tmp/export ]; then
     echo "--> Cleaning cultibox directory..."
     rm -Rf /var/www/cultibox/tmp/export/*
     echo "...ok"
+else
+	mkdir /var/www/cultibox/tmp/export
+	chown www-data:www-data /var/www/cultibox/tmp/export
 fi
 
-if [ "`ls /var/www/cultibox/tmp/webcam*.jpg 2>/dev/null`" != "" ]; then
-    echo "--> Cleaning webcam files..."
-    rm /var/www/cultibox/tmp/webcam*.jpg
-    echo "...ok"
-fi
+rm -Rf /var/www/cultibox/main/templates_c/*.ser 2>/dev/null
+
 
 if [ -f /etc/culticonf/packages ]; then
     packages="`cat /etc/culticonf/packages`"
     if [ "$packages" != "" ]; then
-        apt-get update
         for pack in $packages; do
             if [ "`dpkg -l $pack 2>/dev/null|grep ii`" == "" ]; then
                 echo "--> Installing package $pack..."
-                apt-get install -y --force-yes $pack
+                sleep 2
+				apt-get install -y --force-yes $pack
                 echo "...ok"
 
                 if [ -f /etc/culticonf/postinst/$pack ]; then
@@ -131,9 +189,22 @@ if [ -f /etc/culticonf/packages ]; then
                     echo "...ok"
                 fi
             fi
-        done
-        apt-get clean
+        done       
     fi
+fi
+
+
+/sbin/iw reg set FR
+
+echo "--> Cleaning tmp directory..."
+rm -Rf /tmp/*
+echo "...ok"
+	
+if [ ! -f /var/lock/UPGRADE ]; then
+    nohup /bin/bash -c 'sleep 3600 && /etc/cron.daily/cultipi --now' >/dev/null 2>&1 &
+    touch /var/lock/UPGRADE
+else
+    rm -f /var/lock/UPGRADE
 fi
 
 if [ -f /var/lock/REBOOT_NEEDED ]; then
@@ -142,28 +213,3 @@ if [ -f /var/lock/REBOOT_NEEDED ]; then
     shutdown -r now
     echo "...ok"
 fi
-
-uptime=$(</proc/uptime)
-uptime=${uptime%%.*}
-
-if [ "$uptime" != "" ]; then
-    if [ $uptime -gt 432000 ]; then
-        echo "--> Rebooting system by uptime..."
-        shutdown -r now
-        echo "...ok"
-    fi
-fi
-
-
-/sbin/iw reg set FR
-
-if [ ! -f /var/lock/UPGRADE ]; then
-    nohup /bin/bash -c 'sleep 3600 && /etc/cron.daily/cultipi' >/dev/null 2>&1 &
-    touch /var/lock/UPGRADE
-else
-    rm -f /var/lock/UPGRADE
-fi
-
-echo "--> Cleaning tmp directory..."
-rm -Rf /tmp/*
-echo "...ok"

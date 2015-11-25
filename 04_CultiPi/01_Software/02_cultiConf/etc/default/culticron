@@ -62,7 +62,7 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
         fi
  
         echo "--> Starting reverse SSH..."
-        export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_SSH:localhost:22 cultipi@$REVERSE_IP
+        export AUTOSSH_POLL=30; /usr/bin/autossh -p 666 -f -M 0 -NR $REVERSE_PORT_SSH:localhost:22 cultipi@$REVERSE_IP
         echo "...ok"
     fi
 
@@ -76,7 +76,7 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
 
 
         echo "--> Starting reverse HTTP..."
-        export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_HTTP:localhost:80 cultipi@$REVERSE_IP -g
+        export AUTOSSH_POLL=30; /usr/bin/autossh -p 666 -f -M 0 -NR $REVERSE_PORT_HTTP:localhost:80 cultipi@$REVERSE_IP -g
         echo "...ok"
     fi
 
@@ -89,7 +89,21 @@ if [ "$CULTISSH_ACTIV" == "yes" ]; then
         fi
 
         echo "--> Starting reverse HTTPS..."
-        export AUTOSSH_POLL=30; /usr/bin/autossh -f -M 0 -NR $REVERSE_PORT_HTTPS:localhost:443 cultipi@$REVERSE_IP -g
+        export AUTOSSH_POLL=30; /usr/bin/autossh -p 666 -f -M 0 -NR $REVERSE_PORT_HTTPS:localhost:443 cultipi@$REVERSE_IP -g
+        echo "...ok"
+    fi
+	
+	if [ "`ps ax|/bin/grep ssh|/bin/grep $REVERSE_PORT_WEBCAM|/bin/grep $REVERSE_IP`" == "" ] && [ "$REVERSE_PORT_WEBCAM" != "" ]; then
+        pid="`ps ax|/bin/grep ssh|/bin/grep ':8081'|/bin/grep -v 'grep'|awk -F ' ' '{print $1}'`"
+        if [ "$pid" != "" ]; then
+            echo "--> Killing old reverse WEBCAM..."
+            kill -9 $pid
+            echo "...ok"
+        fi
+
+
+        echo "--> Starting reverse WEBCAM..."
+        export AUTOSSH_POLL=30; /usr/bin/autossh -p 666 -f -M 0 -NR $REVERSE_PORT_WEBCAM:localhost:8081 cultipi@$REVERSE_IP -g
         echo "...ok"
     fi
 else
@@ -110,12 +124,19 @@ fi
 
 # Check aliveness of wlan connection:
 if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
-    ip="`/sbin/ifconfig wlan0 | grep \"inet adr\" | awk -F: '{print $2}' | awk '{print $1}'`"
+    /sbin/iwconfig wlan0 power off
+    
+	#Format of the output of ifconfig can change depending the OS version:
+	ip="`/sbin/ifconfig wlan0 | grep \"inet adr\" | awk -F: '{print $2}' | awk '{print $1}'`"
+	ip_try="`/sbin/ifconfig wlan0 | grep \"inet addr\" | awk -F: '{print $2}' | awk '{print $1}'`"
+	
     # If no ip address is defined but wlan exists, we have to restart wlan configuration:
-    if [ "$ip" == "" ]; then
+    if [ "$ip" == "" ] && [ "$ip_try" == "" ]; then
         echo "--> Restarting wlan configuration, wlan not configured..."
         /sbin/ifdown wlan0
-        sleep 2
+		sleep 2
+		/usr/sbin/hub-ctrl -h 0 -P 2 -p 0 ;  pkill -9 wpa_supplicant; sleep 5; /usr/sbin/hub-ctrl  -h 0 -P 2 -p 1
+		sleep 2
         /sbin/ifup --force wlan0
         echo "...ok"
     else
@@ -127,14 +148,39 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
                 # If we can't access the gateway, we have lost the connection, we have to restart the connection:
                 /bin/ping -c 1 $gw >/dev/null 2>&1
                 if [ $? -ne 0 ]; then
-                    echo "--> Restarting wlan configuration, gateway unreachable..."
-                    /sbin/ifdown wlan0
-                    sleep 2
-                    /sbin/ifup --force wlan0
-                    echo "...ok"
+                    if [ -f /tmp/gw_check ]; then
+                        gw_check="`cat /tmp/gw_check`"
+                    else
+                        gw_check=0
+                    fi
+
+
+                    gw_check=`expr $gw_check + 1`
+                    if [ $gw_check -ge 5 ]; then
+                        echo "--> Restarting wlan configuration, gateway unreachable..."
+                        /sbin/ifdown wlan0
+                        sleep 2
+						/usr/sbin/hub-ctrl -h 0 -P 2 -p 0 ;  pkill -9 wpa_supplicant; sleep 5; /usr/sbin/hub-ctrl  -h 0 -P 2 -p 1
+						sleep 2
+                        /sbin/ifup --force wlan0
+                        echo "...ok"
+                    else
+                        echo "$gw_check" > /tmp/gw_check
+                    fi
+                else
+                    if [ -f /tmp/gw_check ]; then
+                        rm /tmp/gw_check
+                    fi
                 fi
             fi
         fi
     fi
 fi
 
+if [ "`ls /var/www/cultibox/main/templates_c/*.ser 2>/dev/null`" != "" ]; then
+    for file in `ls /var/www/cultibox/main/templates_c/*.ser 2>/dev/null`; do
+        if [ "`ls -lh  $file| cut -d \" \" -f5`" == "0" ]; then
+            rm $file
+        fi
+    done
+fi

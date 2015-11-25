@@ -52,8 +52,10 @@ revision=`date +%y%m%d%H%M`
 
 case "$1" in
       "cultipi")
-           rm -Rf ../01_src/01_xampp/*
-           mkdir -p ../01_src/01_xampp/cultipi
+           if [ -d ../01_src/01_xampp ]; then
+		       rm -Rf ../01_src/01_xampp/*
+           fi
+		   mkdir -p ../01_src/01_xampp/cultipi
            cp -R ./conf-package/DEBIAN-cultipi ../01_src/01_xampp/cultipi/DEBIAN
 
            mkdir -p ../01_src/01_xampp/cultipi/opt/cultipi
@@ -83,6 +85,7 @@ case "$1" in
            cp -R ./conf-package/DEBIAN-cultibox ../01_src/01_xampp/cultibox/DEBIAN
 
            cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/var/www/cultibox
+		   cp -R ../../02_src/mobile ../01_src/01_xampp/cultibox/var/www/mobile
            rm -Rf ../01_src/01_xampp/cultibox/var/www/cultibox/main/cultibox.wiki
            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/var/www/cultibox/VERSION.txt
 

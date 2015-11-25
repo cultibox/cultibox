@@ -16,3 +16,4 @@ puts  "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiTime : 
 set rtcHour [::MCP7940N::readSeconds]
 puts  "[clock format [clock seconds] -format "%Y %b %d %H:%M:%S"] : cultiTime : L'heure du RTC est [clock format $rtcHour -format "%Y %b %d %H:%M:%S"]"
 
+#  tclsh /opt/cultitime/setDate.tcl

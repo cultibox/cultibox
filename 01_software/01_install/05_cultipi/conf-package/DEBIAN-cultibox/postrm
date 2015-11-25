@@ -30,8 +30,12 @@ sed -i "/www-data ALL = (root) NOPASSWD: \/sbin\/iptables/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/bin\/date/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/sbin\/invoke-rc.d/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/rc.local/d" /etc/sudoers
-sed -i "/www-data ALL = (root) NOPASSWD: \/sbin\/modprobe/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/tail/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/init.d\/lighttpd/d" /etc/sudoers
 sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/dpkg/d" /etc/sudoers
+sed -i "/www-data ALL = (root) NOPASSWD: \/sbin\/hwclock/d" /etc/sudoers
+sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/init.d\/ntp/d" /etc/sudoers
+sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/sbin\/hub-ctrl/d" /etc/sudoers
+sed -i "/www-data ALL = (root) NOPASSWD: \/sbin\/iwlist/d" /etc/sudoers
+sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/pkill/d" /etc/sudoers
 

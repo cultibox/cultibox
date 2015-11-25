@@ -1,6 +1,8 @@
 hostapd 
 ttf-mscorefonts-installer
 tcl-tls
-motion
 autossh
-
+libjpeg62-dev
+python3
+python3-pip
+libusb-dev

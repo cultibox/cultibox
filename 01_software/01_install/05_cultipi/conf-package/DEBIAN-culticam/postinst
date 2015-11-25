@@ -4,24 +4,15 @@ if [ -f /etc/init.d/culticam ]; then
     update-rc.d culticam defaults
 fi
 
-if [  "`cat /etc/sudoers|grep cultipi|grep fswebcam`" == "" ]; then
-        echo "cultipi ALL = (root) NOPASSWD: /usr/bin/fswebcam" >> /etc/sudoers
-fi  
-
-if [  "`cat /etc/sudoers|grep cultipi|grep motion`" == "" ]; then
-        echo "cultipi ALL = (root) NOPASSWD: /etc/init.d/motion" >> /etc/sudoers
-fi
-
-
 chown -R cultipi:cultipi /opt/culticam
-chown cultipi:cultipi /etc/init.d/culticam
+chown cultipi:cultipi /etc/init.d/culticam /etc/init.d/mjpg_streamer
 chown -R cultipi:cultipi /etc/culticam
 chmod 744 /etc/init.d/culticam
+chmod 744 /etc/init.d/mjpg_streamer
 
-if [ -f /etc/init.d/motion ]; then
-    update-rc.d -f motion remove
+if [  "`cat /etc/sudoers|grep cultipi|grep mjpg_streamer`" == "" ]; then
+    echo "cultipi ALL = (root) NOPASSWD: /etc/init.d/mjpg_streamer" >> /etc/sudoers
 fi
 
 /etc/init.d/culticam force-reload
-
 

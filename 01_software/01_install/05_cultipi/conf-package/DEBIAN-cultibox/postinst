@@ -3,12 +3,13 @@
 echo "  * Configuring/checking Cultibox environment..."
 
 chown -R www-data:www-data /var/www/cultibox
+chown -R www-data:www-data /var/www/mobile
 
 if [  "`cat /etc/sudoers|grep www-data|grep ifconfig`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /sbin/ifconfig" >> /etc/sudoers
 fi
  
-if [  "`cat /etc/sudoers|grep www-data|grep iwlist`" == "" ]; then
+if [  "`cat /etc/sudoers|grep www-data|grep iw`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /usr/sbin/iw" >> /etc/sudoers
 fi
  
@@ -46,6 +47,10 @@ fi
 
 if [  "`cat /etc/sudoers|grep www-data|grep iptables`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /sbin/iptables" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep ntp`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /etc/init.d/ntp" >> /etc/sudoers
 fi
 
 if [  "`cat /etc/sudoers|grep www-data|grep date`" == "" ]; then
@@ -88,6 +93,21 @@ if [  "`cat /etc/sudoers|grep www-data|grep dpkg`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /usr/bin/dpkg" >> /etc/sudoers
 fi
 
+if [  "`cat /etc/sudoers|grep www-data|grep hwclock`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /sbin/hwclock" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep hub-ctrl`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /usr/sbin/hub-ctrl" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep iwlist`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /sbin/iwlist" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep pkill`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /usr/bin/pkill" >> /etc/sudoers
+fi
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "  * Installing the Cultibox software..."

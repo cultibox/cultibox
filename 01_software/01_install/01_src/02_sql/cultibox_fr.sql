@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `COLOR_EC_GRAPH` varchar(30) NOT NULL DEFAULT 'yellow',
   `COLOR_OD_GRAPH` varchar(30) NOT NULL DEFAULT 'red',
   `COLOR_ORP_GRAPH` varchar(30) NOT NULL DEFAULT 'blue',
+  `COLOR_CO2_GRAPH` varchar(30) NOT NULL DEFAULT 'blue',  
   `NB_PLUGS` int(11) NOT NULL DEFAULT '3',
   `ALARM_ACTIV` varchar(4) NOT NULL DEFAULT '0000',
   `ALARM_VALUE` varchar(5) NOT NULL DEFAULT '60.00',
@@ -216,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `programs` (
   `plug_id` int(11) NOT NULL,
   `time_start` varchar(6) NOT NULL,
   `time_stop` varchar(6) NOT NULL,
-  `value` decimal(3,1) NOT NULL,
+  `value` decimal(5,1) NOT NULL,
   `number` int(11) NOT NULL DEFAULT '1',
   `date_start` varchar(10) NOT NULL DEFAULT '0000-00-00',
   `date_end` varchar(10) NOT NULL DEFAULT '0000-00-00',
@@ -232,7 +233,9 @@ CREATE TABLE IF NOT EXISTS `programs` (
 
 CREATE TABLE IF NOT EXISTS `sensors` (
   `id` int(11) NOT NULL,
-  `type` varchar(1) NOT NULL DEFAULT '0',
+  `type` varchar(2) NOT NULL DEFAULT '0',
+  `detectionAuto` varchar(5) NOT NULL DEFAULT 'true',  
+  `name` varchar(20) NOT NULL DEFAULT 'capteur',    
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

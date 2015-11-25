@@ -19,10 +19,15 @@ DEAMON_NAME="cultipi"
 . /lib/lsb/init-functions
 
 d_start () {
-    log_daemon_msg "Starting system $DEAMON_NAME Daemon"
-    sudo -u $DAEMONUSER nohup /usr/bin/tclsh "/opt/cultipi/cultiPi/cultiPi.tcl" "/etc/cultipi" >>/var/log/cultipi/cultipi-service.log 2>&1 &
-    sleep 4
-    log_end_msg $?
+    log_daemon_msg "Starting system $DEAMON_NAME service"
+	if [ "`ps ax|grep cultiPi.tcl|grep tclsh`" != "" ]; then
+        echo -n  "\n[ ok ] $DEAMON_NAME service is already running.\n"
+        exit 0
+    else
+		sudo -u $DAEMONUSER nohup /usr/bin/tclsh "/opt/cultipi/cultiPi/cultiPi.tcl" "/etc/cultipi" >>/var/log/cultipi/cultipi-service.log 2>&1 &
+		sleep 4
+		log_end_msg $?
+	fi
 }
 
 d_stop () {

@@ -1,37 +1,60 @@
 #! /bin/sh
 ### BEGIN INIT INFO
-# Provides:          culticam
+# Provides:          mjpg_streamer
 # Required-Start:    $all 
 # Required-Stop:     $all 
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Start culticam daemon at boot time
-# Description:       Enable culticam service provided by daemon.
+# Short-Description: Start mjpg_streamer daemon
+# Description:       Enable mjpg_streamer service provided by daemon.
 ### END INIT INFO
 
 
 PATH="/sbin:/bin:/usr/sbin:/usr/bin" 
 
-DAEMONUSER="cultipi"
-DEAMON_NAME="culticam"
+DEAMON_NAME="mjpg_streamer"
 
 . /lib/lsb/init-functions
 
+if [ -f /var/lock/culticam_enable ]; then
+	webcam="`cat /var/lock/culticam_enable`"
+	. /etc/culticam/webcam$webcam.conf
+
+	if [ "$BRIGHTNESS" != "" ] && [ $BRIGHTNESS -gt 0 ]; then
+		BRIGHT=""
+        #-br $BRIGHTNESS"
+	else 
+		BRIGHT=""
+	fi
+	
+	if [ "$CONTRAST" != "" ] && [ $CONTRAST -gt 0 ]; then
+		CON=""
+        #-co $CONTRAST"
+	else 
+		CON=""
+	fi
+else 
+    DEVICE="/dev/video0"
+    RESOLUTION="800x600"
+    BRIGHT=""
+    CON=""
+fi
+
 d_start () {
         log_daemon_msg "Starting system $DEAMON_NAME service"
-		if [ "`ps ax|grep cultiCam.tcl|grep tclsh`" != "" ]; then
+
+        if [ "`ps ax|grep mjpg_streamer|grep '.so'`" != "" ]; then
             echo -n  "\n[ ok ] $DEAMON_NAME service is already running.\n"
             exit 0
         else
-			sudo -u $DAEMONUSER nohup /usr/bin/tclsh "/opt/culticam/cultiCam.tcl" "/etc/culticam/conf.xml" >>/var/log/cultipi/cultipi-service.log 2>&1 &
-			sleep 4
-			log_end_msg $?
-		fi
+            nohup mjpg_streamer -i "/usr/lib/input_uvc.so -d $DEVICE -r $RESOLUTION $BRIGHT $CON -f 30  -n -y" -o "/usr/lib/output_http.so -p 8081" >>/var/log/cultipi/cultipi-service.log 2>&1 &
+            log_end_msg $?
+        fi
 }
 
 d_stop () {
-        log_daemon_msg "Stopping system $DEAMON_NAME Daemon"
-        for pid in "`ps ax|grep cultiCam.tcl |grep tclsh |awk -F " " '{print $1}'`"; do
+        log_daemon_msg "Stopping system $DEAMON_NAME service"
+        for pid in "`ps ax|grep mjpg_streamer |grep .so |awk -F " " '{print $1}'`"; do
             if [ "$pid" != "" ]; then
                 kill -9 $pid
             fi
@@ -54,7 +77,7 @@ case "$1" in
                 d_stop
                 ;;
         status)
-                if [ "`ps ax|grep cultiCam.tcl|grep tclsh`" != "" ]; then
+                if [ "`ps ax|grep mjpg_streamer|grep '.so'`" != "" ]; then
                     echo "[ ok ] $DEAMON_NAME service is running..."
                     exit 0
                 else 

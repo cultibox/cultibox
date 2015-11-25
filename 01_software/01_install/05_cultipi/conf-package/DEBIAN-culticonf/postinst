@@ -15,6 +15,12 @@ if [ -f /etc/default/cultipi ]; then
     chown root:root /etc/default/cultipi
 fi
 
+if [ -f /usr/sbin/hub-ctrl ]; then
+	chown root:root /usr/sbin/hub-ctrl
+	chmod 744 /usr/sbin/hub-ctrl
+fi
+
+	
 if [ -f /etc/default/culticron ]; then
     chown root:root /etc/default/culticron
     chmod 744 /etc/default/culticron
@@ -33,8 +39,24 @@ if [ -f /etc/culticonf/packages ]; then
     chown root:root /etc/culticonf/packages
 fi
 
+if [ -f /root/.bash_aliases ]; then
+    chown root:root /root/.bash_aliases
+fi
 
-if [ "`cat /etc/crontab|grep culticron`" == "" ]; then
+if [ -f /homme/cultipi/.bash_aliases ]; then
+    chown cultipi:cultipi /home/cultipi/.bash_aliases
+fi
+
+if [ -f /usr/bin/mjpg_streamer ]; then
+    chmod 755 /usr/bin/mjpg_streamer
+fi
+
+if [ -f /usr/sbin/hostapd ]; then
+    chmod 755 /usr/sbin/hostapd
+	chown root:root /usr/sbin/hostapd
+fi
+
+if [ "`cat /etc/crontab|grep '[c]ulticron'`" == "" ]; then
     echo "*/1 *   * * *   root    /bin/bash /etc/default/culticron" >> /etc/crontab
 fi
 
@@ -145,14 +167,6 @@ if [ $VERSION -lt 150328 ]; then
     /usr/sbin/adduser www-data i2c
     echo "150328" > /VERSION
 fi
-
-if [ $VERSION -lt 150330 ]; then
-    if [  "`cat /etc/sudoers|grep www-data|grep fswebcam`" == "" ]; then
-        sed -i "/www-data ALL = (root) NOPASSWD: \/usr\/bin\/fswebcam/d" /etc/sudoers
-    fi
-    echo "150330" > /VERSION
-fi
-
 
 if [ $VERSION -lt 150403 ]; then
     if [  "`cat /etc/sudoers|grep www-data|grep iwconfig`" == "" ]; then
@@ -496,3 +510,590 @@ EOF
 fi
 
 
+if [ $VERSION -lt 150720 ]; then
+    cat << EOF > /etc/rc.local
+#!/bin/bash 
+
+#Case of an Access Point:
+if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" != "" ] && [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    #Configuration of the captiv portal if it's not the case yet:
+    if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
+else
+    #If it's not an Acces Point mode , deleteting captiv portal configuration:
+    for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
+fi
+
+#Reconfigure wlan0 at boot:
+if [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" == "" ]; then
+        /bin/ping -c 1 8.8.8.8 >/dev/null 2>&1
+        if [ \$? -ne 0 ]; then
+            /sbin/ifdown --force wlan0
+            sleep 1
+            /sbin/ifup --force wlan0 
+        fi
+    fi
+fi
+
+#To accelerate boot time, eth0 is not configured at boot time (due to the time DHCP uses to respond when a wire is not plugged).
+#But we have to configure the interface if a wire is plugged:
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    /sbin/ifup --force eth0
+else
+    /sbin/ifdown --force eth0
+fi
+
+default="no"
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep eth0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        default="yes"
+        eval \$gw
+    fi
+fi
+
+if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ] && [ "\$default" == "no" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep wlan0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        eval \$gw
+    fi
+fi
+
+#Configuration of the keymap in FR:
+/usr/bin/loadkeys fr
+
+if [ -f /etc/culticonf/system.conf ]; then
+	. /etc/culticonf/system.conf
+	if [ "\$CPU_GOUVERNOR" != "" ]; then
+			echo "\$CPU_GOUVERNOR" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+	fi
+fi
+exit 0
+EOF
+
+	sed -i "/cultipi ALL = (root) NOPASSWD: \/etc\/init.d\/motion/d" /etc/sudoers
+	sed -i "/cultipi ALL = (root) NOPASSWD: \/usr\/bin\/fswebcam/d" /etc/sudoers
+	rm -Rf /etc/culticam/thread*
+	if [ -f /etc/culticam/webcam0.conf.dpkg-dist ]; then
+			mv /etc/culticam/webcam0.conf.dpkg-dist /etc/culticam/webcam0.conf
+			mv /etc/culticam/webcam1.conf.dpkg-dist /etc/culticam/webcam1.conf
+			mv /etc/culticam/webcam2.conf.dpkg-dist /etc/culticam/webcam2.conf
+			mv /etc/culticam/webcam3.conf.dpkg-dist /etc/culticam/webcam3.conf
+	fi
+	echo "150720" > /VERSION
+fi
+
+if [ $VERSION -lt 150721 ]; then
+	cp /boot/cmdline.txt /boot/cmdline.txt.back
+	echo "dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=noop rootwait" > /boot/cmdline.txt
+	usermod -a -G dialout cultipi
+	
+	    cat << EOF > /etc/rc.local
+#!/bin/bash 
+
+#Case of an Access Point:
+if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" != "" ] && [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    #Configuration of the captiv portal if it's not the case yet:
+    if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
+else
+    #If it's not an Acces Point mode , deleteting captiv portal configuration:
+    for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
+fi
+
+#Reconfigure wlan0 at boot:
+if [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" == "" ]; then
+        /bin/ping -c 1 8.8.8.8 >/dev/null 2>&1
+        if [ \$? -ne 0 ]; then
+            /sbin/ifdown --force wlan0
+            sleep 1
+            /sbin/ifup --force wlan0 
+        fi
+    fi
+fi
+
+#To accelerate boot time, eth0 is not configured at boot time (due to the time DHCP uses to respond when a wire is not plugged).
+#But we have to configure the interface if a wire is plugged:
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    /sbin/ifup --force eth0
+else
+    /sbin/ifdown --force eth0
+fi
+
+default="no"
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep eth0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        default="yes"
+        eval \$gw
+    fi
+fi
+
+if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ] && [ "\$default" == "no" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep wlan0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        eval \$gw
+    fi
+fi
+
+#Configuration of the keymap in FR:
+/usr/bin/loadkeys fr
+
+if [ -f /etc/culticonf/system.conf ]; then
+	. /etc/culticonf/system.conf
+	if [ "\$CPU_GOUVERNOR" != "" ]; then
+			echo "\$CPU_GOUVERNOR" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+	fi
+fi
+
+echo "mcp7941x 0x6f" > /sys/class/i2c-dev/i2c-1/device/new_device
+exit 0
+EOF
+	echo "rtc-ds1307" >> /etc/modules
+	touch /var/lock/REBOOT_NEEDED 
+	echo "150721" > /VERSION
+fi
+
+if [ $VERSION -lt 150723 ]; then
+	#Changing reverse SSH default port: rebooting
+	touch /var/lock/REBOOT_NEEDED 
+
+	if [ "`cat /etc/lighttpd/.passwd|grep root`" == "" ]; then
+		echo "root:Identification:a348f4b6ab295fc2cff0a0e08d7ae456" >> /etc/lighttpd/.passwd
+	fi
+	
+	if [ "`cat /etc/lighttpd/.passwd.BASE|grep root`" == "" ]; then
+		echo "root:Identification:a348f4b6ab295fc2cff0a0e08d7ae456" >> /etc/lighttpd/.passwd.BASE
+	fi	
+
+	echo "150723" > /VERSION
+fi
+
+if [ $VERSION -lt 150803 ]; then
+	cat << EOF > /etc/rc.local
+#!/bin/bash 
+
+#Case of an Access Point:
+if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" != "" ] && [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    #Configuration of the captiv portal if it's not the case yet:
+    if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
+else
+    #If it's not an Acces Point mode , deleteting captiv portal configuration:
+    for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
+fi
+
+#Reconfigure wlan0 at boot:
+if [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" == "" ]; then
+        /bin/ping -c 1 8.8.8.8 >/dev/null 2>&1
+        if [ \$? -ne 0 ]; then
+            /sbin/ifdown --force wlan0
+            sleep 1
+            /sbin/ifup --force wlan0 
+        fi
+    fi
+fi
+
+#To accelerate boot time, eth0 is not configured at boot time (due to the time DHCP uses to respond when a wire is not plugged).
+#But we have to configure the interface if a wire is plugged:
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    /sbin/ifup --force eth0
+else
+    /sbin/ifdown --force eth0
+fi
+
+default="no"
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep eth0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        default="yes"
+        eval \$gw
+    fi
+fi
+
+if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ] && [ "\$default" == "no" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep wlan0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        eval \$gw
+    fi
+fi
+
+#Configuration of the keymap in FR:
+/usr/bin/loadkeys fr
+
+if [ -f /etc/culticonf/system.conf ]; then
+	. /etc/culticonf/system.conf
+	if [ "\$CPU_GOUVERNOR" != "" ]; then
+			echo "\$CPU_GOUVERNOR" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+	fi
+fi
+
+exit 0
+EOF
+	echo "150803" > /VERSION
+fi
+
+
+
+
+if [ $VERSION -lt 150821 ]; then
+	cat << EOF > /etc/rc.local
+#!/bin/bash 
+
+#Case of an Access Point:
+if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" != "" ] && [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    #Configuration of the captiv portal if it's not the case yet:
+    if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
+else
+    #If it's not an Acces Point mode , deleteting captiv portal configuration:
+    for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
+fi
+
+#Reconfigure wlan0 at boot:
+if [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" == "" ]; then
+        /bin/ping -c 1 8.8.8.8 >/dev/null 2>&1
+        if [ \$? -ne 0 ]; then
+            /sbin/ifdown --force wlan0
+            sleep 1
+            /sbin/ifup --force wlan0 
+        fi
+    fi
+	/sbin/iwconfig wlan0 power off
+fi
+
+#To accelerate boot time, eth0 is not configured at boot time (due to the time DHCP uses to respond when a wire is not plugged).
+#But we have to configure the interface if a wire is plugged:
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    /sbin/ifup --force eth0
+else
+    /sbin/ifdown --force eth0
+fi
+
+default="no"
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep eth0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        default="yes"
+        eval \$gw
+    fi
+fi
+
+if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ] && [ "\$default" == "no" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep wlan0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        eval \$gw
+    fi
+fi
+
+#Configuration of the keymap in FR:
+/usr/bin/loadkeys fr
+
+if [ -f /etc/culticonf/system.conf ]; then
+	. /etc/culticonf/system.conf
+	if [ "\$CPU_GOUVERNOR" != "" ]; then
+			echo "\$CPU_GOUVERNOR" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+	fi
+fi
+
+exit 0
+EOF
+	echo "150821" > /VERSION
+fi
+
+
+if [ $VERSION -lt 150824 ]; then
+	cat << EOF > /etc/rc.local
+#!/bin/bash 
+
+#Case of an Access Point:
+if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" != "" ] && [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    #Configuration of the captiv portal if it's not the case yet:
+    if [ "\`/sbin/iptables -L -t nat | /bin/grep 10.0.0.100\`" == "" ]; then
+        /sbin/iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT --to-destination 10.0.0.100:80
+    fi
+else
+    #If it's not an Acces Point mode , deleteting captiv portal configuration:
+    for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
+fi
+
+#Reconfigure wlan0 at boot:
+if [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" == "" ]; then
+        /bin/ping -c 1 8.8.8.8 >/dev/null 2>&1
+        if [ \$? -ne 0 ]; then
+            /sbin/ifdown --force wlan0
+            sleep 1
+            /sbin/ifup --force wlan0 
+        fi
+    fi
+	/sbin/iwconfig wlan0 power off
+	/sbin/iwconfig wlan0 rate 54M auto
+fi
+
+#To accelerate boot time, eth0 is not configured at boot time (due to the time DHCP uses to respond when a wire is not plugged).
+#But we have to configure the interface if a wire is plugged:
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    /sbin/ifup --force eth0
+else
+    /sbin/ifdown --force eth0
+fi
+
+default="no"
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep eth0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        default="yes"
+        eval \$gw
+    fi
+fi
+
+if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ] && [ "\$default" == "no" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep wlan0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        eval \$gw
+    fi
+fi
+
+#Configuration of the keymap in FR:
+/usr/bin/loadkeys fr
+
+if [ -f /etc/culticonf/system.conf ]; then
+	. /etc/culticonf/system.conf
+	if [ "\$CPU_GOUVERNOR" != "" ]; then
+			echo "\$CPU_GOUVERNOR" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+	fi
+fi
+
+exit 0
+EOF
+	echo "150824" > /VERSION
+fi
+
+if [ $VERSION -lt 150907 ]; then
+	echo "options 8192cu rtw_power_mgnt=0 rtw_enusbss=0" > /etc/modprobe.d/8192cu.conf
+	echo "150907" > /VERSION
+fi
+
+
+if [ $VERSION -lt 151027 ]; then
+	cat << EOF > /etc/rc.local
+#!/bin/bash 
+
+#Case of an Access Point:
+if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" != "" ] && [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    #If it's not an Acces Point mode , deleteting captiv portal configuration:
+    for i in \$(/sbin/iptables -t nat --line-numbers -L | /bin/grep ^[0-9] | /usr/bin/awk '{ print \$1 }' | /usr/bin/tac ); do /sbin/iptables -t nat -D PREROUTING \$i; done
+fi
+
+#Reconfigure wlan0 at boot:
+if [ "\`/sbin/ifconfig wlan0\`" != "" ]; then
+    if [ "\`/bin/grep 10.0.0.100 /etc/network/interfaces\`" == "" ]; then
+        /bin/ping -c 1 8.8.8.8 >/dev/null 2>&1
+        if [ \$? -ne 0 ]; then
+            /sbin/ifdown --force wlan0
+            sleep 1
+            /sbin/ifup --force wlan0 
+        fi
+    fi
+	/sbin/iwconfig wlan0 power off
+	/sbin/iwconfig wlan0 rate 54M auto
+fi
+
+#To accelerate boot time, eth0 is not configured at boot time (due to the time DHCP uses to respond when a wire is not plugged).
+#But we have to configure the interface if a wire is plugged:
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    /sbin/ifup --force eth0
+else
+    /sbin/ifdown --force eth0
+fi
+
+default="no"
+if [ "\`cat /sys/class/net/eth0/carrier 2>/dev/null\`" == "1" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep eth0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        default="yes"
+        eval \$gw
+    fi
+fi
+
+if [ "\`/sbin/ifconfig wlan0 2>/dev/null\`" != "" ] && [ "\$default" == "no" ]; then
+    gw="\`grep 'post-up /sbin/route add default gw' /etc/network/interfaces|grep wlan0|sed -e 's/post-up //g'\`"
+    if [ "\$gw" != "" ]; then
+        eval \$gw
+    fi
+fi
+
+#Configuration of the keymap in FR:
+/usr/bin/loadkeys fr
+
+if [ -f /etc/culticonf/system.conf ]; then
+	. /etc/culticonf/system.conf
+	if [ "\$CPU_GOUVERNOR" != "" ]; then
+			echo "\$CPU_GOUVERNOR" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+	fi
+fi
+
+exit 0
+EOF
+	echo "151027" > /VERSION
+fi
+
+if [ $VERSION -lt 151031 ]; then
+
+	cat << EOF > /tmp/https
+server.modules = (
+   "mod_access",
+   "mod_alias",
+   "mod_compress",
+   "mod_redirect",
+   "mod_auth"
+   #"mod_rewrite",
+)
+
+server.document-root        = "/var/www"
+server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+server.errorlog             = "/var/log/lighttpd/error.log"
+server.pid-file             = "/var/run/lighttpd.pid"
+server.username             = "www-data"
+server.groupname            = "www-data"
+server.port                 = 80
+
+auth.backend = "htdigest"
+auth.backend.htdigest.userfile = "/etc/lighttpd/.passwd"
+auth.debug = 2
+
+index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+
+compress.cache-dir          = "/var/cache/lighttpd/compress/"
+compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+
+# default listening port for IPv6 falls back to the IPv4 port
+include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+include_shell "/usr/share/lighttpd/create-mime.assign.pl"
+include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
+
+\$SERVER["socket"] == ":443" {
+  ssl.engine = "enable"
+  ssl.pemfile = "/etc/lighttpd/ssl/cultipi.pem"
+}
+
+
+\$HTTP["scheme"] == "http" {
+    # capture vhost name with regex conditiona -> %0 in redirect pattern
+    # must be the most inner block to the redirect rule
+    \$HTTP["host"] =~ ".*" {
+        url.redirect = (".*" => "https://%0\$0")
+    }
+}
+
+\$HTTP["url"] =~ "^/mobile" {
+    auth.require = ( "/mobile/" =>
+        (
+        "method" => "digest",
+        "realm" => "Identification",
+        "require" => "valid-user"
+        )
+    )
+}
+
+\$HTTP["url"] !~ "^/mobile" {
+     url.redirect = ("^/\$" => "/cultibox/")
+}
+
+auth.require = ( "/cultibox/" =>
+    (
+    "method" => "digest",
+    "realm" => "Identification",
+    "require" => "valid-user"
+    )
+)	
+EOF
+
+
+
+	cat << EOF > /tmp/http
+server.modules = (
+   "mod_access",
+   "mod_alias",
+   "mod_compress",
+   "mod_redirect",
+   "mod_auth"
+   #"mod_rewrite",
+)
+
+server.document-root        = "/var/www"
+server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+server.errorlog             = "/var/log/lighttpd/error.log"
+server.pid-file             = "/var/run/lighttpd.pid"
+server.username             = "www-data"
+server.groupname            = "www-data"
+server.port                 = 80
+
+auth.backend = "htdigest"
+auth.backend.htdigest.userfile = "/etc/lighttpd/.passwd"
+auth.debug = 2
+
+index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+
+compress.cache-dir          = "/var/cache/lighttpd/compress/"
+compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+
+# default listening port for IPv6 falls back to the IPv4 port
+include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+include_shell "/usr/share/lighttpd/create-mime.assign.pl"
+include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
+
+\$HTTP["url"] =~ "^/mobile" {
+    auth.require = ( "/mobile/" =>
+        (
+        "method" => "digest",
+        "realm" => "Identification",
+        "require" => "valid-user"
+        )
+    )
+}
+
+\$HTTP["url"] !~ "^/mobile" {
+     url.redirect = ("^/\$" => "/cultibox/")
+}
+
+
+auth.require = ( "/cultibox/" =>
+    (
+    "method" => "digest",
+    "realm" => "Identification",
+    "require" => "valid-user"
+    )
+)	
+EOF
+	if [ -f /etc/lighttpd/lighttpd.conf.https ]; then
+		mv /tmp/http /etc/lighttpd/lighttpd.conf
+		mv /tmp/https /etc/lighttpd/lighttpd.conf.https
+	else
+		mv /tmp/http /etc/lighttpd/lighttpd.conf.base
+		mv /tmp/https /etc/lighttpd/lighttpd.conf
+	fi
+	
+	/etc/init.d/lighttpd force-reload
+	sed -i "s/#hdmi_force_hotplug=1/hdmi_force_hotplug=1/g" /boot/config.txt
+	sed -i "s/#hdmi_drive=2/hdmi_drive=2/g" /boot/config.txt
+		
+	if [ "`grep modprobe /etc/sudoers|grep www-data`" != "" ]; then
+		sed -i "s/.* \/sbin\/modprobe//g" /etc/sudoers
+	fi
+	
+	echo "151031" > /VERSION
+fi

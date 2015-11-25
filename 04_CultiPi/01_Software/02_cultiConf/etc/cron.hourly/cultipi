@@ -3,12 +3,26 @@
 exec 2>&1
 exec > >(logger -t "culticron.hourly")
 
-echo "Updating repositories..."
-apt-get update -o Dir::Etc::sourcelist="sources.list.d/cultibox.list"  -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
+function check_package_manager {
+    count=0
+        while [ "`ps ax|grep 'apt-'|grep -v 'grep'`" != "" ] || [ "`ps ax|grep 'dpkg -i'|grep -v 'grep'`" != "" ] || [ "`ps ax|grep 'cron.daily/cultipi'|grep -v 'grep'`" != "" ]; do
+        sleep 3
+        count=`expr $count + 1`
 
-for file in "`ls /etc/apt/sources.list.d/cultibox-*.list 2>/dev/null`"; do
-    if [ "$file" != "" ]; then
-        apt-get update -o Dir::Etc::sourcelist="$file" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
-    fi
-done
+        if [ $count -gt 100 ]; then
+            return 1
+        fi
+    done
+    return 0
+}
+
+
+check_package_manager
+if [ $? -eq 1 ]; then
+    echo "--> Error, a package manager is already running... exiting"
+    exit 1
+fi
+
+echo "--> Updating repositories..."
+apt-get update
 echo "...ok"
