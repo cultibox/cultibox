@@ -66,14 +66,6 @@ proc firstLoop {} {
                 vwait endReset  
                 set endReset 0
                         
-                # On fait clignoter la LED 10 fois
-                for {set i 0} {$i < 11} {incr i} {
-                    exec gpio -g write 22 0
-                    after 200
-                    exec gpio -g write 22 1
-                    after 200
-                    update
-                }
 
                 # On rappel la procédure au bout de 10 secondes pour éviter un double effacage:
                 after 10000 firstLoop
@@ -124,19 +116,7 @@ proc checkAndUpdate {} {
             }
          
             set ::compteur 0  
-			resetConf
-            
-            puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : fin du RAZ de la configuration du Cultipi demandée"
-
-            # On fait clignoter la LED 5 fois
-            
-            for {set i 0} {$i < 6} {incr i} {
-                exec gpio -g write 22 0
-                after 200
-                exec gpio -g write 22 1
-                after 200
-                update
-            }
+	    resetConf
 
             # On rappel la procédure au bout de 10 secondes pour éviter un double effacage:
             after 10000 checkAndUpdate
@@ -178,6 +158,16 @@ proc resetConf {} {
     } msg]
 
     if {$RC != 0} {puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : cultiRAZ : Erreur lors du RAZ du mot de passe lighttpd : $msg"}
+
+
+    # On fait clignoter la LED 5 fois 
+    for {set i 0} {$i < 6} {incr i} {
+       exec gpio -g write 22 0
+       after 200
+       exec gpio -g write 22 1
+       after 200
+       update
+    }
 
     #On redémare le cultipi:
     set RC [catch {
