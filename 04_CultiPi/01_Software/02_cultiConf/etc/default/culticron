@@ -134,9 +134,9 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
     if [ "$ip" == "" ] && [ "$ip_try" == "" ]; then
         echo "--> Restarting wlan configuration, wlan not configured..."
         /sbin/ifdown wlan0
-		sleep 2
-		/usr/sbin/hub-ctrl -h 0 -P 2 -p 0 ;  pkill -9 wpa_supplicant; sleep 5; /usr/sbin/hub-ctrl  -h 0 -P 2 -p 1
-		sleep 2
+	sleep 2
+	#/usr/sbin/hub-ctrl -h 0 -P 2 -p 0 ;  pkill -9 wpa_supplicant; sleep 5; /usr/sbin/hub-ctrl  -h 0 -P 2 -p 1
+	#sleep 2
         /sbin/ifup --force wlan0
         echo "...ok"
     else
@@ -160,8 +160,8 @@ if [ "`/sbin/ifconfig wlan0 2>/dev/null`" != "" ]; then
                         echo "--> Restarting wlan configuration, gateway unreachable..."
                         /sbin/ifdown wlan0
                         sleep 2
-						/usr/sbin/hub-ctrl -h 0 -P 2 -p 0 ;  pkill -9 wpa_supplicant; sleep 5; /usr/sbin/hub-ctrl  -h 0 -P 2 -p 1
-						sleep 2
+			#/usr/sbin/hub-ctrl -h 0 -P 2 -p 0 ;  pkill -9 wpa_supplicant; sleep 5; /usr/sbin/hub-ctrl  -h 0 -P 2 -p 1
+			#sleep 2
                         /sbin/ifup --force wlan0
                         echo "...ok"
                     else
