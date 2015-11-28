@@ -52,6 +52,7 @@ revision=`date +%y%m%d%H%M`
 
 case "$1" in
       "cultipi")
+	   debug="$3"
            if [ -d ../01_src/01_xampp ]; then
 		       rm -Rf ../01_src/01_xampp/*
            fi
@@ -73,11 +74,20 @@ case "$1" in
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultipi/DEBIAN/control
            find ./../01_src/01_xampp/cultipi/ -name ".git*"|xargs rm -Rf 
+	
+	   if [ "$debug" ==  "true" ]; then
+                        sed -i "3i\set -x" ../01_src/01_xampp/cultipi/DEBIAN/postinst
+                        sed -i "3i\set -x" ../01_src/01_xampp/cultipi/DEBIAN/postrm
+                        sed -i "3i\set -x" ../01_src/01_xampp/cultipi/DEBIAN/preinst
+                        sed -i "3i\set -x" ../01_src/01_xampp/cultipi/DEBIAN/prerm
+           fi
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultipi
            
            mv cultipi.deb ../../05_cultipi/Output/cultipi-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultibox")
+	   debug="$3"
+
            if [ -d ../01_src/01_xampp ]; then
             rm -Rf ../01_src/01_xampp/*
            fi
@@ -115,13 +125,22 @@ EOF
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-r`echo $revision`'/" ../01_src/01_xampp/cultibox/var/www/cultibox/main/libs/lib_configuration.php
            sed -i "s/^$GLOBALS.*\"cultibox\"/\$GLOBALS['MODE']=\"cultipi\"/g" ../01_src/01_xampp/cultibox/var/www/cultibox/main/libs/config.php 
 
-
            find ./../01_src/01_xampp/cultibox/ -name ".git*"|xargs rm -Rf
+
+           if [ "$debug" ==  "true" ]; then
+                sed -i "3i\set -x" ../01_src/01_xampp/cultibox/DEBIAN/postinst
+                sed -i "3i\set -x" ../01_src/01_xampp/cultibox/DEBIAN/postrm
+                sed -i "3i\set -x" ../01_src/01_xampp/cultibox/DEBIAN/preinst
+                sed -i "3i\set -x" ../01_src/01_xampp/cultibox/DEBIAN/prerm
+           fi
+
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultibox
 
            mv cultibox.deb ../../05_cultipi/Output/cultibox-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;  
       "cultiraz")
+	   debug="$3"
+
            if [ -d ../01_src/01_xampp ]; then
             rm -Rf ../01_src/01_xampp/*
            fi
@@ -138,11 +157,20 @@ EOF
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultiraz/DEBIAN/control
            find ./../01_src/01_xampp/cultiraz/ -name ".git*"|xargs rm -Rf
-           cd ./../01_src/01_xampp/ && dpkg-deb --build cultiraz
+	
+           if [ "$debug" ==  "true" ]; then
+                sed -i "3i\set -x" ../01_src/01_xampp/cultiraz/DEBIAN/postinst
+                sed -i "3i\set -x" ../01_src/01_xampp/cultiraz/DEBIAN/postrm
+                sed -i "3i\set -x" ../01_src/01_xampp/cultiraz/DEBIAN/preinst
+                sed -i "3i\set -x" ../01_src/01_xampp/cultiraz/DEBIAN/prerm
+           fi
 
+           cd ./../01_src/01_xampp/ && dpkg-deb --build cultiraz
            mv cultiraz.deb ../../05_cultipi/Output/cultiraz-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultitime")
+	   debug="$3"
+
            if [ -d ../01_src/01_xampp ]; then
             rm -Rf ../01_src/01_xampp/*
            fi
@@ -159,11 +187,21 @@ EOF
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultitime/DEBIAN/control
            find ./../01_src/01_xampp/cultitime/ -name ".git*"|xargs rm -Rf
+
+           if [ "$debug" ==  "true" ]; then
+                sed -i "3i\set -x" ../01_src/01_xampp/cultitime/DEBIAN/postinst
+                sed -i "3i\set -x" ../01_src/01_xampp/cultitime/DEBIAN/postrm
+                sed -i "3i\set -x" ../01_src/01_xampp/cultitime/DEBIAN/preinst
+                sed -i "3i\set -x" ../01_src/01_xampp/cultitime/DEBIAN/prerm
+           fi
+
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultitime
 
            mv cultitime.deb ../../05_cultipi/Output/cultitime-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "culticonf")
+	   debug="$3"
+
            if [ -d ../01_src/01_xampp ]; then
             rm -Rf ../01_src/01_xampp/*
            fi
@@ -189,11 +227,21 @@ EOF
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/culticonf/DEBIAN/control
            find ./../01_src/01_xampp/culticonf/ -name ".git*"|xargs rm -Rf
+
+           if [ "$debug" ==  "true" ]; then
+                sed -i "3i\set -x" ../01_src/01_xampp/culticonf/DEBIAN/postinst
+                sed -i "3i\set -x" ../01_src/01_xampp/culticonf/DEBIAN/postrm
+                sed -i "3i\set -x" ../01_src/01_xampp/culticonf/DEBIAN/preinst
+                sed -i "3i\set -x" ../01_src/01_xampp/culticonf/DEBIAN/prerm
+           fi
+
            cd ./../01_src/01_xampp/ && dpkg-deb --build culticonf
 
            mv culticonf.deb ../../05_cultipi/Output/culticonf-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultidoc")
+	   debug="$3"
+
            if [ -d ../01_src/01_xampp ]; then
             rm -Rf ../01_src/01_xampp/*
            fi
@@ -205,11 +253,21 @@ EOF
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultidoc/DEBIAN/control
            find ./../01_src/01_xampp/cultidoc/ -name ".git*"|xargs rm -Rf
+
+           if [ "$debug" ==  "true" ]; then
+                sed -i "3i\set -x" ../01_src/01_xampp/cultidoc/DEBIAN/postinst
+                sed -i "3i\set -x" ../01_src/01_xampp/cultidoc/DEBIAN/postrm
+                sed -i "3i\set -x" ../01_src/01_xampp/cultidoc/DEBIAN/preinst
+                sed -i "3i\set -x" ../01_src/01_xampp/cultidoc/DEBIAN/prerm
+           fi
+
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultidoc
 
            mv cultidoc.deb ../../05_cultipi/Output/cultidoc-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "culticam")
+	  debug="$3"
+
            if [ -d ../01_src/01_xampp ]; then
             rm -Rf ../01_src/01_xampp/*
            fi
@@ -224,6 +282,14 @@ EOF
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/culticam/DEBIAN/control
            find ./../01_src/01_xampp/culticam/ -name ".git*"|xargs rm -Rf
+
+           if [ "$debug" ==  "true" ]; then
+                sed -i "3i\set -x" ../01_src/01_xampp/culticam/DEBIAN/postinst
+                sed -i "3i\set -x" ../01_src/01_xampp/culticam/DEBIAN/postrm
+                sed -i "3i\set -x" ../01_src/01_xampp/culticam/DEBIAN/preinst
+                sed -i "3i\set -x" ../01_src/01_xampp/culticam/DEBIAN/prerm
+           fi
+
            cd ./../01_src/01_xampp/ && dpkg-deb --build culticam
 
            mv culticam.deb ../../05_cultipi/Output/culticam-armhf_`echo $VERSION`-r`echo $revision`.deb
