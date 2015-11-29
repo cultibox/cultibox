@@ -462,7 +462,7 @@ fi
 if [ $VERSION -lt 150706 ]; then
     if [ "`grep '#IgnoreUserKnownHosts' /etc/ssh/sshd_config`" != "" ]; then
         sed -i "s/#IgnoreUserKnownHosts.*/IgnoreUserKnownHosts yes/g" /etc/ssh/sshd_config
-    elif [ "`grep '^IgnoreUserKnownHosts yes'`" != "" ]; then
+    elif [ "`grep '^IgnoreUserKnownHosts yes' /etc/ssh/sshd_config`" != "" ]; then
         echo "IgnoreUserKnownHosts yes" >> /etc/ssh/sshd_config
     fi
 
@@ -474,16 +474,14 @@ if [ $VERSION -lt 150706 ]; then
 
 
     if [ "`grep 'ServerAliveCountMax' /etc/ssh/ssh_config|grep -v '#'`" != "" ]; then
-        sed -i "s/ServerAliveCountMax.*/ServerAliveCountMax 3/g" /etc/ssh/s
-sh_config
+        sed -i "s/ServerAliveCountMax.*/ServerAliveCountMax 3/g" /etc/ssh/ssh_config
     else   
         echo "    ServerAliveCountMax 3" >> /etc/ssh/ssh_config
     fi
 
 
     if [ "`grep 'ExitOnForwardFailure' /etc/ssh/ssh_config|grep -v '#'`" != "" ]; then
-        sed -i "s/ExitOnForwardFailure.*/ExitOnForwardFailure yes/g" /etc/ssh/s
-sh_config
+        sed -i "s/ExitOnForwardFailure.*/ExitOnForwardFailure yes/g" /etc/ssh/ssh_config
     else   
         echo "    ExitOnForwardFailure yes" >> /etc/ssh/ssh_config
     fi
